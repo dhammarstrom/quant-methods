@@ -1,0 +1,3 @@
+# Creating your first graph
+
+R is an excellent environtment for scientific graphs. There are three main systems for graphical output from R. The first is included in base R. 

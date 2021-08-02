@@ -1,0 +1,5 @@
+introduction-to-data-and-r
+creating-your-first-graph
+recording-and-storing-data-in-spreadsheets
+creating-your-first-table
+writing-your-first-reproducible-report
