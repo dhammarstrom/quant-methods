@@ -3,3 +3,15 @@ creating-your-first-graph
 recording-and-storing-data-in-spreadsheets
 creating-your-first-table
 writing-your-first-reproducible-report
+before-the-course-do-this
+references
+practical-information
+learning-strategies
+lecturers-and-course-administration
+updates-notifications-and-general-communication
+learning-objectives
+literature
+grades
+language
+assignments-and-portfolio-exam
+other-information

@@ -1,12 +1,88 @@
 ---
 title: "Quantitative methods and statistics (In Sport and Exercise Science)"
 author: "Daniel Hammarström"
+bibliography: resources/bib.bib
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook: default
 ---
 
 # Introduction {-}
+
+Welcome to the course **Quantitative methods and Statistics (IDR4000)**. The course aims to give students an overview of methodological aspects within the field of sport and exercise-physiology. Specifically, planning, conducting and analyzing research projects with human participants will be covered. These course notes covers *almost* the entire course through the combination of video lectures, tutorials and references to the course literature and external resources.
+
+
+<center>
+
+INTRO VIDEO LECTURE
+
+</center>
+
+
+## Practical information
+
+### Learning strategies
+The course will include lectures, laboratory exercises, computer exercises, seminars and student presentations. Lectures will be held on-line (zoom), pre-recorded in this book and in-person on campus. Due to the current pandemic, you are required to do laboratory exercises in your cohort. 
+Computer exercises require that you have special computer software installed on your computer. The software is free (see specific chapters in this course notes).
+Assignments will be presented in this text with information on how to hand them in. The whole course is evaluated based on a portfolio (see below).
+
+This web-book will guide you through the course.
+
+
+### Lecturers and course administration
+
+In order of appearance 
+
+- Daniel Hammarström (daniel.hammarstrom@inn.no), is responsible for course administration and will be teaching statistics and molecular methods.
+- Prof. Carten Lundby will cover aspects CO<sub>2</sub> re-breathing techniques (physiology).
+- Finnur Dellsén will cover philosophy of science. 
+- Prof. Stian Ellefsen will teach molecular methods. 
+
+### Updates, notifications and general communication
+
+These course notes **will be** updated during the course. General information and last minute changes will be posted on Canvas, make sure to check it as part of your daily study routine. 
+
+
+### Learning objectives
+Assignments are described in detail below. Learning objectives can be read in Norwegian [here](https://www.inn.no/content/view/full/163709/language/nor-NO). 
+All assignments are to be handed in on canvas prior to deadlines and revised versions are expected to be compiled into one document, a portfolio, for the assessment of the whole course (see details below). The submission of your portfolio is the course exam. **The deadline for submitting your portfolio exam is 2020-12-04.**
+
+### Literature
+A full list of recommended literature can be found [here](https://www.inn.no/pensum)
+
+### Grades
+The course is graded pass/fail.
+
+### Language 
+My (Daniel) first language is Swedish, I'm sure most of you will understand what I'm talking about. However, due to the fact that we accept international students to the programe, all written communication and some lectures will be in English. You are not expected to write in English, it is however possible!
+
+
+## Assignments and Portfolio exam
+
+
+|Assignment |Due date |Included in portfolio |Group assignment|
+| :--- | :---: | ---:| ---:|
+|Descriptive statistics, reliability and validity| 2021-09-10 |Yes|Yes|
+|Study designs|2021-10-01 |Yes|No|
+|Extraction and analysis of DNA |2021-10-15|Optional^a^|Yes|
+|Extraction of RNA and analysis of qPCR experiments|2021-10-|Optional^a^|Yes|
+|Extraction and analysis of Protein|2021-10-|Optional^a^|Yes|
+|Regression models and prediction from data|2021-10- |No|Yes|
+|Drawing inference from statistical models|2021-10- |Yes|Yes|
+|Statistical power and sample size calculations|2021-11-|Yes|Yes|
+|Analyzing repeated measures experiments|2021-11-|Yes|No|
+|Philosophy of science |2021-11- |Yes|No|
+
+ <font size="1">^a^ Select one laboratory assignments for your portfolio exam. 
+ </font>
+
+
+Assignments 
+
+## Other information
+
+
+
 
 
 
