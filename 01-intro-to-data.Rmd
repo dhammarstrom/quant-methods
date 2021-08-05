@@ -1,2 +1,128 @@
-# Introduction to data and R
+# Introduction to data science
+
+## About data in the world of sport and exercise
+
+Data is everywhere. Most of us walk around with a data collection device in our pockets all the time. This device (your mobile phone), records and store data about you all throughout the day. Such data are the basis of the *quantified self movement*[^1] that have grown in popularity as capabilities to record data from daily life has become better. People interested in quantifying their personal life does so for different reasons, but often with the intent to improve their health[^2]. 
+
+[^1]: Read more about the quantified self movement [in this Wikipedia article](https://en.wikipedia.org/wiki/Quantified_self) 
+
+[^2]: See this website for [intriguing examples](https://quantifiedself.com/show-and-tell/)
+
+Much of these kind of data are readily available to us due to the fact we are protected by data privacy policies and regarded as personal data[^3]. With some effort you yourself can get your data out of your iphone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016 and I tend to walk less steps on Sundays compared to Saturdays (see Figure \@ref(fig:iphone-data)).
+
+[^3]: See e.g. [Apples Privacy Policy](https://www.apple.com/legal/privacy/en-ww/).
+
+```{r iphone-data, fig.align='center', fig.height=8, fig.width=8, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Step count data from my iPhone displayed as all avalable data points (A, after data cleaning) and average step per weekday, per year and season (B)."}
+
+
+library(tidyverse)
+library(lubridate)
+library(cowplot)
+
+
+steps <- read_csv2("./data/steps.csv") %>%
+  
+  mutate(start = dmy_hm(Start), 
+         finish = dmy_hm(Finish)) %>%
+  
+
+  dplyr::select(start, finish, steps = `Steps (count)`) %>%
+
+  mutate(
+    date = format(start, '%Y-%m-%d'),
+    month = format(start, '%m'),
+    span = (as.numeric(finish - start)/60)/60,
+         
+         year = format(start, '%Y'), 
+         day_of_week = weekdays(start), 
+         season = if_else(month %in% c("01", "02", "12"), "Winter", 
+                          if_else(month %in% c("03", "04", "05"), "Spring", 
+                          if_else(month %in% c("06", "07", "08"), "Summer", 
+                          "Autumn")))) %>%
+  
+  # Remove records that span more than 9 hours
+  filter(span < 9) 
+
+
+steps_fig1 <- steps %>%
+  mutate(date = ymd(date)) %>%
+  filter(steps < 10000) %>%
+  
+  ggplot(aes(date, steps)) + geom_point(shape = 21, fill = "blue", alpha = 0.4) + 
+  scale_y_continuous(limits = c(0, 2000)) +
+  labs(y = "Step (counts)", 
+       x = "Date") + 
+  theme_minimal()
+
+
+
+steps_fig2 <- steps %>%
+  group_by(year, day_of_week, season, date) %>%
+  summarise(steps = sum(steps)) %>%
+  
+  group_by(year, day_of_week, season) %>%
+  summarise(steps = mean(steps)) %>%
+  
+  
+  mutate(day_of_week = if_else(day_of_week == "mandag", "Monday", 
+                               if_else(day_of_week == "tirsdag", "Tuesday",
+                                       if_else(day_of_week == "onsdag", "Wednesday",
+                                               if_else(day_of_week == "torsdag", "Thursday",
+                                                       if_else(day_of_week == "fredag", "Friday",
+                                                               if_else(day_of_week == "lørdag", "Saturday","Sunday")))))),
+         day_of_week = factor(day_of_week, levels = c("Monday",
+                                         "Tuesday", 
+                                         "Wednesday",
+                                         "Thursday",
+                                         "Friday",
+                                         "Saturday",
+                                         "Sunday")), 
+         season = factor(season, levels = c("Winter", "Spring", "Summer", "Autumn"))) %>%
+  
+  filter(year != "2016") %>%
+
+  ggplot(aes(day_of_week, steps, group = year)) + geom_line() + facet_grid(year ~ season) + 
+  
+  labs(y = "Average steps per day", 
+       x = "Day of the week") + 
+  scale_x_discrete()+ 
+  theme_minimal() +
+  theme(axis.text.x = element_text(size = 8, angle = 45, hjust = 1))
+  
+  
+  plot_grid(steps_fig1, 
+            steps_fig2, ncol = 1, 
+            rel_heights = c(0.5, 1), 
+            labels = "AUTO", 
+            label_size = 12)
+
+
+```
+
+Data are also collected and stored in publicly available databases. Such databases are created for the purpose to store specific types of data, such as soccer[^4] or biathlon results[^5], or biological information such as gene sequences[^6]. Even data from scientific studies are now days often publicly available[^7] meaning that we can perform scientific studies on unique data sets without collecting the data ourselves. 
+
+[^4]: [understat.com](https://understat.com/) stores match specific data from major leagues. Data are available through software packages such as [`worldfootballR`](https://jaseziv.github.io/worldfootballR/index.html)
+
+[^5]: [biathlonresults.com/](https://biathlonresults.com/) hosts results from the international biathlon federation. An example of analyzed data can be [seen here](https://sciathlon.github.io/post/biathlon_data_analysis/).
+
+[^6]: [Ensembl](https://www.ensembl.org/) and the [National center for biotechnology information](https://www.ncbi.nlm.nih.gov/) are commonly used databases in the biomedical sciences.
+
+[^7]: We published our raw data together with a recent paper (Mølmen et al 2021 [doi: 10.1186/s12967-021-02969-1.](https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-021-02969-1)) together with code to analyze it in a [public repository](https://github.com/dhammarstrom/rnaseq-copd).
+
+The above examples shows that there are abundance of data around and available to us. The problem is that it is hard understand all this data. This is where data science and data literacy comes in. In the world of sport and exercise, regardless if you are interested in doing scientific investigations, coach a soccer-team or individual athletes or help patients recover from surgery using exercise therapy, you are faced with the problem of handling and make sense of data. Some of the key skills and deeper understanding about data science are very much transferable between such areas of practice.  
+
+> **Think about the literature!**
+  Spiegelhalter (The Art of Statistics, in the introduction chapter) talks about how statistics has evolved towards the broader field of data science. In data science, statistical theory and methods are just parts of the problem solving cycle. Try to think about how you would use the PPDAC cycle as a exercise coach and a scientist. What are the similarities and differences?
+
+One broader aim of this course is for you to develop skills to better understand data.
+
+## Tools in data science
+
+
+## Reproducability
+
+
+## Storing data in spreadsheets
+
+
 

@@ -15,3 +15,9 @@ grades
 language
 assignments-and-portfolio-exam
 other-information
+introduction-to-data-science
+about-data-in-the-world-of-sport-and-exercise
+fig:iphone-data
+tools-in-data-science
+reproducability
+storing-data-in-spreadsheets
