@@ -5,7 +5,18 @@ bibliography: resources/bib.bib
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook: default
+editor_options: 
+  chunk_output_type: console
 ---
+
+```{r nojekyll, message=FALSE, warning=FALSE, message=FALSE}
+
+file.create('./docs/.nojekyll') # this makes hosting on github possible
+
+
+```
+
+
 
 # Introduction {-}
 
