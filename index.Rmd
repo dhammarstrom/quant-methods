@@ -21,11 +21,17 @@ INTRO VIDEO LECTURE
 
 ## Practical information
 
+### Learning objectives
+Learning objectives can be read in Norwegian [here](https://www.inn.no/content/view/full/163709/language/nor-NO).
+
 ### Learning strategies
-The course will include lectures, laboratory exercises, computer exercises, seminars and student presentations. Lectures will be held on-line (zoom), pre-recorded in this book and in-person on campus. Due to the current pandemic, you are required to do laboratory exercises in your cohort. 
+The course will include lectures, laboratory exercises, computer exercises, seminars and student presentations. Lectures will be held on-line (zoom), as pre-recorded in this book and in-person on campus. Due to the current pandemic, you are required to do laboratory exercises in your cohort. 
 Computer exercises require that you have special computer software installed on your computer. The software is free (see specific chapters in these course notes).
 
 Assignments will be presented in this text with information on how to hand them in. The whole course is evaluated based on a portfolio (see below).
+
+### Course evaluation
+As a student you can contribute to the quality of the course by engaging in course evaluation throughout the course. You will be asked to answer a pre-course questionnaire about your *expectations* and a post-course questionnaire about your *experiences*. You are also welcomed to take part in systematic discussions during the course about the quality of teaching and course material. With these notes I want to underline the importance of student participation in the continuous development of the course (and program) teaching/learning qualities.
 
 
 ### Lecturers and course administration
@@ -33,6 +39,8 @@ Assignments will be presented in this text with information on how to hand them 
 In order of appearance 
 
 - Daniel Hammarström (daniel.hammarstrom@inn.no), is responsible for course administration and will be teaching statistics and molecular methods.
+- Kristian Lian, Ingvill Odden and Lars Nymoen will act as teacher assistants in organizing methods in the physiology lab.
+- Stein Olaf Olsen will act as a teacher assistant in the molecular lab.
 - Prof. Carten Lundby will cover aspects CO<sub>2</sub> re-breathing techniques (physiology).
 - Prof. Finnur Dellsén will cover philosophy of science. 
 - Prof. Stian Ellefsen will teach molecular methods. 
@@ -41,9 +49,6 @@ In order of appearance
 
 These course notes **will be** updated during the course. General information and last minute changes will be posted on Canvas, make sure to check it as part of your daily study routine. 
 
-
-### Learning objectives
-Assignments are described in detail below. Learning objectives can be read in Norwegian [here](https://www.inn.no/content/view/full/163709/language/nor-NO). 
 
 
 ### Literature

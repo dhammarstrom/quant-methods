@@ -116,13 +116,55 @@ The above examples shows that there are abundance of data around and available t
 
 One broader aim of this course is for you to develop skills to better understand data.
 
+## Replication and Reproducibility
+
+In scientific research, replication is a way to confirm scientific claims. When a result can be confirmed by an independent group of researchers, the claim is likely "more true". Many results will however never be possible to replicate due to the size of trials, costs and urgency of the research question. A recent example could perhaps be the many vaccine trials performed to develop a vaccines against COVID-19[^8]. Other examples concern studies with unique study populations, such as large scale epidemiological studies [@RN1492], but the same could be said to be true for unique investigations in sport and exercise science.  
+
+[^8]: https://www.evaluate.com/vantage/articles/news/snippets/its-official-covid-19-vaccine-trials-rank-among-largest
+
+When studies are not likely to be *replicated*, *reproducibility* of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that given the same datas, similar results or conclusions can be drawn by independent researchers [@RN1492].
+
+Peng et al. [@RN1492] suggests that a *fully reproducible* study has 
+
+- Available data.
+- Computer code (software) that produces the results of the study.
+- Documentation that describes the software and data used in the study, and
+- ways to share the data and code.
+
+The above principally relates to the trust we can place in scientific results. However, the minimum standard of reproducibility has advantages also for the individual researcher (or master student)! When working with reproducible methods we will develop ways of documenting and automating our analyses. This will make it easier to collaborate with others. And, as it turns out, your most frequent collaborator is you, in the future!
+
+A reproducible data analysis means that you will make it explicit and transparent. In a traditional data analysis, most activities are in the "black box". In order to avoid bias [@RN1953], the "black box" needs to be opened and you need to actively make transparent decisions all along the analytic pipeline [@RN1955]. This pipeline preferably involves the whole problem solving cycle described by Spiegelhalter [@RN2902]. However the tools that we will learn about in this course focuses primarily on the steps from the experimental design to presentation of statistical results [@RN1955]. These steps includes data collection (and storage), data cleaning, exploratory data analysis, statistical modelling and statistical inference (and communication) [@RN1955].
+
 ## Tools in data science
 
+Ways to interpret and make sense of data involves different methods. These methods are now days often implemented in computer software. This means that when you as a practitioner (scientist, coach, analyst ...) want to understand data, you have to master some kind of computer software. The most common software used to understand data is probably Microsoft's Excel. You can do amazing stuff with Excel! In the world of sport and exercise Excel has been used in such diverse activities such as scientific investigations, planning and recording training for Olympic medalists[^9] and scheduling appointments.
 
-## Reproducability
+[^9]: The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from [swedish orienteering](http://obasen.orientering.se/traningsdagbok/installationshandledning.htm).
 
+For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education you have probably heard about SPSS, Stata or Jamovi. These are all specialized software used for statistical analyses.
+
+The above mentioned tools can all be used as part of a fully reproducible workflow. However, there are software solutions that actually suits this requirement better than others. Going back to the description of reproducible science as made by Peng et al. [@RN1492], we want software where analyses can be 
+
+- Human- and computer-readable, meaning that we want to be able to write scripts, or computer programs that execute the analyses.
+- Documented, meaning that along the code we want to be able to describe what the code does.
+- Available and able to share with other, meaning that we analyses can be run on open and free software to maximize ability to share them.
+
+This means that the software that we would prefer should be run using scripts (as opposed to point and click) and be free of charge (and open source, as opposed to expensive and proprietary). These criteria can be fulfilled when we use software that is written around the R language (although alternatives exists[^10]).
+
+R is a computer language that is especially well suited for reproducible data analysis. As users are able to contribute software extensions, also called packages, many specialized software implementation exists for different tasks, such as creating figures or analyses of specific data. Around R, people have been developing auxiliary software to enable reproducible data analysis. The negative part of all these opportunities is that using R requires some effort. The learning curve is steep!
+
+Even though you might not use R ever again after this course, making and effort trying to learn it will let you know something about programming, capabilities of modern data science, statistical analysis and software/computers in general. These areas are all part of our modern society and are very much transferrable regardless of what computer language we are talking about.
+
+[^10]: In addition to R, Python offers a free open source environment for reproducible analyses. The choice between the two are [matter of taste](https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis).
+
+In the next chapter of these course notes we will go through installing and starting up R.
 
 ## Storing data in spreadsheets
 
+Above, I mentioned spreadsheets like Excel. These are indeed great, but not great for reproducible science or data analysis. This is because they are not easily documented and scripted. The data is actually part of the analysis. Another danger with spreadsheets (like MS Excel) is that it re-formats your data. This is such a big problem for scientists that we have apparently started [renaming genes  this](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates). Errors are frequent in spreadsheets, not only because renaming [@RN2927], but also because of bad formatting of formulas [@RN2928]. These are both reasons for using spreadsheets only what they are best used for: data input and storage.
 
+> **Think about the literature**
+ Broman and Woo[@RN2391] gives several pointers on how to use spreadsheets for data input and storage. Think your experince with Excel, what is the most common mistake you made when handling data in spreadsheets?
+ 
 
+## References and footnotes

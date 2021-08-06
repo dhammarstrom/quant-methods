@@ -1,9 +1,10 @@
 fig:iphone-data
 practical-information
+learning-objectives
 learning-strategies
+course-evaluation
 lecturers-and-course-administration
 updates-notifications-and-general-communication
-learning-objectives
 literature
 grades
 language
@@ -11,10 +12,11 @@ assignments-and-portfolio-exam
 other-information
 introduction-to-data-science
 about-data-in-the-world-of-sport-and-exercise
+replication-and-reproducibility
 tools-in-data-science
-reproducability
 storing-data-in-spreadsheets
-creating-your-first-graph
+references-and-footnotes
 recording-and-storing-data-in-spreadsheets
+creating-your-first-graph
 creating-your-first-table
 writing-your-first-reproducible-report
