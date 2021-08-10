@@ -1,24 +1,30 @@
 ---
 title: "Quantitative methods and statistics (In Sport and Exercise Science)"
 author: "Daniel Hammarström"
-bibliography: resources/bib.bib
+date: "Updated: `r Sys.Date()`"
+bibliography: resources/bib-final.bib
+biblio-style: apalike
+description: These course notes let's you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com.
+documentclass: krantz
+link-citations: yes
+colorlinks: yes
+graphics: yes
+lot: yes
+lof: yes
+fontsize: 11pt
 site: bookdown::bookdown_site
-output:
-  bookdown::gitbook: default
-editor_options: 
-  chunk_output_type: console
+github-repo: dhammarstrom/quant-methods
+cover-image: images/cover.png
+
 ---
 
-```{r nojekyll, message=FALSE, warning=FALSE, message=FALSE}
-
+```{r nojekyll, message=FALSE, warning=FALSE, message=FALSE, echo = FALSE}
 file.create('./docs/.nojekyll') # this makes hosting on github possible
-
-
 ```
 
 
 
-# Introduction {-}
+# Introduction
 
 Welcome to the course **Quantitative methods and Statistics (IDR4000)**. The course aims to give students an overview of methodological aspects within the field of sport and exercise-physiology. Specifically, planning, conducting and analyzing research projects with human participants will be covered. These course notes covers *almost* the entire course through the combination of video lectures, tutorials and references to the course literature and external resources.
 
@@ -100,14 +106,4 @@ The table below shows all assignments that are part of the course. Some are not 
 In addition to arbeidskrav/assignments, smaller assignments and quizzes are presented in this book, but you are not required to do them to pass the course.
 
 ## Other information
-
-
-
-
-
-
-
-
-
-
 

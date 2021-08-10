@@ -1,0 +1,1 @@
+These are course notes for the course Quantitative methods and Statistics (IDR4000) given at the Inland University of Applied Sciences. 

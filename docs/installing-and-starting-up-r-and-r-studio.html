@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Quantitative methods and statistics (In Sport and Exercise Science)</title>
+  <title>Chapter 4 Installing and starting up R (and R Studio) | Quantitative methods and statistics (In Sport and Exercise Science)</title>
   <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta property="og:title" content="Chapter 4 Installing and starting up R (and R Studio) | Quantitative methods and statistics (In Sport and Exercise Science)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="/images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dhammarstrom/quant-methods" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta name="twitter:title" content="Chapter 4 Installing and starting up R (and R Studio) | Quantitative methods and statistics (In Sport and Exercise Science)" />
   
   <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="twitter:image" content="/images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introduction-to-data-science.html"/>
+<link rel="prev" href="storing-data-in-spreadsheets.html"/>
+<link rel="next" href="creating-your-first-graph.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -227,145 +227,122 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Quantitative methods and statistics (In Sport and Exercise Science)</h1>
-<p class="author"><em>Daniel Hammarström</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>Updated: 2021-08-10</em></p>
-</div>
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Welcome to the course <strong>Quantitative methods and Statistics (IDR4000)</strong>. The course aims to give students an overview of methodological aspects within the field of sport and exercise-physiology. Specifically, planning, conducting and analyzing research projects with human participants will be covered. These course notes covers <em>almost</em> the entire course through the combination of video lectures, tutorials and references to the course literature and external resources.</p>
-<center>
-<p>INTRO VIDEO LECTURE</p>
-</center>
-<div id="practical-information" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Practical information</h2>
-<div id="learning-objectives" class="section level3" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> Learning objectives</h3>
-<p>Learning objectives can be read in Norwegian <a href="https://www.inn.no/content/view/full/163709/language/nor-NO">here</a>.</p>
-</div>
-<div id="learning-strategies" class="section level3" number="1.1.2">
-<h3><span class="header-section-number">1.1.2</span> Learning strategies</h3>
-<p>The course will include lectures, laboratory exercises, computer exercises, seminars and student presentations. Lectures will be held on-line (zoom), as pre-recorded in this book and in-person on campus. Due to the current pandemic, you are required to do laboratory exercises in your cohort.
-Computer exercises require that you have special computer software installed on your computer. The software is free (see specific chapters in these course notes).</p>
-<p>Assignments will be presented in this text with information on how to hand them in. The whole course is evaluated based on a portfolio (see below).</p>
-</div>
-<div id="course-evaluation" class="section level3" number="1.1.3">
-<h3><span class="header-section-number">1.1.3</span> Course evaluation</h3>
-<p>As a student you can contribute to the quality of the course by engaging in course evaluation throughout the course. You will be asked to answer a pre-course questionnaire about your <em>expectations</em> and a post-course questionnaire about your <em>experiences</em>. You are also welcomed to take part in systematic discussions during the course about the quality of teaching and course material. With these notes I want to underline the importance of student participation in the continuous development of the course (and program) teaching/learning qualities.</p>
-</div>
-<div id="lecturers-and-course-administration" class="section level3" number="1.1.4">
-<h3><span class="header-section-number">1.1.4</span> Lecturers and course administration</h3>
-<p>In order of appearance</p>
+<div id="installing-and-starting-up-r-and-r-studio" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Installing and starting up R (and R Studio)</h1>
+<p>This chapter contains step-by-step instructions for installing and running R and R Studio. It will also introduce you to some concepts when talking to R. By the end of this chapter you will be able to answer these questions:</p>
 <ul>
-<li>Daniel Hammarström (<a href="mailto:daniel.hammarstrom@inn.no" class="email">daniel.hammarstrom@inn.no</a>), is responsible for course administration and will be teaching statistics and molecular methods.</li>
-<li>Kristian Lian, Ingvill Odden and Lars Nymoen will act as teacher assistants in organizing methods in the physiology lab.</li>
-<li>Stein Olaf Olsen will act as a teacher assistant in the molecular lab.</li>
-<li>Prof. Carten Lundby will cover aspects CO<sub>2</sub> re-breathing techniques (physiology).</li>
-<li>Prof. Finnur Dellsén will cover philosophy of science.</li>
-<li>Prof. Stian Ellefsen will teach molecular methods.</li>
+<li>What is R and RStudio?</li>
+<li>How can I interact with R?</li>
+<li>What are the components of RStudio</li>
+<li>How do I maintain a reproducible work-flow in R and RStudio?</li>
 </ul>
+<div id="installing-r" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Installing R</h2>
+<p>R is a free, <a href="https://en.wikipedia.org/wiki/Open_source">open-source</a> software designed for statistical computing. We will use R as a part of a environment (using R Studio, introduced below). To download and install R:</p>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://cran.uib.no/">https://cran.uib.no/</a>,</li>
+<li>select your operating system (Download R for Windows, MacOS or Linux).
+<ul>
+<li>If you have Windows, choose <code>base</code>, click on “Download R (…) for windows,” save and run the file. The installation process should be self explanatory.</li>
+<li>If you have MacOS, download and install the latest release.</li>
+</ul></li>
+</ol>
 </div>
-<div id="updates-notifications-and-general-communication" class="section level3" number="1.1.5">
-<h3><span class="header-section-number">1.1.5</span> Updates, notifications and general communication</h3>
-<p>These course notes <strong>will be</strong> updated during the course. General information and last minute changes will be posted on Canvas, make sure to check it as part of your daily study routine.</p>
+<div id="installing-r-studio" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Installing R Studio</h2>
+<p><a href="https://www.rstudio.com/">RStudio</a> is a software designed to make it easier to use R. It is free to download and use. It is designed as an integrated development environment that lets you organize your work together with R and other tools. Install it by going to <a href="https://www.rstudio.com/">https://www.rstudio.com/</a>.</p>
+<ol style="list-style-type: decimal">
+<li>Select “Products” and RStudio</li>
+<li>Go to desktop and select “DOWNLOAD RSTUDIO DESKTOP”</li>
+<li>Select the free open source license and download the file made for your operating system (use the installers).</li>
+</ol>
 </div>
-<div id="literature" class="section level3" number="1.1.6">
-<h3><span class="header-section-number">1.1.6</span> Literature</h3>
-<p>A full list of recommended literature can be found <a href="https://www.inn.no/pensum">here</a>. Literature will be referenced in specific sections in these course notes.</p>
+<div id="getting-to-know-r-and-rstudio" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Getting to know R and RStudio</h2>
+<p>R is a software used for scientific/statistical computing. If R is the engine, RStudio is the rest of the car. What does this mean?</p>
+<p>When doing operations in R, you are actually interacting with R through RStudio. RStudio have some important components to help you interact with R.</p>
+<div id="the-source" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> The source</h3>
+<p>The source is where you keep your code. When writing your code in a text-file, you can call it a script, this is essentially a computer program where you tell R what to do. It is executed from top to bottom. You can send one line of code, multiple lines or whole sections into R. In the image below, the source window is in the top left corner.</p>
 </div>
-<div id="grades" class="section level3" number="1.1.7">
-<h3><span class="header-section-number">1.1.7</span> Grades</h3>
-<p>The course is graded pass/fail.</p>
+<div id="environment" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Environment</h3>
+<p>The environment is where all your objects are located. Objects can be variables or data sets that you are working with. In RStudio the environment is listed under the environment tab (bottom left in the image).</p>
+<p>Copy and run the code below.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="installing-and-starting-up-r-and-r-studio.html#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span></code></pre></div>
+<p>What happened in your environment?</p>
 </div>
-<div id="language" class="section level3" number="1.1.8">
-<h3><span class="header-section-number">1.1.8</span> Language</h3>
-<p>My (Daniel) first language is Swedish, I’m sure most of you will understand what I’m talking about. However, due to the fact that we accept international students to the program, most written communication and some lectures will be in English. You are not expected to write in English, it is however possible!</p>
+<div id="the-console" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> The console</h3>
+<p>Here you can directly interact with R. This is also where output from R is printed. In the image below, the console is in the top right corner.</p>
+</div>
+<div id="files-plots-packages-and-help-files" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Files, plots, packages and help files</h3>
+<p>In RStudio files are accessible from the Files tab. When opening a project, the files tab shows the files in you root folder. Plots are displayed in the Plot tab. Packages are listed in the packages tab. If you access the help files, these will be displayed in the help tab. In the image below all these tabs are in the bottom right corner.</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudio-blank"></span>
+<img src="images/rstudio_blank.png" alt="RStudio when first opened up." width="50%" />
+<p class="caption">
+Figure 4.1: RStudio when first opened up.
+</p>
 </div>
 </div>
-<div id="assignments-and-portfolio-exam" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Assignments and Portfolio exam</h2>
-<p>The course is based on several assignments. Some of these assignments are to be handed in as part of a portfolio exam upon which your grade is based.</p>
-<p>Assignments that are due during the course (arbeidskrav) are expected to be further improved after feedback from fellow students and teachers before inclusion in your portfolio.</p>
-<p>The table below shows all assignments that are part of the course. Some are not to be included in the portfolio and some assignments are group assignments (see Table).</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Assignment</th>
-<th align="center">Due date</th>
-<th align="right">Included in portfolio</th>
-<th align="right">Group assignment</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Descriptive statistics, reliability and validity</td>
-<td align="center">2021-09-10</td>
-<td align="right">Yes</td>
-<td align="right">Yes</td>
-</tr>
-<tr class="even">
-<td align="left">Study designs</td>
-<td align="center">2021-10-01</td>
-<td align="right">Yes</td>
-<td align="right">No</td>
-</tr>
-<tr class="odd">
-<td align="left">Extraction and analysis of DNA</td>
-<td align="center">2021-10-15</td>
-<td align="right">Optional<sup>a</sup></td>
-<td align="right">Yes</td>
-</tr>
-<tr class="even">
-<td align="left">Extraction of RNA and analysis of qPCR experiments</td>
-<td align="center">2021-10-</td>
-<td align="right">Optional<sup>a</sup></td>
-<td align="right">Yes</td>
-</tr>
-<tr class="odd">
-<td align="left">Extraction and analysis of Protein</td>
-<td align="center">2021-10-</td>
-<td align="right">Optional<sup>a</sup></td>
-<td align="right">Yes</td>
-</tr>
-<tr class="even">
-<td align="left">Regression models and prediction from data</td>
-<td align="center">2021-10-</td>
-<td align="right">No</td>
-<td align="right">Yes</td>
-</tr>
-<tr class="odd">
-<td align="left">Drawing inference from statistical models</td>
-<td align="center">2021-10-</td>
-<td align="right">No</td>
-<td align="right">Yes</td>
-</tr>
-<tr class="even">
-<td align="left">Statistical power and sample size calculations</td>
-<td align="center">2021-11-</td>
-<td align="right">Yes</td>
-<td align="right">Yes</td>
-</tr>
-<tr class="odd">
-<td align="left">Analyzing repeated measures experiments</td>
-<td align="center">2021-11-</td>
-<td align="right">Yes</td>
-<td align="right">No</td>
-</tr>
-<tr class="even">
-<td align="left">Philosophy of science<sup>b</sup></td>
-<td align="center">2021-11-</td>
-<td align="right">Yes</td>
-<td align="right">No</td>
-</tr>
-</tbody>
-</table>
-<p><font size="2"><sup>a</sup> Select one laboratory assignments for your portfolio exam. <sup>b</sup> This assignment is presented in connection with lectures.
-</font></p>
-<p>In addition to arbeidskrav/assignments, smaller assignments and quizzes are presented in this book, but you are not required to do them to pass the course.</p>
+<div id="customizing-the-apperance-of-rstudio" class="section level3" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Customizing the apperance of RStudio</h3>
+<p>To access options for RStudio, go to Tools -&gt; Global options</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudio-options"></span>
+<img src="images/rstudio_options1.png" alt="Accessing options for your RStudio IDE" width="50%" />
+<p class="caption">
+Figure 4.2: Accessing options for your RStudio IDE
+</p>
 </div>
-<div id="other-information" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Other information</h2>
+<p>Under appearance you can customize the theme of RStudio, select something that is easy on the eye!</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudio-options2"></span>
+<img src="images/rstudio_options2.png" alt="Accessing options for your RStudio IDE and selection a theme" width="50%" />
+<p class="caption">
+Figure 4.3: Accessing options for your RStudio IDE and selection a theme
+</p>
+</div>
+<p>Under pane layout, you can set where you want your tabs, I like to have the source on the left, above the environment. This way you can have the source window at full vertical size and still look at plots and the console to the right.</p>
+<div class="figure" style="text-align: center"><span id="fig:rstudio-options3"></span>
+<img src="images/rstudio_options3.png" alt="Accessing options for your RStudio IDE and set the panes" width="50%" />
+<p class="caption">
+Figure 4.4: Accessing options for your RStudio IDE and set the panes
+</p>
+</div>
+</div>
+</div>
+<div id="reproducible-computing" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Reproducible computing</h2>
+<p>Computations are reproducible when you can show how they were performed. This is achieved by creating “programs” from where your analyses are done. In R, these programs are lines or R code stored in a text-file, either .R-files or .Rmd-files. .R-files are scripts only containing code and comments. A .Rmd-file is a special script combining text and computer code, when the Rmd-file is executed, it creates a report and outputs the results from the code.</p>
+<p>This means that to work in a reproducible way, you need to script all your operations.</p>
+<div class="figure" style="text-align: center"><span id="fig:reproducible-computing"></span>
+<img src="images/reproducible_workflow.png" alt="Reproducible vs. non-reproducible workflow" width="50%" />
+<p class="caption">
+Figure 4.5: Reproducible vs. non-reproducible workflow
+</p>
+</div>
+<p>Importantly, in RStudio you can shut down storing temporary objects in a environment that is relaunched on start up. What is the consequence of having such a situation?</p>
+<p>To disable this option, set save works pace to NEVER!</p>
+<div class="figure" style="text-align: center"><span id="fig:settings-workspace"></span>
+<img src="images/rstudio_options4.png" alt="Set the workspace option to never save." width="50%" />
+<p class="caption">
+Figure 4.6: Set the workspace option to never save.
+</p>
+</div>
+</div>
+<div id="packages" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Packages</h2>
+<p>The R ecosystem consists of packages. These are <em>functions</em> organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g. analyses of a specific kind of data, or more generl task such as making figures or handle data. In this course we will use many different packages, for example <a href="https://dplyr.tidyverse.org/">dplyr</a>, <a href="https://tidyr.tidyverse.org/">tidyr</a> and <a href="https://ggplot2.tidyverse.org/">ggplot2</a>. dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.</p>
+<p>To install a package, you use the <code>install.packages()</code> function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="installing-and-starting-up-r-and-r-studio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<p>Alternatively, click “Packages” and “Install” and search for the package you want to install. To use a package, you have to load it into your environment. Use the <code>library()</code> function to load a package.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="installing-and-starting-up-r-and-r-studio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+</div>
+<div id="installing-and-using-swirl" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Installing and using <code>swirl</code></h2>
+<p>Swirl is a great way to get to know how to talk with R. Swirl consists of lessons created for different topics. Install swirl by typing the following into your console:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="installing-and-starting-up-r-and-r-studio.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;swirl&quot;</span>)</span></code></pre></div>
+<p>Or select swirl in the Package/Install menu.</p>
 
 </div>
 </div>
@@ -374,8 +351,8 @@ Computer exercises require that you have special computer software installed on 
           </div>
         </div>
       </div>
-
-<a href="introduction-to-data-science.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="storing-data-in-spreadsheets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="creating-your-first-graph.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

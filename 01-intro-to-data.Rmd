@@ -157,14 +157,6 @@ Even though you might not use R ever again after this course, making and effort 
 
 [^10]: In addition to R, Python offers a free open source environment for reproducible analyses. The choice between the two are [matter of taste](https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis).
 
-In the next chapter of these course notes we will go through installing and starting up R.
+In a following chapter of these course notes we will go through installing and starting up R.
 
-## Storing data in spreadsheets
 
-Above, I mentioned spreadsheets like Excel. These are indeed great, but not great for reproducible science or data analysis. This is because they are not easily documented and scripted. The data is actually part of the analysis. Another danger with spreadsheets (like MS Excel) is that it re-formats your data. This is such a big problem for scientists that we have apparently started [renaming genes  this](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates). Errors are frequent in spreadsheets, not only because renaming [@RN2927], but also because of bad formatting of formulas [@RN2928]. These are both reasons for using spreadsheets only what they are best used for: data input and storage.
-
-> **Think about the literature**
- Broman and Woo[@RN2391] gives several pointers on how to use spreadsheets for data input and storage. Think your experince with Excel, what is the most common mistake you made when handling data in spreadsheets?
- 
-
-## References and footnotes

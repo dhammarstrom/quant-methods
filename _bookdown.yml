@@ -1,3 +1,10 @@
-book_filename: "_main.Rmd"
+book_filename: "quant-methods"
 delete_merged_file: true
 output_dir: "docs"
+clean: "docs"
+language:
+  label:
+    fig: "Figure "
+    tab: "Table "
+  ui:
+    chapter_name: "Chapter "
