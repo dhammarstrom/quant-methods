@@ -1,3 +1,5 @@
 # Creating your first graph
 
-R is an excellent environtment for scientific graphs. There are three main systems for graphical output from R. The first is included in base R. 
+Data visualization is an efficient way of understanding data. By using graphs we can communicate characteristics of a data set that would have been impossible with a limited number of summary statistics (central tendencies, spread etc.). In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when describing different types of graphs and their use to understand different data sets. A great argument for the use of data visualization is the need to understand what factors might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of an initial step in understanding data, data visualization as an exploratory tool.  
+
+R Studio is a powerful environment for data visualization.   
