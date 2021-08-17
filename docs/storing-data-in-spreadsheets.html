@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Storing data in spreadsheets | Quantitative methods and statistics (In Sport and Exercise Science)</title>
   <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Storing data in spreadsheets | Quantitative methods and statistics (In Sport and Exercise Science)" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:image" content="/images/cover.png" />
+  <meta property="og:image" content="images/cover.png" />
   <meta property="og:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="github-repo" content="dhammarstrom/quant-methods" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapter 3 Storing data in spreadsheets | Quantitative methods and statistics (In Sport and Exercise Science)" />
   
   <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
-  <meta name="twitter:image" content="/images/cover.png" />
+  <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Daniel Hammarström" />
 
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="introduction-to-data-science.html"/>
 <link rel="next" href="installing-and-starting-up-r-and-r-studio.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,15 +50,14 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,29 +116,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -203,10 +179,19 @@ div.csl-indent {
 <li class="chapter" data-level="4.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#packages"><i class="fa fa-check"></i><b>4.5</b> Packages</a></li>
 <li class="chapter" data-level="4.6" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-and-using-swirl"><i class="fa fa-check"></i><b>4.6</b> Installing and using <code>swirl</code></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a></li>
+<li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#resources"><i class="fa fa-check"></i><b>5.1</b> Resources</a></li>
+<li class="chapter" data-level="5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#learning-objectives-1"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#prerequisites"><i class="fa fa-check"></i><b>5.3</b> Prerequisites</a></li>
+<li class="chapter" data-level="5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#the-ggplot2-system"><i class="fa fa-check"></i><b>5.4</b> The <code>ggplot2</code> system</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="creating-your-first-table.html"><a href="creating-your-first-table.html"><i class="fa fa-check"></i><b>6</b> Creating your first table</a></li>
 <li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a></li>
-<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
+<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a></li>
+<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a></li>
+<li class="chapter" data-level="10" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html"><i class="fa fa-check"></i><b>10</b> Introduction to the molecular exercise physiology lab</a></li>
+<li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -230,10 +215,10 @@ div.csl-indent {
 <div id="storing-data-in-spreadsheets" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Storing data in spreadsheets</h1>
 <p>I previously mentioned spreadsheets like those created in Excel. These are indeed great, but not great for reproducible science or data analysis. This is because they are not easily documented and scripted. The data is actually part of the analysis. Another danger with spreadsheets (like MS Excel) is that it re-formats your data. This is such a big problem for scientists that we have apparently started <a href="https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates">renaming genes</a>.</p>
-<p>Errors are frequent in spreadsheets, not only because renaming <span class="citation">(<a href="#ref-RN2927" role="doc-biblioref">Ziemann, Eren, and El-Osta 2016</a>)</span>, but also because of bad formatting of formulas <span class="citation">(<a href="#ref-RN2928" role="doc-biblioref">Stephen, Kenneth, and Barry 2009</a>)</span>. These are both reasons for using spreadsheets only for what they do best: data input and data storage.</p>
+<p>Errors are frequent in spreadsheets, not only because renaming <span class="citation">(<a href="references.html#ref-RN2927" role="doc-biblioref">Ziemann, Eren, and El-Osta 2016</a>)</span>, but also because of bad formatting of formulas <span class="citation">(<a href="references.html#ref-RN2928" role="doc-biblioref">Stephen, Kenneth, and Barry 2009</a>)</span>. These are both reasons for using spreadsheets only for what they do best: data input and data storage.</p>
 <blockquote>
 <p><strong>Think about the literature</strong>
-Broman and Woo <span class="citation">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> gives several pointers on how to use spreadsheets for data input and storage. Think about your experince with Excel, what is the most common mistake you made when handling data in spreadsheets?</p>
+Broman and Woo <span class="citation">(<a href="references.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> gives several pointers on how to use spreadsheets for data input and storage. Think about your experince with Excel, what is the most common mistake you made when handling data in spreadsheets?</p>
 </blockquote>
 <p>Although data storage and data input are great ways to use spreadsheets, it’s good to know a little about the capabilities of your spreadsheet software.</p>
 <div id="cells-and-simple-functions" class="section level2" number="3.1">
@@ -298,14 +283,14 @@ Figure 3.1: Example entries from an Excel spreadsheet
 </div>
 <div id="tidy-data-and-data-storage" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Tidy data and data storage</h2>
-<p>Hadley Wickham uses a quote from Tolstoy when describing the principle of tidy data <span class="citation">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that when something goes wrong, it can be wrong in multiple ways. But when it is right/correct/works/succeeds, it does so in only one way<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>. This principle can be applied to data sets. There are so many ways that formatting of data sets can be problematic, but a limited sets of principles makes it good.</p>
+<p>Hadley Wickham uses a quote from Tolstoy when describing the principle of tidy data <span class="citation">(<a href="references.html#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that when something goes wrong, it can be wrong in multiple ways. But when it is right/correct/works/succeeds, it does so in only one way<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>. This principle can be applied to data sets. There are so many ways that formatting of data sets can be problematic, but a limited sets of principles makes it good.</p>
 <div class="figure" style="text-align: center"><span id="fig:tolstoy"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Leon_tolstoi.jpg/800px-Leon_tolstoi.jpg" alt="Leo Tolstoy at the time when he was (possibly) authoring Anna Karenina. (Source: https://en.wikipedia.org/wiki/Leo_Tolstoy)" width="50%" />
 <p class="caption">
 Figure 3.2: Leo Tolstoy at the time when he was (possibly) authoring Anna Karenina. (Source: <a href="https://en.wikipedia.org/wiki/Leo_Tolstoy" class="uri">https://en.wikipedia.org/wiki/Leo_Tolstoy</a>)
 </p>
 </div>
-<p>A tidy data set consists of <em>values</em> originating from <em>observations</em> and belonging to <em>variables</em>. A variable is a definition of the values based on attributes. An observation may consist of several variables <span class="citation">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>.</p>
+<p>A tidy data set consists of <em>values</em> originating from <em>observations</em> and belonging to <em>variables</em>. A variable is a definition of the values based on attributes. An observation may consist of several variables <span class="citation">(<a href="references.html#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>.</p>
 <p>A tidy data set typically has got one observation per row and one variable per column. Let’s say that we want to collect data from a strength test. A participant (<strong>participant</strong> is a variable) in our study conducts tests before and after the intervention (<strong>time</strong> is a variable) in two exercises (<strong>exercise</strong> is a variable) and we record the maximal strength in kg (<strong>load</strong> is a variable). The data set will look something like in the table below (<a href="storing-data-in-spreadsheets.html#tab:tidy-data-example">3.2</a>).</p>
 <table>
 <caption><span id="tab:tidy-data-example">Table 3.2: </span> Example of tidy data.</caption>
@@ -417,11 +402,11 @@ Figure 3.2: Leo Tolstoy at the time when he was (possibly) authoring Anna Kareni
 </tbody>
 </table>
 <p>This naturally gives additional rows to the data set. This is sometimes referred to as “long format” data as opposed to the structure where each attempt is given separate variables, something that is called “wide format.” You will notice during the course that for most purposes, the long format is most convenient. This is true when we create graphs and do statistical modelling. But sometimes a variable needs to be structured in a wide format to allow for certain operations.</p>
-<p>If we follow what is recommended by Broman and Woo <span class="citation">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>, it is clear that each cell in a spreadsheet should only contain one value. If we for example decide to format a cell to a certain color, we add data to that cell on top of the actual data. You might add color to a cell in order to remember to add or change data. However, when you use the data set in other software, this information is lost. You should instead add another variable to allow for such data to be properly recorded. Using a variable called <code>comments</code> you can add text thta actually describes some information about that particular observation, information that is not lost when you use the data set in another software.</p>
+<p>If we follow what is recommended by Broman and Woo <span class="citation">(<a href="references.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>, it is clear that each cell in a spreadsheet should only contain one value. If we for example decide to format a cell to a certain color, we add data to that cell on top of the actual data. You might add color to a cell in order to remember to add or change data. However, when you use the data set in other software, this information is lost. You should instead add another variable to allow for such data to be properly recorded. Using a variable called <code>comments</code> you can add text thta actually describes some information about that particular observation, information that is not lost when you use the data set in another software.</p>
 </div>
 <div id="recording-data" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Recording data</h2>
-<p>A trade secret<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> from people who work all day with data and programming is that they are lazy. Lazy in the sense that you do not want to type too much, and absolutely not use the computer mouse when it can be avoided. When recording data we can try to be lazy to. We can do this by shortening variable names and not e.g. using CAPITAL letters when entering text in data storage. After a hard day at the keyboard, you will be happy to write <code>strtest</code> instead of <code>Strength Test</code>. The extra effort of using two capital letters might be the thing to tip you over the edge<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>. However, we should not be too lazy either, variable names and values should “short, but meaningful” <span class="citation">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>.</p>
+<p>A trade secret<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> from people who work all day with data and programming is that they are lazy. Lazy in the sense that you do not want to type too much, and absolutely not use the computer mouse when it can be avoided. When recording data we can try to be lazy to. We can do this by shortening variable names and not e.g. using CAPITAL letters when entering text in data storage. After a hard day at the keyboard, you will be happy to write <code>strtest</code> instead of <code>Strength Test</code>. The extra effort of using two capital letters might be the thing to tip you over the edge<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>. However, we should not be too lazy either, variable names and values should “short, but meaningful” <span class="citation">(<a href="references.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:falling-down"></span>
 <img src="https://upload.wikimedia.org/wikipedia/en/2/22/Falling_Down_%281993_film%29_poster.jpg" alt="D-FENS Foster gets pushed over the edge (Source: https://en.wikipedia.org/wiki/Falling_Down)" width="50%" />
 <p class="caption">
@@ -433,7 +418,7 @@ Figure 3.3: D-FENS Foster gets pushed over the edge (Source: <a href="https://en
 </div>
 <div id="saving-data" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Saving data</h2>
-<p>Data from spreadsheets can be saved as special spreadsheet files, such as <code>.xlsx</code>. This format allows for functions, multiple spreadsheets in the same file (tabs) and cell formatting. If you follow the tips described above and in <span class="citation">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> you do not need this fancy format. Instead you can store your data as a <code>.csv</code> file. This format may be read and edited with Excel (or another spreadsheet software) but also in a plain text editor. Data entered in this format (comma-separated values; csv) can look like this in a text editor:</p>
+<p>Data from spreadsheets can be saved as special spreadsheet files, such as <code>.xlsx</code>. This format allows for functions, multiple spreadsheets in the same file (tabs) and cell formatting. If you follow the tips described above and in <span class="citation">(<a href="references.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> you do not need this fancy format. Instead you can store your data as a <code>.csv</code> file. This format may be read and edited with Excel (or another spreadsheet software) but also in a plain text editor. Data entered in this format (comma-separated values; csv) can look like this in a text editor:</p>
 <pre><code> Participant;Time;Exercise;Attempt;load
  Selina Kyle;pre;Isometric;1;81.3  
  Selina Kyle;pre;Isometric;2;92.5
@@ -441,21 +426,6 @@ Figure 3.3: D-FENS Foster gets pushed over the edge (Source: <a href="https://en
  Selina Kyle;post;Isometric;2;114.1</code></pre>
 <p>This is actually quite nice. The data takes little space, the simple format requires that data is well documented using e.g. a data dictionary and it is available for many other softwares as the format is simple. The data can be documented using a <code>README</code> file that could describe the purpose and methods of data collection, how the data is structured and what kind of data the variables contains. A simple <code>README</code> file can be written in a text editor such as Notepad and saved as a <code>.txt</code> file. Later in this course we will introduce a “markup” language often used to create <code>README</code> files containing a syntax that formats the text to a more pleasant style when converted to other formats.</p>
 
-</div>
-</div>
-<h3> References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-RN2391" class="csl-entry">
-Broman, Karl W., and Kara H. Woo. 2018. <span>“Data Organization in Spreadsheets.”</span> Journal Article. <em>The American Statistician</em> 72 (1): 2–10. <a href="https://doi.org/10.1080/00031305.2017.1375989">https://doi.org/10.1080/00031305.2017.1375989</a>.
-</div>
-<div id="ref-RN2928" class="csl-entry">
-Stephen, G. Powell, R. Baker Kenneth, and Lawson Barry. 2009. <span>“Errors in Operational Spreadsheets.”</span> Journal Article. <em>Journal of Organizational and End User Computing (JOEUC)</em> 21 (3): 24–36. <a href="https://doi.org/10.4018/joeuc.2009070102">https://doi.org/10.4018/joeuc.2009070102</a>.
-</div>
-<div id="ref-RN1956" class="csl-entry">
-Wickham, Hadley. 2014. <span>“Tidy Data.”</span> Journal Article. <em>Journal of Statistical Software; Vol 1, Issue 10 (2014)</em>. <a href="https://www.jstatsoft.org/v059/i10">https://www.jstatsoft.org/v059/i10</a>.
-</div>
-<div id="ref-RN2927" class="csl-entry">
-Ziemann, Mark, Yotam Eren, and Assam El-Osta. 2016. <span>“Gene Name Errors Are Widespread in the Scientific Literature.”</span> Journal Article. <em>Genome Biology</em> 17 (1): 177. <a href="https://doi.org/10.1186/s13059-016-1044-7">https://doi.org/10.1186/s13059-016-1044-7</a>.
 </div>
 </div>
 <div class="footnotes">
@@ -495,7 +465,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

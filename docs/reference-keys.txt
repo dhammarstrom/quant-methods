@@ -12,6 +12,12 @@ fig:rstudio-options2
 fig:rstudio-options3
 fig:reproducible-computing
 fig:settings-workspace
+fig:empty-canvas
+fig:point-and-canvas
+fig:point-with-color
+fig:shapes-in-r
+fig:point-with-fill
+fig:point-with-fill-and-shape
 introduction
 practical-information
 learning-objectives
@@ -46,6 +52,13 @@ reproducible-computing
 packages
 installing-and-using-swirl
 creating-your-first-graph
+resources
+learning-objectives-1
+prerequisites
+the-ggplot2-system
 creating-your-first-table
 writing-your-first-reproducible-report
+version-control-and-collaborative-coding-introducing-git-and-github.com
+reliability-in-the-physiology-lab
+introduction-to-the-molecular-exercise-physiology-lab
 references

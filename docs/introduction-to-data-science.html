@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Introduction to data science | Quantitative methods and statistics (In Sport and Exercise Science)</title>
   <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Introduction to data science | Quantitative methods and statistics (In Sport and Exercise Science)" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:image" content="/images/cover.png" />
+  <meta property="og:image" content="images/cover.png" />
   <meta property="og:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="github-repo" content="dhammarstrom/quant-methods" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapter 2 Introduction to data science | Quantitative methods and statistics (In Sport and Exercise Science)" />
   
   <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
-  <meta name="twitter:image" content="/images/cover.png" />
+  <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Daniel Hammarström" />
 
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="storing-data-in-spreadsheets.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,15 +50,14 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,29 +116,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -203,10 +179,19 @@ div.csl-indent {
 <li class="chapter" data-level="4.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#packages"><i class="fa fa-check"></i><b>4.5</b> Packages</a></li>
 <li class="chapter" data-level="4.6" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-and-using-swirl"><i class="fa fa-check"></i><b>4.6</b> Installing and using <code>swirl</code></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a></li>
+<li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#resources"><i class="fa fa-check"></i><b>5.1</b> Resources</a></li>
+<li class="chapter" data-level="5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#learning-objectives-1"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#prerequisites"><i class="fa fa-check"></i><b>5.3</b> Prerequisites</a></li>
+<li class="chapter" data-level="5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#the-ggplot2-system"><i class="fa fa-check"></i><b>5.4</b> The <code>ggplot2</code> system</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="creating-your-first-table.html"><a href="creating-your-first-table.html"><i class="fa fa-check"></i><b>6</b> Creating your first table</a></li>
 <li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a></li>
-<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
+<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a></li>
+<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a></li>
+<li class="chapter" data-level="10" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html"><i class="fa fa-check"></i><b>10</b> Introduction to the molecular exercise physiology lab</a></li>
+<li class="chapter" data-level="11" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>11</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -249,9 +234,9 @@ Spiegelhalter (The Art of Statistics, in the introduction chapter) talks about h
 </div>
 <div id="replication-and-reproducibility" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Replication and Reproducibility</h2>
-<p>In scientific research, replication is a way to confirm scientific claims. When a result can be confirmed by an independent group of researchers, the claim is likely “more true.” Many results will however never be possible to replicate due to the size of trials, costs and urgency of the research question. A recent example could perhaps be the many vaccine trials performed to develop a vaccines against COVID-19<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. Other examples concern studies with unique study populations, such as large scale epidemiological studies <span class="citation">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, but the same could be said to be true for unique investigations in sport and exercise science.</p>
-<p>When studies are not likely to be <em>replicated</em>, <em>reproducibility</em> of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that given the same datas, similar results or conclusions can be drawn by independent researchers <span class="citation">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>.</p>
-<p>Peng et al. <span class="citation">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span> suggests that a <em>fully reproducible</em> study has</p>
+<p>In scientific research, replication is a way to confirm scientific claims. When a result can be confirmed by an independent group of researchers, the claim is likely “more true.” Many results will however never be possible to replicate due to the size of trials, costs and urgency of the research question. A recent example could perhaps be the many vaccine trials performed to develop a vaccines against COVID-19<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. Other examples concern studies with unique study populations, such as large scale epidemiological studies <span class="citation">(<a href="references.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, but the same could be said to be true for unique investigations in sport and exercise science.</p>
+<p>When studies are not likely to be <em>replicated</em>, <em>reproducibility</em> of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that given the same datas, similar results or conclusions can be drawn by independent researchers <span class="citation">(<a href="references.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>.</p>
+<p>Peng et al. <span class="citation">(<a href="references.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span> suggests that a <em>fully reproducible</em> study has</p>
 <ul>
 <li>Available data.</li>
 <li>Computer code (software) that produces the results of the study.</li>
@@ -259,13 +244,13 @@ Spiegelhalter (The Art of Statistics, in the introduction chapter) talks about h
 <li>ways to share the data and code.</li>
 </ul>
 <p>The above principally relates to the trust we can place in scientific results. However, the minimum standard of reproducibility has advantages also for the individual researcher (or master student)! When working with reproducible methods we will develop ways of documenting and automating our analyses. This will make it easier to collaborate with others. And, as it turns out, your most frequent collaborator is you, in the future!</p>
-<p>A reproducible data analysis means that you will make it explicit and transparent. In a traditional data analysis, most activities are in the “black box.” In order to avoid bias <span class="citation">(<a href="#ref-RN1953" role="doc-biblioref">Ioannidis 2005</a>)</span>, the “black box” needs to be opened and you need to actively make transparent decisions all along the analytic pipeline <span class="citation">(<a href="#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. This pipeline preferably involves the whole problem solving cycle described by Spiegelhalter <span class="citation">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. However the tools that we will learn about in this course focuses primarily on the steps from the experimental design to presentation of statistical results <span class="citation">(<a href="#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. These steps includes data collection (and storage), data cleaning, exploratory data analysis, statistical modelling and statistical inference (and communication) <span class="citation">(<a href="#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>.</p>
+<p>A reproducible data analysis means that you will make it explicit and transparent. In a traditional data analysis, most activities are in the “black box.” In order to avoid bias <span class="citation">(<a href="references.html#ref-RN1953" role="doc-biblioref">Ioannidis 2005</a>)</span>, the “black box” needs to be opened and you need to actively make transparent decisions all along the analytic pipeline <span class="citation">(<a href="references.html#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. This pipeline preferably involves the whole problem solving cycle described by Spiegelhalter <span class="citation">(<a href="references.html#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. However the tools that we will learn about in this course focuses primarily on the steps from the experimental design to presentation of statistical results <span class="citation">(<a href="references.html#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. These steps includes data collection (and storage), data cleaning, exploratory data analysis, statistical modelling and statistical inference (and communication) <span class="citation">(<a href="references.html#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>.</p>
 </div>
 <div id="tools-in-data-science" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Tools in data science</h2>
 <p>Ways to interpret and make sense of data involves different methods. These methods are now days often implemented in computer software. This means that when you as a practitioner (scientist, coach, analyst …) want to understand data, you have to master some kind of computer software. The most common software used to understand data is probably Microsoft’s Excel. You can do amazing stuff with Excel! In the world of sport and exercise Excel has been used in such diverse activities such as scientific investigations, planning and recording training for Olympic medalists<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> and scheduling appointments.</p>
 <p>For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education you have probably heard about SPSS, Stata or Jamovi. These are all specialized software used for statistical analyses.</p>
-<p>The above mentioned tools can all be used as part of a fully reproducible workflow. However, there are software solutions that actually suits this requirement better than others. Going back to the description of reproducible science as made by Peng et al. <span class="citation">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, we want software where analyses can be</p>
+<p>The above mentioned tools can all be used as part of a fully reproducible workflow. However, there are software solutions that actually suits this requirement better than others. Going back to the description of reproducible science as made by Peng et al. <span class="citation">(<a href="references.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, we want software where analyses can be</p>
 <ul>
 <li>Human- and computer-readable, meaning that we want to be able to write scripts, or computer programs that execute the analyses.</li>
 <li>Documented, meaning that along the code we want to be able to describe what the code does.</li>
@@ -276,21 +261,6 @@ Spiegelhalter (The Art of Statistics, in the introduction chapter) talks about h
 <p>Even though you might not use R ever again after this course, making and effort trying to learn it will let you know something about programming, capabilities of modern data science, statistical analysis and software/computers in general. These areas are all part of our modern society and are very much transferrable regardless of what computer language we are talking about.</p>
 <p>In a following chapter of these course notes we will go through installing and starting up R.</p>
 
-</div>
-</div>
-<h3> References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-RN1953" class="csl-entry">
-Ioannidis, John P. A. 2005. <span>“Why Most Published Research Findings Are False.”</span> Journal Article. <em>PLOS Medicine</em> 2 (8): e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
-</div>
-<div id="ref-RN1955" class="csl-entry">
-Leek, J. T., and R. D. Peng. 2015. <span>“Statistics: P Values Are Just the Tip of the Iceberg.”</span> Journal Article. <em>Nature</em> 520 (7549): 612. <a href="https://doi.org/10.1038/520612a">https://doi.org/10.1038/520612a</a>.
-</div>
-<div id="ref-RN1492" class="csl-entry">
-Peng, R. D., F. Dominici, and S. L. Zeger. 2006. <span>“Reproducible Epidemiologic Research.”</span> Journal Article. <em>Am J Epidemiol</em> 163 (9): 783–89. <a href="https://doi.org/10.1093/aje/kwj093">https://doi.org/10.1093/aje/kwj093</a>.
-</div>
-<div id="ref-RN2902" class="csl-entry">
-Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</em>. Book. First US edition. New York: Basic Books.
 </div>
 </div>
 <div class="footnotes">
@@ -337,7 +307,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

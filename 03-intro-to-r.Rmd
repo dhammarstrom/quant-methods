@@ -1,7 +1,7 @@
 # Installing and starting up R (and R Studio)
 
 
-This chapter contains step-by-step instructions for installing and running R and R Studio. It will also introduce you to some concepts when talking to R. By the end of this chapter you will be able to answer these questions:
+This chapter contains step-by-step instructions for installing and running R and RStudio. It will also introduce you to some concepts when talking to R. By the end of this chapter you will be able to answer these questions:
 
 - What is R and RStudio?
 - How can I interact with R?
@@ -10,7 +10,7 @@ This chapter contains step-by-step instructions for installing and running R and
 
 ## Installing R
 
-R is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software designed for statistical computing. We will use R as a part of a environment (using R Studio, introduced below). To download and install R:
+R is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software designed for statistical computing. We will use R as a part of an environment (using R Studio, introduced below). To download and install R:
 
 1. Go to [https://cran.uib.no/](https://cran.uib.no/),
 2. select your operating system (Download R for Windows, MacOS or Linux).
@@ -57,7 +57,7 @@ Here you can directly interact with R. This is also where output from R is print
 
 ### Files, plots, packages and help files
 
-In RStudio files are accessible from the Files tab. When opening a project, the files tab shows the files in you root folder. Plots are displayed in the Plot tab. Packages are listed in the packages tab. If you access the help files, these will be displayed in the help tab. In the image below all these tabs are in the bottom right corner.
+In RStudio files are accessible from the Files tab. The files tab shows the files in you root folder. The root folder is where R will search for files if you till it to. We will talk more about the root folder later in connection with projects. Plots are displayed in the Plot tab. Packages are listed in the packages tab. If you access the help files, these will be displayed in the help tab. In the image below all these tabs are in the bottom right corner.
 
 ```{r rstudio-blank, echo=FALSE, message=FALSE, fig.cap = "RStudio when first opened up.", fig.scap = "A new RStudio session", out.width="50%", fig.align='center'}
 
@@ -77,9 +77,6 @@ knitr::include_graphics("./images/rstudio_options1.png")
 
 
 Under appearance you can customize the theme of RStudio, select something that is easy on the eye!
-
-
-
 
 ```{r rstudio-options2, echo=FALSE, message=FALSE, fig.cap = "Accessing options for your RStudio IDE and selection a theme", fig.scap = "Access RStudio apperance", out.width="50%", fig.align='center'}
 
@@ -105,14 +102,11 @@ Computations are reproducible when you can show how they were performed. This is
 
 This means that to work in a reproducible way, you need to script all your operations. 
 
-
-
 ```{r reproducible-computing, echo=FALSE, message=FALSE, fig.cap = "Reproducible vs. non-reproducible workflow", fig.scap = "Reproducible workflow", out.width="50%", fig.align='center'}
 
 knitr::include_graphics("./images/reproducible_workflow.png")
 
 ```
-
 
 Importantly, in RStudio you can shut down storing temporary objects in a environment that is relaunched on start up. What is the consequence of having such a situation?
 
@@ -127,7 +121,9 @@ knitr::include_graphics("./images/rstudio_options4.png")
 
 ## Packages
 
-The R ecosystem consists of packages. These are *functions* organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g. analyses of a specific kind of data, or more generl task such as making figures or handle data.  In this course we will use many different packages, for example [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.
+The R ecosystem consists of packages. These are *functions* organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g. analyses of a specific kind of data, or more general task such as making figures or handle data.
+
+In this course we will use many different packages, for example [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.
 
 To install a package, you use the `install.packages()` function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.
 
