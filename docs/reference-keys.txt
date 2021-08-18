@@ -18,6 +18,11 @@ fig:point-with-color
 fig:shapes-in-r
 fig:point-with-fill
 fig:point-with-fill-and-shape
+fig:sq-boxplot-simple
+fig:sq-boxplot-jitter
+fig:sq-boxplot
+fig:sq-boxplot-time
+fig:sq-ind-data
 introduction
 practical-information
 learning-objectives
@@ -56,6 +61,10 @@ resources
 learning-objectives-1
 prerequisites
 the-ggplot2-system
+different-geoms-using-real-data
+a-plot-of-values-per-group
+data-over-time-per-group-and-individual
+labels-and-themes
 creating-your-first-table
 writing-your-first-reproducible-report
 version-control-and-collaborative-coding-introducing-git-and-github.com

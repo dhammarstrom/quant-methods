@@ -109,7 +109,7 @@ head(dat)
 
 We can see that we have an additional variable `z` that contains `"A"` and `"B"`. This new variable can be used to add more information to the plot. Let's say that we want to map the `z` variable to different colors. We do this by adding `color = z` to `aes`. This means that we want the z variable to determine colors.
 
-```{r point-with-color, fig.height=3, fig.cap = "An empty `ggplot` canvas."}
+```{r point-with-color, fig.height=3, fig.cap = "A `ggplot` canvas with colored points added."}
 
 ggplot(dat, aes(x = x, y = y, color = z)) + geom_point()
 
@@ -140,12 +140,11 @@ ggplot(shape_dat, aes(x, y, shape = as.factor(shape))) +
 
 Possible shapes in the standard framework in R are shown in Figure \@ref(fig:shapes-in-r). We may use this information to either fix the shape of the points. Let's say that instead of colored points we want filled points. We would change the `color = z` argument to `fill = z` instead and select a point shape that can be filled (shapes 21-25, see Figure \@ref(fig:shapes-in-r). Notice in the code below that `shape = 21` has been added to `geom_point()`. We have specified how points should be displayed.
 
-```{r point-with-fill, fig.height=3, fig.cap = "An empty `ggplot` canvas."}
+```{r point-with-fill, fig.height=3, fig.cap = "A `ggplot` canvas with filled points added."}
 
 ggplot(dat, aes(x = x, y = y, fill = z)) + geom_point(shape = 21)
 
 ```
-
 
 Since shape is an attribute it to can be mapped by data. If we want data to determine both shape and fill we could add this information in the `aes()` function by setting both `shape = z` and `fill = z`. We now have to specify what shapes ggplot should use in order to be sure we can combine both shapes and fill. We will use `scale_fill_manual` and `scale_shape_manual` to do this. These functions takes lets you specify different values for aesthetics. Notice that we removed `shape = 21` from the `geom_point()` function, but we added size to increase the size of the points.
 
@@ -157,6 +156,98 @@ ggplot(dat, aes(x = x, y = y, fill = z, shape = z)) +
   scale_shape_manual(values = c(21, 23))
 
 ```
+
+## Different geoms using real data
+
+We have now seen that the basic `ggplot2` figure maps underlying data to coordinates and geometric representations, such as points. We will go further by using some real data. We will be using the `cyclingstudy` dataset from the `exscidata`-package. We will start by loading the data and select a few columns that we are interested in. By using `data("cyclingstudy")` we will load the data set that is part of the `exscidata`-package to our environment. By looking at the environment tab you can see that this operation adds a data set to the environment. It has 80 observations and 101 variables. Using the `glimpse()` function from `dplyr` (which is loaded by loading `tidyverse`) we will get an overview of all variables in the dataset. I have omitted the output from the code below
+
+```{r, eval = FALSE}
+
+# Load the data and have a first look
+data("cyclingstudy")
+glimpse(cyclingstudy)
+
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+data("cyclingstudy")
+```
+
+
+We will store a selected set of variables in a new object for ease of use. We will call this object `cycdat`. We select variables using the function with the very suitable name `select` where the first argument specifies the dataset, following arguments specifies what variables we want. Let's say that we are interested in squat jump height. The `exscidata` package comes with descriptions of the datasets. By writing `?cyclingstudy` in your console you will see the description of the data in your help tab. Squat jump is recorded as `sj.max`, we select this variable together with `subject`, `group` and `timepoint` to create a smaller data set. 
+
+```{r}
+# Assign a selected set of variables to a smaller data set
+cycdat <- select(cyclingstudy, subject, group, timepoint, sj.max)
+# Printing the data set
+cycdat
+```
+
+By printing the object we can see that we have a tibble of 80 rows and 4 columns. A tibble can to a large extent be regarded as a data frame, and we will use these words interchangeably. Tibbles are new in the sense that they are developed as part of the tidyverse [@RNr4ds] [^a]. Printing a tibble will display the first 10 rows as we can see from the resulting output.
+
+[^a]: See [Chapter 10 in R for data science](https://r4ds.had.co.nz/tibbles.html)
+
+### A plot of values per group
+
+Let's say that we want to see how the values differs between groups. Boxplots are a good way to start as they will bring a standardized way of summarizing data. Boxplots can be plotted using the `geom_boxplot` function. Notice below that we put `group` on the x-axis (the first argument in the `aes` function) and `sj.max` on the y-axis. By doing so `ggplot` will make the x-axis discrete and the y-axis continuous.
+
+```{r sq-boxplot-simple, fig.height=3, fig.cap = "Boxplot of all data per group from the cycling dataset."}
+# Creating a boxplot of all values per group
+ggplot(cycdat, aes(group, sj.max)) + geom_boxplot()
+
+```
+
+We can layers of more geoms to the same plot. We might want to add individual data points also. `geom_jitter` might be a good place to start. This geom is good as it can be plotted over a group variable and points gets "jittered" or spread so we avoid overlap. 
+
+```{r sq-boxplot-jitter, fig.height=3, fig.cap = "Boxplot and jittered points of all data per group from the cycling dataset."}
+# Creating a boxplot of all values per group
+ggplot(cycdat, aes(group, sj.max)) + geom_boxplot() + geom_jitter()
+
+```
+
+Notice that we get warnings saying that there are some data missing, these are removed from the calculation of summary statistics in the boxplots and omitted from plotting the values as points.
+
+### Data over time per group and individual
+
+In the data set we have a time variable consisting of the labels "pre", "meso1", "meso2" and "meso3". When we load the data into R we do so without providing information about the order of these labels. R will put them in alphabetical order when order is required (as in a figure). If we want to plot these data in the right order we have to tell R that these data should have an order. We will convert the `timepoint` variable to a factor. Factors are variables that can contain more information than what is contained in each cell. Using the `factor` function we will set the order of the `timepoint` variable. We assign this transformation of the variable to its original place in the data frame.
+
+```{r}
+cycdat$timepoint <- factor(cycdat$timepoint, levels = c("pre", "meso1", "meso2", "meso3"))
+```
+
+We are now ready to plot data over time, where the time variable is correctly ordered. Let's use the boxplot again to plot all values over time.
+
+```{r sq-boxplot, fig.height=3, fig.cap = "Boxplot of all data per time-point from the cycling dataset."}
+# Creating a boxplot of all values per time point
+ggplot(cycdat, aes(timepoint, sj.max)) + geom_boxplot()
+
+```
+
+We do not see any great tendencies in the whole data set. To further explore the data we might want to have different boxes per group per time. We can accomplish this by adding `fill = group` to our `aes` function.
+
+```{r sq-boxplot-time, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
+# Creating a boxplot of all values per group over time
+ggplot(cycdat, aes(timepoint, sj.max, fill = group)) + geom_boxplot()
+
+```
+
+This is possible because `geom_boxplots` can be filled. The same separation of groups would have been accomplished using `color = group`, however, then the boxes would get different border colors instead. You might have noticed that the boxplots do not contain all the data, a few data points are outside 1.5 \times IQR (interquartile range). This, by standard definitions, defines the data point as an "outlier".
+
+As mentioned above, boxplots does some summarizing and not all data is shown. To explore further we might want to track every participant. To do this we have to tell `ggplot` on what factor to group the data. In `aes()` the group argument let's you connect lines based on some grouping variable, in our case it will be `subject`. We will use a line to connect each participants score over time. Using `color = group` will additionally give every line a different color depending on which group it belongs to.
+
+
+```{r sq-ind-data, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
+# Creating a line plot of all values per participant over time, color per group
+ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+geom_line()
+
+```
+
+In Figure \@ref(fig: sq-ind-data) each line represents a participant, different colors represents different groups.
+
+### Labels and themes
 
 
 

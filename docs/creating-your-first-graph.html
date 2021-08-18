@@ -185,6 +185,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#learning-objectives-1"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
 <li class="chapter" data-level="5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#prerequisites"><i class="fa fa-check"></i><b>5.3</b> Prerequisites</a></li>
 <li class="chapter" data-level="5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#the-ggplot2-system"><i class="fa fa-check"></i><b>5.4</b> The <code>ggplot2</code> system</a></li>
+<li class="chapter" data-level="5.5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#different-geoms-using-real-data"><i class="fa fa-check"></i><b>5.5</b> Different geoms using real data</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#a-plot-of-values-per-group"><i class="fa fa-check"></i><b>5.5.1</b> A plot of values per group</a></li>
+<li class="chapter" data-level="5.5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#data-over-time-per-group-and-individual"><i class="fa fa-check"></i><b>5.5.2</b> Data over time per group and individual</a></li>
+<li class="chapter" data-level="5.5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#labels-and-themes"><i class="fa fa-check"></i><b>5.5.3</b> Labels and themes</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="creating-your-first-table.html"><a href="creating-your-first-table.html"><i class="fa fa-check"></i><b>6</b> Creating your first table</a></li>
 <li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a></li>
@@ -296,9 +302,9 @@ Figure 5.2: A <code>ggplot</code> canvas with points added.
 <p>We can see that we have an additional variable <code>z</code> that contains <code>"A"</code> and <code>"B"</code>. This new variable can be used to add more information to the plot. Let’s say that we want to map the <code>z</code> variable to different colors. We do this by adding <code>color = z</code> to <code>aes</code>. This means that we want the z variable to determine colors.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="creating-your-first-graph.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
 <div class="figure"><span id="fig:point-with-color"></span>
-<img src="quant-methods_files/figure-html/point-with-color-1.png" alt="An empty `ggplot` canvas." width="672" />
+<img src="quant-methods_files/figure-html/point-with-color-1.png" alt="A `ggplot` canvas with colored points added." width="672" />
 <p class="caption">
-Figure 5.3: An empty <code>ggplot</code> canvas.
+Figure 5.3: A <code>ggplot</code> canvas with colored points added.
 </p>
 </div>
 <p>In Figure <a href="creating-your-first-graph.html#fig:point-with-color">5.3</a> we can see that different colors are used for the two letters <code>"A"</code> and <code>"B"</code>. Other attributes can also be specified like <code>shape</code>, <code>fill</code> or <code>size</code>. The <code>shape</code> specifies the appearance of the points. When we use use data to map to shapes, ggplot2 will start from the standard shape.</p>
@@ -311,9 +317,9 @@ Figure 5.4: Shapes in R
 <p>Possible shapes in the standard framework in R are shown in Figure <a href="creating-your-first-graph.html#fig:shapes-in-r">5.4</a>. We may use this information to either fix the shape of the points. Let’s say that instead of colored points we want filled points. We would change the <code>color = z</code> argument to <code>fill = z</code> instead and select a point shape that can be filled (shapes 21-25, see Figure <a href="creating-your-first-graph.html#fig:shapes-in-r">5.4</a>. Notice in the code below that <code>shape = 21</code> has been added to <code>geom_point()</code>. We have specified how points should be displayed.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="creating-your-first-graph.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:point-with-fill"></span>
-<img src="quant-methods_files/figure-html/point-with-fill-1.png" alt="An empty `ggplot` canvas." width="672" />
+<img src="quant-methods_files/figure-html/point-with-fill-1.png" alt="A `ggplot` canvas with filled points added." width="672" />
 <p class="caption">
-Figure 5.5: An empty <code>ggplot</code> canvas.
+Figure 5.5: A <code>ggplot</code> canvas with filled points added.
 </p>
 </div>
 <p>Since shape is an attribute it to can be mapped by data. If we want data to determine both shape and fill we could add this information in the <code>aes()</code> function by setting both <code>shape = z</code> and <code>fill = z</code>. We now have to specify what shapes ggplot should use in order to be sure we can combine both shapes and fill. We will use <code>scale_fill_manual</code> and <code>scale_shape_manual</code> to do this. These functions takes lets you specify different values for aesthetics. Notice that we removed <code>shape = 21</code> from the <code>geom_point()</code> function, but we added size to increase the size of the points.</p>
@@ -327,8 +333,107 @@ Figure 5.5: An empty <code>ggplot</code> canvas.
 Figure 5.6: Data mapped to fill and shape, and size specified manually to override the default.
 </p>
 </div>
+</div>
+<div id="different-geoms-using-real-data" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Different geoms using real data</h2>
+<p>We have now seen that the basic <code>ggplot2</code> figure maps underlying data to coordinates and geometric representations, such as points. We will go further by using some real data. We will be using the <code>cyclingstudy</code> dataset from the <code>exscidata</code>-package. We will start by loading the data and select a few columns that we are interested in. By using <code>data("cyclingstudy")</code> we will load the data set that is part of the <code>exscidata</code>-package to our environment. By looking at the environment tab you can see that this operation adds a data set to the environment. It has 80 observations and 101 variables. Using the <code>glimpse()</code> function from <code>dplyr</code> (which is loaded by loading <code>tidyverse</code>) we will get an overview of all variables in the dataset. I have omitted the output from the code below</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="creating-your-first-graph.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data and have a first look</span></span>
+<span id="cb17-2"><a href="creating-your-first-graph.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cyclingstudy&quot;</span>)</span>
+<span id="cb17-3"><a href="creating-your-first-graph.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cyclingstudy)</span></code></pre></div>
+<p>We will store a selected set of variables in a new object for ease of use. We will call this object <code>cycdat</code>. We select variables using the function with the very suitable name <code>select</code> where the first argument specifies the dataset, following arguments specifies what variables we want. Let’s say that we are interested in squat jump height. The <code>exscidata</code> package comes with descriptions of the datasets. By writing <code>?cyclingstudy</code> in your console you will see the description of the data in your help tab. Squat jump is recorded as <code>sj.max</code>, we select this variable together with <code>subject</code>, <code>group</code> and <code>timepoint</code> to create a smaller data set.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="creating-your-first-graph.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign a selected set of variables to a smaller data set</span></span>
+<span id="cb18-2"><a href="creating-your-first-graph.html#cb18-2" aria-hidden="true" tabindex="-1"></a>cycdat <span class="ot">&lt;-</span> <span class="fu">select</span>(cyclingstudy, subject, group, timepoint, sj.max)</span>
+<span id="cb18-3"><a href="creating-your-first-graph.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Printing the data set</span></span>
+<span id="cb18-4"><a href="creating-your-first-graph.html#cb18-4" aria-hidden="true" tabindex="-1"></a>cycdat</span></code></pre></div>
+<pre><code>## # A tibble: 80 x 4
+##    subject group timepoint sj.max
+##      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
+##  1       1 INCR  pre         31.0
+##  2       2 DECR  pre         31.6
+##  3       3 INCR  pre         26.8
+##  4       4 DECR  pre         29.2
+##  5       5 DECR  pre         31.2
+##  6       6 INCR  pre         34.2
+##  7       7 MIX   pre         30.1
+##  8       8 MIX   pre         32.8
+##  9       9 MIX   pre         22.7
+## 10      10 INCR  pre         29.7
+## # ... with 70 more rows</code></pre>
+<p>By printing the object we can see that we have a tibble of 80 rows and 4 columns. A tibble can to a large extent be regarded as a data frame, and we will use these words interchangeably. Tibbles are new in the sense that they are developed as part of the tidyverse <span class="citation">(<a href="#ref-RNr4ds" role="doc-biblioref"><strong>RNr4ds?</strong></a>)</span>.<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a> Printing a tibble will display the first 10 rows as we can see from the resulting output.</p>
+<div id="a-plot-of-values-per-group" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> A plot of values per group</h3>
+<p>Let’s say that we want to see how the values differs between groups. Boxplots are a good way to start as they will bring a standardized way of summarizing data. Boxplots can be plotted using the <code>geom_boxplot</code> function. Notice below that we put <code>group</code> on the x-axis (the first argument in the <code>aes</code> function) and <code>sj.max</code> on the y-axis. By doing so <code>ggplot</code> will make the x-axis discrete and the y-axis continuous.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="creating-your-first-graph.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group</span></span>
+<span id="cb20-2"><a href="creating-your-first-graph.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 4 rows containing non-finite values (stat_boxplot).</code></pre>
+<div class="figure"><span id="fig:sq-boxplot-simple"></span>
+<img src="quant-methods_files/figure-html/sq-boxplot-simple-1.png" alt="Boxplot of all data per group from the cycling dataset." width="672" />
+<p class="caption">
+Figure 5.7: Boxplot of all data per group from the cycling dataset.
+</p>
+</div>
+<p>We can layers of more geoms to the same plot. We might want to add individual data points also. <code>geom_jitter</code> might be a good place to start. This geom is good as it can be plotted over a group variable and points gets “jittered” or spread so we avoid overlap.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="creating-your-first-graph.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group</span></span>
+<span id="cb22-2"><a href="creating-your-first-graph.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 4 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 4 rows containing missing values (geom_point).</code></pre>
+<div class="figure"><span id="fig:sq-boxplot-jitter"></span>
+<img src="quant-methods_files/figure-html/sq-boxplot-jitter-1.png" alt="Boxplot and jittered points of all data per group from the cycling dataset." width="672" />
+<p class="caption">
+Figure 5.8: Boxplot and jittered points of all data per group from the cycling dataset.
+</p>
+</div>
+<p>Notice that we get warnings saying that there are some data missing, these are removed from the calculation of summary statistics in the boxplots and omitted from plotting the values as points.</p>
+</div>
+<div id="data-over-time-per-group-and-individual" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Data over time per group and individual</h3>
+<p>In the data set we have a time variable consisting of the labels “pre,” “meso1,” “meso2” and “meso3.” When we load the data into R we do so without providing information about the order of these labels. R will put them in alphabetical order when order is required (as in a figure). If we want to plot these data in the right order we have to tell R that these data should have an order. We will convert the <code>timepoint</code> variable to a factor. Factors are variables that can contain more information than what is contained in each cell. Using the <code>factor</code> function we will set the order of the <code>timepoint</code> variable. We assign this transformation of the variable to its original place in the data frame.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="creating-your-first-graph.html#cb25-1" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>timepoint, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso1&quot;</span>, <span class="st">&quot;meso2&quot;</span>, <span class="st">&quot;meso3&quot;</span>))</span></code></pre></div>
+<p>We are now ready to plot data over time, where the time variable is correctly ordered. Let’s use the boxplot again to plot all values over time.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="creating-your-first-graph.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per time point</span></span>
+<span id="cb26-2"><a href="creating-your-first-graph.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 4 rows containing non-finite values (stat_boxplot).</code></pre>
+<div class="figure"><span id="fig:sq-boxplot"></span>
+<img src="quant-methods_files/figure-html/sq-boxplot-1.png" alt="Boxplot of all data per time-point from the cycling dataset." width="672" />
+<p class="caption">
+Figure 5.9: Boxplot of all data per time-point from the cycling dataset.
+</p>
+</div>
+<p>We do not see any great tendencies in the whole data set. To further explore the data we might want to have different boxes per group per time. We can accomplish this by adding <code>fill = group</code> to our <code>aes</code> function.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="creating-your-first-graph.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group over time</span></span>
+<span id="cb28-2"><a href="creating-your-first-graph.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">fill =</span> group)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 4 rows containing non-finite values (stat_boxplot).</code></pre>
+<div class="figure"><span id="fig:sq-boxplot-time"></span>
+<img src="quant-methods_files/figure-html/sq-boxplot-time-1.png" alt="Boxplot of all data per time-point and group from the cycling dataset." width="672" />
+<p class="caption">
+Figure 5.10: Boxplot of all data per time-point and group from the cycling dataset.
+</p>
+</div>
+<p>This is possible because <code>geom_boxplots</code> can be filled. The same separation of groups would have been accomplished using <code>color = group</code>, however, then the boxes would get different border colors instead. You might have noticed that the boxplots do not contain all the data, a few data points are outside 1.5 IQR (interquartile range). This, by standard definitions, defines the data point as an “outlier.”</p>
+<p>As mentioned above, boxplots does some summarizing and not all data is shown. To explore further we might want to track every participant. To do this we have to tell <code>ggplot</code> on what factor to group the data. In <code>aes()</code> the group argument let’s you connect lines based on some grouping variable, in our case it will be <code>subject</code>. We will use a line to connect each participants score over time. Using <code>color = group</code> will additionally give every line a different color depending on which group it belongs to.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="creating-your-first-graph.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a line plot of all values per participant over time, color per group</span></span>
+<span id="cb30-2"><a href="creating-your-first-graph.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb30-3"><a href="creating-your-first-graph.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
+<div class="figure"><span id="fig:sq-ind-data"></span>
+<img src="quant-methods_files/figure-html/sq-ind-data-1.png" alt="Boxplot of all data per time-point and group from the cycling dataset." width="672" />
+<p class="caption">
+Figure 5.11: Boxplot of all data per time-point and group from the cycling dataset.
+</p>
+</div>
+<p>In Figure @ref(fig: sq-ind-data) each line represents a participant, different colors represents different groups.</p>
+</div>
+<div id="labels-and-themes" class="section level3" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Labels and themes</h3>
 
 </div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="14">
+<li id="fn14"><p>See <a href="https://r4ds.had.co.nz/tibbles.html">Chapter 10 in R for data science</a><a href="creating-your-first-graph.html#fnref14" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
