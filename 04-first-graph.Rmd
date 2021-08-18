@@ -3,6 +3,8 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
+
+
 # Creating your first graph
 
 Data visualization is an efficient way of understanding data. By using graphs we can communicate characteristics of a data set that would have been impossible with a limited number of summary statistics (central tendencies, spread etc.). In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand different data sets. A great argument for the use of data visualization is the need to understand what factors might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of as an initial step in understanding data, data visualization as an exploratory tool.  
@@ -185,7 +187,7 @@ cycdat <- select(cyclingstudy, subject, group, timepoint, sj.max)
 cycdat
 ```
 
-By printing the object we can see that we have a tibble of 80 rows and 4 columns. A tibble can to a large extent be regarded as a data frame, and we will use these words interchangeably. Tibbles are new in the sense that they are developed as part of the tidyverse [@RNr4ds] [^a]. Printing a tibble will display the first 10 rows as we can see from the resulting output.
+By printing the object we can see that we have a tibble of 80 rows and 4 columns. A tibble can to a large extent be regarded as a data frame, and we will use these words interchangeably. Tibbles are new in the sense that they are developed as part of the tidyverse [@r4ds] [^a]. Printing a tibble will display the first 10 rows as we can see from the resulting output.
 
 [^a]: See [Chapter 10 in R for data science](https://r4ds.had.co.nz/tibbles.html)
 
@@ -245,9 +247,98 @@ geom_line()
 
 ```
 
-In Figure \@ref(fig: sq-ind-data) each line represents a participant, different colors represents different groups.
+In Figure \@ref(fig:sq-ind-data) each line represents a participant, different colors represents different groups.
 
-### Labels and themes
+### Titles, labels and annotations
+
+Often we need to add information to the plot to better communicate its message. Such information could be appropriate titles on axes and legends and extra text needed to explain aspects of the plot. Using the `labs()` function we can add information that will replace variable names that are being used for all variables that have been mapped in the figure. In the figure below we will start by adding better axis titles. This information goes into `x` and `y` in `labs()` which simply changes the titles of the x- and y-axis.
+
+
+```{r sq-ind-data-axis-title, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
+# Creating a line plot of all values per participant over time, color per group
+ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+  geom_line() +
+  labs(x = "Time-point",
+       y = "Squat jump height (cm)")
+
+```
+
+The resulting Figure \@ref(fig:sq-ind-data-axis-title) now have better titles for each axis. Notice in the code above that titles needs to be specified with quotation marks. This is a tricky aspect of R, if we wold have omitted the quotation marks we would have told R to look for objects by the name of e.g. `Time-point`, and this would actually mean that we tryed to subtract `time` from `point` since `-` is interpreted as a minus sign.
+
+We might want to add information to the legend also. Since we specified `color = group` in the `aes()` function, the same can be manipulated in `labs`. Lets just add a capital G.
+
+```{r sq-ind-data-axis-title2, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
+
+ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+  geom_line() +
+  labs(x = "Time-point",
+       y = "Squat jump height (cm)", 
+       color = "Group")
+
+```
+
+We still have the original labels for the tim variable. Remember that we used the `factor` function above to set the order of the labels. Actually we specified the "levels" of the factor. We can use the same function to add better "labels". In the code below, I will first change the variable in the dataset and then use the exact same code for the plot. 
+
+```{r sq-ind-data-axis-title3, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
+
+
+cycdat$timepoint <- factor(cycdat$timepoint, levels = c("pre", "meso1", "meso2", "meso3"), 
+                           labels = c("Pre-training", "Meso-cycle 1", "Meso-cycle 2", "Meso-cycle 3"))
+
+ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+  geom_line() +
+  labs(x = "Time-point",
+       y = "Squat jump height (cm)", 
+       color = "Group")
+
+```
+
+The same goes for the group variable. You can try to change the levels and labels of the grouping variable to make it more descriptive. You can type `?cyclingstudy` in your console to read about the group variable and then use this infomation to write better labels using the `factor` function. In the factor function, the first argument is the variable you want to use as basis of your new factor, the second argument you need to specify is `levels` which sets the order and lastly you will need to set the labels for each level using `labels = `. If you write `?factor` in your console you will get the help pages for the `factor` function.
+
+<script>
+  function unhide() {
+    var hid = document.getElementsByClassName("exp");
+    // Emulates jQuery $(element).is(':hidden');
+    if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+        hid[0].style.visibility = "visible";
+    }
+}
+</script>
+
+
+<head>
+<style>
+.exp{visibility: hidden;}
+</style>
+</head>
+<body>
+<button onclick="unhide()">Show example solution</button>
+<div class="exp">
+
+
+```{r, eval = FALSE}
+
+# Change the grouping variable
+cycdat$group <- factor(cycdat$group, levels = c("DECR", "INCR", "MIX"), 
+                           labels = c("Decreased\nintensity", 
+                                      "Increased\nintensity", 
+                                      "Mixed\nintensity"))
+
+# Plotting the data as before with the new information added
+ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+  geom_line() +
+  labs(x = "Time-point",
+       y = "Squat jump height (cm)", 
+       color = "Periodization strategy")
+
+```
+
+Note: Adding `\n` in the the text string breaks the line to get two rows.
+
+
+</div>
+</body>
+
 
 
 

@@ -23,6 +23,9 @@ fig:sq-boxplot-jitter
 fig:sq-boxplot
 fig:sq-boxplot-time
 fig:sq-ind-data
+fig:sq-ind-data-axis-title
+fig:sq-ind-data-axis-title2
+fig:sq-ind-data-axis-title3
 introduction
 practical-information
 learning-objectives
@@ -64,7 +67,7 @@ the-ggplot2-system
 different-geoms-using-real-data
 a-plot-of-values-per-group
 data-over-time-per-group-and-individual
-labels-and-themes
+titles-labels-and-annotations
 creating-your-first-table
 writing-your-first-reproducible-report
 version-control-and-collaborative-coding-introducing-git-and-github.com
