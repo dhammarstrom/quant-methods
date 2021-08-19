@@ -1,3 +1,289 @@
-# Creating your first table
+# Wrangling data to create your first table
 
-In this chapter 
+Tables can be created as part of a R markdown document. This is because most "table generators" actually converts your code into an output format based on the rules of that particular format. The most common format to work with when you are building your analysis is html. Tables are special since their creation depend more heavily on the output format compared to other elements of R markdown documents. For example, when using the `kable` function from the `knitr` package you have to specify if you want html or latex output. Word output is not possible using the `knitr` package, but other table generators in rmarkdown (such as `flextable`)  *can* produce word output, meaning you can put tables in word documents from your R markdown file. There are several alternatives for generating tables[^tables]. We will start by exploring the built-in function in the `knitr` package.   
+
+[^tables]: See for example the [description of the `gt` package](https://gt.rstudio.com/index.html) that list a bunch of table generators.
+
+The basic work-flow of creating a table in R markdown is to first transform the data into a nice format and then get this underlying data into the table generator. The table generator is written in a code chunk an upon rendering of the R markdown file, the table generator will create, for example, html output.
+
+In this chapter we will also introduce some data wrangling tools since the table we will produce consists of summarized data.
+
+### Resources
+The `kable` function is described in a newly developed book, available online called [the R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html). The package, `kableExtra` comes with excellent [vignettes](https://cran.r-project.org/web/packages/kableExtra/) for both html and pdf outputs. `kableExtra` provides extra functions to customize your basic `knitr` table. 
+
+## Making "Table 1"
+
+The first table in many report in sport and exercise studies is that "Participant characteristics" table. This first table summarizes background information on the participants. We will try to reproduce 
+
+
+
+### Prerequisistes
+
+Load packages with the following commands:
+
+```{r load_packages, eval = FALSE}
+library(tidyverse) # for data wrangling and file download
+library(knitr) # for the kable function
+library(kableExtra) # for extended capabilities
+```
+
+Download the example file with the following command:
+
+```{r download_data, eval=FALSE, message=TRUE, warning=TRUE}
+
+
+
+```
+
+## First steps, decide what data to use and summarise
+
+Before we can start to format the table, we need to decide what data to put in it. The goal here is to create a summary table of participant characteristics. We can group the participants based on inclusion/exclusion from the study and sex.
+
+Above, we stored the data in an object called `dxa_data`. Use the below code to see what it contains.
+
+```{r data exploration1, eval = FALSE}
+dxa_data %>%
+        print()
+```
+
+This is data from iDXA measurements that also contains weight, height, age, sex and if participants were included in the data analysis or not (`include == "incl"` or `include == "excl"`). First we want to use lean body mass as a percentage of the whole body mass as a measure to describe the participants. The below code does the calculation. We also select columns of interest for further data preparations using the `select()` function. Store the data in a new object, so that the raw data can be used later. 
+
+```{r calculate_LBM, eval = FALSE}
+dxa <- dxa_data %>%
+        rowwise() %>%
+        mutate(LBM = (lean.whole / (fat.whole + BMD.whole + lean.whole)) * 100) %>%
+        select(subject, age, height, weight, LBM, sex, include) %>%
+        print()
+```
+
+Using `dplyr::group_by()` and `dplyr::summarise()` we can now create a summary table.
+
+> When writing `dplyr::group_by()` it means that we specify the function `group_by()` from the package `dplyr`. The double colon is used to connect the package to the function, we use it here to specify what package we are using.
+
+```{r data summary, eval = FALSE}
+dxa %>%
+        ungroup() %>%
+        group_by(sex, include) %>%
+        summarise(m.age = mean(age), 
+                  s.age = sd(age), 
+                  m.height = mean(height), 
+                  s.height = sd(height), 
+                  m.weight = mean(weight), 
+                  s.weight = sd(weight), 
+                  m.lbm = mean(LBM), 
+                  s.lbm =sd(LBM)) %>%
+        print()
+
+```
+
+This was somewhat inefficient. We can add a line and calculate per variable.
+
+```{r data summary2, eval = FALSE}
+summary_table <- dxa %>%
+        ungroup() %>%
+        pivot_longer(cols = age:LBM, names_to = "variable", values_to = "value") %>%
+        group_by(sex, include, variable) %>%
+        summarise(m = mean(value), 
+                  s = sd(value)) %>%
+        print()
+```
+
+This was more efficient! But it's not formatted to be a table just yet. Of course there are many ways to create this table. But first, we can format the numbers to make nice presentations. For simplicity, lets say that all numbers will be printed with a single digit. We could use `round(x, 1)` but this will in some cases produce a number without trailing zero. Instead we will use `sprintf("%.1f", x)` where x is the number of interest. We will also combine mean and standard deviation to a single cell using the `paste0()` function. `paste0()` combines numbers and text into a character string, this means they will lose some information but that is OK.
+
+```{r data summary3, eval = FALSE}
+summary_table <- dxa %>%
+        ungroup() %>%
+        pivot_longer(cols = age:LBM, names_to = "variable", values_to = "value") %>%
+        group_by(sex, include, variable) %>%
+        summarise(m = mean(value), 
+                  s = sd(value)) %>%
+        ungroup() %>%
+        mutate(summary = paste0(sprintf("%.1f", m),
+                                " (",
+                                sprintf("%.1f", s), 
+                                ")")) %>%
+        select(sex, include, variable, summary) %>%
+        pivot_wider(id_cols = variable, names_from = c(sex, include), values_from = summary ) %>%
+        print()
+```
+
+The summary table is ready for making a table. 
+
+In R Markdown chunk settings, we need to set the output format to `results = "asis"`. This will print the table correctly. To create the table, all we need to do is to is to pipe it to `kable()`. In the `kable` function we can set `caption` to the represent the title of the table. `col.names` lets you specify column names without changing variable names, this is handy when you want the same name to repeat many times.     
+
+
+````
+`r ''````{r my_table, results="asis"}
+summary_table %>%
+        kable(format = "html", col.names = c("Variable", 
+                                                "Female excluded",
+                                                "Female included", 
+                                                "Male excluded", 
+                                                "Male included"), 
+                                        caption = "Participant characteristics")
+```
+````
+
+We might want to extend the table and make it a bit nicer, this is where `kableExtra` comes in. Lets say that we want to include a row above Female/Male and only print this information once. After the `kable()` command, we use commands from the `kableExtra` package.  
+
+
+
+```{r kableExtra,  eval = FALSE}
+summary_table %>%
+        kable(format = "html", col.names = c(" ", 
+                                                "Excluded",
+                                                "Included", 
+                                                "Excluded", 
+                                                "Included"), 
+                                        caption = "Participant characteristics") %>%
+                                        add_header_above(c(" " = 1, "Female" = 2, "Male" = 2))
+```
+
+There is still some work to do here, variable names should be with a capital letter, this is most easily done in data preparation stages by changing the variables factor. 
+
+```{r mytable_cont1, eval = FALSE}
+dxa %>%
+        ungroup() %>%
+        pivot_longer(cols = age:LBM, names_to = "variable", values_to = "value") %>%
+        group_by(sex, include, variable) %>%
+        summarise(m = mean(value), 
+                  s = sd(value)) %>%
+        ungroup() %>%
+        mutate(summary = paste0(sprintf("%.1f", m),
+                                " (",
+                                sprintf("%.1f", s), 
+                                ")")) %>%
+        select(sex, include, variable, summary) %>%
+        pivot_wider(id_cols = variable, names_from = c(sex, include), values_from = summary ) %>%
+        # sort the rows -- create a factor level
+        mutate(variable = factor(variable, levels = c("age", "height", "weight", "LBM"))) %>%
+
+        mutate(Variable = c("Age (yrs)", "Stature (cm)", "Body mass (kg)", "Lean body mass (%)")) %>%
+        
+        arrange(variable) %>%
+        
+        select(Variable, female_excl:male_incl) %>%
+        kable(format = "html", col.names = c(" ", 
+                                                "Excluded",
+                                                "Included", 
+                                                "Excluded", 
+                                                "Included"), 
+                                        caption = "Table 1. Participant characteristics") %>%
+                                        add_header_above(c(" " = 1, "Female" = 2, "Male" = 2)) 
+```
+
+kableExtra lets us add  footnotes using the `footnote` function. An example of the whole pipe could be:
+
+```{r mytable_cont2, eval = FALSE}
+dxa %>%
+        ungroup() %>%
+        pivot_longer(cols = age:LBM, names_to = "variable", values_to = "value") %>%
+        group_by(sex, include, variable) %>%
+        summarise(m = mean(value), 
+                  s = sd(value)) %>%
+        ungroup() %>%
+        mutate(summary = paste0(sprintf("%.1f", m),
+                                " (",
+                                sprintf("%.1f", s), 
+                                ")")) %>%
+        select(sex, include, variable, summary) %>%
+        pivot_wider(id_cols = variable, names_from = c(sex, include), values_from = summary ) %>%
+        # sort the rows -- create a factor level
+        mutate(variable = factor(variable, levels = c("age", "height", "weight", "LBM"))) %>%
+        arrange(variable) %>%
+        mutate(Variable = c("Age (yrs)", "Stature (cm)", "Body mass (kg)", "Lean body mass (%)")) %>%
+        select(Variable, female_excl:male_incl) %>%
+        kable(format = "html", col.names = c(" ", 
+                                                "Excluded",
+                                                "Included", 
+                                                "Excluded", 
+                                                "Included"), 
+                                        caption = "Table 1. Participant characteristics") %>%
+                                        add_header_above(c(" " = 1, "Female" = 2, "Male" = 2)) %>%
+                                        footnote(general = "Values are Mean (SD)")
+```
+
+## Final thoughts on `knitr::kable` and `kableExtra`
+
+The [vignette describining the kableExtra package](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) is highly recommended! If you want to extend to pdf-tables (which are really nice!). Use the $\LaTeX$ vignette found [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_pdf.pdf). When creating pdf/$\LaTeX$ tables/reports some basic understandning of $\LaTeX$ is good. 
+
+
+## Flextable
+
+Flextable comes with the option of specifying tables directly in word outputs. This does not need any further formatting compared to HTML formatting. 
+
+Lets use the `summary_table` to specify the flextable. Flextable also works as part of a pipe. The basic function is `flextable`.
+
+```{r, eval = FALSE} 
+
+library(flextable)
+
+summary_table %>%
+   flextable()
+
+```
+
+We can now add changes to the underlying table and add new header labels to produce a table similar to the one above.
+
+```{r, eval = FALSE} 
+
+library(flextable)
+
+summary_table %>%
+        mutate(variable = factor(variable, levels = c("age", "height", "weight", "LBM"), 
+                                          labels = c("Age (yrs)", 
+                                          "Stature (cm)", 
+                                          "Body mass (kg)",
+                                          "Lean body mass (%)"))) %>%
+   flextable()  %>%
+   set_header_labels(variable = "",
+                    female_excl = "Exclude", 
+                     female_incl = "Include",
+                     male_excl = "Exclude", 
+                     male_incl = "Include")
+
+```
+
+Note that flextable does not need `output = "asis"` to work in markdown files. Similar to kable, flextable can give a preview by just running the code, meaning you do not have to knit the whole document to see what changes you have done.
+
+Lets finnish up by adding a header and a footnote.
+
+```{r, eval = FALSE} 
+
+library(flextable)
+
+summary_table %>%
+        mutate(variable = factor(variable, levels = c("age", "height", "weight", "LBM"), 
+                                          labels = c("Age (yrs)", 
+                                          "Stature (cm)", 
+                                          "Body mass (kg)",
+                                          "Lean body mass (%)"))) %>%
+   flextable()  %>%
+   set_header_labels(variable = "",
+                    female_excl = "Exclude", 
+                     female_incl = "Include",
+                     male_excl = "Exclude", 
+                     male_incl = "Include") %>%
+      # Adds a header specified for all columns of the table
+    add_header_row(values = c("", "Female", "Female", "Male", "Male")) %>%
+    
+    # Merge the new cells with the same data
+    # part = "header" meands that we want to add a row in the "header" part of the table.
+    # i = 1 means row 1
+    # j = 2:3 means column 2 to 3
+    merge_at(part = "header", i = 1, j = 2:3) %>%
+    merge_at(part = "header", i = 1, j = 4:5) %>%
+    # Add footnote
+    add_footer_row(values = "Values are mean and (SD)", colwidths = 5) %>%
+    # Make the columns widths match the content
+    autofit()
+    
+    
+    
+
+```
+
+Nice! This table should print if the code chunk is included in a R Markdown file and the output is choosen to be "Knit to word". See [flextable documentation](https://davidgohel.github.io/flextable/) for more customizations.
+
+
+

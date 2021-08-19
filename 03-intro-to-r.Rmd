@@ -1,30 +1,38 @@
-# Installing and starting up R (and R Studio)
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 
+# Installing and starting up R (and R Studio)
 
 This chapter contains step-by-step instructions for installing and running R and RStudio. It will also introduce you to some concepts when talking to R. By the end of this chapter you will be able to answer these questions:
 
-- What is R and RStudio?
-- How can I interact with R?
-- What are the components of RStudio
-- How do I maintain a reproducible work-flow in R and RStudio?
+-   What is R and RStudio?
+-   How can I interact with R?
+-   What are the components of RStudio
+-   How do I maintain a reproducible work-flow in R and RStudio?
+-   What is a R-script
+-   What is a R-markdown file
 
 ## Installing R
 
 R is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software designed for statistical computing. We will use R as a part of an environment (using R Studio, introduced below). To download and install R:
 
-1. Go to [https://cran.uib.no/](https://cran.uib.no/),
-2. select your operating system (Download R for Windows, MacOS or Linux).
-    - If you have Windows, choose `base`, click on "Download R (...) for windows", save and run the file. The installation process should be self explanatory.
-    - If you have MacOS, download and install the latest release.
-    
+1.  Go to <https://cran.uib.no/>,
+
+2.  select your operating system (Download R for Windows, MacOS or Linux).
+
+    -   If you have Windows, choose `base`, click on "Download R (...) for windows", save and run the file. The installation process should be self explanatory.
+    -   If you have MacOS, download and install the latest release.
+
 ## Installing R Studio
 
-[RStudio](https://www.rstudio.com/) is a software designed to make it easier to use R. It is free to download and use. It is designed as an integrated development environment that lets you organize your work together with R and other tools. Install it by going to [https://www.rstudio.com/](https://www.rstudio.com/). 
+[RStudio](https://www.rstudio.com/) is a software designed to make it easier to use R. It is free to download and use. It is designed as an integrated development environment that lets you organize your work together with R and other tools. Install it by going to <https://www.rstudio.com/>.
 
-1. Select "Products" and RStudio
-2. Go to desktop and select "DOWNLOAD RSTUDIO DESKTOP"
-3. Select the free open source license and download the file made for your operating system (use the installers).
-
+1.  Select "Products" and RStudio
+2.  Go to desktop and select "DOWNLOAD RSTUDIO DESKTOP"
+3.  Select the free open source license and download the file made for your operating system (use the installers).
 
 ## Getting to know R and RStudio
 
@@ -41,7 +49,6 @@ The source is where you keep your code. When writing your code in a text-file, y
 The environment is where all your objects are located. Objects can be variables or data sets that you are working with. In RStudio the environment is listed under the environment tab (bottom left in the image).
 
 Copy and run the code below.
-
 
 ```{r, eval = FALSE}
 
@@ -67,14 +74,13 @@ knitr::include_graphics("./images/rstudio_blank.png")
 
 ### Customizing the apperance of RStudio
 
-To access options for RStudio, go to Tools -> Global options
+To access options for RStudio, go to Tools -\> Global options
 
 ```{r rstudio-options, echo=FALSE, message=FALSE, fig.cap = "Accessing options for your RStudio IDE", fig.scap = "Access RStudio options", out.width="50%", fig.align='center'}
 
 knitr::include_graphics("./images/rstudio_options1.png")
 
 ```
-
 
 Under appearance you can customize the theme of RStudio, select something that is easy on the eye!
 
@@ -84,10 +90,7 @@ knitr::include_graphics("./images/rstudio_options2.png")
 
 ```
 
-
 Under pane layout, you can set where you want your tabs, I like to have the source on the left, above the environment. This way you can have the source window at full vertical size and still look at plots and the console to the right.
-
-
 
 ```{r rstudio-options3, echo=FALSE, message=FALSE, fig.cap = "Accessing options for your RStudio IDE and set the panes", fig.scap = "Access RStudio panes", out.width="50%", fig.align='center'}
 
@@ -95,12 +98,11 @@ knitr::include_graphics("./images/rstudio_options3.png")
 
 ```
 
-
 ## Reproducible computing
 
 Computations are reproducible when you can show how they were performed. This is achieved by creating "programs" from where your analyses are done. In R, these programs are lines or R code stored in a text-file, either .R-files or .Rmd-files. .R-files are scripts only containing code and comments. A .Rmd-file is a special script combining text and computer code, when the Rmd-file is executed, it creates a report and outputs the results from the code.
 
-This means that to work in a reproducible way, you need to script all your operations. 
+This means that to work in a reproducible way, you need to script all your operations.
 
 ```{r reproducible-computing, echo=FALSE, message=FALSE, fig.cap = "Reproducible vs. non-reproducible workflow", fig.scap = "Reproducible workflow", out.width="50%", fig.align='center'}
 
@@ -117,7 +119,6 @@ To disable this option, set save works pace to NEVER!
 knitr::include_graphics("./images/rstudio_options4.png")
 
 ```
-
 
 ## Packages
 
@@ -137,7 +138,6 @@ Alternatively, click "Packages" and "Install" and search for the package you wan
 library("dplyr")
 ```
 
-
 ## Installing and using `swirl`
 
 Swirl is a great way to get to know how to talk with R. Swirl consists of lessons created for different topics. Install swirl by typing the following into your console:
@@ -146,4 +146,179 @@ Swirl is a great way to get to know how to talk with R. Swirl consists of lesson
 install.packages("swirl")
 ```
 
-Or select swirl in the Package/Install menu. 
+When `swirl`is installed you will need to load the package This means that all functions that are included in package becomes available to you in your R session. To load the package you use the `library` function.
+
+```{r, eval = FALSE}
+library("swirl")
+```
+
+When you run the above command in your console you will get a message saying to call `swirl()` when you are ready to learn. I would like you to run the course "R Programming: The basics of programming in R". Swirl will ask if you want to install it. After installation, just follow the instructions in the console. To get out of swirl, just press ESC.
+
+## R scripts
+
+As pointed out elsewhere [@r4ds; @RN1492], programming is an important part of a reproducible data analysis. This lets you build your analysis, go back a change components of it an re-run it with any number of changes. In this process you will probably learn more about your data. Putting all these steps in a program lets you save the whole analytic process. In R you may start by working with R scripts. These are basically text files that are written with a special syntax that can be interpreted by your computer. Additionally you have the possibility to add comments that makes the code more readable. R code is generally easy to read. But you will likely need additional comments to make it easier to show what you intend to do.
+
+A R script can be thought of as a computer program that when executed from top to bottom perform as series of steps in the order that they appear in the file. A feature of a well working program is that it is self-contained, i.e. it contains all parts needed to run. If you need to load a package or data, make sure that these steps are in the beginning of the script.
+
+A nice feature of combining code and comments can be that you first write a plan in plain language and then add computer code to perform the steps that you want to do. Below is a simple example. Comments start with a `#`, this is interpreted by R as non-code line and will be ignored. The R code is structured in series, the first steps are needed to perform sequential steps. As mentioned, the work-flow of creating the example below would be to first make a plan by writing the comments and the adding the code.
+
+```{r, eval = FALSE}
+
+# Create a data set in a data.frame
+df <- data.frame(x = rnorm(100, 100, 10), 
+                 y = runif(100, min = 10, max = 25)) 
+
+# Add column x and y together in a new variable called z
+df$z <- df$x + df$y
+
+
+# Make a figure of the resulting data frame by plotting x against z
+with(df, plot(x, z))
+
+```
+
+When working in RStudio, you can run a bit of the code by selecting it and pressing CTRL + ENTER (CMD + ENTER on Mac). You can also execute a line simply by having your cursor on a specific line and press CTRL + ENTER. Code execution means that the specific part of the script (line or section) is "copied" to the console and "activated".
+
+R Scripts can also be "sourced". This means that the whole script will be executed from to to bottom when you tell R to do so. Lets say that you have a script that creates a figure and saves it, called `figure1.R`. By using the `source()` function you can tell R to execute the script (`source("figure1.R")`). As you can see in this example the filename extension `.R` tells you that a file can be intepreted as a R script.
+
+## R markdown files
+
+[R markdown](https://rmarkdown.rstudio.com/) files are more advanced computer programs as they in a structured way combines plain text and code to create an output file such as a `.html`, `.pdf` or `.doc` document. The text parts are written using a special syntax, markdown. The point of markdown is that you will use the same syntax that is later possible to convert to multiple formats. The syntax let's you do all formatting explicitly, for example instead of getting your mouse to superscript some text you can add syntax `a^2^` to achieve a^2^.
+
+A full guide to RMarkdown can be found on the official [R markdown web pages](https://rmarkdown.rstudio.com/lesson-1.html). I suggest you take the time to get an overview of this langiage as it will make more fluent in the tools that enables reproducible computing. When writing R markdown, it is handy to have a *cheat sheet* close by when writing, [here is an example](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)[^1].
+
+[^1]: Cheat sheets are available in R Studio: *Help \> Cheatsheets*
+
+If you do not want to write text in a simple text editor, RStudio has it's own "visual markdown editor". This editor contains similar functions by press of buttoms as in for example word.
+
+R Markdown files has the filename extension `.Rmd`.
+
+### Starting up your first R markdown file
+
+A R markdown report is basically a text document containing plain text and code. When you compile your report, the code will be evaluated and figures, calculations and so on will be performed per your specifications. The resulting file will be an html, docx or pdf file. You can choose if you would like to display your code or not but your code is always available in your source document. R Markdown is very versatile, you can make word documents, [blog posts, websites](https://bookdown.org/yihui/blogdown/) and pdf documents[^2].
+
+[^2]: Make sure to look through the [installation instructions](https://bookdown.org/yihui/rmarkdown/installation.html) to get pdf options working
+
+When in R Studio, you can start a new document using *File \> New File \> R Markdown...*. This will launch a file in your script window looking something like this:
+
+    ---
+    title: "Untitled"
+    author: "Daniel Hammarström"
+    date: "2020 05 09"
+    output: html_document
+    ---
+
+    ```f3175f2a-e8a0-4436-be12-b33925b6d220
+    31b8e172-b470-440e-83d8-e6b185028602:dAB5AHAAZQA6AFoAZwBBAHoAQQBEAEUAQQBOAHcAQQAxAEEARwBZAEEATQBnAEIAaABBAEMAMABBAFoAUQBBADQAQQBHAEUAQQBNAEEAQQB0AEEARABRAEEATgBBAEEAegBBAEQAWQBBAEwAUQBCAGkAQQBHAFUAQQBNAFEAQQB5AEEAQwAwAEEAWQBnAEEAegBBAEQATQBBAE8AUQBBAHkAQQBEAFUAQQBZAGcAQQAyAEEARwBRAEEATQBnAEEAeQBBAEQAQQBBAAoAcABvAHMAaQB0AGkAbwBuADoATQBRAEEAegBBAEQARQBBAE8AQQBBAHcAQQBBAD0APQAKAHAAcgBlAGYAaQB4ADoACgBzAG8AdQByAGMAZQA6AFkAQQBCAGcAQQBHAEEAQQBlAHcAQgB5AEEAQwBBAEEAYwB3AEIAbABBAEgAUQBBAGQAUQBCAHcAQQBDAHcAQQBJAEEAQgBwAEEARwA0AEEAWQB3AEIAcwBBAEgAVQBBAFoAQQBCAGwAQQBEADAAQQBSAGcAQgBCAEEARQB3AEEAVQB3AEIARgBBAEgAMABBAEMAZwBCAHIAQQBHADQAQQBhAFEAQgAwAEEASABJAEEATwBnAEEANgBBAEcAOABBAGMAQQBCADAAQQBIAE0AQQBYAHcAQgBqAEEARwBnAEEAZABRAEIAdQBBAEcAcwBBAEoAQQBCAHoAQQBHAFUAQQBkAEEAQQBvAEEARwBVAEEAWQB3AEIAbwBBAEcAOABBAEkAQQBBADkAQQBDAEEAQQBWAEEAQgBTAEEARgBVAEEAUgBRAEEAcABBAEEAbwBBAFkAQQBCAGcAQQBHAEEAQQAKAHMAdQBmAGYAaQB4ADoA:31b8e172-b470-440e-83d8-e6b185028602
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+    This is not an empty document and you have to remove the pre-written instructions. These instructions are quite handy though.
+
+    Basically, in **code chunks** you write R code, this code will be evaluated and the output will be displayed in the file you create. Between **code chunks** you can write markdown text. This will be displayed as ordinary text in your created document. The plain text sections can also contain code.
+
+    A code chunk is created using 
+
+\`r ''```` {r, eval=TRUE} 1 + 1 ``` ````
+
+This code chunk calculates `1+1`, when you compile the document, the result of this calculation will be shown below the code chunk. The same computation can be made "inline". An inline code chunk is created using `` `r 1+1` ``, here only the result of this computation will be shown in your text.
+
+When you compile the doucument it is called "knitting", R uses a package called [`knitr`](https://yihui.name/knitr/) made to compile R Markdown files. In the upper part of the source window, there is a button kalled Knit. When you press it, RStudio will aske you to save the Rmd file and an output file will be created.
+
+```{r, echo = FALSE}
+
+```
+
+### Microsoft Word intergration
+
+Sometimes it is usefull to "knit" to a word file. For example when you want to share a report with fellow students who are not familiar with R. R Markdown can be used as a source for word documents (.docx).
+
+To create a word document from your Rmd-file you need a working installation of Microsoft Word. Settings for the output is specified in the YAML metadata field in the Rmd-file. This is the first section of a Rmd file, and when you want it to create a word file you specify it like this:
+
+    ---
+    title: "A title"
+    author: Daniel Hammarström
+    date: 2020-09-05
+    output: word_document
+    ---
+
+The `output: word_document` tells R to create a word file. If you are not happy with the style of the word document (e.g. size and font of text) you can tell R to use a template file. Save a word file that you have knitted as `reference.docx` and use specify in the YAML field that you will use thiss as reference.
+
+    ---
+    title: "A title"
+    author: Daniel Hammarström
+    date: 2020-09-05
+    output: 
+            word_document:
+                    reference_docx: reference.docx
+    ---
+
+Edit styles (Stiler in Norwegian) used in the reference file (right click on the style and edit). For example, editing the "Title" style (Tittel in Norwegian) will change the main titel of the document. After you have edited the document, save it.
+
+When you knit the document again, your updated styles will be used your word document.
+
+[Here](https://rmarkdown.rstudio.com/articles_docx.html) you can read more about using R Markdown together with word. If you do not have word installed, you can also use Open Office. Read more about it [here](https://bookdown.org/yihui/rmarkdown/opendocument-text-document.html).
+
+### Adding references
+
+References/citations can be added to the report using the `bibliography` option in the YAML field. Citations needs to be listed in a file, multiple formats are avaliable. A convenient format is bibtex. When using this format, create a text file with the ending `.bib`, for example, `bibliography.bib`.
+
+The `bibliography.bib`-file needs to be activated in the YAML-field. Do it by adding this information:
+
+    ---
+    title: "A title"
+    author: Daniel Hammarström
+    date: 2020-09-05
+    output: 
+            word_document:
+                    reference_docx: reference.docx
+    bibliography: bibliography.bib
+    ---
+
+Add citations to the file in bibtex-format. Here is an example:
+
+    @Article{refID1,
+       Author="Ellefsen, S.  and Hammarstrom, D.  and Strand, T. A.  and Zacharoff, E.  and Whist, J. E.  and Rauk, I.  and Nygaard, H.  and Vegge, G.  and Hanestadhaugen, M.  and Wernbom, M.  and Cumming, K. T.  and Rønning, R.  and Raastad, T.  and Rønnestad, B. R. ",
+       Title="{Blood flow-restricted strength training displays high functional and biological efficacy in women: a within-subject comparison with high-load strength training}",
+       Journal="Am. J. Physiol. Regul. Integr. Comp. Physiol.",
+       Year="2015",
+       Volume="309",
+       Number="7",
+       Pages="R767--779",
+       Month="Oct"}
+
+The part that says `refID1` can be edited to something appropriate. This is a reference identification, you use it to get the citation into the text. When citing you do it in the form
+
+    Blood flow-restricted training leads to similar adaptations as traditional training [@refID1].
+
+This will appear in text as:
+
+> Blood flow-restricted training leads to similar adaptations as traditional training [@refID1].
+
+The reference will end up in the end of the document (as on this webpage).
+
+You can gather references in bibtex format from Oria (use the BIBTEX icon) and from PubMed using [TeXMed](https://www.bioinformatics.org/texmed/). You can also export reference in bibtex format from citation software like Endnote or Zotero. Make sure you check all references when entering them, especially MedTex gives some problems with "scandinavian" letters (å æ ä ø ö).
+
+Recently RStudio added support for adding citations inside the visual markdown editor.
+
+### A note on folder structures
+
+When you build an analysis in a R markdown file. R will use the folder that the file is in as the **root directory**. This directory (or folder) is the top directory in a file system. This means that R will look for your bibtex file `bibliography.bib` in the same directory as where you have the Rmd-file.
+
+Think of this folder as `./` (confusing, I know! But bare with me!)
+
+Any subfolders to the root directory can be called things like
+
+`./data/` (a folder where you keep data files),
+
+`./figures/` (a folder where you output figures from analyses).
+
+The R markdown file, being in the root directory will have the "address" `./my_rmarkdown_file.Rmd`
+
+This has several advantages, as long as you stick to one rule: When doing an analysis, always use relative paths ("addresses" to files and folders). Never reference a folder or file by their absolute path. The absolute path for the file I'm writing in now is `C:/Users/706194/Dropbox/Undervisning%20och%20kurser%20HIL/IDR3002%20Course%20notes/IDR3002/markdown.Rmd`. The relative path is `./markdown.Rmd`.
+
+If you want to share your analysis, all you need to do is share the folder with all content with your friend. If you use relative paths, everything will work on your friends computer. If you use absolute paths, nothing will work, unless your friends computer uses a very similar folder structure (highly unlikely).
+
+If you decide to move your analysis somewhere else on your computer, your scripts will only work if you used relative paths.

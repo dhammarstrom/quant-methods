@@ -4,10 +4,27 @@ editor_options:
   chunk_output_type: console
 ---
 
-
 # Creating your first graph
 
+ <script language="javascript"> 
+    function toggle(num) {
+      var ele = document.getElementById("toggleText" + num);
+      var text = document.getElementById("displayText" + num);
+      if(ele.style.display == "block") {
+        ele.style.display = "none";
+        text.innerHTML = "show";
+      }
+      else {
+        ele.style.display = "block";
+        text.innerHTML = "hide";
+      }
+   } 
+  </script>
+
+
+
 Data visualization is an efficient way of understanding data. By using graphs we can communicate characteristics of a data set that would have been impossible with a limited number of summary statistics (central tendencies, spread etc.). In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand different data sets. A great argument for the use of data visualization is the need to understand what factors might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of as an initial step in understanding data, data visualization as an exploratory tool.  
+
 
 RStudio is a powerful environment for data visualization. Together with R (that is excellent for creating graphs), you can create and preview figures that represents your data in RStudio. 
 
@@ -249,7 +266,7 @@ geom_line()
 
 In Figure \@ref(fig:sq-ind-data) each line represents a participant, different colors represents different groups.
 
-### Titles, labels and annotations
+### Titles and labels
 
 Often we need to add information to the plot to better communicate its message. Such information could be appropriate titles on axes and legends and extra text needed to explain aspects of the plot. Using the `labs()` function we can add information that will replace variable names that are being used for all variables that have been mapped in the figure. In the figure below we will start by adding better axis titles. This information goes into `x` and `y` in `labs()` which simply changes the titles of the x- and y-axis.
 
@@ -295,26 +312,8 @@ ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) +
 
 The same goes for the group variable. You can try to change the levels and labels of the grouping variable to make it more descriptive. You can type `?cyclingstudy` in your console to read about the group variable and then use this infomation to write better labels using the `factor` function. In the factor function, the first argument is the variable you want to use as basis of your new factor, the second argument you need to specify is `levels` which sets the order and lastly you will need to set the labels for each level using `labels = `. If you write `?factor` in your console you will get the help pages for the `factor` function.
 
-<script>
-  function unhide() {
-    var hid = document.getElementsByClassName("exp");
-    // Emulates jQuery $(element).is(':hidden');
-    if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
-        hid[0].style.visibility = "visible";
-    }
-}
-</script>
-
-
-<head>
-<style>
-.exp{visibility: hidden;}
-</style>
-</head>
-<body>
-<button onclick="unhide()">Show example solution</button>
-<div class="exp">
-
+  <a id="displayText" href="javascript:toggle(1);">Click here to display a possible solution</a>
+  <div id="toggleText1" style="display: none">
 
 ```{r, eval = FALSE}
 
@@ -335,11 +334,174 @@ ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) +
 
 Note: Adding `\n` in the the text string breaks the line to get two rows.
 
-
-</div>
-</body>
+  </div>
 
 
+### Annotations
+
+Annotation may become handy when you want to add elements to the graph that is not in the data set. Using ggplot2 annotations are added using the `annotate()` function. This function first needs to be specified with a geom, these are commonly text or lines or segments. In the code chunk below are several examples of annotations. Firts I save the plot as an object called `myplot` and then add different annotations to it.
+
+```{r, eval = FALSE}
+
+myplot <- ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+  geom_line() +
+  labs(x = "Time-point",
+       y = "Squat jump height (cm)", 
+       color = "Periodization strategy") 
+
+
+# A text annotation
+myplot + annotate("text", x = 1, y = 37, label = "This is an annotation")
+
+# A line/segment 
+myplot + annotate("segment", x = 1, xend = 3, y = 25, yend = 35,  colour = "red", size = 4)
+
+
+```
+
+You can copy the code and run it yourself to see the results. `annotate` is documented [here](https://ggplot2.tidyverse.org/reference/annotate.html) but documentation can also be accessed by typing `?annotate` in your console. Try to read the documentation and add a transparent rectangle to a previous plot.
+
+
+  <a id="displayText" href="javascript:toggle(2);">Click here for a solution</a>
+  <div id="toggleText2" style="display: none">
+
+
+```{r, eval = FALSE}
+
+# Change the grouping variable
+cycdat$group <- factor(cycdat$group, levels = c("DECR", "INCR", "MIX"), 
+                           labels = c("Decreased\nintensity", 
+                                      "Increased\nintensity", 
+                                      "Mixed\nintensity"))
+
+# Plotting the data as before with the new information added
+ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+  geom_line() +
+  labs(x = "Time-point",
+       y = "Squat jump height (cm)", 
+       color = "Periodization strategy") +
+  # A rectangular annotation (alpha = 0.4 makes the rectangle transparent)
+ annotate("rect", xmin = 1, xmax = 2, ymin = 30, ymax = 35, alpha = 0.4)
+  
+
+```
+
+Note: Adding `\n` in the the text string breaks the line to get two rows.
+
+
+  </div>
+
+
+## Themes
+
+Themes in `ggplot2` can be used to change everything else about the plot concerning text, colors etc. `ggplot2` has some built in themes that are easily activated by adding them to the plot. For example the `theme_bw()` function will change the theme to a black and white one as in the figure below. 
+
+```{r bw-theme, fig.height=3, fig.cap = "A figure using the black and white theme from `theme_bw`."}
+
+ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+  geom_line() +
+  labs(x = "Time-point",
+       y = "Squat jump height (cm)", 
+       color = "Group") + 
+  theme_bw()
+
+```
+
+A collection of built in themes are documented [here](https://ggplot2.tidyverse.org/reference/ggtheme.html). Individual components of the theme can also be changed using the `theme()` function. There is a long list of theme components that can be changed using this function. The list can be found [here](https://ggplot2.tidyverse.org/reference/theme.html).   
+If we put the `theme` function last in the `ggplot` call we will modify one part of the existing theme. Let's say that we want to change the color of the text on the x axis. 
+
+
+```{r bw-theme-changed, fig.height=3, fig.cap = "A figure using the black and white theme from `theme_bw`."}
+
+ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+  geom_line() +
+  labs(x = "Time-point",
+       y = "Squat jump height (cm)", 
+       color = "Group") + 
+  theme_bw() +
+  theme(axis.text.x = element_text(color = "black", size = 12, face = "bold"))
+
+```
+
+The component `axis.text.x` can be modified using a function that changes appearance of text components, namely `element_text`. Similarly, other components are changed with specific functions for lines and rectangular shapes (see the help pages for `theme`.
+
+## Test your understandning
+
+In this section you can try to implement what we have discussed above An example solution exists below each figure by press of button. 
+
+In Figure \@ref(fig:example-fig-1), I have used the VO<sub>2max</sub> data from the `cyclingstudy` dataset. I have made changes to the time variable (`timepoint`) to make the labels better. I have added a title to the figure and changed the appearance of the text. I will use an extra package called (ggtext)[https://wilkelab.org/ggtext/index.html] to make it possible to use markdown syntaxt in axis labels. In order to use `ggtext` you have to install it from CRAN.
+
+```{r example-fig-1, echo = FALSE, warning=FALSE, message=FALSE, fig.cap="Example figure 1"}
+
+# Load the package ggtext to make markdown avalable in axis labels.
+library(ggtext) 
+
+# For ease of use I save a smaller dataset in a new object
+cycdat <- select(cyclingstudy, subject, timepoint, VO2.max)
+
+# Change the labels of the time variable
+cycdat$timepoint <- factor(cycdat$timepoint, levels = c("pre", "meso1", "meso2", "meso3"), 
+                           labels = c("Pre-training", "Meso-cycle 1", "Meso-cycle 2", "Meso-cycle 3"))
+
+
+# create the basic plot
+
+ggplot(data = cycdat, aes(timepoint, VO2.max, group = subject)) + 
+  # Add lines to connect dots. Putting the lines first and plotting points on top
+  geom_line() + 
+  # Add points foe each participant/time
+  geom_point(size = 3, fill = "lightblue", shape = 21) + 
+
+  # Adding correct axis titles and a figure title
+  labs(x = "Time-point", 
+       y = "VO<sub>2max</sub> (ml min<sup> -1</sup>)", 
+       title = "Maximal aerobic power in response to systematic training in trained cyclists") +
+  
+  # Changing the text rendering using element_markdown from the ggtext package.
+  theme(axis.title.y = element_markdown(size = 12)) 
+  
+
+```
+
+
+  <a id="displayText" href="javascript:toggle(3);">Click for a solution</a>
+  <div id="toggleText3" style="display: none">
+
+
+```{r, eval = FALSE}
+# Load the package ggtext to make markdown avalable in axis labels.
+library(ggtext) 
+
+# For ease of use I save a smaller dataset in a new object
+cycdat <- select(cyclingstudy, subject, timepoint, VO2.max)
+
+# Change the labels of the time variable
+cycdat$timepoint <- factor(cycdat$timepoint, levels = c("pre", "meso1", "meso2", "meso3"), 
+                           labels = c("Pre-training", "Meso-cycle 1", "Meso-cycle 2", "Meso-cycle 3"))
+
+
+# create the basic plot
+
+ggplot(data = cycdat, aes(timepoint, VO2.max, group = subject)) + 
+  # Add lines to connect dots. Putting the lines first and plotting points on top
+  geom_line() + 
+  # Add points foe each participant/time
+  geom_point(size = 3, fill = "lightblue", shape = 21) + 
+
+  # Adding correct axis titles and a figure title
+  labs(x = "Time-point", 
+       y = "VO<sub>2max</sub> (ml min<sup> -1</sup>)", 
+       title = "Maximal aerobic power in response to systematic training in trained cyclists") +
+  
+  # Changing the text rendering using element_markdown from the ggtext package.
+  theme(axis.title.y = element_markdown(size = 12)) 
+
+```
+
+Note: Adding `\n` in the the text string breaks the line to get two rows.
+
+
+  </div>
 
 
 
