@@ -91,5 +91,9 @@ flextable
 writing-your-first-reproducible-report
 version-control-and-collaborative-coding-introducing-git-and-github.com
 reliability-in-the-physiology-lab
+assignment1
+elements-of-the-report
+the-format-of-the-report
+how-to-hand-in-the-report.
 introduction-to-the-molecular-exercise-physiology-lab
 references

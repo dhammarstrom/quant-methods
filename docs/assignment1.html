@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Quantitative methods and statistics (In Sport and Exercise Science)</title>
+  <title>Chapter 10 Assignment 1: Reliability and tools for reproducible data science | Quantitative methods and statistics (In Sport and Exercise Science)</title>
   <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta property="og:title" content="Chapter 10 Assignment 1: Reliability and tools for reproducible data science | Quantitative methods and statistics (In Sport and Exercise Science)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dhammarstrom/quant-methods" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta name="twitter:title" content="Chapter 10 Assignment 1: Reliability and tools for reproducible data science | Quantitative methods and statistics (In Sport and Exercise Science)" />
   
   <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="twitter:image" content="images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introduction-to-data-science.html"/>
+<link rel="prev" href="reliability-in-the-physiology-lab.html"/>
+<link rel="next" href="introduction-to-the-molecular-exercise-physiology-lab.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -248,151 +248,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Quantitative methods and statistics (In Sport and Exercise Science)</h1>
-<p class="author"><em>Daniel Hammarström</em></p>
-<p class="date"><em>Updated: 2021-08-23</em></p>
+<div id="assignment1" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Assignment 1: Reliability and tools for reproducible data science</h1>
+<p>The purpose of this assignment is to present estimates of reliability of measures collected in the physiology lab. A second purpose is to use tools for reproducible data science. The report that you are expected to hand in therefore has some strict requirements in its format (see below). The assignment is a group assignment and at least three students are expected to contribute to each report.</p>
+<div id="elements-of-the-report" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Elements of the report</h2>
+<p>The report should describe one test that you have performed in the physiology-lab. Select the test that is most interesting to you. The test should be described with a detailed protocol, including preparations of the participant (that is being tested), standardization of the test, and post-test data preparation. Post-test data preparation refferes to steps needed to get data from e.g. equipment used during the test. This section should take into account and reference <span class="citation">(<a href="references.html#ref-RN1739" role="doc-biblioref">Halperin, Pyne, and Martin 2015</a>; <a href="references.html#ref-RN2511" role="doc-biblioref">Tanner, Sport, and Gore 2012</a>)</span></p>
+<p>The next section should contain descriptive data from the test. This could be measures of central tendency and variability in the measures you have collected. If possible, try to find similar estimates in the scientific literature.</p>
+<p>Finally, we are interested in reliability. Here you need to calculate an estimate of reliability of the test. Use (and reference) <span class="citation">(<a href="references.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>. Try to be clear with what measure of reliability you are using and what it is telling you.</p>
 </div>
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Welcome to the course <strong>Quantitative methods and Statistics (IDR4000)</strong>. The course aims to give students an overview of methodological aspects within the field of sport and exercise-physiology. Specifically, planning, conducting and analyzing research projects with human participants will be covered. These course notes covers <em>almost</em> the entire course through the combination of video lectures, tutorials and references to the course literature and external resources.</p>
-<center>
-<p>INTRO VIDEO LECTURE</p>
-</center>
-<div id="practical-information" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Practical information</h2>
-<div id="learning-objectives" class="section level3" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> Learning objectives</h3>
-<p>Learning objectives can be read in Norwegian <a href="https://www.inn.no/content/view/full/163709/language/nor-NO">here</a>.</p>
-</div>
-<div id="learning-strategies" class="section level3" number="1.1.2">
-<h3><span class="header-section-number">1.1.2</span> Learning strategies</h3>
-<p>The course will include lectures, laboratory exercises, computer exercises, seminars and student presentations. Lectures will be held on-line (zoom), as pre-recorded in this book and in-person on campus. Due to the current pandemic, you are required to do laboratory exercises in your cohort.
-Computer exercises require that you have special computer software installed on your computer. The software is free (see specific chapters in these course notes).</p>
-<p>Assignments will be presented in this text with information on how to hand them in. The whole course is evaluated based on a portfolio (see below).</p>
-</div>
-<div id="course-evaluation" class="section level3" number="1.1.3">
-<h3><span class="header-section-number">1.1.3</span> Course evaluation</h3>
-<p>As a student you can contribute to the quality of the course by engaging in course evaluation throughout the course. You will be asked to answer a pre-course questionnaire about your <em>expectations</em> and a post-course questionnaire about your <em>experiences</em>. You are also welcomed to take part in systematic discussions during the course about the quality of teaching and course material. With these notes I want to underline the importance of student participation in the continuous development of the course (and program) teaching/learning qualities.</p>
-</div>
-<div id="lecturers-and-course-administration" class="section level3" number="1.1.4">
-<h3><span class="header-section-number">1.1.4</span> Lecturers and course administration</h3>
-<p>In order of appearance</p>
+<div id="the-format-of-the-report" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> The format of the report</h2>
+<p>The report should be uploaded to github with both a raw .Rmd file and a .html file as output. The github folder should also contain the datset being used in the calculations. Contributions from members of the group can be made directly to the github directory. Follow this checklist on how to get started:</p>
+<p>(<a href="https://happygitwithr.com/install-intro.html">A nice introduction to github with R can be found here</a>)</p>
 <ul>
-<li>Daniel Hammarström (<a href="mailto:daniel.hammarstrom@inn.no" class="email">daniel.hammarstrom@inn.no</a>), is responsible for course administration and will be teaching statistics and molecular methods.</li>
-<li>Kristian Lian, Ingvill Odden and Lars Nymoen will act as teacher assistants in organizing methods in the physiology lab.</li>
-<li>Stein Olaf Olsen will act as a teacher assistant in the molecular lab.</li>
-<li>Prof. Carten Lundby will cover aspects CO<sub>2</sub> re-breathing techniques (physiology).</li>
-<li>Prof. Finnur Dellsén will cover philosophy of science.</li>
-<li>Prof. Stian Ellefsen will teach molecular methods.</li>
+<li>Create a <a href="github%20account">http://www.github.com</a>. All memebers of the group should have their own account.</li>
+<li>Once signed in to github.com, create a new repository with an informative name. Make sure that the repository is public. One member of the group can make this repository in their own account.</li>
+<li>Be sure to <a href="https://git-scm.com/downloads">download and install git</a> on your computer</li>
+<li>Start up RStudio, start a new project, select the Version Control option and copy the address to the repository.</li>
+<li>Add files to your project and upload to github. You need to add files, commit them and push using git. Use the command line in your terminal:</li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="assignment1.html#cb68-1" aria-hidden="true" tabindex="-1"></a>git add <span class="sc">-</span>A</span>
+<span id="cb68-2"><a href="assignment1.html#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="assignment1.html#cb68-3" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">&quot;A short message to describe your changes&quot;</span></span>
+<span id="cb68-4"><a href="assignment1.html#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="assignment1.html#cb68-5" aria-hidden="true" tabindex="-1"></a>git push</span></code></pre></div>
+<ul>
+<li>When you want to download the latest version of your project, type in the terminal:</li>
+</ul>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="assignment1.html#cb69-1" aria-hidden="true" tabindex="-1"></a>git pull</span></code></pre></div>
+<ul>
+<li>You may encounter conflicts if pushing changes that overwrites changes made by other group memebers. These may be tricky but can be resolved… Have patience!</li>
 </ul>
 </div>
-<div id="updates-notifications-and-general-communication" class="section level3" number="1.1.5">
-<h3><span class="header-section-number">1.1.5</span> Updates, notifications and general communication</h3>
-<p>These course notes <strong>will be</strong> updated during the course. General information and last minute changes will be posted on Canvas, make sure to check it as part of your daily study routine.</p>
-</div>
-<div id="literature" class="section level3" number="1.1.6">
-<h3><span class="header-section-number">1.1.6</span> Literature</h3>
-<p>A full list of recommended literature can be found <a href="https://www.inn.no/pensum">here</a>. Literature will be referenced in specific sections in these course notes.</p>
-</div>
-<div id="grades" class="section level3" number="1.1.7">
-<h3><span class="header-section-number">1.1.7</span> Grades</h3>
-<p>The course is graded pass/fail.</p>
-</div>
-<div id="language" class="section level3" number="1.1.8">
-<h3><span class="header-section-number">1.1.8</span> Language</h3>
-<p>My (Daniel) first language is Swedish, I’m sure most of you will understand what I’m talking about. However, due to the fact that we accept international students to the program, most written communication and some lectures will be in English. You are not expected to write in English, it is however possible!</p>
-</div>
-</div>
-<div id="assignments-and-portfolio-exam" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Assignments and Portfolio exam</h2>
-<p>The course is based on several assignments. Some of these assignments are to be handed in as part of a portfolio exam upon which your grade is based.</p>
-<p>Assignments that are due during the course (arbeidskrav) are expected to be further improved after feedback from fellow students and teachers before inclusion in your portfolio.</p>
-<p>The table below shows all assignments that are part of the course. Some are not to be included in the portfolio and some assignments are group assignments (see Table).</p>
-<table>
-<colgroup>
-<col width="23%" />
-<col width="29%" />
-<col width="23%" />
-<col width="23%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Assignment</th>
-<th align="center">Due date</th>
-<th align="right">Included in portfolio</th>
-<th align="right">Group assignment</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Descriptive statistics, reliability and validity, tools for reproducible data science (See Chapter <a href="assignment1.html#assignment1">10</a>)</td>
-<td align="center">2021-09-10</td>
-<td align="right">Yes</td>
-<td align="right">Yes</td>
-</tr>
-<tr class="even">
-<td align="left">Study designs</td>
-<td align="center">2021-10-01</td>
-<td align="right">Yes</td>
-<td align="right">No</td>
-</tr>
-<tr class="odd">
-<td align="left">Extraction and analysis of DNA</td>
-<td align="center">2021-10-15</td>
-<td align="right">Optional<sup>a</sup></td>
-<td align="right">Yes</td>
-</tr>
-<tr class="even">
-<td align="left">Extraction of RNA and analysis of qPCR experiments</td>
-<td align="center">2021-10-</td>
-<td align="right">Optional<sup>a</sup></td>
-<td align="right">Yes</td>
-</tr>
-<tr class="odd">
-<td align="left">Extraction and analysis of Protein</td>
-<td align="center">2021-10-</td>
-<td align="right">Optional<sup>a</sup></td>
-<td align="right">Yes</td>
-</tr>
-<tr class="even">
-<td align="left">Regression models and prediction from data</td>
-<td align="center">2021-10-</td>
-<td align="right">No</td>
-<td align="right">Yes</td>
-</tr>
-<tr class="odd">
-<td align="left">Drawing inference from statistical models</td>
-<td align="center">2021-10-</td>
-<td align="right">No</td>
-<td align="right">Yes</td>
-</tr>
-<tr class="even">
-<td align="left">Statistical power and sample size calculations</td>
-<td align="center">2021-11-</td>
-<td align="right">Yes</td>
-<td align="right">Yes</td>
-</tr>
-<tr class="odd">
-<td align="left">Analyzing repeated measures experiments</td>
-<td align="center">2021-11-</td>
-<td align="right">Yes</td>
-<td align="right">No</td>
-</tr>
-<tr class="even">
-<td align="left">Philosophy of science<sup>b</sup></td>
-<td align="center">2021-11-</td>
-<td align="right">Yes</td>
-<td align="right">No</td>
-</tr>
-</tbody>
-</table>
-<p><font size="2"><sup>a</sup> Select one laboratory assignments for your portfolio exam. <sup>b</sup> This assignment is presented in connection with lectures.
-</font></p>
-<p>In addition to arbeidskrav/assignments, smaller assignments and quizzes are presented in this book, but you are not required to do them to pass the course.</p>
-</div>
-<div id="other-information" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Other information</h2>
+<div id="how-to-hand-in-the-report." class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> How to hand in the report.</h2>
+<p>Copy the link to your github folder into canvas.</p>
 
 </div>
 </div>
@@ -401,8 +292,8 @@ Computer exercises require that you have special computer software installed on 
           </div>
         </div>
       </div>
-
-<a href="introduction-to-data-science.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="reliability-in-the-physiology-lab.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-the-molecular-exercise-physiology-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -89,7 +89,7 @@ The table below shows all assignments that are part of the course. Some are not 
 
 |Assignment |Due date |Included in portfolio |Group assignment|
 | :--- | :---: | ---:| ---:|
-|Descriptive statistics, reliability and validity| 2021-09-10 |Yes|Yes|
+|Descriptive statistics, reliability and validity, tools for reproducible data science (See Chapter \@ref(assignment1))| 2021-09-10 |Yes|Yes|
 |Study designs|2021-10-01 |Yes|No|
 |Extraction and analysis of DNA |2021-10-15|Optional^a^|Yes|
 |Extraction of RNA and analysis of qPCR experiments|2021-10-|Optional^a^|Yes|

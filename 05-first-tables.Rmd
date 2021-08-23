@@ -1,20 +1,244 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Wrangling data to create your first table
 
 Tables can be created as part of a R markdown document. This is because most "table generators" actually converts your code into an output format based on the rules of that particular format. The most common format to work with when you are building your analysis is html. Tables are special since their creation depend more heavily on the output format compared to other elements of R markdown documents. For example, when using the `kable` function from the `knitr` package you have to specify if you want html or latex output. Word output is not possible using the `knitr` package, but other table generators in rmarkdown (such as `flextable`)  *can* produce word output, meaning you can put tables in word documents from your R markdown file. There are several alternatives for generating tables[^tables]. We will start by exploring the built-in function in the `knitr` package.   
 
 [^tables]: See for example the [description of the `gt` package](https://gt.rstudio.com/index.html) that list a bunch of table generators.
 
-The basic work-flow of creating a table in R markdown is to first transform the data into a nice format and then get this underlying data into the table generator. The table generator is written in a code chunk an upon rendering of the R markdown file, the table generator will create, for example, html output.
+The basic work-flow of creating a table in R markdown is to first transform the data into a nice format and then get this underlying data into the table generator. The table generator is written in a code chunk and upon rendering of the R markdown file, the table generator will create, for example, html output.
 
-In this chapter we will also introduce some data wrangling tools since the table we will produce consists of summarized data.
+In this chapter we will also introduce some data wrangling tools since the table we will produce consists of summarized data. The functions we will introduce are found in the pakages `dplyr` and `tidyr`. These packages are loaded as part of the `tidyverse` package.
 
 ### Resources
+
+All `tidyverse`packages are [well documented](https://www.tidyverse.org/) and generally well represented in help forums. Google is your friend when looking for help.
+
 The `kable` function is described in a newly developed book, available online called [the R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html). The package, `kableExtra` comes with excellent [vignettes](https://cran.r-project.org/web/packages/kableExtra/) for both html and pdf outputs. `kableExtra` provides extra functions to customize your basic `knitr` table. 
 
 ## Making "Table 1"
 
-The first table in many report in sport and exercise studies is that "Participant characteristics" table. This first table summarizes background information on the participants. We will try to reproduce 
+The first table in many report in sport and exercise studies is the "Participant characteristics" table. This first table summarizes background information on the participants. We will try to create this table based on data from [@RN2358]. These data can be found in the `exscidata` package. To load the data and other required packages run the following code.
 
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse) # for data wrangling
+library(knitr) # for table creation
+library(kableExtra) # for extra styling of the table
+library(exscidata) # the dxadata
+```
+
+The end result of this exercise can be found below in Table @\ref(tab:table1-example). This summary table contains the average and standard deviation per group for the variables age, body mass and stature (height) and body fat as a percentage of the body mass. This table is a reproduction of the first part of Table 1 from [@RN2358].
+
+
+```{r table1-example, echo = FALSE, warning = FALSE, message=FALSE, results = "asis"}
+
+data(dxadata)
+
+dxadata %>%
+  select(participant, time, sex, include:weight, fat.whole) %>%
+  mutate(fat.whole = ((fat.whole / 1000) / weight) * 100) %>%
+  filter(time == "pre") %>%
+  group_by(sex, include) %>%
+  mutate(n = n()) %>%
+
+  pivot_longer(names_to =  "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  group_by(sex, include, variable) %>%
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  ungroup() %>%
+  mutate(m = signif(m, digits = 3), 
+         s = signif(s, digits = 2), 
+         ms = if_else(variable == "n", as.character(m), paste0(m, " (", s, ")")), 
+         sex_incl = paste(sex, include, sep = "_")) %>%
+  dplyr::select(-m, -s, - sex, -include) %>%
+
+  pivot_wider(names_from = sex_incl, 
+              values_from = ms) %>%
+  select(variable, female_incl, female_excl, male_incl, male_excl) %>%
+  mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
+                           labels = c("N", "Age (years)", "Mass (kg)", 
+                                      "Stature (cm)", "Body fat (%)"))) %>%
+  arrange(variable) %>%
+  
+  kable(format = "html", 
+        col.names = c(" ", "Included", "Excluded", "Included", "Excluded")) %>%
+  add_header_above(c(" " = 1, "Female" = 2, "Male" = 2)) %>%
+  kable_styling(position = "center")
+
+```
+
+We have to make several operations to re-create this table. First we can select the columns we want to work with further from the data set that also contains a lot of other variables. Let us start by looking at the full data set. Below we use the function `glmipse` from the `dplyr `tibble` package (which is also loaded with `tidyverse`).
+
+```{r}
+data("dxadata")
+
+glimpse(dxadata)
+```
+
+We can see that we got 80 rows and 59 columns in the dataset. The columns of interest to us are:
+
+- participant
+- time
+- sex
+- include
+- age
+- height
+- weight
+- fat.whole
+
+For a full description of the data set, you can type `?dxadata` in your console. The `participant` columns is good to have to keep track of the dataset in the beginning. You might want to have this information to perform "sanity checks" on some results. `time` is needed to remove some observation that are not needed. This pre-training table only sums up information from before the intervention starts. `sex` is a grouping variable together with `include`, Table 1 in [@RN2358] uses Sex and Inclusion in data analysis as grouping for descriptive data. The other variables are used to describe the data sample.
+
+### The pipe operator and select
+
+As mentioned above, we will start by selecting the variables we want to work further with. Using the `select` function from dplyr we can select columns that we need. In the code below I will use select as part of a "pipe". Think of the pipe as doing operations in sequel. Each time you use the pipe operator (`%>%`) you say "then do". The code below translates to: 
+
+- Take the dataset `dxadata`, *then do*
+- `select` the following variables, *then do*
+- print
+
+`print`, is a function that outputs the results of the operations. In each new function of a pipe, the data that we take with us from the above line ends up as the first argument. A representation of this behavior can be expressed as:
+
+`DATA %>%
+  FUNCTION(DATA, ARGUMENTS) %>%
+  FUNCTION(DATA, ARGUMENTS) %>%
+  FUNCTION(DATA)`
+  
+We do not need to type the data part, instead the pipe operator (`%>%`) gathers the data from each step and puts it in the subsequent function.
+
+Copy the code below to your own script or Rmarkdown document and run it. If you use a Rmarkdown document (.Rmd), you might want to set "Chunk output in console" in the settings menu. In my experience, this makes developing code a bit faster. 
+
+```{r, eval = FALSE}
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  print() # print the output
+
+```
+
+Notice that I have added short comments after each line to make it clear what I want to accomplish. We will build further on the above code, and this is a common work-flow. Using pipes, it is easy to extend the code by adding lines doing certain operations, one at the time. Notice also that the select function uses a list of variable names with `include:weight` being short for "take all variables *from* include *to* weight.
+
+### Filter observations
+
+The next step will be to filter observations. We need to remove the observations that comes from the post-intervention tests. The `time` variable contains to values `pre` and `post` to remove post-values we need to tell R to remove these all observations (rows) containing `post`. We will use the `filter` function from dplyr. This will be our first experience with logical operators. Let's try out to alternatives, copy the code to your console to see the results.
+
+```{r, eval = FALSE}
+## Alternative 1: ##
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter away all observation with "post"
+  filter(time != "post") %>%
+  
+  print() # print the output
+
+
+## Alternative 2: ##
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  print() # print the output
+
+
+
+```
+
+The above code should give the same output. The operator `!=` says "not equal to", the operator `==` says equal to. Notice that R uses two equal signs to say equal to. A single equal sign is used as an assignment operator in R.
+
+### Create or change variables
+
+The next problem for us is that we need to manipulate or combine information from two variables in order to calculate body fat percentage. The formula that we will use is simply expressing body fat as a percentage of the body weight.
+
+$$Body~fat~(\%) = \frac{Body~fat~(g)/1000}{Body~weight~(kg)} \times 100$$
+By using the mutate function we can add or manipulate existing variables in a pipe. Mutate takes as arguments a list of new variables:
+
+```{r, eval = FALSE}
+
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  print() # print the output
+
+
+```
+
+In the code above, we "replace" the variable `fat.whole` with the re-calculated variable.
+
+### Grouped operations and summary statistics
+
+In a pipe, we can group the data set giving us opportunities to calculate summary statistics over one or several grouping variables. In Table 1 in [@RN2358], `include` and `sex` are the two grouping variables. Using the `group_by()` function from `dplyr` sets a grouping of the data frame. If we use functions that summarizes data, such summarizes will be per group. In Table 1 in [@RN2358] the number of participants in each group are specified. We can use the function `n()` to calculate the number of observations per group in a `mutate` call.
+
+```{r, eval = FALSE}
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  print() # print the output
+
+
+```
+
+The new variable `n` now contains the number of observations in each group. For now we can regard this as a new variable. Each participant belongs to a specified group, and this specific group has `n` number of members.
+
+We can now go further and use the `summarise` function. Instead of adding variables to the existing data set, summarize reduces the data set using some summarizing function, such as `mean()` or `sd()`. These estimates are what we are looking for in our data set. Example of other summarizing functions for descriptive data are `min()` and `max()` for the minimum and maximum.
+
+We can use the `summarise()` function to calculate the mean and standard deviation for the weight variable.
+
+```{r, eval = FALSE}
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Summarise weight
+  summarise(weight.m = mean(weight), 
+            weight.s = sd(weight)) %>%
+  
+  print() # print the output
+```
+
+Try out the code in your own script. The above example gives us what we want, however, it means that we need to type a lot. Instead of needing to make a summary for each variable, we can combine the variables in a long format. To get to the long format we will use the `pivot_longer`
 
 
 ### Prerequisistes
