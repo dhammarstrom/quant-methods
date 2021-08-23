@@ -84,6 +84,11 @@ test-your-understandning
 wrangling-data-to-create-your-first-table
 resources-1
 making-table-1
+the-pipe-operator-and-select
+filter-observations
+create-or-change-variables
+grouped-operations-and-summary-statistics
+starting-the-table-generator---the-kable-function
 prerequisistes
 first-steps-decide-what-data-to-use-and-summarise
 final-thoughts-on-knitrkable-and-kableextra

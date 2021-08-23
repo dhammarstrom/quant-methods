@@ -52,6 +52,8 @@
 
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -211,7 +213,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.0.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#resources-1"><i class="fa fa-check"></i><b>6.0.1</b> Resources</a></li>
 <li class="chapter" data-level="6.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#making-table-1"><i class="fa fa-check"></i><b>6.1</b> Making “Table 1”</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#prerequisistes"><i class="fa fa-check"></i><b>6.1.1</b> Prerequisistes</a></li>
+<li class="chapter" data-level="6.1.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#the-pipe-operator-and-select"><i class="fa fa-check"></i><b>6.1.1</b> The pipe operator and select</a></li>
+<li class="chapter" data-level="6.1.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#filter-observations"><i class="fa fa-check"></i><b>6.1.2</b> Filter observations</a></li>
+<li class="chapter" data-level="6.1.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#create-or-change-variables"><i class="fa fa-check"></i><b>6.1.3</b> Create or change variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#grouped-operations-and-summary-statistics"><i class="fa fa-check"></i><b>6.1.4</b> Grouped operations and summary statistics</a></li>
+<li class="chapter" data-level="6.1.5" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#starting-the-table-generator---the-kable-function"><i class="fa fa-check"></i><b>6.1.5</b> Starting the table generator - The <code>kable</code> function</a></li>
+<li class="chapter" data-level="6.1.6" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#prerequisistes"><i class="fa fa-check"></i><b>6.1.6</b> Prerequisistes</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#first-steps-decide-what-data-to-use-and-summarise"><i class="fa fa-check"></i><b>6.2</b> First steps, decide what data to use and summarise</a></li>
 <li class="chapter" data-level="6.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#final-thoughts-on-knitrkable-and-kableextra"><i class="fa fa-check"></i><b>6.3</b> Final thoughts on <code>knitr::kable</code> and <code>kableExtra</code></a></li>
@@ -268,15 +275,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Start up RStudio, start a new project, select the Version Control option and copy the address to the repository.</li>
 <li>Add files to your project and upload to github. You need to add files, commit them and push using git. Use the command line in your terminal:</li>
 </ul>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="assignment1.html#cb68-1" aria-hidden="true" tabindex="-1"></a>git add <span class="sc">-</span>A</span>
-<span id="cb68-2"><a href="assignment1.html#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-3"><a href="assignment1.html#cb68-3" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">&quot;A short message to describe your changes&quot;</span></span>
-<span id="cb68-4"><a href="assignment1.html#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-5"><a href="assignment1.html#cb68-5" aria-hidden="true" tabindex="-1"></a>git push</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="assignment1.html#cb85-1" aria-hidden="true" tabindex="-1"></a>git add <span class="sc">-</span>A</span>
+<span id="cb85-2"><a href="assignment1.html#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-3"><a href="assignment1.html#cb85-3" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">&quot;A short message to describe your changes&quot;</span></span>
+<span id="cb85-4"><a href="assignment1.html#cb85-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-5"><a href="assignment1.html#cb85-5" aria-hidden="true" tabindex="-1"></a>git push</span></code></pre></div>
 <ul>
 <li>When you want to download the latest version of your project, type in the terminal:</li>
 </ul>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="assignment1.html#cb69-1" aria-hidden="true" tabindex="-1"></a>git pull</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="assignment1.html#cb86-1" aria-hidden="true" tabindex="-1"></a>git pull</span></code></pre></div>
 <ul>
 <li>You may encounter conflicts if pushing changes that overwrites changes made by other group memebers. These may be tricky but can be resolved… Have patience!</li>
 </ul>

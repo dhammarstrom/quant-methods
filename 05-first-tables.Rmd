@@ -238,7 +238,359 @@ dxadata %>% # take the dxadata data set
   print() # print the output
 ```
 
-Try out the code in your own script. The above example gives us what we want, however, it means that we need to type a lot. Instead of needing to make a summary for each variable, we can combine the variables in a long format. To get to the long format we will use the `pivot_longer`
+Try out the code in your own script. The above example gives us what we want, however, it means that we need to type a lot. Instead of needing to make a summary for each variable, we can combine the variables in a long format. To get to the long format we will use the `pivot_longer()` function. This function gathers several variables into two columns, one with the variables names as values and a second column with each value from the original variables. In our case we want to gather the variables `age`, `height`, `weight`, `fat.whole` and `n`. I will call the new variables that we create `variable` and `value`.
+
+```{r, eval = FALSE}
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  print()
+
+
+
+```
+
+The `cols = age:n` part of pivot_longer specifies what columns to gather. The dataset is still grouped by `include` and `sex`. We may now proceed by summarizing over these groups, however, we need to add another group to specify that we want differnt numbers per variable. To do this we re-specify the grouping. After this we add the `summarize` function. 
+
+```{r, eval = FALSE}
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  # Create a new grouping, adding variable
+  group_by(include, sex, variable) %>%
+  # Summarize in two new variables m for mean and s for SD
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  print()
+
+```
+
+If you run the above code you will notice that the the standard deviation of each variable is larger than zero except for `n` which has no variability. This is because we created it per group and simply calculated it as the sum of observations.
+
+Take a look at [Table 1](https://physoc.onlinelibrary.wiley.com/doi/full/10.1113/JP278455) in [@RN2358]. The format of the descriptive statistics are mean (SD), this is a preferred way of reporting these estimates. In order to achieve this we need to "manually" convert the numbers. In the example below, I will start by making a new variable by simply pasting the numbers together. I will also add the brackets.
+
+```{r, eval = FALSE}
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  # Create a new grouping, adding variable
+  group_by(include, sex, variable) %>%
+  # Summarize in two new variables m for mean and s for SD
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  # Add descriptive statistics together for nice formatting
+  mutate(ms = paste0(m, " (", s, ")"))
+  print()
+
+
+
+```
+
+In `mutate(ms = paste0(m, " (", s, ")"))`, the `paste0` function simply paste components together to form a string of text. First, the *vector* of means are being used, then we add a parenthesis, followed by the SD and finally a parenthesis.
+
+If you run the above code you will notice that you end up with numbers looking like this:
+
+`167.666666666667 (6.86851298231541)`
+
+This is neither good or good looking. We have to take care of the decimal places. There are a number of ways to do this but in this case the function `signif` seems to make the situation better. `signif` rounds to significant digits. This means that we will get different rounding dependning on the "size" of the value. I find `signif(m, 3)` to be agood starting point.
+
+```{r, eval = FALSE}
+
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  # Create a new grouping, adding variable
+  group_by(include, sex, variable) %>%
+  # Summarize in two new variables m for mean and s for SD
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  # Add descriptive statistics together for nice formatting
+  mutate(ms = paste0(signif(m, 3), # Use signif to round to significant numbers
+                     " (",
+                     signif(s, 3), 
+                     ")")) %>%
+  print()
+
+
+
+```
+
+Things are starting to look good. Run the code, what do you think. A problem with the above is that we do not want any dispersion/variability in the `n` variable. So if the variable is `n`we do not want that kind of formatting. It is time to add a conditional statment. In `dplyr` there are easy-to-use if/else functions. The function `if_else` sets a condition, if this is met then we can decide what to do, and likewise decide what to do if it is not met.
+
+This looks something like this inside a `dplyr` pipe:
+
+```{r, eval = FALSE}
+
+... %>%
+  if_else(IF_THIS_IS_TRUE, THE_DO_THIS, OTHERWISE_DO_THIS) %>%
+  print()
+
+```
+
+If `variable` is `n`, then we only want to display `m` otherwise we want the full code as described above: `paste0(signif(m, 3), " (", signif(s, 3), ")")`. We add this to the code:
+
+
+```{r, eval = FALSE}
+
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  # Create a new grouping, adding variable
+  group_by(include, sex, variable) %>%
+  # Summarize in two new variables m for mean and s for SD
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  # Add descriptive statistics together for nice formatting
+  mutate(ms = if_else(variable == "n", # If the variable is n
+                      as.character(m), # the only display the mean, otherwise:
+                        paste0(signif(m, 3), # Use signif to round to significant numbers
+                        " (",
+                        signif(s, 3), 
+                        ")"))) %>%
+  print()
+
+
+
+```
+
+The `as.character` part is needed because the output of `if_else` must be the same regardless of what the outcome of the test is.
+
+We are getting close to something!
+
+The next step is to remove variables that we do not longer need. The `select` function will help us with that. we can remove `m`and `s` by `select(-m, -s)`, the minus sign tells are to remove them from the list of variables in the dataset. We can then combine the grouping variables into a `include_sex` variable. Similarly to what we did above, we can simply paste them together. Now we will use the `paste` (function instead of `paste0`). In `paste` we specify a separator, maybe `_` is a nice alternative. Selecting away the individual variables from the new combined one leaves us with this code and data set.
+
+```{r, eval = FALSE}
+
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  # Create a new grouping, adding variable
+  group_by(include, sex, variable) %>%
+  # Summarize in two new variables m for mean and s for SD
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  # Add descriptive statistics together for nice formatting
+  mutate(ms = if_else(variable == "n", # If the variable is n
+                      as.character(m), # the only display the mean, otherwise:
+                        paste0(signif(m, 3), # Use signif to round to significant numbers
+                        " (",
+                        signif(s, 3), 
+                        ")")), 
+         # Doing a new grouping variable
+         include_sex = paste(include, sex, sep = "_")) %>%
+  # removing unnecessary variables after ungrouping
+  ungroup() %>%
+  select(-sex, -include, -m, -s)
+  print()
+
+```
+
+If `ungroup` is not used, we cannot select away variables since they are used to group the dataset. We will now perform the last operations befor we can make it a table. To make it formatted as in Table 1 in [@RN2358], we can make the present dataset wider. Each group has its own variable in addition to the variable name column. We will use the opposite function to `pivoy_longer`, namely `pivot_wider`[^pivot]. `pivot_wider` takes a variable or "key" column and a "values" column and divide the values based on the "key".
+
+[^pivot]: All this talk about pivot, take a break and [watch this clip](https://www.youtube.com/watch?v=L_PWbnHABsM) from the hit series "Friends", its about "pivot"!
+
+```{r, eval = FALSE}
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  # Create a new grouping, adding variable
+  group_by(include, sex, variable) %>%
+  # Summarize in two new variables m for mean and s for SD
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  # Add descriptive statistics together for nice formatting
+  mutate(ms = if_else(variable == "n", # If the variable is n
+                      as.character(m), # the only display the mean, otherwise:
+                        paste0(signif(m, 3), # Use signif to round to significant numbers
+                        " (",
+                        signif(s, 3), 
+                        ")")), 
+         # Doing a new grouping variable
+         include_sex = paste(include, sex, sep = "_")) %>%
+  # removing unnecessary variables after ungrouping
+  ungroup() %>%
+  select(-sex, -include, -m, -s) %>%
+  # pivot wider to match the desired data
+  pivot_wider(names_from = include_sex, 
+              values_from = ms) %>%
+  print()
+
+```
+
+A final step is to format the `variable` variable(!). The easiest is to make it a factor variable with specified levels and names. After we have added this information, we can use `arrange` to sort the dataset. Using `select` will help you sort the columns to match wath we want.
+
+```{r, eval = FALSE}
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  # Create a new grouping, adding variable
+  group_by(include, sex, variable) %>%
+  # Summarize in two new variables m for mean and s for SD
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  # Add descriptive statistics together for nice formatting
+  mutate(ms = if_else(variable == "n", # If the variable is n
+                      as.character(m), # the only display the mean, otherwise:
+                        paste0(signif(m, 3), # Use signif to round to significant numbers
+                        " (",
+                        signif(s, 3), 
+                        ")")), 
+         # Doing a new grouping variable
+         include_sex = paste(include, sex, sep = "_")) %>%
+  # removing unnecessary variables after ungrouping
+  ungroup() %>%
+  select(-sex, -include, -m, -s) %>%
+  # pivot wider to match the desired data
+  pivot_wider(names_from = include_sex, 
+              values_from = ms) %>%
+    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
+                           labels = c("N", "Age (years)", "Mass (kg)", 
+                                      "Stature (cm)", "Body fat (%)"))) %>%
+  arrange(variable) %>%
+  print()
+
+```
+
+### Starting the table generator - The `kable` function
+
+The next step is to push everything into the table generator. `kable` from the `knitr` package creates the framework for the table we are going to create. Next we will use functions from the `kableExtra` package to customize the table. Use the help pages for `kable` to see what can be specified in the function. We will make use of only a few arguments. `kable` can be part of a pipe, the same as the following `kableExtra` functions. 
+
 
 
 ### Prerequisistes
