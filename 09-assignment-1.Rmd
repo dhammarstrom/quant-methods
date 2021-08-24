@@ -23,9 +23,9 @@ The report should be uploaded to github with both a raw .Rmd file and a .html fi
 
 ([A nice introduction to github with R can be found here](https://happygitwithr.com/install-intro.html))
 
-- Create a [http://www.github.com](github account). All memebers of the group should have their own account.
-- Once signed in to github.com, create a new repository with an informative name. Make sure that the repository is public. One member of the group can make this repository in their own account.
-- Be sure to [download and install git](https://git-scm.com/downloads) on your computer 
+- Create a [github account](http://www.github.com). All members of the group should have their own account.
+- Once signed in to github.com, create a new repository with an informative name. Make sure that the repository is public. One member of the group can create this repository in their own account.
+- Be sure to [download and install git](https://git-scm.com/downloads) on your computer. 
 - Start up RStudio, start a new project, select the Version Control option and copy the address to the repository.
 - Add files to your project and upload to github. You need to add files, commit them and push using git. Use the command line in your terminal:
 
@@ -45,7 +45,7 @@ git pull
 
 ```
 
-- You may encounter conflicts if pushing changes that overwrites changes made by other group memebers. These may be tricky but can be resolved... Have patience!
+- You may encounter conflicts if pushing changes that overwrites changes made by other group members. These may be tricky but can be resolved... Have patience!
 
 ## How to hand in the report.
 

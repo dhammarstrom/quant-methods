@@ -414,8 +414,7 @@ Figure 5.6: Data mapped to fill and shape, and size specified manually to overri
 <p>Let’s say that we want to see how the values differs between groups. Boxplots are a good way to start as they will bring a standardized way of summarizing data. Boxplots can be plotted using the <code>geom_boxplot</code> function. Notice below that we put <code>group</code> on the x-axis (the first argument in the <code>aes</code> function) and <code>sj.max</code> on the y-axis. By doing so <code>ggplot</code> will make the x-axis discrete and the y-axis continuous.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="creating-your-first-graph.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group</span></span>
 <span id="cb29-2"><a href="creating-your-first-graph.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 4 rows containing non-finite values
-## (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 4 rows containing non-finite values (stat_boxplot).</code></pre>
 <div class="figure"><span id="fig:sq-boxplot-simple"></span>
 <img src="quant-methods_files/figure-html/sq-boxplot-simple-1.png" alt="Boxplot of all data per group from the cycling dataset." width="672" />
 <p class="caption">
@@ -425,10 +424,8 @@ Figure 5.7: Boxplot of all data per group from the cycling dataset.
 <p>We can layers of more geoms to the same plot. We might want to add individual data points also. <code>geom_jitter</code> might be a good place to start. This geom is good as it can be plotted over a group variable and points gets “jittered” or spread so we avoid overlap.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="creating-your-first-graph.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group</span></span>
 <span id="cb31-2"><a href="creating-your-first-graph.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 4 rows containing non-finite values
-## (stat_boxplot).</code></pre>
-<pre><code>## Warning: Removed 4 rows containing missing values
-## (geom_point).</code></pre>
+<pre><code>## Warning: Removed 4 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 4 rows containing missing values (geom_point).</code></pre>
 <div class="figure"><span id="fig:sq-boxplot-jitter"></span>
 <img src="quant-methods_files/figure-html/sq-boxplot-jitter-1.png" alt="Boxplot and jittered points of all data per group from the cycling dataset." width="672" />
 <p class="caption">
@@ -444,8 +441,7 @@ Figure 5.8: Boxplot and jittered points of all data per group from the cycling d
 <p>We are now ready to plot data over time, where the time variable is correctly ordered. Let’s use the boxplot again to plot all values over time.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="creating-your-first-graph.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per time point</span></span>
 <span id="cb35-2"><a href="creating-your-first-graph.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 4 rows containing non-finite values
-## (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 4 rows containing non-finite values (stat_boxplot).</code></pre>
 <div class="figure"><span id="fig:sq-boxplot"></span>
 <img src="quant-methods_files/figure-html/sq-boxplot-1.png" alt="Boxplot of all data per time-point from the cycling dataset." width="672" />
 <p class="caption">
@@ -455,8 +451,7 @@ Figure 5.9: Boxplot of all data per time-point from the cycling dataset.
 <p>We do not see any great tendencies in the whole data set. To further explore the data we might want to have different boxes per group per time. We can accomplish this by adding <code>fill = group</code> to our <code>aes</code> function.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="creating-your-first-graph.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group over time</span></span>
 <span id="cb37-2"><a href="creating-your-first-graph.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">fill =</span> group)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 4 rows containing non-finite values
-## (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 4 rows containing non-finite values (stat_boxplot).</code></pre>
 <div class="figure"><span id="fig:sq-boxplot-time"></span>
 <img src="quant-methods_files/figure-html/sq-boxplot-time-1.png" alt="Boxplot of all data per time-point and group from the cycling dataset." width="672" />
 <p class="caption">
@@ -468,8 +463,7 @@ Figure 5.10: Boxplot of all data per time-point and group from the cycling datas
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="creating-your-first-graph.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a line plot of all values per participant over time, color per group</span></span>
 <span id="cb39-2"><a href="creating-your-first-graph.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
 <span id="cb39-3"><a href="creating-your-first-graph.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 2 row(s) containing missing
-## values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
 <div class="figure"><span id="fig:sq-ind-data"></span>
 <img src="quant-methods_files/figure-html/sq-ind-data-1.png" alt="Boxplot of all data per time-point and group from the cycling dataset." width="672" />
 <p class="caption">
@@ -486,8 +480,7 @@ Figure 5.11: Boxplot of all data per time-point and group from the cycling datas
 <span id="cb41-3"><a href="creating-your-first-graph.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb41-4"><a href="creating-your-first-graph.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Time-point&quot;</span>,</span>
 <span id="cb41-5"><a href="creating-your-first-graph.html#cb41-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Squat jump height (cm)&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: Removed 2 row(s) containing missing
-## values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
 <div class="figure"><span id="fig:sq-ind-data-axis-title"></span>
 <img src="quant-methods_files/figure-html/sq-ind-data-axis-title-1.png" alt="Boxplot of all data per time-point and group from the cycling dataset." width="672" />
 <p class="caption">
@@ -501,8 +494,7 @@ Figure 5.12: Boxplot of all data per time-point and group from the cycling datas
 <span id="cb43-3"><a href="creating-your-first-graph.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Time-point&quot;</span>,</span>
 <span id="cb43-4"><a href="creating-your-first-graph.html#cb43-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Squat jump height (cm)&quot;</span>, </span>
 <span id="cb43-5"><a href="creating-your-first-graph.html#cb43-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Group&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: Removed 2 row(s) containing missing
-## values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
 <div class="figure"><span id="fig:sq-ind-data-axis-title2"></span>
 <img src="quant-methods_files/figure-html/sq-ind-data-axis-title2-1.png" alt="Boxplot of all data per time-point and group from the cycling dataset." width="672" />
 <p class="caption">
@@ -518,8 +510,7 @@ Figure 5.13: Boxplot of all data per time-point and group from the cycling datas
 <span id="cb45-6"><a href="creating-your-first-graph.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Time-point&quot;</span>,</span>
 <span id="cb45-7"><a href="creating-your-first-graph.html#cb45-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Squat jump height (cm)&quot;</span>, </span>
 <span id="cb45-8"><a href="creating-your-first-graph.html#cb45-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Group&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: Removed 2 row(s) containing missing
-## values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
 <div class="figure"><span id="fig:sq-ind-data-axis-title3"></span>
 <img src="quant-methods_files/figure-html/sq-ind-data-axis-title3-1.png" alt="Boxplot of all data per time-point and group from the cycling dataset." width="672" />
 <p class="caption">
@@ -589,8 +580,7 @@ Figure 5.14: Boxplot of all data per time-point and group from the cycling datas
 <span id="cb50-4"><a href="creating-your-first-graph.html#cb50-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Squat jump height (cm)&quot;</span>, </span>
 <span id="cb50-5"><a href="creating-your-first-graph.html#cb50-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Group&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb50-6"><a href="creating-your-first-graph.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 2 row(s) containing missing
-## values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
 <div class="figure"><span id="fig:bw-theme"></span>
 <img src="quant-methods_files/figure-html/bw-theme-1.png" alt="A figure using the black and white theme from `theme_bw`." width="672" />
 <p class="caption">
@@ -606,8 +596,7 @@ If we put the <code>theme</code> function last in the <code>ggplot</code> call w
 <span id="cb52-5"><a href="creating-your-first-graph.html#cb52-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Group&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb52-6"><a href="creating-your-first-graph.html#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb52-7"><a href="creating-your-first-graph.html#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))</span></code></pre></div>
-<pre><code>## Warning: Removed 2 row(s) containing missing
-## values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
 <div class="figure"><span id="fig:bw-theme-changed"></span>
 <img src="quant-methods_files/figure-html/bw-theme-changed-1.png" alt="A figure using the black and white theme from `theme_bw`." width="672" />
 <p class="caption">
