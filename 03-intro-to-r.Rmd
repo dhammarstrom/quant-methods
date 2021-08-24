@@ -189,9 +189,7 @@ A full guide to RMarkdown can be found on the official [R markdown web pages](ht
 
 [^1]: Cheat sheets are available in R Studio: *Help \> Cheatsheets*
 
-If you do not want to write text in a simple text editor, RStudio has it's own "visual markdown editor". This editor contains similar functions by press of buttoms as in for example word.
-
-R Markdown files has the filename extension `.Rmd`.
+If you do not want to write text in a simple text editor, RStudio has it's own "visual markdown editor". This editor contains similar functions by press of buttons as in for example word. R Markdown files has the file name extension `.Rmd`.
 
 ### Starting up your first R markdown file
 
@@ -201,31 +199,39 @@ A R markdown report is basically a text document containing plain text and code.
 
 When in R Studio, you can start a new document using *File \> New File \> R Markdown...*. This will launch a file in your script window looking something like this:
 
-    ---
-    title: "Untitled"
-    author: "Daniel Hammarström"
-    date: "2020 05 09"
-    output: html_document
-    ---
+```
+---
+title: "Untitled"
+author: "Daniel Hammarström"
+date: "2020 05 09"
+output: html_document
+---
 
-    ```f3175f2a-e8a0-4436-be12-b33925b6d220
-    31b8e172-b470-440e-83d8-e6b185028602:dAB5AHAAZQA6AFoAZwBBAHoAQQBEAEUAQQBOAHcAQQAxAEEARwBZAEEATQBnAEIAaABBAEMAMABBAFoAUQBBADQAQQBHAEUAQQBNAEEAQQB0AEEARABRAEEATgBBAEEAegBBAEQAWQBBAEwAUQBCAGkAQQBHAFUAQQBNAFEAQQB5AEEAQwAwAEEAWQBnAEEAegBBAEQATQBBAE8AUQBBAHkAQQBEAFUAQQBZAGcAQQAyAEEARwBRAEEATQBnAEEAeQBBAEQAQQBBAAoAcABvAHMAaQB0AGkAbwBuADoATQBRAEEAegBBAEQARQBBAE8AQQBBAHcAQQBBAD0APQAKAHAAcgBlAGYAaQB4ADoACgBzAG8AdQByAGMAZQA6AFkAQQBCAGcAQQBHAEEAQQBlAHcAQgB5AEEAQwBBAEEAYwB3AEIAbABBAEgAUQBBAGQAUQBCAHcAQQBDAHcAQQBJAEEAQgBwAEEARwA0AEEAWQB3AEIAcwBBAEgAVQBBAFoAQQBCAGwAQQBEADAAQQBSAGcAQgBCAEEARQB3AEEAVQB3AEIARgBBAEgAMABBAEMAZwBCAHIAQQBHADQAQQBhAFEAQgAwAEEASABJAEEATwBnAEEANgBBAEcAOABBAGMAQQBCADAAQQBIAE0AQQBYAHcAQgBqAEEARwBnAEEAZABRAEIAdQBBAEcAcwBBAEoAQQBCAHoAQQBHAFUAQQBkAEEAQQBvAEEARwBVAEEAWQB3AEIAbwBBAEcAOABBAEkAQQBBADkAQQBDAEEAQQBWAEEAQgBTAEEARgBVAEEAUgBRAEEAcABBAEEAbwBBAFkAQQBCAGcAQQBHAEEAQQAKAHMAdQBmAGYAaQB4ADoA:31b8e172-b470-440e-83d8-e6b185028602
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-    This is not an empty document and you have to remove the pre-written instructions. These instructions are quite handy though.
+```
+This is not an empty document and you have to remove the pre-written instructions. These instructions are quite handy though.
 
-    Basically, in **code chunks** you write R code, this code will be evaluated and the output will be displayed in the file you create. Between **code chunks** you can write markdown text. This will be displayed as ordinary text in your created document. The plain text sections can also contain code.
+Basically, in **code chunks** you write R code, this code will be evaluated and the output will be displayed in the file you create. Between **code chunks** you can write markdown text. This will be displayed as ordinary text in your created document. The plain text sections can also contain code.
 
-    A code chunk is created using 
+A code chunk is created using 
 
-\`r ''```` {r, eval=TRUE} 1 + 1 ``` ````
+````
+`r ''````{r, eval=TRUE}
+1 + 1
+```
+````
 
-This code chunk calculates `1+1`, when you compile the document, the result of this calculation will be shown below the code chunk. The same computation can be made "inline". An inline code chunk is created using `` `r 1+1` ``, here only the result of this computation will be shown in your text.
+This code chunk calculates `1+1`, when you compile the document, the result of this calculation will be shown below the code chunk. The same computation can be made "inline". An inline code chunk is created using `` `r
+1+1` ``, here only the result of this computation will be shown in your text.
 
-When you compile the doucument it is called "knitting", R uses a package called [`knitr`](https://yihui.name/knitr/) made to compile R Markdown files. In the upper part of the source window, there is a button kalled Knit. When you press it, RStudio will aske you to save the Rmd file and an output file will be created.
+When you compile the doucument it is called "knitting", R uses a package called [`knitr`](https://yihui.name/knitr/) made to compile R Markdown files. In the upper part of the source window, there is a button kalled Knit. When you press it, RStudio will aske you to save the Rmd file and an output file will be created. 
 
 ```{r, echo = FALSE}
 
@@ -303,22 +309,3 @@ You can gather references in bibtex format from Oria (use the BIBTEX icon) and f
 
 Recently RStudio added support for adding citations inside the visual markdown editor.
 
-### A note on folder structures
-
-When you build an analysis in a R markdown file. R will use the folder that the file is in as the **root directory**. This directory (or folder) is the top directory in a file system. This means that R will look for your bibtex file `bibliography.bib` in the same directory as where you have the Rmd-file.
-
-Think of this folder as `./` (confusing, I know! But bare with me!)
-
-Any subfolders to the root directory can be called things like
-
-`./data/` (a folder where you keep data files),
-
-`./figures/` (a folder where you output figures from analyses).
-
-The R markdown file, being in the root directory will have the "address" `./my_rmarkdown_file.Rmd`
-
-This has several advantages, as long as you stick to one rule: When doing an analysis, always use relative paths ("addresses" to files and folders). Never reference a folder or file by their absolute path. The absolute path for the file I'm writing in now is `C:/Users/706194/Dropbox/Undervisning%20och%20kurser%20HIL/IDR3002%20Course%20notes/IDR3002/markdown.Rmd`. The relative path is `./markdown.Rmd`.
-
-If you want to share your analysis, all you need to do is share the folder with all content with your friend. If you use relative paths, everything will work on your friends computer. If you use absolute paths, nothing will work, unless your friends computer uses a very similar folder structure (highly unlikely).
-
-If you decide to move your analysis somewhere else on your computer, your scripts will only work if you used relative paths.

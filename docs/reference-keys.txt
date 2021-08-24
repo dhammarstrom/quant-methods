@@ -29,6 +29,7 @@ fig:sq-ind-data-axis-title3
 fig:bw-theme
 fig:bw-theme-changed
 fig:example-fig-1
+tab:unnamed-chunk-44
 introduction
 practical-information
 learning-objectives
@@ -65,10 +66,8 @@ installing-and-using-swirl
 r-scripts
 r-markdown-files
 starting-up-your-first-r-markdown-file
-r-markdown
 microsoft-word-intergration
 adding-references
-a-note-on-folder-structures
 creating-your-first-graph
 resources
 learning-objectives-1
@@ -91,8 +90,9 @@ grouped-operations-and-summary-statistics
 starting-the-table-generator---the-kable-function
 summary
 flextable
-an-exercise-reproduce-table-1-from
+an-exercise-reproduce-table-1-from-rn2225
 writing-your-first-reproducible-report
+rstudio-projects-and-your-reproducible-report
 version-control-and-collaborative-coding-introducing-git-and-github.com
 reliability-in-the-physiology-lab
 assignment1

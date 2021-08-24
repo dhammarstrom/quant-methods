@@ -1104,8 +1104,122 @@ dxadata %>% # take the dxadata data set
 
 Nice! This table should also print if the code chunk is included in a R Markdown file and the output is choosen to be "Knit to word". See [flextable documentation](https://davidgohel.github.io/flextable/) for more customizations.
 
-## An exercise, reproduce Table 1 from 
+## An exercise, reproduce Table 1 from [@RN2225]
+
+ <script language="javascript"> 
+    function toggle(num) {
+      var ele = document.getElementById("toggleText" + num);
+      var text = document.getElementById("displayText" + num);
+      if(ele.style.display == "block") {
+        ele.style.display = "none";
+        text.innerHTML = "show";
+      }
+      else {
+        ele.style.display = "block";
+        text.innerHTML = "hide";
+      }
+   } 
+  </script>
 
 
 
+In total 30 college students performed a heavy resistance training protocol where training volume was constantly increased over six weeks. In [@RN2149], a part of the study, focusing on supplementation was reported. In [@RN2225], participants were devided into two clusters based on training responses and the authors aimed to answer the question what separates high- from low-responders to resistance training.
+
+In this exercise we want to reproduce a big part of Table 1 in [@RN2225]. The Table as re-produced here can be seen below. See the orginal article for explenation of clusters. To select variables, see the data description in the `exscidata` package, the dataset is called `hypertrophy`.
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+
+data(hypertrophy)
+
+
+hypertrophy %>%
+  dplyr::select(PARTICIPANT, GROUP, CLUSTER, AGE, BODYMASS_T1, 
+  TRAINING_AGE,
+                PERCENT_TYPE_II_T1, SQUAT_3RM, DXA_LBM_T1,
+                DXA_FM_T1, SQUAT_VOLUME) %>%
+  pivot_longer(cols = AGE:SQUAT_VOLUME, names_to = "variable", values_to = "values") %>%
+  # Remove participants not belonging to a cluster
+  filter(!is.na(CLUSTER)) %>%
+  
+  group_by(CLUSTER, variable) %>%
+  summarise(m = mean(values), 
+            s = sd(values)) %>%
+  mutate(m.s = paste0(round(m,1), " (", round(s,1), ")")) %>%
+  select(CLUSTER, variable, m.s) %>%
+  
+  pivot_wider(names_from = CLUSTER, values_from = m.s) %>%
+  
+  mutate(variable = factor(variable, levels = c("AGE", "TRAINING_AGE", "BODYMASS_T1", "DXA_LBM_T1", "DXA_FM_T1", "PERCENT_TYPE_II_T1", "SQUAT_3RM", "SQUAT_VOLUME"), 
+                    labels = c("Age (years)", "Training age (years)", "Body mass (kg)", "DXA LBM (kg)", "DXA FM (kg)", "Type II fiber (%)", "3RM back squat (kg)", "Total back squat training volume (kg)"))) %>%
+  arrange(variable) %>%
+  kable(col.names = c("Variable", "LOW (n = 10)", "HIGH (n = 10)"), 
+          caption = "Table 1. Baseline characteristics at PRE and back squat training volume between clusters")
+
+
+
+```
+
+  <a id="displayText" href="javascript:toggle(1);">Click for a possible solution</a>
+  <div id="toggleText1" style="display: none">
+
+```{r, eval = FALSE}
+
+# load the data
+data(hypertrophy)
+
+
+hypertrophy %>%
+# Select the variables needed to reproduce the table
+  dplyr::select(PARTICIPANT, 
+                GROUP, 
+                CLUSTER,
+                AGE, 
+                BODYMASS_T1, 
+                TRAINING_AGE,
+                PERCENT_TYPE_II_T1, 
+                SQUAT_3RM, 
+                DXA_LBM_T1,
+                DXA_FM_T1, 
+                SQUAT_VOLUME) %>%
+  # Pivot longer to gather all variables
+  pivot_longer(cols = AGE:SQUAT_VOLUME, names_to = "variable", values_to = "values") %>%
+  # Remove participants not belonging to a cluster
+  filter(!is.na(CLUSTER)) %>%
+  # Create a grouping before summarizing
+  group_by(CLUSTER, variable) %>%
+  summarise(m = mean(values), 
+            s = sd(values)) %>%
+  # For nice printing, paste mean and SD 
+  mutate(m.s = paste0(round(m,1), " (", round(s,1), ")")) %>%
+  # Select only variables needed for the table
+  select(CLUSTER, variable, m.s) %>%
+  # Transform the data set to a wide format based on clusters
+  pivot_wider(names_from = CLUSTER, values_from = m.s) %>%
+  # Re-arrange the "variable" variable, correct order with levels, and correct labels
+  mutate(variable = factor(variable, levels = c("AGE",
+                                                "TRAINING_AGE", 
+                                                "BODYMASS_T1", 
+                                                "DXA_LBM_T1", 
+                                                "DXA_FM_T1", 
+                                                "PERCENT_TYPE_II_T1", 
+                                                "SQUAT_3RM", 
+                                                "SQUAT_VOLUME"), 
+                                      labels = c("Age (years)", 
+                                                "Training age (years)", 
+                                                "Body mass (kg)", 
+                                                "DXA LBM (kg)", 
+                                                "DXA FM (kg)", 
+                                                "Type II fiber (%)", 
+                                                "3RM back squat (kg)", 
+                                                "Total back squat training volume (kg)"))) %>%
+  # Sort/order the dataset
+  arrange(variable) %>%
+  # Use kable to output the table with appropriate caption and column names. 
+  kable(col.names = c("Variable", "LOW (n = 10)", "HIGH (n = 10)"), 
+          caption = "Table 1. Baseline characteristics at PRE and back squat training volume between clusters")
+
+```
+
+
+  </div>
 

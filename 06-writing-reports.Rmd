@@ -1,1 +1,31 @@
 # Writing your first reproducible report
+
+As we have already discussed, the degree to which research is reproducible is to a degree determined by the availability of:
+
+- The data
+- Code to analyze the data
+
+To make these ingredients even more tasty, we might want to have them nicely stored together. A way of doing this using the tools we discuss in this course is to think of data analysis projects as self-contained projects with all necessary ingredients. In RStudio, projects can help you organize your data and code in one place. You can also link your project to an online repository for others to access. In this chapter we will discuss the reproducible report as belonging to such a project. The online repository/sharing part will be discussed in the next chapter.
+
+## RStudio projects and your reproducible report
+
+When you build an analysis in a R markdown file, R will use the folder that the file is in as the **root directory**. This directory (or folder) is the top directory in a file system. This means that R will look for data or other files used to generate the report in this folder structure. Think of this folder as `./` (confusing, I know! But bare with me!). Any sub-folders to the root directory can be called things like
+
+- `./data/` (a folder where you keep data files),
+- `./figures/` (a folder where you output figures from analyses).
+
+The R markdown file, being in the root directory will have the "address" `./my_rmarkdown_file.Rmd`
+
+This has several advantages, as long as you stick to one rule: When doing an analysis, always use relative paths ("addresses" to files and folders). Never reference a folder or file by their absolute path. The absolute path for the file I'm writing in now is `C:/Users/706194/Dropbox/Undervisning%20och%20kurser%20HIL/IDR3002%20Course%20notes/IDR3002/markdown.Rmd`. The relative path is `./markdown.Rmd`. When working in a "project" you may move the folder containing your project to other locations, but relative paths will not break.
+
+If you want to share your analysis, all you need to do is share the folder with all content with your friend. If you use relative paths, everything will work on your friends computer. If you use absolute paths, nothing will work, unless your friends computer uses a very similar folder structure (highly unlikely).
+
+RStudio projects makes it easy to jump back and forth between projects. The project menu (top right corner in RStudio) contains all your recent projects. When starting a new project, R will create a `.Rproj` file that contains the settings for your project. If you start a project a click this file, a settings menu will appear where you can customize settings for your particular project.
+
+What does this have to do with my RMarkdown file? As mentioned above, the RMarkdown file is often written in a context where you have data and other files that help you create your desired output. By always working in a project makes it easy to keep every file in the right place.
+
+
+
+
+
+

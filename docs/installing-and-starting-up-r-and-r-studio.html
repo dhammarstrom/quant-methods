@@ -184,12 +184,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-markdown-files"><i class="fa fa-check"></i><b>4.8</b> R markdown files</a>
 <ul>
 <li class="chapter" data-level="4.8.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#starting-up-your-first-r-markdown-file"><i class="fa fa-check"></i><b>4.8.1</b> Starting up your first R markdown file</a></li>
-</ul></li>
-<li class="chapter" data-level="4.9" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-markdown"><i class="fa fa-check"></i><b>4.9</b> R Markdown</a>
-<ul>
-<li class="chapter" data-level="4.9.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#microsoft-word-intergration"><i class="fa fa-check"></i><b>4.9.1</b> Microsoft Word intergration</a></li>
-<li class="chapter" data-level="4.9.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#adding-references"><i class="fa fa-check"></i><b>4.9.2</b> Adding references</a></li>
-<li class="chapter" data-level="4.9.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#a-note-on-folder-structures"><i class="fa fa-check"></i><b>4.9.3</b> A note on folder structures</a></li>
+<li class="chapter" data-level="4.8.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#microsoft-word-intergration"><i class="fa fa-check"></i><b>4.8.2</b> Microsoft Word intergration</a></li>
+<li class="chapter" data-level="4.8.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#adding-references"><i class="fa fa-check"></i><b>4.8.3</b> Adding references</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a>
@@ -221,9 +217,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#summary"><i class="fa fa-check"></i><b>6.2</b> Summary</a></li>
 <li class="chapter" data-level="6.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#flextable"><i class="fa fa-check"></i><b>6.3</b> Flextable</a></li>
-<li class="chapter" data-level="6.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#an-exercise-reproduce-table-1-from"><i class="fa fa-check"></i><b>6.4</b> An exercise, reproduce Table 1 from</a></li>
+<li class="chapter" data-level="6.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#an-exercise-reproduce-table-1-from-rn2225"><i class="fa fa-check"></i><b>6.4</b> An exercise, reproduce Table 1 from <span class="citation">(<span>Haun et al. 2019</span>)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a></li>
+<li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html#rstudio-projects-and-your-reproducible-report"><i class="fa fa-check"></i><b>7.1</b> RStudio projects and your reproducible report</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a></li>
 <li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a></li>
 <li class="chapter" data-level="10" data-path="assignment1.html"><a href="assignment1.html"><i class="fa fa-check"></i><b>10</b> Assignment 1: Reliability and tools for reproducible data science</a>
@@ -398,8 +397,7 @@ Figure 4.6: Set the workspace option to never save.
 <h2><span class="header-section-number">4.8</span> R markdown files</h2>
 <p><a href="https://rmarkdown.rstudio.com/">R markdown</a> files are more advanced computer programs as they in a structured way combines plain text and code to create an output file such as a <code>.html</code>, <code>.pdf</code> or <code>.doc</code> document. The text parts are written using a special syntax, markdown. The point of markdown is that you will use the same syntax that is later possible to convert to multiple formats. The syntax let’s you do all formatting explicitly, for example instead of getting your mouse to superscript some text you can add syntax <code>a^2^</code> to achieve a<sup>2</sup>.</p>
 <p>A full guide to RMarkdown can be found on the official <a href="https://rmarkdown.rstudio.com/lesson-1.html">R markdown web pages</a>. I suggest you take the time to get an overview of this langiage as it will make more fluent in the tools that enables reproducible computing. When writing R markdown, it is handy to have a <em>cheat sheet</em> close by when writing, <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">here is an example</a><a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>.</p>
-<p>If you do not want to write text in a simple text editor, RStudio has it’s own “visual markdown editor.” This editor contains similar functions by press of buttoms as in for example word.</p>
-<p>R Markdown files has the filename extension <code>.Rmd</code>.</p>
+<p>If you do not want to write text in a simple text editor, RStudio has it’s own “visual markdown editor.” This editor contains similar functions by press of buttons as in for example word. R Markdown files has the file name extension <code>.Rmd</code>.</p>
 <div id="starting-up-your-first-r-markdown-file" class="section level3" number="4.8.1">
 <h3><span class="header-section-number">4.8.1</span> Starting up your first R markdown file</h3>
 <p>A R markdown report is basically a text document containing plain text and code. When you compile your report, the code will be evaluated and figures, calculations and so on will be performed per your specifications. The resulting file will be an html, docx or pdf file. You can choose if you would like to display your code or not but your code is always available in your source document. R Markdown is very versatile, you can make word documents, <a href="https://bookdown.org/yihui/blogdown/">blog posts, websites</a> and pdf documents<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>.</p>
@@ -411,23 +409,23 @@ date: &quot;2020 05 09&quot;
 output: html_document
 ---
 
-```f3175f2a-e8a0-4436-be12-b33925b6d220
-31b8e172-b470-440e-83d8-e6b185028602:dAB5AHAAZQA6AFoAZwBBAHoAQQBEAEUAQQBOAHcAQQAxAEEARwBZAEEATQBnAEIAaABBAEMAMABBAFoAUQBBADQAQQBHAEUAQQBNAEEAQQB0AEEARABRAEEATgBBAEEAegBBAEQAWQBBAEwAUQBCAGkAQQBHAFUAQQBNAFEAQQB5AEEAQwAwAEEAWQBnAEEAegBBAEQATQBBAE8AUQBBAHkAQQBEAFUAQQBZAGcAQQAyAEEARwBRAEEATQBnAEEAeQBBAEQAQQBBAAoAcABvAHMAaQB0AGkAbwBuADoATQBRAEEAegBBAEQARQBBAE8AQQBBAHcAQQBBAD0APQAKAHAAcgBlAGYAaQB4ADoACgBzAG8AdQByAGMAZQA6AFkAQQBCAGcAQQBHAEEAQQBlAHcAQgB5AEEAQwBBAEEAYwB3AEIAbABBAEgAUQBBAGQAUQBCAHcAQQBDAHcAQQBJAEEAQgBwAEEARwA0AEEAWQB3AEIAcwBBAEgAVQBBAFoAQQBCAGwAQQBEADAAQQBSAGcAQgBCAEEARQB3AEEAVQB3AEIARgBBAEgAMABBAEMAZwBCAHIAQQBHADQAQQBhAFEAQgAwAEEASABJAEEATwBnAEEANgBBAEcAOABBAGMAQQBCADAAQQBIAE0AQQBYAHcAQgBqAEEARwBnAEEAZABRAEIAdQBBAEcAcwBBAEoAQQBCAHoAQQBHAFUAQQBkAEEAQQBvAEEARwBVAEEAWQB3AEIAbwBBAEcAOABBAEkAQQBBADkAQQBDAEEAQQBWAEEAQgBTAEEARgBVAEEAUgBRAEEAcABBAEEAbwBBAFkAQQBCAGcAQQBHAEEAQQAKAHMAdQBmAGYAaQB4ADoA:31b8e172-b470-440e-83d8-e6b185028602</code></pre>
-</div>
-</div>
-<div id="r-markdown" class="section level2" number="4.9">
-<h2><span class="header-section-number">4.9</span> R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<pre><code>This is not an empty document and you have to remove the pre-written instructions. These instructions are quite handy though.
 
-Basically, in **code chunks** you write R code, this code will be evaluated and the output will be displayed in the file you create. Between **code chunks** you can write markdown text. This will be displayed as ordinary text in your created document. The plain text sections can also contain code.
 
-A code chunk is created using </code></pre>
-<p>``` {r, eval=TRUE} 1 + 1 ``` ````</p>
-<p>This code chunk calculates <code>1+1</code>, when you compile the document, the result of this calculation will be shown below the code chunk. The same computation can be made “inline.” An inline code chunk is created using <code>2</code>, here only the result of this computation will be shown in your text.</p>
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;http://rmarkdown.rstudio.com&gt;.
+</code></pre>
+<p>This is not an empty document and you have to remove the pre-written instructions. These instructions are quite handy though.</p>
+<p>Basically, in <strong>code chunks</strong> you write R code, this code will be evaluated and the output will be displayed in the file you create. Between <strong>code chunks</strong> you can write markdown text. This will be displayed as ordinary text in your created document. The plain text sections can also contain code.</p>
+<p>A code chunk is created using</p>
+<pre><code>```{r, eval=TRUE}
+1 + 1
+```</code></pre>
+<p>This code chunk calculates <code>1+1</code>, when you compile the document, the result of this calculation will be shown below the code chunk. The same computation can be made “inline.” An inline code chunk is created using <code>`r 1+1`</code>, here only the result of this computation will be shown in your text.</p>
 <p>When you compile the doucument it is called “knitting,” R uses a package called <a href="https://yihui.name/knitr/"><code>knitr</code></a> made to compile R Markdown files. In the upper part of the source window, there is a button kalled Knit. When you press it, RStudio will aske you to save the Rmd file and an output file will be created.</p>
-<div id="microsoft-word-intergration" class="section level3" number="4.9.1">
-<h3><span class="header-section-number">4.9.1</span> Microsoft Word intergration</h3>
+</div>
+<div id="microsoft-word-intergration" class="section level3" number="4.8.2">
+<h3><span class="header-section-number">4.8.2</span> Microsoft Word intergration</h3>
 <p>Sometimes it is usefull to “knit” to a word file. For example when you want to share a report with fellow students who are not familiar with R. R Markdown can be used as a source for word documents (.docx).</p>
 <p>To create a word document from your Rmd-file you need a working installation of Microsoft Word. Settings for the output is specified in the YAML metadata field in the Rmd-file. This is the first section of a Rmd file, and when you want it to create a word file you specify it like this:</p>
 <pre><code>---
@@ -449,8 +447,8 @@ output:
 <p>When you knit the document again, your updated styles will be used your word document.</p>
 <p><a href="https://rmarkdown.rstudio.com/articles_docx.html">Here</a> you can read more about using R Markdown together with word. If you do not have word installed, you can also use Open Office. Read more about it <a href="https://bookdown.org/yihui/rmarkdown/opendocument-text-document.html">here</a>.</p>
 </div>
-<div id="adding-references" class="section level3" number="4.9.2">
-<h3><span class="header-section-number">4.9.2</span> Adding references</h3>
+<div id="adding-references" class="section level3" number="4.8.3">
+<h3><span class="header-section-number">4.8.3</span> Adding references</h3>
 <p>References/citations can be added to the report using the <code>bibliography</code> option in the YAML field. Citations needs to be listed in a file, multiple formats are avaliable. A convenient format is bibtex. When using this format, create a text file with the ending <code>.bib</code>, for example, <code>bibliography.bib</code>.</p>
 <p>The <code>bibliography.bib</code>-file needs to be activated in the YAML-field. Do it by adding this information:</p>
 <pre><code>---
@@ -481,18 +479,6 @@ bibliography: bibliography.bib
 <p>The reference will end up in the end of the document (as on this webpage).</p>
 <p>You can gather references in bibtex format from Oria (use the BIBTEX icon) and from PubMed using <a href="https://www.bioinformatics.org/texmed/">TeXMed</a>. You can also export reference in bibtex format from citation software like Endnote or Zotero. Make sure you check all references when entering them, especially MedTex gives some problems with “scandinavian” letters (å æ ä ø ö).</p>
 <p>Recently RStudio added support for adding citations inside the visual markdown editor.</p>
-</div>
-<div id="a-note-on-folder-structures" class="section level3" number="4.9.3">
-<h3><span class="header-section-number">4.9.3</span> A note on folder structures</h3>
-<p>When you build an analysis in a R markdown file. R will use the folder that the file is in as the <strong>root directory</strong>. This directory (or folder) is the top directory in a file system. This means that R will look for your bibtex file <code>bibliography.bib</code> in the same directory as where you have the Rmd-file.</p>
-<p>Think of this folder as <code>./</code> (confusing, I know! But bare with me!)</p>
-<p>Any subfolders to the root directory can be called things like</p>
-<p><code>./data/</code> (a folder where you keep data files),</p>
-<p><code>./figures/</code> (a folder where you output figures from analyses).</p>
-<p>The R markdown file, being in the root directory will have the “address” <code>./my_rmarkdown_file.Rmd</code></p>
-<p>This has several advantages, as long as you stick to one rule: When doing an analysis, always use relative paths (“addresses” to files and folders). Never reference a folder or file by their absolute path. The absolute path for the file I’m writing in now is <code>C:/Users/706194/Dropbox/Undervisning%20och%20kurser%20HIL/IDR3002%20Course%20notes/IDR3002/markdown.Rmd</code>. The relative path is <code>./markdown.Rmd</code>.</p>
-<p>If you want to share your analysis, all you need to do is share the folder with all content with your friend. If you use relative paths, everything will work on your friends computer. If you use absolute paths, nothing will work, unless your friends computer uses a very similar folder structure (highly unlikely).</p>
-<p>If you decide to move your analysis somewhere else on your computer, your scripts will only work if you used relative paths.</p>
 
 </div>
 </div>

@@ -184,12 +184,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-markdown-files"><i class="fa fa-check"></i><b>4.8</b> R markdown files</a>
 <ul>
 <li class="chapter" data-level="4.8.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#starting-up-your-first-r-markdown-file"><i class="fa fa-check"></i><b>4.8.1</b> Starting up your first R markdown file</a></li>
-</ul></li>
-<li class="chapter" data-level="4.9" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-markdown"><i class="fa fa-check"></i><b>4.9</b> R Markdown</a>
-<ul>
-<li class="chapter" data-level="4.9.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#microsoft-word-intergration"><i class="fa fa-check"></i><b>4.9.1</b> Microsoft Word intergration</a></li>
-<li class="chapter" data-level="4.9.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#adding-references"><i class="fa fa-check"></i><b>4.9.2</b> Adding references</a></li>
-<li class="chapter" data-level="4.9.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#a-note-on-folder-structures"><i class="fa fa-check"></i><b>4.9.3</b> A note on folder structures</a></li>
+<li class="chapter" data-level="4.8.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#microsoft-word-intergration"><i class="fa fa-check"></i><b>4.8.2</b> Microsoft Word intergration</a></li>
+<li class="chapter" data-level="4.8.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#adding-references"><i class="fa fa-check"></i><b>4.8.3</b> Adding references</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a>
@@ -221,9 +217,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#summary"><i class="fa fa-check"></i><b>6.2</b> Summary</a></li>
 <li class="chapter" data-level="6.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#flextable"><i class="fa fa-check"></i><b>6.3</b> Flextable</a></li>
-<li class="chapter" data-level="6.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#an-exercise-reproduce-table-1-from"><i class="fa fa-check"></i><b>6.4</b> An exercise, reproduce Table 1 from</a></li>
+<li class="chapter" data-level="6.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#an-exercise-reproduce-table-1-from-rn2225"><i class="fa fa-check"></i><b>6.4</b> An exercise, reproduce Table 1 from <span class="citation">(<span>Haun et al. 2019</span>)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a></li>
+<li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html#rstudio-projects-and-your-reproducible-report"><i class="fa fa-check"></i><b>7.1</b> RStudio projects and your reproducible report</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a></li>
 <li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a></li>
 <li class="chapter" data-level="10" data-path="assignment1.html"><a href="assignment1.html"><i class="fa fa-check"></i><b>10</b> Assignment 1: Reliability and tools for reproducible data science</a>
@@ -256,7 +255,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="writing-your-first-reproducible-report" class="section level1" number="7">
 <h1><span class="header-section-number">Chapter 7</span> Writing your first reproducible report</h1>
+<p>As we have already discussed, the degree to which research is reproducible is to a degree determined by the availability of:</p>
+<ul>
+<li>The data</li>
+<li>Code to analyze the data</li>
+</ul>
+<p>To make these ingredients even more tasty, we might want to have them nicely stored together. A way of doing this using the tools we discuss in this course is to think of data analysis projects as self-contained projects with all necessary ingredients. In RStudio, projects can help you organize your data and code in one place. You can also link your project to an online repository for others to access. In this chapter we will discuss the reproducible report as belonging to such a project. The online repository/sharing part will be discussed in the next chapter.</p>
+<div id="rstudio-projects-and-your-reproducible-report" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> RStudio projects and your reproducible report</h2>
+<p>When you build an analysis in a R markdown file, R will use the folder that the file is in as the <strong>root directory</strong>. This directory (or folder) is the top directory in a file system. This means that R will look for data or other files used to generate the report in this folder structure. Think of this folder as <code>./</code> (confusing, I know! But bare with me!). Any sub-folders to the root directory can be called things like</p>
+<ul>
+<li><code>./data/</code> (a folder where you keep data files),</li>
+<li><code>./figures/</code> (a folder where you output figures from analyses).</li>
+</ul>
+<p>The R markdown file, being in the root directory will have the “address” <code>./my_rmarkdown_file.Rmd</code></p>
+<p>This has several advantages, as long as you stick to one rule: When doing an analysis, always use relative paths (“addresses” to files and folders). Never reference a folder or file by their absolute path. The absolute path for the file I’m writing in now is <code>C:/Users/706194/Dropbox/Undervisning%20och%20kurser%20HIL/IDR3002%20Course%20notes/IDR3002/markdown.Rmd</code>. The relative path is <code>./markdown.Rmd</code>. When working in a “project” you may move the folder containing your project to other locations, but relative paths will not break.</p>
+<p>If you want to share your analysis, all you need to do is share the folder with all content with your friend. If you use relative paths, everything will work on your friends computer. If you use absolute paths, nothing will work, unless your friends computer uses a very similar folder structure (highly unlikely).</p>
+<p>RStudio projects makes it easy to jump back and forth between projects. The project menu (top right corner in RStudio) contains all your recent projects. When starting a new project, R will create a <code>.Rproj</code> file that contains the settings for your project. If you start a project a click this file, a settings menu will appear where you can customize settings for your particular project.</p>
+<p>What does this have to do with my RMarkdown file? As mentioned above, the RMarkdown file is often written in a context where you have data and other files that help you create your desired output. By always working in a project makes it easy to keep every file in the right place.</p>
 
+</div>
 </div>
             </section>
 

@@ -1,2 +1,5 @@
 # Version control and collaborative coding – introducing git and github.com
 
+In the previous chapter we underlined the importance of the project as a way of keeping data, code (and text) in an organized manner. 
+
+
