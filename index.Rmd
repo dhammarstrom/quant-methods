@@ -31,7 +31,7 @@ Welcome to the course **Quantitative methods and Statistics (IDR4000)**. The cou
 
 <center>
 
-<!-- INTRO VIDEO LECTURE -->
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/a236796813414a89b4136a7f0978cc201d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
 
 </center>
 
