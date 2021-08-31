@@ -21,7 +21,7 @@ The `kable` function is described in a newly developed book, available online ca
 
 ## Making "Table 1"
 
-The first table in many report in sport and exercise studies is the "Participant characteristics" table. This first table summarizes background information on the participants. We will try to create this table based on data from [@RN2358]. These data can be found in the `exscidata` package. To load the data and other required packages run the following code.
+The first table in many reports in sport and exercise studies is the "Participant characteristics" table. This first table summarizes background information on the participants. We will try to create this table based on data from [@RN2358]. These data can be found in the `exscidata` package. To load the data and other required packages run the following code.
 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse) # for data wrangling
@@ -30,10 +30,10 @@ library(kableExtra) # for extra styling of the table
 library(exscidata) # the dxadata
 ```
 
-The end result of this exercise can be found below in Table @\ref(tab:table1-example). This summary table contains the average and standard deviation per group for the variables age, body mass and stature (height) and body fat as a percentage of the body mass. This table is a reproduction of the first part of Table 1 from [@RN2358].
+The end result of this exercise can be found below in Table \@ref(tab:table1_example). This summary table contains the average and standard deviation per group for the variables age, body mass and stature (height) and body fat as a percentage of the body mass. This table is a reproduction of the first part of Table 1 from [@RN2358].
 
 
-```{r table1-example, echo = FALSE, warning = FALSE, message=FALSE, results = "asis"}
+```{r table1_example, echo = FALSE, warning = FALSE, message=FALSE, results = "asis"}
 
 data(dxadata)
 ?dxadata

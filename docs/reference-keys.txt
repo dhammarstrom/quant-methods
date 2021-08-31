@@ -31,6 +31,7 @@ fig:bw-theme-changed
 fig:example-fig-1
 tab:unnamed-chunk-44
 introduction
+quick-links
 practical-information
 learning-objectives
 learning-strategies
@@ -101,3 +102,9 @@ the-format-of-the-report
 how-to-hand-in-the-report.
 introduction-to-the-molecular-exercise-physiology-lab
 references
+study-questions
+chapter-2-introduction-to-data-science-with-relevant-literature
+chapter-3-storing-data-in-spreadsheets-with-relevant-literature
+chapter-4-installing-and-starting-up-r-and-r-studio
+chapter-5-creating-your-first-graph
+chapter-6-wrangling-data-to-create-your-first-table
