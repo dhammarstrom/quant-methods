@@ -2,6 +2,8 @@
 
 ## About data in the world of sport and exercise
 
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/351503c176514d4e86aa1f812e8444961d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
+
 Data is everywhere. Most of us walk around with a data collection device in our pockets all the time. This device (your mobile phone), records and store data about you all throughout the day. Such data are the basis of the *quantified self movement*[^1] that have grown in popularity as capabilities to record data from daily life has become better. People interested in quantifying their personal life does so for different reasons, but often with the intent to improve their health[^2]. 
 
 [^1]: Read more about the quantified self movement [in this Wikipedia article](https://en.wikipedia.org/wiki/Quantified_self) 
@@ -134,6 +136,8 @@ Peng et al. [@RN1492] suggests that a *fully reproducible* study has
 The above principally relates to the trust we can place in scientific results. However, the minimum standard of reproducibility has advantages also for the individual researcher (or master student)! When working with reproducible methods we will develop ways of documenting and automating our analyses. This will make it easier to collaborate with others. And, as it turns out, your most frequent collaborator is you, in the future!
 
 A reproducible data analysis means that you will make it explicit and transparent. In a traditional data analysis, most activities are in the "black box". In order to avoid bias [@RN1953], the "black box" needs to be opened and you need to actively make transparent decisions all along the analytic pipeline [@RN1955]. This pipeline preferably involves the whole problem solving cycle described by Spiegelhalter [@RN2902]. However the tools that we will learn about in this course focuses primarily on the steps from the experimental design to presentation of statistical results [@RN1955]. These steps includes data collection (and storage), data cleaning, exploratory data analysis, statistical modelling and statistical inference (and communication) [@RN1955].
+
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/f88d96adf0d446ecab08e1657623d0231d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
 
 ## Tools in data science
 
