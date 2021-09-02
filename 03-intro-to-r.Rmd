@@ -36,6 +36,10 @@ R is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software d
 
 ## Getting to know R and RStudio
 
+<center>
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/6c5a561664b542a58e932169d88fab981d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
+</center>
+
 R is a software used for scientific/statistical computing. If R is the engine, RStudio is the rest of the car. What does this mean?
 
 When doing operations in R, you are actually interacting with R through RStudio. RStudio have some important components to help you interact with R.
@@ -99,6 +103,10 @@ knitr::include_graphics("./images/rstudio_options3.png")
 ```
 
 ## Reproducible computing
+
+<center>
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/9088c1d0b6f0485c8cc4d901dde219271d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
+</center>
 
 Computations are reproducible when you can show how they were performed. This is achieved by creating "programs" from where your analyses are done. In R, these programs are lines or R code stored in a text-file, either .R-files or .Rmd-files. .R-files are scripts only containing code and comments. A .Rmd-file is a special script combining text and computer code, when the Rmd-file is executed, it creates a report and outputs the results from the code.
 
