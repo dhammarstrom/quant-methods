@@ -504,6 +504,8 @@ Note: Adding `\n` in the the text string breaks the line to get two rows.
   </div>
 
 
-
+<center>
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/a157aaf7cb8e432181f5edf8120afaee1d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
+</center>
 
 
