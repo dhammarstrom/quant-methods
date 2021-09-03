@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 14 Interpreting the results | The linear model</title>
+  <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 14 Interpreting the results | The linear model" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="github-repo" content="dhammarstrom/quant-methods" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 14 Interpreting the results | The linear model" />
+  
+  <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Daniel Hammarström" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="check-the-results.html"/>
+<link rel="next" href="categorical-predictors-and-multiple-regression.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quick-links"><i class="fa fa-check"></i><b>1.1</b> Quick links:</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#practical-information"><i class="fa fa-check"></i><b>1.2</b> Practical information</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.2.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#learning-strategies"><i class="fa fa-check"></i><b>1.2.2</b> Learning strategies</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#course-evaluation"><i class="fa fa-check"></i><b>1.2.3</b> Course evaluation</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#lecturers-and-course-administration"><i class="fa fa-check"></i><b>1.2.4</b> Lecturers and course administration</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#updates-notifications-and-general-communication"><i class="fa fa-check"></i><b>1.2.5</b> Updates, notifications and general communication</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#literature"><i class="fa fa-check"></i><b>1.2.6</b> Literature</a></li>
+<li class="chapter" data-level="1.2.7" data-path="index.html"><a href="index.html#grades"><i class="fa fa-check"></i><b>1.2.7</b> Grades</a></li>
+<li class="chapter" data-level="1.2.8" data-path="index.html"><a href="index.html#language"><i class="fa fa-check"></i><b>1.2.8</b> Language</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#assignments-and-portfolio-exam"><i class="fa fa-check"></i><b>1.3</b> Assignments and Portfolio exam</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#other-information"><i class="fa fa-check"></i><b>1.4</b> Other information</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html"><i class="fa fa-check"></i><b>2</b> Introduction to data science</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#about-data-in-the-world-of-sport-and-exercise"><i class="fa fa-check"></i><b>2.1</b> About data in the world of sport and exercise</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#replication-and-reproducibility"><i class="fa fa-check"></i><b>2.2</b> Replication and Reproducibility</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#tools-in-data-science"><i class="fa fa-check"></i><b>2.3</b> Tools in data science</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html"><i class="fa fa-check"></i><b>3</b> Storing data in spreadsheets</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#cells-and-simple-functions"><i class="fa fa-check"></i><b>3.1</b> Cells and simple functions</a></li>
+<li class="chapter" data-level="3.2" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#tidy-data-and-data-storage"><i class="fa fa-check"></i><b>3.2</b> Tidy data and data storage</a></li>
+<li class="chapter" data-level="3.3" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#recording-data"><i class="fa fa-check"></i><b>3.3</b> Recording data</a></li>
+<li class="chapter" data-level="3.4" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#saving-data"><i class="fa fa-check"></i><b>3.4</b> Saving data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html"><i class="fa fa-check"></i><b>4</b> Installing and starting up R (and R Studio)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-r"><i class="fa fa-check"></i><b>4.1</b> Installing R</a></li>
+<li class="chapter" data-level="4.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-r-studio"><i class="fa fa-check"></i><b>4.2</b> Installing R Studio</a></li>
+<li class="chapter" data-level="4.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#getting-to-know-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Getting to know R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#the-source"><i class="fa fa-check"></i><b>4.3.1</b> The source</a></li>
+<li class="chapter" data-level="4.3.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#environment"><i class="fa fa-check"></i><b>4.3.2</b> Environment</a></li>
+<li class="chapter" data-level="4.3.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#the-console"><i class="fa fa-check"></i><b>4.3.3</b> The console</a></li>
+<li class="chapter" data-level="4.3.4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#files-plots-packages-and-help-files"><i class="fa fa-check"></i><b>4.3.4</b> Files, plots, packages and help files</a></li>
+<li class="chapter" data-level="4.3.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#customizing-the-apperance-of-rstudio"><i class="fa fa-check"></i><b>4.3.5</b> Customizing the apperance of RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#reproducible-computing"><i class="fa fa-check"></i><b>4.4</b> Reproducible computing</a></li>
+<li class="chapter" data-level="4.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#packages"><i class="fa fa-check"></i><b>4.5</b> Packages</a></li>
+<li class="chapter" data-level="4.6" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-and-using-swirl"><i class="fa fa-check"></i><b>4.6</b> Installing and using <code>swirl</code></a></li>
+<li class="chapter" data-level="4.7" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-scripts"><i class="fa fa-check"></i><b>4.7</b> R scripts</a></li>
+<li class="chapter" data-level="4.8" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-markdown-files"><i class="fa fa-check"></i><b>4.8</b> R markdown files</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#starting-up-your-first-r-markdown-file"><i class="fa fa-check"></i><b>4.8.1</b> Starting up your first R markdown file</a></li>
+<li class="chapter" data-level="4.8.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#microsoft-word-intergration"><i class="fa fa-check"></i><b>4.8.2</b> Microsoft Word intergration</a></li>
+<li class="chapter" data-level="4.8.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#adding-references"><i class="fa fa-check"></i><b>4.8.3</b> Adding references</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#resources"><i class="fa fa-check"></i><b>5.1</b> Resources</a></li>
+<li class="chapter" data-level="5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#learning-objectives-1"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#prerequisites"><i class="fa fa-check"></i><b>5.3</b> Prerequisites</a></li>
+<li class="chapter" data-level="5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#the-ggplot2-system"><i class="fa fa-check"></i><b>5.4</b> The <code>ggplot2</code> system</a></li>
+<li class="chapter" data-level="5.5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#different-geoms-using-real-data"><i class="fa fa-check"></i><b>5.5</b> Different geoms using real data</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#a-plot-of-values-per-group"><i class="fa fa-check"></i><b>5.5.1</b> A plot of values per group</a></li>
+<li class="chapter" data-level="5.5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#data-over-time-per-group-and-individual"><i class="fa fa-check"></i><b>5.5.2</b> Data over time per group and individual</a></li>
+<li class="chapter" data-level="5.5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#titles-and-labels"><i class="fa fa-check"></i><b>5.5.3</b> Titles and labels</a></li>
+<li class="chapter" data-level="5.5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#annotations"><i class="fa fa-check"></i><b>5.5.4</b> Annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#themes"><i class="fa fa-check"></i><b>5.6</b> Themes</a></li>
+<li class="chapter" data-level="5.7" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#test-your-understandning"><i class="fa fa-check"></i><b>5.7</b> Test your understandning</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html"><i class="fa fa-check"></i><b>6</b> Wrangling data to create your first table</a>
+<ul>
+<li class="chapter" data-level="6.0.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#resources-1"><i class="fa fa-check"></i><b>6.0.1</b> Resources</a></li>
+<li class="chapter" data-level="6.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#making-table-1"><i class="fa fa-check"></i><b>6.1</b> Making “Table 1”</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#the-pipe-operator-and-select"><i class="fa fa-check"></i><b>6.1.1</b> The pipe operator and select</a></li>
+<li class="chapter" data-level="6.1.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#filter-observations"><i class="fa fa-check"></i><b>6.1.2</b> Filter observations</a></li>
+<li class="chapter" data-level="6.1.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#create-or-change-variables"><i class="fa fa-check"></i><b>6.1.3</b> Create or change variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#grouped-operations-and-summary-statistics"><i class="fa fa-check"></i><b>6.1.4</b> Grouped operations and summary statistics</a></li>
+<li class="chapter" data-level="6.1.5" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#starting-the-table-generator---the-kable-function"><i class="fa fa-check"></i><b>6.1.5</b> Starting the table generator - The <code>kable</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#summary"><i class="fa fa-check"></i><b>6.2</b> Summary</a></li>
+<li class="chapter" data-level="6.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#flextable"><i class="fa fa-check"></i><b>6.3</b> Flextable</a></li>
+<li class="chapter" data-level="6.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#an-exercise-reproduce-table-1-from-rn2225"><i class="fa fa-check"></i><b>6.4</b> An exercise, reproduce Table 1 from <span class="citation">(<span>Haun et al. 2019</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html#rstudio-projects-and-your-reproducible-report"><i class="fa fa-check"></i><b>7.1</b> RStudio projects and your reproducible report</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#why-version-control"><i class="fa fa-check"></i><b>8.1</b> Why version control</a></li>
+<li class="chapter" data-level="8.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#a-simplecomplicated-start"><i class="fa fa-check"></i><b>8.2</b> A simple/complicated start</a></li>
+<li class="chapter" data-level="8.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-by-step-instructions-on-setting-up-a-version-controlled-r-project."><i class="fa fa-check"></i><b>8.3</b> Step by step instructions on setting up a version controlled R project.</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-1.-create-a-free-github-account"><i class="fa fa-check"></i><b>8.3.1</b> Step 1. Create a free github account:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-2.-download-git."><i class="fa fa-check"></i><b>8.3.2</b> Step 2. Download git.</a></li>
+<li class="chapter" data-level="8.3.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-3.-connect-git-to-rstudio"><i class="fa fa-check"></i><b>8.3.3</b> Step 3. Connect git to RStudio</a></li>
+<li class="chapter" data-level="8.3.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-4.-create-a-new-online-repository"><i class="fa fa-check"></i><b>8.3.4</b> Step 4. Create a new online repository</a></li>
+<li class="chapter" data-level="8.3.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-5.-create-a-new-project-in-rstudio"><i class="fa fa-check"></i><b>8.3.5</b> Step 5. Create a new project in RStudio</a></li>
+<li class="chapter" data-level="8.3.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-6.-make-changes-to-your-project"><i class="fa fa-check"></i><b>8.3.6</b> Step 6. Make changes to your project</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#forking-and-pull-requests"><i class="fa fa-check"></i><b>8.4</b> Forking and pull requests</a></li>
+<li class="chapter" data-level="8.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#additional-great-things-about-github"><i class="fa fa-check"></i><b>8.5</b> Additional great things about GitHub</a></li>
+<li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
+<li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a></li>
+<li class="chapter" data-level="10" data-path="assignment1.html"><a href="assignment1.html"><i class="fa fa-check"></i><b>10</b> Assignment 1: Reliability and tools for reproducible data science</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="assignment1.html"><a href="assignment1.html#elements-of-the-report"><i class="fa fa-check"></i><b>10.1</b> Elements of the report</a></li>
+<li class="chapter" data-level="10.2" data-path="assignment1.html"><a href="assignment1.html#the-format-of-the-report"><i class="fa fa-check"></i><b>10.2</b> The format of the report</a></li>
+<li class="chapter" data-level="10.3" data-path="assignment1.html"><a href="assignment1.html#how-to-hand-in-the-report."><i class="fa fa-check"></i><b>10.3</b> How to hand in the report.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html"><i class="fa fa-check"></i><b>11</b> Introduction to the molecular exercise physiology lab</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#resources-3"><i class="fa fa-check"></i><b>11.1</b> Resources</a></li>
+<li class="chapter" data-level="11.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#straight-lines"><i class="fa fa-check"></i><b>11.2</b> Straight lines</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html"><i class="fa fa-check"></i><b>12</b> Fitting regression models in R</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#code-for-fitting-a-preliminary-model"><i class="fa fa-check"></i><b>12.0.1</b> Code for fitting a preliminary model</a></li>
+<li class="chapter" data-level="12.1" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#linear-relationship"><i class="fa fa-check"></i><b>12.1</b> Linear relationship</a></li>
+<li class="chapter" data-level="12.2" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#constant-variance"><i class="fa fa-check"></i><b>12.2</b> Constant variance</a></li>
+<li class="chapter" data-level="12.3" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#normal-residuals"><i class="fa fa-check"></i><b>12.3</b> Normal residuals</a></li>
+<li class="chapter" data-level="12.4" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#independent-observations"><i class="fa fa-check"></i><b>12.4</b> Independent observations</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="check-the-results.html"><a href="check-the-results.html"><i class="fa fa-check"></i><b>13</b> Check the results</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="check-the-results.html"><a href="check-the-results.html#a-note-about-printing-the-regression-table"><i class="fa fa-check"></i><b>13.1</b> A note about printing the regression table</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="interpreting-the-results.html"><a href="interpreting-the-results.html"><i class="fa fa-check"></i><b>14</b> Interpreting the results</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="interpreting-the-results.html"><a href="interpreting-the-results.html#do-problematic-observations-matter"><i class="fa fa-check"></i><b>14.1</b> Do problematic observations matter?</a></li>
+<li class="chapter" data-level="14.2" data-path="interpreting-the-results.html"><a href="interpreting-the-results.html#a-more-intepretable-model"><i class="fa fa-check"></i><b>14.2</b> A more intepretable model</a></li>
+<li class="chapter" data-level="14.3" data-path="interpreting-the-results.html"><a href="interpreting-the-results.html#an-exercise"><i class="fa fa-check"></i><b>14.3</b> An exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html"><i class="fa fa-check"></i><b>15</b> Categorical predictors and multiple regression</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#linear-models-can-be-used-instead-of-t-tests"><i class="fa fa-check"></i><b>15.1</b> Linear models can be used instead of t-tests</a></li>
+<li class="chapter" data-level="15.2" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>15.2</b> Dummy variables</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="multiple-regression.html"><a href="multiple-regression.html"><i class="fa fa-check"></i><b>16</b> Multiple regression</a></li>
+<li class="chapter" data-level="17" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>17</b> Study questions</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>17.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
+<li class="chapter" data-level="17.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>17.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
+<li class="chapter" data-level="17.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>17.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
+<li class="chapter" data-level="17.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>17.4</b> Chapter 5: Creating your first graph</a></li>
+<li class="chapter" data-level="17.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>17.5</b> Chapter 6: Wrangling data to create your first table</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>18</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The linear model</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="interpreting-the-results" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Interpreting the results</h1>
+<p>From our model we can predict that a participant with a height of 175 cm will have a VO<sub>2max</sub> of 4597 ml min<sup>-1</sup>. We can do this prediction by combining the intercept and slope term multiplied with 175 as x-value. Remember the equation:</p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1X\]</span></p>
+<p>As we have estimated this relationship we get the <span class="math inline">\(\beta\)</span>’s from the regression table and can input 175 instead of X.</p>
+<p>Actual values from the regression table can be accessed from a <code>tidy</code> table created with broom. But we can also use <code>coef()</code> to get the coefficients. Using <code>confint()</code> we will get confidence intervals for all parameters in a linear model.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="interpreting-the-results.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients</span></span>
+<span id="cb85-2"><a href="interpreting-the-results.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(m1)</span>
+<span id="cb85-3"><a href="interpreting-the-results.html#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="interpreting-the-results.html#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence intervals</span></span>
+<span id="cb85-5"><a href="interpreting-the-results.html#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m1)</span></code></pre></div>
+<p>The confidence interval can be used for hypothesis testing as can p-values from the summary table. The p-values tests against the null-hypothesis that the intercept and slope are 0. What does that mean in the case of the intercept in our model. The estimated intercept is -2596 meaning that when height is 0 the VO<sub>2max</sub> is -2596. We are very uncertain about this estimate as the confidence interval goes from -8766 to 3573. We cannot reject the null. Think a minute about what information this test may give in this situation.</p>
+<p>The slope estimate has a confidence interval that goes from <code>round(confint(m1)[2], 1)</code> to 75.5 which means that we may reject the null-hypothesis at the 5% level.</p>
+<div id="do-problematic-observations-matter" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Do problematic observations matter?</h2>
+<p>In the residual plot we could identify at least one potentially problematic observation. We can label observations in the residual plot to find out what observation is problematic.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="interpreting-the-results.html#cb86-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="sc">%&gt;%</span></span>
+<span id="cb86-2"><a href="interpreting-the-results.html#cb86-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">st.resid =</span> resid<span class="sc">/</span><span class="fu">sd</span>(resid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb86-3"><a href="interpreting-the-results.html#cb86-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, st.resid, <span class="at">label =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb86-4"><a href="interpreting-the-results.html#cb86-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb86-5"><a href="interpreting-the-results.html#cb86-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb86-6"><a href="interpreting-the-results.html#cb86-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_label</span>(<span class="at">nudge_x =</span> <span class="dv">25</span>, <span class="at">nudge_y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb86-7"><a href="interpreting-the-results.html#cb86-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p>The plot shows that participant 5 has the largest residual. If we would do the model without the potentially problematic observation we can see if this changes the conclusion of the analysis.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="interpreting-the-results.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl); <span class="fu">library</span>(tidyverse)</span>
+<span id="cb87-2"><a href="interpreting-the-results.html#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="interpreting-the-results.html#cb87-3" aria-hidden="true" tabindex="-1"></a>cyclingStudy_reduced <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb87-4"><a href="interpreting-the-results.html#cb87-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>, </span>
+<span id="cb87-5"><a href="interpreting-the-results.html#cb87-5" aria-hidden="true" tabindex="-1"></a>               subject <span class="sc">!=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb87-6"><a href="interpreting-the-results.html#cb87-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) </span>
+<span id="cb87-7"><a href="interpreting-the-results.html#cb87-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-8"><a href="interpreting-the-results.html#cb87-8" aria-hidden="true" tabindex="-1"></a>m1_reduced <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span> height.T1, <span class="at">data =</span> cyclingStudy_reduced)</span>
+<span id="cb87-9"><a href="interpreting-the-results.html#cb87-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-10"><a href="interpreting-the-results.html#cb87-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-11"><a href="interpreting-the-results.html#cb87-11" aria-hidden="true" tabindex="-1"></a>delta_beta <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> (<span class="fu">coef</span>(m1_reduced)[<span class="dv">2</span>]<span class="sc">/</span><span class="fu">coef</span>(m1)[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>The delta beta above calculates the percentage change in the slope as a consequence of removing the observation with the greatest residual. Another way to look for potential influential data points would be to check the scatter plot.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="interpreting-the-results.html#cb88-1" aria-hidden="true" tabindex="-1"></a>cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb88-2"><a href="interpreting-the-results.html#cb88-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb88-3"><a href="interpreting-the-results.html#cb88-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) <span class="sc">%&gt;%</span></span>
+<span id="cb88-4"><a href="interpreting-the-results.html#cb88-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ggplot</span>(<span class="fu">aes</span>(height.T1, VO2.max, <span class="at">label =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb88-5"><a href="interpreting-the-results.html#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb88-6"><a href="interpreting-the-results.html#cb88-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb88-7"><a href="interpreting-the-results.html#cb88-7" aria-hidden="true" tabindex="-1"></a>         <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Height (cm)&quot;</span>, </span>
+<span id="cb88-8"><a href="interpreting-the-results.html#cb88-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> <span class="fu">expression</span>(<span class="st">&quot;VO&quot;</span>[<span class="st">&quot;2max&quot;</span>]<span class="sc">~</span>(ml<span class="sc">^-</span><span class="dv">1</span><span class="sc">~</span>min<span class="sc">^-</span><span class="dv">1</span>))) <span class="sc">+</span></span>
+<span id="cb88-9"><a href="interpreting-the-results.html#cb88-9" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_label</span>(<span class="at">nudge_x =</span> <span class="dv">1</span>, <span class="at">nudge_y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb88-10"><a href="interpreting-the-results.html#cb88-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb88-11"><a href="interpreting-the-results.html#cb88-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb88-12"><a href="interpreting-the-results.html#cb88-12" aria-hidden="true" tabindex="-1"></a>         <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p>The plot will show participant 5 has not got a lot of “weight” in the slope. If an equally big residual would have been present in the far end of the range of the height variable, removing it would have made more difference. Since the observation is in the middle of the x’s, it wont be that influential.</p>
+<p>There are many ways of doing diagnostics for the ordinary linear model in R. The simplest way is to write <code>plot(m1)</code>, this will produce four graphs.</p>
+<ul>
+<li><p><em>Residuals vs. Fitted</em> shows the fitted (or predicted) values against the residuals. If we would have tried to fit a linear trend to curve linear data, we would have catch it here. We want equal spread all along the fitted values. We test the assumption of homoscedasticity and linear trend.</p></li>
+<li><p><em>Normal Q-Q</em> shows residual theoretical quantiles against the observed quantile. The points should to a large degree be on, or close to the line. We test the assumption of normality in the residuals.</p></li>
+<li><p><em>Scale location</em> similarly to the residual plot, we can assess assumptions of heteroscedasticity and if we find the trend in the data. We are looking for a straight, flat line and points equally scattered around it.</p></li>
+<li><p><em>Residual vs. Leverage</em> is good to find influential data points. If a point is outside the dashed line it changes the conclusion of the regression to a large degree. Remember that we identified participant 5 as a potential problematic case. The Residual vs. leverage shows that number 5 has a large residual value but no leverage, meaning that it does not change the slope of the regression line.</p></li>
+</ul>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+</div>
+<div id="a-more-intepretable-model" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> A more intepretable model</h2>
+<p>The intercept in model <code>m1</code> is interpreted as the VO<sub>2max</sub> when height is zero. We do not have any participants with height zero nor will we ever have. A nice modification to the model would be if could get the intercept to tell us something useful. We could get the model to tell us the VO<sub>2max</sub> in the tallest or shortest participant by setting them to zero. Even more interesting would be to get the VO<sub>2max</sub> at the average height.</p>
+<p>We accomplish this by mean centering the height variable. We remove the mean from all observations, this will put the intercept at the mean of heights as the mean will be zero.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="interpreting-the-results.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl); <span class="fu">library</span>(tidyverse)</span>
+<span id="cb89-2"><a href="interpreting-the-results.html#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-3"><a href="interpreting-the-results.html#cb89-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb89-4"><a href="interpreting-the-results.html#cb89-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb89-5"><a href="interpreting-the-results.html#cb89-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1)  <span class="sc">%&gt;%</span></span>
+<span id="cb89-6"><a href="interpreting-the-results.html#cb89-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">height.mc =</span> height.T1 <span class="sc">-</span> <span class="fu">mean</span>(height.T1)) <span class="co"># mean centering the height variable</span></span>
+<span id="cb89-7"><a href="interpreting-the-results.html#cb89-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-8"><a href="interpreting-the-results.html#cb89-8" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span> height.mc, <span class="at">data =</span> cyc_select)</span></code></pre></div>
+<p>Examine the fit, what happens to the coefficients?</p>
+</div>
+<div id="an-exercise" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> An exercise</h2>
+<p>We think that body dimensions influence physiological characteristics. To test if if the stature (<code>height.T1</code>) influence maximum ventilatory capacity (<code>VE.max</code>) fit a regression model, check model assumptions and interpret the results.</p>
+<script language="javascript"> 
+    function toggle(num) {
+      var ele = document.getElementById("toggleText" + num);
+      var text = document.getElementById("displayText" + num);
+      if(ele.style.display == "block") {
+        ele.style.display = "none";
+        text.innerHTML = "show";
+      }
+      else {
+        ele.style.display = "block";
+        text.innerHTML = "hide";
+      }
+   } 
+  </script>
+<a id="displayText" href="javascript:toggle(1);">Here is a possible solution</a>
+<div id="toggleText1" style="display: none">
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="interpreting-the-results.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Load data</span></span>
+<span id="cb90-2"><a href="interpreting-the-results.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="interpreting-the-results.html#cb90-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb90-4"><a href="interpreting-the-results.html#cb90-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb90-5"><a href="interpreting-the-results.html#cb90-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VE.max, height.T1)  <span class="sc">%&gt;%</span></span>
+<span id="cb90-6"><a href="interpreting-the-results.html#cb90-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">height.mc =</span> height.T1 <span class="sc">-</span> <span class="fu">mean</span>(height.T1)) <span class="co"># mean centering the height variable</span></span>
+<span id="cb90-7"><a href="interpreting-the-results.html#cb90-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-8"><a href="interpreting-the-results.html#cb90-8" aria-hidden="true" tabindex="-1"></a><span class="co"># fitting the model</span></span>
+<span id="cb90-9"><a href="interpreting-the-results.html#cb90-9" aria-hidden="true" tabindex="-1"></a>m1_ve <span class="ot">&lt;-</span> <span class="fu">lm</span>(VE.max <span class="sc">~</span> height.mc, <span class="at">data =</span> cyc_select)</span>
+<span id="cb90-10"><a href="interpreting-the-results.html#cb90-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-11"><a href="interpreting-the-results.html#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Check assumptions</span></span>
+<span id="cb90-12"><a href="interpreting-the-results.html#cb90-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1_ve)</span>
+<span id="cb90-13"><a href="interpreting-the-results.html#cb90-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-14"><a href="interpreting-the-results.html#cb90-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check coefficients</span></span>
+<span id="cb90-15"><a href="interpreting-the-results.html#cb90-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1_ve)</span>
+<span id="cb90-16"><a href="interpreting-the-results.html#cb90-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-17"><a href="interpreting-the-results.html#cb90-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Get confidence intervals</span></span>
+<span id="cb90-18"><a href="interpreting-the-results.html#cb90-18" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m1_ve)</span></code></pre></div>
+</div>
+<p></br></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="check-the-results.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="categorical-predictors-and-multiple-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["quant-methods.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
