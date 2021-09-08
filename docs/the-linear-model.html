@@ -242,7 +242,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
 <li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a></li>
+<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html#smallest-worthwhile-change-or-effect"><i class="fa fa-check"></i><b>9.1</b> Smallest worthwhile change or effect</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="assignment1.html"><a href="assignment1.html"><i class="fa fa-check"></i><b>10</b> Assignment 1: Reliability and tools for reproducible data science</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="assignment1.html"><a href="assignment1.html#elements-of-the-report"><i class="fa fa-check"></i><b>10.1</b> Elements of the report</a></li>
@@ -329,24 +332,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A straight line can be fitted to describe a relationship between two variables. This relationship can also be described with a formula:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x\]</span></p>
 <p>Where <span class="math inline">\(y\)</span> is the outcome variable, <span class="math inline">\(\beta_0\)</span> is the intercept, <span class="math inline">\(\beta_1\)</span> is the slope and <span class="math inline">\(x\)</span> is the predictor.</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-48-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-55-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>In the model shown above, y increases two units for every unit increase in x. If we measure something in nature and find such a fit (every point on the line) we should check our calculations as perfect relationships are seldom found in measured variables. This because of measurement error and other non measured variables that affect the relationship. We quantify these unmeasured sources of variation in an additional term in the formula:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x + \epsilon\]</span></p>
 <p><span class="math inline">\(\epsilon\)</span> is the error-term. Here we quantify the distance from the best fit line for every observation. The best fit line is the line that minimizes the squared residuals (<span class="math inline">\(e_i^2\)</span>, in this case <span class="math inline">\(e\)</span> is used to signify the error as it is observed data). A more realistic regression model contains some error.</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-49-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-56-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>In the above figure, the error or residual is the distance (red lines) from the predicted (blue points) to the observed (black points).</p>
 <p>A two variable relationship can be positive (increase in y as x increases) or negative (y decreases as x increases).</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-50-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-57-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="fitting-regression-models-in-r" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> Fitting regression models in R</h2>
 <p>The data above can be fitted in R using the <code>lm()</code> function. We get far by specifying a <code>formula</code> and <code>data</code> where the variables used in the formula are stored. We can store a model as an object and inspect the results by using the <code>summary()</code> function.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="the-linear-model.html#cb73-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">5.461851</span>, <span class="fl">6.110910</span>, <span class="fl">6.952707</span>, <span class="fl">5.321775</span>, <span class="fl">5.951849</span>),</span>
-<span id="cb73-2"><a href="the-linear-model.html#cb73-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">9.168992</span>,  <span class="fl">8.273749</span>,  <span class="fl">5.926797</span>, <span class="fl">10.745583</span>,  <span class="fl">7.999151</span>))</span>
-<span id="cb73-3"><a href="the-linear-model.html#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-4"><a href="the-linear-model.html#cb73-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> df)</span>
-<span id="cb73-5"><a href="the-linear-model.html#cb73-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-6"><a href="the-linear-model.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="the-linear-model.html#cb87-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">5.461851</span>, <span class="fl">6.110910</span>, <span class="fl">6.952707</span>, <span class="fl">5.321775</span>, <span class="fl">5.951849</span>),</span>
+<span id="cb87-2"><a href="the-linear-model.html#cb87-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">9.168992</span>,  <span class="fl">8.273749</span>,  <span class="fl">5.926797</span>, <span class="fl">10.745583</span>,  <span class="fl">7.999151</span>))</span>
+<span id="cb87-3"><a href="the-linear-model.html#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-4"><a href="the-linear-model.html#cb87-4" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> df)</span>
+<span id="cb87-5"><a href="the-linear-model.html#cb87-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-6"><a href="the-linear-model.html#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ x, data = df)
@@ -369,21 +372,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The estimates from a summary in a two variable situation tells the value of <span class="math inline">\(y\)</span> when x is zero and the increase in <span class="math inline">\(y\)</span> for every unit increase in <span class="math inline">\(x\)</span>. Can you identify these from the output above?</p>
 <p>Two-variable regression (univariate regression) is closely related to the correlation. Try out the code <code>cor.test(df$x, df$y)</code> and see what similarities you find between the outputs.</p>
 <p>In the model we use in the example, the intercept is quite “far away” from the rest of the data (see figure below).</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-53-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-60-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Let’s fit some real data. We might wonder if there are some characteristic that is related to VO<sub>2max</sub>. For example, do taller individuals have greater VO<sub>2max</sub>? It is always a good idea to start with a plot before we do the modeling.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="the-linear-model.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl); </span>
-<span id="cb75-2"><a href="the-linear-model.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb75-3"><a href="the-linear-model.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
-<span id="cb75-4"><a href="the-linear-model.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cyclingstudy&quot;</span>)</span>
-<span id="cb75-5"><a href="the-linear-model.html#cb75-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-6"><a href="the-linear-model.html#cb75-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-7"><a href="the-linear-model.html#cb75-7" aria-hidden="true" tabindex="-1"></a> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb75-8"><a href="the-linear-model.html#cb75-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb75-9"><a href="the-linear-model.html#cb75-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) <span class="sc">%&gt;%</span></span>
-<span id="cb75-10"><a href="the-linear-model.html#cb75-10" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ggplot</span>(<span class="fu">aes</span>(height.T1, VO2.max)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb75-11"><a href="the-linear-model.html#cb75-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Height (cm)&quot;</span>, </span>
-<span id="cb75-12"><a href="the-linear-model.html#cb75-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> <span class="fu">expression</span>(<span class="st">&quot;VO&quot;</span>[<span class="st">&quot;2max&quot;</span>]<span class="sc">~</span>(ml<span class="sc">^-</span><span class="dv">1</span><span class="sc">~</span>min<span class="sc">^-</span><span class="dv">1</span>))) <span class="sc">+</span></span>
-<span id="cb75-13"><a href="the-linear-model.html#cb75-13" aria-hidden="true" tabindex="-1"></a>         <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="the-linear-model.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl); </span>
+<span id="cb89-2"><a href="the-linear-model.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb89-3"><a href="the-linear-model.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
+<span id="cb89-4"><a href="the-linear-model.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cyclingstudy&quot;</span>)</span>
+<span id="cb89-5"><a href="the-linear-model.html#cb89-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-6"><a href="the-linear-model.html#cb89-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-7"><a href="the-linear-model.html#cb89-7" aria-hidden="true" tabindex="-1"></a> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb89-8"><a href="the-linear-model.html#cb89-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb89-9"><a href="the-linear-model.html#cb89-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) <span class="sc">%&gt;%</span></span>
+<span id="cb89-10"><a href="the-linear-model.html#cb89-10" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ggplot</span>(<span class="fu">aes</span>(height.T1, VO2.max)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb89-11"><a href="the-linear-model.html#cb89-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Height (cm)&quot;</span>, </span>
+<span id="cb89-12"><a href="the-linear-model.html#cb89-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> <span class="fu">expression</span>(<span class="st">&quot;VO&quot;</span>[<span class="st">&quot;2max&quot;</span>]<span class="sc">~</span>(ml<span class="sc">^-</span><span class="dv">1</span><span class="sc">~</span>min<span class="sc">^-</span><span class="dv">1</span>))) <span class="sc">+</span></span>
+<span id="cb89-13"><a href="the-linear-model.html#cb89-13" aria-hidden="true" tabindex="-1"></a>         <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>There might be a positive relationship, what do you think? You might get a clearer picture if you use <code>geom_smooth(method = "lm")</code> in your ggplot command, try it out!</p>
 <p>To quantify the relationship between Height (<code>height.T1</code>) and VO<sub>2max</sub> (<code>VO2.max</code>) we can fit a linear model. Below I store the model in an object called <code>m1</code>. Before we look at the results of the regression model, we should think about the data and inspect the fit to see if it matches with our assumptions. Assumptions that generally needs to be filled in order to get a valid regression model are:</p>
 <ul>
@@ -394,13 +397,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="code-for-fitting-a-preliminary-model" class="section level4" number="12.3.0.1">
 <h4><span class="header-section-number">12.3.0.1</span> Code for fitting a preliminary model</h4>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="the-linear-model.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb76-2"><a href="the-linear-model.html#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-3"><a href="the-linear-model.html#cb76-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span>  cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb76-4"><a href="the-linear-model.html#cb76-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb76-5"><a href="the-linear-model.html#cb76-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) </span>
-<span id="cb76-6"><a href="the-linear-model.html#cb76-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-7"><a href="the-linear-model.html#cb76-7" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span> height.T1, <span class="at">data =</span> cyc_select)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="the-linear-model.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb90-2"><a href="the-linear-model.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="the-linear-model.html#cb90-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span>  cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb90-4"><a href="the-linear-model.html#cb90-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb90-5"><a href="the-linear-model.html#cb90-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) </span>
+<span id="cb90-6"><a href="the-linear-model.html#cb90-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-7"><a href="the-linear-model.html#cb90-7" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span> height.T1, <span class="at">data =</span> cyc_select)</span></code></pre></div>
 </div>
 <div id="linear-relationship" class="section level3" number="12.3.1">
 <h3><span class="header-section-number">12.3.1</span> Linear relationship</h3>
@@ -409,37 +412,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="constant-variance" class="section level3" number="12.3.2">
 <h3><span class="header-section-number">12.3.2</span> Constant variance</h3>
 <p>This assumption can be checked by creating a residual plot. We will do it here by hand to see how it works. The model is fitted and stored in the object <code>m1</code>. From this object we can use the <code>residuals()</code> function to get every residual. We can add this data to the data set by creating a new variable called <code>resid</code>.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="the-linear-model.html#cb77-1" aria-hidden="true" tabindex="-1"></a>cyc_select<span class="sc">$</span>resid <span class="ot">&lt;-</span> <span class="fu">residuals</span>(m1)</span>
-<span id="cb77-2"><a href="the-linear-model.html#cb77-2" aria-hidden="true" tabindex="-1"></a>cyc_select<span class="sc">$</span>fitted <span class="ot">&lt;-</span> <span class="fu">fitted</span>(m1)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="the-linear-model.html#cb91-1" aria-hidden="true" tabindex="-1"></a>cyc_select<span class="sc">$</span>resid <span class="ot">&lt;-</span> <span class="fu">residuals</span>(m1)</span>
+<span id="cb91-2"><a href="the-linear-model.html#cb91-2" aria-hidden="true" tabindex="-1"></a>cyc_select<span class="sc">$</span>fitted <span class="ot">&lt;-</span> <span class="fu">fitted</span>(m1)</span></code></pre></div>
 <p>It is common practice to plot the residuals against the fitted values.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="the-linear-model.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb78-2"><a href="the-linear-model.html#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-3"><a href="the-linear-model.html#cb78-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="sc">%&gt;%</span></span>
-<span id="cb78-4"><a href="the-linear-model.html#cb78-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, resid)) <span class="sc">+</span> </span>
-<span id="cb78-5"><a href="the-linear-model.html#cb78-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb78-6"><a href="the-linear-model.html#cb78-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb78-7"><a href="the-linear-model.html#cb78-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="the-linear-model.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb92-2"><a href="the-linear-model.html#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="the-linear-model.html#cb92-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="sc">%&gt;%</span></span>
+<span id="cb92-4"><a href="the-linear-model.html#cb92-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, resid)) <span class="sc">+</span> </span>
+<span id="cb92-5"><a href="the-linear-model.html#cb92-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb92-6"><a href="the-linear-model.html#cb92-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb92-7"><a href="the-linear-model.html#cb92-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>Sometimes you will see standardized residuals. This is the residual divided by the standard deviation of the residual. We can create this standardization like this:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="the-linear-model.html#cb79-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="sc">%&gt;%</span></span>
-<span id="cb79-2"><a href="the-linear-model.html#cb79-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">st.resid =</span> resid<span class="sc">/</span><span class="fu">sd</span>(resid)) <span class="sc">%&gt;%</span></span>
-<span id="cb79-3"><a href="the-linear-model.html#cb79-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, st.resid)) <span class="sc">+</span> </span>
-<span id="cb79-4"><a href="the-linear-model.html#cb79-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb79-5"><a href="the-linear-model.html#cb79-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb79-6"><a href="the-linear-model.html#cb79-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="the-linear-model.html#cb93-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="sc">%&gt;%</span></span>
+<span id="cb93-2"><a href="the-linear-model.html#cb93-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">st.resid =</span> resid<span class="sc">/</span><span class="fu">sd</span>(resid)) <span class="sc">%&gt;%</span></span>
+<span id="cb93-3"><a href="the-linear-model.html#cb93-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, st.resid)) <span class="sc">+</span> </span>
+<span id="cb93-4"><a href="the-linear-model.html#cb93-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb93-5"><a href="the-linear-model.html#cb93-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb93-6"><a href="the-linear-model.html#cb93-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>Looking at the plot tells us that observation with the largest error is about 2.5 standard deviation away from its predicted value. We are suffering a bit from having a small amount of data here. But the residual plot does not invalidate the regression.</p>
 </div>
 <div id="normal-residuals" class="section level3" number="12.3.3">
 <h3><span class="header-section-number">12.3.3</span> Normal residuals</h3>
 <p>To check if the residuals are normal, we can create a plot that plot every observed residual against its theoretical position in a normal distribution. This is a quantile-quantile plot. The show the concept we may sample data from a normal distribution and plot it against the theoretical qunatile.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="the-linear-model.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb80-2"><a href="the-linear-model.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>)), <span class="fu">aes</span>(<span class="at">sample =</span> y)) <span class="sc">+</span> <span class="fu">stat_qq</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> <span class="fu">stat_qq_line</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="the-linear-model.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb94-2"><a href="the-linear-model.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>)), <span class="fu">aes</span>(<span class="at">sample =</span> y)) <span class="sc">+</span> <span class="fu">stat_qq</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> <span class="fu">stat_qq_line</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>The code above samples 100 observations. They are plotted against their “theoretical values.” If the values (points) follows the straight line, we have data that follows a normal distribution. The same can be tested from our fit.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="the-linear-model.html#cb81-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="sc">%&gt;%</span></span>
-<span id="cb81-2"><a href="the-linear-model.html#cb81-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">st.resid =</span> resid<span class="sc">/</span><span class="fu">sd</span>(resid)) <span class="sc">%&gt;%</span></span>
-<span id="cb81-3"><a href="the-linear-model.html#cb81-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> st.resid)) <span class="sc">+</span></span>
-<span id="cb81-4"><a href="the-linear-model.html#cb81-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">stat_qq</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
-<span id="cb81-5"><a href="the-linear-model.html#cb81-5" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb81-6"><a href="the-linear-model.html#cb81-6" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="the-linear-model.html#cb95-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="sc">%&gt;%</span></span>
+<span id="cb95-2"><a href="the-linear-model.html#cb95-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">st.resid =</span> resid<span class="sc">/</span><span class="fu">sd</span>(resid)) <span class="sc">%&gt;%</span></span>
+<span id="cb95-3"><a href="the-linear-model.html#cb95-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> st.resid)) <span class="sc">+</span></span>
+<span id="cb95-4"><a href="the-linear-model.html#cb95-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">stat_qq</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
+<span id="cb95-5"><a href="the-linear-model.html#cb95-5" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb95-6"><a href="the-linear-model.html#cb95-6" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>The resulting plot looks nice. Except from one or two observation, we have normally distributed values.</p>
 </div>
 <div id="independent-observations" class="section level3" number="12.3.4">
@@ -450,7 +453,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="check-the-results" class="section level2" number="12.4">
 <h2><span class="header-section-number">12.4</span> Check the results</h2>
 <p>To examine the results of the analysis we can use the <code>summary()</code> function.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="the-linear-model.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="the-linear-model.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
 <p>The output will show you the following things:</p>
 <ul>
 <li><em>Residuals</em> which contains the minimum, maximum, median and quartiles of the residuals. The tails should be approximately similar above and below the median.</li>
@@ -461,16 +464,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="a-note-about-printing-the-regression-table" class="section level2" number="12.5">
 <h2><span class="header-section-number">12.5</span> A note about printing the regression table</h2>
 <p>We might want to print the regression table in our reports. To do this in a nice way we might want to format the output a bit. This can be done using a package called <code>broom</code>. <code>broom</code> is not part of the tidyverse so you might need to install it. The package has a function called tidy that takes model objects and makes the into nice data frames that are more easy to work with. Together with the <code>knitr</code> package we can create tables for use in the report. In the <code>knitr</code> package contains the function <code>kable</code> that makes nice tables with some arguments to format the table.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="the-linear-model.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr); <span class="fu">library</span>(broom)</span>
-<span id="cb83-2"><a href="the-linear-model.html#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-3"><a href="the-linear-model.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(m1) <span class="sc">%&gt;%</span></span>
-<span id="cb83-4"><a href="the-linear-model.html#cb83-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="the-linear-model.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr); <span class="fu">library</span>(broom)</span>
+<span id="cb97-2"><a href="the-linear-model.html#cb97-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-3"><a href="the-linear-model.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(m1) <span class="sc">%&gt;%</span></span>
+<span id="cb97-4"><a href="the-linear-model.html#cb97-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span></code></pre></div>
 <p>To get a table out of this for the report we need to set a chunk option, <code>results = 'asis'</code>. The <code>kable()</code> function is used to create the table. It can take several arguments that we can use to customize the table. Below I set the following settings <code>col.names = c("", "Estimate", "SE", "t-statistic", "p-value")</code> which names the column of the table, <code>digits = c(NA, 1, 1, 2, 3)</code>which sets the number of decimals of numeric variables.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="the-linear-model.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr); <span class="fu">library</span>(broom)</span>
-<span id="cb84-2"><a href="the-linear-model.html#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-3"><a href="the-linear-model.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(m1) <span class="sc">%&gt;%</span></span>
-<span id="cb84-4"><a href="the-linear-model.html#cb84-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;Estimate&quot;</span>, <span class="st">&quot;SE&quot;</span>, <span class="st">&quot;t-statistic&quot;</span>, <span class="st">&quot;p-value&quot;</span>), </span>
-<span id="cb84-5"><a href="the-linear-model.html#cb84-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">digits =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="the-linear-model.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr); <span class="fu">library</span>(broom)</span>
+<span id="cb98-2"><a href="the-linear-model.html#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-3"><a href="the-linear-model.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(m1) <span class="sc">%&gt;%</span></span>
+<span id="cb98-4"><a href="the-linear-model.html#cb98-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;Estimate&quot;</span>, <span class="st">&quot;SE&quot;</span>, <span class="st">&quot;t-statistic&quot;</span>, <span class="st">&quot;p-value&quot;</span>), </span>
+<span id="cb98-5"><a href="the-linear-model.html#cb98-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">digits =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -535,49 +538,49 @@ height.T1
 <p><span class="math display">\[Y = \beta_0 + \beta_1X\]</span></p>
 <p>As we have estimated this relationship we get the <span class="math inline">\(\beta\)</span>’s from the regression table and can input 175 instead of X.</p>
 <p>Actual values from the regression table can be accessed from a <code>tidy</code> table created with broom. But we can also use <code>coef()</code> to get the coefficients. Using <code>confint()</code> we will get confidence intervals for all parameters in a linear model.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="the-linear-model.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients</span></span>
-<span id="cb85-2"><a href="the-linear-model.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(m1)</span>
-<span id="cb85-3"><a href="the-linear-model.html#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-4"><a href="the-linear-model.html#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence intervals</span></span>
-<span id="cb85-5"><a href="the-linear-model.html#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m1)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="the-linear-model.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficients</span></span>
+<span id="cb99-2"><a href="the-linear-model.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(m1)</span>
+<span id="cb99-3"><a href="the-linear-model.html#cb99-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-4"><a href="the-linear-model.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence intervals</span></span>
+<span id="cb99-5"><a href="the-linear-model.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m1)</span></code></pre></div>
 <p>The confidence interval can be used for hypothesis testing as can p-values from the summary table. The p-values tests against the null-hypothesis that the intercept and slope are 0. What does that mean in the case of the intercept in our model. The estimated intercept is -2596 meaning that when height is 0 the VO<sub>2max</sub> is -2596. We are very uncertain about this estimate as the confidence interval goes from -8766 to 3573. We cannot reject the null. Think a minute about what information this test may give in this situation.</p>
 <p>The slope estimate has a confidence interval that goes from <code>round(confint(m1)[2], 1)</code> to 75.5 which means that we may reject the null-hypothesis at the 5% level.</p>
 </div>
 <div id="do-problematic-observations-matter" class="section level2" number="12.7">
 <h2><span class="header-section-number">12.7</span> Do problematic observations matter?</h2>
 <p>In the residual plot we could identify at least one potentially problematic observation. We can label observations in the residual plot to find out what observation is problematic.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="the-linear-model.html#cb86-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="sc">%&gt;%</span></span>
-<span id="cb86-2"><a href="the-linear-model.html#cb86-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">st.resid =</span> resid<span class="sc">/</span><span class="fu">sd</span>(resid)) <span class="sc">%&gt;%</span> </span>
-<span id="cb86-3"><a href="the-linear-model.html#cb86-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, st.resid, <span class="at">label =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb86-4"><a href="the-linear-model.html#cb86-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb86-5"><a href="the-linear-model.html#cb86-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb86-6"><a href="the-linear-model.html#cb86-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_label</span>(<span class="at">nudge_x =</span> <span class="dv">25</span>, <span class="at">nudge_y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb86-7"><a href="the-linear-model.html#cb86-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="the-linear-model.html#cb100-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="sc">%&gt;%</span></span>
+<span id="cb100-2"><a href="the-linear-model.html#cb100-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">st.resid =</span> resid<span class="sc">/</span><span class="fu">sd</span>(resid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb100-3"><a href="the-linear-model.html#cb100-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, st.resid, <span class="at">label =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb100-4"><a href="the-linear-model.html#cb100-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb100-5"><a href="the-linear-model.html#cb100-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb100-6"><a href="the-linear-model.html#cb100-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_label</span>(<span class="at">nudge_x =</span> <span class="dv">25</span>, <span class="at">nudge_y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb100-7"><a href="the-linear-model.html#cb100-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>The plot shows that participant 5 has the largest residual. If we would do the model without the potentially problematic observation we can see if this changes the conclusion of the analysis.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="the-linear-model.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl); <span class="fu">library</span>(tidyverse)</span>
-<span id="cb87-2"><a href="the-linear-model.html#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-3"><a href="the-linear-model.html#cb87-3" aria-hidden="true" tabindex="-1"></a>cyclingStudy_reduced <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb87-4"><a href="the-linear-model.html#cb87-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>, </span>
-<span id="cb87-5"><a href="the-linear-model.html#cb87-5" aria-hidden="true" tabindex="-1"></a>               subject <span class="sc">!=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb87-6"><a href="the-linear-model.html#cb87-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) </span>
-<span id="cb87-7"><a href="the-linear-model.html#cb87-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-8"><a href="the-linear-model.html#cb87-8" aria-hidden="true" tabindex="-1"></a>m1_reduced <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span> height.T1, <span class="at">data =</span> cyclingStudy_reduced)</span>
-<span id="cb87-9"><a href="the-linear-model.html#cb87-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-10"><a href="the-linear-model.html#cb87-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-11"><a href="the-linear-model.html#cb87-11" aria-hidden="true" tabindex="-1"></a>delta_beta <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> (<span class="fu">coef</span>(m1_reduced)[<span class="dv">2</span>]<span class="sc">/</span><span class="fu">coef</span>(m1)[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="the-linear-model.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl); <span class="fu">library</span>(tidyverse)</span>
+<span id="cb101-2"><a href="the-linear-model.html#cb101-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-3"><a href="the-linear-model.html#cb101-3" aria-hidden="true" tabindex="-1"></a>cyclingStudy_reduced <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb101-4"><a href="the-linear-model.html#cb101-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>, </span>
+<span id="cb101-5"><a href="the-linear-model.html#cb101-5" aria-hidden="true" tabindex="-1"></a>               subject <span class="sc">!=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb101-6"><a href="the-linear-model.html#cb101-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) </span>
+<span id="cb101-7"><a href="the-linear-model.html#cb101-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-8"><a href="the-linear-model.html#cb101-8" aria-hidden="true" tabindex="-1"></a>m1_reduced <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span> height.T1, <span class="at">data =</span> cyclingStudy_reduced)</span>
+<span id="cb101-9"><a href="the-linear-model.html#cb101-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-10"><a href="the-linear-model.html#cb101-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-11"><a href="the-linear-model.html#cb101-11" aria-hidden="true" tabindex="-1"></a>delta_beta <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> (<span class="fu">coef</span>(m1_reduced)[<span class="dv">2</span>]<span class="sc">/</span><span class="fu">coef</span>(m1)[<span class="dv">2</span>] <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>The delta beta above calculates the percentage change in the slope as a consequence of removing the observation with the greatest residual. Another way to look for potential influential data points would be to check the scatter plot.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="the-linear-model.html#cb88-1" aria-hidden="true" tabindex="-1"></a>cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb88-2"><a href="the-linear-model.html#cb88-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb88-3"><a href="the-linear-model.html#cb88-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) <span class="sc">%&gt;%</span></span>
-<span id="cb88-4"><a href="the-linear-model.html#cb88-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ggplot</span>(<span class="fu">aes</span>(height.T1, VO2.max, <span class="at">label =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb88-5"><a href="the-linear-model.html#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb88-6"><a href="the-linear-model.html#cb88-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb88-7"><a href="the-linear-model.html#cb88-7" aria-hidden="true" tabindex="-1"></a>         <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Height (cm)&quot;</span>, </span>
-<span id="cb88-8"><a href="the-linear-model.html#cb88-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> <span class="fu">expression</span>(<span class="st">&quot;VO&quot;</span>[<span class="st">&quot;2max&quot;</span>]<span class="sc">~</span>(ml<span class="sc">^-</span><span class="dv">1</span><span class="sc">~</span>min<span class="sc">^-</span><span class="dv">1</span>))) <span class="sc">+</span></span>
-<span id="cb88-9"><a href="the-linear-model.html#cb88-9" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_label</span>(<span class="at">nudge_x =</span> <span class="dv">1</span>, <span class="at">nudge_y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb88-10"><a href="the-linear-model.html#cb88-10" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb88-11"><a href="the-linear-model.html#cb88-11" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb88-12"><a href="the-linear-model.html#cb88-12" aria-hidden="true" tabindex="-1"></a>         <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="the-linear-model.html#cb102-1" aria-hidden="true" tabindex="-1"></a>cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="the-linear-model.html#cb102-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb102-3"><a href="the-linear-model.html#cb102-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1) <span class="sc">%&gt;%</span></span>
+<span id="cb102-4"><a href="the-linear-model.html#cb102-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ggplot</span>(<span class="fu">aes</span>(height.T1, VO2.max, <span class="at">label =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb102-5"><a href="the-linear-model.html#cb102-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb102-6"><a href="the-linear-model.html#cb102-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb102-7"><a href="the-linear-model.html#cb102-7" aria-hidden="true" tabindex="-1"></a>         <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Height (cm)&quot;</span>, </span>
+<span id="cb102-8"><a href="the-linear-model.html#cb102-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> <span class="fu">expression</span>(<span class="st">&quot;VO&quot;</span>[<span class="st">&quot;2max&quot;</span>]<span class="sc">~</span>(ml<span class="sc">^-</span><span class="dv">1</span><span class="sc">~</span>min<span class="sc">^-</span><span class="dv">1</span>))) <span class="sc">+</span></span>
+<span id="cb102-9"><a href="the-linear-model.html#cb102-9" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_label</span>(<span class="at">nudge_x =</span> <span class="dv">1</span>, <span class="at">nudge_y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb102-10"><a href="the-linear-model.html#cb102-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb102-11"><a href="the-linear-model.html#cb102-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb102-12"><a href="the-linear-model.html#cb102-12" aria-hidden="true" tabindex="-1"></a>         <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>The plot will show participant 5 has not got a lot of “weight” in the slope. If an equally big residual would have been present in the far end of the range of the height variable, removing it would have made more difference. Since the observation is in the middle of the x’s, it wont be that influential.</p>
 <p>There are many ways of doing diagnostics for the ordinary linear model in R. The simplest way is to write <code>plot(m1)</code>, this will produce four graphs.</p>
 <ul>
@@ -586,20 +589,20 @@ height.T1
 <li><p><em>Scale location</em> similarly to the residual plot, we can assess assumptions of heteroscedasticity and if we find the trend in the data. We are looking for a straight, flat line and points equally scattered around it.</p></li>
 <li><p><em>Residual vs. Leverage</em> is good to find influential data points. If a point is outside the dashed line it changes the conclusion of the regression to a large degree. Remember that we identified participant 5 as a potential problematic case. The Residual vs. leverage shows that number 5 has a large residual value but no leverage, meaning that it does not change the slope of the regression line.</p></li>
 </ul>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 </div>
 <div id="a-more-intepretable-model" class="section level2" number="12.8">
 <h2><span class="header-section-number">12.8</span> A more intepretable model</h2>
 <p>The intercept in model <code>m1</code> is interpreted as the VO<sub>2max</sub> when height is zero. We do not have any participants with height zero nor will we ever have. A nice modification to the model would be if could get the intercept to tell us something useful. We could get the model to tell us the VO<sub>2max</sub> in the tallest or shortest participant by setting them to zero. Even more interesting would be to get the VO<sub>2max</sub> at the average height.</p>
 <p>We accomplish this by mean centering the height variable. We remove the mean from all observations, this will put the intercept at the mean of heights as the mean will be zero.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="the-linear-model.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl); <span class="fu">library</span>(tidyverse)</span>
-<span id="cb89-2"><a href="the-linear-model.html#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-3"><a href="the-linear-model.html#cb89-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb89-4"><a href="the-linear-model.html#cb89-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb89-5"><a href="the-linear-model.html#cb89-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1)  <span class="sc">%&gt;%</span></span>
-<span id="cb89-6"><a href="the-linear-model.html#cb89-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">height.mc =</span> height.T1 <span class="sc">-</span> <span class="fu">mean</span>(height.T1)) <span class="co"># mean centering the height variable</span></span>
-<span id="cb89-7"><a href="the-linear-model.html#cb89-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-8"><a href="the-linear-model.html#cb89-8" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span> height.mc, <span class="at">data =</span> cyc_select)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="the-linear-model.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl); <span class="fu">library</span>(tidyverse)</span>
+<span id="cb103-2"><a href="the-linear-model.html#cb103-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-3"><a href="the-linear-model.html#cb103-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb103-4"><a href="the-linear-model.html#cb103-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb103-5"><a href="the-linear-model.html#cb103-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VO2.max, height.T1)  <span class="sc">%&gt;%</span></span>
+<span id="cb103-6"><a href="the-linear-model.html#cb103-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">height.mc =</span> height.T1 <span class="sc">-</span> <span class="fu">mean</span>(height.T1)) <span class="co"># mean centering the height variable</span></span>
+<span id="cb103-7"><a href="the-linear-model.html#cb103-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-8"><a href="the-linear-model.html#cb103-8" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span> height.mc, <span class="at">data =</span> cyc_select)</span></code></pre></div>
 <p>Examine the fit, what happens to the coefficients?</p>
 </div>
 <div id="an-exercise" class="section level2" number="12.9">
@@ -621,24 +624,24 @@ height.T1
   </script>
 <a id="displayText" href="javascript:toggle(1);">Here is a possible solution</a>
 <div id="toggleText1" style="display: none">
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="the-linear-model.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Load data</span></span>
-<span id="cb90-2"><a href="the-linear-model.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-3"><a href="the-linear-model.html#cb90-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb90-4"><a href="the-linear-model.html#cb90-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb90-5"><a href="the-linear-model.html#cb90-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VE.max, height.T1)  <span class="sc">%&gt;%</span></span>
-<span id="cb90-6"><a href="the-linear-model.html#cb90-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">height.mc =</span> height.T1 <span class="sc">-</span> <span class="fu">mean</span>(height.T1)) <span class="co"># mean centering the height variable</span></span>
-<span id="cb90-7"><a href="the-linear-model.html#cb90-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-8"><a href="the-linear-model.html#cb90-8" aria-hidden="true" tabindex="-1"></a><span class="co"># fitting the model</span></span>
-<span id="cb90-9"><a href="the-linear-model.html#cb90-9" aria-hidden="true" tabindex="-1"></a>m1_ve <span class="ot">&lt;-</span> <span class="fu">lm</span>(VE.max <span class="sc">~</span> height.mc, <span class="at">data =</span> cyc_select)</span>
-<span id="cb90-10"><a href="the-linear-model.html#cb90-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-11"><a href="the-linear-model.html#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Check assumptions</span></span>
-<span id="cb90-12"><a href="the-linear-model.html#cb90-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1_ve)</span>
-<span id="cb90-13"><a href="the-linear-model.html#cb90-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-14"><a href="the-linear-model.html#cb90-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check coefficients</span></span>
-<span id="cb90-15"><a href="the-linear-model.html#cb90-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1_ve)</span>
-<span id="cb90-16"><a href="the-linear-model.html#cb90-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-17"><a href="the-linear-model.html#cb90-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Get confidence intervals</span></span>
-<span id="cb90-18"><a href="the-linear-model.html#cb90-18" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m1_ve)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="the-linear-model.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Load data</span></span>
+<span id="cb104-2"><a href="the-linear-model.html#cb104-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-3"><a href="the-linear-model.html#cb104-3" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb104-4"><a href="the-linear-model.html#cb104-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-5"><a href="the-linear-model.html#cb104-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, VE.max, height.T1)  <span class="sc">%&gt;%</span></span>
+<span id="cb104-6"><a href="the-linear-model.html#cb104-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">height.mc =</span> height.T1 <span class="sc">-</span> <span class="fu">mean</span>(height.T1)) <span class="co"># mean centering the height variable</span></span>
+<span id="cb104-7"><a href="the-linear-model.html#cb104-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-8"><a href="the-linear-model.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="co"># fitting the model</span></span>
+<span id="cb104-9"><a href="the-linear-model.html#cb104-9" aria-hidden="true" tabindex="-1"></a>m1_ve <span class="ot">&lt;-</span> <span class="fu">lm</span>(VE.max <span class="sc">~</span> height.mc, <span class="at">data =</span> cyc_select)</span>
+<span id="cb104-10"><a href="the-linear-model.html#cb104-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-11"><a href="the-linear-model.html#cb104-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Check assumptions</span></span>
+<span id="cb104-12"><a href="the-linear-model.html#cb104-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1_ve)</span>
+<span id="cb104-13"><a href="the-linear-model.html#cb104-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-14"><a href="the-linear-model.html#cb104-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Check coefficients</span></span>
+<span id="cb104-15"><a href="the-linear-model.html#cb104-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1_ve)</span>
+<span id="cb104-16"><a href="the-linear-model.html#cb104-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-17"><a href="the-linear-model.html#cb104-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Get confidence intervals</span></span>
+<span id="cb104-18"><a href="the-linear-model.html#cb104-18" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m1_ve)</span></code></pre></div>
 </div>
 <p></br></p>
 </div>
@@ -648,50 +651,50 @@ height.T1
 <div id="linear-models-can-be-used-instead-of-t-tests" class="section level3" number="12.10.1">
 <h3><span class="header-section-number">12.10.1</span> Linear models can be used instead of t-tests</h3>
 <p>Last week we performed t-tests. These are tests of differences from zero in a one-sample case or differences between groups with paired or unpaired observations. We calculated the difference between pre- and post-training in squat-jump to test against the null-hypothesis that there was no difference between these two time-points.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="the-linear-model.html#cb91-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb91-2"><a href="the-linear-model.html#cb91-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, timepoint, sj.max) <span class="sc">%&gt;%</span></span>
-<span id="cb91-3"><a href="the-linear-model.html#cb91-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb91-4"><a href="the-linear-model.html#cb91-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb91-5"><a href="the-linear-model.html#cb91-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> sj.max) <span class="sc">%&gt;%</span></span>
-<span id="cb91-6"><a href="the-linear-model.html#cb91-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> meso3 <span class="sc">-</span> pre) </span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="the-linear-model.html#cb105-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb105-2"><a href="the-linear-model.html#cb105-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, timepoint, sj.max) <span class="sc">%&gt;%</span></span>
+<span id="cb105-3"><a href="the-linear-model.html#cb105-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb105-4"><a href="the-linear-model.html#cb105-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
+<span id="cb105-5"><a href="the-linear-model.html#cb105-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> sj.max) <span class="sc">%&gt;%</span></span>
+<span id="cb105-6"><a href="the-linear-model.html#cb105-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> meso3 <span class="sc">-</span> pre) </span></code></pre></div>
 <p>The data above may be used to perform the paired sample t-test and a one sample t-test</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="the-linear-model.html#cb92-1" aria-hidden="true" tabindex="-1"></a>paired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cycling_data<span class="sc">$</span>meso3, cycling_data<span class="sc">$</span>pre, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb92-2"><a href="the-linear-model.html#cb92-2" aria-hidden="true" tabindex="-1"></a>one_sample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cycling_data<span class="sc">$</span>change, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="the-linear-model.html#cb106-1" aria-hidden="true" tabindex="-1"></a>paired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cycling_data<span class="sc">$</span>meso3, cycling_data<span class="sc">$</span>pre, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb106-2"><a href="the-linear-model.html#cb106-2" aria-hidden="true" tabindex="-1"></a>one_sample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cycling_data<span class="sc">$</span>change, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div>
 <p>These tests are equal. Similarly, we can fit a linear model to the <code>change</code> variable to test against the same hypothesis</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="the-linear-model.html#cb93-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> cycling_data)</span>
-<span id="cb93-2"><a href="the-linear-model.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="the-linear-model.html#cb107-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> cycling_data)</span>
+<span id="cb107-2"><a href="the-linear-model.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code></pre></div>
 <p>Using the syntax <code>change ~ 1</code> in the formula we specify that we want to estimate the intercept of the model. The intercept is tested against the null-hypothesis that it is 0.</p>
 <p>We also did two sample t-tests with unpaired observations. We can test if there is a difference in <code>VO2.max</code> percentage change between group <code>INCR</code>and <code>DECR</code> using a t-test.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="the-linear-model.html#cb94-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb94-2"><a href="the-linear-model.html#cb94-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb94-3"><a href="the-linear-model.html#cb94-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>), </span>
-<span id="cb94-4"><a href="the-linear-model.html#cb94-4" aria-hidden="true" tabindex="-1"></a>               group <span class="sc">!=</span> <span class="st">&quot;MIX&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb94-5"><a href="the-linear-model.html#cb94-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb94-6"><a href="the-linear-model.html#cb94-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb94-7"><a href="the-linear-model.html#cb94-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
-<span id="cb94-8"><a href="the-linear-model.html#cb94-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
-<span id="cb94-9"><a href="the-linear-model.html#cb94-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-10"><a href="the-linear-model.html#cb94-10" aria-hidden="true" tabindex="-1"></a>unpaired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="the-linear-model.html#cb108-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb108-2"><a href="the-linear-model.html#cb108-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb108-3"><a href="the-linear-model.html#cb108-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>), </span>
+<span id="cb108-4"><a href="the-linear-model.html#cb108-4" aria-hidden="true" tabindex="-1"></a>               group <span class="sc">!=</span> <span class="st">&quot;MIX&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb108-5"><a href="the-linear-model.html#cb108-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
+<span id="cb108-6"><a href="the-linear-model.html#cb108-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb108-7"><a href="the-linear-model.html#cb108-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
+<span id="cb108-8"><a href="the-linear-model.html#cb108-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
+<span id="cb108-9"><a href="the-linear-model.html#cb108-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-10"><a href="the-linear-model.html#cb108-10" aria-hidden="true" tabindex="-1"></a>unpaired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Above we use the formula-way to specify the t-test. Similarly we can use a linear model</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="the-linear-model.html#cb95-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span>
-<span id="cb95-2"><a href="the-linear-model.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="the-linear-model.html#cb109-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span>
+<span id="cb109-2"><a href="the-linear-model.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code></pre></div>
 <p>Compare the two tests. Do they tell you the same?</p>
 <p>Even the Welch two sample t-test can be replicated using a linear model. However, we have to specify it in a slightly different frame work using the <code>gls()</code>function from the <code>nlme</code> package.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="the-linear-model.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
-<span id="cb96-2"><a href="the-linear-model.html#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-3"><a href="the-linear-model.html#cb96-3" aria-hidden="true" tabindex="-1"></a>welch_twosample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb96-4"><a href="the-linear-model.html#cb96-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-5"><a href="the-linear-model.html#cb96-5" aria-hidden="true" tabindex="-1"></a>lin_mod_var <span class="ot">&lt;-</span> <span class="fu">gls</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">weights =</span> <span class="fu">varIdent</span>(<span class="at">form =</span> <span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>group), <span class="at">na.action =</span> na.exclude, <span class="at">method =</span> <span class="st">&quot;ML&quot;</span>)</span>
-<span id="cb96-6"><a href="the-linear-model.html#cb96-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-7"><a href="the-linear-model.html#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-8"><a href="the-linear-model.html#cb96-8" aria-hidden="true" tabindex="-1"></a>welch_twosample</span>
-<span id="cb96-9"><a href="the-linear-model.html#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod_var)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="the-linear-model.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
+<span id="cb110-2"><a href="the-linear-model.html#cb110-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-3"><a href="the-linear-model.html#cb110-3" aria-hidden="true" tabindex="-1"></a>welch_twosample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb110-4"><a href="the-linear-model.html#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-5"><a href="the-linear-model.html#cb110-5" aria-hidden="true" tabindex="-1"></a>lin_mod_var <span class="ot">&lt;-</span> <span class="fu">gls</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">weights =</span> <span class="fu">varIdent</span>(<span class="at">form =</span> <span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>group), <span class="at">na.action =</span> na.exclude, <span class="at">method =</span> <span class="st">&quot;ML&quot;</span>)</span>
+<span id="cb110-6"><a href="the-linear-model.html#cb110-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-7"><a href="the-linear-model.html#cb110-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-8"><a href="the-linear-model.html#cb110-8" aria-hidden="true" tabindex="-1"></a>welch_twosample</span>
+<span id="cb110-9"><a href="the-linear-model.html#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod_var)</span></code></pre></div>
 <p>You are not required to master <code>gls</code> at this time-point. It is an example that the linear model frame work is very flexible as it in this case also can be adjusted to take care of heteroscedasticity.</p>
 </div>
 <div id="dummy-variables" class="section level3" number="12.10.2">
 <h3><span class="header-section-number">12.10.2</span> Dummy variables</h3>
 <p>The group variable in the code below introduces a new concept in our linear models, dummy variables.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="the-linear-model.html#cb97-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="the-linear-model.html#cb111-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span></code></pre></div>
 <p>When we put a categorical variable in the <code>lm</code> command, R will code it as a dummy variable. This variable will be zero if the group corresponds to the first level of the categorical (coded as a factor variable) and it will be 1 if it is the second level.</p>
 <p>In the simplest case (as above) we will get a linear model looking like this:</p>
 <p><span class="math display">\[Y = \beta_0 + \beta_1X\]</span></p>
@@ -700,17 +703,17 @@ height.T1
 <p>Using all groups in the data set, fit a model and interpret the results.</p>
 <a id="displayText" href="javascript:toggle(2);">Here is a possible solution</a>
 <div id="toggleText2" style="display: none">
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="the-linear-model.html#cb98-1" aria-hidden="true" tabindex="-1"></a>cyc_subset <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb98-2"><a href="the-linear-model.html#cb98-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb98-3"><a href="the-linear-model.html#cb98-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb98-4"><a href="the-linear-model.html#cb98-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb98-5"><a href="the-linear-model.html#cb98-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb98-6"><a href="the-linear-model.html#cb98-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
-<span id="cb98-7"><a href="the-linear-model.html#cb98-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
-<span id="cb98-8"><a href="the-linear-model.html#cb98-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-9"><a href="the-linear-model.html#cb98-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_subset)</span>
-<span id="cb98-10"><a href="the-linear-model.html#cb98-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-11"><a href="the-linear-model.html#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="the-linear-model.html#cb112-1" aria-hidden="true" tabindex="-1"></a>cyc_subset <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb112-2"><a href="the-linear-model.html#cb112-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb112-3"><a href="the-linear-model.html#cb112-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb112-4"><a href="the-linear-model.html#cb112-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
+<span id="cb112-5"><a href="the-linear-model.html#cb112-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb112-6"><a href="the-linear-model.html#cb112-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
+<span id="cb112-7"><a href="the-linear-model.html#cb112-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
+<span id="cb112-8"><a href="the-linear-model.html#cb112-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-9"><a href="the-linear-model.html#cb112-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_subset)</span>
+<span id="cb112-10"><a href="the-linear-model.html#cb112-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-11"><a href="the-linear-model.html#cb112-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <p>The <code>DECR</code> group is the reference group, the intercept shows the mean of this group. Each parameter shows the difference from the reference.</p>
 </div>
 <p></br></p>
@@ -721,19 +724,19 @@ height.T1
 <h2><span class="header-section-number">12.11</span> Multiple regression</h2>
 <p>Contrary to the t-tests used above, the linear model can be extended by adding predicting variables (independent variables). In a situation where multiple independent variables are included in the model, we control for their relationship to the dependent variable when we evaluate the other variables. Similarly with univariate regression we can examine each individual parameter from the summary.</p>
 <p>In a previous example we used <code>height.T1</code> to predict <code>VO2.max</code>. We might want to add information to the model. We might wonder if the age (<code>age</code>) of participants have a relationship with VO<sub>2max</sub>. To fit this model, use the code below.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="the-linear-model.html#cb99-1" aria-hidden="true" tabindex="-1"></a>cycling_data <span class="ot">&lt;-</span>  cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb99-2"><a href="the-linear-model.html#cb99-2" aria-hidden="true" tabindex="-1"></a>       <span class="co"># select(subject, timepoint, VO2.max, weight.T1, height.T1) %&gt;%</span></span>
-<span id="cb99-3"><a href="the-linear-model.html#cb99-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb99-4"><a href="the-linear-model.html#cb99-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()  </span>
-<span id="cb99-5"><a href="the-linear-model.html#cb99-5" aria-hidden="true" tabindex="-1"></a>          </span>
-<span id="cb99-6"><a href="the-linear-model.html#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-7"><a href="the-linear-model.html#cb99-7" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span>  height.T1 <span class="sc">+</span> age, <span class="at">data =</span> cycling_data)</span>
-<span id="cb99-8"><a href="the-linear-model.html#cb99-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-9"><a href="the-linear-model.html#cb99-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="the-linear-model.html#cb113-1" aria-hidden="true" tabindex="-1"></a>cycling_data <span class="ot">&lt;-</span>  cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb113-2"><a href="the-linear-model.html#cb113-2" aria-hidden="true" tabindex="-1"></a>       <span class="co"># select(subject, timepoint, VO2.max, weight.T1, height.T1) %&gt;%</span></span>
+<span id="cb113-3"><a href="the-linear-model.html#cb113-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb113-4"><a href="the-linear-model.html#cb113-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()  </span>
+<span id="cb113-5"><a href="the-linear-model.html#cb113-5" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb113-6"><a href="the-linear-model.html#cb113-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-7"><a href="the-linear-model.html#cb113-7" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span>  height.T1 <span class="sc">+</span> age, <span class="at">data =</span> cycling_data)</span>
+<span id="cb113-8"><a href="the-linear-model.html#cb113-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-9"><a href="the-linear-model.html#cb113-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
 <p>From the output we can see that there is a negative relationship, when age increases VO<sub>2max</sub> decrease. We can compare this model to the simpler model by looking at the <span class="math inline">\(R^2\)</span> value. We fit the simpler model.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="the-linear-model.html#cb100-1" aria-hidden="true" tabindex="-1"></a>mod0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span>  height.T1, <span class="at">data =</span> cycling_data)</span>
-<span id="cb100-2"><a href="the-linear-model.html#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-3"><a href="the-linear-model.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod0)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="the-linear-model.html#cb114-1" aria-hidden="true" tabindex="-1"></a>mod0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span>  height.T1, <span class="at">data =</span> cycling_data)</span>
+<span id="cb114-2"><a href="the-linear-model.html#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-3"><a href="the-linear-model.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod0)</span></code></pre></div>
 <p>We can interpret <span class="math inline">\(R^2\)</span> as the percentage of the variation explained by the model.</p>
 <p>The same assumptions apply to the multiple regression model as with the univariate regression model.</p>
 

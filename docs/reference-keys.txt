@@ -29,7 +29,7 @@ fig:sq-ind-data-axis-title3
 fig:bw-theme
 fig:bw-theme-changed
 fig:example-fig-1
-tab:unnamed-chunk-44
+tab:unnamed-chunk-48
 introduction
 quick-links
 practical-information
@@ -109,6 +109,7 @@ additional-great-things-about-github
 when-will-this-knowledge-be-handy
 resources-2
 reliability-in-the-physiology-lab
+smallest-worthwhile-change-or-effect
 assignment1
 elements-of-the-report
 the-format-of-the-report

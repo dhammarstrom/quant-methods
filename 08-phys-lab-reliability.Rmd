@@ -1,1 +1,83 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Reliability in the physiology lab
+
+We will follow Hopkins definition of reliability in this section [@RN130], and specifically concern ourselves with reliability in test/measurements that produces continuous numbers as results. For this lab you have collected data in several tests, at least two times, from several individuals. You can now estimate the reliability of each test. The reliability, expressed as typical error is an estimate of what we may expect as the random variation around a measurement if repeated under similar circumstances in the same individual [@RN130].
+
+<center>
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/db185c761f114b149aab9345de84fe5b1d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
+</center>
+
+Hopkins [@RN130] details two measures of reliability for estimates of within-individual reliability that are closely related, the typical error and limits of agreement. Using the example data in [@RN130] we can calculate first the typical error.
+
+We will take advantage of the change scores between two duplicate measures and derive the estimate of the typical error from them. (To run the code, copy and paste into your own Rmarkdown file).
+
+```{r, eval = FALSE}
+
+library(tidyverse)
+
+example_data <- data.frame(trial1 = c(62, 78, 81, 55, 66), 
+                           trial2 = c(67, 76, 87, 55, 63)) 
+
+
+# Calculate the typical error 
+example_data %>%
+  mutate(diff = trial2 - trial1) %>% # Change/difference score
+  summarise(s = round(sd(diff), 1),  # Summarize to calculate sd, and... 
+            te = round(s / sqrt(2), 1)) %>% # the typical error. 
+  # Round is used to get less decimal places...
+  print()
+
+```
+
+The interpretation of the typical error is that this is the typical variation of the test. If you repeat the test, this is the random variation that can be expected. If expressed as a percentage of the mean, it can be compared to other tests. In the code below, we will add the mean to allow calculation of the coefficient of variation (CV, or as referred to in [@RN130], typical percentage error).
+
+
+```{r, eval = FALSE}
+
+
+
+# Calculate the typical error 
+example_data %>%
+  mutate(diff = trial2 - trial1) %>% # Change/difference score
+  summarise(s = round(sd(diff), 1),  # Summarize to calculate sd, and... 
+            m = mean(c(trial1, trial2)), # mean
+            te = round(s / sqrt(2), 1), # the typical error.
+            cv = round(100 * (te / m), 1)) %>%  # Calculate as a percentage of the mean
+  # Round is used to get less decimal places...
+  print()
+
+```
+
+The limits of agreement has a nice interpretation. If the limits of agreement are created as the 95% limits of agreement, there is a 1 in 20 chance of finding a test score outside these limits. The limits of agreement are calculated using a *t*-distribution. We will add to the code chunk to calculate the limits of agreement.
+
+
+```{r, eval = FALSE}
+
+
+
+
+# Calculate the typical error 
+example_data %>%
+  mutate(diff = trial2 - trial1) %>% # Change/difference score
+  summarise(s = sd(diff),  # Summarize to calculate sd, and... 
+            m = mean(c(trial1, trial2)), # mean
+            te = s / sqrt(2), 1, # the typical error.
+            cv = 100 * (te / m), 1, 
+            L = qt(0.975, 4) * s) %>%  # Calculate as a percentage of the mean
+  print()
+
+```
+
+The part with `qt(0.975, 4)` is the R-code equivalent to $t_{0.975, 4}$ (See equation 1 in [@RN130]) which is the *t*-distribution with 4 degrees of freedom. The degrees of freedom comes from the number of participants in the data set minus 1 ($n - 1$). As noted by Hopkins, we may use the CV in the calculation of limits of agreement.
+
+## Smallest worthwhile change or effect
+
+When we do not have any measures of reliability, nor clinically relevant thresholds for a test, the smallest worthwhile effect may provide an indication of important changes in a test. An arbitrary number of the smallest effect of interest in an average change score has been defined as 20% of the between participant standard deviation ($0.2\times SD$). This tells you nothing about the reliability of your test, it simply gives a proportion of the expected population variation. 
+
+
+
+
