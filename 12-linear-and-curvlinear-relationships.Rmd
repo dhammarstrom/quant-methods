@@ -1,0 +1,132 @@
+
+
+
+# Linear and curve-linear relationships, and predictions
+
+
+In the previous chapter we looked at linear relationships, we can imagine these as straight lines. Many things in life are not straight. In this chapter we will add curve-linear relationships to our repertoire. We will actually start by predicting values. 
+
+## Predicting from data
+
+Because of the relationship between inner dimension and our height, we might expect to see a relationship between body height and VO~2max~.The idea is that we will build a model and use this model to make predictions of our outcome with new predictor data. Later we will hopefully see that this is one of the meany benefits of the powerful regression model.
+
+As a first step it is a good idea to get a visual representation of the prospective model. In the code chunk below we load the `cyclingstudy` data set from the `exscidata` package together with loading `tidyverse`.We then plot the relationship between `height` and `VO2.max`. In the `ggplot` call, a good starting point is to use `geom_point` together with `geom_smooth` which will produce a scatter plot with a best fit line. Notice that `method = "lm"` and `se = FALSE` are being used to make sure you get a straight line (`method = "lm"`) and no confidence bands (`se = FALSE`). Copy the code into your own document and run the code.
+
+```{r, eval = FALSE}
+
+library(tidyverse)
+library(exscidata)
+data("cyclingstudy")
+
+# A simple plot of the associtaion
+cyclingstudy %>%
+        filter(timepoint == "pre") %>%
+        select(subject, group, VO2.max, height = height.T1)  %>%
+
+  ggplot(aes(height, VO2.max)) +  geom_point() + geom_smooth(method = "lm", se = FALSE)
+
+
+```
+
+
+We will now construct the model. The `lm` function (for linear model) take a formula and a data set in its simplest form. We have to save the output of the model in an object to be able to work with it down the line. In the code below I suggest storing the model object as `m1`.
+
+```{r, eval = FALSE}
+
+# Store the data set needed in the model fitting 
+dat <- cyclingstudy %>%
+        filter(timepoint == "pre") %>%
+        select(subject, group, VO2.max, height = height.T1)  %>%
+  print()
+
+# Fit the model 
+m1 <- lm(VO2.max ~ height, data = dat)
+
+```
+
+The above code will have stored an object in your environment. Using this object we may now make predictions. The manual way of making prediction would be to get the coefficients from the model an use them with new data. In the code chunk below I retrieve coefficients from the model representing the intercept and slope of the model. Remembering the basic mathematics of this simple model tells us that we can predict VO~2max~ using the estimates from the model. These estimates can be retrieved using `coef()`. The intercept will be the first coefficient (`coef(m1)[1]`) and the slope will be the second (`coef(m1)[2]`). Adding the together an multiplying the slope with our new data will get us the prediction. 
+
+```{r, eval = FALSE}
+
+new_height <- 185
+
+prediction <- coef(m1)[1] + coef(m1)[2] * new_height 
+
+```
+
+R has some built in functions for these kind of operations. The `predict` function can be used to calculate what each observation would look like if it were "on the regression line". Using predict on the model without any new data will give you the same values as the `fitted` function try it out!
+
+```{r, eval = FALSE}
+# Store output
+pred <-  predict(m1)
+fit <- fitted(m1)
+
+# Plot the values
+data.frame(pred, fit) %>%
+  ggplot(aes(pred, fit)) + geom_point()
+
+
+```
+
+`predict` has an argument called `newdata`, here we can use a new data frame with the same predictors as in the data set used to fit the model. Using this new data set we may do several predictions from our model. 
+
+```{r, eval = FALSE}
+# New Data Frame containing data we want to predict with 
+ndf <- data.frame(height = c(160, 170, 180, 190))
+
+predictions <- predict(m1, newdata = ndf)
+
+```
+
+Unsurprisingly, an increased height gives us higher predictions of VO~2max~. What would be your VO~2max~ given this model.
+
+
+## The workload-lactate relationship
+
+
+
+```{r}
+library(tidyverse)
+library(exscidata)
+
+data("cyclingstudy")
+
+
+cyclingstudy %>%
+  select(subject, group, timepoint, lac.225:lac.375) %>%
+  pivot_longer(names_to = "watt", 
+               values_to = "lactate", 
+               names_prefix = "lac.",
+               names_transform = list(watt = as.numeric),
+               cols = lac.225:lac.375) %>%
+
+  
+  ggplot(aes(watt, lactate, group = paste(timepoint, subject)))  + 
+  geom_line() + facet_wrap(~timepoint)
+
+
+
+
+
+temp <- cyclingstudy %>%
+  select(subject, group, timepoint, lac.225:lac.375) %>%
+  pivot_longer(names_to = "watt", 
+               values_to = "lactate", 
+               names_prefix = "lac.",
+               names_transform = list(watt = as.numeric),
+               cols = lac.225:lac.375) %>%
+  print()
+
+
+
+
+
+
+
+
+
+
+```
+
+-->
+ 

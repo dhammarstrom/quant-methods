@@ -7,8 +7,8 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 ## Resources
 
-- Chapter X in Spiegelhalter..
-- Ch 8 in OpenIntro and Ch. 15 in Navarro *Learning statistics with R* deals with regression models.
+- Chapter 5 in Spiegelhalter serves as a very good introduction to regression. 
+- There are several texts on Regression, Navarro provides a nice introduction with references to R in [*Learning statistics with R*, Chapter 15](https://learningstatisticswithr.com/lsr-0.6.pdf).
 
 
 ## Straight lines
@@ -152,7 +152,6 @@ ggplot(data.frame(x = x, y = y2, error = error,resid = resid, pred = pred), aes(
 Let's fit some real data. We might wonder if there are some characteristic that is related to VO~2max~. For example, do taller individuals have greater VO~2max~? It is always a good idea to start with a plot before we do the modeling. 
 
 ```{r, eval = FALSE}
-library(readxl); 
 library(tidyverse)
 library(exscidata)
 data("cyclingstudy")
@@ -184,7 +183,6 @@ To quantify the relationship between Height (`height.T1`) and VO~2max~ (`VO2.max
 #### Code for fitting a preliminary model
 
 ```{r, eval = TRUE}
-library(tidyverse)
 
 cyc_select <-  cyclingstudy %>%
         filter(timepoint == "pre") %>%
@@ -410,7 +408,7 @@ The intercept in model `m1` is interpreted as the VO~2max~ when height is zero. 
 We accomplish this by mean centering the height variable. We remove the mean from all observations, this will put the intercept at the mean of heights as the mean will be zero.
 
 ```{r, eval = FALSE}
-library(readxl); library(tidyverse)
+
 
 cyc_select <- cyclingstudy %>%
         filter(timepoint == "pre") %>%
