@@ -79,5 +79,17 @@ The part with `qt(0.975, 4)` is the R-code equivalent to $t_{0.975, 4}$ (See equ
 When we do not have any measures of reliability, nor clinically relevant thresholds for a test, the smallest worthwhile effect may provide an indication of important changes in a test. An arbitrary number of the smallest effect of interest in an average change score has been defined as 20% of the between participant standard deviation ($0.2\times SD$). This tells you nothing about the reliability of your test, it simply gives a proportion of the expected population variation. 
 
 
+## Video from seminar 
 
+Part 1: 
+<br><center>
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/b14668baee744c41a418a73e254624131d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
+</center>
 
+Part 2:
+
+<br></center>
+
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/07bd6b818e8844788b281b55b5681bff1d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
+
+</center>

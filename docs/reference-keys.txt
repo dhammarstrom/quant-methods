@@ -110,6 +110,7 @@ when-will-this-knowledge-be-handy
 resources-2
 reliability-in-the-physiology-lab
 smallest-worthwhile-change-or-effect
+video-from-seminar
 assignment1
 elements-of-the-report
 the-format-of-the-report
