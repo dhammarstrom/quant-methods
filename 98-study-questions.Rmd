@@ -70,6 +70,31 @@ obj <- c(1, 2, 3, 56)
 - What is needed to make a table using `kable()` try to define (with plain language) how you need to set up your software.
 
 
+## Chapter 11: Introduction to the molecular exercise physiology lab
+
+- Discuss: What are the most important points concerning health and safety in the laboratory? Your answer could involve before, during and after the experiment.
+- Why do we use a laboratory notebook?
+
+
+- Convert 1 gram to milligrams
+- Convert 1 milligram to micrograms
+- Convert 1 litre to millilitres
+- Convert 500 millilitres to litres
+- Convert 10 microlitres to millilitres
+
+- You are to make a 1 Molar Tris solution (Tris MW = 121.14 g/mol). How much Tris should you add to your solution?
+- In the same solution, we want to add 0.5 M of NaCl (NaCl MW = 58 g/mol), how much NaCl should go int your solution?
+
+- To create a reagent (Reagent B), we will add EDTA from a *Stock solution* with a concentration of 0.5 M. The final concentration should be 0.06 M in 1 litre. What volume stock solution should be added to your reagent? Use the formula below to answer the question:
+
+$$C_1 \times V_1 = C_2 \times V_2$$
+One unknown can be calculated from the formula by rearranging:
+
+$$V_2 = \frac{C_1 \times V_1}{C_2}$$
+
+$V$ for volume and $C$ for concentration.
+
+
 
 
 

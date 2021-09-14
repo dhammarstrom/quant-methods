@@ -29,7 +29,7 @@ fig:sq-ind-data-axis-title3
 fig:bw-theme
 fig:bw-theme-changed
 fig:example-fig-1
-tab:unnamed-chunk-48
+tab:unnamed-chunk-44
 introduction
 quick-links
 practical-information
@@ -138,14 +138,11 @@ interpreting-the-results
 do-problematic-observations-matter
 a-more-intepretable-model
 an-exercise
-categorical-predictors-and-multiple-regression
-linear-models-can-be-used-instead-of-t-tests
-dummy-variables
-multiple-regression
 study-questions
 chapter-2-introduction-to-data-science-with-relevant-literature
 chapter-3-storing-data-in-spreadsheets-with-relevant-literature
 chapter-4-installing-and-starting-up-r-and-r-studio
 chapter-5-creating-your-first-graph
 chapter-6-wrangling-data-to-create-your-first-table
+chapter-11-introduction-to-the-molecular-exercise-physiology-lab
 references

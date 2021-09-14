@@ -1,0 +1,742 @@
+
+
+
+```{r setup-stat-inf2, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+```
+
+
+# Descriptive and inferential statistics
+
+
+<!--
+
+
+ <script language="javascript"> 
+    function toggle(num) {
+      var ele = document.getElementById("toggleText" + num);
+      var text = document.getElementById("displayText" + num);
+      if(ele.style.display == "block") {
+        ele.style.display = "none";
+        text.innerHTML = "show";
+      }
+      else {
+        ele.style.display = "block";
+        text.innerHTML = "hide";
+      }
+   } 
+  </script>
+
+
+
+When dealing with statistical concepts we can separate two basic tasks. *Descriptive statistics* deals with describing the data that we have. *Inferential statistics* on the other hand deals with describing something that we do not know based on data that we have.
+
+Let's say that we gather data from a number of untrained individuals, for example 1RM strength. We may now *describe* that data based on central tendency and variation. A common measure of central tendency is the mean and a common way of describing variation is the standard deviation (when dealing with continuous data).
+
+So far we have just described our data. We may want draw conclusions based on the data, regarding the population we have drawn samples from, this is in simple terms, *inferential statistics*. This is the process of drawing general conclusions based on a limited data set. Based on the data we have we can make a guess about 1RM strength in all individuals of similar characteristics. 
+
+
+## Reading instructions
+
+Before going further, I suggest the following reading:
+
+1. Read up on descriptive statistics. A good place to start is Open intro to statistics Ch. 2 and Navarro Ch. 5. Make sure that you know what we are talking: 
+    i. The mean, median and quartiles
+    ii. The standard deviation and variance
+2. In open intro to statistics Ch. 5 you get an introduction to estimates regarding proportion data. Below we will try to follow up on these examples.
+3. I strongly suggest reading Ch 9 and 10 in Navarro to the best of your abilities.
+
+These concepts are presented in basically every introductory textbook on statistics. 
+
+
+## Descriptive statistics in R
+
+### Simulating data in R
+R is great because you can create data! In the examples below we will generate data, you can copy and paste the code into your R session to run it and answer questions in this lesson.
+
+When we generate data in R we need to **set the seed** to make the random number generator create the same numbers every time. Basically, R generate numbers and if we want R to generate the same numbers every time we have to tell R where to start. 
+
+This means that before each simulation I will include: 
+
+```{r, eval = FALSE}
+set.seed(1)
+```
+
+The number within `set.seed` is important as it defines where R starts generating numbers. 
+
+## A simple example
+
+Let's say that we collect data on VO<sub>2max</sub> values in trained cyclists (ml kg<sup>-1</sup> min<sup>-1</sup>). We are interested in the average. First we **simulate** all possible values:
+
+```{r, eval = TRUE}
+set.seed(1)
+vo2max <- rnorm(1000, 70, 5)
+```
+
+All possible values?? Yes, we create a probable distribution of values of VO<sub>2max</sub> in trained cyclists based on the `rnorm`-function. `rnorm` simulates random numbers (1000 in this case) based on a set average (in this case 75) and standard deviation (in this case 5). This population is now stored in the object `vo2max`.
+
+We conduct our study and collect data on 20 participants. This represents only 2% of all possible numbers!
+
+Below we use the `sample` function, this function draws a sample of a fixed size from our collection of random numbers. We store it in an object called `samp`
+
+```{r, eval = TRUE}
+set.seed(1)
+samp <- sample(vo2max, 20, replace = FALSE)
+```
+
+`replace = FALSE` makes sure that we do not sample the same numbers more than once.
+
+The `samp`object now contain numbers from a possible study. The study has recruited 20 randomly choose cyclists and measured their VO<sub>2max</sub>. Let's describe the sample.
+
+In R we can describe the data using multiple methods, first we will calculate summary statistics.
+
+```{r, eval = FALSE}
+m <- mean(samp)
+s <- sd(samp)
+```
+
+We can also use the summary function.
+
+```{r, eval = FALSE}
+summary(samp)
+```
+
+Let's make a graph of the sample. We can represent the sample using points, the code below may be a bit complicated, it is mostly cosmetics.
+
+```{r, eval = FALSE}
+library(tidyverse) # Needed for making the plot!
+df <- data.frame(samp = samp)
+
+df %>%
+  # Plots our samples on the x axis, and sets all y to 1.
+  ggplot(aes(samp, y = 1)) + 
+  # Adds points and "jitter" on the y axis
+  geom_point(position = position_jitter(height = 0.2)) + 
+  # Scales the y axis to better plot the data
+  scale_y_continuous(limits = c(0,2)) +
+  # Set the name of the x axis
+  labs(x = "VO2max") +
+  # The code below modifies the theme of the plot, removing 
+  # the y axis
+  theme(axis.title.y = element_blank(), 
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(), 
+        axis.line.y = element_blank())
+
+
+```
+
+
+Another plot can be the box-plot, similar to the above we can do:
+
+
+```{r, eval = FALSE}
+df %>%
+  # Plots our samples on the y axis, and sets all x to 1.
+  ggplot(aes(x = 1, samp)) + 
+  # Adds the boxplot
+  geom_boxplot(width = 0.5) +
+  # Scales the x axis to better plot the data
+  scale_x_continuous(limits = c(0,2)) +
+  # Set the name of the y axis
+  labs(y = "VO2max") +
+  # The code below modifies the theme of the plot, removing 
+  # the x axis
+  theme(axis.title.x = element_blank(), 
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(), 
+        axis.line.x = element_blank())
+
+```
+
+The boxplot summarizes the data and plots the median, the inter-quartile range minimum and maximum and any outliers. See Navarro p. 175 for a description of the box plot and alternative ways of plotting it.
+
+We can also plot the data as a histogram.
+
+```{r, eval = FALSE}
+df %>%
+  # Plots our samples on the y axis, and sets all x to 1.
+  ggplot(aes(samp)) + 
+  # Adds the histogram
+  geom_histogram(binwidth = 3, color = "blue", fill = "lightblue") +
+  # Set the name of the y axis
+  labs(x = "VO2max", y = "Count") 
+```
+
+Both the statistical summaries (created with `mean`, `sd` and `summary`) and the plots are descriptive analyses of the sample. We still have not made any claims about the population.
+
+## Inference about the population
+
+When doing a study, we are really interested in what we can say about the population (all possible values), in other words, how we can draw conclusions about the unknown based on our data. This is were inferential statistics comes in. 
+
+As we have an estimate of the mean in the population, we may say that based on our sample we believe the mean is close to `mean(samp)`. It is very likely the the mean in the population is not exatly that. Let's try another sample:
+
+```{r, eval = FALSE}
+set.seed(2)
+samp2 <- sample(vo2max, 20, replace = FALSE)
+
+# Calculate the mean
+m2 <- mean(samp2)
+```
+
+As we can see there is going to be some differences due to the fact that every time we draw a new sample (or conduct another study), we will get a slightly different estimate of the mean. How about the variation:
+
+```{r, eval = FALSE}
+s2 <- sd(samp2)
+```
+
+Indeed, slightly different.
+
+We could continue to sample in this way and record every outcome to build a distribution of means. A smarter way is to create a for-loop. This is a basic building block in programming, we tell the computer to do a task multiple times and store the results in a nice format. We will sample `size = 20` and calculate the mean. The results will be stored in a data frame.
+
+```{r, eval = FALSE}
+# set the seed
+set.seed(123)
+
+# create the data frame
+results <- data.frame(mean = rep(NA, 1000)) 
+# The rep function creates a vector full of NA 
+# each NA can be replaced with a mean
+
+# Second we build the for loop
+for(i in 1:1000){
+  
+  results[i, 1] <- mean(sample(x = vo2max, size = 20, replace = FALSE))
+  
+}
+
+```
+
+The results from this process can be plotted using ggplot2
+
+```{r, eval = FALSE}
+ggplot(data = results, aes(mean)) +
+  geom_histogram(fill = "lightblue", color = "gray40", binwidth = 1) + 
+  theme_minimal()
+```
+
+What did just happened? We basically conducted 1000 studies, from each study we calculated the mean and stored them. Most of the means were very close to 70 as we can see in the graph. The **distribution of the means** is bell-shaped, actually the distribution looks like something that we can call a Normal distribution. 
+
+> Distributions can be described in different ways depending on what distribution we are takling about. The most commonly used, the normal (or Gaussion) distribution can be described by the mean and the standard deviation. Read more about distributions in Navarror Ch. 9 or Open intro Ch. 4.
+
+As the distribution means is approximately normal we can determine where most of the means are. Let's say that we are interested in determining a range where 95% of the means can be found. To do this we can use a theoretical distribution created by estimates from the distribution (the mean and standard deviation).
+
+
+```{r, echo = FALSE, fig.width = 4, fig.height=4, fig.align="center"}
+
+funcShaded <- function(x) {
+    y <- dnorm(x, mean = 69.9956, sd = 1.11026)
+    y[x < (69.9956 - 1.96 * 1.11026) | x > (69.9956 + 1.96 * 1.11026)] <- NA
+    return(y)
+}
+
+
+
+ggplot(data.frame(x = c(60, 80)), aes(x = x)) +
+        stat_function(fun = dnorm, args = list(69.9956, 1.11026)) + 
+  theme_minimal() + 
+  labs(x = "Average VO2max") + 
+  theme(axis.text.y = element_blank(), 
+         axis.title.y = element_blank()) +
+  stat_function(fun=funcShaded, geom="area", fill="#84CA72", alpha=0.2)
+  
+  
+```
+
+95% of all means are under the shaded area! This corresponds to a range of values that can be calculated in R:
+
+```{r, eval = FALSE}
+lower <- mean(results[,1]) - 1.96 * sd(results[,1])
+upper <- mean(results[,1]) + 1.96 * sd(results[,1])
+```
+
+What does this mean? Well, we have drawn 1000 samples from our bag of numbers (representing all possible outcomes). We then calculated the mean of each sample and created a distribution of means. The mean of means is very, very close to the true mean.
+
+```{r, eval = FALSE}
+
+mean(vo2max)
+mean(results[,1])
+
+```
+
+We have also calculated a range were 95% of all means are located, we did this by approximating the actual values using the normal distribution. 
+
+
+## Estimation of the sampling distribution
+
+What we have done above is a very theoretical example as we never do 1000 studies. We we never get a distribution of means from many studies. However we can estimate this theoretical distribution of means using a sample!
+
+> This is one of the most important concepts in statistics! This means that by doing one study we can estimate the results of doing many studies. 
+
+#### The standard error of a sample is an approximation of the standard deviation of the sampling distribution
+
+The headline says it all. Basically, using the sample we can calculate the standard deviation, the standard deviation in turn can be used to calculate the standard error. The standard error is an estimate of the standard deviation of the theoretical distribution of means. 
+
+Using R we can simulate this concept. We will create a new set of random samples (or studies) and calculate statistics from them.
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+# set the seed
+set.seed(123)
+
+# create the data frame
+results <- data.frame(mean = rep(NA, 1000), 
+                      sd = rep(NA, 1000)) 
+# The rep function creates a vector full of NA 
+# each NA can be replaced with a mean
+
+# Second we build the for loop
+for(i in 1:1000){
+  
+  samp <- sample(x = vo2max, size = 20, replace = FALSE)
+  
+  results[i, 1] <- mean(samp)
+  results[i, 2] <- sd(samp)
+}
+
+```
+
+
+```{r, eval = FALSE}
+# Copy and paste the code if you want the results
+
+# set the seed
+set.seed(123)
+
+# create the data frame
+results <- data.frame(mean = rep(NA, 1000), 
+                      sd = rep(NA, 1000)) 
+# The rep function creates a vector full of NA 
+# each NA can be replaced with a mean
+
+# Second we build the for loop
+for(i in 1:1000){
+  
+  samp <- sample(x = vo2max, size = 20, replace = FALSE)
+  
+  results[i, 1] <- mean(samp)
+  results[i, 2] <- sd(samp)
+}
+
+
+results %>%
+  # Calculate the standard error of each sample
+  mutate(se = sd/sqrt(20)) %>%
+  # Make a graph containing estimates and empirical values
+  ggplot(aes(mean)) + geom_histogram(binwidth = 0.5) + 
+  
+  # Add a line representing the standard deviation of the distribution of means
+  geom_segment(aes(y = 25, 
+                   yend = 25, 
+                   x = mean(mean), 
+                   xend = mean(mean) + sd(mean)), 
+               lty = 1, color = "green", size = 2) +
+  # Add text to discribe the line
+  geom_text(aes(x = mean(mean),
+                y = 35, 
+                label = paste("Empirical: Mean ", 
+                              round(mean(mean), 0), 
+                              " + SD: ", 
+                               round(sd(mean), 1) )), 
+            color = "green") +
+  
+   # Add a line representing the average standard error of each sample
+  geom_segment(aes(y = 55, 
+                   yend = 55, 
+                   x = mean(mean), 
+                   xend = mean(mean) + mean(se)), 
+               lty = 1, color = "blue", size = 2) +
+  # Add text to describe the above
+  geom_text(aes(x = mean(mean),
+                y = 65, 
+                label = paste("Estimate: Mean ", 
+                              round(mean(mean), 0), 
+                              " + average SE: ", 
+                               round(mean(se), 1) )), 
+            color = "blue") 
+
+```
+
+
+In the graph, the blue line represents the average of what we estimate with each sample and the green line represent the actual values of the sampling distribution. 
+
+The variation (spread) of the sampling distribution corresponds to the **standard error of the mean** in each sample. At least, in the long run, the standard error of the mean is a pretty good estimate of the variation in the distributions of means. From a mathematical point of view, the standard error of the mean is calculated as:
+
+$$SE = \frac{s}{\sqrt{n}}$$
+where $s$ is the standard deviation, $n$ is the number of observations.
+
+Remember that we can use the standard deviation to calculate a range of values containing 95% of all values in a normal distribution. This can be done using a single sample! When calculating this using a sample we create a confidence interval!
+
+
+### A confidence interval for the mean
+
+A confidence interval for the mean can be calculated as:
+
+$$lower~limit=Mean - 1.96 * SE$$
+$$upper~limit=Mean+1.96 * SE$$
+
+(This assumes that we are using the normal distribution). 
+
+The interpretation of the confidence interval is that 95% of the confidence intervals will contain the population mean. But unfortunately, we do not know if our specific interval do so. 
+
+The interpretation follows from the fact that we estimate the variation in the theoretical sampling distribution. Five percent of the time we will be wrong.
+
+To test if the theory is correct, lets calculate confidence intervals from our simulated data and see how many times we catch the true mean.
+
+```{r, eval = FALSE}
+
+# Creat new variables with upper and lower limits of the confidence interval  
+cis <- results %>%
+  # Using the normal distribution
+  mutate(lower.limit = mean - 1.96 * sd/sqrt(20), 
+         upper.limit = mean + 1.96 * sd/sqrt(20)) %>%
+  # Test if the true mean is within the limits
+  # If the true mean is above the lower limit and below the upper limit then TRUE
+  # otherwise FALSE
+    mutate(true.mean = if_else(mean(vo2max) > lower.limit & mean(vo2max) < upper.limit, 
+                             TRUE, FALSE)) 
+
+# Plot the data, only plotting 100 data points to make it suitable for every computer
+
+cis[100:199, ] %>%
+  ggplot(aes(seq(1:nrow(.)), 
+             y = mean, 
+             color = true.mean, # set a specific color 
+             alpha = true.mean)) + # and transparency to 
+  # intervals containing and not containing the true mean
+  
+  # add a line showing the true mean
+  geom_hline(yintercept = mean(vo2max)) +
+  # add errorbars showing each interval
+  geom_errorbar(aes(ymin = lower.limit, ymax = upper.limit)) + 
+  # scale the colors and transparency. Intervals not containing 
+  # the true mean are red.
+  scale_color_manual(values = c("red", "black")) + 
+  scale_alpha_manual(values = c(1, 0.2)) + 
+  # Set label texts
+  labs(x = "Sample", 
+       y = "Mean", 
+       alpha = "Contains\nthe true mean", 
+       color = "Contains\nthe true mean") + 
+  # Change the theme
+  theme_minimal()
+  
+
+# Calculate the proportions of intervals not containing the true mean
+sum(cis$true.mean == FALSE) / sum(cis$true.mean == TRUE)
+# Almost 5%!
+
+```
+
+Ok so we are really close. This means that if we do a study 1000 times and calculate some statistic, in 5% of the studies we will be missing the true mean. Seen from the other side, 95% of the times, our interval will contain the true mean.
+
+#### Why is'nt it 5%
+It may be due to the fact that the normal distribution is not a good distribution when sample sizes are low. We can instead use the $t$-distribution. (This distribution has something to do with beer!?)
+
+The t distribution changes it shape depending on how many samples we have. The code below can be changed by using the t distribution instead.
+
+
+```{r, eval = FALSE}
+
+# Creat new variables with upper and lower limits of the confidence interval  
+cis <- results %>%
+  # Using the t-distribution
+  mutate(lower.limit = mean - qt(0.975, 20-1) * sd/sqrt(20), 
+         upper.limit = mean + qt(0.975, 20-1) * sd/sqrt(20)) %>%
+  # Test if the true mean is within the limits
+  # If the true mean is above the lower limit and below the upper limit then TRUE
+  # otherwise FALSE
+    mutate(true.mean = if_else(mean(vo2max) > lower.limit & mean(vo2max) < upper.limit, 
+                             TRUE, FALSE)) 
+
+# Plot the data, only plotting 100 data points to make it suitable for every computer
+
+cis[100:199, ] %>%
+  ggplot(aes(seq(1:nrow(.)), 
+             y = mean, 
+             color = true.mean, # set a specific color 
+             alpha = true.mean)) + # and transparency to 
+  # intervals containing and not containing the true mean
+  
+  # add a line showing the true mean
+  geom_hline(yintercept = mean(vo2max)) +
+  # add errorbars showing each interval
+  geom_errorbar(aes(ymin = lower.limit, ymax = upper.limit)) + 
+  # scale the colors and transparency. Intervals not containing 
+  # the true mean are red.
+  scale_color_manual(values = c("red", "black")) + 
+  scale_alpha_manual(values = c(1, 0.2)) + 
+  # Set label texts
+  labs(x = "Sample", 
+       y = "Mean", 
+       alpha = "Contains\nthe true mean", 
+       color = "Contains\nthe true mean") + 
+  # Change the theme
+  theme_minimal()
+  
+
+# Calculate the proportions of intervals not containing the true mean
+sum(cis$true.mean == FALSE) / sum(cis$true.mean == TRUE)
+# Almost 5%!
+
+```
+
+Again, almost! The two distributions are very similar when we are getting closer to $n=30$.
+
+## Sample size and confidence intervals
+
+The width of confidence intervals are determined by the mean, standard deviation and the sample size. If the sample size gets lower the width will increase. This means that we will have less precision. We will still cover the true mean 95% of the time (if we repeat our study) but the range of possible values of the true mean will be wider. 
+
+
+## Sampling distribution of IQ
+
+[IQ values are normally distributed](https://en.wikipedia.org/wiki/IQ_classification) with median 100 (since the distribution is normal, this should be very close the the mean) and standard deviation of 15. Using a sample from the population we can calculate a 95% confidence interval. We will do this with `n=10` and `n=25`. You will have to execute the code. A 95% confidence interval based on the normal distribution can be calculated as 
+
+```{r, eval = FALSE}
+
+pop <- rnorm(100000, mean = 100, sd = 15)
+
+
+# set the seed
+set.seed(1)
+
+n10 <- sample(pop, 10, replace = FALSE)
+n25 <- sample(pop, 25, replace = FALSE)
+
+# n = 10
+mean_n10 <- mean(n10)
+s_n10 <- sd(n10)
+
+error_n10 <- qnorm(0.975) * s_n10/sqrt(10)
+
+# n = 25
+mean_n25 <- mean(n25)
+s_n25 <- sd(n25)
+
+error_n25 <- qnorm(0.975) * s_n25/sqrt(25)
+
+```
+
+Above we used the `qnorm` function. Test what the result is if you only run `round(qnorm(0.975), 2)`. Above I used a commonly used rounded value, do the correspond?
+
+We can collect the pieces and create a plot using this code:
+
+```{r, eval = FALSE, echo = TRUE}
+df <- data.frame(sample.size = c(10, 25),
+                 mean = c(mean_n10, mean_n25), 
+                 error = c(error_n10, error_n25))
+
+df %>%
+  ggplot(aes(as.factor(sample.size), mean)) +
+  geom_errorbar(aes(ymin = mean-error, ymax = mean + error), width = 0.2) +
+  geom_point(size = 3) + 
+  theme_minimal()
+
+```
+
+What can you say about the effect of sample size on the confidence of an estimate?
+
+Above we used the normal distribution to calculate the confidence interval. It would be more correct to use the t-distribution. 
+
+The corresponding code for calculating the error based on the t-distribution would be
+
+`qt(0.975, df = n - 1) * s/sqrt(n)`
+
+Adopt the code above and graph the different confidence intervals beside each other.
+
+
+ <a id="displayText" href="javascript:toggle(1);">Here is a possible solution</a>
+  <div id="toggleText1" style="display: none">
+
+```{r, eval = FALSE}
+
+# set the seed
+
+set.seed(1)
+
+
+n10 <- sample(pop, 10, replace = FALSE)
+n25 <- sample(pop, 25, replace = FALSE)
+
+# n = 10
+mean_n10 <- mean(n10)
+s_n10 <- sd(n10)
+
+error_n10 <- qnorm(0.975) * s_n10/sqrt(10)
+errort_n10 <- qt(0.975, df = 10 - 1) * s_n10/sqrt(10)
+
+
+# n = 25
+mean_n25 <- mean(n25)
+s_n25 <- sd(n25)
+
+error_n25 <- qnorm(0.975) * s_n25/sqrt(25)
+errort_n25 <- qt(0.975, df = 25-1) * s_n25/sqrt(25)
+
+```
+
+We can collect the pieces and create a plot using this code:
+
+```{r, eval = FALSE, echo = TRUE}
+df <- data.frame(sample.size = c(10, 25, 10, 25),
+                 mean = c(mean_n10, mean_n25, mean_n10, mean_n25), 
+                 error = c(error_n10, error_n25, errort_n10, errort_n25), 
+                 error.type = c("z", "z", "t", "t"))
+
+df %>%
+  ggplot(aes(as.factor(sample.size), mean, color = error.type)) +
+  geom_errorbar(aes(ymin = mean-error, ymax = mean + error), 
+                width = 0.2, 
+                position = position_dodge(width = 0.2)) +
+  geom_point(size = 3, position = position_dodge(width = 0.2)) + 
+  theme_minimal()
+
+```
+
+What can you say about using the t- vs. the z-distribution?
+
+  </div>
+  </br>  
+
+
+## A hypothesis test
+
+We know that a random sample will have a mean close to the center of the population distribution (100 in the case above). We want to know if chess players ($Chess$) have higher IQ scores than average people $Average$. We can create an alternative hypothesis stating that 
+
+$$H_A: Chess \neq Average$$
+
+The null hypothesis that we are comparing to is 
+
+$$H_0: Chess = Average$$
+
+We collect data from chess players ($n=24$). Use the data below to test $H_0$.
+
+
+|Chess player |IQ  |
+|-------------|----|
+|1            |129 |
+|2            |101 |
+|3            |98  |
+|4            |89  |
+|5            |103 |
+|6            |107 |
+|7            |123 |
+|8            |117 |
+|9            |114 |
+|10           |109 |
+|11           |110 |
+|12           |99  |
+|13           |101 |
+|14           |102 |
+|15           |130 |
+|16           |121 |
+|17           |129 |
+|18           |115 |
+|19           |107 |
+|20           |109 |
+|21           |107 |
+|22           |96  |
+|23           |98  |
+|24           |102 |
+
+Try to calculate the confidence interval and to answer these questions:
+
+- How do you interpret the confidence interval?
+- What does the confidence interval say about your hypothesis?
+- Is the confidence interval a statement about your sample?
+
+
+ <a id="displayText" href="javascript:toggle(2);">Here is a possible solution</a>
+  <div id="toggleText2" style="display: none">
+
+
+```{r}
+
+
+chess.players <- c(129, 101,98 ,89 ,103,107,123,117,114,
+                   109,110,99 ,101,102,130,121,129,115,
+                   107,109,107,96 ,98,102)
+
+
+chess.mean <- mean(chess.players)
+
+chess.error <- qt(0.975, df = 24-1) * sd(chess.players)/sqrt(24)
+
+
+c(chess.mean - chess.error, chess.mean + chess.error)
+
+
+
+```
+
+
+  </div>
+  </br>
+
+
+## Using a confidence interval when planning a study
+
+We can calculate the mean change from pre- to post-training in the cycling study for $\dot{V}O2_{max}$.
+
+For this exercise, use the data set `cyclingStudy.xlsx`, you will find it on canvas. The variables of interest are `subject`, `group`, `timepoint` and `VO2.max`. In the timepoint variable, `meso3` are the post-training values and pre are the pre-training values.
+
+Calculate the mean change in percentage for the whole data set together with the sample SD. Then calculate a confidence interval.  
+
+How do you interpret the confidence interval?
+
+ <a id="displayText" href="javascript:toggle(3);">Here is a possible solution</a>
+  <div id="toggleText3" style="display: none">
+
+```{r, eval = FALSE}
+
+library(readxl); library(tidyverse)
+
+read_excel("./data/cyclingStudy.xlsx", na = "NA") %>%
+        select(subject, group, timepoint, VO2.max) %>%
+        filter(timepoint %in%  c("pre", "meso3")) %>%
+  pivot_wider(names_from = timepoint, values_from = VO2.max) %>%
+  mutate(change = 100 * (meso3-pre)/pre) %>%
+  group_by() %>%
+  summarise(m = mean(change, na.rm = TRUE), 
+            s = sd(change, na.rm = TRUE), 
+            n = sum(!is.na(change)), 
+            error = qt(0.975, df = n -1) * s/sqrt(n), 
+            lower = m - error, 
+            upper = m + error) %>%
+  print()
+                 
+```               
+     
+     
+The confidence interval can be interpreted that in 95% percent of confidence intervals contains the true mean, and this confidence interval does not contain 0. 
+     
+            
+  </div>
+  </br>
+  
+Let's say that we are designing a new study. We want to be able to show a difference between pre- to post-training in $\dot{V}O2_{max}$ of 2% as this might be an important difference. Given the standard deviation that you have calculated above, how many participants should be recruit to the study to be able to detect a difference of 2%?
+
+Here you can try to calculate the lower limit of a 95% confidence limit given a standard deviation equal to what you calculated above and a mean change of interest of 2% using many different alternatives for the sample size. 
+
+
+ <a id="displayText" href="javascript:toggle(4);">Here is a possible solution</a>
+  <div id="toggleText4" style="display: none">
+
+```{r, eval = FALSE}
+
+error <- qt(0.975, df = seq(from = 10, to = 100, by = 2) - 1) * 4.79 / sqrt(seq(from = 10,
+                                                                                to = 100, 
+                                                                                by = 2))
+
+ggplot(data.frame(n = seq(from = 10, to = 100, by = 2), 
+                  lower.bound = 2-error), aes(n, lower.bound)) + geom_point() +
+  geom_hline(yintercept = 0)
+
+```
+
+  </div>
+  </br>
+
+How could the above information help you when designing a study? Why is there a relationship between sample size and the lower bound of the confidence interval?
+
+-->

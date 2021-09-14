@@ -282,12 +282,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.7" data-path="the-linear-model.html"><a href="the-linear-model.html#do-problematic-observations-matter"><i class="fa fa-check"></i><b>12.7</b> Do problematic observations matter?</a></li>
 <li class="chapter" data-level="12.8" data-path="the-linear-model.html"><a href="the-linear-model.html#a-more-intepretable-model"><i class="fa fa-check"></i><b>12.8</b> A more intepretable model</a></li>
 <li class="chapter" data-level="12.9" data-path="the-linear-model.html"><a href="the-linear-model.html#an-exercise"><i class="fa fa-check"></i><b>12.9</b> An exercise</a></li>
-<li class="chapter" data-level="12.10" data-path="the-linear-model.html"><a href="the-linear-model.html#categorical-predictors-and-multiple-regression"><i class="fa fa-check"></i><b>12.10</b> Categorical predictors and multiple regression</a>
-<ul>
-<li class="chapter" data-level="12.10.1" data-path="the-linear-model.html"><a href="the-linear-model.html#linear-models-can-be-used-instead-of-t-tests"><i class="fa fa-check"></i><b>12.10.1</b> Linear models can be used instead of t-tests</a></li>
-<li class="chapter" data-level="12.10.2" data-path="the-linear-model.html"><a href="the-linear-model.html#dummy-variables"><i class="fa fa-check"></i><b>12.10.2</b> Dummy variables</a></li>
-</ul></li>
-<li class="chapter" data-level="12.11" data-path="the-linear-model.html"><a href="the-linear-model.html#multiple-regression"><i class="fa fa-check"></i><b>12.11</b> Multiple regression</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>13</b> Study questions</a>
 <ul>
@@ -296,6 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>13.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
 <li class="chapter" data-level="13.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>13.4</b> Chapter 5: Creating your first graph</a></li>
 <li class="chapter" data-level="13.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>13.5</b> Chapter 6: Wrangling data to create your first table</a></li>
+<li class="chapter" data-level="13.6" data-path="study-questions.html"><a href="study-questions.html#chapter-11-introduction-to-the-molecular-exercise-physiology-lab"><i class="fa fa-check"></i><b>13.6</b> Chapter 11: Introduction to the molecular exercise physiology lab</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>14</b> References</a></li>
 <li class="divider"></li>
@@ -338,15 +333,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Start up RStudio, start a new project, select the Version Control option and copy the address to the repository.</li>
 <li>Add files to your project and upload to github. You need to add files, commit them and push using git. Use the command line in your terminal:</li>
 </ul>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="assignment1.html#cb85-1" aria-hidden="true" tabindex="-1"></a>git add <span class="sc">-</span>A</span>
-<span id="cb85-2"><a href="assignment1.html#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-3"><a href="assignment1.html#cb85-3" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">&quot;A short message to describe your changes&quot;</span></span>
-<span id="cb85-4"><a href="assignment1.html#cb85-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-5"><a href="assignment1.html#cb85-5" aria-hidden="true" tabindex="-1"></a>git push</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="assignment1.html#cb74-1" aria-hidden="true" tabindex="-1"></a>git add <span class="sc">-</span>A</span>
+<span id="cb74-2"><a href="assignment1.html#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="assignment1.html#cb74-3" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">&quot;A short message to describe your changes&quot;</span></span>
+<span id="cb74-4"><a href="assignment1.html#cb74-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-5"><a href="assignment1.html#cb74-5" aria-hidden="true" tabindex="-1"></a>git push</span></code></pre></div>
 <ul>
 <li>When you want to download the latest version of your project, type in the terminal:</li>
 </ul>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="assignment1.html#cb86-1" aria-hidden="true" tabindex="-1"></a>git pull</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="assignment1.html#cb75-1" aria-hidden="true" tabindex="-1"></a>git pull</span></code></pre></div>
 <ul>
 <li>You may encounter conflicts if pushing changes that overwrites changes made by other group members. These may be tricky but can be resolved… Have patience!</li>
 </ul>

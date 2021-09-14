@@ -1,0 +1,69 @@
+
+
+
+# Linear and curvlinear relationships, and predictions
+
+
+<!-- UNDER CONSTRUCTION
+In the previous chapter we looked at linear relationships, we can imagine these as straight lines. Many things in life are not straight. In this chapter we will add curvlinear relationships to our repertoire. We will also predict values from the model, we will actually start by predicting values. 
+
+## Predicting from data
+
+
+```{r}
+
+df <- data.frame() 
+
+
+```
+
+
+## The workload-lactate relationship
+
+
+
+```{r}
+library(tidyverse)
+library(exscidata)
+
+data("cyclingstudy")
+
+
+cyclingstudy %>%
+  select(subject, group, timepoint, lac.225:lac.375) %>%
+  pivot_longer(names_to = "watt", 
+               values_to = "lactate", 
+               names_prefix = "lac.",
+               names_transform = list(watt = as.numeric),
+               cols = lac.225:lac.375) %>%
+
+  
+  ggplot(aes(watt, lactate, group = paste(timepoint, subject)))  + 
+  geom_line() + facet_wrap(~timepoint)
+
+
+
+
+
+temp <- cyclingstudy %>%
+  select(subject, group, timepoint, lac.225:lac.375) %>%
+  pivot_longer(names_to = "watt", 
+               values_to = "lactate", 
+               names_prefix = "lac.",
+               names_transform = list(watt = as.numeric),
+               cols = lac.225:lac.375) %>%
+  print()
+
+
+
+
+
+
+
+
+
+
+```
+
+-->
+ 
