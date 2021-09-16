@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 15 Categorical predictors and multiple regression | The linear model</title>
+  <title>Chapter 14 Categorical predictors and multiple regression | Quantitative methods and statistics (In Sport and Exercise Science)</title>
   <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 15 Categorical predictors and multiple regression | The linear model" />
+  <meta property="og:title" content="Chapter 14 Categorical predictors and multiple regression | Quantitative methods and statistics (In Sport and Exercise Science)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dhammarstrom/quant-methods" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 15 Categorical predictors and multiple regression | The linear model" />
+  <meta name="twitter:title" content="Chapter 14 Categorical predictors and multiple regression | Quantitative methods and statistics (In Sport and Exercise Science)" />
   
   <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="twitter:image" content="images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="interpreting-the-results.html"/>
-<link rel="next" href="multiple-regression.html"/>
+<link rel="prev" href="linear-and-curve-linear-relationships-and-predictions.html"/>
+<link rel="next" href="correlations.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -242,7 +242,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
 <li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a></li>
+<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html#smallest-worthwhile-change-or-effect"><i class="fa fa-check"></i><b>9.1</b> Smallest worthwhile change or effect</a></li>
+<li class="chapter" data-level="9.2" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html#video-from-seminar"><i class="fa fa-check"></i><b>9.2</b> Video from seminar</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="assignment1.html"><a href="assignment1.html"><i class="fa fa-check"></i><b>10</b> Assignment 1: Reliability and tools for reproducible data science</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="assignment1.html"><a href="assignment1.html#elements-of-the-report"><i class="fa fa-check"></i><b>10.1</b> Elements of the report</a></li>
@@ -251,42 +255,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html"><i class="fa fa-check"></i><b>11</b> Introduction to the molecular exercise physiology lab</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#resources-3"><i class="fa fa-check"></i><b>11.1</b> Resources</a></li>
-<li class="chapter" data-level="11.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#straight-lines"><i class="fa fa-check"></i><b>11.2</b> Straight lines</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html"><i class="fa fa-check"></i><b>12</b> Fitting regression models in R</a>
+<li class="chapter" data-level="11.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#health-and-safety-in-the-lab"><i class="fa fa-check"></i><b>11.1</b> Health and safety in the lab</a></li>
+<li class="chapter" data-level="11.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#good-laboratory-practice"><i class="fa fa-check"></i><b>11.2</b> Good laboratory practice</a></li>
+<li class="chapter" data-level="11.3" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#the-laboratory-journal"><i class="fa fa-check"></i><b>11.3</b> The laboratory journal</a></li>
+<li class="chapter" data-level="11.4" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#keeping-it-digital---using-our-electronic-lab-journal"><i class="fa fa-check"></i><b>11.4</b> Keeping it digital - Using our electronic lab journal</a>
 <ul>
-<li class="chapter" data-level="12.0.1" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#code-for-fitting-a-preliminary-model"><i class="fa fa-check"></i><b>12.0.1</b> Code for fitting a preliminary model</a></li>
-<li class="chapter" data-level="12.1" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#linear-relationship"><i class="fa fa-check"></i><b>12.1</b> Linear relationship</a></li>
-<li class="chapter" data-level="12.2" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#constant-variance"><i class="fa fa-check"></i><b>12.2</b> Constant variance</a></li>
-<li class="chapter" data-level="12.3" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#normal-residuals"><i class="fa fa-check"></i><b>12.3</b> Normal residuals</a></li>
-<li class="chapter" data-level="12.4" data-path="fitting-regression-models-in-r.html"><a href="fitting-regression-models-in-r.html#independent-observations"><i class="fa fa-check"></i><b>12.4</b> Independent observations</a></li>
+<li class="chapter" data-level="11.4.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#what-to-write-in-the-journal"><i class="fa fa-check"></i><b>11.4.1</b> What to write in the journal</a></li>
+<li class="chapter" data-level="11.4.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#structure-of-an-entry"><i class="fa fa-check"></i><b>11.4.2</b> Structure of an entry</a></li>
+<li class="chapter" data-level="11.4.3" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#relationship-between-the-laboratory-journal-and-your-samples-solutions-tubes-etc."><i class="fa fa-check"></i><b>11.4.3</b> Relationship between the laboratory journal and your samples, solutions, tubes etc.</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="check-the-results.html"><a href="check-the-results.html"><i class="fa fa-check"></i><b>13</b> Check the results</a>
+<li class="chapter" data-level="11.5" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#protocols-and-experiments-in-the-course"><i class="fa fa-check"></i><b>11.5</b> Protocols and experiments in the course</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="the-linear-model.html"><a href="the-linear-model.html"><i class="fa fa-check"></i><b>12</b> The linear model</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="check-the-results.html"><a href="check-the-results.html#a-note-about-printing-the-regression-table"><i class="fa fa-check"></i><b>13.1</b> A note about printing the regression table</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="interpreting-the-results.html"><a href="interpreting-the-results.html"><i class="fa fa-check"></i><b>14</b> Interpreting the results</a>
+<li class="chapter" data-level="12.1" data-path="the-linear-model.html"><a href="the-linear-model.html#resources-3"><i class="fa fa-check"></i><b>12.1</b> Resources</a></li>
+<li class="chapter" data-level="12.2" data-path="the-linear-model.html"><a href="the-linear-model.html#straight-lines"><i class="fa fa-check"></i><b>12.2</b> Straight lines</a></li>
+<li class="chapter" data-level="12.3" data-path="the-linear-model.html"><a href="the-linear-model.html#fitting-regression-models-in-r"><i class="fa fa-check"></i><b>12.3</b> Fitting regression models in R</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="interpreting-the-results.html"><a href="interpreting-the-results.html#do-problematic-observations-matter"><i class="fa fa-check"></i><b>14.1</b> Do problematic observations matter?</a></li>
-<li class="chapter" data-level="14.2" data-path="interpreting-the-results.html"><a href="interpreting-the-results.html#a-more-intepretable-model"><i class="fa fa-check"></i><b>14.2</b> A more intepretable model</a></li>
-<li class="chapter" data-level="14.3" data-path="interpreting-the-results.html"><a href="interpreting-the-results.html#an-exercise"><i class="fa fa-check"></i><b>14.3</b> An exercise</a></li>
+<li class="chapter" data-level="12.3.1" data-path="the-linear-model.html"><a href="the-linear-model.html#linear-relationship"><i class="fa fa-check"></i><b>12.3.1</b> Linear relationship</a></li>
+<li class="chapter" data-level="12.3.2" data-path="the-linear-model.html"><a href="the-linear-model.html#constant-variance"><i class="fa fa-check"></i><b>12.3.2</b> Constant variance</a></li>
+<li class="chapter" data-level="12.3.3" data-path="the-linear-model.html"><a href="the-linear-model.html#normal-residuals"><i class="fa fa-check"></i><b>12.3.3</b> Normal residuals</a></li>
+<li class="chapter" data-level="12.3.4" data-path="the-linear-model.html"><a href="the-linear-model.html#independent-observations"><i class="fa fa-check"></i><b>12.3.4</b> Independent observations</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html"><i class="fa fa-check"></i><b>15</b> Categorical predictors and multiple regression</a>
+<li class="chapter" data-level="12.4" data-path="the-linear-model.html"><a href="the-linear-model.html#check-the-results"><i class="fa fa-check"></i><b>12.4</b> Check the results</a></li>
+<li class="chapter" data-level="12.5" data-path="the-linear-model.html"><a href="the-linear-model.html#a-note-about-printing-the-regression-table"><i class="fa fa-check"></i><b>12.5</b> A note about printing the regression table</a></li>
+<li class="chapter" data-level="12.6" data-path="the-linear-model.html"><a href="the-linear-model.html#interpreting-the-results"><i class="fa fa-check"></i><b>12.6</b> Interpreting the results</a></li>
+<li class="chapter" data-level="12.7" data-path="the-linear-model.html"><a href="the-linear-model.html#do-problematic-observations-matter"><i class="fa fa-check"></i><b>12.7</b> Do problematic observations matter?</a></li>
+<li class="chapter" data-level="12.8" data-path="the-linear-model.html"><a href="the-linear-model.html#a-more-intepretable-model"><i class="fa fa-check"></i><b>12.8</b> A more intepretable model</a></li>
+<li class="chapter" data-level="12.9" data-path="the-linear-model.html"><a href="the-linear-model.html#an-exercise"><i class="fa fa-check"></i><b>12.9</b> An exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="linear-and-curve-linear-relationships-and-predictions.html"><a href="linear-and-curve-linear-relationships-and-predictions.html"><i class="fa fa-check"></i><b>13</b> Linear and curve-linear relationships, and predictions</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#linear-models-can-be-used-instead-of-t-tests"><i class="fa fa-check"></i><b>15.1</b> Linear models can be used instead of t-tests</a></li>
-<li class="chapter" data-level="15.2" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>15.2</b> Dummy variables</a></li>
+<li class="chapter" data-level="13.1" data-path="linear-and-curve-linear-relationships-and-predictions.html"><a href="linear-and-curve-linear-relationships-and-predictions.html#predicting-from-data"><i class="fa fa-check"></i><b>13.1</b> Predicting from data</a></li>
+<li class="chapter" data-level="13.2" data-path="linear-and-curve-linear-relationships-and-predictions.html"><a href="linear-and-curve-linear-relationships-and-predictions.html#the-workload-lactate-relationship"><i class="fa fa-check"></i><b>13.2</b> The workload-lactate relationship</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="multiple-regression.html"><a href="multiple-regression.html"><i class="fa fa-check"></i><b>16</b> Multiple regression</a></li>
-<li class="chapter" data-level="17" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>17</b> Study questions</a>
+<li class="chapter" data-level="14" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html"><i class="fa fa-check"></i><b>14</b> Categorical predictors and multiple regression</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>17.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
-<li class="chapter" data-level="17.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>17.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
-<li class="chapter" data-level="17.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>17.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
-<li class="chapter" data-level="17.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>17.4</b> Chapter 5: Creating your first graph</a></li>
-<li class="chapter" data-level="17.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>17.5</b> Chapter 6: Wrangling data to create your first table</a></li>
+<li class="chapter" data-level="14.1" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#linear-models-can-be-used-instead-of-t-tests"><i class="fa fa-check"></i><b>14.1</b> Linear models can be used instead of t-tests</a></li>
+<li class="chapter" data-level="14.2" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>14.2</b> Dummy variables</a></li>
+<li class="chapter" data-level="14.3" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>14.3</b> Multiple regression</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>18</b> References</a></li>
+<li class="chapter" data-level="15" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>15</b> Correlations</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="correlations.html"><a href="correlations.html#always-plot-the-data"><i class="fa fa-check"></i><b>15.1</b> Always plot the data!</a></li>
+<li class="chapter" data-level="15.2" data-path="correlations.html"><a href="correlations.html#extending-the-correlation-to-the-regression"><i class="fa fa-check"></i><b>15.2</b> Extending the correlation to the regression</a></li>
+<li class="chapter" data-level="15.3" data-path="correlations.html"><a href="correlations.html#correlation-comes-in-many-forms"><i class="fa fa-check"></i><b>15.3</b> Correlation comes in many forms</a></li>
+<li class="chapter" data-level="15.4" data-path="correlations.html"><a href="correlations.html#statistical-and-subject-matter-interpretations"><i class="fa fa-check"></i><b>15.4</b> Statistical and subject-matter interpretations</a></li>
+<li class="chapter" data-level="15.5" data-path="correlations.html"><a href="correlations.html#summary-1"><i class="fa fa-check"></i><b>15.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>16</b> Study questions</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>16.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
+<li class="chapter" data-level="16.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>16.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
+<li class="chapter" data-level="16.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>16.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
+<li class="chapter" data-level="16.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>16.4</b> Chapter 5: Creating your first graph</a></li>
+<li class="chapter" data-level="16.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>16.5</b> Chapter 6: Wrangling data to create your first table</a></li>
+<li class="chapter" data-level="16.6" data-path="study-questions.html"><a href="study-questions.html#chapter-11-introduction-to-the-molecular-exercise-physiology-lab"><i class="fa fa-check"></i><b>16.6</b> Chapter 11: Introduction to the molecular exercise physiology lab</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>17</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -299,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The linear model</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a>
           </h1>
         </div>
 
@@ -307,57 +333,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="categorical-predictors-and-multiple-regression" class="section level1" number="15">
-<h1><span class="header-section-number">Chapter 15</span> Categorical predictors and multiple regression</h1>
-<p>We have up to now used a single continuous predictor to predict a dependent variable. We will now show that the ordinary regression models can be the same as other statistical tests, they can be extended and modified. This will show that the ordinary regression model is very flexible.</p>
-<div id="linear-models-can-be-used-instead-of-t-tests" class="section level2" number="15.1">
-<h2><span class="header-section-number">15.1</span> Linear models can be used instead of t-tests</h2>
-<p>Last week we performed t-tests. These are tests of differences from zero in a one-sample case or differences between groups with paired or unpaired observations. We calculated the difference between pre- and post-training in squat-jump to test against the null-hypothesis that there was no difference between these two time-points.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="categorical-predictors-and-multiple-regression.html#cb91-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb91-2"><a href="categorical-predictors-and-multiple-regression.html#cb91-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, timepoint, sj.max) <span class="sc">%&gt;%</span></span>
-<span id="cb91-3"><a href="categorical-predictors-and-multiple-regression.html#cb91-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb91-4"><a href="categorical-predictors-and-multiple-regression.html#cb91-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb91-5"><a href="categorical-predictors-and-multiple-regression.html#cb91-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> sj.max) <span class="sc">%&gt;%</span></span>
-<span id="cb91-6"><a href="categorical-predictors-and-multiple-regression.html#cb91-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> meso3 <span class="sc">-</span> pre) </span></code></pre></div>
-<p>The data above may be used to perform the paired sample t-test and a one sample t-test</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="categorical-predictors-and-multiple-regression.html#cb92-1" aria-hidden="true" tabindex="-1"></a>paired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cycling_data<span class="sc">$</span>meso3, cycling_data<span class="sc">$</span>pre, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb92-2"><a href="categorical-predictors-and-multiple-regression.html#cb92-2" aria-hidden="true" tabindex="-1"></a>one_sample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cycling_data<span class="sc">$</span>change, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p>These tests are equal. Similarly, we can fit a linear model to the <code>change</code> variable to test against the same hypothesis</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="categorical-predictors-and-multiple-regression.html#cb93-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> cycling_data)</span>
-<span id="cb93-2"><a href="categorical-predictors-and-multiple-regression.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code></pre></div>
-<p>Using the syntax <code>change ~ 1</code> in the formula we specify that we want to estimate the intercept of the model. The intercept is tested against the null-hypothesis that it is 0.</p>
-<p>We also did two sample t-tests with unpaired observations. We can test if there is a difference in <code>VO2.max</code> percentage change between group <code>INCR</code>and <code>DECR</code> using a t-test.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="categorical-predictors-and-multiple-regression.html#cb94-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb94-2"><a href="categorical-predictors-and-multiple-regression.html#cb94-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb94-3"><a href="categorical-predictors-and-multiple-regression.html#cb94-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>), </span>
-<span id="cb94-4"><a href="categorical-predictors-and-multiple-regression.html#cb94-4" aria-hidden="true" tabindex="-1"></a>               group <span class="sc">!=</span> <span class="st">&quot;MIX&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb94-5"><a href="categorical-predictors-and-multiple-regression.html#cb94-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb94-6"><a href="categorical-predictors-and-multiple-regression.html#cb94-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb94-7"><a href="categorical-predictors-and-multiple-regression.html#cb94-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
-<span id="cb94-8"><a href="categorical-predictors-and-multiple-regression.html#cb94-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
-<span id="cb94-9"><a href="categorical-predictors-and-multiple-regression.html#cb94-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-10"><a href="categorical-predictors-and-multiple-regression.html#cb94-10" aria-hidden="true" tabindex="-1"></a>unpaired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>Above we use the formula-way to specify the t-test. Similarly we can use a linear model</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="categorical-predictors-and-multiple-regression.html#cb95-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span>
-<span id="cb95-2"><a href="categorical-predictors-and-multiple-regression.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code></pre></div>
-<p>Compare the two tests. Do they tell you the same?</p>
-<p>Even the Welch two sample t-test can be replicated using a linear model. However, we have to specify it in a slightly different frame work using the <code>gls()</code>function from the <code>nlme</code> package.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="categorical-predictors-and-multiple-regression.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
-<span id="cb96-2"><a href="categorical-predictors-and-multiple-regression.html#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-3"><a href="categorical-predictors-and-multiple-regression.html#cb96-3" aria-hidden="true" tabindex="-1"></a>welch_twosample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb96-4"><a href="categorical-predictors-and-multiple-regression.html#cb96-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-5"><a href="categorical-predictors-and-multiple-regression.html#cb96-5" aria-hidden="true" tabindex="-1"></a>lin_mod_var <span class="ot">&lt;-</span> <span class="fu">gls</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">weights =</span> <span class="fu">varIdent</span>(<span class="at">form =</span> <span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>group), <span class="at">na.action =</span> na.exclude, <span class="at">method =</span> <span class="st">&quot;ML&quot;</span>)</span>
-<span id="cb96-6"><a href="categorical-predictors-and-multiple-regression.html#cb96-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-7"><a href="categorical-predictors-and-multiple-regression.html#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-8"><a href="categorical-predictors-and-multiple-regression.html#cb96-8" aria-hidden="true" tabindex="-1"></a>welch_twosample</span>
-<span id="cb96-9"><a href="categorical-predictors-and-multiple-regression.html#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod_var)</span></code></pre></div>
-<p>You are not required to master <code>gls</code> at this time-point. It is an example that the linear model frame work is very flexible as it in this case also can be adjusted to take care of heteroscedasticity.</p>
+<div id="categorical-predictors-and-multiple-regression" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Categorical predictors and multiple regression</h1>
+<p>We have up to now used a single continuous predictor to predict a dependent variables. We will now show that the ordinary regression models can be the same as other statistical tests, they can be extended and modified. This will show that the ordinary regression model is very flexible.</p>
+<div id="linear-models-can-be-used-instead-of-t-tests" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Linear models can be used instead of t-tests</h2>
+<p><em>t</em>-test are designed to compare means. A question you might want to answer using a <em>t</em>-test is how unlikely the results from your test is if there were no true differences between values from two groups (independent <em>t</em>-test), two samples from the same individuals (paired sample <em>t</em>-test) or to a set value (one sample <em>t</em>-test). Another way of describing these tests are; tests of differences from zero in a one-sample case or differences between groups with paired or unpaired observations.</p>
+<p>Using the <code>cyclingstudy</code> data set we can perform <em>t</em>-tests. In the code below we will select the variable squat jump and filter it from two time-points. <code>pivot_wider</code> is used to put squat jump performance from the two time-points in separate columns. A change score is then calculated.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="categorical-predictors-and-multiple-regression.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb116-2"><a href="categorical-predictors-and-multiple-regression.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
+<span id="cb116-3"><a href="categorical-predictors-and-multiple-regression.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cyclingstudy&quot;</span>)</span>
+<span id="cb116-4"><a href="categorical-predictors-and-multiple-regression.html#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="categorical-predictors-and-multiple-regression.html#cb116-5" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb116-6"><a href="categorical-predictors-and-multiple-regression.html#cb116-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select a subset of variables, squat jump max is the outcome of interest.</span></span>
+<span id="cb116-7"><a href="categorical-predictors-and-multiple-regression.html#cb116-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, timepoint, sj.max) <span class="sc">%&gt;%</span></span>
+<span id="cb116-8"><a href="categorical-predictors-and-multiple-regression.html#cb116-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># time-points of interest</span></span>
+<span id="cb116-9"><a href="categorical-predictors-and-multiple-regression.html#cb116-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb116-10"><a href="categorical-predictors-and-multiple-regression.html#cb116-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># spread the data based on time-points</span></span>
+<span id="cb116-11"><a href="categorical-predictors-and-multiple-regression.html#cb116-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
+<span id="cb116-12"><a href="categorical-predictors-and-multiple-regression.html#cb116-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> sj.max) <span class="sc">%&gt;%</span></span>
+<span id="cb116-13"><a href="categorical-predictors-and-multiple-regression.html#cb116-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a change score</span></span>
+<span id="cb116-14"><a href="categorical-predictors-and-multiple-regression.html#cb116-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> meso3 <span class="sc">-</span> pre) </span></code></pre></div>
+<p>The data above may be used to perform the paired sample t-test and a one sample t-test. These are basically equivalent. In the first case we use both vectors of numbers and test if the difference between them are different from zero. In the other case we calculate the differences first and then test if this <em>change-score</em> is different from zero. In the paired sample <em>t</em>-test, the argument <code>paired = TRUE</code> must be added to the <code>t.test</code>call to make sure you do a paired comparison. In the one-sample case we have to set the mean we want to campare to, in this case zero (<code>mu = 0</code>).</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="categorical-predictors-and-multiple-regression.html#cb117-1" aria-hidden="true" tabindex="-1"></a>paired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cyc_select<span class="sc">$</span>meso3, cyc_select<span class="sc">$</span>pre, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb117-2"><a href="categorical-predictors-and-multiple-regression.html#cb117-2" aria-hidden="true" tabindex="-1"></a>one_sample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cyc_select<span class="sc">$</span>change, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p>These tests are equal as we can see from the comparison below. Next code chunk produces the table comparing the results.</p>
+<p>If we use a linear model we can perform the same test. When fitting the <code>change</code> variable to test against the same hypothesis (0), the same results will appear. We can add this information in the same table.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="categorical-predictors-and-multiple-regression.html#cb118-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> cyc_select)</span></code></pre></div>
+<table class="table" style="font-size: 9px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-87">Table 14.1: </span>Comparison of paired sample t-test, one-sample t-test of change scores and a linear model
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Test
+</th>
+<th style="text-align:right;">
+<em>t</em>-value
+</th>
+<th style="text-align:right;">
+<em>p</em>-value
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Lower CI
+</th>
+<th style="text-align:right;">
+Upper CI
+</th>
+<th style="text-align:right;">
+Standard error
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Paired sample t-test
+</td>
+<td style="text-align:right;">
+-1.788
+</td>
+<td style="text-align:right;">
+0.091
+</td>
+<td style="text-align:right;">
+-0.891
+</td>
+<td style="text-align:right;">
+-1.938
+</td>
+<td style="text-align:right;">
+0.156
+</td>
+<td style="text-align:right;">
+0.498
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+One sample t-test
+</td>
+<td style="text-align:right;">
+-1.788
+</td>
+<td style="text-align:right;">
+0.091
+</td>
+<td style="text-align:right;">
+-0.891
+</td>
+<td style="text-align:right;">
+-1.938
+</td>
+<td style="text-align:right;">
+0.156
+</td>
+<td style="text-align:right;">
+0.498
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Linear model
+</td>
+<td style="text-align:right;">
+-1.788
+</td>
+<td style="text-align:right;">
+0.091
+</td>
+<td style="text-align:right;">
+-0.891
+</td>
+<td style="text-align:right;">
+-1.938
+</td>
+<td style="text-align:right;">
+0.156
+</td>
+<td style="text-align:right;">
+0.498
+</td>
+</tr>
+</tbody>
+</table>
+<p>By using the syntax <code>change ~ 1</code> in the formula we specify that we want to estimate the intercept of the model. The intercept is tested against the null-hypothesis that it is 0.</p>
+<p>We can also test if there is a true difference in <code>VO2.max</code> percentage change between group <code>INCR</code>and <code>DECR</code> using a t-test. Run the code in your own session to explore the results.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="categorical-predictors-and-multiple-regression.html#cb119-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb119-2"><a href="categorical-predictors-and-multiple-regression.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select appropriate variables and filter time-points</span></span>
+<span id="cb119-3"><a href="categorical-predictors-and-multiple-regression.html#cb119-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb119-4"><a href="categorical-predictors-and-multiple-regression.html#cb119-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>), </span>
+<span id="cb119-5"><a href="categorical-predictors-and-multiple-regression.html#cb119-5" aria-hidden="true" tabindex="-1"></a>               group <span class="sc">!=</span> <span class="st">&quot;MIX&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb119-6"><a href="categorical-predictors-and-multiple-regression.html#cb119-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make the data set wider and calculate a change score (%-change).</span></span>
+<span id="cb119-7"><a href="categorical-predictors-and-multiple-regression.html#cb119-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
+<span id="cb119-8"><a href="categorical-predictors-and-multiple-regression.html#cb119-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb119-9"><a href="categorical-predictors-and-multiple-regression.html#cb119-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
+<span id="cb119-10"><a href="categorical-predictors-and-multiple-regression.html#cb119-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
+<span id="cb119-11"><a href="categorical-predictors-and-multiple-regression.html#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform an unpaired sample t-test (or two-sample t-test)</span></span>
+<span id="cb119-12"><a href="categorical-predictors-and-multiple-regression.html#cb119-12" aria-hidden="true" tabindex="-1"></a>unpaired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Above we use the formula method to specify the <em>t</em>-test (see <code>?t.test</code>). <code>var.equal = TRUE</code> tells the <code>t.test</code> function to assume equal variances between groups.</p>
+<p>The same result will appear when we instead fit the data to a linear model. The <code>summary</code> function is a generic function, meaning that many type of R objects has summary methods. From <code>summary</code> we get a regression table of estimates. The first row is the intercept, we can interpret this as the mean change in one of the groups (<code>DECR</code>). This rows has all the statistics associated with this estimate including the average (Estimate), standard error, <em>t</em>-value and a <em>p</em>-value.</p>
+<p>The second row is the difference between groups. The <code>INCR</code> group has a change score that is 3.016 units larger than the <code>DECR</code> group. The associated statistics can be used to assess if this difference is large enough to declare surprisingly large if the null hypothesis is actually true.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="categorical-predictors-and-multiple-regression.html#cb120-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span>
+<span id="cb120-2"><a href="categorical-predictors-and-multiple-regression.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code></pre></div>
+<p>If you compare the two tests, do they tell you the same?</p>
+<p>Using <code>var.equal = TRUE</code> in the unpaired <em>t</em>-test we assumed that the variation was similar in both groups. This might not be the case, and R uses the Welch two-sample <em>t</em>-test by default which does not assum equal variance between groups. Even the Welch two sample t-test can be replicated using a linear model. However, we have to specify it in a slightly different framework using the <code>gls()</code> function from the <code>nlme</code> package.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="categorical-predictors-and-multiple-regression.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
+<span id="cb121-2"><a href="categorical-predictors-and-multiple-regression.html#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="categorical-predictors-and-multiple-regression.html#cb121-3" aria-hidden="true" tabindex="-1"></a>welch_twosample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb121-4"><a href="categorical-predictors-and-multiple-regression.html#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-5"><a href="categorical-predictors-and-multiple-regression.html#cb121-5" aria-hidden="true" tabindex="-1"></a>lin_mod_var <span class="ot">&lt;-</span> <span class="fu">gls</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">weights =</span> <span class="fu">varIdent</span>(<span class="at">form =</span> <span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>group), <span class="at">na.action =</span> na.exclude, <span class="at">method =</span> <span class="st">&quot;ML&quot;</span>)</span>
+<span id="cb121-6"><a href="categorical-predictors-and-multiple-regression.html#cb121-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-7"><a href="categorical-predictors-and-multiple-regression.html#cb121-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-8"><a href="categorical-predictors-and-multiple-regression.html#cb121-8" aria-hidden="true" tabindex="-1"></a>welch_twosample</span>
+<span id="cb121-9"><a href="categorical-predictors-and-multiple-regression.html#cb121-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod_var)</span></code></pre></div>
+<p>You are not required to master <code>gls</code> at this time. It however shows that the linear model frame work is very flexible as it in this case also can be adjusted to take care of heteroscedasticity.</p>
 </div>
-<div id="dummy-variables" class="section level2" number="15.2">
-<h2><span class="header-section-number">15.2</span> Dummy variables</h2>
-<p>The group variable in the code below introduces a new concept in our linear models, dummy variables.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="categorical-predictors-and-multiple-regression.html#cb97-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span></code></pre></div>
-<p>When we put a categorical variable in the <code>lm</code> command, R will code it as a dummy variable. This variable will be zero if the group corresponds to the first level of the categorical (coded as a factor variable) and it will be 1 if it is the second level.</p>
+<div id="dummy-variables" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Dummy variables</h2>
+<p>The group variable that we used in the code above introduces something new to the linear model, namely dummy variables. When we put a categorical variable in the <code>lm</code> command, R will code it as a dummy variable. This variable will be zero if the group corresponds to the first level of the categorical variable (coded as a factor variable) and it will be 1 if it is the second level.</p>
 <p>In the simplest case (as above) we will get a linear model looking like this:</p>
 <p><span class="math display">\[Y = \beta_0 + \beta_1X\]</span></p>
 <p>Where the <span class="math inline">\(X\)</span> is the grouping variable, remember, 0 if first (reference) group and 1 if the second level group. The coefficient <span class="math inline">\(\beta_1\)</span> only kicks in if the group is 1. Meaning that when group = 0 we have only the intercept. If group = 1 we have the intercept + the slope. The slope represents the difference between the intercept (group = 0) and group = 1.</p>
@@ -365,21 +503,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Using all groups in the data set, fit a model and interpret the results.</p>
 <a id="displayText" href="javascript:toggle(2);">Here is a possible solution</a>
 <div id="toggleText2" style="display: none">
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="categorical-predictors-and-multiple-regression.html#cb98-1" aria-hidden="true" tabindex="-1"></a>cyc_subset <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb98-2"><a href="categorical-predictors-and-multiple-regression.html#cb98-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb98-3"><a href="categorical-predictors-and-multiple-regression.html#cb98-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb98-4"><a href="categorical-predictors-and-multiple-regression.html#cb98-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb98-5"><a href="categorical-predictors-and-multiple-regression.html#cb98-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb98-6"><a href="categorical-predictors-and-multiple-regression.html#cb98-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
-<span id="cb98-7"><a href="categorical-predictors-and-multiple-regression.html#cb98-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
-<span id="cb98-8"><a href="categorical-predictors-and-multiple-regression.html#cb98-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-9"><a href="categorical-predictors-and-multiple-regression.html#cb98-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_subset)</span>
-<span id="cb98-10"><a href="categorical-predictors-and-multiple-regression.html#cb98-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-11"><a href="categorical-predictors-and-multiple-regression.html#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="categorical-predictors-and-multiple-regression.html#cb122-1" aria-hidden="true" tabindex="-1"></a>cyc_subset <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb122-2"><a href="categorical-predictors-and-multiple-regression.html#cb122-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb122-3"><a href="categorical-predictors-and-multiple-regression.html#cb122-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb122-4"><a href="categorical-predictors-and-multiple-regression.html#cb122-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
+<span id="cb122-5"><a href="categorical-predictors-and-multiple-regression.html#cb122-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb122-6"><a href="categorical-predictors-and-multiple-regression.html#cb122-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
+<span id="cb122-7"><a href="categorical-predictors-and-multiple-regression.html#cb122-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
+<span id="cb122-8"><a href="categorical-predictors-and-multiple-regression.html#cb122-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-9"><a href="categorical-predictors-and-multiple-regression.html#cb122-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_subset)</span>
+<span id="cb122-10"><a href="categorical-predictors-and-multiple-regression.html#cb122-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-11"><a href="categorical-predictors-and-multiple-regression.html#cb122-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <p>The <code>DECR</code> group is the reference group, the intercept shows the mean of this group. Each parameter shows the difference from the reference.</p>
 </div>
 <p></br></p>
 <p>The same assumptions are made with these kinds of models and they can be checked with the same methods as described above.</p>
+</div>
+<div id="multiple-regression" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Multiple regression</h2>
+<p>Contrary to the <em>t</em>-tests used above, the linear model can be extended by adding predicting variables (independent variables). In a situation where multiple independent variables are included in the model, we control for their relationship to the dependent variable when we evaluate the other variables. Similarly with univariate regression we can examine each individual parameter from the summary.</p>
+<p>In a previous example we used <code>height.T1</code> to predict <code>VO2.max</code>. We might want to add information to the model. We might wonder if the age (<code>age</code>) of participants have a relationship with VO<sub>2max</sub>. To fit this model, use the code below.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="categorical-predictors-and-multiple-regression.html#cb123-1" aria-hidden="true" tabindex="-1"></a>cycling_data <span class="ot">&lt;-</span>  cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb123-2"><a href="categorical-predictors-and-multiple-regression.html#cb123-2" aria-hidden="true" tabindex="-1"></a>       <span class="co"># select(subject, timepoint, VO2.max, weight.T1, height.T1) %&gt;%</span></span>
+<span id="cb123-3"><a href="categorical-predictors-and-multiple-regression.html#cb123-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb123-4"><a href="categorical-predictors-and-multiple-regression.html#cb123-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()  </span>
+<span id="cb123-5"><a href="categorical-predictors-and-multiple-regression.html#cb123-5" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb123-6"><a href="categorical-predictors-and-multiple-regression.html#cb123-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-7"><a href="categorical-predictors-and-multiple-regression.html#cb123-7" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span>  height.T1 <span class="sc">+</span> age, <span class="at">data =</span> cycling_data)</span>
+<span id="cb123-8"><a href="categorical-predictors-and-multiple-regression.html#cb123-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-9"><a href="categorical-predictors-and-multiple-regression.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<p>From the output we can see that there is a negative relationship, when age increases VO<sub>2max</sub> decrease. We can compare this model to the simpler model by looking at the <span class="math inline">\(R^2\)</span> value. We fit the simpler model.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="categorical-predictors-and-multiple-regression.html#cb124-1" aria-hidden="true" tabindex="-1"></a>mod0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span>  height.T1, <span class="at">data =</span> cycling_data)</span>
+<span id="cb124-2"><a href="categorical-predictors-and-multiple-regression.html#cb124-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-3"><a href="categorical-predictors-and-multiple-regression.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod0)</span></code></pre></div>
+<p>We can interpret <span class="math inline">\(R^2\)</span> as the percentage of the variation explained by the model. When we added more variables to the model we add information that collectively explain a larger portion of the observed data. When adding variables we face the risk of over-fitting our model. With enough variables the model will explain the observed data with less and less uncertainty, however, new data will probably not validate the model.</p>
+<p>The same assumptions apply to the multiple regression model as with the univariate regression model. We have to take care that we have homoscedasticity, independent observations and normally distributed errors.</p>
+
 </div>
 </div>
             </section>
@@ -387,8 +546,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="interpreting-the-results.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="multiple-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-and-curve-linear-relationships-and-predictions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="correlations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
