@@ -1,7 +1,7 @@
 
 
 
-# Linear and curve-linear relationships, and predictions
+# Linear and curve-linear relationships, and predictions {#predictions}
 
 
 In the previous chapter we looked at linear relationships, we can imagine these as straight lines. Many things in life are not straight. In this chapter we will add curve-linear relationships to our repertoire. We will start by predicting values. 

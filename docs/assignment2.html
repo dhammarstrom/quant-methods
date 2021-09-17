@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 14 Categorical predictors and multiple regression | Quantitative methods and statistics (In Sport and Exercise Science)</title>
+  <title>Chapter 16 Assignment 2: Regression models, predicting from data | Quantitative methods and statistics (In Sport and Exercise Science)</title>
   <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 14 Categorical predictors and multiple regression | Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta property="og:title" content="Chapter 16 Assignment 2: Regression models, predicting from data | Quantitative methods and statistics (In Sport and Exercise Science)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dhammarstrom/quant-methods" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 14 Categorical predictors and multiple regression | Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta name="twitter:title" content="Chapter 16 Assignment 2: Regression models, predicting from data | Quantitative methods and statistics (In Sport and Exercise Science)" />
   
   <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="twitter:image" content="images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="predictions.html"/>
-<link rel="next" href="correlations.html"/>
+<link rel="prev" href="correlations.html"/>
+<link rel="next" href="study-questions.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -340,211 +340,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="categorical-predictors-and-multiple-regression" class="section level1" number="14">
-<h1><span class="header-section-number">Chapter 14</span> Categorical predictors and multiple regression</h1>
-<p>We have up to now used a single continuous predictor to predict a dependent variables. We will now show that the ordinary regression models can be the same as other statistical tests, they can be extended and modified. This will show that the ordinary regression model is very flexible.</p>
-<div id="linear-models-can-be-used-instead-of-t-tests" class="section level2" number="14.1">
-<h2><span class="header-section-number">14.1</span> Linear models can be used instead of t-tests</h2>
-<p><em>t</em>-test are designed to compare means. A question you might want to answer using a <em>t</em>-test is how unlikely the results from your test is if there were no true differences between values from two groups (independent <em>t</em>-test), two samples from the same individuals (paired sample <em>t</em>-test) or to a set value (one sample <em>t</em>-test). Another way of describing these tests are; tests of differences from zero in a one-sample case or differences between groups with paired or unpaired observations.</p>
-<p>Using the <code>cyclingstudy</code> data set we can perform <em>t</em>-tests. In the code below we will select the variable squat jump and filter it from two time-points. <code>pivot_wider</code> is used to put squat jump performance from the two time-points in separate columns. A change score is then calculated.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="categorical-predictors-and-multiple-regression.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb116-2"><a href="categorical-predictors-and-multiple-regression.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
-<span id="cb116-3"><a href="categorical-predictors-and-multiple-regression.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cyclingstudy&quot;</span>)</span>
-<span id="cb116-4"><a href="categorical-predictors-and-multiple-regression.html#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-5"><a href="categorical-predictors-and-multiple-regression.html#cb116-5" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb116-6"><a href="categorical-predictors-and-multiple-regression.html#cb116-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select a subset of variables, squat jump max is the outcome of interest.</span></span>
-<span id="cb116-7"><a href="categorical-predictors-and-multiple-regression.html#cb116-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, timepoint, sj.max) <span class="sc">%&gt;%</span></span>
-<span id="cb116-8"><a href="categorical-predictors-and-multiple-regression.html#cb116-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># time-points of interest</span></span>
-<span id="cb116-9"><a href="categorical-predictors-and-multiple-regression.html#cb116-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb116-10"><a href="categorical-predictors-and-multiple-regression.html#cb116-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># spread the data based on time-points</span></span>
-<span id="cb116-11"><a href="categorical-predictors-and-multiple-regression.html#cb116-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb116-12"><a href="categorical-predictors-and-multiple-regression.html#cb116-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> sj.max) <span class="sc">%&gt;%</span></span>
-<span id="cb116-13"><a href="categorical-predictors-and-multiple-regression.html#cb116-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a change score</span></span>
-<span id="cb116-14"><a href="categorical-predictors-and-multiple-regression.html#cb116-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> meso3 <span class="sc">-</span> pre) </span></code></pre></div>
-<p>The data above may be used to perform the paired sample t-test and a one sample t-test. These are basically equivalent. In the first case we use both vectors of numbers and test if the difference between them are different from zero. In the other case we calculate the differences first and then test if this <em>change-score</em> is different from zero. In the paired sample <em>t</em>-test, the argument <code>paired = TRUE</code> must be added to the <code>t.test</code>call to make sure you do a paired comparison. In the one-sample case we have to set the mean we want to campare to, in this case zero (<code>mu = 0</code>).</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="categorical-predictors-and-multiple-regression.html#cb117-1" aria-hidden="true" tabindex="-1"></a>paired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cyc_select<span class="sc">$</span>meso3, cyc_select<span class="sc">$</span>pre, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb117-2"><a href="categorical-predictors-and-multiple-regression.html#cb117-2" aria-hidden="true" tabindex="-1"></a>one_sample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cyc_select<span class="sc">$</span>change, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p>These tests are equal as we can see from the comparison below. Next code chunk produces the table comparing the results.</p>
-<p>If we use a linear model we can perform the same test. When fitting the <code>change</code> variable to test against the same hypothesis (0), the same results will appear. We can add this information in the same table.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="categorical-predictors-and-multiple-regression.html#cb118-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> cyc_select)</span></code></pre></div>
-<table class="table" style="font-size: 9px; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:unnamed-chunk-87">Table 14.1: </span>Comparison of paired sample t-test, one-sample t-test of change scores and a linear model
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Test
-</th>
-<th style="text-align:right;">
-<em>t</em>-value
-</th>
-<th style="text-align:right;">
-<em>p</em>-value
-</th>
-<th style="text-align:right;">
-Estimate
-</th>
-<th style="text-align:right;">
-Lower CI
-</th>
-<th style="text-align:right;">
-Upper CI
-</th>
-<th style="text-align:right;">
-Standard error
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Paired sample t-test
-</td>
-<td style="text-align:right;">
--1.788
-</td>
-<td style="text-align:right;">
-0.091
-</td>
-<td style="text-align:right;">
--0.891
-</td>
-<td style="text-align:right;">
--1.938
-</td>
-<td style="text-align:right;">
-0.156
-</td>
-<td style="text-align:right;">
-0.498
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-One sample t-test
-</td>
-<td style="text-align:right;">
--1.788
-</td>
-<td style="text-align:right;">
-0.091
-</td>
-<td style="text-align:right;">
--0.891
-</td>
-<td style="text-align:right;">
--1.938
-</td>
-<td style="text-align:right;">
-0.156
-</td>
-<td style="text-align:right;">
-0.498
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Linear model
-</td>
-<td style="text-align:right;">
--1.788
-</td>
-<td style="text-align:right;">
-0.091
-</td>
-<td style="text-align:right;">
--0.891
-</td>
-<td style="text-align:right;">
--1.938
-</td>
-<td style="text-align:right;">
-0.156
-</td>
-<td style="text-align:right;">
-0.498
-</td>
-</tr>
-</tbody>
-</table>
-<p>By using the syntax <code>change ~ 1</code> in the formula we specify that we want to estimate the intercept of the model. The intercept is tested against the null-hypothesis that it is 0.</p>
-<p>We can also test if there is a true difference in <code>VO2.max</code> percentage change between group <code>INCR</code>and <code>DECR</code> using a t-test. Run the code in your own session to explore the results.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="categorical-predictors-and-multiple-regression.html#cb119-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb119-2"><a href="categorical-predictors-and-multiple-regression.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select appropriate variables and filter time-points</span></span>
-<span id="cb119-3"><a href="categorical-predictors-and-multiple-regression.html#cb119-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb119-4"><a href="categorical-predictors-and-multiple-regression.html#cb119-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>), </span>
-<span id="cb119-5"><a href="categorical-predictors-and-multiple-regression.html#cb119-5" aria-hidden="true" tabindex="-1"></a>               group <span class="sc">!=</span> <span class="st">&quot;MIX&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb119-6"><a href="categorical-predictors-and-multiple-regression.html#cb119-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make the data set wider and calculate a change score (%-change).</span></span>
-<span id="cb119-7"><a href="categorical-predictors-and-multiple-regression.html#cb119-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb119-8"><a href="categorical-predictors-and-multiple-regression.html#cb119-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb119-9"><a href="categorical-predictors-and-multiple-regression.html#cb119-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
-<span id="cb119-10"><a href="categorical-predictors-and-multiple-regression.html#cb119-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
-<span id="cb119-11"><a href="categorical-predictors-and-multiple-regression.html#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform an unpaired sample t-test (or two-sample t-test)</span></span>
-<span id="cb119-12"><a href="categorical-predictors-and-multiple-regression.html#cb119-12" aria-hidden="true" tabindex="-1"></a>unpaired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>Above we use the formula method to specify the <em>t</em>-test (see <code>?t.test</code>). <code>var.equal = TRUE</code> tells the <code>t.test</code> function to assume equal variances between groups.</p>
-<p>The same result will appear when we instead fit the data to a linear model. The <code>summary</code> function is a generic function, meaning that many type of R objects has summary methods. From <code>summary</code> we get a regression table of estimates. The first row is the intercept, we can interpret this as the mean change in one of the groups (<code>DECR</code>). This rows has all the statistics associated with this estimate including the average (Estimate), standard error, <em>t</em>-value and a <em>p</em>-value.</p>
-<p>The second row is the difference between groups. The <code>INCR</code> group has a change score that is 3.016 units larger than the <code>DECR</code> group. The associated statistics can be used to assess if this difference is large enough to declare surprisingly large if the null hypothesis is actually true.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="categorical-predictors-and-multiple-regression.html#cb120-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span>
-<span id="cb120-2"><a href="categorical-predictors-and-multiple-regression.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code></pre></div>
-<p>If you compare the two tests, do they tell you the same?</p>
-<p>Using <code>var.equal = TRUE</code> in the unpaired <em>t</em>-test we assumed that the variation was similar in both groups. This might not be the case, and R uses the Welch two-sample <em>t</em>-test by default which does not assum equal variance between groups. Even the Welch two sample t-test can be replicated using a linear model. However, we have to specify it in a slightly different framework using the <code>gls()</code> function from the <code>nlme</code> package.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="categorical-predictors-and-multiple-regression.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
-<span id="cb121-2"><a href="categorical-predictors-and-multiple-regression.html#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-3"><a href="categorical-predictors-and-multiple-regression.html#cb121-3" aria-hidden="true" tabindex="-1"></a>welch_twosample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb121-4"><a href="categorical-predictors-and-multiple-regression.html#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-5"><a href="categorical-predictors-and-multiple-regression.html#cb121-5" aria-hidden="true" tabindex="-1"></a>lin_mod_var <span class="ot">&lt;-</span> <span class="fu">gls</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">weights =</span> <span class="fu">varIdent</span>(<span class="at">form =</span> <span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>group), <span class="at">na.action =</span> na.exclude, <span class="at">method =</span> <span class="st">&quot;ML&quot;</span>)</span>
-<span id="cb121-6"><a href="categorical-predictors-and-multiple-regression.html#cb121-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-7"><a href="categorical-predictors-and-multiple-regression.html#cb121-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-8"><a href="categorical-predictors-and-multiple-regression.html#cb121-8" aria-hidden="true" tabindex="-1"></a>welch_twosample</span>
-<span id="cb121-9"><a href="categorical-predictors-and-multiple-regression.html#cb121-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod_var)</span></code></pre></div>
-<p>You are not required to master <code>gls</code> at this time. It however shows that the linear model frame work is very flexible as it in this case also can be adjusted to take care of heteroscedasticity.</p>
+<div id="assignment2" class="section level1" number="16">
+<h1><span class="header-section-number">Chapter 16</span> Assignment 2: Regression models, predicting from data</h1>
+<div id="part-1-lactate-thresholds" class="section level2" number="16.1">
+<h2><span class="header-section-number">16.1</span> Part 1: Lactate thresholds</h2>
+<p>There are several suggestions on how to best capture the physiological “essense” of the lactate threshold test <span class="citation">(See <a href="references.html#ref-RN2511" role="doc-biblioref">Tanner and Gore 2012</a>, Chapter 6)</span>. A simple, and very common way to analyze the relationship between exercise intensity and blood lactate is to determine exercise intensity at fixed blood lactate values. This can be done by fitting a regression model that captures the relationship and then “inverse predict” the exercise intensity value. An example of such inverse prediction can be found in <a href="predictions.html#predictions">Chapter 13</a>.</p>
+<p>Your report should use data from the reliability project in the lab. Calculate at least two lactate thresholds (e.g. exercise intensity at 2 and 4 mmol L<sup>-1</sup>) and compare the reliability (typical error as a percentage of the mean) between the two thresholds. If you want to complicate things further you may want to implement other lactate threshold concepts <span class="citation">(described in <a href="references.html#ref-RN2511" role="doc-biblioref">Tanner and Gore 2012</a>; <a href="references.html#ref-RN228" role="doc-biblioref">Newell et al. 2007</a>)</span>.</p>
 </div>
-<div id="dummy-variables" class="section level2" number="14.2">
-<h2><span class="header-section-number">14.2</span> Dummy variables</h2>
-<p>The group variable that we used in the code above introduces something new to the linear model, namely dummy variables. When we put a categorical variable in the <code>lm</code> command, R will code it as a dummy variable. This variable will be zero if the group corresponds to the first level of the categorical variable (coded as a factor variable) and it will be 1 if it is the second level.</p>
-<p>In the simplest case (as above) we will get a linear model looking like this:</p>
-<p><span class="math display">\[Y = \beta_0 + \beta_1X\]</span></p>
-<p>Where the <span class="math inline">\(X\)</span> is the grouping variable, remember, 0 if first (reference) group and 1 if the second level group. The coefficient <span class="math inline">\(\beta_1\)</span> only kicks in if the group is 1. Meaning that when group = 0 we have only the intercept. If group = 1 we have the intercept + the slope. The slope represents the difference between the intercept (group = 0) and group = 1.</p>
-<p>If the grouping variable would have more groups more dummy-variables would have been added.</p>
-<p>Using all groups in the data set, fit a model and interpret the results.</p>
-<a id="displayText" href="javascript:toggle(2);">Here is a possible solution</a>
-<div id="toggleText2" style="display: none">
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="categorical-predictors-and-multiple-regression.html#cb122-1" aria-hidden="true" tabindex="-1"></a>cyc_subset <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb122-2"><a href="categorical-predictors-and-multiple-regression.html#cb122-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb122-3"><a href="categorical-predictors-and-multiple-regression.html#cb122-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb122-4"><a href="categorical-predictors-and-multiple-regression.html#cb122-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb122-5"><a href="categorical-predictors-and-multiple-regression.html#cb122-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb122-6"><a href="categorical-predictors-and-multiple-regression.html#cb122-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
-<span id="cb122-7"><a href="categorical-predictors-and-multiple-regression.html#cb122-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
-<span id="cb122-8"><a href="categorical-predictors-and-multiple-regression.html#cb122-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-9"><a href="categorical-predictors-and-multiple-regression.html#cb122-9" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_subset)</span>
-<span id="cb122-10"><a href="categorical-predictors-and-multiple-regression.html#cb122-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-11"><a href="categorical-predictors-and-multiple-regression.html#cb122-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
-<p>The <code>DECR</code> group is the reference group, the intercept shows the mean of this group. Each parameter shows the difference from the reference.</p>
+<div id="part-2-predicting-sizes-of-dna-fragments" class="section level2" number="16.2">
+<h2><span class="header-section-number">16.2</span> Part 2: Predicting sizes of DNA fragments</h2>
+<p>In the molecular laboratory you have been tasked to extract and analyze DNA. In this process we have to determine the size of resulting PCR (polymerase chain reaction) amplified DNA fragments. A tutorial using Image J and R can be found <a href="https://trainome.github.io/sw_pcr_size_determination.html">here</a>. In your report you should show how you arrived to your predicted sizes by including the code chunk in your report.</p>
 </div>
-<p></br></p>
-<p>The same assumptions are made with these kinds of models and they can be checked with the same methods as described above.</p>
+<div id="part-3-intepreting-a-regression-table" class="section level2" number="16.3">
+<h2><span class="header-section-number">16.3</span> Part 3: Intepreting a regression table</h2>
+<p>Using the <code>hypertrophy</code> data set, state a question that concerns a linear relationship between two variables in the data set. These variables might be related to muscle size and strength, or two molecular markers or any other variables you are interested in. Include a regression table from your analysis in the report and interpret its components in plain language (e.g. for every unit increase in the independent variable the dependent variable decreseas by <em>x</em> units). The interpretation should also include a description and explanation of the standard error, the <em>t</em>-value and the <em>p</em>-value. Valuable guidance on how to interpret the table may be found in for example <span class="citation">(<a href="references.html#ref-lsr" role="doc-biblioref">Navarro 2020</a>)</span> and in <span class="citation">(<a href="references.html#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>, Chapter 5)</span>.</p>
+<p>Special attention should be made concerning the <em>p</em>-value. How do you define and interpret the <em>p</em>-value in your regression table. <em>What does it mean?</em>. The <em>p</em>-value debate on the 22:nd of September might give you an idea about that!</p>
 </div>
-<div id="multiple-regression" class="section level2" number="14.3">
-<h2><span class="header-section-number">14.3</span> Multiple regression</h2>
-<p>Contrary to the <em>t</em>-tests used above, the linear model can be extended by adding predicting variables (independent variables). In a situation where multiple independent variables are included in the model, we control for their relationship to the dependent variable when we evaluate the other variables. Similarly with univariate regression we can examine each individual parameter from the summary.</p>
-<p>In a previous example we used <code>height.T1</code> to predict <code>VO2.max</code>. We might want to add information to the model. We might wonder if the age (<code>age</code>) of participants have a relationship with VO<sub>2max</sub>. To fit this model, use the code below.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="categorical-predictors-and-multiple-regression.html#cb123-1" aria-hidden="true" tabindex="-1"></a>cycling_data <span class="ot">&lt;-</span>  cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb123-2"><a href="categorical-predictors-and-multiple-regression.html#cb123-2" aria-hidden="true" tabindex="-1"></a>       <span class="co"># select(subject, timepoint, VO2.max, weight.T1, height.T1) %&gt;%</span></span>
-<span id="cb123-3"><a href="categorical-predictors-and-multiple-regression.html#cb123-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb123-4"><a href="categorical-predictors-and-multiple-regression.html#cb123-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()  </span>
-<span id="cb123-5"><a href="categorical-predictors-and-multiple-regression.html#cb123-5" aria-hidden="true" tabindex="-1"></a>          </span>
-<span id="cb123-6"><a href="categorical-predictors-and-multiple-regression.html#cb123-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-7"><a href="categorical-predictors-and-multiple-regression.html#cb123-7" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span>  height.T1 <span class="sc">+</span> age, <span class="at">data =</span> cycling_data)</span>
-<span id="cb123-8"><a href="categorical-predictors-and-multiple-regression.html#cb123-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-9"><a href="categorical-predictors-and-multiple-regression.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
-<p>From the output we can see that there is a negative relationship, when age increases VO<sub>2max</sub> decrease. We can compare this model to the simpler model by looking at the <span class="math inline">\(R^2\)</span> value. We fit the simpler model.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="categorical-predictors-and-multiple-regression.html#cb124-1" aria-hidden="true" tabindex="-1"></a>mod0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(VO2.max <span class="sc">~</span>  height.T1, <span class="at">data =</span> cycling_data)</span>
-<span id="cb124-2"><a href="categorical-predictors-and-multiple-regression.html#cb124-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-3"><a href="categorical-predictors-and-multiple-regression.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod0)</span></code></pre></div>
-<p>We can interpret <span class="math inline">\(R^2\)</span> as the percentage of the variation explained by the model. When we added more variables to the model we add information that collectively explain a larger portion of the observed data. When adding variables we face the risk of over-fitting our model. With enough variables the model will explain the observed data with less and less uncertainty, however, new data will probably not validate the model.</p>
-<p>The same assumptions apply to the multiple regression model as with the univariate regression model. We have to take care that we have homoscedasticity, independent observations and normally distributed errors.</p>
+<div id="how-to-hand-in-the-report" class="section level2" number="16.4">
+<h2><span class="header-section-number">16.4</span> How to hand in the report</h2>
+<p>The report is a group assignment, it is not to be included in the portfolio (mappeeksamen). However, it is required in order to pass the course (arbeidskrav).</p>
+<p>Create a new project on github and collaborate with your group there. The repository with all data and coded needed to create the report, and the report itselfe (in html, word or pdf format) should be reported on canvas as a link to the repository, no later than the first of October. Each member of the group hand in the link in canvas. The repository should be the same for all group memebers.</p>
 
 </div>
 </div>
@@ -553,8 +368,8 @@ Linear model
           </div>
         </div>
       </div>
-<a href="predictions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="correlations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="correlations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="study-questions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

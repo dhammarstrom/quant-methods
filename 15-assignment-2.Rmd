@@ -1,0 +1,31 @@
+# Assignment 2: Regression models, predicting from data  {#assignment2}
+
+## Part 1: Lactate thresholds
+
+There are several suggestions on how to best capture the physiological "essense" of the lactate threshold test  [See @RN2511, Chapter 6]. A simple, and very common way to analyze the relationship between exercise intensity and blood lactate is to determine exercise intensity at fixed blood lactate values. This can be done by fitting a regression model that captures the relationship and then "inverse predict" the exercise intensity value. An example of such inverse prediction can be found in [Chapter 13](#predictions).
+
+Your report should use data from the reliability project in the lab. Calculate at least two lactate thresholds (e.g. exercise intensity at 2 and 4 mmol L<sup>-1</sup>) and compare the reliability (typical error as a percentage of the mean) between the two thresholds. If you want to complicate things further you may want to implement other lactate threshold concepts [described in @RN2511; @RN228].
+
+
+## Part 2: Predicting sizes of DNA fragments
+
+In the molecular laboratory you have been tasked to extract and analyze DNA. In this process we have to determine the size of resulting PCR (polymerase chain reaction) amplified DNA fragments. A tutorial using Image J and R can be found [here](https://trainome.github.io/sw_pcr_size_determination.html). In your report you should show how you arrived to your predicted sizes by including the code chunk in your report.
+
+
+## Part 3: Intepreting a regression table
+
+Using the `hypertrophy` data set, state a question that concerns a linear relationship between two variables in the data set. These variables might be related to muscle size and strength, or two molecular markers or any other variables you are interested in. Include a regression table from your analysis in the report and interpret its components in plain language (e.g. for every unit increase in the independent variable the dependent variable decreseas by *x* units). The interpretation should also include a description and explanation of the standard error, the *t*-value and the *p*-value. Valuable guidance on how to interpret the table may be found in for example [@lsr] and in [@RN2902, Chapter 5].
+
+Special attention should be made concerning the *p*-value. How do you define and interpret the *p*-value in your regression table. *What does it mean?*. The *p*-value debate on the 22:nd of September might give you an idea about that!
+
+
+## How to hand in the report
+
+The report is a group assignment, it is not to be included in the portfolio (mappeeksamen). However, it is required in order to pass the course (arbeidskrav).
+
+Create a new project on github and collaborate with your group there. The repository with all data and coded needed to create the report, and the report itselfe (in html, word or pdf format) should be reported on canvas as a link to the repository, no later than the first of October. Each member of the group hand in the link in canvas. The repository should be the same for all group memebers.
+
+
+
+
+
