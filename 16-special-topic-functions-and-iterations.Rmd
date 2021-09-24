@@ -1,0 +1,175 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Special topics: Iterations and functions
+
+To reduce the number of repetitive tasks performed manually or through copy-and-paste coding, R provides functions and frameworks for iterative operations. The programmer (you), could benefit greatly from building your own functions as these will reduce the risk of making mistakes, make the code more readeble and easier to change [@r4ds, Chapter 19]. 
+
+
+## Building a simple function
+
+A function in R is a defined set of operations, put together and often stored as an object to perform a specific task. In R, the user may define his/her own functions. Defining a function usually involves storing the function as an object in your environment. When you have gathered multiple functions relating to common tasks these can be organized as a package. 
+
+Let's say we want to create a function that returns the sum of two values. The function `sum_two_values` that is defined below, contains the basics of a typical function. In the `function()` call we define what **arguments** the function will accept. In our case, `a` and `b` represents the two numbers we want to add together. The **body** of the function is where we define the operations that we want the function to perform. We add `a` and `b` together and assign their sum to an object called `result`. Finally, we pass the result of the function to `return(result)`. Using return makes it explicit what part of the results you want to "get from the function".
+
+
+```{r}
+
+sum_two_values <- function(a, b) {
+  
+  result <- a + b
+  
+  return(result)
+}
+
+sum_two_values(3, 6)
+
+```
+
+The **name** of a function is defined by saving the function in an object. When the function is defined in a script or RMarkdown file it is availbale in the R **environment**. The difference from packages is that functions defined as part of packages are available when you load the package using `library()`. 
+
+## An applied problem where a function might help
+
+Lactate threshold values can be calculated from the exercise-intensity and blood lactate value relationship gathered from a graded exercise test. In the simple case, the exercise intensity at a fixed blood lactate concentration can be used to evaluate training progressions in e.g. athletes. To find the exercise intensity at a fixed blood lactate concentration, a polynomial regression model can be used to predict lactate values at different intensities and the find the exercise intensity value closest to our desiered lactate value.
+
+The above description can be broken down into these steps:
+
+1. Fit a third degree polynomial model to exercise-intensity and lactate data from a single individual.
+2. Predict lactate values over the range of the observed exercise intensity values.
+3. Find the exercise intensity value closest to the lactate value of interest (e.g. 4 mmol L<sup>-1</sup>).
+
+Using the `cyclingstudy` data we can perform these steps. We will do so using the `pre` time-point in participant 10.
+
+```{r, message = FALSE, warning = FALSE, eval = FALSE}
+library(tidyverse); library(exscidata); data("cyclingstudy")
+
+# Save a data set of lactate values from participant 10, time-point pre
+dat <- cyclingstudy %>%
+  select(subject, group, timepoint, lac.125:lac.375) %>%
+  pivot_longer(names_to = "watt", 
+               values_to = "lactate", 
+               names_prefix = "lac.", 
+              names_transform = list(watt = as.numeric), 
+              cols = lac.125:lac.375) %>%
+  filter(subject == 10, 
+         timepoint == "pre", 
+         !is.na(lactate)) %>% # Remove NA values
+  print()
+
+# Fit the model 
+model <- lm(lactate ~ watt + I(watt^2) + I(watt^3), data = dat)
+
+
+# Predict lactate values over all observed watt values
+# calculate the smallest distance from the fixed lactate value 
+
+new_data <- data.frame(watt = seq(from = min(dat$watt), to = max(dat$watt), by = 0.1))
+
+new_data$dist <- abs(predict(model, newdata = new_data) - 4)
+
+# Find the smallest value of predicted - fixed lacate value
+new_data %>%
+  filter(dist == min(dist)) # Where the dist value equals the minimum dist value
+
+
+```
+
+If we were to do this operation for more participants and across more time-points, we should formalize the operation into a function. In the simplest form, the prospective function would only need an argument defining the input data. We can then settle for a single fixed lactate value. We will define the function and call it `lt` for lactate threshold. (This might not be the best name! [@r4ds]).
+
+If the function returns a data frame, we can use it more efficiently later som we will make sure the result of the function is a data frame.
+
+```{r}
+
+lt <- function(data) {
+  
+  # Fit a 3 degree polynomial model
+  m <- lm(lactate ~ watt + I(watt^2) + I(watt^3), data = data)
+  
+  # Store a data frame with exercise intensities
+  new_data <- data.frame(watt = seq(from = min(data$watt), to = max(data$watt), by = 0.01))
+  
+  # Predict using the new data, predicting lactate values at each 
+  new_data$pred <- predict(m, newdata = new_data)
+  
+  # calculate deviation from the lactate value of interest
+  new_data$watt.4mmol <- abs(new_data$pred - 4)
+
+  # Create a results data frame
+  results <- data.frame(watt.4mmol = new_data[which.min(new_data$watt.4mmol),1])
+  
+  # Return the data frame
+  return(results)
+  
+}
+
+```
+
+The body of the function contains all operations needed to get the results we are after. It finally returns a data frame containing a single column named `watt.4mmol`. We can now test the function on some data.
+
+```{r}
+
+library(tidyverse); library(exscidata); data("cyclingstudy")
+
+data <- cyclingstudy %>%
+  select(subject, group, timepoint, lac.125:lac.375) %>%
+  pivot_longer(names_to = "watt", 
+               values_to = "lactate", 
+               names_prefix = "lac.", 
+              names_transform = list(watt = as.numeric), 
+              cols = lac.125:lac.375) %>%
+  filter(!is.na(lactate), 
+         subject == 10, 
+         timepoint == "pre") %>%
+  print()
+
+
+lt(data)
+
+```
+
+Nice, since we defined the function with higher resolution, we get a exercise intensity value with two decimal points. This value represent the watt value where the predicted lactate value is the closest to 4 mmol L<sup>-1</sup>.
+
+We still need to incorporate the function into code that dose the calculation for each individual, and time-point without the need of manually filtering values for each new data set. This can be accomplished by using the function in a pipe together with `group_by` and `group_modify`. 
+
+Since we are using a third degree polynomial we need to make sure we have enough data to fit such a model to each participant/time-point. We will add a variable counting the number of observations and then filter tests with less then 4 observations. 
+
+The complete pipe could look something like this.
+
+```{r}
+
+# Extract lactate values
+cyclingstudy %>%
+  select(subject, group, timepoint, lac.125:lac.375) %>%
+  pivot_longer(names_to = "watt", 
+               values_to = "lactate", 
+               names_prefix = "lac.", 
+              names_transform = list(watt = as.numeric), 
+              cols = lac.125:lac.375) %>%
+  # Filter missing lactate values
+  filter(!is.na(lactate)) %>%
+  # Group the data set, keeping group to have this information in the final results
+  group_by(timepoint, subject, group) %>%
+  # create a new variable counting the number of observations and filter away tests with less than 4 obs.
+  mutate(n = n()) %>%
+  filter(n >= 4) %>%
+  # Use grouup modify to apply the function to all participants per time-point (and group)
+  group_modify(~ lt(.)) %>%
+  print()
+
+```
+
+Great sucess! We have now calculated lactate threshold values for each participant, belonging to specific time-points and groups. The `group_modify` function does the iterative work of applying the function for all cases, you have save yourself a lot of code, and time!
+
+### Exercises
+
+1. Modify the `lt` function to return two fixed lactate values.
+2. Modify the `lt` function to include an extra argument specifying the level of the lactate value you are interested in.
+
+
+
+
+
+
+

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 19 References | Quantitative methods and statistics (In Sport and Exercise Science)</title>
+  <title>Chapter 17 Special topics: Iterations and functions | Quantitative methods and statistics (In Sport and Exercise Science)</title>
   <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 19 References | Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta property="og:title" content="Chapter 17 Special topics: Iterations and functions | Quantitative methods and statistics (In Sport and Exercise Science)" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="dhammarstrom/quant-methods" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 19 References | Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta name="twitter:title" content="Chapter 17 Special topics: Iterations and functions | Quantitative methods and statistics (In Sport and Exercise Science)" />
   
   <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="twitter:image" content="images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="study-questions.html"/>
-
+<link rel="prev" href="assignment2.html"/>
+<link rel="next" href="study-questions.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -348,98 +348,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1" number="19">
-<h1><span class="header-section-number">Chapter 19</span> References</h1>
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-RN2391" class="csl-entry">
-Broman, Karl W., and Kara H. Woo. 2018. <span>“Data Organization in Spreadsheets.”</span> Journal Article. <em>The American Statistician</em> 72 (1): 2–10. <a href="https://doi.org/10.1080/00031305.2017.1375989">https://doi.org/10.1080/00031305.2017.1375989</a>.
+<div id="special-topics-iterations-and-functions" class="section level1" number="17">
+<h1><span class="header-section-number">Chapter 17</span> Special topics: Iterations and functions</h1>
+<p>To reduce the number of repetitive tasks performed manually or through copy-and-paste coding, R provides functions and frameworks for iterative operations. The programmer (you), could benefit greatly from building your own functions as these will reduce the risk of making mistakes, make the code more readeble and easier to change <span class="citation">(<a href="references.html#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>, Chapter 19)</span>.</p>
+<div id="building-a-simple-function" class="section level2" number="17.1">
+<h2><span class="header-section-number">17.1</span> Building a simple function</h2>
+<p>A function in R is a defined set of operations, put together and often stored as an object to perform a specific task. In R, the user may define his/her own functions. Defining a function usually involves storing the function as an object in your environment. When you have gathered multiple functions relating to common tasks these can be organized as a package.</p>
+<p>Let’s say we want to create a function that returns the sum of two values. The function <code>sum_two_values</code> that is defined below, contains the basics of a typical function. In the <code>function()</code> call we define what <strong>arguments</strong> the function will accept. In our case, <code>a</code> and <code>b</code> represents the two numbers we want to add together. The <strong>body</strong> of the function is where we define the operations that we want the function to perform. We add <code>a</code> and <code>b</code> together and assign their sum to an object called <code>result</code>. Finally, we pass the result of the function to <code>return(result)</code>. Using return makes it explicit what part of the results you want to “get from the function.”</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="special-topics-iterations-and-functions.html#cb136-1" aria-hidden="true" tabindex="-1"></a>sum_two_values <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb136-2"><a href="special-topics-iterations-and-functions.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb136-3"><a href="special-topics-iterations-and-functions.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
+<span id="cb136-4"><a href="special-topics-iterations-and-functions.html#cb136-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb136-5"><a href="special-topics-iterations-and-functions.html#cb136-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb136-6"><a href="special-topics-iterations-and-functions.html#cb136-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb136-7"><a href="special-topics-iterations-and-functions.html#cb136-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-8"><a href="special-topics-iterations-and-functions.html#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_two_values</span>(<span class="dv">3</span>, <span class="dv">6</span>)</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<p>The <strong>name</strong> of a function is defined by saving the function in an object. When the function is defined in a script or RMarkdown file it is availbale in the R <strong>environment</strong>. The difference from packages is that functions defined as part of packages are available when you load the package using <code>library()</code>.</p>
 </div>
-<div id="ref-refID1" class="csl-entry">
-Ellefsen, S., D. Hammarstrom, T. A. Strand, E. Zacharoff, J. E. Whist, I. Rauk, H. Nygaard, et al. 2015. <span>“<span class="nocase">Blood flow-restricted strength training displays high functional and biological efficacy in women: a within-subject comparison with high-load strength training</span>.”</span> <em>Am. J. Physiol. Regul. Integr. Comp. Physiol.</em> 309 (7): R767–779.
+<div id="an-applied-problem-where-a-function-might-help" class="section level2" number="17.2">
+<h2><span class="header-section-number">17.2</span> An applied problem where a function might help</h2>
+<p>Lactate threshold values can be calculated from the exercise-intensity and blood lactate value relationship gathered from a graded exercise test. In the simple case, the exercise intensity at a fixed blood lactate concentration can be used to evaluate training progressions in e.g. athletes. To find the exercise intensity at a fixed blood lactate concentration, a polynomial regression model can be used to predict lactate values at different intensities and the find the exercise intensity value closest to our desiered lactate value.</p>
+<p>The above description can be broken down into these steps:</p>
+<ol style="list-style-type: decimal">
+<li>Fit a third degree polynomial model to exercise-intensity and lactate data from a single individual.</li>
+<li>Predict lactate values over the range of the observed exercise intensity values.</li>
+<li>Find the exercise intensity value closest to the lactate value of interest (e.g. 4 mmol L<sup>-1</sup>).</li>
+</ol>
+<p>Using the <code>cyclingstudy</code> data we can perform these steps. We will do so using the <code>pre</code> time-point in participant 10.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="special-topics-iterations-and-functions.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata); <span class="fu">data</span>(<span class="st">&quot;cyclingstudy&quot;</span>)</span>
+<span id="cb138-2"><a href="special-topics-iterations-and-functions.html#cb138-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-3"><a href="special-topics-iterations-and-functions.html#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Save a data set of lactate values from participant 10, time-point pre</span></span>
+<span id="cb138-4"><a href="special-topics-iterations-and-functions.html#cb138-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb138-5"><a href="special-topics-iterations-and-functions.html#cb138-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb138-6"><a href="special-topics-iterations-and-functions.html#cb138-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;watt&quot;</span>, </span>
+<span id="cb138-7"><a href="special-topics-iterations-and-functions.html#cb138-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;lactate&quot;</span>, </span>
+<span id="cb138-8"><a href="special-topics-iterations-and-functions.html#cb138-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">&quot;lac.&quot;</span>, </span>
+<span id="cb138-9"><a href="special-topics-iterations-and-functions.html#cb138-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric), </span>
+<span id="cb138-10"><a href="special-topics-iterations-and-functions.html#cb138-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">cols =</span> lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb138-11"><a href="special-topics-iterations-and-functions.html#cb138-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subject <span class="sc">==</span> <span class="dv">10</span>, </span>
+<span id="cb138-12"><a href="special-topics-iterations-and-functions.html#cb138-12" aria-hidden="true" tabindex="-1"></a>         timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>, </span>
+<span id="cb138-13"><a href="special-topics-iterations-and-functions.html#cb138-13" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(lactate)) <span class="sc">%&gt;%</span> <span class="co"># Remove NA values</span></span>
+<span id="cb138-14"><a href="special-topics-iterations-and-functions.html#cb138-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span>
+<span id="cb138-15"><a href="special-topics-iterations-and-functions.html#cb138-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-16"><a href="special-topics-iterations-and-functions.html#cb138-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model </span></span>
+<span id="cb138-17"><a href="special-topics-iterations-and-functions.html#cb138-17" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> watt <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">3</span>), <span class="at">data =</span> dat)</span>
+<span id="cb138-18"><a href="special-topics-iterations-and-functions.html#cb138-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-19"><a href="special-topics-iterations-and-functions.html#cb138-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-20"><a href="special-topics-iterations-and-functions.html#cb138-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict lactate values over all observed watt values</span></span>
+<span id="cb138-21"><a href="special-topics-iterations-and-functions.html#cb138-21" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the smallest distance from the fixed lactate value </span></span>
+<span id="cb138-22"><a href="special-topics-iterations-and-functions.html#cb138-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-23"><a href="special-topics-iterations-and-functions.html#cb138-23" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(dat<span class="sc">$</span>watt), <span class="at">to =</span> <span class="fu">max</span>(dat<span class="sc">$</span>watt), <span class="at">by =</span> <span class="fl">0.1</span>))</span>
+<span id="cb138-24"><a href="special-topics-iterations-and-functions.html#cb138-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-25"><a href="special-topics-iterations-and-functions.html#cb138-25" aria-hidden="true" tabindex="-1"></a>new_data<span class="sc">$</span>dist <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">predict</span>(model, <span class="at">newdata =</span> new_data) <span class="sc">-</span> <span class="dv">4</span>)</span>
+<span id="cb138-26"><a href="special-topics-iterations-and-functions.html#cb138-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-27"><a href="special-topics-iterations-and-functions.html#cb138-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the smallest value of predicted - fixed lacate value</span></span>
+<span id="cb138-28"><a href="special-topics-iterations-and-functions.html#cb138-28" aria-hidden="true" tabindex="-1"></a>new_data <span class="sc">%&gt;%</span></span>
+<span id="cb138-29"><a href="special-topics-iterations-and-functions.html#cb138-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dist <span class="sc">==</span> <span class="fu">min</span>(dist)) <span class="co"># Where the dist value equals the minimum dist value</span></span></code></pre></div>
+<p>If we were to do this operation for more participants and across more time-points, we should formalize the operation into a function. In the simplest form, the prospective function would only need an argument defining the input data. We can then settle for a single fixed lactate value. We will define the function and call it <code>lt</code> for lactate threshold. (This might not be the best name! <span class="citation">(<a href="references.html#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span>).</p>
+<p>If the function returns a data frame, we can use it more efficiently later som we will make sure the result of the function is a data frame.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="special-topics-iterations-and-functions.html#cb139-1" aria-hidden="true" tabindex="-1"></a>lt <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb139-2"><a href="special-topics-iterations-and-functions.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb139-3"><a href="special-topics-iterations-and-functions.html#cb139-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit a 3 degree polynomial model</span></span>
+<span id="cb139-4"><a href="special-topics-iterations-and-functions.html#cb139-4" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> watt <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">3</span>), <span class="at">data =</span> data)</span>
+<span id="cb139-5"><a href="special-topics-iterations-and-functions.html#cb139-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb139-6"><a href="special-topics-iterations-and-functions.html#cb139-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store a data frame with exercise intensities</span></span>
+<span id="cb139-7"><a href="special-topics-iterations-and-functions.html#cb139-7" aria-hidden="true" tabindex="-1"></a>  new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(data<span class="sc">$</span>watt), <span class="at">to =</span> <span class="fu">max</span>(data<span class="sc">$</span>watt), <span class="at">by =</span> <span class="fl">0.01</span>))</span>
+<span id="cb139-8"><a href="special-topics-iterations-and-functions.html#cb139-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb139-9"><a href="special-topics-iterations-and-functions.html#cb139-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Predict using the new data, predicting lactate values at each </span></span>
+<span id="cb139-10"><a href="special-topics-iterations-and-functions.html#cb139-10" aria-hidden="true" tabindex="-1"></a>  new_data<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(m, <span class="at">newdata =</span> new_data)</span>
+<span id="cb139-11"><a href="special-topics-iterations-and-functions.html#cb139-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb139-12"><a href="special-topics-iterations-and-functions.html#cb139-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate deviation from the lactate value of interest</span></span>
+<span id="cb139-13"><a href="special-topics-iterations-and-functions.html#cb139-13" aria-hidden="true" tabindex="-1"></a>  new_data<span class="sc">$</span>watt<span class="fl">.4</span>mmol <span class="ot">&lt;-</span> <span class="fu">abs</span>(new_data<span class="sc">$</span>pred <span class="sc">-</span> <span class="dv">4</span>)</span>
+<span id="cb139-14"><a href="special-topics-iterations-and-functions.html#cb139-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-15"><a href="special-topics-iterations-and-functions.html#cb139-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a results data frame</span></span>
+<span id="cb139-16"><a href="special-topics-iterations-and-functions.html#cb139-16" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt.4mmol =</span> new_data[<span class="fu">which.min</span>(new_data<span class="sc">$</span>watt<span class="fl">.4</span>mmol),<span class="dv">1</span>])</span>
+<span id="cb139-17"><a href="special-topics-iterations-and-functions.html#cb139-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb139-18"><a href="special-topics-iterations-and-functions.html#cb139-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return the data frame</span></span>
+<span id="cb139-19"><a href="special-topics-iterations-and-functions.html#cb139-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb139-20"><a href="special-topics-iterations-and-functions.html#cb139-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb139-21"><a href="special-topics-iterations-and-functions.html#cb139-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The body of the function contains all operations needed to get the results we are after. It finally returns a data frame containing a single column named <code>watt.4mmol</code>. We can now test the function on some data.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="special-topics-iterations-and-functions.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata); <span class="fu">data</span>(<span class="st">&quot;cyclingstudy&quot;</span>)</span>
+<span id="cb140-2"><a href="special-topics-iterations-and-functions.html#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-3"><a href="special-topics-iterations-and-functions.html#cb140-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb140-4"><a href="special-topics-iterations-and-functions.html#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb140-5"><a href="special-topics-iterations-and-functions.html#cb140-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;watt&quot;</span>, </span>
+<span id="cb140-6"><a href="special-topics-iterations-and-functions.html#cb140-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;lactate&quot;</span>, </span>
+<span id="cb140-7"><a href="special-topics-iterations-and-functions.html#cb140-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">&quot;lac.&quot;</span>, </span>
+<span id="cb140-8"><a href="special-topics-iterations-and-functions.html#cb140-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric), </span>
+<span id="cb140-9"><a href="special-topics-iterations-and-functions.html#cb140-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">cols =</span> lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb140-10"><a href="special-topics-iterations-and-functions.html#cb140-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lactate), </span>
+<span id="cb140-11"><a href="special-topics-iterations-and-functions.html#cb140-11" aria-hidden="true" tabindex="-1"></a>         subject <span class="sc">==</span> <span class="dv">10</span>, </span>
+<span id="cb140-12"><a href="special-topics-iterations-and-functions.html#cb140-12" aria-hidden="true" tabindex="-1"></a>         timepoint <span class="sc">==</span> <span class="st">&quot;pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb140-13"><a href="special-topics-iterations-and-functions.html#cb140-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 8 x 5
+##   subject group timepoint  watt lactate
+##     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1      10 INCR  pre         125    0.93
+## 2      10 INCR  pre         175    0.87
+## 3      10 INCR  pre         225    0.86
+## 4      10 INCR  pre         250    0.92
+## 5      10 INCR  pre         275    1.2 
+## 6      10 INCR  pre         300    1.69
+## 7      10 INCR  pre         325    2.6 
+## 8      10 INCR  pre         350    4.69</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="special-topics-iterations-and-functions.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lt</span>(data)</span></code></pre></div>
+<pre><code>##   watt.4mmol
+## 1     342.96</code></pre>
+<p>Nice, since we defined the function with higher resolution, we get a exercise intensity value with two decimal points. This value represent the watt value where the predicted lactate value is the closest to 4 mmol L<sup>-1</sup>.</p>
+<p>We still need to incorporate the function into code that dose the calculation for each individual, and time-point without the need of manually filtering values for each new data set. This can be accomplished by using the function in a pipe together with <code>group_by</code> and <code>group_modify</code>.</p>
+<p>Since we are using a third degree polynomial we need to make sure we have enough data to fit such a model to each participant/time-point. We will add a variable counting the number of observations and then filter tests with less then 4 observations.</p>
+<p>The complete pipe could look something like this.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="special-topics-iterations-and-functions.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract lactate values</span></span>
+<span id="cb144-2"><a href="special-topics-iterations-and-functions.html#cb144-2" aria-hidden="true" tabindex="-1"></a>cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb144-3"><a href="special-topics-iterations-and-functions.html#cb144-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb144-4"><a href="special-topics-iterations-and-functions.html#cb144-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;watt&quot;</span>, </span>
+<span id="cb144-5"><a href="special-topics-iterations-and-functions.html#cb144-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;lactate&quot;</span>, </span>
+<span id="cb144-6"><a href="special-topics-iterations-and-functions.html#cb144-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">&quot;lac.&quot;</span>, </span>
+<span id="cb144-7"><a href="special-topics-iterations-and-functions.html#cb144-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric), </span>
+<span id="cb144-8"><a href="special-topics-iterations-and-functions.html#cb144-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">cols =</span> lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb144-9"><a href="special-topics-iterations-and-functions.html#cb144-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter missing lactate values</span></span>
+<span id="cb144-10"><a href="special-topics-iterations-and-functions.html#cb144-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lactate)) <span class="sc">%&gt;%</span></span>
+<span id="cb144-11"><a href="special-topics-iterations-and-functions.html#cb144-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data set, keeping group to have this information in the final results</span></span>
+<span id="cb144-12"><a href="special-topics-iterations-and-functions.html#cb144-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(timepoint, subject, group) <span class="sc">%&gt;%</span></span>
+<span id="cb144-13"><a href="special-topics-iterations-and-functions.html#cb144-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new variable counting the number of observations and filter away tests with less than 4 obs.</span></span>
+<span id="cb144-14"><a href="special-topics-iterations-and-functions.html#cb144-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb144-15"><a href="special-topics-iterations-and-functions.html#cb144-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb144-16"><a href="special-topics-iterations-and-functions.html#cb144-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use grouup modify to apply the function to all participants per time-point (and group)</span></span>
+<span id="cb144-17"><a href="special-topics-iterations-and-functions.html#cb144-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_modify</span>(<span class="sc">~</span> <span class="fu">lt</span>(.)) <span class="sc">%&gt;%</span></span>
+<span id="cb144-18"><a href="special-topics-iterations-and-functions.html#cb144-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 74 x 4
+## # Groups:   timepoint, subject, group [74]
+##    timepoint subject group watt.4mmol
+##    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;
+##  1 meso1           1 INCR        293.
+##  2 meso1           2 DECR        286.
+##  3 meso1           3 INCR        335.
+##  4 meso1           4 DECR        244.
+##  5 meso1           5 DECR        332.
+##  6 meso1           6 INCR        252.
+##  7 meso1           7 MIX         268.
+##  8 meso1           8 MIX         294.
+##  9 meso1           9 MIX         300.
+## 10 meso1          10 INCR        340.
+## # ... with 64 more rows</code></pre>
+<p>Great sucess! We have now calculated lactate threshold values for each participant, belonging to specific time-points and groups. The <code>group_modify</code> function does the iterative work of applying the function for all cases, you have save yourself a lot of code, and time!</p>
+<div id="exercises" class="section level3" number="17.2.1">
+<h3><span class="header-section-number">17.2.1</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>Modify the <code>lt</code> function to return two fixed lactate values.</li>
+<li>Modify the <code>lt</code> function to include an extra argument specifying the level of the lactate value you are interested in.</li>
+</ol>
+
 </div>
-<div id="ref-RN1739" class="csl-entry">
-Halperin, I., D. B. Pyne, and D. T. Martin. 2015. <span>“Threats to Internal Validity in Exercise Science: A Review of Overlooked Confounding Variables.”</span> Journal Article. <em>Int J Sports Physiol Perform</em> 10 (7): 823–29. <a href="https://doi.org/10.1123/ijspp.2014-0566">https://doi.org/10.1123/ijspp.2014-0566</a>.
-</div>
-<div id="ref-RN2358" class="csl-entry">
-Hammarström, Daniel, Sjur Øfsteng, Lise Koll, Marita Hanestadhaugen, Ivana Hollan, William Apró, Jon Elling Whist, Eva Blomstrand, Bent R. Rønnestad, and Stian Ellefsen. 2020. <span>“Benefits of Higher Resistance-Training Volume Are Related to Ribosome Biogenesis.”</span> Journal Article. <em>The Journal of Physiology</em> 598 (3): 543–65. <a href="https://doi.org/10.1113/JP278455">https://doi.org/10.1113/JP278455</a>.
-</div>
-<div id="ref-RN2149" class="csl-entry">
-Haun, C. T., C. G. Vann, C. B. Mobley, P. A. Roberson, S. C. Osburn, H. M. Holmes, P. M. Mumford, et al. 2018. <span>“Effects of Graded Whey Supplementation During Extreme-Volume Resistance Training.”</span> Journal Article. <em>Front Nutr</em> 5: 84. <a href="https://doi.org/10.3389/fnut.2018.00084">https://doi.org/10.3389/fnut.2018.00084</a>.
-</div>
-<div id="ref-RN2225" class="csl-entry">
-Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Paul A. Roberson, Matthew A. Romero, et al. 2019. <span>“Pre-Training Skeletal Muscle Fiber Size and Predominant Fiber Type Best Predict Hypertrophic Responses to 6 Weeks of Resistance Training in Previously Trained Young Men.”</span> Journal Article. <em>Frontiers in Physiology</em> 10 (297). <a href="https://doi.org/10.3389/fphys.2019.00297">https://doi.org/10.3389/fphys.2019.00297</a>.
-</div>
-<div id="ref-RN130" class="csl-entry">
-Hopkins, W. G. 2000. <span>“Measures of Reliability in Sports Medicine and Science.”</span> Journal Article. <em>Sports Med</em> 30 (1): 1–15. <a href="http://www.ncbi.nlm.nih.gov/pubmed/10907753">http://www.ncbi.nlm.nih.gov/pubmed/10907753</a>.
-</div>
-<div id="ref-RN1953" class="csl-entry">
-Ioannidis, John P. A. 2005. <span>“Why Most Published Research Findings Are False.”</span> Journal Article. <em>PLOS Medicine</em> 2 (8): e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
-</div>
-<div id="ref-RN1955" class="csl-entry">
-Leek, J. T., and R. D. Peng. 2015. <span>“Statistics: P Values Are Just the Tip of the Iceberg.”</span> Journal Article. <em>Nature</em> 520 (7549): 612. <a href="https://doi.org/10.1038/520612a">https://doi.org/10.1038/520612a</a>.
-</div>
-<div id="ref-lsr" class="csl-entry">
-Navarro, D. 2020. <em>Learning Statistics with r</em>.
-</div>
-<div id="ref-RN228" class="csl-entry">
-Newell, J., D. Higgins, N. Madden, J. Cruickshank, J. Einbeck, K. McMillan, and R. McDonald. 2007. <span>“Software for Calculating Blood Lactate Endurance Markers.”</span> Journal Article. <em>Journal of Sports Sciences</em> 25 (12): 1403–9. <a href="https://doi.org/10.1080/02640410601128922">https://doi.org/10.1080/02640410601128922</a>.
-</div>
-<div id="ref-RN1492" class="csl-entry">
-Peng, R. D., F. Dominici, and S. L. Zeger. 2006. <span>“Reproducible Epidemiologic Research.”</span> Journal Article. <em>Am J Epidemiol</em> 163 (9): 783–89. <a href="https://doi.org/10.1093/aje/kwj093">https://doi.org/10.1093/aje/kwj093</a>.
-</div>
-<div id="ref-RN2902" class="csl-entry">
-Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</em>. Book. First US edition. New York: Basic Books.
-</div>
-<div id="ref-RN2928" class="csl-entry">
-Stephen, G. Powell, R. Baker Kenneth, and Lawson Barry. 2009. <span>“Errors in Operational Spreadsheets.”</span> Journal Article. <em>Journal of Organizational and End User Computing (JOEUC)</em> 21 (3): 24–36. <a href="https://doi.org/10.4018/joeuc.2009070102">https://doi.org/10.4018/joeuc.2009070102</a>.
-</div>
-<div id="ref-RN2511" class="csl-entry">
-Tanner, R. K., and C. J. Gore. 2012. <em>Physiological Tests for Elite Athletes 2nd Edition</em>. Book. Human Kinetics. <a href="https://books.google.no/books?id=0OPIiMks58MC">https://books.google.no/books?id=0OPIiMks58MC</a>.
-</div>
-<div id="ref-RN1956" class="csl-entry">
-Wickham, Hadley. 2014. <span>“Tidy Data.”</span> Journal Article. <em>Journal of Statistical Software; Vol 1, Issue 10 (2014)</em>. <a href="https://www.jstatsoft.org/v059/i10">https://www.jstatsoft.org/v059/i10</a>.
-</div>
-<div id="ref-r4ds" class="csl-entry">
-Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. 1st ed. Paperback; O’Reilly Media. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
-</div>
-<div id="ref-RN2927" class="csl-entry">
-Ziemann, Mark, Yotam Eren, and Assam El-Osta. 2016. <span>“Gene Name Errors Are Widespread in the Scientific Literature.”</span> Journal Article. <em>Genome Biology</em> 17 (1): 177. <a href="https://doi.org/10.1186/s13059-016-1044-7">https://doi.org/10.1186/s13059-016-1044-7</a>.
 </div>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="study-questions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="assignment2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="study-questions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
