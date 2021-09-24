@@ -373,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When doing a correlation analysis you are at risk of drawing conclusions based on wonky data. A single data point can for example create a correlation in a small data set. Lets look at the data we are using now.</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="correlations.html#cb129-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
 <span id="cb129-2"><a href="correlations.html#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(SQUAT_VOLUME, DXA_LBM_T1)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 <p>The plot displays no apparent relationship, there are no obvious outliers, both variables are evenly distributed (normally distributed). These are assumptions regarding the correlation analysis. Other assumptions are that the relationship is linear (a straight line).</p>
 </div>
 <div id="extending-the-correlation-to-the-regression" class="section level2" number="15.2">

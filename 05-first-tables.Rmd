@@ -13,6 +13,10 @@ The basic work-flow of creating a table in R markdown is to first transform the 
 
 In this chapter we will also introduce some data wrangling tools since the table we will produce consists of summarized data. The functions we will introduce are found in the pakages `dplyr` and `tidyr`. These packages are loaded as part of the `tidyverse` package.
 
+
+<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/a715b389730b4d7db3b3c61308eb555f1d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
+
+
 ### Resources
 
 All `tidyverse`packages are [well documented](https://www.tidyverse.org/) and generally well represented in help forums. Google is your friend when looking for help.

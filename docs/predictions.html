@@ -418,8 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb110-19"><a href="predictions.html#cb110-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(watt, lactate, <span class="at">group =</span> subject))  <span class="sc">+</span> </span>
 <span id="cb110-20"><a href="predictions.html#cb110-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb110-21"><a href="predictions.html#cb110-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">size =</span> <span class="fl">2.5</span>) </span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-81"></span>
-<img src="quant-methods_files/figure-html/unnamed-chunk-81-1.png" alt="A workload and lactate relationship" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-79"></span>
+<img src="quant-methods_files/figure-html/unnamed-chunk-79-1.png" alt="A workload and lactate relationship" width="672" />
 <p class="caption">
 Figure 13.1: A workload and lactate relationship
 </p>
@@ -443,8 +443,8 @@ Figure 13.1: A workload and lactate relationship
 <span id="cb111-16"><a href="predictions.html#cb111-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adding straight lines at specific values</span></span>
 <span id="cb111-17"><a href="predictions.html#cb111-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
 <span id="cb111-18"><a href="predictions.html#cb111-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">341.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-82"></span>
-<img src="quant-methods_files/figure-html/unnamed-chunk-82-1.png" alt="Interpolation to estimate the lactate threshold, exercise intensity at 4 mmol L&lt;sup&gt;-1&lt;/sup&gt;" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-80"></span>
+<img src="quant-methods_files/figure-html/unnamed-chunk-80-1.png" alt="Interpolation to estimate the lactate threshold, exercise intensity at 4 mmol L&lt;sup&gt;-1&lt;/sup&gt;" width="672" />
 <p class="caption">
 Figure 13.2: Interpolation to estimate the lactate threshold, exercise intensity at 4 mmol L<sup>-1</sup>
 </p>
@@ -478,7 +478,7 @@ Figure 13.2: Interpolation to estimate the lactate threshold, exercise intensity
 <span id="cb112-26"><a href="predictions.html#cb112-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">3</span>), <span class="at">color =</span> <span class="st">&quot;#4daf4a&quot;</span>) <span class="sc">+</span></span>
 <span id="cb112-27"><a href="predictions.html#cb112-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># poly(x, 4) add a forth degree polynomial model.</span></span>
 <span id="cb112-28"><a href="predictions.html#cb112-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">4</span>), <span class="at">color =</span> <span class="st">&quot;#ff7f00&quot;</span>) </span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="predictions.html#cb113-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># #fee090 represent color codes in th HEX format, palettes for different color can be found </span></span>
 <span id="cb113-2"><a href="predictions.html#cb113-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># here: https://colorbrewer2.org/</span></span></code></pre></div>
 <p>As we can see in the resulting plot, the different models are not that different around the 4 mmol L<sup>-1</sup> mark. However, the linear model is just wrong at around 300 watts, the second degree polynomial model is wrong at 275 watts. The third and forth degree polynomial model does not differ much from observed values or each other.</p>
@@ -527,8 +527,8 @@ Figure 13.2: Interpolation to estimate the lactate threshold, exercise intensity
 <span id="cb114-42"><a href="predictions.html#cb114-42" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb114-43"><a href="predictions.html#cb114-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># To set the same colors/fills as above we use scale fill manual</span></span>
 <span id="cb114-44"><a href="predictions.html#cb114-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#e41a1c&quot;</span>, <span class="st">&quot;#377eb8&quot;</span>, <span class="st">&quot;#4daf4a&quot;</span>, <span class="st">&quot;#ff7f00&quot;</span>))</span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-84"></span>
-<img src="quant-methods_files/figure-html/unnamed-chunk-84-1.png" alt="Assessing the fit f different linear models on a exercise intensity to lactate accumulation relationship." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-82"></span>
+<img src="quant-methods_files/figure-html/unnamed-chunk-82-1.png" alt="Assessing the fit f different linear models on a exercise intensity to lactate accumulation relationship." width="672" />
 <p class="caption">
 Figure 13.3: Assessing the fit f different linear models on a exercise intensity to lactate accumulation relationship.
 </p>

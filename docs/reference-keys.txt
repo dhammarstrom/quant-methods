@@ -29,11 +29,11 @@ fig:sq-ind-data-axis-title3
 fig:bw-theme
 fig:bw-theme-changed
 fig:example-fig-1
-tab:unnamed-chunk-46
-fig:unnamed-chunk-81
+tab:unnamed-chunk-44
+fig:unnamed-chunk-79
+fig:unnamed-chunk-80
 fig:unnamed-chunk-82
-fig:unnamed-chunk-84
-tab:unnamed-chunk-89
+tab:unnamed-chunk-87
 introduction
 quick-links
 practical-information
