@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 18 Samples, populations estimates and their uncertainty | Quantitative methods and statistics (In Sport and Exercise Science)</title>
+  <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 18 Samples, populations estimates and their uncertainty | Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="github-repo" content="dhammarstrom/quant-methods" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 18 Samples, populations estimates and their uncertainty | Quantitative methods and statistics (In Sport and Exercise Science)" />
+  
+  <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Daniel Hammarström" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="special-topics-iterations-and-functions.html"/>
+<link rel="next" href="what-is-the-p-value.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quick-links"><i class="fa fa-check"></i><b>1.1</b> Quick links:</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#practical-information"><i class="fa fa-check"></i><b>1.2</b> Practical information</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.2.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#learning-strategies"><i class="fa fa-check"></i><b>1.2.2</b> Learning strategies</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#course-evaluation"><i class="fa fa-check"></i><b>1.2.3</b> Course evaluation</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#lecturers-and-course-administration"><i class="fa fa-check"></i><b>1.2.4</b> Lecturers and course administration</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#updates-notifications-and-general-communication"><i class="fa fa-check"></i><b>1.2.5</b> Updates, notifications and general communication</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#literature"><i class="fa fa-check"></i><b>1.2.6</b> Literature</a></li>
+<li class="chapter" data-level="1.2.7" data-path="index.html"><a href="index.html#grades"><i class="fa fa-check"></i><b>1.2.7</b> Grades</a></li>
+<li class="chapter" data-level="1.2.8" data-path="index.html"><a href="index.html#language"><i class="fa fa-check"></i><b>1.2.8</b> Language</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#assignments-and-portfolio-exam"><i class="fa fa-check"></i><b>1.3</b> Assignments and Portfolio exam</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#other-information"><i class="fa fa-check"></i><b>1.4</b> Other information</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html"><i class="fa fa-check"></i><b>2</b> Introduction to data science</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#about-data-in-the-world-of-sport-and-exercise"><i class="fa fa-check"></i><b>2.1</b> About data in the world of sport and exercise</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#replication-and-reproducibility"><i class="fa fa-check"></i><b>2.2</b> Replication and Reproducibility</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#tools-in-data-science"><i class="fa fa-check"></i><b>2.3</b> Tools in data science</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html"><i class="fa fa-check"></i><b>3</b> Storing data in spreadsheets</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#cells-and-simple-functions"><i class="fa fa-check"></i><b>3.1</b> Cells and simple functions</a></li>
+<li class="chapter" data-level="3.2" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#tidy-data-and-data-storage"><i class="fa fa-check"></i><b>3.2</b> Tidy data and data storage</a></li>
+<li class="chapter" data-level="3.3" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#recording-data"><i class="fa fa-check"></i><b>3.3</b> Recording data</a></li>
+<li class="chapter" data-level="3.4" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#saving-data"><i class="fa fa-check"></i><b>3.4</b> Saving data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html"><i class="fa fa-check"></i><b>4</b> Installing and starting up R (and R Studio)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-r"><i class="fa fa-check"></i><b>4.1</b> Installing R</a></li>
+<li class="chapter" data-level="4.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-r-studio"><i class="fa fa-check"></i><b>4.2</b> Installing R Studio</a></li>
+<li class="chapter" data-level="4.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#getting-to-know-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Getting to know R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#the-source"><i class="fa fa-check"></i><b>4.3.1</b> The source</a></li>
+<li class="chapter" data-level="4.3.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#environment"><i class="fa fa-check"></i><b>4.3.2</b> Environment</a></li>
+<li class="chapter" data-level="4.3.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#the-console"><i class="fa fa-check"></i><b>4.3.3</b> The console</a></li>
+<li class="chapter" data-level="4.3.4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#files-plots-packages-and-help-files"><i class="fa fa-check"></i><b>4.3.4</b> Files, plots, packages and help files</a></li>
+<li class="chapter" data-level="4.3.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#customizing-the-apperance-of-rstudio"><i class="fa fa-check"></i><b>4.3.5</b> Customizing the apperance of RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#reproducible-computing"><i class="fa fa-check"></i><b>4.4</b> Reproducible computing</a></li>
+<li class="chapter" data-level="4.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#packages"><i class="fa fa-check"></i><b>4.5</b> Packages</a></li>
+<li class="chapter" data-level="4.6" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-and-using-swirl"><i class="fa fa-check"></i><b>4.6</b> Installing and using <code>swirl</code></a></li>
+<li class="chapter" data-level="4.7" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-scripts"><i class="fa fa-check"></i><b>4.7</b> R scripts</a></li>
+<li class="chapter" data-level="4.8" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-markdown-files"><i class="fa fa-check"></i><b>4.8</b> R markdown files</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#starting-up-your-first-r-markdown-file"><i class="fa fa-check"></i><b>4.8.1</b> Starting up your first R markdown file</a></li>
+<li class="chapter" data-level="4.8.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#microsoft-word-intergration"><i class="fa fa-check"></i><b>4.8.2</b> Microsoft Word intergration</a></li>
+<li class="chapter" data-level="4.8.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#adding-references"><i class="fa fa-check"></i><b>4.8.3</b> Adding references</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#resources"><i class="fa fa-check"></i><b>5.1</b> Resources</a></li>
+<li class="chapter" data-level="5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#learning-objectives-1"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#prerequisites"><i class="fa fa-check"></i><b>5.3</b> Prerequisites</a></li>
+<li class="chapter" data-level="5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#the-ggplot2-system"><i class="fa fa-check"></i><b>5.4</b> The <code>ggplot2</code> system</a></li>
+<li class="chapter" data-level="5.5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#different-geoms-using-real-data"><i class="fa fa-check"></i><b>5.5</b> Different geoms using real data</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#a-plot-of-values-per-group"><i class="fa fa-check"></i><b>5.5.1</b> A plot of values per group</a></li>
+<li class="chapter" data-level="5.5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#data-over-time-per-group-and-individual"><i class="fa fa-check"></i><b>5.5.2</b> Data over time per group and individual</a></li>
+<li class="chapter" data-level="5.5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#titles-and-labels"><i class="fa fa-check"></i><b>5.5.3</b> Titles and labels</a></li>
+<li class="chapter" data-level="5.5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#annotations"><i class="fa fa-check"></i><b>5.5.4</b> Annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#themes"><i class="fa fa-check"></i><b>5.6</b> Themes</a></li>
+<li class="chapter" data-level="5.7" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#test-your-understandning"><i class="fa fa-check"></i><b>5.7</b> Test your understandning</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html"><i class="fa fa-check"></i><b>6</b> Wrangling data to create your first table</a>
+<ul>
+<li class="chapter" data-level="6.0.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#resources-1"><i class="fa fa-check"></i><b>6.0.1</b> Resources</a></li>
+<li class="chapter" data-level="6.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#making-table-1"><i class="fa fa-check"></i><b>6.1</b> Making “Table 1”</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#the-pipe-operator-and-select"><i class="fa fa-check"></i><b>6.1.1</b> The pipe operator and select</a></li>
+<li class="chapter" data-level="6.1.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#filter-observations"><i class="fa fa-check"></i><b>6.1.2</b> Filter observations</a></li>
+<li class="chapter" data-level="6.1.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#create-or-change-variables"><i class="fa fa-check"></i><b>6.1.3</b> Create or change variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#grouped-operations-and-summary-statistics"><i class="fa fa-check"></i><b>6.1.4</b> Grouped operations and summary statistics</a></li>
+<li class="chapter" data-level="6.1.5" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#starting-the-table-generator---the-kable-function"><i class="fa fa-check"></i><b>6.1.5</b> Starting the table generator - The <code>kable</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#summary"><i class="fa fa-check"></i><b>6.2</b> Summary</a></li>
+<li class="chapter" data-level="6.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#flextable"><i class="fa fa-check"></i><b>6.3</b> Flextable</a></li>
+<li class="chapter" data-level="6.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#an-exercise-reproduce-table-1-from-rn2225"><i class="fa fa-check"></i><b>6.4</b> An exercise, reproduce Table 1 from <span class="citation">(<span>Haun et al. 2019</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html#rstudio-projects-and-your-reproducible-report"><i class="fa fa-check"></i><b>7.1</b> RStudio projects and your reproducible report</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#why-version-control"><i class="fa fa-check"></i><b>8.1</b> Why version control</a></li>
+<li class="chapter" data-level="8.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#a-simplecomplicated-start"><i class="fa fa-check"></i><b>8.2</b> A simple/complicated start</a></li>
+<li class="chapter" data-level="8.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-by-step-instructions-on-setting-up-a-version-controlled-r-project."><i class="fa fa-check"></i><b>8.3</b> Step by step instructions on setting up a version controlled R project.</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-1.-create-a-free-github-account"><i class="fa fa-check"></i><b>8.3.1</b> Step 1. Create a free github account:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-2.-download-git."><i class="fa fa-check"></i><b>8.3.2</b> Step 2. Download git.</a></li>
+<li class="chapter" data-level="8.3.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-3.-connect-git-to-rstudio"><i class="fa fa-check"></i><b>8.3.3</b> Step 3. Connect git to RStudio</a></li>
+<li class="chapter" data-level="8.3.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-4.-create-a-new-online-repository"><i class="fa fa-check"></i><b>8.3.4</b> Step 4. Create a new online repository</a></li>
+<li class="chapter" data-level="8.3.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-5.-create-a-new-project-in-rstudio"><i class="fa fa-check"></i><b>8.3.5</b> Step 5. Create a new project in RStudio</a></li>
+<li class="chapter" data-level="8.3.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-6.-make-changes-to-your-project"><i class="fa fa-check"></i><b>8.3.6</b> Step 6. Make changes to your project</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#forking-and-pull-requests"><i class="fa fa-check"></i><b>8.4</b> Forking and pull requests</a></li>
+<li class="chapter" data-level="8.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#additional-great-things-about-github"><i class="fa fa-check"></i><b>8.5</b> Additional great things about GitHub</a></li>
+<li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
+<li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html#smallest-worthwhile-change-or-effect"><i class="fa fa-check"></i><b>9.1</b> Smallest worthwhile change or effect</a></li>
+<li class="chapter" data-level="9.2" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html#video-from-seminar"><i class="fa fa-check"></i><b>9.2</b> Video from seminar</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="assignment1.html"><a href="assignment1.html"><i class="fa fa-check"></i><b>10</b> Assignment 1: Reliability and tools for reproducible data science</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="assignment1.html"><a href="assignment1.html#elements-of-the-report"><i class="fa fa-check"></i><b>10.1</b> Elements of the report</a></li>
+<li class="chapter" data-level="10.2" data-path="assignment1.html"><a href="assignment1.html#the-format-of-the-report"><i class="fa fa-check"></i><b>10.2</b> The format of the report</a></li>
+<li class="chapter" data-level="10.3" data-path="assignment1.html"><a href="assignment1.html#how-to-hand-in-the-report."><i class="fa fa-check"></i><b>10.3</b> How to hand in the report.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html"><i class="fa fa-check"></i><b>11</b> Introduction to the molecular exercise physiology lab</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#health-and-safety-in-the-lab"><i class="fa fa-check"></i><b>11.1</b> Health and safety in the lab</a></li>
+<li class="chapter" data-level="11.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#good-laboratory-practice"><i class="fa fa-check"></i><b>11.2</b> Good laboratory practice</a></li>
+<li class="chapter" data-level="11.3" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#the-laboratory-journal"><i class="fa fa-check"></i><b>11.3</b> The laboratory journal</a></li>
+<li class="chapter" data-level="11.4" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#keeping-it-digital---using-our-electronic-lab-journal"><i class="fa fa-check"></i><b>11.4</b> Keeping it digital - Using our electronic lab journal</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#what-to-write-in-the-journal"><i class="fa fa-check"></i><b>11.4.1</b> What to write in the journal</a></li>
+<li class="chapter" data-level="11.4.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#structure-of-an-entry"><i class="fa fa-check"></i><b>11.4.2</b> Structure of an entry</a></li>
+<li class="chapter" data-level="11.4.3" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#relationship-between-the-laboratory-journal-and-your-samples-solutions-tubes-etc."><i class="fa fa-check"></i><b>11.4.3</b> Relationship between the laboratory journal and your samples, solutions, tubes etc.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#protocols-and-experiments-in-the-course"><i class="fa fa-check"></i><b>11.5</b> Protocols and experiments in the course</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="the-linear-model.html"><a href="the-linear-model.html"><i class="fa fa-check"></i><b>12</b> The linear model</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="the-linear-model.html"><a href="the-linear-model.html#resources-3"><i class="fa fa-check"></i><b>12.1</b> Resources</a></li>
+<li class="chapter" data-level="12.2" data-path="the-linear-model.html"><a href="the-linear-model.html#straight-lines"><i class="fa fa-check"></i><b>12.2</b> Straight lines</a></li>
+<li class="chapter" data-level="12.3" data-path="the-linear-model.html"><a href="the-linear-model.html#fitting-regression-models-in-r"><i class="fa fa-check"></i><b>12.3</b> Fitting regression models in R</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="the-linear-model.html"><a href="the-linear-model.html#linear-relationship"><i class="fa fa-check"></i><b>12.3.1</b> Linear relationship</a></li>
+<li class="chapter" data-level="12.3.2" data-path="the-linear-model.html"><a href="the-linear-model.html#constant-variance"><i class="fa fa-check"></i><b>12.3.2</b> Constant variance</a></li>
+<li class="chapter" data-level="12.3.3" data-path="the-linear-model.html"><a href="the-linear-model.html#normal-residuals"><i class="fa fa-check"></i><b>12.3.3</b> Normal residuals</a></li>
+<li class="chapter" data-level="12.3.4" data-path="the-linear-model.html"><a href="the-linear-model.html#independent-observations"><i class="fa fa-check"></i><b>12.3.4</b> Independent observations</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="the-linear-model.html"><a href="the-linear-model.html#check-the-results"><i class="fa fa-check"></i><b>12.4</b> Check the results</a></li>
+<li class="chapter" data-level="12.5" data-path="the-linear-model.html"><a href="the-linear-model.html#a-note-about-printing-the-regression-table"><i class="fa fa-check"></i><b>12.5</b> A note about printing the regression table</a></li>
+<li class="chapter" data-level="12.6" data-path="the-linear-model.html"><a href="the-linear-model.html#interpreting-the-results"><i class="fa fa-check"></i><b>12.6</b> Interpreting the results</a></li>
+<li class="chapter" data-level="12.7" data-path="the-linear-model.html"><a href="the-linear-model.html#do-problematic-observations-matter"><i class="fa fa-check"></i><b>12.7</b> Do problematic observations matter?</a></li>
+<li class="chapter" data-level="12.8" data-path="the-linear-model.html"><a href="the-linear-model.html#a-more-intepretable-model"><i class="fa fa-check"></i><b>12.8</b> A more intepretable model</a></li>
+<li class="chapter" data-level="12.9" data-path="the-linear-model.html"><a href="the-linear-model.html#an-exercise"><i class="fa fa-check"></i><b>12.9</b> An exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="predictions.html"><a href="predictions.html"><i class="fa fa-check"></i><b>13</b> Linear and curve-linear relationships, and predictions</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="predictions.html"><a href="predictions.html#predicting-from-data"><i class="fa fa-check"></i><b>13.1</b> Predicting from data</a></li>
+<li class="chapter" data-level="13.2" data-path="predictions.html"><a href="predictions.html#the-workload-lactate-relationship"><i class="fa fa-check"></i><b>13.2</b> The workload-lactate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html"><i class="fa fa-check"></i><b>14</b> Categorical predictors and multiple regression</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#linear-models-can-be-used-instead-of-t-tests"><i class="fa fa-check"></i><b>14.1</b> Linear models can be used instead of t-tests</a></li>
+<li class="chapter" data-level="14.2" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>14.2</b> Dummy variables</a></li>
+<li class="chapter" data-level="14.3" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>14.3</b> Multiple regression</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>15</b> Correlations</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="correlations.html"><a href="correlations.html#always-plot-the-data"><i class="fa fa-check"></i><b>15.1</b> Always plot the data!</a></li>
+<li class="chapter" data-level="15.2" data-path="correlations.html"><a href="correlations.html#extending-the-correlation-to-the-regression"><i class="fa fa-check"></i><b>15.2</b> Extending the correlation to the regression</a></li>
+<li class="chapter" data-level="15.3" data-path="correlations.html"><a href="correlations.html#correlation-comes-in-many-forms"><i class="fa fa-check"></i><b>15.3</b> Correlation comes in many forms</a></li>
+<li class="chapter" data-level="15.4" data-path="correlations.html"><a href="correlations.html#statistical-and-subject-matter-interpretations"><i class="fa fa-check"></i><b>15.4</b> Statistical and subject-matter interpretations</a></li>
+<li class="chapter" data-level="15.5" data-path="correlations.html"><a href="correlations.html#summary-1"><i class="fa fa-check"></i><b>15.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="assignment2.html"><a href="assignment2.html"><i class="fa fa-check"></i><b>16</b> Assignment 2: Regression models, predicting from data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="assignment2.html"><a href="assignment2.html#part-1-lactate-thresholds"><i class="fa fa-check"></i><b>16.1</b> Part 1: Lactate thresholds</a></li>
+<li class="chapter" data-level="16.2" data-path="assignment2.html"><a href="assignment2.html#part-2-predicting-sizes-of-dna-fragments"><i class="fa fa-check"></i><b>16.2</b> Part 2: Predicting sizes of DNA fragments</a></li>
+<li class="chapter" data-level="16.3" data-path="assignment2.html"><a href="assignment2.html#part-3-intepreting-a-regression-table"><i class="fa fa-check"></i><b>16.3</b> Part 3: Intepreting a regression table</a></li>
+<li class="chapter" data-level="16.4" data-path="assignment2.html"><a href="assignment2.html#how-to-hand-in-the-report"><i class="fa fa-check"></i><b>16.4</b> How to hand in the report</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html"><i class="fa fa-check"></i><b>17</b> Special topics: Iterations and functions</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html#building-a-simple-function"><i class="fa fa-check"></i><b>17.1</b> Building a simple function</a></li>
+<li class="chapter" data-level="17.2" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html#an-applied-problem-where-a-function-might-help"><i class="fa fa-check"></i><b>17.2</b> An applied problem where a function might help</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html#exercises"><i class="fa fa-check"></i><b>17.2.1</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html"><i class="fa fa-check"></i><b>18</b> Samples, populations estimates and their uncertainty</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#reading-instructions"><i class="fa fa-check"></i><b>18.1</b> Reading instructions</a></li>
+<li class="chapter" data-level="18.2" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>18.2</b> Descriptive statistics in R</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#simulating-data-in-r"><i class="fa fa-check"></i><b>18.2.1</b> Simulating data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#a-simple-example"><i class="fa fa-check"></i><b>18.3</b> A simple example</a></li>
+<li class="chapter" data-level="18.4" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#inference-about-the-population"><i class="fa fa-check"></i><b>18.4</b> Inference about the population</a></li>
+<li class="chapter" data-level="18.5" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#estimation-of-the-sampling-distribution"><i class="fa fa-check"></i><b>18.5</b> Estimation of the sampling distribution</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#a-confidence-interval-for-the-mean"><i class="fa fa-check"></i><b>18.5.1</b> A confidence interval for the mean</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#sample-size-and-confidence-intervals"><i class="fa fa-check"></i><b>18.6</b> Sample size and confidence intervals</a></li>
+<li class="chapter" data-level="18.7" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#sampling-distribution-of-iq"><i class="fa fa-check"></i><b>18.7</b> Sampling distribution of IQ</a></li>
+<li class="chapter" data-level="18.8" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#a-hypothesis-test"><i class="fa fa-check"></i><b>18.8</b> A hypothesis test</a></li>
+<li class="chapter" data-level="18.9" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#using-a-confidence-interval-when-planning-a-study"><i class="fa fa-check"></i><b>18.9</b> Using a confidence interval when planning a study</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html"><i class="fa fa-check"></i><b>19</b> What is the <em>p</em>-value?</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-from-two-sample-comparisons"><i class="fa fa-check"></i><b>19.1</b> <em>p</em>-values from two sample comparisons</a></li>
+<li class="chapter" data-level="19.2" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#more-p-values"><i class="fa fa-check"></i><b>19.2</b> More <em>p</em>-values</a></li>
+<li class="chapter" data-level="19.3" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#t-test-examples"><i class="fa fa-check"></i><b>19.3</b> <em>t</em>-test examples</a></li>
+<li class="chapter" data-level="19.4" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#a-note-on-reporting-in-r-markdown."><i class="fa fa-check"></i><b>19.4</b> A note on reporting in R Markdown.</a></li>
+<li class="chapter" data-level="19.5" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#error-rates"><i class="fa fa-check"></i><b>19.5</b> Error rates</a></li>
+<li class="chapter" data-level="19.6" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-and-confidence-intervals"><i class="fa fa-check"></i><b>19.6</b> P-values and confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>20</b> Study questions</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>20.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
+<li class="chapter" data-level="20.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>20.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
+<li class="chapter" data-level="20.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>20.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
+<li class="chapter" data-level="20.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>20.4</b> Chapter 5: Creating your first graph</a></li>
+<li class="chapter" data-level="20.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>20.5</b> Chapter 6: Wrangling data to create your first table</a></li>
+<li class="chapter" data-level="20.6" data-path="study-questions.html"><a href="study-questions.html#chapter-11-introduction-to-the-molecular-exercise-physiology-lab"><i class="fa fa-check"></i><b>20.6</b> Chapter 11: Introduction to the molecular exercise physiology lab</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>21</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="samples-populations-estimates-and-their-uncertainty" class="section level1" number="18">
+<h1><span class="header-section-number">Chapter 18</span> Samples, populations estimates and their uncertainty</h1>
+<script language="javascript"> 
+    function toggle(num) {
+      var ele = document.getElementById("toggleText" + num);
+      var text = document.getElementById("displayText" + num);      if(ele.style.display == "block") {
+        ele.style.display = "none";
+        text.innerHTML = "show";
+      }
+      else {
+        ele.style.display = "block";
+        text.innerHTML = "hide";
+      }
+   } 
+  </script>
+<p>Scientific studies only occasionally gather all available data regarding some phenomena under study. All possible data are not available to us due to, e.g., practical or economic reasons. We, therefore, have no direct way of studying all elderly people’s responses to training or the relationship between strength and performance in all cyclists, etc. Thus, the scientist faces the challenge of concluding based on a limited set of observations.</p>
+<p>All possible observations are often referred to as the <em>population</em> while the data set we have access to is called the <em>sample</em>. When we make claims about the <em>population</em> using a sample, we draw <em>inference</em>. Our ability to accurately draw inference (or conclusions) about the population based on our sample is determined by how we have gathered data. A sample is <em>unbiased</em> when it represents the population. Through <em>random sampling</em> from the population, we can be pretty sure that we, in most cases, have a representative sample free from bias. Bias may be a consequence of some systematic aspect of our sampling scheme, e.g., when studying healthy individuals’ responses to exercise, recruitment to the study may introduce bias as we are more likely to recruit participants who want to do exercise. Possibly, recruited individuals would respond differently compared to individuals not so willing to do exercise (see <span class="citation">(<a href="references.html#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>, Ch. 3)</span>.</p>
+<p>We can characterize a sample using <em>descriptive statistics</em>. For example, a continuous variable such as VO<sub>2max</sub> can be described based on its central tendency (like the mean, <span class="math inline">\(\bar{y}\)</span>) and variation (standard deviation, <span class="math inline">\(s_y\)</span>). Such characteristics serve us for a simple description of the sample and as <em>estimates</em> of characteristics of the <em>population</em>. These estimates can help us make claims about the population with a specified degree of certainty.</p>
+<div id="reading-instructions" class="section level2" number="18.1">
+<h2><span class="header-section-number">18.1</span> Reading instructions</h2>
+<p>Before going further, I suggest reading Chapters 7-10 in Spiegelhalter <span class="citation">(<a href="references.html#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. These chapters are a great start for understanding the concepts discussed below.</p>
+</div>
+<div id="descriptive-statistics-in-r" class="section level2" number="18.2">
+<h2><span class="header-section-number">18.2</span> Descriptive statistics in R</h2>
+<div id="simulating-data-in-r" class="section level3" number="18.2.1">
+<h3><span class="header-section-number">18.2.1</span> Simulating data in R</h3>
+<p>R is great because you can create data! In the examples below we will generate data, you can copy and paste the code into your R session to run it and answer questions in this lesson.</p>
+<p>When we generate data in R we need to <strong>set the seed</strong> to make the random number generator create the same numbers every time. Basically, R generate numbers and if we want R to generate the same numbers every time we have to tell R where to start.</p>
+<p>This means that before each simulation I will include:</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span></code></pre></div>
+<p>The number within <code>set.seed</code> is important as it defines where R starts generating numbers.</p>
+</div>
+</div>
+<div id="a-simple-example" class="section level2" number="18.3">
+<h2><span class="header-section-number">18.3</span> A simple example</h2>
+<p>Let’s say that we collect data on VO<sub>2max</sub> values in trained cyclists (ml kg<sup>-1</sup> min<sup>-1</sup>). We are interested in the average. First we <strong>simulate</strong> all possible values:</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb147-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb147-2" aria-hidden="true" tabindex="-1"></a>vo2max <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>, <span class="dv">70</span>, <span class="dv">5</span>)</span></code></pre></div>
+<p>All possible values?? Yes, we create a distribution of values of VO<sub>2max</sub> in trained cyclists based on the <code>rnorm</code>-function. <code>rnorm</code> simulates random numbers (100000 in this case) based on a average (in this case 75) and standard deviation (in this case 5). This <strong>population</strong> is now stored in the object <code>vo2max</code>.</p>
+<p>We conduct our study and collect data on 20 participants. This represents only 2% of all possible numbers!</p>
+<p>Below we use the <code>sample</code> function, this function draws a sample of a fixed size from our collection of random numbers. We store it in an object called <code>samp</code></p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb148-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb148-2" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(vo2max, <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><code>replace = FALSE</code> makes sure that we do not sample the same numbers more than once. This way our sampling resembles what a real life study would do.</p>
+<p>The <code>samp</code> object now contain numbers from a possible study. The study has recruited 20 randomly choosen cyclists and measured their VO<sub>2max</sub>. Let’s describe the sample.</p>
+<p>In R we can describe the data using multiple methods, first we will calculate summary statistics.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb149-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(samp)</span>
+<span id="cb149-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb149-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(samp)</span></code></pre></div>
+<p>We can also use the summary function.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(samp)</span></code></pre></div>
+<p>Let’s make a graph of the sample. We can represent the sample using points, the code below may be a bit complicated, it is mostly cosmetics.</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Needed for making the plot!</span></span>
+<span id="cb151-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">samp =</span> samp)</span>
+<span id="cb151-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb151-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plots our samples on the x axis, and sets all y to 1.</span></span>
+<span id="cb151-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(samp, <span class="at">y =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb151-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adds points and &quot;jitter&quot; on the y axis</span></span>
+<span id="cb151-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">height =</span> <span class="fl">0.2</span>)) <span class="sc">+</span> </span>
+<span id="cb151-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Scales the y axis to better plot the data</span></span>
+<span id="cb151-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb151-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set the name of the x axis</span></span>
+<span id="cb151-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;VO2max&quot;</span>) <span class="sc">+</span></span>
+<span id="cb151-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The code below modifies the theme of the plot, removing </span></span>
+<span id="cb151-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the y axis</span></span>
+<span id="cb151-15"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb151-16"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb151-17"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb151-18"><a href="samples-populations-estimates-and-their-uncertainty.html#cb151-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.y =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p>Another plot can be the box-plot, similar to the above we can do:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb152-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plots our samples on the y axis, and sets all x to 1.</span></span>
+<span id="cb152-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, samp)) <span class="sc">+</span> </span>
+<span id="cb152-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adds the boxplot</span></span>
+<span id="cb152-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb152-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Scales the x axis to better plot the data</span></span>
+<span id="cb152-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb152-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set the name of the y axis</span></span>
+<span id="cb152-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;VO2max&quot;</span>) <span class="sc">+</span></span>
+<span id="cb152-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The code below modifies the theme of the plot, removing </span></span>
+<span id="cb152-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the x axis</span></span>
+<span id="cb152-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb152-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb152-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb152-15"><a href="samples-populations-estimates-and-their-uncertainty.html#cb152-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.line.x =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p>The boxplot (or box-and-whiskers plot <span class="citation">(<a href="references.html#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>, Ch. 2)</span>) summarizes the data and plots the median, the inter-quartile range minimum and maximum, and any outliers.</p>
+<p>We can also plot the data as a histogram.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb153-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb153-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plots our samples on the y axis, and sets all x to 1.</span></span>
+<span id="cb153-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(samp)) <span class="sc">+</span> </span>
+<span id="cb153-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb153-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adds the histogram</span></span>
+<span id="cb153-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb153-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb153-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb153-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set the name of the y axis</span></span>
+<span id="cb153-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb153-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;VO2max&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>) </span></code></pre></div>
+<p>Both the statistical summaries (created with <code>mean</code>, <code>sd</code> and <code>summary</code>) and the plots are descriptive analyses of the sample. We still have not made any claims about the population.</p>
+</div>
+<div id="inference-about-the-population" class="section level2" number="18.4">
+<h2><span class="header-section-number">18.4</span> Inference about the population</h2>
+<p>When doing a study, we are really interested in what we can say about the population (all possible values). In other words, how we can draw conclusions about the unknown, based on our data. This is were inferential statistics comes in.</p>
+<p>As we have an estimate of the mean in the population, we may say that based on our sample we believe the mean is close to <code>mean(samp)</code>. It is very likely the the mean in the population is not exactly that. Let’s try another sample:</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb154-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb154-2" aria-hidden="true" tabindex="-1"></a>samp2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(vo2max, <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb154-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb154-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean</span></span>
+<span id="cb154-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb154-5" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(samp2)</span></code></pre></div>
+<p>As we can see there is going to be some differences due to the fact that every time we draw a new sample (or conduct another study), we will get a slightly different estimate of the mean. How about the variation:</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb155-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">sd</span>(samp2)</span>
+<span id="cb155-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb155-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results from calculation of SD</span></span>
+<span id="cb155-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(s, s2)</span></code></pre></div>
+<p>Indeed, slightly different.</p>
+<p>We could continue to sample in this way and record every outcome to build a distribution of means. A smarter way is to create a for-loop. This is a basic building block in programming, we tell the computer to do a task multiple times and store the results in a nice format. We will sample <code>size = 20</code> and calculate the mean. The results will be stored in a data frame.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the seed</span></span>
+<span id="cb156-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb156-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create the data frame</span></span>
+<span id="cb156-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-5" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mean =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">10000</span>)) </span>
+<span id="cb156-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The rep function creates a vector full of NA </span></span>
+<span id="cb156-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-7" aria-hidden="true" tabindex="-1"></a><span class="co"># each NA can be replaced with a mean</span></span>
+<span id="cb156-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Second we build the for loop</span></span>
+<span id="cb156-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
+<span id="cb156-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb156-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-12" aria-hidden="true" tabindex="-1"></a>  results[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(<span class="at">x =</span> vo2max, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb156-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb156-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb156-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The results from this process can be plotted using ggplot2</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> results, <span class="fu">aes</span>(mean)) <span class="sc">+</span></span>
+<span id="cb157-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb157-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;gray40&quot;</span>, <span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb157-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p>What did just happened? We basically conducted 1000 studies, from each study we calculated the mean and stored them. Most of the means were very close to 70 as we can see in the graph. The <strong>distribution of the means</strong> is bell-shaped, actually the distribution looks like something that we can call a Normal distribution.</p>
+<blockquote>
+<p>Distributions can be described in different ways depending on what distribution we are takling about. The most commonly used, the normal (or Gaussion) distribution can be described by the mean and the standard deviation.</p>
+</blockquote>
+<p>As the distribution of means is approximately normal we can determine where most of the means are. Let’s say that we are interested in determining a range where 95% of the means can be found. To do this we can use a theoretical distribution created by estimates from the distribution (the mean and standard deviation).</p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-391-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>95% of all means are under the shaded area! This corresponds to a range of values that can be calculated in R:</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb158-1" aria-hidden="true" tabindex="-1"></a>lower <span class="ot">&lt;-</span> <span class="fu">mean</span>(results[,<span class="dv">1</span>]) <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sd</span>(results[,<span class="dv">1</span>])</span>
+<span id="cb158-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb158-2" aria-hidden="true" tabindex="-1"></a>upper <span class="ot">&lt;-</span> <span class="fu">mean</span>(results[,<span class="dv">1</span>]) <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sd</span>(results[,<span class="dv">1</span>])</span></code></pre></div>
+<p>What does this mean? Well, we have drawn 1000 samples from our bag of numbers (representing all possible outcomes). We then calculated the mean of each sample and created a distribution of means. The mean of means is very, very close to the true mean.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vo2max)</span>
+<span id="cb159-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(results[,<span class="dv">1</span>])</span></code></pre></div>
+<p>We have also calculated a range were 95% of all means are located, we did this by approximating the actual values using the normal distribution.</p>
+</div>
+<div id="estimation-of-the-sampling-distribution" class="section level2" number="18.5">
+<h2><span class="header-section-number">18.5</span> Estimation of the sampling distribution</h2>
+<p>What we have done above is a very theoretical example as we never do 1000 studies. We never get a distribution of means from many studies. However we can estimate this theoretical distribution of means using a sample!</p>
+<blockquote>
+<p>This is one of the most important concepts in statistics! This means that by doing one study we can estimate the results of doing many studies.</p>
+</blockquote>
+<div id="the-standard-error-of-a-sample-is-an-approximation-of-the-standard-deviation-of-the-sampling-distribution" class="section level4" number="18.5.0.1">
+<h4><span class="header-section-number">18.5.0.1</span> The standard error of a sample is an approximation of the standard deviation of the sampling distribution</h4>
+<p>The headline says it all. Basically, using the sample we can calculate the standard deviation, the standard deviation in turn can be used to calculate the standard error. The standard error is an estimate of the standard deviation of the theoretical distribution of means. Let’s see how it works out!</p>
+<p>Using R we can simulate this concept. We will create a new set of random samples (or studies) and calculate statistics from them.</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy and paste the code if you want the results</span></span>
+<span id="cb160-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="co"># set the seed</span></span>
+<span id="cb160-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb160-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create the data frame</span></span>
+<span id="cb160-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-7" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mean =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>), </span>
+<span id="cb160-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sd =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>)) </span>
+<span id="cb160-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-9" aria-hidden="true" tabindex="-1"></a><span class="co"># The rep function creates a vector full of NA </span></span>
+<span id="cb160-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-10" aria-hidden="true" tabindex="-1"></a><span class="co"># each NA can be replaced with a mean</span></span>
+<span id="cb160-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Second we build the for loop</span></span>
+<span id="cb160-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
+<span id="cb160-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb160-15"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-15" aria-hidden="true" tabindex="-1"></a>  samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> vo2max, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb160-16"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb160-17"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-17" aria-hidden="true" tabindex="-1"></a>  results[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(samp)</span>
+<span id="cb160-18"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-18" aria-hidden="true" tabindex="-1"></a>  results[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">sd</span>(samp)</span>
+<span id="cb160-19"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb160-20"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-21"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-22"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-22" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb160-23"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the standard error of each sample</span></span>
+<span id="cb160-24"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">se =</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb160-25"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make a graph containing estimates and empirical values</span></span>
+<span id="cb160-26"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(mean)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb160-27"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb160-28"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a line representing the standard deviation of the distribution of means</span></span>
+<span id="cb160-29"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">350</span>, </span>
+<span id="cb160-30"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-30" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yend =</span> <span class="dv">350</span>, </span>
+<span id="cb160-31"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-31" aria-hidden="true" tabindex="-1"></a>                   <span class="at">x =</span> <span class="fu">mean</span>(mean), </span>
+<span id="cb160-32"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-32" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> <span class="fu">mean</span>(mean) <span class="sc">+</span> <span class="fu">sd</span>(mean)), </span>
+<span id="cb160-33"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-33" aria-hidden="true" tabindex="-1"></a>               <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;green&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb160-34"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add text to discribe the line</span></span>
+<span id="cb160-35"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">mean</span>(mean),</span>
+<span id="cb160-36"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-36" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> <span class="dv">300</span>, </span>
+<span id="cb160-37"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-37" aria-hidden="true" tabindex="-1"></a>                <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;Empirical: Mean &quot;</span>, </span>
+<span id="cb160-38"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-38" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">round</span>(<span class="fu">mean</span>(mean), <span class="dv">0</span>), </span>
+<span id="cb160-39"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-39" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&quot; + SD: &quot;</span>, </span>
+<span id="cb160-40"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-40" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">round</span>(<span class="fu">sd</span>(mean), <span class="dv">1</span>) )), </span>
+<span id="cb160-41"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-41" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
+<span id="cb160-42"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb160-43"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-43" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Add a line representing the average standard error of each sample</span></span>
+<span id="cb160-44"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">160</span>, </span>
+<span id="cb160-45"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-45" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yend =</span> <span class="dv">160</span>, </span>
+<span id="cb160-46"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-46" aria-hidden="true" tabindex="-1"></a>                   <span class="at">x =</span> <span class="fu">mean</span>(mean), </span>
+<span id="cb160-47"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-47" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> <span class="fu">mean</span>(mean) <span class="sc">+</span> <span class="fu">mean</span>(se)), </span>
+<span id="cb160-48"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-48" aria-hidden="true" tabindex="-1"></a>               <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb160-49"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add text to describe the above</span></span>
+<span id="cb160-50"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">mean</span>(mean),</span>
+<span id="cb160-51"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-51" aria-hidden="true" tabindex="-1"></a>                <span class="at">y =</span> <span class="dv">220</span>, </span>
+<span id="cb160-52"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-52" aria-hidden="true" tabindex="-1"></a>                <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">&quot;Estimate: Mean &quot;</span>, </span>
+<span id="cb160-53"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-53" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">round</span>(<span class="fu">mean</span>(mean), <span class="dv">0</span>), </span>
+<span id="cb160-54"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-54" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&quot; + average SE: &quot;</span>, </span>
+<span id="cb160-55"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-55" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">round</span>(<span class="fu">mean</span>(se), <span class="dv">1</span>) )), </span>
+<span id="cb160-56"><a href="samples-populations-estimates-and-their-uncertainty.html#cb160-56" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) </span></code></pre></div>
+<p>In the graph (you will see it you run the code), the blue line represents the average of what we estimate with each sample and the green line represent the actual values of the sampling distribution.</p>
+<p>The variation (spread) of the sampling distribution corresponds to the <strong>standard error of the mean</strong> in each sample. At least, in the long run, the standard error of the mean is a pretty good estimate of the variation in the distributions of means. From a mathematical point of view, the standard error of the mean is calculated as:</p>
+<p><span class="math display">\[SE = \frac{s}{\sqrt{n}}\]</span>
+where <span class="math inline">\(s\)</span> is the sample standard deviation, <span class="math inline">\(n\)</span> is the number of observations.</p>
+<p>Remember that we can use the standard deviation to calculate a range of values containing 95% of all values in a normal distribution. This can be done using a single sample! When calculating this using a sample we create a confidence interval!</p>
+</div>
+<div id="a-confidence-interval-for-the-mean" class="section level3" number="18.5.1">
+<h3><span class="header-section-number">18.5.1</span> A confidence interval for the mean</h3>
+<p>A confidence interval for the mean can be calculated as:</p>
+<p><span class="math display">\[lower~limit=Mean - 1.96 * SE\]</span>
+<span class="math display">\[upper~limit=Mean+1.96 * SE\]</span></p>
+<p>(This assumes that we are using the normal distribution).</p>
+<p>The interpretation of the confidence interval is that 95% of confidence intervals, created using repeated sampling will contain the population mean. But unfortunately, we do not know if our specific interval do so.</p>
+<p>The interpretation follows from the fact that we estimate the variation in the theoretical sampling distribution. Five percent of the time we will be wrong.</p>
+<p>To test if the theory is correct, lets calculate confidence intervals from our simulated data and see how many times we catch the true mean.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creat new variables with upper and lower limits of the confidence interval  </span></span>
+<span id="cb161-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-2" aria-hidden="true" tabindex="-1"></a>cis <span class="ot">&lt;-</span> results <span class="sc">%&gt;%</span></span>
+<span id="cb161-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Using the normal distribution</span></span>
+<span id="cb161-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower.limit =</span> mean <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">20</span>), </span>
+<span id="cb161-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper.limit =</span> mean <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb161-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if the true mean is within the limits</span></span>
+<span id="cb161-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the true mean is above the lower limit and below the upper limit then TRUE</span></span>
+<span id="cb161-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># otherwise FALSE</span></span>
+<span id="cb161-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">true.mean =</span> <span class="fu">if_else</span>(<span class="fu">mean</span>(vo2max) <span class="sc">&gt;</span> lower.limit <span class="sc">&amp;</span> <span class="fu">mean</span>(vo2max) <span class="sc">&lt;</span> upper.limit, </span>
+<span id="cb161-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-10" aria-hidden="true" tabindex="-1"></a>                             <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) </span>
+<span id="cb161-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data, only plotting 200 data points to make it suitable for every computer</span></span>
+<span id="cb161-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-14" aria-hidden="true" tabindex="-1"></a>cis[<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, ] <span class="sc">%&gt;%</span></span>
+<span id="cb161-15"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(.)), </span>
+<span id="cb161-16"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> mean, </span>
+<span id="cb161-17"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> true.mean, <span class="co"># set a specific color </span></span>
+<span id="cb161-18"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> true.mean)) <span class="sc">+</span> <span class="co"># and transparency to </span></span>
+<span id="cb161-19"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># intervals containing and not containing the true mean</span></span>
+<span id="cb161-20"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb161-21"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add a line showing the true mean</span></span>
+<span id="cb161-22"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(vo2max)) <span class="sc">+</span></span>
+<span id="cb161-23"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add errorbars showing each interval</span></span>
+<span id="cb161-24"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower.limit, <span class="at">ymax =</span> upper.limit)) <span class="sc">+</span> </span>
+<span id="cb161-25"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale the colors and transparency. Intervals not containing </span></span>
+<span id="cb161-26"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the true mean are red.</span></span>
+<span id="cb161-27"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb161-28"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.2</span>)) <span class="sc">+</span> </span>
+<span id="cb161-29"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set label texts</span></span>
+<span id="cb161-30"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sample&quot;</span>, </span>
+<span id="cb161-31"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Mean&quot;</span>, </span>
+<span id="cb161-32"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">alpha =</span> <span class="st">&quot;Contains</span><span class="sc">\n</span><span class="st">the true mean&quot;</span>, </span>
+<span id="cb161-33"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Contains</span><span class="sc">\n</span><span class="st">the true mean&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb161-34"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Change the theme</span></span>
+<span id="cb161-35"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb161-36"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb161-37"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-38"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the proportions of intervals not containing the true mean</span></span>
+<span id="cb161-39"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-39" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(cis<span class="sc">$</span>true.mean <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">/</span> <span class="fu">sum</span>(cis<span class="sc">$</span>true.mean <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
+<span id="cb161-40"><a href="samples-populations-estimates-and-their-uncertainty.html#cb161-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Almost 5%!</span></span></code></pre></div>
+<p>Ok so we are really close. This means that if we do a study 10000 times and calculate the average and its confidence interval, in about 5% of the studies we will be missing the true mean. Seen from the other side, about 95% of the times, our interval will contain the true mean.</p>
+<div id="why-isnt-it-5" class="section level4" number="18.5.1.1">
+<h4><span class="header-section-number">18.5.1.1</span> Why isn’t it 5%?</h4>
+<p>It may be due to the fact that the normal distribution is not a good distribution when sample sizes are low. We can instead use the <span class="math inline">\(t\)</span>-distribution. (This distribution has something to do with beer!)</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-397"></span>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Guinness.jpg" alt="The *t*-distribution has something to do with beer!"  />
+<p class="caption">
+Figure 18.1: The <em>t</em>-distribution has something to do with beer!
+</p>
+</div>
+<p>The <em>t</em>-distribution changes it shape depending on how many data points we have in our sample. This means that a smaller sample size will be reflected in the estimated sampling distribution through a wider interval. In the code below we have changed the calculation of the 95% confidence interval to using the <em>t</em>-distribution instead.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creat new variables with upper and lower limits of the confidence interval  </span></span>
+<span id="cb162-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-2" aria-hidden="true" tabindex="-1"></a>cis <span class="ot">&lt;-</span> results <span class="sc">%&gt;%</span></span>
+<span id="cb162-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Using the t-distribution</span></span>
+<span id="cb162-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower.limit =</span> mean <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">20-1</span>) <span class="sc">*</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">20</span>), </span>
+<span id="cb162-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper.limit =</span> mean <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">20-1</span>) <span class="sc">*</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">20</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb162-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Test if the true mean is within the limits</span></span>
+<span id="cb162-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If the true mean is above the lower limit and below the upper limit then TRUE</span></span>
+<span id="cb162-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># otherwise FALSE</span></span>
+<span id="cb162-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">true.mean =</span> <span class="fu">if_else</span>(<span class="fu">mean</span>(vo2max) <span class="sc">&gt;</span> lower.limit <span class="sc">&amp;</span> <span class="fu">mean</span>(vo2max) <span class="sc">&lt;</span> upper.limit, </span>
+<span id="cb162-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-10" aria-hidden="true" tabindex="-1"></a>                             <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) </span>
+<span id="cb162-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data, only plotting 100 data points to make it suitable for every computer</span></span>
+<span id="cb162-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-14" aria-hidden="true" tabindex="-1"></a>cis[<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>, ] <span class="sc">%&gt;%</span></span>
+<span id="cb162-15"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(.)), </span>
+<span id="cb162-16"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> mean, </span>
+<span id="cb162-17"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> true.mean, <span class="co"># set a specific color </span></span>
+<span id="cb162-18"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> true.mean)) <span class="sc">+</span> <span class="co"># and transparency to </span></span>
+<span id="cb162-19"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># intervals containing and not containing the true mean</span></span>
+<span id="cb162-20"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb162-21"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add a line showing the true mean</span></span>
+<span id="cb162-22"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(vo2max)) <span class="sc">+</span></span>
+<span id="cb162-23"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add errorbars showing each interval</span></span>
+<span id="cb162-24"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower.limit, <span class="at">ymax =</span> upper.limit)) <span class="sc">+</span> </span>
+<span id="cb162-25"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale the colors and transparency. Intervals not containing </span></span>
+<span id="cb162-26"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the true mean are red.</span></span>
+<span id="cb162-27"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb162-28"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.2</span>)) <span class="sc">+</span> </span>
+<span id="cb162-29"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set label texts</span></span>
+<span id="cb162-30"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sample&quot;</span>, </span>
+<span id="cb162-31"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Mean&quot;</span>, </span>
+<span id="cb162-32"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">alpha =</span> <span class="st">&quot;Contains</span><span class="sc">\n</span><span class="st">the true mean&quot;</span>, </span>
+<span id="cb162-33"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Contains</span><span class="sc">\n</span><span class="st">the true mean&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb162-34"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Change the theme</span></span>
+<span id="cb162-35"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb162-36"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb162-37"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-38"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the proportions of intervals not containing the true mean</span></span>
+<span id="cb162-39"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-39" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(cis<span class="sc">$</span>true.mean <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">/</span> <span class="fu">sum</span>(cis<span class="sc">$</span>true.mean <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
+<span id="cb162-40"><a href="samples-populations-estimates-and-their-uncertainty.html#cb162-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Almost 5%!</span></span></code></pre></div>
+<p>Again, almost!</p>
+<p>The two distributions (normal and <em>t</em>) are very similar when we are getting closer to sample sizes of <span class="math inline">\(n=30\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="sample-size-and-confidence-intervals" class="section level2" number="18.6">
+<h2><span class="header-section-number">18.6</span> Sample size and confidence intervals</h2>
+<p>The width of confidence intervals are determined by the mean, standard deviation and the sample size. If the sample size gets lower the width will increase. This means that we will have less precision. We will still cover the true mean 95% of the time (if we repeat our study) but the range of possible values of the true mean will be wider.</p>
+</div>
+<div id="sampling-distribution-of-iq" class="section level2" number="18.7">
+<h2><span class="header-section-number">18.7</span> Sampling distribution of IQ</h2>
+<p><a href="https://en.wikipedia.org/wiki/IQ_classification">IQ values are normally distributed</a> with median 100 (since the distribution is normal, this should be very close the the mean) and standard deviation of 15. Using a sample from the population we can calculate a 95% confidence interval. We will do this with <code>n=5</code>, <code>n=25</code> and <code>n=100</code>. You will have to execute the code. A 95% confidence interval based on the normal distribution can be calculated as</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the seed</span></span>
+<span id="cb163-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb163-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A population of numbers</span></span>
+<span id="cb163-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-5" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span>
+<span id="cb163-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Sampling from the distribution</span></span>
+<span id="cb163-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-8" aria-hidden="true" tabindex="-1"></a>n5 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb163-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-9" aria-hidden="true" tabindex="-1"></a>n25 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb163-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-10" aria-hidden="true" tabindex="-1"></a>n100 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb163-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-13" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 10</span></span>
+<span id="cb163-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-14" aria-hidden="true" tabindex="-1"></a>mean_n5 <span class="ot">&lt;-</span> <span class="fu">mean</span>(n5)</span>
+<span id="cb163-15"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-15" aria-hidden="true" tabindex="-1"></a>s_n5 <span class="ot">&lt;-</span> <span class="fu">sd</span>(n5)</span>
+<span id="cb163-16"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-17"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-17" aria-hidden="true" tabindex="-1"></a>error_n5 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> s_n5<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">5</span>)</span>
+<span id="cb163-18"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-19"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-19" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 25</span></span>
+<span id="cb163-20"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-20" aria-hidden="true" tabindex="-1"></a>mean_n25 <span class="ot">&lt;-</span> <span class="fu">mean</span>(n25)</span>
+<span id="cb163-21"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-21" aria-hidden="true" tabindex="-1"></a>s_n25 <span class="ot">&lt;-</span> <span class="fu">sd</span>(n25)</span>
+<span id="cb163-22"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-23"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-23" aria-hidden="true" tabindex="-1"></a>error_n25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> s_n25<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">25</span>)</span>
+<span id="cb163-24"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-25"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-25" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 100</span></span>
+<span id="cb163-26"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-26" aria-hidden="true" tabindex="-1"></a>mean_n100 <span class="ot">&lt;-</span> <span class="fu">mean</span>(n100)</span>
+<span id="cb163-27"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-27" aria-hidden="true" tabindex="-1"></a>s_n100 <span class="ot">&lt;-</span> <span class="fu">sd</span>(n100)</span>
+<span id="cb163-28"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-29"><a href="samples-populations-estimates-and-their-uncertainty.html#cb163-29" aria-hidden="true" tabindex="-1"></a>error_n100 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> s_n100<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span></code></pre></div>
+<p>Above we used the <code>qnorm</code> function. Test what the result is if you only run <code>round(qnorm(0.975), 2)</code>. Above I used a commonly used rounded value, do they correspond?</p>
+<p>We can collect the pieces and create a plot using this code:</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb164-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sample.size =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">25</span>, <span class="dv">100</span>),</span>
+<span id="cb164-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb164-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">mean =</span> <span class="fu">c</span>(mean_n5, mean_n25, mean_n100), </span>
+<span id="cb164-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb164-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">error =</span> <span class="fu">c</span>(error_n5, error_n25, error_n100))</span>
+<span id="cb164-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb164-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb164-5" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb164-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb164-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">as.factor</span>(sample.size), mean)) <span class="sc">+</span></span>
+<span id="cb164-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb164-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean<span class="sc">-</span>error, <span class="at">ymax =</span> mean <span class="sc">+</span> error), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb164-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb164-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb164-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p>What can you say about the effect of sample size on the confidence of an estimate?</p>
+<p>Above we used the normal distribution to calculate the confidence interval. It would be more correct to use the t-distribution.</p>
+<p>The corresponding code for calculating the error based on the t-distribution would be</p>
+<p><code>qt(0.975, df = n - 1) * s/sqrt(n)</code></p>
+<p>Adopt the code above and graph the different confidence intervals beside each other.</p>
+<a id="displayText" href="javascript:toggle(1);">Here is a possible solution</a>
+<div id="toggleText1" style="display: none">
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the seed</span></span>
+<span id="cb165-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb165-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-6" aria-hidden="true" tabindex="-1"></a>n5 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb165-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-7" aria-hidden="true" tabindex="-1"></a>n25 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="dv">25</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb165-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-8" aria-hidden="true" tabindex="-1"></a>n100 <span class="ot">&lt;-</span> <span class="fu">sample</span>(pop, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb165-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-9" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 5</span></span>
+<span id="cb165-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-10" aria-hidden="true" tabindex="-1"></a>mean_n5 <span class="ot">&lt;-</span> <span class="fu">mean</span>(n5)</span>
+<span id="cb165-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-11" aria-hidden="true" tabindex="-1"></a>s_n5 <span class="ot">&lt;-</span> <span class="fu">sd</span>(n5)</span>
+<span id="cb165-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-13" aria-hidden="true" tabindex="-1"></a>error_n5 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> s_n5<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">5</span>)</span>
+<span id="cb165-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-14" aria-hidden="true" tabindex="-1"></a>errort_n5 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="dv">5</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> s_n5<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">5</span>)</span>
+<span id="cb165-15"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-16"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-17"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-17" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 25</span></span>
+<span id="cb165-18"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-18" aria-hidden="true" tabindex="-1"></a>mean_n25 <span class="ot">&lt;-</span> <span class="fu">mean</span>(n25)</span>
+<span id="cb165-19"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-19" aria-hidden="true" tabindex="-1"></a>s_n25 <span class="ot">&lt;-</span> <span class="fu">sd</span>(n25)</span>
+<span id="cb165-20"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-21"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-21" aria-hidden="true" tabindex="-1"></a>error_n25 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> s_n25<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">25</span>)</span>
+<span id="cb165-22"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-22" aria-hidden="true" tabindex="-1"></a>errort_n25 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="dv">25-1</span>) <span class="sc">*</span> s_n25<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">25</span>)</span>
+<span id="cb165-23"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-24"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-24" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 100</span></span>
+<span id="cb165-25"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-25" aria-hidden="true" tabindex="-1"></a>mean_n100 <span class="ot">&lt;-</span> <span class="fu">mean</span>(n100)</span>
+<span id="cb165-26"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-26" aria-hidden="true" tabindex="-1"></a>s_n100 <span class="ot">&lt;-</span> <span class="fu">sd</span>(n100)</span>
+<span id="cb165-27"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-28"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-28" aria-hidden="true" tabindex="-1"></a>error_n100 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> s_n100<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
+<span id="cb165-29"><a href="samples-populations-estimates-and-their-uncertainty.html#cb165-29" aria-hidden="true" tabindex="-1"></a>errort_n100 <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="dv">100-1</span>) <span class="sc">*</span> s_n100<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span></code></pre></div>
+<p>We can collect the pieces and create a plot using this code:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sample.size =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">25</span>, <span class="dv">100</span>,  <span class="dv">5</span>, <span class="dv">25</span>, <span class="dv">100</span>),</span>
+<span id="cb166-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">mean =</span> <span class="fu">c</span>(mean_n5, mean_n25, mean_n100, mean_n5, mean_n25, mean_n100), </span>
+<span id="cb166-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">error =</span> <span class="fu">c</span>(error_n5, error_n25, error_n100, errort_n5, errort_n25, errort_n100), </span>
+<span id="cb166-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">error.type =</span> <span class="fu">c</span>(<span class="st">&quot;Normal&quot;</span>, <span class="st">&quot;Normal&quot;</span>, <span class="st">&quot;Normal&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;t&quot;</span>))</span>
+<span id="cb166-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-6" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb166-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">as.factor</span>(sample.size), mean, <span class="at">color =</span> error.type)) <span class="sc">+</span></span>
+<span id="cb166-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean<span class="sc">-</span>error, <span class="at">ymax =</span> mean <span class="sc">+</span> error), </span>
+<span id="cb166-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>, </span>
+<span id="cb166-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.2</span>)) <span class="sc">+</span></span>
+<span id="cb166-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.2</span>)) <span class="sc">+</span> </span>
+<span id="cb166-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sample size&quot;</span>, </span>
+<span id="cb166-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Estimated mean (95% CI)&quot;</span>, </span>
+<span id="cb166-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Type of distribution&quot;</span>) <span class="sc">+</span></span>
+<span id="cb166-15"><a href="samples-populations-estimates-and-their-uncertainty.html#cb166-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p>What can you say about using the <em>t</em>- vs. the <em>z</em>-distribution?</p>
+</div>
+<p></br></p>
+</div>
+<div id="a-hypothesis-test" class="section level2" number="18.8">
+<h2><span class="header-section-number">18.8</span> A hypothesis test</h2>
+<p>We know that a random sample will have a mean close to the center of the population distribution (100 in the case above). We want to know if chess players (<span class="math inline">\(Chess\)</span>) have higher IQ scores than average people <span class="math inline">\(Average\)</span>. We can create an alternative hypothesis stating that</p>
+<p><span class="math display">\[H_A: Chess \neq Average\]</span></p>
+<p>The null hypothesis that we are comparing to is</p>
+<p><span class="math display">\[H_0: Chess = Average\]</span></p>
+<p>We collect data from chess players (<span class="math inline">\(n=24\)</span>). Use the data below to test <span class="math inline">\(H_0\)</span>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Chess player</th>
+<th>IQ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>129</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>101</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>98</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>89</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>103</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>107</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>123</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>117</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>114</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>109</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>110</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>99</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>101</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>102</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>130</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>121</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>129</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>115</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>107</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>109</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>107</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td>96</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>98</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>102</td>
+</tr>
+</tbody>
+</table>
+<p>Try to calculate the sample average and a confidence interval and answer these questions:</p>
+<ul>
+<li>What is the average IQ among chess players?</li>
+<li>What is your best guess about the population average of chess players?</li>
+<li>What does the confidence interval say about your hypothesis?</li>
+</ul>
+<a id="displayText" href="javascript:toggle(2);">Here is a possible solution</a>
+<div id="toggleText2" style="display: none">
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-1" aria-hidden="true" tabindex="-1"></a>chess.players <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">129</span>, <span class="dv">101</span>,<span class="dv">98</span> ,<span class="dv">89</span> ,<span class="dv">103</span>,<span class="dv">107</span>,<span class="dv">123</span>,<span class="dv">117</span>,<span class="dv">114</span>,</span>
+<span id="cb167-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-2" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">109</span>,<span class="dv">110</span>,<span class="dv">99</span> ,<span class="dv">101</span>,<span class="dv">102</span>,<span class="dv">130</span>,<span class="dv">121</span>,<span class="dv">129</span>,<span class="dv">115</span>,</span>
+<span id="cb167-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-3" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">107</span>,<span class="dv">109</span>,<span class="dv">107</span>,<span class="dv">96</span> ,<span class="dv">98</span>,<span class="dv">102</span>)</span>
+<span id="cb167-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-6" aria-hidden="true" tabindex="-1"></a>chess.mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(chess.players)</span>
+<span id="cb167-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-8" aria-hidden="true" tabindex="-1"></a>chess.error <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="dv">24-1</span>) <span class="sc">*</span> <span class="fu">sd</span>(chess.players)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">24</span>)</span>
+<span id="cb167-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb167-11" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(chess.mean <span class="sc">-</span> chess.error, chess.mean <span class="sc">+</span> chess.error)</span></code></pre></div>
+<pre><code>## [1] 104.265 113.735</code></pre>
+</div>
+<p></br></p>
+</div>
+<div id="using-a-confidence-interval-when-planning-a-study" class="section level2" number="18.9">
+<h2><span class="header-section-number">18.9</span> Using a confidence interval when planning a study</h2>
+<p>We can calculate the mean change from pre- to post-training in the cycling study for <span class="math inline">\(\dot{V}O2_{max}\)</span>.</p>
+<p>For this exercise, use the data set <code>cyclingStudy.xlsx</code>, you will find it in the <code>exscidata</code> package. The variables of interest are <code>subject</code>, <code>group</code>, <code>timepoint</code> and <code>VO2.max</code>. In the time-point variable, <code>meso3</code> are the post-training values and <code>pre</code> are the pre-training values.</p>
+<p>Calculate the mean change in percentage for the whole data set together with the sample SD. Then calculate a confidence interval.</p>
+<p>How do you interpret the confidence interval?</p>
+<a id="displayText" href="javascript:toggle(3);">Here is a possible solution</a>
+<div id="toggleText3" style="display: none">
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata)</span>
+<span id="cb169-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cyclingstudy&quot;</span>)</span>
+<span id="cb169-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-4" aria-hidden="true" tabindex="-1"></a> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb169-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb169-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb169-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb169-8"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
+<span id="cb169-9"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb169-10"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(change, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb169-11"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(change, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb169-12"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(change)), </span>
+<span id="cb169-13"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">error =</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> n <span class="sc">-</span><span class="dv">1</span>) <span class="sc">*</span> s<span class="sc">/</span><span class="fu">sqrt</span>(n), </span>
+<span id="cb169-14"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">lower =</span> m <span class="sc">-</span> error, </span>
+<span id="cb169-15"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> m <span class="sc">+</span> error) <span class="sc">%&gt;%</span></span>
+<span id="cb169-16"><a href="samples-populations-estimates-and-their-uncertainty.html#cb169-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<p>The confidence interval can be interpreted as: in 95% percent of confidence intervals created from repeated sampling we will have the true mean. The confidence interval we have created does not contain 0.</p>
+</div>
+<p></br></p>
+<p>Let’s say that we are designing a new study. We want to be able to show a difference between pre- to post-training in <span class="math inline">\(\dot{V}O2_{max}\)</span> of 2% as this might be an important difference. Given the standard deviation that you have calculated above, how many participants should be recruit to the study to be able to detect a difference of 2%?</p>
+<p>Here you can try to calculate the lower limit of a 95% confidence interval given a standard deviation equal to what you calculated above and a mean change of interest of 2% using many different alternatives for the sample size.</p>
+<a id="displayText" href="javascript:toggle(4);">Here is a possible solution</a>
+<div id="toggleText4" style="display: none">
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb170-1" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">2</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fl">4.79</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>,</span>
+<span id="cb170-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb170-2" aria-hidden="true" tabindex="-1"></a>                                                                                <span class="at">to =</span> <span class="dv">100</span>, </span>
+<span id="cb170-3"><a href="samples-populations-estimates-and-their-uncertainty.html#cb170-3" aria-hidden="true" tabindex="-1"></a>                                                                                <span class="at">by =</span> <span class="dv">2</span>))</span>
+<span id="cb170-4"><a href="samples-populations-estimates-and-their-uncertainty.html#cb170-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-5"><a href="samples-populations-estimates-and-their-uncertainty.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">n =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">2</span>), </span>
+<span id="cb170-6"><a href="samples-populations-estimates-and-their-uncertainty.html#cb170-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lower.bound =</span> <span class="dv">2</span><span class="sc">-</span>error), <span class="fu">aes</span>(n, lower.bound)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb170-7"><a href="samples-populations-estimates-and-their-uncertainty.html#cb170-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span></code></pre></div>
+</div>
+<p></br></p>
+<p>Try to answer the following questions:</p>
+<ul>
+<li>How could the above information help you when designing a study?</li>
+<li>Why is there a relationship between sample size and the lower bound of the confidence interval?</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="special-topics-iterations-and-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="what-is-the-p-value.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["quant-methods.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

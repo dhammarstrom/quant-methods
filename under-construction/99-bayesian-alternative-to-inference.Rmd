@@ -1,0 +1,40 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# The Bayesian alternative
+
+Frequentist statistics rely on the long...
+
+
+
+```{r}
+
+
+library(exscidata); library(tidyverse)
+library(brms)
+data("cyclingstudy")
+
+
+
+dat <- cyclingstudy %>%
+  mutate(VO2.max = VO2.max / weight.T1) %>%
+  select(subject, group, timepoint, VO2.max) %>%
+  pivot_wider(names_from = timepoint, values_from = VO2.max) %>%
+  mutate(change = meso3 - pre) %>%
+   print()
+
+
+
+m <- lm(change ~ 1 + group, data = dat)
+
+bm <- brm(change ~ 1 + group, data = dat)
+
+
+summary(bm)
+
+summary(m)
+
+```
+

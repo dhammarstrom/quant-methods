@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 19 What is the p-value? | Quantitative methods and statistics (In Sport and Exercise Science)</title>
+  <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 19 What is the p-value? | Quantitative methods and statistics (In Sport and Exercise Science)" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="github-repo" content="dhammarstrom/quant-methods" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 19 What is the p-value? | Quantitative methods and statistics (In Sport and Exercise Science)" />
+  
+  <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Daniel Hammarström" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="samples-populations-estimates-and-their-uncertainty.html"/>
+<link rel="next" href="study-questions.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quick-links"><i class="fa fa-check"></i><b>1.1</b> Quick links:</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#practical-information"><i class="fa fa-check"></i><b>1.2</b> Practical information</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.2.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#learning-strategies"><i class="fa fa-check"></i><b>1.2.2</b> Learning strategies</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#course-evaluation"><i class="fa fa-check"></i><b>1.2.3</b> Course evaluation</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#lecturers-and-course-administration"><i class="fa fa-check"></i><b>1.2.4</b> Lecturers and course administration</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#updates-notifications-and-general-communication"><i class="fa fa-check"></i><b>1.2.5</b> Updates, notifications and general communication</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#literature"><i class="fa fa-check"></i><b>1.2.6</b> Literature</a></li>
+<li class="chapter" data-level="1.2.7" data-path="index.html"><a href="index.html#grades"><i class="fa fa-check"></i><b>1.2.7</b> Grades</a></li>
+<li class="chapter" data-level="1.2.8" data-path="index.html"><a href="index.html#language"><i class="fa fa-check"></i><b>1.2.8</b> Language</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#assignments-and-portfolio-exam"><i class="fa fa-check"></i><b>1.3</b> Assignments and Portfolio exam</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#other-information"><i class="fa fa-check"></i><b>1.4</b> Other information</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html"><i class="fa fa-check"></i><b>2</b> Introduction to data science</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#about-data-in-the-world-of-sport-and-exercise"><i class="fa fa-check"></i><b>2.1</b> About data in the world of sport and exercise</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#replication-and-reproducibility"><i class="fa fa-check"></i><b>2.2</b> Replication and Reproducibility</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#tools-in-data-science"><i class="fa fa-check"></i><b>2.3</b> Tools in data science</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html"><i class="fa fa-check"></i><b>3</b> Storing data in spreadsheets</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#cells-and-simple-functions"><i class="fa fa-check"></i><b>3.1</b> Cells and simple functions</a></li>
+<li class="chapter" data-level="3.2" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#tidy-data-and-data-storage"><i class="fa fa-check"></i><b>3.2</b> Tidy data and data storage</a></li>
+<li class="chapter" data-level="3.3" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#recording-data"><i class="fa fa-check"></i><b>3.3</b> Recording data</a></li>
+<li class="chapter" data-level="3.4" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#saving-data"><i class="fa fa-check"></i><b>3.4</b> Saving data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html"><i class="fa fa-check"></i><b>4</b> Installing and starting up R (and R Studio)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-r"><i class="fa fa-check"></i><b>4.1</b> Installing R</a></li>
+<li class="chapter" data-level="4.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-r-studio"><i class="fa fa-check"></i><b>4.2</b> Installing R Studio</a></li>
+<li class="chapter" data-level="4.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#getting-to-know-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Getting to know R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#the-source"><i class="fa fa-check"></i><b>4.3.1</b> The source</a></li>
+<li class="chapter" data-level="4.3.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#environment"><i class="fa fa-check"></i><b>4.3.2</b> Environment</a></li>
+<li class="chapter" data-level="4.3.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#the-console"><i class="fa fa-check"></i><b>4.3.3</b> The console</a></li>
+<li class="chapter" data-level="4.3.4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#files-plots-packages-and-help-files"><i class="fa fa-check"></i><b>4.3.4</b> Files, plots, packages and help files</a></li>
+<li class="chapter" data-level="4.3.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#customizing-the-apperance-of-rstudio"><i class="fa fa-check"></i><b>4.3.5</b> Customizing the apperance of RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#reproducible-computing"><i class="fa fa-check"></i><b>4.4</b> Reproducible computing</a></li>
+<li class="chapter" data-level="4.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#packages"><i class="fa fa-check"></i><b>4.5</b> Packages</a></li>
+<li class="chapter" data-level="4.6" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-and-using-swirl"><i class="fa fa-check"></i><b>4.6</b> Installing and using <code>swirl</code></a></li>
+<li class="chapter" data-level="4.7" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-scripts"><i class="fa fa-check"></i><b>4.7</b> R scripts</a></li>
+<li class="chapter" data-level="4.8" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-markdown-files"><i class="fa fa-check"></i><b>4.8</b> R markdown files</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#starting-up-your-first-r-markdown-file"><i class="fa fa-check"></i><b>4.8.1</b> Starting up your first R markdown file</a></li>
+<li class="chapter" data-level="4.8.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#microsoft-word-intergration"><i class="fa fa-check"></i><b>4.8.2</b> Microsoft Word intergration</a></li>
+<li class="chapter" data-level="4.8.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#adding-references"><i class="fa fa-check"></i><b>4.8.3</b> Adding references</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#resources"><i class="fa fa-check"></i><b>5.1</b> Resources</a></li>
+<li class="chapter" data-level="5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#learning-objectives-1"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#prerequisites"><i class="fa fa-check"></i><b>5.3</b> Prerequisites</a></li>
+<li class="chapter" data-level="5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#the-ggplot2-system"><i class="fa fa-check"></i><b>5.4</b> The <code>ggplot2</code> system</a></li>
+<li class="chapter" data-level="5.5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#different-geoms-using-real-data"><i class="fa fa-check"></i><b>5.5</b> Different geoms using real data</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#a-plot-of-values-per-group"><i class="fa fa-check"></i><b>5.5.1</b> A plot of values per group</a></li>
+<li class="chapter" data-level="5.5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#data-over-time-per-group-and-individual"><i class="fa fa-check"></i><b>5.5.2</b> Data over time per group and individual</a></li>
+<li class="chapter" data-level="5.5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#titles-and-labels"><i class="fa fa-check"></i><b>5.5.3</b> Titles and labels</a></li>
+<li class="chapter" data-level="5.5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#annotations"><i class="fa fa-check"></i><b>5.5.4</b> Annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#themes"><i class="fa fa-check"></i><b>5.6</b> Themes</a></li>
+<li class="chapter" data-level="5.7" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#test-your-understandning"><i class="fa fa-check"></i><b>5.7</b> Test your understandning</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html"><i class="fa fa-check"></i><b>6</b> Wrangling data to create your first table</a>
+<ul>
+<li class="chapter" data-level="6.0.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#resources-1"><i class="fa fa-check"></i><b>6.0.1</b> Resources</a></li>
+<li class="chapter" data-level="6.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#making-table-1"><i class="fa fa-check"></i><b>6.1</b> Making “Table 1”</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#the-pipe-operator-and-select"><i class="fa fa-check"></i><b>6.1.1</b> The pipe operator and select</a></li>
+<li class="chapter" data-level="6.1.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#filter-observations"><i class="fa fa-check"></i><b>6.1.2</b> Filter observations</a></li>
+<li class="chapter" data-level="6.1.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#create-or-change-variables"><i class="fa fa-check"></i><b>6.1.3</b> Create or change variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#grouped-operations-and-summary-statistics"><i class="fa fa-check"></i><b>6.1.4</b> Grouped operations and summary statistics</a></li>
+<li class="chapter" data-level="6.1.5" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#starting-the-table-generator---the-kable-function"><i class="fa fa-check"></i><b>6.1.5</b> Starting the table generator - The <code>kable</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#summary"><i class="fa fa-check"></i><b>6.2</b> Summary</a></li>
+<li class="chapter" data-level="6.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#flextable"><i class="fa fa-check"></i><b>6.3</b> Flextable</a></li>
+<li class="chapter" data-level="6.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#an-exercise-reproduce-table-1-from-rn2225"><i class="fa fa-check"></i><b>6.4</b> An exercise, reproduce Table 1 from <span class="citation">(<span>Haun et al. 2019</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html#rstudio-projects-and-your-reproducible-report"><i class="fa fa-check"></i><b>7.1</b> RStudio projects and your reproducible report</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#why-version-control"><i class="fa fa-check"></i><b>8.1</b> Why version control</a></li>
+<li class="chapter" data-level="8.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#a-simplecomplicated-start"><i class="fa fa-check"></i><b>8.2</b> A simple/complicated start</a></li>
+<li class="chapter" data-level="8.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-by-step-instructions-on-setting-up-a-version-controlled-r-project."><i class="fa fa-check"></i><b>8.3</b> Step by step instructions on setting up a version controlled R project.</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-1.-create-a-free-github-account"><i class="fa fa-check"></i><b>8.3.1</b> Step 1. Create a free github account:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-2.-download-git."><i class="fa fa-check"></i><b>8.3.2</b> Step 2. Download git.</a></li>
+<li class="chapter" data-level="8.3.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-3.-connect-git-to-rstudio"><i class="fa fa-check"></i><b>8.3.3</b> Step 3. Connect git to RStudio</a></li>
+<li class="chapter" data-level="8.3.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-4.-create-a-new-online-repository"><i class="fa fa-check"></i><b>8.3.4</b> Step 4. Create a new online repository</a></li>
+<li class="chapter" data-level="8.3.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-5.-create-a-new-project-in-rstudio"><i class="fa fa-check"></i><b>8.3.5</b> Step 5. Create a new project in RStudio</a></li>
+<li class="chapter" data-level="8.3.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-6.-make-changes-to-your-project"><i class="fa fa-check"></i><b>8.3.6</b> Step 6. Make changes to your project</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#forking-and-pull-requests"><i class="fa fa-check"></i><b>8.4</b> Forking and pull requests</a></li>
+<li class="chapter" data-level="8.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#additional-great-things-about-github"><i class="fa fa-check"></i><b>8.5</b> Additional great things about GitHub</a></li>
+<li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
+<li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html#smallest-worthwhile-change-or-effect"><i class="fa fa-check"></i><b>9.1</b> Smallest worthwhile change or effect</a></li>
+<li class="chapter" data-level="9.2" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html#video-from-seminar"><i class="fa fa-check"></i><b>9.2</b> Video from seminar</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="assignment1.html"><a href="assignment1.html"><i class="fa fa-check"></i><b>10</b> Assignment 1: Reliability and tools for reproducible data science</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="assignment1.html"><a href="assignment1.html#elements-of-the-report"><i class="fa fa-check"></i><b>10.1</b> Elements of the report</a></li>
+<li class="chapter" data-level="10.2" data-path="assignment1.html"><a href="assignment1.html#the-format-of-the-report"><i class="fa fa-check"></i><b>10.2</b> The format of the report</a></li>
+<li class="chapter" data-level="10.3" data-path="assignment1.html"><a href="assignment1.html#how-to-hand-in-the-report."><i class="fa fa-check"></i><b>10.3</b> How to hand in the report.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html"><i class="fa fa-check"></i><b>11</b> Introduction to the molecular exercise physiology lab</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#health-and-safety-in-the-lab"><i class="fa fa-check"></i><b>11.1</b> Health and safety in the lab</a></li>
+<li class="chapter" data-level="11.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#good-laboratory-practice"><i class="fa fa-check"></i><b>11.2</b> Good laboratory practice</a></li>
+<li class="chapter" data-level="11.3" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#the-laboratory-journal"><i class="fa fa-check"></i><b>11.3</b> The laboratory journal</a></li>
+<li class="chapter" data-level="11.4" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#keeping-it-digital---using-our-electronic-lab-journal"><i class="fa fa-check"></i><b>11.4</b> Keeping it digital - Using our electronic lab journal</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#what-to-write-in-the-journal"><i class="fa fa-check"></i><b>11.4.1</b> What to write in the journal</a></li>
+<li class="chapter" data-level="11.4.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#structure-of-an-entry"><i class="fa fa-check"></i><b>11.4.2</b> Structure of an entry</a></li>
+<li class="chapter" data-level="11.4.3" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#relationship-between-the-laboratory-journal-and-your-samples-solutions-tubes-etc."><i class="fa fa-check"></i><b>11.4.3</b> Relationship between the laboratory journal and your samples, solutions, tubes etc.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#protocols-and-experiments-in-the-course"><i class="fa fa-check"></i><b>11.5</b> Protocols and experiments in the course</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="the-linear-model.html"><a href="the-linear-model.html"><i class="fa fa-check"></i><b>12</b> The linear model</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="the-linear-model.html"><a href="the-linear-model.html#resources-3"><i class="fa fa-check"></i><b>12.1</b> Resources</a></li>
+<li class="chapter" data-level="12.2" data-path="the-linear-model.html"><a href="the-linear-model.html#straight-lines"><i class="fa fa-check"></i><b>12.2</b> Straight lines</a></li>
+<li class="chapter" data-level="12.3" data-path="the-linear-model.html"><a href="the-linear-model.html#fitting-regression-models-in-r"><i class="fa fa-check"></i><b>12.3</b> Fitting regression models in R</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="the-linear-model.html"><a href="the-linear-model.html#linear-relationship"><i class="fa fa-check"></i><b>12.3.1</b> Linear relationship</a></li>
+<li class="chapter" data-level="12.3.2" data-path="the-linear-model.html"><a href="the-linear-model.html#constant-variance"><i class="fa fa-check"></i><b>12.3.2</b> Constant variance</a></li>
+<li class="chapter" data-level="12.3.3" data-path="the-linear-model.html"><a href="the-linear-model.html#normal-residuals"><i class="fa fa-check"></i><b>12.3.3</b> Normal residuals</a></li>
+<li class="chapter" data-level="12.3.4" data-path="the-linear-model.html"><a href="the-linear-model.html#independent-observations"><i class="fa fa-check"></i><b>12.3.4</b> Independent observations</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="the-linear-model.html"><a href="the-linear-model.html#check-the-results"><i class="fa fa-check"></i><b>12.4</b> Check the results</a></li>
+<li class="chapter" data-level="12.5" data-path="the-linear-model.html"><a href="the-linear-model.html#a-note-about-printing-the-regression-table"><i class="fa fa-check"></i><b>12.5</b> A note about printing the regression table</a></li>
+<li class="chapter" data-level="12.6" data-path="the-linear-model.html"><a href="the-linear-model.html#interpreting-the-results"><i class="fa fa-check"></i><b>12.6</b> Interpreting the results</a></li>
+<li class="chapter" data-level="12.7" data-path="the-linear-model.html"><a href="the-linear-model.html#do-problematic-observations-matter"><i class="fa fa-check"></i><b>12.7</b> Do problematic observations matter?</a></li>
+<li class="chapter" data-level="12.8" data-path="the-linear-model.html"><a href="the-linear-model.html#a-more-intepretable-model"><i class="fa fa-check"></i><b>12.8</b> A more intepretable model</a></li>
+<li class="chapter" data-level="12.9" data-path="the-linear-model.html"><a href="the-linear-model.html#an-exercise"><i class="fa fa-check"></i><b>12.9</b> An exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="predictions.html"><a href="predictions.html"><i class="fa fa-check"></i><b>13</b> Linear and curve-linear relationships, and predictions</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="predictions.html"><a href="predictions.html#predicting-from-data"><i class="fa fa-check"></i><b>13.1</b> Predicting from data</a></li>
+<li class="chapter" data-level="13.2" data-path="predictions.html"><a href="predictions.html#the-workload-lactate-relationship"><i class="fa fa-check"></i><b>13.2</b> The workload-lactate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html"><i class="fa fa-check"></i><b>14</b> Categorical predictors and multiple regression</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#linear-models-can-be-used-instead-of-t-tests"><i class="fa fa-check"></i><b>14.1</b> Linear models can be used instead of t-tests</a></li>
+<li class="chapter" data-level="14.2" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>14.2</b> Dummy variables</a></li>
+<li class="chapter" data-level="14.3" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>14.3</b> Multiple regression</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>15</b> Correlations</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="correlations.html"><a href="correlations.html#always-plot-the-data"><i class="fa fa-check"></i><b>15.1</b> Always plot the data!</a></li>
+<li class="chapter" data-level="15.2" data-path="correlations.html"><a href="correlations.html#extending-the-correlation-to-the-regression"><i class="fa fa-check"></i><b>15.2</b> Extending the correlation to the regression</a></li>
+<li class="chapter" data-level="15.3" data-path="correlations.html"><a href="correlations.html#correlation-comes-in-many-forms"><i class="fa fa-check"></i><b>15.3</b> Correlation comes in many forms</a></li>
+<li class="chapter" data-level="15.4" data-path="correlations.html"><a href="correlations.html#statistical-and-subject-matter-interpretations"><i class="fa fa-check"></i><b>15.4</b> Statistical and subject-matter interpretations</a></li>
+<li class="chapter" data-level="15.5" data-path="correlations.html"><a href="correlations.html#summary-1"><i class="fa fa-check"></i><b>15.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="assignment2.html"><a href="assignment2.html"><i class="fa fa-check"></i><b>16</b> Assignment 2: Regression models, predicting from data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="assignment2.html"><a href="assignment2.html#part-1-lactate-thresholds"><i class="fa fa-check"></i><b>16.1</b> Part 1: Lactate thresholds</a></li>
+<li class="chapter" data-level="16.2" data-path="assignment2.html"><a href="assignment2.html#part-2-predicting-sizes-of-dna-fragments"><i class="fa fa-check"></i><b>16.2</b> Part 2: Predicting sizes of DNA fragments</a></li>
+<li class="chapter" data-level="16.3" data-path="assignment2.html"><a href="assignment2.html#part-3-intepreting-a-regression-table"><i class="fa fa-check"></i><b>16.3</b> Part 3: Intepreting a regression table</a></li>
+<li class="chapter" data-level="16.4" data-path="assignment2.html"><a href="assignment2.html#how-to-hand-in-the-report"><i class="fa fa-check"></i><b>16.4</b> How to hand in the report</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html"><i class="fa fa-check"></i><b>17</b> Special topics: Iterations and functions</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html#building-a-simple-function"><i class="fa fa-check"></i><b>17.1</b> Building a simple function</a></li>
+<li class="chapter" data-level="17.2" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html#an-applied-problem-where-a-function-might-help"><i class="fa fa-check"></i><b>17.2</b> An applied problem where a function might help</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html#exercises"><i class="fa fa-check"></i><b>17.2.1</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html"><i class="fa fa-check"></i><b>18</b> Samples, populations estimates and their uncertainty</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#reading-instructions"><i class="fa fa-check"></i><b>18.1</b> Reading instructions</a></li>
+<li class="chapter" data-level="18.2" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>18.2</b> Descriptive statistics in R</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#simulating-data-in-r"><i class="fa fa-check"></i><b>18.2.1</b> Simulating data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#a-simple-example"><i class="fa fa-check"></i><b>18.3</b> A simple example</a></li>
+<li class="chapter" data-level="18.4" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#inference-about-the-population"><i class="fa fa-check"></i><b>18.4</b> Inference about the population</a></li>
+<li class="chapter" data-level="18.5" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#estimation-of-the-sampling-distribution"><i class="fa fa-check"></i><b>18.5</b> Estimation of the sampling distribution</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#a-confidence-interval-for-the-mean"><i class="fa fa-check"></i><b>18.5.1</b> A confidence interval for the mean</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#sample-size-and-confidence-intervals"><i class="fa fa-check"></i><b>18.6</b> Sample size and confidence intervals</a></li>
+<li class="chapter" data-level="18.7" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#sampling-distribution-of-iq"><i class="fa fa-check"></i><b>18.7</b> Sampling distribution of IQ</a></li>
+<li class="chapter" data-level="18.8" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#a-hypothesis-test"><i class="fa fa-check"></i><b>18.8</b> A hypothesis test</a></li>
+<li class="chapter" data-level="18.9" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#using-a-confidence-interval-when-planning-a-study"><i class="fa fa-check"></i><b>18.9</b> Using a confidence interval when planning a study</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html"><i class="fa fa-check"></i><b>19</b> What is the <em>p</em>-value?</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-from-two-sample-comparisons"><i class="fa fa-check"></i><b>19.1</b> <em>p</em>-values from two sample comparisons</a></li>
+<li class="chapter" data-level="19.2" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#more-p-values"><i class="fa fa-check"></i><b>19.2</b> More <em>p</em>-values</a></li>
+<li class="chapter" data-level="19.3" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#t-test-examples"><i class="fa fa-check"></i><b>19.3</b> <em>t</em>-test examples</a></li>
+<li class="chapter" data-level="19.4" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#a-note-on-reporting-in-r-markdown."><i class="fa fa-check"></i><b>19.4</b> A note on reporting in R Markdown.</a></li>
+<li class="chapter" data-level="19.5" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#error-rates"><i class="fa fa-check"></i><b>19.5</b> Error rates</a></li>
+<li class="chapter" data-level="19.6" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-and-confidence-intervals"><i class="fa fa-check"></i><b>19.6</b> P-values and confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>20</b> Study questions</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>20.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
+<li class="chapter" data-level="20.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>20.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
+<li class="chapter" data-level="20.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>20.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
+<li class="chapter" data-level="20.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>20.4</b> Chapter 5: Creating your first graph</a></li>
+<li class="chapter" data-level="20.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>20.5</b> Chapter 6: Wrangling data to create your first table</a></li>
+<li class="chapter" data-level="20.6" data-path="study-questions.html"><a href="study-questions.html#chapter-11-introduction-to-the-molecular-exercise-physiology-lab"><i class="fa fa-check"></i><b>20.6</b> Chapter 11: Introduction to the molecular exercise physiology lab</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>21</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="what-is-the-p-value" class="section level1" number="19">
+<h1><span class="header-section-number">Chapter 19</span> What is the <em>p</em>-value?</h1>
+<p>Consider the sampling distribution. This is an imaginary distribution of e.g. sample means gathered from repeated sampling from a population of numbers. Let’s say that our null-hypothesis (<span class="math inline">\(H_0\)</span>) is that the mean of a population is zero. We draw a sample of <span class="math inline">\(n=10\)</span> and it turns out that it is not zero, it is about 1. We calculate the standard deviation of our sample, it is 0.5.</p>
+<p>Based on these number, we can calculate a sample statistic, a <em>t</em>-value</p>
+<p><span class="math display">\[t = \frac{m - \mu}{s/\sqrt{n}}\]</span></p>
+<p>where <span class="math inline">\(m\)</span> is our sample mean, <span class="math inline">\(\mu\)</span> is the hypothesized mean, <span class="math inline">\(s\)</span> is our sample standard deviation and <span class="math inline">\(n\)</span> is the sample size. <span class="math inline">\(t\)</span> is the <em>sample statistic</em>. As we have covered in the previous chapter, we do not know the true variation in the imaginary distribution of samples, <span class="math inline">\(s\)</span> is our best guess of the population standard deviation. Using <span class="math inline">\(s\)</span> we can model the imaginary sampling distribution.</p>
+<p>It would look something like this:</p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-406-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>The distribution above is the <em>t</em>-distribution with 10-1 degrees of freedom. Our calculated sample statistic can be inserted in the distribution.</p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-407-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Using the calculated <em>t</em>-value we may answer questions like: "If the null-hypothesis is true, how often would we observe our <em>t</em>-value, or an even more extreme value? We can calculate this from the imaginary distribution as the area under the curve above our value.</p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-408-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>In R, this probability can be calculated using the <code>pt()</code> function:</p>
+<p><code>t &lt;- (1-0) / (0.5 * sqrt(10))</code></p>
+<p><code>pt(t, df = 10-1, lower.tail = FALSE)</code></p>
+<p>It turns out that 27% of the distribution can be found in the blue shaded area. We have now completed a one-sample <em>t</em>-test. However, we have to look again at our null-hypothesis which states <span class="math inline">\(H_0 = 0\)</span>. There are two ways to disprove this hypothesis. We may find out that the value is lower or higher than 0. To account for both possibilities we calculate a “two sided <em>p</em>-value.” In practice we calculate the area under the curve above and below values corresponding to our observed distance from 0.</p>
+<p><code>2 * pt(t, df = 10-1, lower.tail = FALSE)</code></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-409-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>As the area under the curve in the blue area is 54% of the distribution we may make a statement such as: “If the null-hypothesis is true, our observed value, or a value even more distant from 0 would appear 0.54% of the times upon repeated sampling.”</p>
+<p>We can not reject the null hypothesis as the result of our test is (our <em>t</em>-value, or a more extreme value) is so commonly found if the <span class="math inline">\(H_0\)</span> distribution is true.</p>
+<p>You sample a new mean from <span class="math inline">\(n=10\)</span> of 1.2, the standard deviation is 0.55. Calculate the <em>t</em>-statistic and the <em>p</em>-value with the <span class="math inline">\(H_0 = 0\)</span>.</p>
+<script language="javascript"> 
+    function toggle(num) {
+      var ele = document.getElementById("toggleText" + num);
+      var text = document.getElementById("displayText" + num);
+      if(ele.style.display == "block") {
+        ele.style.display = "none";
+        text.innerHTML = "show";
+      }
+      else {
+        ele.style.display = "block";
+        text.innerHTML = "hide";
+      }
+   } 
+  </script>
+<a id="displayText" href="javascript:toggle(1);">Here is a possible solution</a>
+<div id="toggleText1" style="display: none">
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="what-is-the-p-value.html#cb171-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (<span class="fl">1.2</span> <span class="sc">-</span> <span class="dv">0</span>) <span class="sc">/</span> (<span class="fl">0.55</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">10</span>))</span>
+<span id="cb171-2"><a href="what-is-the-p-value.html#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-3"><a href="what-is-the-p-value.html#cb171-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(t, <span class="at">df =</span> <span class="dv">10-1</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<p></br></p>
+<blockquote>
+<p>Side note: Printing numbers in R:
+Sometimes, a ridiculous number appear in your console such as <span class="math inline">\(4.450332e-05\)</span>. This is actually <span class="math inline">\(0.00004450332\)</span> written in scientific notation. <code>e-05</code> can be read as <span class="math inline">\(10^{-5}\)</span>. Rounding numbers in R is straight forward. Just use <code>round(4.450332e-05, digits = 5)</code> to round the number to 5 decimal points. However, you will still see the number in scientific notation. If you want to print the number with all trailing zeros you can instead use <code>sprintf("%.5f", 4.450332e-05)</code>. This function converts the number into text and print what you want. The “%.5f” sets the number of decimal points to 5. This is confusing, I know!</p>
+</blockquote>
+<div id="p-values-from-two-sample-comparisons" class="section level2" number="19.1">
+<h2><span class="header-section-number">19.1</span> <em>p</em>-values from two sample comparisons</h2>
+<p>In a two sample scenario, we can model the null-hypothesis using re-shuffling of the data.</p>
+<p>We sample two groups, one group has done resistance-training, the other group endurance training. We want to know if you get stronger if you do strength training as compared to endurance training. We measure the groups after an intervention. They were similar prior to training so we think that it is OK to measure the post-training values of 1RM bench press.</p>
+<p>These are:</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="what-is-the-p-value.html#cb172-1" aria-hidden="true" tabindex="-1"></a>strength.group <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="fl">82.5</span>, <span class="fl">87.5</span>, <span class="dv">90</span>, <span class="fl">67.5</span>, <span class="dv">55</span>, <span class="fl">87.5</span>, <span class="fl">67.5</span>, <span class="fl">72.5</span>, <span class="dv">95</span>)</span>
+<span id="cb172-2"><a href="what-is-the-p-value.html#cb172-2" aria-hidden="true" tabindex="-1"></a>endurance.group <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">67.5</span>, <span class="dv">75</span>, <span class="fl">52.5</span>, <span class="dv">85</span>, <span class="dv">55</span>, <span class="dv">45</span>, <span class="fl">47.5</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="fl">37.5</span>)</span></code></pre></div>
+<p>We can calculate the difference between the groups as:</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="what-is-the-p-value.html#cb173-1" aria-hidden="true" tabindex="-1"></a>mean.difference <span class="ot">&lt;-</span> <span class="fu">mean</span>(strength.group) <span class="sc">-</span> <span class="fu">mean</span>(endurance.group)</span></code></pre></div>
+<p>We can simulate the null-hypothesis (<span class="math inline">\(H_0\)</span>) by removing the grouping and sample at random to two groups. Read the code below and try to figure out what it does before you run it:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="what-is-the-p-value.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb174-2"><a href="what-is-the-p-value.html#cb174-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="what-is-the-p-value.html#cb174-3" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">m =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>))</span>
+<span id="cb174-4"><a href="what-is-the-p-value.html#cb174-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-5"><a href="what-is-the-p-value.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb174-6"><a href="what-is-the-p-value.html#cb174-6" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb174-7"><a href="what-is-the-p-value.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we combine all observations</span></span>
+<span id="cb174-8"><a href="what-is-the-p-value.html#cb174-8" aria-hidden="true" tabindex="-1"></a>        all.observations <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs =</span> <span class="fu">c</span>(strength.group, endurance.group)) <span class="sc">%&gt;%</span></span>
+<span id="cb174-9"><a href="what-is-the-p-value.html#cb174-9" aria-hidden="true" tabindex="-1"></a>          <span class="co"># based on a random process each iteration of the for-loop assign either endurance or strength to each individual</span></span>
+<span id="cb174-10"><a href="what-is-the-p-value.html#cb174-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;strength&quot;</span>, <span class="dv">10</span>), </span>
+<span id="cb174-11"><a href="what-is-the-p-value.html#cb174-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(<span class="st">&quot;endurance&quot;</span>, <span class="dv">10</span>)), </span>
+<span id="cb174-12"><a href="what-is-the-p-value.html#cb174-12" aria-hidden="true" tabindex="-1"></a>                                <span class="at">size =</span> <span class="dv">20</span>, </span>
+<span id="cb174-13"><a href="what-is-the-p-value.html#cb174-13" aria-hidden="true" tabindex="-1"></a>                                <span class="at">replace =</span> <span class="cn">FALSE</span>))  <span class="sc">%&gt;%</span></span>
+<span id="cb174-14"><a href="what-is-the-p-value.html#cb174-14" aria-hidden="true" tabindex="-1"></a>          <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
+<span id="cb174-15"><a href="what-is-the-p-value.html#cb174-15" aria-hidden="true" tabindex="-1"></a>          <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(obs)) </span>
+<span id="cb174-16"><a href="what-is-the-p-value.html#cb174-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb174-17"><a href="what-is-the-p-value.html#cb174-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-18"><a href="what-is-the-p-value.html#cb174-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate the difference in means and store in the results data frame</span></span>
+<span id="cb174-19"><a href="what-is-the-p-value.html#cb174-19" aria-hidden="true" tabindex="-1"></a>        results[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> all.observations[all.observations<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;strength&quot;</span>, <span class="dv">2</span>] <span class="sc">-</span> all.observations[all.observations<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;endurance&quot;</span>, <span class="dv">2</span>]</span>
+<span id="cb174-20"><a href="what-is-the-p-value.html#cb174-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-21"><a href="what-is-the-p-value.html#cb174-21" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb174-22"><a href="what-is-the-p-value.html#cb174-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-23"><a href="what-is-the-p-value.html#cb174-23" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb174-24"><a href="what-is-the-p-value.html#cb174-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(m)) <span class="sc">+</span>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;gray50&quot;</span>, <span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb174-25"><a href="what-is-the-p-value.html#cb174-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean.difference) <span class="sc">+</span></span>
+<span id="cb174-26"><a href="what-is-the-p-value.html#cb174-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Mean difference&quot;</span>, </span>
+<span id="cb174-27"><a href="what-is-the-p-value.html#cb174-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb174-28"><a href="what-is-the-p-value.html#cb174-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p>What does the graph above show? As the reshuffle process was done 1000 times we can count the number of means more extreme than the mean that we did observe.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="what-is-the-p-value.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(results[results<span class="sc">$</span>m <span class="sc">&gt;</span> mean.difference,]) <span class="sc">/</span> <span class="dv">1000</span></span></code></pre></div>
+<p>The above code calculates the proportion of mean differences greater than the observed difference that occurred when we re-shuffled the groups by chance.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="what-is-the-p-value.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An illustration of the above</span></span>
+<span id="cb176-2"><a href="what-is-the-p-value.html#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="what-is-the-p-value.html#cb176-3" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb176-4"><a href="what-is-the-p-value.html#cb176-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">extreme =</span> <span class="fu">if_else</span>(m <span class="sc">&gt;</span> mean.difference, <span class="st">&quot;More extreme&quot;</span>, <span class="st">&quot;Less extreme&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb176-5"><a href="what-is-the-p-value.html#cb176-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(m, <span class="at">fill =</span> extreme)) <span class="sc">+</span>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">&quot;gray50&quot;</span>, <span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb176-6"><a href="what-is-the-p-value.html#cb176-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;purple&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb176-7"><a href="what-is-the-p-value.html#cb176-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean.difference) <span class="sc">+</span></span>
+<span id="cb176-8"><a href="what-is-the-p-value.html#cb176-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Mean difference&quot;</span>, </span>
+<span id="cb176-9"><a href="what-is-the-p-value.html#cb176-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb176-10"><a href="what-is-the-p-value.html#cb176-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p>We have now calculated the proportion of values more extreme than the observed. This would represent a directional hypothesis</p>
+<p><span class="math display">\[H_A: Strength &gt; Endurance\]</span>
+We can account for the fact that the endurance group could be stronger than the strength group with the code below. Try to figure out what the code does and what has changed from above.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="what-is-the-p-value.html#cb177-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb177-2"><a href="what-is-the-p-value.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">extreme =</span> <span class="fu">if_else</span>(<span class="fu">abs</span>(m) <span class="sc">&gt;</span> mean.difference, <span class="st">&quot;More extreme&quot;</span>, <span class="st">&quot;Less extreme&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb177-3"><a href="what-is-the-p-value.html#cb177-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(m, <span class="at">fill =</span> extreme)) <span class="sc">+</span>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">&quot;gray50&quot;</span>, <span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb177-4"><a href="what-is-the-p-value.html#cb177-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;purple&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb177-5"><a href="what-is-the-p-value.html#cb177-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> mean.difference) <span class="sc">+</span></span>
+<span id="cb177-6"><a href="what-is-the-p-value.html#cb177-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Mean difference&quot;</span>, </span>
+<span id="cb177-7"><a href="what-is-the-p-value.html#cb177-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb177-8"><a href="what-is-the-p-value.html#cb177-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb177-9"><a href="what-is-the-p-value.html#cb177-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-10"><a href="what-is-the-p-value.html#cb177-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-11"><a href="what-is-the-p-value.html#cb177-11" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(results[<span class="fu">abs</span>(results<span class="sc">$</span>m) <span class="sc">&gt;</span> mean.difference,]) <span class="sc">/</span> <span class="dv">1000</span></span></code></pre></div>
+<p>Try to think about these questions:</p>
+<ul>
+<li>At what level of <em>p</em> are you comfortable rejecting the null-hypothesis?</li>
+<li>When planning a study we decide on a level of evidence needed to reject the null. If you would have planned a study, how do you motivate a certain level of evidence?</li>
+</ul>
+</div>
+<div id="more-p-values" class="section level2" number="19.2">
+<h2><span class="header-section-number">19.2</span> More <em>p</em>-values</h2>
+<p>In the example above where we used the reshuffling technique (also called a permutation test), we are limited by the number of iterations in the for-loop and the size of the groups to produce a valid <em>p</em>-value. As long as the data are approximately normally distributed, we can use a <em>t</em>-test instead. As outlined above, this test uses an imaginary sampling distribution and compare our results to a scenario where the null-hypothesis in true.</p>
+<p>To test against the null hypothesis that the means of the groups described above are equal we would use a two-sample t-test.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="what-is-the-p-value.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(strength.group, endurance.group, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>Run the code above and inspect the results. The output of the two-sample t-test contains information on the test statistic <em>t</em>, the degrees of freedom for the test and a <em>p</em>-value. It even has a statement about the alternative hypothesis. We get a confidence interval of the mean difference between groups.</p>
+<p>Does the 95% confidence interval say anything about the level of evidence needed to reject the null? Has somebody already decided for you? See in the help-file for the <em>t</em>-test (<code>?t.test</code>) and see if you can change the confidence interval to correspond to your level of evidence. What is the relationship between p-values and confidence intervals?</p>
+<p>The <em>t</em>-test is quite flexible, we can do one-sample and two-sample <em>t</em>-tests. We can account for paired observation, as when the same participant is measured twice under different conditions.</p>
+<p>In the one-sample case, we test against the null-hypothesis that a mean is equal to <span class="math inline">\(\mu\)</span> where we specify the <code>mu</code> in the function.</p>
+<p>If we have paired observations we set <code>paired = TRUE</code>, each row in such case must correspond to the same individual.</p>
+<p>We can also assume that the groups have equal variance (<code>var.equal = TRUE</code>) this corresponds to the classical two-sample case. A more appropriate setting is to assume that the groups do not have equal variance (spread), this is the Welch two-sample <em>t</em>-test.</p>
+<p>By saving a <em>t</em>-test we can access different results from it. To see what parts we can access we may use the names function which gives the names of the different parts of the results.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="what-is-the-p-value.html#cb179-1" aria-hidden="true" tabindex="-1"></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(strength.group, endurance.group, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb179-2"><a href="what-is-the-p-value.html#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-3"><a href="what-is-the-p-value.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ttest)</span></code></pre></div>
+<p>To access the confidence interval, we would use <code>ttest$conf.int</code>.</p>
+</div>
+<div id="t-test-examples" class="section level2" number="19.3">
+<h2><span class="header-section-number">19.3</span> <em>t</em>-test examples</h2>
+<p>In the cycling data set we might want to know if the difference between pre- and post-data in squat jump is more or less than 0. Assuming that we use the same participants, this is a paired <em>t</em>-test.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="what-is-the-p-value.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata)</span>
+<span id="cb180-2"><a href="what-is-the-p-value.html#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-3"><a href="what-is-the-p-value.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;cyclingstudy&quot;</span>)</span>
+<span id="cb180-4"><a href="what-is-the-p-value.html#cb180-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
+<span id="cb180-5"><a href="what-is-the-p-value.html#cb180-5" aria-hidden="true" tabindex="-1"></a>sj.max <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb180-6"><a href="what-is-the-p-value.html#cb180-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, timepoint, sj.max) <span class="sc">%&gt;%</span></span>
+<span id="cb180-7"><a href="what-is-the-p-value.html#cb180-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb180-8"><a href="what-is-the-p-value.html#cb180-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, <span class="at">values_from =</span> sj.max) </span>
+<span id="cb180-9"><a href="what-is-the-p-value.html#cb180-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-10"><a href="what-is-the-p-value.html#cb180-10" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the t-test, paired data</span></span>
+<span id="cb180-11"><a href="what-is-the-p-value.html#cb180-11" aria-hidden="true" tabindex="-1"></a>sj.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(sj.max<span class="sc">$</span>pre, sj.max<span class="sc">$</span>meso3, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb180-12"><a href="what-is-the-p-value.html#cb180-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-13"><a href="what-is-the-p-value.html#cb180-13" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the data to see corresponding data</span></span>
+<span id="cb180-14"><a href="what-is-the-p-value.html#cb180-14" aria-hidden="true" tabindex="-1"></a>sj.figure <span class="ot">&lt;-</span> sj.max <span class="sc">%&gt;%</span></span>
+<span id="cb180-15"><a href="what-is-the-p-value.html#cb180-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;timepoint&quot;</span>,</span>
+<span id="cb180-16"><a href="what-is-the-p-value.html#cb180-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;sj.max&quot;</span>, </span>
+<span id="cb180-17"><a href="what-is-the-p-value.html#cb180-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> pre<span class="sc">:</span>meso3) <span class="sc">%&gt;%</span></span>
+<span id="cb180-18"><a href="what-is-the-p-value.html#cb180-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">timepoint =</span> <span class="fu">factor</span>(timepoint, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;meso3&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb180-19"><a href="what-is-the-p-value.html#cb180-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(timepoint, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
+<span id="cb180-20"><a href="what-is-the-p-value.html#cb180-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-21"><a href="what-is-the-p-value.html#cb180-21" aria-hidden="true" tabindex="-1"></a><span class="co"># create a summary statistic</span></span>
+<span id="cb180-22"><a href="what-is-the-p-value.html#cb180-22" aria-hidden="true" tabindex="-1"></a>sj.summary <span class="ot">&lt;-</span> sj.max <span class="sc">%&gt;%</span></span>
+<span id="cb180-23"><a href="what-is-the-p-value.html#cb180-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;timepoint&quot;</span>,</span>
+<span id="cb180-24"><a href="what-is-the-p-value.html#cb180-24" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;sj.max&quot;</span>, </span>
+<span id="cb180-25"><a href="what-is-the-p-value.html#cb180-25" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> pre<span class="sc">:</span>meso3) <span class="sc">%&gt;%</span></span>
+<span id="cb180-26"><a href="what-is-the-p-value.html#cb180-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(timepoint) <span class="sc">%&gt;%</span></span>
+<span id="cb180-27"><a href="what-is-the-p-value.html#cb180-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(sj.max, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb180-28"><a href="what-is-the-p-value.html#cb180-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">s =</span> <span class="fu">sd</span>(sj.max, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<p>The above can be interpreted as: “Squat jump height was on average higher in the pre- compared to the <code>meso3</code> time-point (30.8 (SD: 3.2) vs. 29.9 (3.3)), this did not lead to rejection of the null-hypothesis of no difference between time-points (<em>t</em>(18)=1.79, <em>p</em>=0.091, 95% CI: -0.16, 1.94).”</p>
+<p>You might want to plot the results also, use the figure in the code above to do this.</p>
+<p>The interpretation above has “two levels,” first I describe that there actually is a difference in means between the time points, this is a statement about the data. Then we use the <em>t</em>-test to make a statement about the population. Notice that we use the standard deviation when describing the data and the <em>t</em>-statistic and confidence intervals when describing the our best guess about the population.</p>
+<p>Try to do the same with VO<sub>2max</sub>. Calculate descriptive statistics and draw inference using a paired samples <em>t</em>-test.</p>
+</div>
+<div id="a-note-on-reporting-in-r-markdown." class="section level2" number="19.4">
+<h2><span class="header-section-number">19.4</span> A note on reporting in R Markdown.</h2>
+<p>Above I integrated data inline together with text. To accomplish this I input code in the text from objects created in the code chunk. As an example the above was created using the following text/code:</p>
+<pre><code>The above can be interpreted as: &quot;Squat jump height was on average higher in the pre- compared to the meso3 timepoint (30.8 (SD: 3.2) vs. 29.9 (3.3)), this did not lead to rejection of the null-hypothesis of no difference (*t*(18)=1.79, *p*=0.091, 95% CI: -0.16, 1.94)&quot;.</code></pre>
+<p>Code is entered inline using e.g. <code>`r round(sj.summary[2,2], 2)`</code> where the r states that this is R code, <code>round(sj.summary[2,2], 2)</code> rounds the number in the second row, second column from the <code>sj.summary</code> data frame to two decimals.</p>
+<p>Using this approach we can combine statistical results with text in our reports.</p>
+</div>
+<div id="error-rates" class="section level2" number="19.5">
+<h2><span class="header-section-number">19.5</span> Error rates</h2>
+<p>Up to now we have not explicitly talked about the level of evidence needed to reject the null. The level of evidence needed is related to the nature of the problem. We can make two types of errors in classical frequentist statistics. A type I error is when we reject the null when it is actually true. A type II error is when we fail to reject the null and it is actually false.</p>
+<p>If we do not care that much about making a type I error we might be in a situation where a research project might conclude that a intervention/device/nutritional strategy is beneficial and if not there is no harm done. The side effects are not that serious. Another scenario is when we do not want to make a type I error. For example if a treatment is non-effective, the potential side effects are unacceptable. In the first scenario we might accept higher error rates, in the second example we are not prepared to have a high false positive error rate as we do not want to recommend a treatment with side effects that is also ineffective.</p>
+<p>A type II error might be serious if an effect is beneficial but we fail to detect it, we do not reject the null when it is false. As we will discuss later, error rates are connected with sample sizes. In a study where we have a large type II error because of a small sample size we risk not detecting an important effect.</p>
+<p>Type I error might be thought of as the long run false positive rate. If we would have drawn samples from a population with a mean of 0 and test <em>against</em> the <span class="math inline">\(H_0: \mu = 0\)</span>. A pre-specified error rate of 5% will protect us from drawing the wrong conclusion but only to the extent that we specify. We can show this in a simulation by running the code below.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="what-is-the-p-value.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb182-2"><a href="what-is-the-p-value.html#cb182-2" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb182-3"><a href="what-is-the-p-value.html#cb182-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-4"><a href="what-is-the-p-value.html#cb182-4" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">p.values =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">10000</span>))</span>
+<span id="cb182-5"><a href="what-is-the-p-value.html#cb182-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-6"><a href="what-is-the-p-value.html#cb182-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>){</span>
+<span id="cb182-7"><a href="what-is-the-p-value.html#cb182-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb182-8"><a href="what-is-the-p-value.html#cb182-8" aria-hidden="true" tabindex="-1"></a>  results[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="fu">sample</span>(population, <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>), <span class="at">mu =</span> <span class="dv">0</span>)<span class="sc">$</span>p.value</span>
+<span id="cb182-9"><a href="what-is-the-p-value.html#cb182-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb182-10"><a href="what-is-the-p-value.html#cb182-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb182-11"><a href="what-is-the-p-value.html#cb182-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-12"><a href="what-is-the-p-value.html#cb182-12" aria-hidden="true" tabindex="-1"></a><span class="co"># filter the data frame to only select rows with p &lt; 0.05</span></span>
+<span id="cb182-13"><a href="what-is-the-p-value.html#cb182-13" aria-hidden="true" tabindex="-1"></a>false.positive <span class="ot">&lt;-</span> results <span class="sc">%&gt;%</span></span>
+<span id="cb182-14"><a href="what-is-the-p-value.html#cb182-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(p.values <span class="sc">&lt;</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb182-15"><a href="what-is-the-p-value.html#cb182-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span>
+<span id="cb182-16"><a href="what-is-the-p-value.html#cb182-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb182-17"><a href="what-is-the-p-value.html#cb182-17" aria-hidden="true" tabindex="-1"></a>false.positive <span class="sc">/</span> <span class="dv">10000</span> <span class="co"># should be ~ 5%</span></span></code></pre></div>
+<p>Try to explain what the code above do before running it.</p>
+</div>
+<div id="p-values-and-confidence-intervals" class="section level2" number="19.6">
+<h2><span class="header-section-number">19.6</span> P-values and confidence intervals</h2>
+<p>Transparent reporting of a statistical test include estimates and “the probability of obtaining the result, or a more extreme if the null was true” (the p-value). Estimates may be given together with a confidence interval. The confidence interval gives more information as we can interpret the magnitude of an effect and a range of plausible values of the population effect. Sometimes the confidence interval is large, we may interpret this as having more uncertainty.</p>
+<p>In the cycling study we may test against the null-hypothesis that there is no effect of training on <code>tte</code> (time to exhaustion). Try to answer these questions by preparing and doing the test.</p>
+<ul>
+<li>What kind of <em>t</em>-test is suitable for testing <code>pre</code> vs. <code>meso3</code> data in the <code>tte</code> variable?</li>
+<li>What level of evidence do you think is suitable for the test, what is your level of statistical significance?</li>
+<li>How do you interpret the <em>p</em>-value and confidence interval.</li>
+</ul>
+<a id="displayText" href="javascript:toggle(2);">Here is a possible solution</a>
+<div id="toggleText2" style="display: none">
+<p>Below is example code to set up the test</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="what-is-the-p-value.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
+<span id="cb183-2"><a href="what-is-the-p-value.html#cb183-2" aria-hidden="true" tabindex="-1"></a>tte.data <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb183-3"><a href="what-is-the-p-value.html#cb183-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, timepoint, tte) <span class="sc">%&gt;%</span></span>
+<span id="cb183-4"><a href="what-is-the-p-value.html#cb183-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, <span class="at">values_from =</span> tte) <span class="sc">%&gt;%</span></span>
+<span id="cb183-5"><a href="what-is-the-p-value.html#cb183-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span>
+<span id="cb183-6"><a href="what-is-the-p-value.html#cb183-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-7"><a href="what-is-the-p-value.html#cb183-7" aria-hidden="true" tabindex="-1"></a>tte.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(tte.data<span class="sc">$</span>meso3, tte.data<span class="sc">$</span>pre,  <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb183-8"><a href="what-is-the-p-value.html#cb183-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-9"><a href="what-is-the-p-value.html#cb183-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-10"><a href="what-is-the-p-value.html#cb183-10" aria-hidden="true" tabindex="-1"></a><span class="co"># The point estimate </span></span>
+<span id="cb183-11"><a href="what-is-the-p-value.html#cb183-11" aria-hidden="true" tabindex="-1"></a>tte.ttest<span class="sc">$</span>estimate</span>
+<span id="cb183-12"><a href="what-is-the-p-value.html#cb183-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-13"><a href="what-is-the-p-value.html#cb183-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the confidence interval </span></span>
+<span id="cb183-14"><a href="what-is-the-p-value.html#cb183-14" aria-hidden="true" tabindex="-1"></a>tte.ttest<span class="sc">$</span>conf.int</span>
+<span id="cb183-15"><a href="what-is-the-p-value.html#cb183-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-16"><a href="what-is-the-p-value.html#cb183-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the p-value</span></span>
+<span id="cb183-17"><a href="what-is-the-p-value.html#cb183-17" aria-hidden="true" tabindex="-1"></a>tte.ttest<span class="sc">$</span>p.value</span></code></pre></div>
+</div>
+<p></br></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="samples-populations-estimates-and-their-uncertainty.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="study-questions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["quant-methods.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
