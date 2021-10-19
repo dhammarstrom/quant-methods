@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Storing data in spreadsheets | Quantitative methods and statistics (In Sport and Exercise Science)</title>
   <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Storing data in spreadsheets | Quantitative methods and statistics (In Sport and Exercise Science)" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="github-repo" content="dhammarstrom/quant-methods" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapter 3 Storing data in spreadsheets | Quantitative methods and statistics (In Sport and Exercise Science)" />
   
   <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Daniel Hammarström" />
 
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="introduction-to-data-science.html"/>
 <link rel="next" href="installing-and-starting-up-r-and-r-studio.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +50,8 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -118,6 +118,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -224,23 +247,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.1" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html#rstudio-projects-and-your-reproducible-report"><i class="fa fa-check"></i><b>7.1</b> RStudio projects and your reproducible report</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a>
+<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#why-version-control"><i class="fa fa-check"></i><b>8.1</b> Why version control</a></li>
-<li class="chapter" data-level="8.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#a-simplecomplicated-start"><i class="fa fa-check"></i><b>8.2</b> A simple/complicated start</a></li>
-<li class="chapter" data-level="8.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-by-step-instructions-on-setting-up-a-version-controlled-r-project."><i class="fa fa-check"></i><b>8.3</b> Step by step instructions on setting up a version controlled R project.</a>
+<li class="chapter" data-level="8.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#why-version-control"><i class="fa fa-check"></i><b>8.1</b> Why version control</a></li>
+<li class="chapter" data-level="8.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#a-simplecomplicated-start"><i class="fa fa-check"></i><b>8.2</b> A simple/complicated start</a></li>
+<li class="chapter" data-level="8.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-by-step-instructions-on-setting-up-a-version-controlled-r-project."><i class="fa fa-check"></i><b>8.3</b> Step by step instructions on setting up a version controlled R project.</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-1.-create-a-free-github-account"><i class="fa fa-check"></i><b>8.3.1</b> Step 1. Create a free github account:</a></li>
-<li class="chapter" data-level="8.3.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-2.-download-git."><i class="fa fa-check"></i><b>8.3.2</b> Step 2. Download git.</a></li>
-<li class="chapter" data-level="8.3.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-3.-connect-git-to-rstudio"><i class="fa fa-check"></i><b>8.3.3</b> Step 3. Connect git to RStudio</a></li>
-<li class="chapter" data-level="8.3.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-4.-create-a-new-online-repository"><i class="fa fa-check"></i><b>8.3.4</b> Step 4. Create a new online repository</a></li>
-<li class="chapter" data-level="8.3.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-5.-create-a-new-project-in-rstudio"><i class="fa fa-check"></i><b>8.3.5</b> Step 5. Create a new project in RStudio</a></li>
-<li class="chapter" data-level="8.3.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-6.-make-changes-to-your-project"><i class="fa fa-check"></i><b>8.3.6</b> Step 6. Make changes to your project</a></li>
+<li class="chapter" data-level="8.3.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-1.-create-a-free-github-account"><i class="fa fa-check"></i><b>8.3.1</b> Step 1. Create a free github account:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-2.-download-git."><i class="fa fa-check"></i><b>8.3.2</b> Step 2. Download git.</a></li>
+<li class="chapter" data-level="8.3.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-3.-connect-git-to-rstudio"><i class="fa fa-check"></i><b>8.3.3</b> Step 3. Connect git to RStudio</a></li>
+<li class="chapter" data-level="8.3.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-4.-create-a-new-online-repository"><i class="fa fa-check"></i><b>8.3.4</b> Step 4. Create a new online repository</a></li>
+<li class="chapter" data-level="8.3.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-5.-create-a-new-project-in-rstudio"><i class="fa fa-check"></i><b>8.3.5</b> Step 5. Create a new project in RStudio</a></li>
+<li class="chapter" data-level="8.3.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-6.-make-changes-to-your-project"><i class="fa fa-check"></i><b>8.3.6</b> Step 6. Make changes to your project</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#forking-and-pull-requests"><i class="fa fa-check"></i><b>8.4</b> Forking and pull requests</a></li>
-<li class="chapter" data-level="8.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#additional-great-things-about-github"><i class="fa fa-check"></i><b>8.5</b> Additional great things about GitHub</a></li>
-<li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
-<li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
+<li class="chapter" data-level="8.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#forking-and-pull-requests"><i class="fa fa-check"></i><b>8.4</b> Forking and pull requests</a></li>
+<li class="chapter" data-level="8.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#additional-great-things-about-github"><i class="fa fa-check"></i><b>8.5</b> Additional great things about GitHub</a></li>
+<li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
+<li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a>
 <ul>
@@ -341,20 +364,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.1" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-from-two-sample-comparisons"><i class="fa fa-check"></i><b>19.1</b> <em>p</em>-values from two sample comparisons</a></li>
 <li class="chapter" data-level="19.2" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#more-p-values"><i class="fa fa-check"></i><b>19.2</b> More <em>p</em>-values</a></li>
 <li class="chapter" data-level="19.3" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#t-test-examples"><i class="fa fa-check"></i><b>19.3</b> <em>t</em>-test examples</a></li>
-<li class="chapter" data-level="19.4" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#a-note-on-reporting-in-r-markdown."><i class="fa fa-check"></i><b>19.4</b> A note on reporting in R Markdown.</a></li>
-<li class="chapter" data-level="19.5" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#error-rates"><i class="fa fa-check"></i><b>19.5</b> Error rates</a></li>
-<li class="chapter" data-level="19.6" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-and-confidence-intervals"><i class="fa fa-check"></i><b>19.6</b> P-values and confidence intervals</a></li>
+<li class="chapter" data-level="19.4" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#error-rates"><i class="fa fa-check"></i><b>19.4</b> Error rates</a></li>
+<li class="chapter" data-level="19.5" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-and-confidence-intervals"><i class="fa fa-check"></i><b>19.5</b> P-values and confidence intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>20</b> Study questions</a>
+<li class="chapter" data-level="20" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html"><i class="fa fa-check"></i><b>20</b> Hypothesis tests and statistical power</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>20.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
-<li class="chapter" data-level="20.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>20.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
-<li class="chapter" data-level="20.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>20.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
-<li class="chapter" data-level="20.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>20.4</b> Chapter 5: Creating your first graph</a></li>
-<li class="chapter" data-level="20.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>20.5</b> Chapter 6: Wrangling data to create your first table</a></li>
-<li class="chapter" data-level="20.6" data-path="study-questions.html"><a href="study-questions.html#chapter-11-introduction-to-the-molecular-exercise-physiology-lab"><i class="fa fa-check"></i><b>20.6</b> Chapter 11: Introduction to the molecular exercise physiology lab</a></li>
+<li class="chapter" data-level="20.1" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html#defining-the-alternative-hypothesis"><i class="fa fa-check"></i><b>20.1</b> Defining the alternative hypothesis</a></li>
+<li class="chapter" data-level="20.2" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html#the-size-of-the-effect"><i class="fa fa-check"></i><b>20.2</b> The size of the effect</a></li>
+<li class="chapter" data-level="20.3" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html#power-and-study-designs"><i class="fa fa-check"></i><b>20.3</b> Power and study designs</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>21</b> References</a></li>
+<li class="chapter" data-level="21" data-path="assignment3.html"><a href="assignment3.html"><i class="fa fa-check"></i><b>21</b> Assignment 3: Drawing inference from statistical models, and statistical power</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="assignment3.html"><a href="assignment3.html#setting-up-a-simulation"><i class="fa fa-check"></i><b>21.1</b> Setting up a simulation</a></li>
+<li class="chapter" data-level="21.2" data-path="assignment3.html"><a href="assignment3.html#many-studies"><i class="fa fa-check"></i><b>21.2</b> Many studies</a></li>
+<li class="chapter" data-level="21.3" data-path="assignment3.html"><a href="assignment3.html#many-studies-without-population-effect"><i class="fa fa-check"></i><b>21.3</b> Many studies without population effect</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="assignment4.html"><a href="assignment4.html"><i class="fa fa-check"></i><b>22</b> Assignment 4: Study designs</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="assignment4.html"><a href="assignment4.html#overview"><i class="fa fa-check"></i><b>22.1</b> Overview</a></li>
+<li class="chapter" data-level="22.2" data-path="assignment4.html"><a href="assignment4.html#details"><i class="fa fa-check"></i><b>22.2</b> Details</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="assignment4.html"><a href="assignment4.html#questions"><i class="fa fa-check"></i><b>22.2.1</b> Questions</a></li>
+<li class="chapter" data-level="22.2.2" data-path="assignment4.html"><a href="assignment4.html#alternative-explanations"><i class="fa fa-check"></i><b>22.2.2</b> Alternative explanations</a></li>
+<li class="chapter" data-level="22.2.3" data-path="assignment4.html"><a href="assignment4.html#logic"><i class="fa fa-check"></i><b>22.2.3</b> Logic</a></li>
+<li class="chapter" data-level="22.2.4" data-path="assignment4.html"><a href="assignment4.html#methods"><i class="fa fa-check"></i><b>22.2.4</b> Methods</a></li>
+<li class="chapter" data-level="22.2.5" data-path="assignment4.html"><a href="assignment4.html#results"><i class="fa fa-check"></i><b>22.2.5</b> Results</a></li>
+<li class="chapter" data-level="22.2.6" data-path="assignment4.html"><a href="assignment4.html#inference"><i class="fa fa-check"></i><b>22.2.6</b> Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="assignment4.html"><a href="assignment4.html#performing-your-literature-review-and-writing-the-report"><i class="fa fa-check"></i><b>22.3</b> Performing your literature review and writing the report</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>23</b> Study questions</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>23.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
+<li class="chapter" data-level="23.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>23.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
+<li class="chapter" data-level="23.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>23.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
+<li class="chapter" data-level="23.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>23.4</b> Chapter 5: Creating your first graph</a></li>
+<li class="chapter" data-level="23.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>23.5</b> Chapter 6: Wrangling data to create your first table</a></li>
+<li class="chapter" data-level="23.6" data-path="study-questions.html"><a href="study-questions.html#chapter-11-introduction-to-the-molecular-exercise-physiology-lab"><i class="fa fa-check"></i><b>23.6</b> Chapter 11: Introduction to the molecular exercise physiology lab</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>24</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -378,16 +426,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="storing-data-in-spreadsheets" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Storing data in spreadsheets</h1>
 <p>I previously mentioned spreadsheets like those created in Excel. These are indeed great, but not great for reproducible science or data analysis. This is because they are not easily documented and scripted. The data is actually part of the analysis. Another danger with spreadsheets (like MS Excel) is that it re-formats your data. This is such a big problem for scientists that we have apparently started <a href="https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates">renaming genes</a>.</p>
-<p>Errors are frequent in spreadsheets, not only because renaming <span class="citation">(<a href="references.html#ref-RN2927" role="doc-biblioref">Ziemann, Eren, and El-Osta 2016</a>)</span>, but also because of bad formatting of formulas <span class="citation">(<a href="references.html#ref-RN2928" role="doc-biblioref">Stephen, Kenneth, and Barry 2009</a>)</span>. These are both reasons for using spreadsheets only for what they do best: data input and data storage.</p>
+<p>Errors are frequent in spreadsheets, not only because renaming <span class="citation">(<a href="#ref-RN2927" role="doc-biblioref">Ziemann, Eren, and El-Osta 2016</a>)</span>, but also because of bad formatting of formulas <span class="citation">(<a href="#ref-RN2928" role="doc-biblioref">Stephen, Kenneth, and Barry 2009</a>)</span>. These are both reasons for using spreadsheets only for what they do best: data input and data storage.</p>
 <blockquote>
 <p><strong>Think about the literature</strong>
-Broman and Woo <span class="citation">(<a href="references.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> gives several pointers on how to use spreadsheets for data input and storage. Think about your experince with Excel, what is the most common mistake you made when handling data in spreadsheets?</p>
+Broman and Woo <span class="citation">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> gives several pointers on how to use spreadsheets for data input and storage. Think about your experince with Excel, what is the most common mistake you made when handling data in spreadsheets?</p>
 </blockquote>
 <p>Although data storage and data input are great ways to use spreadsheets, it’s good to know a little about the capabilities of your spreadsheet software.</p>
 <div id="cells-and-simple-functions" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Cells and simple functions</h2>
 <p>A spreadsheet consists of cells, these can contain values, such as text, numbers, formulas and functions. Cells may also be formatted with attributes such as color or text styles. Below is an example of some data entered in a spreadsheet.</p>
-<div class="figure" style="text-align: center"><span id="fig:excel-spreadsheet-1"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:excel-spreadsheet-1"></span>
 <img src="images/excel-spreadsheet.png" alt="Example entries from an Excel spreadsheet" width="120%" />
 <p class="caption">
 Figure 3.1: Example entries from an Excel spreadsheet
@@ -446,14 +494,14 @@ Figure 3.1: Example entries from an Excel spreadsheet
 </div>
 <div id="tidy-data-and-data-storage" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Tidy data and data storage</h2>
-<p>Hadley Wickham uses a quote from Tolstoy when describing the principle of tidy data <span class="citation">(<a href="references.html#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that when something goes wrong, it can be wrong in multiple ways. But when it is right/correct/works/succeeds, it does so in only one way<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>. This principle can be applied to data sets. There are so many ways that formatting of data sets can be problematic, but a limited sets of principles makes it good.</p>
-<div class="figure" style="text-align: center"><span id="fig:tolstoy"></span>
+<p>Hadley Wickham uses a quote from Tolstoy when describing the principle of tidy data <span class="citation">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that when something goes wrong, it can be wrong in multiple ways. But when it is right/correct/works/succeeds, it does so in only one way<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>. This principle can be applied to data sets. There are so many ways that formatting of data sets can be problematic, but a limited sets of principles makes it good.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tolstoy"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Leon_tolstoi.jpg/800px-Leon_tolstoi.jpg" alt="Leo Tolstoy at the time when he was (possibly) authoring Anna Karenina. (Source: https://en.wikipedia.org/wiki/Leo_Tolstoy)" width="50%" />
 <p class="caption">
 Figure 3.2: Leo Tolstoy at the time when he was (possibly) authoring Anna Karenina. (Source: <a href="https://en.wikipedia.org/wiki/Leo_Tolstoy" class="uri">https://en.wikipedia.org/wiki/Leo_Tolstoy</a>)
 </p>
 </div>
-<p>A tidy data set consists of <em>values</em> originating from <em>observations</em> and belonging to <em>variables</em>. A variable is a definition of the values based on attributes. An observation may consist of several variables <span class="citation">(<a href="references.html#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>.</p>
+<p>A tidy data set consists of <em>values</em> originating from <em>observations</em> and belonging to <em>variables</em>. A variable is a definition of the values based on attributes. An observation may consist of several variables <span class="citation">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>.</p>
 <p>A tidy data set typically has got one observation per row and one variable per column. Let’s say that we want to collect data from a strength test. A participant (<strong>participant</strong> is a variable) in our study conducts tests before and after the intervention (<strong>time</strong> is a variable) in two exercises (<strong>exercise</strong> is a variable) and we record the maximal strength in kg (<strong>load</strong> is a variable). The data set will look something like in the table below (<a href="storing-data-in-spreadsheets.html#tab:tidy-data-example">3.2</a>).</p>
 <table>
 <caption><span id="tab:tidy-data-example">Table 3.2: </span> Example of tidy data.</caption>
@@ -565,12 +613,12 @@ Figure 3.2: Leo Tolstoy at the time when he was (possibly) authoring Anna Kareni
 </tbody>
 </table>
 <p>This naturally gives additional rows to the data set. This is sometimes referred to as “long format” data as opposed to the structure where each attempt is given separate variables, something that is called “wide format.” You will notice during the course that for most purposes, the long format is most convenient. This is true when we create graphs and do statistical modelling. But sometimes a variable needs to be structured in a wide format to allow for certain operations.</p>
-<p>If we follow what is recommended by Broman and Woo <span class="citation">(<a href="references.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>, it is clear that each cell in a spreadsheet should only contain one value. If we for example decide to format a cell to a certain color, we add data to that cell on top of the actual data. You might add color to a cell in order to remember to add or change data. However, when you use the data set in other software, this information is lost. You should instead add another variable to allow for such data to be properly recorded. Using a variable called <code>comments</code> you can add text thta actually describes some information about that particular observation, information that is not lost when you use the data set in another software.</p>
+<p>If we follow what is recommended by Broman and Woo <span class="citation">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>, it is clear that each cell in a spreadsheet should only contain one value. If we for example decide to format a cell to a certain color, we add data to that cell on top of the actual data. You might add color to a cell in order to remember to add or change data. However, when you use the data set in other software, this information is lost. You should instead add another variable to allow for such data to be properly recorded. Using a variable called <code>comments</code> you can add text thta actually describes some information about that particular observation, information that is not lost when you use the data set in another software.</p>
 </div>
 <div id="recording-data" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Recording data</h2>
-<p>A trade secret<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> from people who work all day with data and programming is that they are lazy. Lazy in the sense that you do not want to type too much, and absolutely not use the computer mouse when it can be avoided. When recording data we can try to be lazy to. We can do this by shortening variable names and not e.g. using CAPITAL letters when entering text in data storage. After a hard day at the keyboard, you will be happy to write <code>strtest</code> instead of <code>Strength Test</code>. The extra effort of using two capital letters might be the thing to tip you over the edge<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>. However, we should not be too lazy either, variable names and values should “short, but meaningful” <span class="citation">(<a href="references.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>.</p>
-<div class="figure" style="text-align: center"><span id="fig:falling-down"></span>
+<p>A trade secret<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> from people who work all day with data and programming is that they are lazy. Lazy in the sense that you do not want to type too much, and absolutely not use the computer mouse when it can be avoided. When recording data we can try to be lazy to. We can do this by shortening variable names and not e.g. using CAPITAL letters when entering text in data storage. After a hard day at the keyboard, you will be happy to write <code>strtest</code> instead of <code>Strength Test</code>. The extra effort of using two capital letters might be the thing to tip you over the edge<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>. However, we should not be too lazy either, variable names and values should “short, but meaningful” <span class="citation">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:falling-down"></span>
 <img src="https://upload.wikimedia.org/wikipedia/en/2/22/Falling_Down_%281993_film%29_poster.jpg" alt="D-FENS Foster gets pushed over the edge (Source: https://en.wikipedia.org/wiki/Falling_Down)" width="50%" />
 <p class="caption">
 Figure 3.3: D-FENS Foster gets pushed over the edge (Source: <a href="https://en.wikipedia.org/wiki/Falling_Down" class="uri">https://en.wikipedia.org/wiki/Falling_Down</a>)
@@ -581,7 +629,7 @@ Figure 3.3: D-FENS Foster gets pushed over the edge (Source: <a href="https://en
 </div>
 <div id="saving-data" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Saving data</h2>
-<p>Data from spreadsheets can be saved as special spreadsheet files, such as <code>.xlsx</code>. This format allows for functions, multiple spreadsheets in the same file (tabs) and cell formatting. If you follow the tips described above and in <span class="citation">(<a href="references.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> you do not need this fancy format. Instead you can store your data as a <code>.csv</code> file. This format may be read and edited with Excel (or another spreadsheet software) but also in a plain text editor. Data entered in this format (comma-separated values; csv) can look like this in a text editor:</p>
+<p>Data from spreadsheets can be saved as special spreadsheet files, such as <code>.xlsx</code>. This format allows for functions, multiple spreadsheets in the same file (tabs) and cell formatting. If you follow the tips described above and in <span class="citation">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> you do not need this fancy format. Instead you can store your data as a <code>.csv</code> file. This format may be read and edited with Excel (or another spreadsheet software) but also in a plain text editor. Data entered in this format (comma-separated values; csv) can look like this in a text editor:</p>
 <pre><code> Participant;Time;Exercise;Attempt;load
  Selina Kyle;pre;Isometric;1;81.3  
  Selina Kyle;pre;Isometric;2;92.5
@@ -589,6 +637,21 @@ Figure 3.3: D-FENS Foster gets pushed over the edge (Source: <a href="https://en
  Selina Kyle;post;Isometric;2;114.1</code></pre>
 <p>This is actually quite nice. The data takes little space, the simple format requires that data is well documented using e.g. a data dictionary and it is available for many other softwares as the format is simple. The data can be documented using a <code>README</code> file that could describe the purpose and methods of data collection, how the data is structured and what kind of data the variables contains. A simple <code>README</code> file can be written in a text editor such as Notepad and saved as a <code>.txt</code> file. Later in this course we will introduce a “markup” language often used to create <code>README</code> files containing a syntax that formats the text to a more pleasant style when converted to other formats.</p>
 
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-RN2391" class="csl-entry">
+Broman, Karl W., and Kara H. Woo. 2018. <span>“Data Organization in Spreadsheets.”</span> Journal Article. <em>The American Statistician</em> 72 (1): 2–10. <a href="https://doi.org/10.1080/00031305.2017.1375989">https://doi.org/10.1080/00031305.2017.1375989</a>.
+</div>
+<div id="ref-RN2928" class="csl-entry">
+Stephen, G. Powell, R. Baker Kenneth, and Lawson Barry. 2009. <span>“Errors in Operational Spreadsheets.”</span> Journal Article. <em>Journal of Organizational and End User Computing (JOEUC)</em> 21 (3): 24–36. <a href="https://doi.org/10.4018/joeuc.2009070102">https://doi.org/10.4018/joeuc.2009070102</a>.
+</div>
+<div id="ref-RN1956" class="csl-entry">
+Wickham, Hadley. 2014. <span>“Tidy Data.”</span> Journal Article. <em>Journal of Statistical Software; Vol 1, Issue 10 (2014)</em>. <a href="https://www.jstatsoft.org/v059/i10">https://www.jstatsoft.org/v059/i10</a>.
+</div>
+<div id="ref-RN2927" class="csl-entry">
+Ziemann, Mark, Yotam Eren, and Assam El-Osta. 2016. <span>“Gene Name Errors Are Widespread in the Scientific Literature.”</span> Journal Article. <em>Genome Biology</em> 17 (1): 177. <a href="https://doi.org/10.1186/s13059-016-1044-7">https://doi.org/10.1186/s13059-016-1044-7</a>.
 </div>
 </div>
 <div class="footnotes">
@@ -609,7 +672,6 @@ Figure 3.3: D-FENS Foster gets pushed over the edge (Source: <a href="https://en
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -628,6 +690,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -648,6 +711,10 @@ gitbook.start({
 "text": null
 },
 "download": ["quant-methods.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

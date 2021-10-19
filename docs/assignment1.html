@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Assignment 1: Reliability and tools for reproducible data science | Quantitative methods and statistics (In Sport and Exercise Science)</title>
   <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Assignment 1: Reliability and tools for reproducible data science | Quantitative methods and statistics (In Sport and Exercise Science)" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
   <meta name="github-repo" content="dhammarstrom/quant-methods" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapter 10 Assignment 1: Reliability and tools for reproducible data science | Quantitative methods and statistics (In Sport and Exercise Science)" />
   
   <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Daniel Hammarström" />
 
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="reliability-in-the-physiology-lab.html"/>
 <link rel="next" href="introduction-to-the-molecular-exercise-physiology-lab.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +50,8 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -118,6 +118,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -224,23 +247,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.1" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html#rstudio-projects-and-your-reproducible-report"><i class="fa fa-check"></i><b>7.1</b> RStudio projects and your reproducible report</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a>
+<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#why-version-control"><i class="fa fa-check"></i><b>8.1</b> Why version control</a></li>
-<li class="chapter" data-level="8.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#a-simplecomplicated-start"><i class="fa fa-check"></i><b>8.2</b> A simple/complicated start</a></li>
-<li class="chapter" data-level="8.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-by-step-instructions-on-setting-up-a-version-controlled-r-project."><i class="fa fa-check"></i><b>8.3</b> Step by step instructions on setting up a version controlled R project.</a>
+<li class="chapter" data-level="8.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#why-version-control"><i class="fa fa-check"></i><b>8.1</b> Why version control</a></li>
+<li class="chapter" data-level="8.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#a-simplecomplicated-start"><i class="fa fa-check"></i><b>8.2</b> A simple/complicated start</a></li>
+<li class="chapter" data-level="8.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-by-step-instructions-on-setting-up-a-version-controlled-r-project."><i class="fa fa-check"></i><b>8.3</b> Step by step instructions on setting up a version controlled R project.</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-1.-create-a-free-github-account"><i class="fa fa-check"></i><b>8.3.1</b> Step 1. Create a free github account:</a></li>
-<li class="chapter" data-level="8.3.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-2.-download-git."><i class="fa fa-check"></i><b>8.3.2</b> Step 2. Download git.</a></li>
-<li class="chapter" data-level="8.3.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-3.-connect-git-to-rstudio"><i class="fa fa-check"></i><b>8.3.3</b> Step 3. Connect git to RStudio</a></li>
-<li class="chapter" data-level="8.3.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-4.-create-a-new-online-repository"><i class="fa fa-check"></i><b>8.3.4</b> Step 4. Create a new online repository</a></li>
-<li class="chapter" data-level="8.3.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-5.-create-a-new-project-in-rstudio"><i class="fa fa-check"></i><b>8.3.5</b> Step 5. Create a new project in RStudio</a></li>
-<li class="chapter" data-level="8.3.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#step-6.-make-changes-to-your-project"><i class="fa fa-check"></i><b>8.3.6</b> Step 6. Make changes to your project</a></li>
+<li class="chapter" data-level="8.3.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-1.-create-a-free-github-account"><i class="fa fa-check"></i><b>8.3.1</b> Step 1. Create a free github account:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-2.-download-git."><i class="fa fa-check"></i><b>8.3.2</b> Step 2. Download git.</a></li>
+<li class="chapter" data-level="8.3.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-3.-connect-git-to-rstudio"><i class="fa fa-check"></i><b>8.3.3</b> Step 3. Connect git to RStudio</a></li>
+<li class="chapter" data-level="8.3.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-4.-create-a-new-online-repository"><i class="fa fa-check"></i><b>8.3.4</b> Step 4. Create a new online repository</a></li>
+<li class="chapter" data-level="8.3.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-5.-create-a-new-project-in-rstudio"><i class="fa fa-check"></i><b>8.3.5</b> Step 5. Create a new project in RStudio</a></li>
+<li class="chapter" data-level="8.3.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-6.-make-changes-to-your-project"><i class="fa fa-check"></i><b>8.3.6</b> Step 6. Make changes to your project</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#forking-and-pull-requests"><i class="fa fa-check"></i><b>8.4</b> Forking and pull requests</a></li>
-<li class="chapter" data-level="8.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#additional-great-things-about-github"><i class="fa fa-check"></i><b>8.5</b> Additional great things about GitHub</a></li>
-<li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
-<li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github-com.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github-com.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
+<li class="chapter" data-level="8.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#forking-and-pull-requests"><i class="fa fa-check"></i><b>8.4</b> Forking and pull requests</a></li>
+<li class="chapter" data-level="8.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#additional-great-things-about-github"><i class="fa fa-check"></i><b>8.5</b> Additional great things about GitHub</a></li>
+<li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
+<li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a>
 <ul>
@@ -341,20 +364,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.1" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-from-two-sample-comparisons"><i class="fa fa-check"></i><b>19.1</b> <em>p</em>-values from two sample comparisons</a></li>
 <li class="chapter" data-level="19.2" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#more-p-values"><i class="fa fa-check"></i><b>19.2</b> More <em>p</em>-values</a></li>
 <li class="chapter" data-level="19.3" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#t-test-examples"><i class="fa fa-check"></i><b>19.3</b> <em>t</em>-test examples</a></li>
-<li class="chapter" data-level="19.4" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#a-note-on-reporting-in-r-markdown."><i class="fa fa-check"></i><b>19.4</b> A note on reporting in R Markdown.</a></li>
-<li class="chapter" data-level="19.5" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#error-rates"><i class="fa fa-check"></i><b>19.5</b> Error rates</a></li>
-<li class="chapter" data-level="19.6" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-and-confidence-intervals"><i class="fa fa-check"></i><b>19.6</b> P-values and confidence intervals</a></li>
+<li class="chapter" data-level="19.4" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#error-rates"><i class="fa fa-check"></i><b>19.4</b> Error rates</a></li>
+<li class="chapter" data-level="19.5" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-and-confidence-intervals"><i class="fa fa-check"></i><b>19.5</b> P-values and confidence intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>20</b> Study questions</a>
+<li class="chapter" data-level="20" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html"><i class="fa fa-check"></i><b>20</b> Hypothesis tests and statistical power</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>20.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
-<li class="chapter" data-level="20.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>20.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
-<li class="chapter" data-level="20.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>20.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
-<li class="chapter" data-level="20.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>20.4</b> Chapter 5: Creating your first graph</a></li>
-<li class="chapter" data-level="20.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>20.5</b> Chapter 6: Wrangling data to create your first table</a></li>
-<li class="chapter" data-level="20.6" data-path="study-questions.html"><a href="study-questions.html#chapter-11-introduction-to-the-molecular-exercise-physiology-lab"><i class="fa fa-check"></i><b>20.6</b> Chapter 11: Introduction to the molecular exercise physiology lab</a></li>
+<li class="chapter" data-level="20.1" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html#defining-the-alternative-hypothesis"><i class="fa fa-check"></i><b>20.1</b> Defining the alternative hypothesis</a></li>
+<li class="chapter" data-level="20.2" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html#the-size-of-the-effect"><i class="fa fa-check"></i><b>20.2</b> The size of the effect</a></li>
+<li class="chapter" data-level="20.3" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html#power-and-study-designs"><i class="fa fa-check"></i><b>20.3</b> Power and study designs</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>21</b> References</a></li>
+<li class="chapter" data-level="21" data-path="assignment3.html"><a href="assignment3.html"><i class="fa fa-check"></i><b>21</b> Assignment 3: Drawing inference from statistical models, and statistical power</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="assignment3.html"><a href="assignment3.html#setting-up-a-simulation"><i class="fa fa-check"></i><b>21.1</b> Setting up a simulation</a></li>
+<li class="chapter" data-level="21.2" data-path="assignment3.html"><a href="assignment3.html#many-studies"><i class="fa fa-check"></i><b>21.2</b> Many studies</a></li>
+<li class="chapter" data-level="21.3" data-path="assignment3.html"><a href="assignment3.html#many-studies-without-population-effect"><i class="fa fa-check"></i><b>21.3</b> Many studies without population effect</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="assignment4.html"><a href="assignment4.html"><i class="fa fa-check"></i><b>22</b> Assignment 4: Study designs</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="assignment4.html"><a href="assignment4.html#overview"><i class="fa fa-check"></i><b>22.1</b> Overview</a></li>
+<li class="chapter" data-level="22.2" data-path="assignment4.html"><a href="assignment4.html#details"><i class="fa fa-check"></i><b>22.2</b> Details</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="assignment4.html"><a href="assignment4.html#questions"><i class="fa fa-check"></i><b>22.2.1</b> Questions</a></li>
+<li class="chapter" data-level="22.2.2" data-path="assignment4.html"><a href="assignment4.html#alternative-explanations"><i class="fa fa-check"></i><b>22.2.2</b> Alternative explanations</a></li>
+<li class="chapter" data-level="22.2.3" data-path="assignment4.html"><a href="assignment4.html#logic"><i class="fa fa-check"></i><b>22.2.3</b> Logic</a></li>
+<li class="chapter" data-level="22.2.4" data-path="assignment4.html"><a href="assignment4.html#methods"><i class="fa fa-check"></i><b>22.2.4</b> Methods</a></li>
+<li class="chapter" data-level="22.2.5" data-path="assignment4.html"><a href="assignment4.html#results"><i class="fa fa-check"></i><b>22.2.5</b> Results</a></li>
+<li class="chapter" data-level="22.2.6" data-path="assignment4.html"><a href="assignment4.html#inference"><i class="fa fa-check"></i><b>22.2.6</b> Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="assignment4.html"><a href="assignment4.html#performing-your-literature-review-and-writing-the-report"><i class="fa fa-check"></i><b>22.3</b> Performing your literature review and writing the report</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>23</b> Study questions</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>23.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
+<li class="chapter" data-level="23.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>23.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
+<li class="chapter" data-level="23.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>23.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
+<li class="chapter" data-level="23.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>23.4</b> Chapter 5: Creating your first graph</a></li>
+<li class="chapter" data-level="23.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>23.5</b> Chapter 6: Wrangling data to create your first table</a></li>
+<li class="chapter" data-level="23.6" data-path="study-questions.html"><a href="study-questions.html#chapter-11-introduction-to-the-molecular-exercise-physiology-lab"><i class="fa fa-check"></i><b>23.6</b> Chapter 11: Introduction to the molecular exercise physiology lab</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>24</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -380,9 +428,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The purpose of this assignment is to present estimates of reliability of measures collected in the physiology lab. A second purpose is to use tools for reproducible data science. The report that you are expected to hand in therefore has some strict requirements in its format (see below). The assignment is a group assignment and at least three students are expected to contribute to each report.</p>
 <div id="elements-of-the-report" class="section level2" number="10.1">
 <h2><span class="header-section-number">10.1</span> Elements of the report</h2>
-<p>The report should describe one test that you have performed in the physiology-lab. Select the test that is most interesting to you. The test should be described with a detailed protocol, including preparations of the participant (that is being tested), standardization of the test, and post-test data preparation. Post-test data preparation refferes to steps needed to get data from e.g. equipment used during the test. This section should take into account and reference <span class="citation">(<a href="references.html#ref-RN1739" role="doc-biblioref">Halperin, Pyne, and Martin 2015</a>; <a href="references.html#ref-RN2511" role="doc-biblioref">Tanner and Gore 2012</a>)</span></p>
+<p>The report should describe one test that you have performed in the physiology-lab. Select the test that is most interesting to you. The test should be described with a detailed protocol, including preparations of the participant (that is being tested), standardization of the test, and post-test data preparation. Post-test data preparation refferes to steps needed to get data from e.g. equipment used during the test. This section should take into account and reference <span class="citation">(<a href="#ref-RN1739" role="doc-biblioref">Halperin, Pyne, and Martin 2015</a>; <a href="#ref-RN2511" role="doc-biblioref">Tanner and Gore 2012</a>)</span></p>
 <p>The next section should contain descriptive data from the test. This could be measures of central tendency and variability in the measures you have collected. If possible, try to find similar estimates in the scientific literature.</p>
-<p>Finally, we are interested in reliability. Here you need to calculate an estimate of reliability of the test. Use (and reference) <span class="citation">(<a href="references.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>. Try to be clear with what measure of reliability you are using and what it is telling you.</p>
+<p>Finally, we are interested in reliability. Here you need to calculate an estimate of reliability of the test. Use (and reference) <span class="citation">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>. Try to be clear with what measure of reliability you are using and what it is telling you.</p>
 </div>
 <div id="the-format-of-the-report" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> The format of the report</h2>
@@ -414,6 +462,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
+<h3> References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-RN1739" class="csl-entry">
+Halperin, I., D. B. Pyne, and D. T. Martin. 2015. <span>“Threats to Internal Validity in Exercise Science: A Review of Overlooked Confounding Variables.”</span> Journal Article. <em>Int J Sports Physiol Perform</em> 10 (7): 823–29. <a href="https://doi.org/10.1123/ijspp.2014-0566">https://doi.org/10.1123/ijspp.2014-0566</a>.
+</div>
+<div id="ref-RN130" class="csl-entry">
+Hopkins, W. G. 2000. <span>“Measures of Reliability in Sports Medicine and Science.”</span> Journal Article. <em>Sports Med</em> 30 (1): 1–15. <a href="http://www.ncbi.nlm.nih.gov/pubmed/10907753">http://www.ncbi.nlm.nih.gov/pubmed/10907753</a>.
+</div>
+<div id="ref-RN2511" class="csl-entry">
+Tanner, R. K., and C. J. Gore. 2012. <em>Physiological Tests for Elite Athletes 2nd Edition</em>. Book. Human Kinetics. <a href="https://books.google.no/books?id=0OPIiMks58MC">https://books.google.no/books?id=0OPIiMks58MC</a>.
+</div>
+</div>
             </section>
 
           </div>
@@ -424,7 +484,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -443,6 +502,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -463,6 +523,10 @@ gitbook.start({
 "text": null
 },
 "download": ["quant-methods.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

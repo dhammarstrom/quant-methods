@@ -76,7 +76,7 @@ coef(m)[2]
 
 ```
 
-# Power and study designs
+## Power and study designs
 
 In healthy Norwegian women between between 30 and 39 years of age, the average VO<sub>2max</sub> has been estimated to 40 with a standard deviation of 6.8 [@RN2956]. From the age of 30, VO<sub>2max</sub> decreases by about 3 ml kg<sup>-1</sup> min<sup>-1</sup> per every ten years. Let's say that we want to design a study to investigate the effect of a new training method. We might then think that an improvement of VO<sub>2max</sub> corresponding to a five year decline (half of the average ten year decline) would be important to detect. We compare two training methods in two parallel groups, one group gets to train with traditional method, the other group trains with the our new method. We plan to measure VO<sub>2max</sub> in both groups, after the intervention. The null hypothesis says that the groups are not different after the intervention. The alternative hypothesis states that the new method leads to a difference between training methods of at least 1.5 ml kg<sup>-1</sup> min<sup>-1</sup> between groups. We will accept an $\alpha$ error rate of 5% and $\beta$ error rate of 20% as we aim for a 80% chance of detecting a true effect (of at least 1.5 ml kg<sup>-1</sup> min<sup>-1</sup>), if it is actually true.
 
@@ -116,9 +116,6 @@ pwr.t.test(d = 1.5/4.7, sig.level = 0.05, power = 0.8)
 ```
 
 A change in the design of the study resulted in a sample size less than half of the more inefficient study.
-
-
-# Power after a study has been carried out
 
 
 

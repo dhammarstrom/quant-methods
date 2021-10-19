@@ -1,0 +1,61 @@
+# Assignment 4: Study designs {#assignment4}
+
+
+## Overview
+Choose an area of interest (e.g. protein supplementation for muscle hypertrophy or the effect of block
+periodization on VO<sub>2max</sub>). Find at least five *original research studies*^[Avoid using review articles or meta-analyses] in your selected area and describe strength and weakness of these studies (see below). The report should focus on the design of the studies and selection of statistical tests to answer study aims.
+Conclude your report with a recommendation, how should future studies in your area be designed to best
+answer similar questions.
+
+The report should be handed in on canvas as a link to a github folder containing a R-markdown document **no later than 2021-11-12**. This is an individual assignment.
+
+
+## Details
+
+When analyzing your studies you can use the QALMRI method^[See [Teaching undergraduate students to read empirical articles: An evaluation and revision of the QALMRI method](https://psyarxiv.com/p39sc/), this advice was also heavily influenced by [this website](https://bartlettje.github.io/2021-10-06-learning-to-read-scientific-journal-articles/)].
+
+### Questions
+
+1. What was the broader problem the authors are trying to resolve in the study?
+2. What are the specific questions the authors are trying to answer?
+
+The first point should be similar in all your studies, this could be e.g. the effect of age on physical functioning, effect of certain training protocols on VO<sub>2max</sub>, etc.
+
+The second point is potentially different between your studies.
+
+### Alternative explanations
+
+3. Is the specific question framed as an hypothesis or a question?
+4. If the authors have formulated a hypothesis, what alternative explanations can you think of that could potentially explain the data that the authors hypothesize?
+
+### Logic
+
+5. What is the logic of the hypothesis or the question. Try to create a "line of logic" between the introduction and the question/hypothesis.
+
+### Methods
+
+6. Describe the study design. Use Hulley, (2013), Chapters 7-13^[Hulley, S. B. (2013). Designing clinical research. Philadelphia, Wolters Kluwer/Lippincott Williams & Wilkins.] in your analysis.
+7. Describe the sample and if the study defines the population.
+8. Describe the method of recruiting participants to the study. Did the authors justify their sample size (i.e. did they do a power calculation)?
+9. Describe how the study was conducted (what tests was performed when etc.)
+10. Describe the variables in the study, what variables relate to the question/hypothesis?
+11. What methods did the authors use to make claims (what statistical tests were used)
+
+### Results
+12. What were the main results of the study, did the authors answer their question/address their hypothesis?
+
+### Inference
+13. What could the authors conclude from the study?
+14. What did the authors conclude about the study population?
+
+## Performing your literature review and writing the report
+
+Your report should not contain a detailed summary of all studies for all these questions, instead you should summarize your results. Highlight differences and similarities between studies. *As the main point of this review is study designs and statistical analyses, this should be your main focus*. When doing your literature review, it is however a good idea to structure it in a table with the above mentioned headings:
+
+- Question
+- Alternative
+- Logic
+- Methods 
+- Results
+- Inference
+

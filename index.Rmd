@@ -95,17 +95,16 @@ The table below shows all assignments that are part of the course. Some are not 
 | :--- | :---: | ---:| ---:|
 |Descriptive statistics, reliability and validity, tools for reproducible data science (See Chapter \@ref(assignment1))| 2021-09-10 |Yes|Yes|
 |Regression models and prediction from data (See Chapter \@ref(assignment2))|2021-10-01|No|Yes|
-|Extraction and analysis of DNA |2021-10-15|Optional^a^|Yes|
-|Extraction of RNA and analysis of qPCR experiments|2021-10-|Optional^a^|Yes|
-|Extraction and analysis of Protein|2021-10-|Optional^a^|Yes|
-|Study designs|2021-10-01 |Yes|No|
+|Extraction and analysis of DNA |2021-11-30|Optional^a^|Yes|
+|Extraction of RNA and analysis of qPCR experiments|2021-11-30|Optional^a^|Yes|
+|Extraction and analysis of Protein|2021-11-30|Optional^a^|Yes|
+|Philosophy of science^b^ (See canvas)|2021-10-29|Yes|No|
+|Drawing inference from statistical models and statistical power (See Chapter \@ref(assignment3))|2021-11-05|No|Yes|
+|Study designs (See Chapter \@ref(assignment4))|2021-11-12|Yes|No|
+|Analyzing repeated measures experiments (See Chapter \@ref(assignment5))|2021-11-22|Yes|No|
 
-|Drawing inference from statistical models|2021-10- |No|Yes|
-|Statistical power and sample size calculations|2021-11-|Yes|Yes|
-|Analyzing repeated measures experiments|2021-11-|Yes|No|
-|Philosophy of science^b^|2021-11- |Yes|No|
 
- <font size="2">^a^ Select one laboratory assignments for your portfolio exam. ^b^ This assignment is presented in connection with lectures. 
+ <font size="2">^a^ Select one laboratory assignments for your portfolio exam. All groups presents one selected method on 2021-11-30. ^b^ This assignment is presented in connection with lectures. 
  </font>
 
 In addition to arbeidskrav/assignments, you are **required to contribute to the course wiki**. The wiki page is hosted at [github.com/dhammarstrom/IDR4000-2021/](https://github.com/dhammarstrom/IDR4000-2021/). In order to contribute you need to set up your own github account. The language of the wiki should be Norwegian.
