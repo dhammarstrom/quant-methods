@@ -1,0 +1,743 @@
+---
+bibliography: resources/bib-final.bib
+---
+
+# Pre- to post-treatment analysis
+
+```{css, echo=FALSE}
+body {
+  counter-reset: counter-rchunks;
+}
+
+div.main-container {
+  padding-left: 5em;
+}
+
+pre.r {
+  counter-increment: counter-rchunks;
+  position: relative;
+  overflow: visible;
+}
+
+pre.r::before {
+  content: 'CC [' counter(counter-rchunks) ']: ';
+  display: inline-block;
+  position: absolute;
+  left: -5em;
+  color: rgb(48, 63, 159);
+}
+```
+
+
+```{r setup-analyzing-trials, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, dpi = 300)
+```
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse); library(readxl)
+#set.seed(1)
+#
+#df <- data.frame(group = rep(c("A", "B", "C"), each = 10),  outcome = c(rnorm(10, 5, 2), #rnorm(10, 7.8, 2), rnorm(10, 10, 2))) 
+#
+#avg <- df %>%
+#        group_by(group) %>%
+#        summarise(m = mean(outcome))
+#
+#avg.all <- df %>%
+#        group_by() %>%
+#        summarise(m = mean(outcome))
+#
+#
+#
+#df %>%
+#        ggplot(aes(group, outcome)) + geom_jitter(width = 0.2) + 
+#        geom_point(data = avg, aes(group, m))+
+#        geom_segment(data = avg, aes(c(0.75, 1.75, 2.75),
+#                                     m, 
+#                                     yend = m,
+#                                     xend = c(1.25, 2.25, 3.25))) +
+#        geom_hline(yintercept = avg.all$m, color = "blue")
+#
+#
+#
+#contrasts(df$group) <- "contr.helmert"
+#
+#
+#a <- aov(outcome ~ group, data = df)
+#l <- lm(outcome ~ group, data = df)
+#?aov
+#summary(a)
+#summary(l)
+
+```
+
+## Background
+
+In sport science (and e.g. medical-, nutritional-, psychological-sciences), intervention-studies are common. We are interested in the effect of e.g. a training method, nutritional supplement or drug. The outcome in these studies could be physical performance, degree of symptoms, muscle size or some other measure that we are interested in studying. These studies are often called *Randomized Controlled Trials* (RCT).
+
+The choice of study design relates to the research-question and dictates what statistical methods can be applied. The study design affects the ability of the study to detect an effect (the power). A common case of a RCT is the parallel-groups design. In a parallel-group design participants are **allocated** to two or more "treatment groups", **at random**, one group gets a treatment, the other group acts as the control. Usually, a measurement is made prior to the intervention (Baseline) and after the intervention. This is a common design **when wash-out period** is not possible and thus, the two treatment can not be compared within the same individual. 
+
+In a design where we have a Treatment group and a control group for comparison hypothesized outcomes can look something like in Figure \@ref(fig:trial-design-fig).
+
+```{r trial-design-fig, fig.align='center', fig.dim = c(4,2.5), fig.cap = "Hypothesized values from a simple pre-post parallel-groups design"}
+
+data.frame(Time = c("Pre", "Post", "Pre", "Post"), outcome = c(0,1, 0,1)) %>%
+        mutate(Time = factor(Time, levels = c("Pre", "Post"))) %>%
+        ggplot(aes(Time, outcome)) + 
+        theme_classic() + 
+        ylab("Outcome") +
+        theme(axis.text.y = element_blank()) +
+        geom_segment(aes(x = Time, xend = 2, 
+                         y = c(0.5,0.5, 0.5,1.5), 
+                         yend = c(0.5,0.5, 1.5,1.5))) + 
+        scale_y_continuous(limits = c(0,2)) + 
+        annotate(geom = "text", x = 2.25, y = 1.5, label = "Treatment") +
+        annotate(geom = "text", x = 2.25, y = 0.5, label = "Control") 
+
+```
+
+Another common scenario is that we expect progress in two different treatments groups as in Figure \@ref(fig:trial-design-fig2).
+
+
+```{r trial-design-fig2, fig.align='center', fig.dim = c(4,2.5), fig.cap = "Hypothesized values from a simple pre-post parallel-groups design including to different treatments"}
+
+data.frame(Time = c("Pre", "Post", "Pre", "Post"), outcome = c(0,1, 0,1)) %>%
+        mutate(Time = factor(Time, levels = c("Pre", "Post"))) %>%
+        ggplot(aes(Time, outcome)) + 
+        theme_classic() + 
+        ylab("Outcome") +
+        theme(axis.text.y = element_blank()) +
+        geom_segment(aes(x = Time, xend = 2, 
+                         y = c(0.5,0.5, 0.5,1.5), 
+                         yend = c(1.1,0.5, 1.5,1.5))) + 
+        scale_y_continuous(limits = c(0,2)) + 
+        annotate(geom = "text", x = 2.25, y = 1.5, label = "A") +
+        annotate(geom = "text", x = 2.25, y = 1.1, label = "B") 
+
+```
+
+
+In both scenarios we are interested in the **treatment effect** (or the difference in effect of two different treatments). This means that we want to establish if
+
+$$ \Delta Y_A-\Delta Y_B \neq 0 $$
+
+meaning that the **null hypothesis** is that the **change** ($\Delta$) in group A is not different to the **change** in group B. To evaluate these studies we could do a *t-test* on the change score between groups. This is equivalent to a regression model where we estimate the difference between groups:
+
+$$outcome = \beta_0 + \beta_1 Group_B$$
+In R, these to alternatives can be easily fitted using the code presented in code chunk (CC) 1:
+
+```{r, eval = FALSE, echo = TRUE}
+# A t-test example
+with(data, t.test(outcome_A, outcome_B, paired = FALSE)
+
+# The same using a regression model
+lm(change ~ group, data = data)
+```
+
+This seemingly simple solution has some benefits but does not take into account that baseline values can affect the interpretation of a pre- to post-intervention study through **regression towards the mean**. 
+
+If we analyze change scores ($post-pre$), regression towards the mean will give an overestimation of the effect if there is, by chance, a difference in baseline values between groups (lower values in treatment group) [@RN2118]. If we analyze follow up scores (differences in post-scores between groups), the pattern will be reversed. To fix this problem we could control for the relationship between baseline values and the change scores. This technique is called Analysis of Co-Variance (ANCOVA), where the baseline is considered the added co-variance. This is an extension of the simple linear regression model (CC2).
+
+```{r, eval = FALSE, echo = TRUE}
+# Extending the linear regression equation
+lm(change ~ baseline + group, data = data)
+```
+
+We prefer the ANCOVA model over the ordinary regression model as the ANCOVA model has better power [@RN2116]. The ANCOVA model also gives **unbiased** estimates of differences between groups [@RN2118]. We can use the ANCOVA model when the allocation of participants have been done at random (e.g. RCTs) meaning that differences at baseline should be due to random variation.
+
+
+## Exercises: Ten vs thirty RM-study
+
+Thirty-one participants were assigned to one of two groups training with either 10 repetition maximum (RM) or 30RM, 27 participants completed the trial to the mid-study evaluation and 24 participants completed the full study. The main question in the study was whether these two different treatments resulted in different magnitudes of strength development or muscle hypertrophy (we are interested in strength).
+
+The data is available in the `exscidata` package and contains the following variables:
+
+a. `participant`: ID of participant
+b. `time`: prior to *pre* or after the intervention *post*
+c. `group`: The intervention group
+d. `exercise`: The exercise that was tested, *legpress*, *benchpress* or *bicepscurl*
+e. `load`: The load lifted in 1RM test (kg)
+
+An example of loading the data and plotting the data can be seen in CC3:
+
+```{r, eval = FALSE, echo = TRUE}
+
+library(tidyverse); library(exscidata)
+data("tenthirty")
+
+
+ tenthirty %>%
+        mutate(time = factor(time, 
+                                  levels = c("pre", "mid", "post"))) %>%
+        ggplot(aes(time, load, fill = group)) + 
+        geom_boxplot() +
+        facet_wrap(~ exercise, scales = "free") + 
+  theme_minimal()
+
+```
+
+The main purpose of our analysis is to answer the question: **what training method can we recommend for improving maximal strength?** To try to answer this question we will (1) select a suitable 1RM test exercise, (2) choose the most appropriate statistical model. To illustrate differences between models we will compare different models (`lm` on the change-score, `lm` with baseline as a covariate, `lm` on post-values with baseline as a covariate). 
+
+### Reducing the data set 
+
+For this exercise we will focus on the pre- to post-analysis of leg-press data. To filter the data set we can use the code in CC4. We will have to re-shape the data for the calculation of change scores. We do this and add a simple calculation of change scores $post-pre$.
+
+```{r, eval = TRUE, echo = TRUE}
+
+library(exscidata); data("tenthirty")
+
+
+tenthirty_reduced <- tenthirty %>%
+  filter(time != "mid", 
+         exercise == "legpress") %>%
+  # To get the variables in the correct order we need...
+        mutate(time = factor(time, 
+                                  levels = c("pre",  "post"))) %>% 
+  pivot_wider(names_from = time, 
+              values_from = load) %>%
+  mutate(change = post - pre) %>%
+  filter(!is.na(change))
+
+```
+
+We are now ready to fit some models, these are outlined in CC5.
+
+```{r, eval = FALSE}
+# A simple t-test with equal variance
+ttest <- t.test(change ~ group, var.equal = TRUE, data = tenthirty_reduced)
+
+# The equivalent liner model 
+m1 <- lm(change ~ group,  data = tenthirty_reduced)
+
+# Differences in change scores, controlling for baseline
+m2 <- lm(change ~ pre + group,  data = tenthirty_reduced)
+
+# Differences in post scores 
+m3 <- lm(post ~ group,  data = tenthirty_reduced)
+
+# Differences in post scores, controlling for baseline
+m4 <- lm(post ~ pre + group,  data = tenthirty_reduced)
+
+
+```
+
+Before we look at the models, a word of caution: We should not select the model that best suit our hypothesis or belief. Instead we should formulate a model that fits our question and interpret the results from a model that meets the assumptions of the analysis (in the case of regression analysis: homoscedasticity, normally distributed residuals etc.).
+
+In this study it is reasonable to account for the baseline difference between groups. These differences are there because of the randomization. We may account for them by including them in our analysis (as in `m2` and `m4`). To check if the addition of the baseline helps explain the data we can perform analysis of variance when comparing two models using the `anova()`-function.
+
+The null hypothesis is that the addition of the `pre` variable does not help explain the observed variation in the data. Comparing model 1 and 2, and 3 and 4 (these have the same dependent variable) we see that there is fairly strong evidence against the null hypothesis (CC6).^[This tests is made here for illustrating the point that it usually have a relationship with the change score (or follow-up score). This test should not be done to determine if the ANCOVA model should be used or not. Since adding the baseline covariate does not make things worse we should consider it regardless[@RN2116;@RN2118]]    
+
+```{r, eval = FALSE}
+anova(m1, m2)
+
+anova(m3, m4)
+```
+
+To check if the models meet the assumptions of regression models we can use the plot function. Let's first look at `m1` comparing change score between groups. 
+
+```{r m1-diagnostics-plot, echo = FALSE, fig.cap = "Diagnostic plots of Model 1"}
+
+m1 <- lm(change ~ group,  data = tenthirty_reduced)
+
+
+par(mfrow = c(2,2))
+plot(m1)
+par(mfrow = c(1,1))
+```
+
+The plots in Figure \@ref(fig:m1-diagnostics-plot) suggests that there is evidence of violation of the assumption of homoscedasticity (Residuals vs fitted, larger spread in higher fitted values also evident in the scale location plot). We can also see that the residuals are not normally distributed (Normal Q-Q plot). This model is not that good.
+
+Let's check the model with change between groups controlling for baseline values (Model 2). To create a similar grouped plot as above, use the code in CC7
+```{r, echo = FALSE}
+# Differences in change scores, controlling for baseline
+m2 <- lm(change ~ group + pre,  data = tenthirty_reduced)
+```
+
+```{r, eval = FALSE}
+par(mfrow = c(2,2))
+plot(m2)
+par(mfrow = c(1,1))
+```
+
+This is not a perfect model either, but the residuals looks a bit better. In fact the only model that would (almost) fail a more formal test is Model 1. The Brusch-Pagan test (see CC8) tests for heteroscedasticity.^[This implies that a Welch t-test could improve the situation (`var.equal = FALSE`) and that heteroscedasticity in the linear model could be accounted for by variance components in a generalized least square model, `gls` from the `nlme` package)]
+
+
+```{r, eval = FALSE}
+# The Brusch-Pagan test
+library(lmtest)
+bptest(m2)
+```
+
+### Inference
+
+Success! Our models are somewhat OK. We may draw inference from them. It turns out that model estimating the change score or the post score does not matter when we control for the baseline. The difference between groups are exactly the same in Model 2 and 4 (CC9).
+
+```{r, eval = FALSE}
+summary(m2)
+
+summary(m4)
+```
+
+The `pre` variable changes as the relationship to the change is different to the relationship to post scores but the model does the same thing! This is now a question of how we would like to frame our question. If the question is "do people that train with 10RM **increase** their strength more than people that train with 30RM (assuming a similar baseline strength level)?" then model 2 is preferred. If the question is "are people that **trained** with 10RM stronger than people who have trained with 30RM (assuming a similar baseline strength level)?", model 4 is preferred. The differences are basically semantics as the models tests the same thing, the differences between groups when controlling for baseline differences.
+
+As we control for the baseline, we removes some of the unexplained error from the model, this will lead to a more powerful model. This is reflected in the stronger evidence^[Stronger evidence in the sense that we will generally have smaller *p*-values] against the null-hypothesis of no difference between groups. 
+
+### What if the model diagnostics says the models are no good?
+
+Biological data and performance data often exhibit larger variation at larger values. This may lead to heteroscedasticity. A common way of dealing with this is the log transformation. Transforming the data to the log scale changes the interpretation of the regression coefficients. 
+
+```{r, echo = TRUE, eval = TRUE}
+# A linear model with the dependent variable on the linear scale!
+m.linear <- lm(post ~ pre + group,  data = tenthirty_reduced)
+
+# A linear model with the dependent variable on the log scale!
+m.log <- lm(log(post) ~ pre + group,  data = tenthirty_reduced)
+
+```
+
+As we interpret the regression coefficients as differences the laws of the log are important to remember: 
+
+$$log(\frac{A}{B}) = log(A) - log(B)$$
+This means that the difference between two variables on the log scale is the same as the log of their ratio. When we **back-transform** values from the log scale we get the fold differences.
+
+Let's say that we have a mean in group A of 40 and a mean in group B of 20. The difference is 20. If we estimate the difference on the log scale however we will get (CC9):
+
+```{r, echo = TRUE, eval = FALSE}
+a <- log(40/20)  
+
+b <- log(40) - log(20)
+
+c <- 40/20
+
+exp(a)
+exp(b)
+c
+```
+
+The `exp` function back-transforms data from the log scale. Back-transforming a difference between two groups (as estimated in our model) will yield the fold-difference, this can be calculated as a percentage difference. In the code chunk below the log-difference between groups is transformed to percentage differences using:
+
+$$Percentage~difference = (1-exp(estimate)) \times 100$$
+
+If we want to express the 30RM group as a percentage of the 10RM group we could remove 1 from the equation:
+
+$$Percentage~of~10RM = exp(estimate) \times 100$$
+
+The function `tidy` from the `broom` package is used to access the model output. 
+
+```{r}
+library(broom)
+
+
+tidy_model <- tidy(m.log) %>%
+  # Back-transform log-data using the exp function
+  mutate(estimate = exp(estimate))
+
+# The difference between groups in percentage
+diff_between_groups <- (1 - tidy_model[3, 2]) * 100
+
+
+# The difference between groups as a percentage of the value in the reference group (10RM)
+percentage_of_reference <- tidy_model[3, 2] * 100
+
+```
+
+The 30RM group is `r round(diff_between_groups, 1)`% weaker than the 10RM group. Alternatively we can express the values as a percentage of the 10RM group. The 30RM group has a strength level that is `r round(percentage_of_reference, 1)`% of the 10RM group.
+
+Similarly to the point estimate, a confidence interval may also be back-transformed. 
+
+## Case study: Single vs. multiple sets of training and muscle mass
+
+```{r, echo = FALSE, warning=FALSE, message=FALSE}
+
+library(exscidata); library(tidyverse)
+data("dxadata")
+
+
+  set.seed(85)
+# Create a data frame with "selected" legs
+ legs <- dxadata %>%
+   filter(include == "incl") %>%
+   distinct(participant) %>%
+   mutate(selected.leg = sample(c("L", "R"), size = nrow(.), replace = TRUE)) 
+
+ # Count number of cases
+n <- nrow(legs)
+
+ 
+ 
+ temp <- dxadata %>%
+  filter(include == "incl") %>%
+  select(participant:sex, lean.left_leg, lean.right_leg) %>%
+  pivot_longer(names_to = "leanleg", 
+               values_to = "mass", 
+               cols = lean.left_leg:lean.right_leg) %>%
+  mutate(leanleg = if_else(leanleg == "lean.left_leg", "L", "R")) %>%
+  pivot_longer(names_to = "sets", 
+               values_to = "leg", 
+               cols = multiple:single) %>%
+  filter(leg == leanleg) %>%
+  inner_join(legs) %>%
+  filter(leg == selected.leg) %>%
+  select(participant, time, sex, sets, mass) %>%
+  pivot_wider(values_from = mass, names_from = time) 
+
+  m <- lm(post ~ pre  + sets, data = temp)
+
+
+
+
+```
+
+In this study, n = `r n` participants completed a resistance training intervention with multiple-set and single-set randomized to either leg. Muscle mass was measured through the use of regional estimation of lean mass with a DXA machine. In this case study we will analyze data were participants have been selected either to belong to the single- or multiple-set group. This means we will only analyze one leg per participant!
+
+
+### Prepare the data set
+
+The data can be found in the `exscidata` package as the `dxadata` data set, use `?dxadata` to inspect the different variables. The data set is quite complex, use the code below to get the correct, reduced data set. 
+
+We will randomly select participants left of right leg. To get the same estimates as in these examples you need to set the seed to 22 before the randomization (`set.seed(22)`). 
+
+```{r, echo = TRUE, eval = FALSE}
+
+# Copy this code to get the correct data set. 
+
+library(exscidata); library(tidyverse)
+data("dxadata")
+
+# Set the random number generator  
+set.seed(85)
+
+  # Create a data frame with "selected" legs
+  # this data frame will help us "randomize" participants to either group.
+legs <- dxadata %>%
+ filter(include == "incl") %>%
+ distinct(participant) %>%
+ mutate(selected.leg = sample(c("L", "R"), size = nrow(.), replace = TRUE)) 
+
+
+
+
+dxadata_reduced <- dxadata %>%
+  # Filter only participants completing at least 85% of the prescribed sessions
+  filter(include == "incl") %>%
+  # Select relevant columns
+  select(participant:sex, lean.left_leg, lean.right_leg) %>%
+  # Using pivot longer we gather the lean mass data
+  pivot_longer(names_to = "leanleg", 
+               values_to = "mass", 
+               cols = lean.left_leg:lean.right_leg) %>%
+  # Change the leg identification from the DXA machine
+  mutate(leanleg = if_else(leanleg == "lean.left_leg", "L", "R")) %>%
+  # Gather data from the training volume variable to "sets"
+  pivot_longer(names_to = "sets", 
+               values_to = "leg", 
+               cols = multiple:single) %>%
+  # Filter observations to correspond to the training volume variable
+  filter(leg == leanleg) %>%
+  # Join the data set with the selected legs data set
+  inner_join(legs) %>%
+  # Filter to keep only "selected" legs, these are the legs that we picked randomly above
+  filter(leg == selected.leg) %>%
+  # Select relevant variables
+  select(participant, time, sex, sets, mass) 
+
+```
+
+
+### Exploratory analysis
+
+Use descriptive methods (summary statistics and figures to describe results from the trial). What are the mean and standard deviations of the `mass` variable for each `time` and training volume (`sets`). Use tables and figures to show the results.
+
+
+ <script language="javascript"> 
+    function toggle(num) {
+      var ele = document.getElementById("toggleText" + num);
+      var text = document.getElementById("displayText" + num);
+      if(ele.style.display == "block") {
+        ele.style.display = "none";
+        text.innerHTML = "show";
+      }
+      else {
+        ele.style.display = "block";
+        text.innerHTML = "hide";
+      }
+   } 
+  </script>
+
+
+ <a id="displayText" href="javascript:toggle(1);">Here is a possible solution for a table</a>
+  <div id="toggleText1" style="display: none">
+
+We want to summarize data per volume condition, sex and time-point and we want the means, standard deviations and the number of observations. 
+
+```{r, eval = FALSE}
+
+
+summary <- dxadata_reduced %>% 
+        group_by(time, sets, sex) %>%
+        summarise(Mean = mean(mass, na.rm = TRUE), 
+                  SD = sd(mass, na.rm = TRUE), 
+                  n = n()) 
+
+
+# To create a table we need the kable function from the knitr package
+
+library(knitr)
+
+summary %>%
+  arrange(sets, time) %>%
+  kable(digits = c(NA, NA, NA, 0, 0, 0), 
+      col.names = c("Time-point", "Sets", "Sex", "Mean", "SD", "n"))
+
+
+```
+
+
+  </div>
+  </br>  
+
+ <a id="displayText" href="javascript:toggle(2);">Here is a possible solution for a figure</a>
+  <div id="toggleText2" style="display: none">
+
+Using the same summary statistics, we can create a figure. We might want to sort variables so that time-points are in the right order. In the figure we can use `geom_errorbar` to display SD.
+
+
+```{r, eval = FALSE}
+
+# create a position for all variables and store in object
+pos <- position_dodge(width = 0.2)
+
+
+summary %>%
+        ungroup() %>% # Needed to mutate the timepoint variable
+        mutate(time = factor(time, levels = c("pre", "post"))) %>%
+        ggplot(aes(time, Mean, color = paste(sex, sets), group = paste(sex, sets))) + 
+        geom_errorbar(aes(ymin = Mean - SD, ymax = Mean + SD), position = pos) +
+        geom_line(position = pos) +
+        geom_point(shape = 21, position = pos)
+        
+```
+
+
+
+  </div>
+  </br>  
+
+What can you say about the effect of single- vs. multiple-sets training on muscle strength using these observations?
+
+
+### Change from baseline
+
+Calculate the average change from baseline (`pre`) in each group and create a graph of the results. Make a plan of your code before you start writing it!
+
+
+ <a id="displayText" href="javascript:toggle(3);">Here is a possible solution for a figure</a>
+  <div id="toggleText3" style="display: none">
+
+Here we want to perform the following steps: 
+
+1. Make the data set wider and calculate change as $post-pre$
+2. Group the data set by sets
+3. Summarize the data and create a figure with groups on the x-axis and change on the y-axis.
+
+ <a id="displayText" href="javascript:toggle(4);">Example code</a>
+  <div id="toggleText4" style="display: none">
+
+```{r, eval = FALSE}
+
+dxadata_reduced %>% 
+        pivot_wider(names_from = time, 
+                    values_from = mass) %>%
+        mutate(change = post-pre) %>%
+        group_by(sets) %>%
+        summarise(m = mean(change, na.rm = TRUE), 
+                  s = sd(change, na.rm = TRUE)) %>%
+        ggplot(aes(sets, m)) + 
+        geom_errorbar(aes(ymin = m - s, ymax = m + s), width = 0) +
+        geom_point()
+
+```
+
+
+
+  </div>
+  </br>  
+
+  </div>
+  </br>  
+
+### Model the change
+
+The present data set is an example of a simple randomized trial. Participants have been randomized to either treatment before the trial and we are interested in the difference in treatment outcomes. There are several options for analyzing these data. A simple alternative would be to analyze the difference in post-training values with a t-test. This is not very efficient in terms of statistical power, i.e. we would need a lot of participants to show a difference if it existed due to differences between participants. In the case of the present data set, we have also collected more data than just follow-up scores. The baseline scores can be used to calculate a change-score which in turn can be used to compare treatments. This is a more direct comparison related to our actual question. We want to know what treatment is more effective in *improving* muscle mass.
+
+
+Write code to test the if there is a difference between the groups in post values and change scores. Use the `lm` function with `sets` as the grouping variable.
+
+
+ <a id="displayText" href="javascript:toggle(5);">Example code</a>
+  <div id="toggleText5" style="display: none">
+
+```{r, eval = FALSE}
+
+data <- dxadata_reduced %>% 
+        pivot_wider(names_from = time, 
+                    values_from = mass) %>%
+        mutate(change = post - pre) %>%
+  print()
+  
+## The linear model of post scores
+summary(lm(post ~ sets, data = data))
+
+## The linear model of change scores
+summary(lm(change ~ sets, data = data))
+
+
+
+```
+
+
+  </div>
+  </br>  
+
+
+### Accounting for the baseline -- Regression to the mean and extending the linear model
+
+Above we created linear models from where you got exactly the same results as from the t-test. The models differed in that one model only estimated the difference in poast-scores whereas the other model assessed the differences between volume conditions in change scores. In this section we will see that the linear model is easily extended to create more robust statistics of outcome values.
+
+When we have calculated a change score we are taking the baseline values into account. However, this score might be related to the baseline due to a phenomena known as regression towards the mean. When we do repeated testing on the same participants, test scores that were close to the upper or lower limit of a participant potential scores will be replaced with a score closer to the mean. This in turn will create a negative association between initial values and change. We could account for this by adding the baseline values as a covariate.
+
+By adding the baseline values as a covariate we adjust the estimate of the difference between treatments to a difference between groups if they had the same baseline values.
+
+Similarly, we can add a baseline score to the model where we only assessed baseline scores. We are now assessing the difference between post-treatment values accounting for the baseline values. This model contains the same information as the adjusted change-score model. 
+
+The two extended models discussed above may be called ANCOVA models (ANalysis of CO-VAriance). The ordinary linear models we used above can be written e.g. as:
+
+$$Change = \beta_0 + \beta_1 \times Group$$
+
+The extended, ANCOVA model can be written as
+
+$$Change =  \beta_0 + \beta_1 \times Baseline + \beta_2 \times Group$$
+
+Using the DXA data `dxadata_reduced`, create models with the baseline values as a covariate, use the change score in one model and the post-treatment scores in the other model. Assess the difference between groups, how do you interpret it?
+
+Can you also explain the difference between models in the relationship between the dependent variable and the baseline covariate?
+
+
+ <a id="displayText" href="javascript:toggle(6);">Example code</a>
+  <div id="toggleText6" style="display: none">
+
+
+```{r, eval = FALSE, echo = TRUE}
+
+data <- dxadata_reduced %>% 
+        pivot_wider(names_from = time, 
+                    values_from = mass) %>%
+        mutate(change = post - pre) %>%
+  print()
+  
+## The linear model of post scores adjusted for baseline values
+summary(lm(post ~ pre + sets, data = data))
+
+## The linear model of change scores adjsuted for baseline values
+summary(lm(change ~ pre + sets, data = data))
+
+
+```
+
+
+  </div>
+  </br>  
+
+### Training volume and strength - Extending the model further
+
+In the following example we will use the isokinetic (60 degrees per second) data from the same study `isok.60` to infer on the effect of single- vs. multiple-set training. We will use the pre- to post training scores for change score calculations. In the data set we have men and women, to get an unbiased association to the baseline, we will mean center the pre-values per sex.
+
+We need to prepare the data set, we will use the same "randomization" as above, accomplished by joining the `legs` data set containing the "randomization" to the `strengthvolume` (from the `exscipackage`). We will have to take the maximum isometric force from each time-point as multiple tests were made. We will accomplish this by grouping and summarizing the data set. Use the code below to prepare the data before statistical modeling.
+
+```{r, eval = TRUE, echo = TRUE, message = FALSE, warning=FALSE}
+
+data("strengthvolume")
+
+isom_data <- strengthvolume %>% 
+  
+  filter(include == "incl", 
+         time %in% c("pre", "post"), 
+         exercise == "isok.60") %>%
+  inner_join(legs) %>%
+  filter(leg == selected.leg) %>%
+  group_by(participant, sex, time, sets) %>%
+  summarise(load = max(load, na.rm = TRUE)) %>%
+  pivot_wider(names_from = time, 
+                    values_from = load) %>%
+          mutate(change = post - pre) %>%
+  print()
+
+```
+
+Since the ANCOVA model is a multiple regression model we can add more variables that will help explain our results. In the randomization of our version of the study females and males were slightly unbalanced between volume groups. This is a factor that we might want to adjust for. We are interested in the differences between training conditions regardless of sex-differences.
+
+Using the data set that we created above, create two models of post-treatment values, one without the added effect of `sex` and one with the `sex` added to the model to adjsut the scores.
+
+ <a id="displayText" href="javascript:toggle(7);">Example code</a>
+  <div id="toggleText7" style="display: none">
+
+```{r, eval = FALSE, echo = TRUE}
+
+# Without the effect of male/female
+m1 <- lm(post ~ pre + sets, data = isom_data)
+
+# With the effect of male/female
+m2 <- lm(post ~ sex + pre + sets, data = isom_data)
+
+summary(m1)
+summary(m2)
+
+
+```
+
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+
+library(exscidata); library(tidyverse)
+data("strengthvolume")
+
+isom_data <- strengthvolume %>% 
+  
+  filter(include == "incl", 
+         time %in% c("pre", "post"), 
+         exercise == "isok.60") %>%
+  inner_join(legs) %>%
+  filter(leg == selected.leg) %>%
+  group_by(participant, sex, time, sets) %>%
+  summarise(load = max(load, na.rm = TRUE)) %>%
+  pivot_wider(names_from = time, 
+                    values_from = load) %>%
+          mutate(change = post - pre) 
+
+
+# Without the effect of male/female
+m1 <- lm(post ~ pre + sets, data = isom_data)
+
+# With the effect of male/female
+m2 <- lm(post ~ sex + pre + sets, data = isom_data)
+
+
+```
+
+The un-adjusted model suggests that the difference between volume conditions are `r round(tidy(m1)[3,2], 1)` but in the adjusted case, the difference is estimated to `r round(tidy(m2)[4,2], 1)` units. Although both models suggest a small effects, failing to control for other factors could potentially bias your conclusions. This example shows how additional adjustment can be made to the very flexible regression model.   
+
+  </div>
+  </br>  
+
+## References
+
+
+
+
+
+
+
+
+
+
+

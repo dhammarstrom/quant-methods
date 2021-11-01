@@ -1,0 +1,331 @@
+---
+bibliography: resources/bib-final.bib
+---
+
+ <script language="javascript"> 
+    function toggle(num) {
+      var ele = document.getElementById("toggleText" + num);
+      var text = document.getElementById("displayText" + num);
+      if(ele.style.display == "block") {
+        ele.style.display = "none";
+        text.innerHTML = "show";
+      }
+      else {
+        ele.style.display = "block";
+        text.innerHTML = "hide";
+      }
+   } 
+  </script>
+
+
+# Mixed models - Analyzing repeated measures designs
+
+## Accounting for the baseline -- Differences between group and mixed models
+
+In a randomized controlled trial, there might be difference between groups at baseline just by chance. These differences can be controlled for using the ANCOVA model, as described in the previous chapter. Another way to account for any baseline differences is to analyze raw scores (not change-scores) and account for potential baseline differences in the model. This can be done using another "extension" of the regression model, the mixed effects model.
+
+## Statistical name dropping
+Here we will briefly continue to talk about *mixed effects models* (or *linear mixed models*, or *hierarchical models*) which are models for *continuous outcomes* with *normally distributed errors*. These models can account for *non-independence* between data-points, meaning that we can fit a model using *correlated data*. This is advantageous when we want to analyze the same participants in a time-course manner (*repeated measures design*). Traditionally in exercise science, this has been done using *repeated measures analysis of variance* (*repeated measures ANOVA*). One might say that this is an outdated technique as the modern *mixed effects model* is more flexible and robust as it allows for e.g. *unbalanced data* (e.g. different number of participants in each group), *missing data* and more complex model formulations.
+
+The mixed effects model can be extended to other problems under the framework of *generalized linear models* that brings further flexibility as data from different distributions can be modeled. 
+
+## The model
+
+A mixed model contains two kinds of effects. In our previous models (made with `lm()`), we have dealt with "fixed effects", these are the population-level effects that we try to estimate. This can be the difference between groups, or the slope in a model where we try to explain VO<sub>2max</sub> with height. In the mixed model, we also include "random effects". In the simple case we can think of these as a separate starting point in the model for each participant. This simple case is called a model with *random intercepts*. Why *random*? This is because we can think of these effects as sampled from a population of possible effects. A fixed effect on the other hand have fixed (population) values. In the model we will create first, we will estimate population averages over time-points and training conditions. These estimates are fixed by design in the study, but participants has been sampled at random. 
+
+We will use the function `lmer()` from the package `lme4` to fit mixed effects models. 
+
+Hold up! Why use this new stuff, can we not just use the `lm` function? 
+
+Let's try. Before we do, we should agree that when fitting correlated data (data from the same participants sampled multiple times therefore creating data points "related" to each other) we violate an assumption of the ordinary linear model, the assumption of independence. 
+
+In this example we will use the `tenthirty` data set. Let's start by fitting a model where we try to estimate the difference between groups over time using `lm()`.
+
+
+```{r, eval = FALSE, echo = TRUE}
+
+library(tidyverse); library(exscidata)
+
+data("tenthirty")
+
+
+tenthirty_reduced <- tenthirty %>% 
+  filter(exercise == "legpress", 
+         time %in% c("pre", "post")) %>%
+  # fix the order of the time factor
+  mutate(time = factor(time, levels = c("pre", "post"))) %>%
+  print()
+
+
+# Fit the model
+
+lm1 <- lm(load ~ time * group, data = tenthirty_reduced)
+
+summary(lm1)
+
+```
+
+The model formulation estimates four coefficients. The intercept is the mean in the 10RM group at baseline (`pre`). `timepost` is the mean in the 10RM group at time-point `post`. `groupRM30` is the difference at baseline between groups. The model formulation contains an interaction, meaning that the two groups are allowed to change differently between time-points and `timepost:group30RM` is the difference between groups at time-point `post` when taking the difference at baseline into account. This is the coefficient of interest in this study. We want to know if the difference from pre- to post-training differs between groups, we can assess this by testing if the difference is smaller or greater than zero.
+
+We can see that we estimate the difference in the interaction term (`timepost:group30RM`) to about -40 units. However, this difference is associated with a lot of uncertainty due to the large standard error. The resulting *t*-value is small, indicating that this result would be commonly found under the null-hypothesis of no differences between groups.
+
+Now let's try to fit a mixed effects model.
+
+```{r, eval = FALSE, echo = TRUE}
+# Load package lme4
+library(lme4)
+
+# Fit the model
+lmer1 <- lmer(load ~ time * group + (1|participant), data = tenthirty_reduced)
+
+summary(lmer1)
+```
+
+From the fixed effects part of the summary, we can read about the same coefficients as were estimated in the above model. However, the estimates differs from the ordinary linear model especially when it comes to the standard errors *t*-values. The smaller standard errors is a result of telling the model that the same individuals are measured at both time-points. A lot of the unexplained variation in the ordinary linear model is explained by the difference between participants at baseline. We have added this information to the model through its random effects part. In the `lmer` function specifying a random intercept per participant is done through the addition of `(1|participant)`. We can see from the model summary (under Random effects) that the estimated standard deviation of participants intercepts at baseline is about 68 units. The random effect has a mean of zero and some estimated standard deviation, in this case the average deviation from zero is 68.
+
+Notice also that `lme4` does not produce p-values[^1]. Instead of p-values we can use confidence intervals to evaluate our fixed effects. These are accessed with the `confint` function in both `lm` and `lmer`.
+
+[^1]: If you write `?pvalues` in your console you will get some alternatives on how to get p-values. We will focus on the confidence intervals obtained with `confint` for inference.
+
+```{r, eval = FALSE, echo = TRUE}
+# Confidence intervals from lm
+confint(lm1)
+
+# Confidence intervals from lmer
+confint(lmer1)
+
+```
+
+What is your interpretation of the results from these two models?
+
+In this comparison we have seen that the mixed effects model is more powerful by accounting for correlated data. 
+
+
+### Exercise: Effect of training volume on isokinetic strength 
+
+The complete `strengthvolume` data set contains data from a within-participant trial where participants performed two training protocols during the study. Each leg was randomly allocated to either low- or moderate-volume training (see [@RN2358]). The trial can be analyzed as a cross-over trial using a mixed-model. To account for the fact that each participant has performed both training protocols we will add a random intercept per participant.
+
+Fit a mixed effects model to isokinetic strength (`isok.60`) data from `pre` and `post` training (`strengthvolume` data set in `exscidata`). 
+
+After fitting the model, use `plot(model)` to assess the residual plot. This plot should not contain any clear patterns. 
+
+If the residual plot is considered ok, interpret the model parameters and estimates. 
+
+ <a id="displayText" href="javascript:toggle(8);">Example code</a>
+  <div id="toggleText8" style="display: none">
+
+```{r, eval = TRUE, echo = TRUE, fig.cap = "Residuals vs. fitted values"}
+# Load packages
+library(lme4); library(tidyverse); library(exscidata)
+
+# Load the data
+data("strengthvolume")
+
+# Filter and store a data set
+dat <- strengthvolume %>% 
+  # Filter data set only to include...
+  filter(exercise == "isok.60",  # Isokinetic data
+         time %in% c("pre", "post"),  # time points pre and post
+         include == "incl") %>% # Participants included in final data analysis
+  # fix the order of time factor
+  # fix the order of the volume condidition factor
+  mutate(time = factor(time, levels = c("pre", "post")), 
+         sets = factor(sets, levels = c("single", "multiple")))
+
+
+
+# Fit the model
+m2 <- lmer(load ~ time * sets + (1|participant), data = dat)
+
+
+# Check the model assumption of homoscedasticity (equally distributed residuals)
+plot(m2)
+
+# Check the estimates from the model
+summary(m2)
+confint(m2)
+
+```
+
+#### Interpreting the model
+
+The intercept is the mean in the reference group (single-set) at time `pre`. Since we changed the levels of both the `time` and `sets` factors we determined the reference levels for both factors. The second coefficient, `timepost` tells us the average change from `pre`to `post` in the reference sets condition. `setsmultiple` is the difference at baseline between conditions and `timepost:setsmultiple` is the difference between single-set and multiple-set at time-point `post`, this is the coefficient of interest in this model (and study). We want to know if the change from pre to post differs between groups, we can assess this by testing if the difference is smaller or greater than zero. This is done with the difference at baseline in mind (we control for the baseline).
+
+Using the `confint` function we can see that the interaction term (`timepost:setsmultiple`) does not contain zero. How do you interpret the results? 
+
+
+  </div>
+  </br>  
+
+
+
+### Multiple time-point -- Mixed models
+
+The mixed model can be extended using multiple time-points. When treating time-points as a factor variable we will estimate differences between volume condition at each time-point after taking the baseline into account. We do not anticipate any differences between time-points `pre` and `session1` nor between volume-conditions at these times, lets see if we are correct. Fit a model containing data from `isok.60` with time-points `pre`, `session1` and `post`, and both volume conditions. Keep the interaction in the model with the formula: `load ~ time * sets (1|participant)`. Intepret the results and calculate the average of each time and sets combination. 
+
+ <a id="displayText" href="javascript:toggle(9);">An interpretation</a>
+  <div id="toggleText9" style="display: none">
+```{r, eval = TRUE, echo = TRUE, warning = FALSE, message=FALSE}
+dat <- strengthvolume %>% 
+  filter(exercise == "isok.60") %>%
+  # fix the order of time-point and volume factors
+  mutate(time = factor(time, levels = c("pre", "session1", "post")), 
+         sets = factor(sets, levels = c("single", "multiple"))) 
+
+
+
+# The model
+m <- lmer(load ~ time * sets + (1|participant), data = dat)
+
+# Inspect the model residuals
+plot(m) # Tendency of larger variation at high fitted values, but ok for now.
+
+
+# See the summary of the model
+summary(m)
+```
+
+
+```{r, eval = TRUE, echo = FALSE, warning = FALSE, message=FALSE}
+# Save the coefficients
+coefs <- round(coef(summary(m)), 2)
+
+```
+
+The mean in the single-set condition at `pre` is `r coefs[1,1]` Nm. From `pre` to `session1` the single-set condition increases by `r coefs[2, 1]` Nm, from `pre` to `post` the single-set condition increases by `r coefs[3, 1]` Nm. At `pre` there is a `r coefs[4,1]` unit difference between conditions Given this difference, at time-point `session1` the multiple-set condition is `r coefs[5,1]` units lower than the single-sets condition, and at time-point `post` the multiple-set condition is `r coefs[6, 1]` Nm lower than the single-set condition given a baseline difference and an increase in the single-set condition.
+
+By adding these terms we can get the estimated mean for each group at `post`:
+
+`single-set at post = (Intercept) + timetpost`
+
+`multiple-set at post = (Intercept) + timepost + groupmultiple + timepost:groupmultiple`
+
+
+  </div>
+  </br> 
+
+
+Since we have a data set with strength assessments performed at multiple time-points it could be valuable to model the strength over time instead at specific time-points. We will use the `isok.60` data again but reduce the data set to only containing data from participants wit a complete set of measurements. A number of participants did not complete all strength assessments (at weeks 2, 5, and 9) and are therefore filtered out from this analysis. We will filter out participants that do not have a full set of strength measurements (12, six assessments per leg). First we will model the time as a factor variable, resulting in a model with many coefficients. Run the code and inspect the resulting data frame to check if it is what you expect.
+
+
+```{r, eval = FALSE, echo = TRUE}
+
+dat <- strengthvolume %>% 
+  # Filter to include isokinetic tests of included participants without missing values
+  filter(exercise == "isok.60",
+         include == "incl", 
+         !is.na(load)) %>%
+  # Group the data frame by participants
+    group_by(participant) %>%
+  # Filter to only keep participants with 12 measurements
+    filter(n() == 12) %>%
+  # Ungroup the data frame to avoid problems
+  ungroup() %>%
+  # fix the order of time-point and training volume factors
+  mutate(time = factor(time, levels = c("pre", "session1", "week2", "week5", "week9", "post")),
+         sets = factor(sets, levels = c("single", "multiple"))) %>%
+  print()
+
+```
+
+Next we will fit the model using the time factor, plot the residuals and inspect the results.
+
+```{r, eval = FALSE}
+m3 <- lmer(load ~ time * sets + (1|participant), data = dat)
+
+
+plot(m3) # This might indicate a larger variation with increased values of predicted values
+
+summary(m3)
+```
+
+When inspecting the results we can see that there is a negligible difference between the baseline (`pre`) and `session1` as indicated in the coefficient `timesession1`. Similarly, we did not expect any differences between volume conditions at this tests. The coefficient `timesession1:setsmultiple` shows us the estimated difference between volume conditions at `session1`. At later time-points we can see that the model suggests differences between volume conditions considerably larger than the estimated standard error, indicating a significant effect.
+
+
+We will now convert the factor `time` into a continuous variable that represents the number of weeks of training `timec` (c for continuous). Strength tests at `pre`and `session1` were both performed before the training had started, so there is no way any differences would have been a result of the training intervention. If converting this to a continuous scale, both `pre`and `session1` would be zero weeks of training. The `post` time point is collected after 12 weeks of training and weeks 2, 5 and 9 are self explanatory. We will convert the time factor to a continuous scale to model the increase in strength over time.
+
+By replacing the factor variable with a continuous variable we will reduce the number of estimated coefficients. A factor variable adds dummy variables to the regression model but the continuous variable can be interpreted as a single coefficient.
+
+```{r eval = FALSE}
+dat <- strengthvolume %>% 
+  # Filter to include isokinetic tests of included participants without missing values
+  filter(exercise == "isok.60",
+         include == "incl", 
+         !is.na(load)) %>%
+  # Group the data frame by participants
+    group_by(participant) %>%
+  # Filter to only keep participants with 12 measurements
+    filter(n() == 12) %>%
+  # Ungroup the data frame to avoid problems
+  ungroup() %>%
+  # fix the order of time-point and training volume factors
+  mutate(time = factor(time, levels = c("pre", "session1", "week2", "week5", "week9", "post")),
+         sets = factor(sets, levels = c("single", "multiple")),
+         # Convert to continuous time (number of weeks of training)
+         # pre and session1 are zero weeks
+         timec = if_else(time %in% c("pre", "session1"), 0, 
+                # post is 12 weeks
+                         if_else(time == "post", 12, 
+              # From remaining time indicators, Remove the "week" and treat as numeric 
+                                 as.numeric(gsub("week", "", time))))) %>%
+  print()
+
+
+# Fit the model
+m4 <- lmer(load ~ timec * sets + (1|participant), data = dat)
+
+
+
+# Plot the residuals, still an issue of potential heteroscedasticity
+plot(m4)
+
+summary(m4)
+```
+
+Instead of reading the time factors as differences between a reference level (e.g. `pre`) and a specific level of interest we are now interpreting time as a difference between any to weeks. Technically, the slope for the coefficient `timec` can be read as for every week increase in `timec`, the strength increases about 1.63 Nm. There is a slight difference in baseline between volume conditions (4.91 Nm). The interaction coefficient tells us that in addition to the increase per week of 1.63 Nm in the single-set condition, the multiple-set condition increases an additional 1.16 Nm per week.
+
+We can translate this to a comparison over the full study. The single-set condition increases its strength `r round(1.6267 * 12, 1)` Nm ($1.63 \times 12~weeks$). The single set condition adds another `r round(1.1617*12, 1)` Nm over twelve weeks ($1.16 \times 12~weeks$) resulting in a total increase of `r round((1.1617*12) + (1.6267 * 12), 1)` Nm.
+
+Treating time as a continuous variable in a simple model as the one we have used comes with the assumption that strength increases linearly over time. This can be assessed visually by plotting data from each participant over time. We can add a straight line per participant to the plot indicating the per participant model relationship between strength and time.
+
+There is some noise in the measurement but a straight line captures the overall pattern quite well. We do not need to make other assumptions regarding the relationship between time and strength other than a linear one (run the code to see the plot).
+
+```{r, eval = FALSE}
+
+dat %>%
+  group_by(participant, sets, timec) %>%
+  summarise(load = mean(load)) %>%
+  ggplot(aes(timec, load, group = participant, color = participant)) + 
+  geom_line() + 
+  facet_wrap(~ sets) + geom_smooth(method = "lm", se = FALSE) + 
+  theme(legend.position = "none")
+
+```
+
+
+### More on diagnostics
+
+The same rules apply for the mixed effects model as for the ordinary linear model (except for the independence assumption). As already noted above, using simple commands we can first check the residual plot:
+
+`plot(m4)`
+
+The residuals should show no pattern.
+
+We can also make a qqplot of the residuals to check for normality:
+
+`qqnorm(resid(m4)); qqline(resid(m4))`
+
+This is really two commands separated with a `;` . The first plots the data, the second adds the line.
+
+The interpretations of the above is that the residual plot might indicate a tendency of larger variation at higher number of the fitted data, but this deviation is not that big. The second plot assesses normality of the residuals, they are plotted against a theoretical distribution (the line) and deviations from the line indicates problems with the model fit. However, `m4` from above looks good.
+
+
+### More about mixed effects models
+We have only scratched the surface. The models can be extended far beyond what this course covers. If you do an experiment in your master thesis, I'm pretty sure you will analyze it with a mixed model! It might be a good idea to read further. 
+
+This is a nice paper (the first part is a general introduction):
+
+Harrison, X. A., et al. (2018). "A brief introduction to mixed effects modelling and multi-model inference in ecology." PeerJ 6: e4794-e4794.
+
+## References
+

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 29 Accounting for the baseline – Differences between group and mixed models | Mixed models - Analyzing repeated measures designs</title>
+  <meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 29 Accounting for the baseline – Differences between group and mixed models | Mixed models - Analyzing repeated measures designs" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/images/cover.png" />
+  <meta property="og:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="github-repo" content="dhammarstrom/quant-methods" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 29 Accounting for the baseline – Differences between group and mixed models | Mixed models - Analyzing repeated measures designs" />
+  
+  <meta name="twitter:description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com." />
+  <meta name="twitter:image" content="/images/cover.png" />
+
+<meta name="author" content="Daniel Hammarström" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="summary-2.html"/>
+<link rel="next" href="study-questions.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quick-links"><i class="fa fa-check"></i><b>1.1</b> Quick links:</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#practical-information"><i class="fa fa-check"></i><b>1.2</b> Practical information</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.2.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#learning-strategies"><i class="fa fa-check"></i><b>1.2.2</b> Learning strategies</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#course-evaluation"><i class="fa fa-check"></i><b>1.2.3</b> Course evaluation</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#lecturers-and-course-administration"><i class="fa fa-check"></i><b>1.2.4</b> Lecturers and course administration</a></li>
+<li class="chapter" data-level="1.2.5" data-path="index.html"><a href="index.html#updates-notifications-and-general-communication"><i class="fa fa-check"></i><b>1.2.5</b> Updates, notifications and general communication</a></li>
+<li class="chapter" data-level="1.2.6" data-path="index.html"><a href="index.html#literature"><i class="fa fa-check"></i><b>1.2.6</b> Literature</a></li>
+<li class="chapter" data-level="1.2.7" data-path="index.html"><a href="index.html#grades"><i class="fa fa-check"></i><b>1.2.7</b> Grades</a></li>
+<li class="chapter" data-level="1.2.8" data-path="index.html"><a href="index.html#language"><i class="fa fa-check"></i><b>1.2.8</b> Language</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#assignments-and-portfolio-exam"><i class="fa fa-check"></i><b>1.3</b> Assignments and Portfolio exam</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#other-information"><i class="fa fa-check"></i><b>1.4</b> Other information</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html"><i class="fa fa-check"></i><b>2</b> Introduction to data science</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#about-data-in-the-world-of-sport-and-exercise"><i class="fa fa-check"></i><b>2.1</b> About data in the world of sport and exercise</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#replication-and-reproducibility"><i class="fa fa-check"></i><b>2.2</b> Replication and Reproducibility</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-data-science.html"><a href="introduction-to-data-science.html#tools-in-data-science"><i class="fa fa-check"></i><b>2.3</b> Tools in data science</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html"><i class="fa fa-check"></i><b>3</b> Storing data in spreadsheets</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#cells-and-simple-functions"><i class="fa fa-check"></i><b>3.1</b> Cells and simple functions</a></li>
+<li class="chapter" data-level="3.2" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#tidy-data-and-data-storage"><i class="fa fa-check"></i><b>3.2</b> Tidy data and data storage</a></li>
+<li class="chapter" data-level="3.3" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#recording-data"><i class="fa fa-check"></i><b>3.3</b> Recording data</a></li>
+<li class="chapter" data-level="3.4" data-path="storing-data-in-spreadsheets.html"><a href="storing-data-in-spreadsheets.html#saving-data"><i class="fa fa-check"></i><b>3.4</b> Saving data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html"><i class="fa fa-check"></i><b>4</b> Installing and starting up R (and R Studio)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-r"><i class="fa fa-check"></i><b>4.1</b> Installing R</a></li>
+<li class="chapter" data-level="4.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-r-studio"><i class="fa fa-check"></i><b>4.2</b> Installing R Studio</a></li>
+<li class="chapter" data-level="4.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#getting-to-know-r-and-rstudio"><i class="fa fa-check"></i><b>4.3</b> Getting to know R and RStudio</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#the-source"><i class="fa fa-check"></i><b>4.3.1</b> The source</a></li>
+<li class="chapter" data-level="4.3.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#environment"><i class="fa fa-check"></i><b>4.3.2</b> Environment</a></li>
+<li class="chapter" data-level="4.3.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#the-console"><i class="fa fa-check"></i><b>4.3.3</b> The console</a></li>
+<li class="chapter" data-level="4.3.4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#files-plots-packages-and-help-files"><i class="fa fa-check"></i><b>4.3.4</b> Files, plots, packages and help files</a></li>
+<li class="chapter" data-level="4.3.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#customizing-the-apperance-of-rstudio"><i class="fa fa-check"></i><b>4.3.5</b> Customizing the apperance of RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#reproducible-computing"><i class="fa fa-check"></i><b>4.4</b> Reproducible computing</a></li>
+<li class="chapter" data-level="4.5" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#packages"><i class="fa fa-check"></i><b>4.5</b> Packages</a></li>
+<li class="chapter" data-level="4.6" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#installing-and-using-swirl"><i class="fa fa-check"></i><b>4.6</b> Installing and using <code>swirl</code></a></li>
+<li class="chapter" data-level="4.7" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-scripts"><i class="fa fa-check"></i><b>4.7</b> R scripts</a></li>
+<li class="chapter" data-level="4.8" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#r-markdown-files"><i class="fa fa-check"></i><b>4.8</b> R markdown files</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#starting-up-your-first-r-markdown-file"><i class="fa fa-check"></i><b>4.8.1</b> Starting up your first R markdown file</a></li>
+<li class="chapter" data-level="4.8.2" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#microsoft-word-intergration"><i class="fa fa-check"></i><b>4.8.2</b> Microsoft Word intergration</a></li>
+<li class="chapter" data-level="4.8.3" data-path="installing-and-starting-up-r-and-r-studio.html"><a href="installing-and-starting-up-r-and-r-studio.html#adding-references"><i class="fa fa-check"></i><b>4.8.3</b> Adding references</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html"><i class="fa fa-check"></i><b>5</b> Creating your first graph</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#resources"><i class="fa fa-check"></i><b>5.1</b> Resources</a></li>
+<li class="chapter" data-level="5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#learning-objectives-1"><i class="fa fa-check"></i><b>5.2</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#prerequisites"><i class="fa fa-check"></i><b>5.3</b> Prerequisites</a></li>
+<li class="chapter" data-level="5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#the-ggplot2-system"><i class="fa fa-check"></i><b>5.4</b> The <code>ggplot2</code> system</a></li>
+<li class="chapter" data-level="5.5" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#different-geoms-using-real-data"><i class="fa fa-check"></i><b>5.5</b> Different geoms using real data</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#a-plot-of-values-per-group"><i class="fa fa-check"></i><b>5.5.1</b> A plot of values per group</a></li>
+<li class="chapter" data-level="5.5.2" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#data-over-time-per-group-and-individual"><i class="fa fa-check"></i><b>5.5.2</b> Data over time per group and individual</a></li>
+<li class="chapter" data-level="5.5.3" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#titles-and-labels"><i class="fa fa-check"></i><b>5.5.3</b> Titles and labels</a></li>
+<li class="chapter" data-level="5.5.4" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#annotations"><i class="fa fa-check"></i><b>5.5.4</b> Annotations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#themes"><i class="fa fa-check"></i><b>5.6</b> Themes</a></li>
+<li class="chapter" data-level="5.7" data-path="creating-your-first-graph.html"><a href="creating-your-first-graph.html#test-your-understandning"><i class="fa fa-check"></i><b>5.7</b> Test your understandning</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html"><i class="fa fa-check"></i><b>6</b> Wrangling data to create your first table</a>
+<ul>
+<li class="chapter" data-level="6.0.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#resources-1"><i class="fa fa-check"></i><b>6.0.1</b> Resources</a></li>
+<li class="chapter" data-level="6.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#making-table-1"><i class="fa fa-check"></i><b>6.1</b> Making “Table 1”</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#the-pipe-operator-and-select"><i class="fa fa-check"></i><b>6.1.1</b> The pipe operator and select</a></li>
+<li class="chapter" data-level="6.1.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#filter-observations"><i class="fa fa-check"></i><b>6.1.2</b> Filter observations</a></li>
+<li class="chapter" data-level="6.1.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#create-or-change-variables"><i class="fa fa-check"></i><b>6.1.3</b> Create or change variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#grouped-operations-and-summary-statistics"><i class="fa fa-check"></i><b>6.1.4</b> Grouped operations and summary statistics</a></li>
+<li class="chapter" data-level="6.1.5" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#starting-the-table-generator---the-kable-function"><i class="fa fa-check"></i><b>6.1.5</b> Starting the table generator - The <code>kable</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#summary"><i class="fa fa-check"></i><b>6.2</b> Summary</a></li>
+<li class="chapter" data-level="6.3" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#flextable"><i class="fa fa-check"></i><b>6.3</b> Flextable</a></li>
+<li class="chapter" data-level="6.4" data-path="wrangling-data-to-create-your-first-table.html"><a href="wrangling-data-to-create-your-first-table.html#an-exercise-reproduce-table-1-from-rn2225"><i class="fa fa-check"></i><b>6.4</b> An exercise, reproduce Table 1 from <span class="citation">(<span>Haun et al. 2019</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html"><i class="fa fa-check"></i><b>7</b> Writing your first reproducible report</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="writing-your-first-reproducible-report.html"><a href="writing-your-first-reproducible-report.html#rstudio-projects-and-your-reproducible-report"><i class="fa fa-check"></i><b>7.1</b> RStudio projects and your reproducible report</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html"><i class="fa fa-check"></i><b>8</b> Version control and collaborative coding – introducing git and github.com</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#why-version-control"><i class="fa fa-check"></i><b>8.1</b> Why version control</a></li>
+<li class="chapter" data-level="8.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#a-simplecomplicated-start"><i class="fa fa-check"></i><b>8.2</b> A simple/complicated start</a></li>
+<li class="chapter" data-level="8.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-by-step-instructions-on-setting-up-a-version-controlled-r-project."><i class="fa fa-check"></i><b>8.3</b> Step by step instructions on setting up a version controlled R project.</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-1.-create-a-free-github-account"><i class="fa fa-check"></i><b>8.3.1</b> Step 1. Create a free github account:</a></li>
+<li class="chapter" data-level="8.3.2" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-2.-download-git."><i class="fa fa-check"></i><b>8.3.2</b> Step 2. Download git.</a></li>
+<li class="chapter" data-level="8.3.3" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-3.-connect-git-to-rstudio"><i class="fa fa-check"></i><b>8.3.3</b> Step 3. Connect git to RStudio</a></li>
+<li class="chapter" data-level="8.3.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-4.-create-a-new-online-repository"><i class="fa fa-check"></i><b>8.3.4</b> Step 4. Create a new online repository</a></li>
+<li class="chapter" data-level="8.3.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-5.-create-a-new-project-in-rstudio"><i class="fa fa-check"></i><b>8.3.5</b> Step 5. Create a new project in RStudio</a></li>
+<li class="chapter" data-level="8.3.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#step-6.-make-changes-to-your-project"><i class="fa fa-check"></i><b>8.3.6</b> Step 6. Make changes to your project</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#forking-and-pull-requests"><i class="fa fa-check"></i><b>8.4</b> Forking and pull requests</a></li>
+<li class="chapter" data-level="8.5" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#additional-great-things-about-github"><i class="fa fa-check"></i><b>8.5</b> Additional great things about GitHub</a></li>
+<li class="chapter" data-level="8.6" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#when-will-this-knowledge-be-handy"><i class="fa fa-check"></i><b>8.6</b> When will this knowledge be handy?</a></li>
+<li class="chapter" data-level="8.7" data-path="version-control-and-collaborative-coding-introducing-git-and-github.html"><a href="version-control-and-collaborative-coding-introducing-git-and-github.html#resources-2"><i class="fa fa-check"></i><b>8.7</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html"><i class="fa fa-check"></i><b>9</b> Reliability in the physiology lab</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html#smallest-worthwhile-change-or-effect"><i class="fa fa-check"></i><b>9.1</b> Smallest worthwhile change or effect</a></li>
+<li class="chapter" data-level="9.2" data-path="reliability-in-the-physiology-lab.html"><a href="reliability-in-the-physiology-lab.html#video-from-seminar"><i class="fa fa-check"></i><b>9.2</b> Video from seminar</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="assignment1.html"><a href="assignment1.html"><i class="fa fa-check"></i><b>10</b> Assignment 1: Reliability and tools for reproducible data science</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="assignment1.html"><a href="assignment1.html#elements-of-the-report"><i class="fa fa-check"></i><b>10.1</b> Elements of the report</a></li>
+<li class="chapter" data-level="10.2" data-path="assignment1.html"><a href="assignment1.html#the-format-of-the-report"><i class="fa fa-check"></i><b>10.2</b> The format of the report</a></li>
+<li class="chapter" data-level="10.3" data-path="assignment1.html"><a href="assignment1.html#how-to-hand-in-the-report."><i class="fa fa-check"></i><b>10.3</b> How to hand in the report.</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html"><i class="fa fa-check"></i><b>11</b> Introduction to the molecular exercise physiology lab</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#health-and-safety-in-the-lab"><i class="fa fa-check"></i><b>11.1</b> Health and safety in the lab</a></li>
+<li class="chapter" data-level="11.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#good-laboratory-practice"><i class="fa fa-check"></i><b>11.2</b> Good laboratory practice</a></li>
+<li class="chapter" data-level="11.3" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#the-laboratory-journal"><i class="fa fa-check"></i><b>11.3</b> The laboratory journal</a></li>
+<li class="chapter" data-level="11.4" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#keeping-it-digital---using-our-electronic-lab-journal"><i class="fa fa-check"></i><b>11.4</b> Keeping it digital - Using our electronic lab journal</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#what-to-write-in-the-journal"><i class="fa fa-check"></i><b>11.4.1</b> What to write in the journal</a></li>
+<li class="chapter" data-level="11.4.2" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#structure-of-an-entry"><i class="fa fa-check"></i><b>11.4.2</b> Structure of an entry</a></li>
+<li class="chapter" data-level="11.4.3" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#relationship-between-the-laboratory-journal-and-your-samples-solutions-tubes-etc."><i class="fa fa-check"></i><b>11.4.3</b> Relationship between the laboratory journal and your samples, solutions, tubes etc.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="introduction-to-the-molecular-exercise-physiology-lab.html"><a href="introduction-to-the-molecular-exercise-physiology-lab.html#protocols-and-experiments-in-the-course"><i class="fa fa-check"></i><b>11.5</b> Protocols and experiments in the course</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="the-linear-model.html"><a href="the-linear-model.html"><i class="fa fa-check"></i><b>12</b> The linear model</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="the-linear-model.html"><a href="the-linear-model.html#resources-3"><i class="fa fa-check"></i><b>12.1</b> Resources</a></li>
+<li class="chapter" data-level="12.2" data-path="the-linear-model.html"><a href="the-linear-model.html#straight-lines"><i class="fa fa-check"></i><b>12.2</b> Straight lines</a></li>
+<li class="chapter" data-level="12.3" data-path="the-linear-model.html"><a href="the-linear-model.html#fitting-regression-models-in-r"><i class="fa fa-check"></i><b>12.3</b> Fitting regression models in R</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="the-linear-model.html"><a href="the-linear-model.html#linear-relationship"><i class="fa fa-check"></i><b>12.3.1</b> Linear relationship</a></li>
+<li class="chapter" data-level="12.3.2" data-path="the-linear-model.html"><a href="the-linear-model.html#constant-variance"><i class="fa fa-check"></i><b>12.3.2</b> Constant variance</a></li>
+<li class="chapter" data-level="12.3.3" data-path="the-linear-model.html"><a href="the-linear-model.html#normal-residuals"><i class="fa fa-check"></i><b>12.3.3</b> Normal residuals</a></li>
+<li class="chapter" data-level="12.3.4" data-path="the-linear-model.html"><a href="the-linear-model.html#independent-observations"><i class="fa fa-check"></i><b>12.3.4</b> Independent observations</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="the-linear-model.html"><a href="the-linear-model.html#check-the-results"><i class="fa fa-check"></i><b>12.4</b> Check the results</a></li>
+<li class="chapter" data-level="12.5" data-path="the-linear-model.html"><a href="the-linear-model.html#a-note-about-printing-the-regression-table"><i class="fa fa-check"></i><b>12.5</b> A note about printing the regression table</a></li>
+<li class="chapter" data-level="12.6" data-path="the-linear-model.html"><a href="the-linear-model.html#interpreting-the-results"><i class="fa fa-check"></i><b>12.6</b> Interpreting the results</a></li>
+<li class="chapter" data-level="12.7" data-path="the-linear-model.html"><a href="the-linear-model.html#do-problematic-observations-matter"><i class="fa fa-check"></i><b>12.7</b> Do problematic observations matter?</a></li>
+<li class="chapter" data-level="12.8" data-path="the-linear-model.html"><a href="the-linear-model.html#a-more-intepretable-model"><i class="fa fa-check"></i><b>12.8</b> A more intepretable model</a></li>
+<li class="chapter" data-level="12.9" data-path="the-linear-model.html"><a href="the-linear-model.html#an-exercise"><i class="fa fa-check"></i><b>12.9</b> An exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="predictions.html"><a href="predictions.html"><i class="fa fa-check"></i><b>13</b> Linear and curve-linear relationships, and predictions</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="predictions.html"><a href="predictions.html#predicting-from-data"><i class="fa fa-check"></i><b>13.1</b> Predicting from data</a></li>
+<li class="chapter" data-level="13.2" data-path="predictions.html"><a href="predictions.html#the-workload-lactate-relationship"><i class="fa fa-check"></i><b>13.2</b> The workload-lactate relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html"><i class="fa fa-check"></i><b>14</b> Categorical predictors and multiple regression</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#linear-models-can-be-used-instead-of-t-tests"><i class="fa fa-check"></i><b>14.1</b> Linear models can be used instead of t-tests</a></li>
+<li class="chapter" data-level="14.2" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#dummy-variables"><i class="fa fa-check"></i><b>14.2</b> Dummy variables</a></li>
+<li class="chapter" data-level="14.3" data-path="categorical-predictors-and-multiple-regression.html"><a href="categorical-predictors-and-multiple-regression.html#multiple-regression"><i class="fa fa-check"></i><b>14.3</b> Multiple regression</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>15</b> Correlations</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="correlations.html"><a href="correlations.html#always-plot-the-data"><i class="fa fa-check"></i><b>15.1</b> Always plot the data!</a></li>
+<li class="chapter" data-level="15.2" data-path="correlations.html"><a href="correlations.html#extending-the-correlation-to-the-regression"><i class="fa fa-check"></i><b>15.2</b> Extending the correlation to the regression</a></li>
+<li class="chapter" data-level="15.3" data-path="correlations.html"><a href="correlations.html#correlation-comes-in-many-forms"><i class="fa fa-check"></i><b>15.3</b> Correlation comes in many forms</a></li>
+<li class="chapter" data-level="15.4" data-path="correlations.html"><a href="correlations.html#statistical-and-subject-matter-interpretations"><i class="fa fa-check"></i><b>15.4</b> Statistical and subject-matter interpretations</a></li>
+<li class="chapter" data-level="15.5" data-path="correlations.html"><a href="correlations.html#summary-1"><i class="fa fa-check"></i><b>15.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="assignment2.html"><a href="assignment2.html"><i class="fa fa-check"></i><b>16</b> Assignment 2: Regression models, predicting from data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="assignment2.html"><a href="assignment2.html#part-1-lactate-thresholds"><i class="fa fa-check"></i><b>16.1</b> Part 1: Lactate thresholds</a></li>
+<li class="chapter" data-level="16.2" data-path="assignment2.html"><a href="assignment2.html#part-2-predicting-sizes-of-dna-fragments"><i class="fa fa-check"></i><b>16.2</b> Part 2: Predicting sizes of DNA fragments</a></li>
+<li class="chapter" data-level="16.3" data-path="assignment2.html"><a href="assignment2.html#part-3-intepreting-a-regression-table"><i class="fa fa-check"></i><b>16.3</b> Part 3: Intepreting a regression table</a></li>
+<li class="chapter" data-level="16.4" data-path="assignment2.html"><a href="assignment2.html#how-to-hand-in-the-report"><i class="fa fa-check"></i><b>16.4</b> How to hand in the report</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html"><i class="fa fa-check"></i><b>17</b> Special topics: Iterations and functions</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html#building-a-simple-function"><i class="fa fa-check"></i><b>17.1</b> Building a simple function</a></li>
+<li class="chapter" data-level="17.2" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html#an-applied-problem-where-a-function-might-help"><i class="fa fa-check"></i><b>17.2</b> An applied problem where a function might help</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="special-topics-iterations-and-functions.html"><a href="special-topics-iterations-and-functions.html#exercises"><i class="fa fa-check"></i><b>17.2.1</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html"><i class="fa fa-check"></i><b>18</b> Samples, populations estimates and their uncertainty</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#reading-instructions"><i class="fa fa-check"></i><b>18.1</b> Reading instructions</a></li>
+<li class="chapter" data-level="18.2" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>18.2</b> Descriptive statistics in R</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#simulating-data-in-r"><i class="fa fa-check"></i><b>18.2.1</b> Simulating data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#a-simple-example"><i class="fa fa-check"></i><b>18.3</b> A simple example</a></li>
+<li class="chapter" data-level="18.4" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#inference-about-the-population"><i class="fa fa-check"></i><b>18.4</b> Inference about the population</a></li>
+<li class="chapter" data-level="18.5" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#estimation-of-the-sampling-distribution"><i class="fa fa-check"></i><b>18.5</b> Estimation of the sampling distribution</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#a-confidence-interval-for-the-mean"><i class="fa fa-check"></i><b>18.5.1</b> A confidence interval for the mean</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#sample-size-and-confidence-intervals"><i class="fa fa-check"></i><b>18.6</b> Sample size and confidence intervals</a></li>
+<li class="chapter" data-level="18.7" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#sampling-distribution-of-iq"><i class="fa fa-check"></i><b>18.7</b> Sampling distribution of IQ</a></li>
+<li class="chapter" data-level="18.8" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#a-hypothesis-test"><i class="fa fa-check"></i><b>18.8</b> A hypothesis test</a></li>
+<li class="chapter" data-level="18.9" data-path="samples-populations-estimates-and-their-uncertainty.html"><a href="samples-populations-estimates-and-their-uncertainty.html#using-a-confidence-interval-when-planning-a-study"><i class="fa fa-check"></i><b>18.9</b> Using a confidence interval when planning a study</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html"><i class="fa fa-check"></i><b>19</b> What is the <em>p</em>-value?</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-from-two-sample-comparisons"><i class="fa fa-check"></i><b>19.1</b> <em>p</em>-values from two sample comparisons</a></li>
+<li class="chapter" data-level="19.2" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#more-p-values"><i class="fa fa-check"></i><b>19.2</b> More <em>p</em>-values</a></li>
+<li class="chapter" data-level="19.3" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#t-test-examples"><i class="fa fa-check"></i><b>19.3</b> <em>t</em>-test examples</a></li>
+<li class="chapter" data-level="19.4" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#error-rates"><i class="fa fa-check"></i><b>19.4</b> Error rates</a></li>
+<li class="chapter" data-level="19.5" data-path="what-is-the-p-value.html"><a href="what-is-the-p-value.html#p-values-and-confidence-intervals"><i class="fa fa-check"></i><b>19.5</b> P-values and confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html"><i class="fa fa-check"></i><b>20</b> Hypothesis tests and statistical power</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html#defining-the-alternative-hypothesis"><i class="fa fa-check"></i><b>20.1</b> Defining the alternative hypothesis</a></li>
+<li class="chapter" data-level="20.2" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html#the-size-of-the-effect"><i class="fa fa-check"></i><b>20.2</b> The size of the effect</a></li>
+<li class="chapter" data-level="20.3" data-path="hypothesis-tests-and-statistical-power.html"><a href="hypothesis-tests-and-statistical-power.html#power-and-study-designs"><i class="fa fa-check"></i><b>20.3</b> Power and study designs</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="assignment3.html"><a href="assignment3.html"><i class="fa fa-check"></i><b>21</b> Assignment 3: Drawing inference from statistical models, and statistical power</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="assignment3.html"><a href="assignment3.html#setting-up-a-simulation"><i class="fa fa-check"></i><b>21.1</b> Setting up a simulation</a></li>
+<li class="chapter" data-level="21.2" data-path="assignment3.html"><a href="assignment3.html#many-studies"><i class="fa fa-check"></i><b>21.2</b> Many studies</a></li>
+<li class="chapter" data-level="21.3" data-path="assignment3.html"><a href="assignment3.html#many-studies-without-population-effect"><i class="fa fa-check"></i><b>21.3</b> Many studies without population effect</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="assignment4.html"><a href="assignment4.html"><i class="fa fa-check"></i><b>22</b> Assignment 4: Study designs</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="assignment4.html"><a href="assignment4.html#overview"><i class="fa fa-check"></i><b>22.1</b> Overview</a></li>
+<li class="chapter" data-level="22.2" data-path="assignment4.html"><a href="assignment4.html#details"><i class="fa fa-check"></i><b>22.2</b> Details</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="assignment4.html"><a href="assignment4.html#questions"><i class="fa fa-check"></i><b>22.2.1</b> Questions</a></li>
+<li class="chapter" data-level="22.2.2" data-path="assignment4.html"><a href="assignment4.html#alternative-explanations"><i class="fa fa-check"></i><b>22.2.2</b> Alternative explanations</a></li>
+<li class="chapter" data-level="22.2.3" data-path="assignment4.html"><a href="assignment4.html#logic"><i class="fa fa-check"></i><b>22.2.3</b> Logic</a></li>
+<li class="chapter" data-level="22.2.4" data-path="assignment4.html"><a href="assignment4.html#methods"><i class="fa fa-check"></i><b>22.2.4</b> Methods</a></li>
+<li class="chapter" data-level="22.2.5" data-path="assignment4.html"><a href="assignment4.html#results"><i class="fa fa-check"></i><b>22.2.5</b> Results</a></li>
+<li class="chapter" data-level="22.2.6" data-path="assignment4.html"><a href="assignment4.html#inference"><i class="fa fa-check"></i><b>22.2.6</b> Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="assignment4.html"><a href="assignment4.html#performing-your-literature-review-and-writing-the-report"><i class="fa fa-check"></i><b>22.3</b> Performing your literature review and writing the report</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>23</b> Background</a></li>
+<li class="chapter" data-level="24" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html"><i class="fa fa-check"></i><b>24</b> Exercises: Ten vs thirty RM-study</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#reducing-the-data-set"><i class="fa fa-check"></i><b>24.1</b> Reducing the data set</a></li>
+<li class="chapter" data-level="24.2" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#inference-1"><i class="fa fa-check"></i><b>24.2</b> Inference</a></li>
+<li class="chapter" data-level="24.3" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#what-if-the-model-diagnostics-says-the-models-are-no-good"><i class="fa fa-check"></i><b>24.3</b> What if the model diagnostics says the models are no good?</a></li>
+<li class="chapter" data-level="24.4" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#case-study-single-vs.-multiple-sets-of-training-and-muscle-mass"><i class="fa fa-check"></i><b>24.4</b> Case study: Single vs. multiple sets of training and muscle mass</a>
+<ul>
+<li class="chapter" data-level="24.4.1" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#prepare-the-data-set"><i class="fa fa-check"></i><b>24.4.1</b> Prepare the data set</a></li>
+<li class="chapter" data-level="24.4.2" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#exploratory-analysis"><i class="fa fa-check"></i><b>24.4.2</b> Exploratory analysis</a></li>
+<li class="chapter" data-level="24.4.3" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#change-from-baseline"><i class="fa fa-check"></i><b>24.4.3</b> Change from baseline</a></li>
+<li class="chapter" data-level="24.4.4" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#model-the-change"><i class="fa fa-check"></i><b>24.4.4</b> Model the change</a></li>
+<li class="chapter" data-level="24.4.5" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#accounting-for-the-baseline-regression-to-the-mean-and-extending-the-linear-model"><i class="fa fa-check"></i><b>24.4.5</b> Accounting for the baseline – Regression to the mean and extending the linear model</a></li>
+<li class="chapter" data-level="24.4.6" data-path="exercises-ten-vs-thirty-rm-study.html"><a href="exercises-ten-vs-thirty-rm-study.html#training-volume-and-strength---extending-the-model-further"><i class="fa fa-check"></i><b>24.4.6</b> Training volume and strength - Extending the model further</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>25</b> References</a></li>
+<li class="chapter" data-level="26" data-path="a-multiple-time-point-study.html"><a href="a-multiple-time-point-study.html"><i class="fa fa-check"></i><b>26</b> A multiple time-point study</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="a-multiple-time-point-study.html"><a href="a-multiple-time-point-study.html#an-hypothetical-example"><i class="fa fa-check"></i><b>26.1</b> An hypothetical example</a></li>
+<li class="chapter" data-level="26.2" data-path="a-multiple-time-point-study.html"><a href="a-multiple-time-point-study.html#inference-from-a-repeated-measures-study"><i class="fa fa-check"></i><b>26.2</b> Inference from a repeated measures study</a>
+<ul>
+<li class="chapter" data-level="26.2.1" data-path="a-multiple-time-point-study.html"><a href="a-multiple-time-point-study.html#evaluating-regression-coefficients"><i class="fa fa-check"></i><b>26.2.1</b> Evaluating regression coefficients</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="using-real-data.html"><a href="using-real-data.html"><i class="fa fa-check"></i><b>27</b> Using real data</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="using-real-data.html"><a href="using-real-data.html#data-exploration"><i class="fa fa-check"></i><b>27.1</b> Data exploration</a></li>
+<li class="chapter" data-level="27.2" data-path="using-real-data.html"><a href="using-real-data.html#fit-a-mixed-model"><i class="fa fa-check"></i><b>27.2</b> Fit a mixed model</a></li>
+<li class="chapter" data-level="27.3" data-path="using-real-data.html"><a href="using-real-data.html#do-the-model-capture-the-data"><i class="fa fa-check"></i><b>27.3</b> Do the model capture the data?</a></li>
+<li class="chapter" data-level="27.4" data-path="using-real-data.html"><a href="using-real-data.html#inference-about-the-effect-of-interest"><i class="fa fa-check"></i><b>27.4</b> Inference about the effect of interest</a></li>
+<li class="chapter" data-level="27.5" data-path="using-real-data.html"><a href="using-real-data.html#more-about-the-model-summary"><i class="fa fa-check"></i><b>27.5</b> More about the model summary</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>28</b> Summary</a></li>
+<li class="chapter" data-level="29" data-path="accounting-for-the-baseline-differences-between-group-and-mixed-models.html"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html"><i class="fa fa-check"></i><b>29</b> Accounting for the baseline – Differences between group and mixed models</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="accounting-for-the-baseline-differences-between-group-and-mixed-models.html"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#statistical-name-dropping"><i class="fa fa-check"></i><b>29.1</b> Statistical name dropping</a></li>
+<li class="chapter" data-level="29.2" data-path="accounting-for-the-baseline-differences-between-group-and-mixed-models.html"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#the-model"><i class="fa fa-check"></i><b>29.2</b> The model</a>
+<ul>
+<li class="chapter" data-level="29.2.1" data-path="accounting-for-the-baseline-differences-between-group-and-mixed-models.html"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#exercise-effect-of-training-volume-on-isokinetic-strength"><i class="fa fa-check"></i><b>29.2.1</b> Exercise: Effect of training volume on isokinetic strength</a></li>
+<li class="chapter" data-level="29.2.2" data-path="accounting-for-the-baseline-differences-between-group-and-mixed-models.html"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#multiple-time-point-mixed-models"><i class="fa fa-check"></i><b>29.2.2</b> Multiple time-point – Mixed models</a></li>
+<li class="chapter" data-level="29.2.3" data-path="accounting-for-the-baseline-differences-between-group-and-mixed-models.html"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#more-on-diagnostics"><i class="fa fa-check"></i><b>29.2.3</b> More on diagnostics</a></li>
+<li class="chapter" data-level="29.2.4" data-path="accounting-for-the-baseline-differences-between-group-and-mixed-models.html"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#more-about-mixed-effects-models"><i class="fa fa-check"></i><b>29.2.4</b> More about mixed effects models</a></li>
+<li class="chapter" data-level="29.2.5" data-path="accounting-for-the-baseline-differences-between-group-and-mixed-models.html"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#references-1"><i class="fa fa-check"></i><b>29.2.5</b> References</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>30</b> Study questions</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="study-questions.html"><a href="study-questions.html#chapter-2-introduction-to-data-science-with-relevant-literature"><i class="fa fa-check"></i><b>30.1</b> Chapter 2: Introduction to data science (with relevant literature)</a></li>
+<li class="chapter" data-level="30.2" data-path="study-questions.html"><a href="study-questions.html#chapter-3-storing-data-in-spreadsheets-with-relevant-literature"><i class="fa fa-check"></i><b>30.2</b> Chapter 3: Storing data in spreadsheets (with relevant literature)</a></li>
+<li class="chapter" data-level="30.3" data-path="study-questions.html"><a href="study-questions.html#chapter-4-installing-and-starting-up-r-and-r-studio"><i class="fa fa-check"></i><b>30.3</b> Chapter 4: Installing and starting up R (and R Studio)</a></li>
+<li class="chapter" data-level="30.4" data-path="study-questions.html"><a href="study-questions.html#chapter-5-creating-your-first-graph"><i class="fa fa-check"></i><b>30.4</b> Chapter 5: Creating your first graph</a></li>
+<li class="chapter" data-level="30.5" data-path="study-questions.html"><a href="study-questions.html#chapter-6-wrangling-data-to-create-your-first-table"><i class="fa fa-check"></i><b>30.5</b> Chapter 6: Wrangling data to create your first table</a></li>
+<li class="chapter" data-level="30.6" data-path="study-questions.html"><a href="study-questions.html#chapter-11-introduction-to-the-molecular-exercise-physiology-lab"><i class="fa fa-check"></i><b>30.6</b> Chapter 11: Introduction to the molecular exercise physiology lab</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i><b>31</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mixed models - Analyzing repeated measures designs</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="accounting-for-the-baseline-differences-between-group-and-mixed-models" class="section level1" number="29">
+<h1><span class="header-section-number">Chapter 29</span> Accounting for the baseline – Differences between group and mixed models</h1>
+<p>In a randomized controlled trial, there might be difference between groups at baseline just by chance. These differences can be controlled for using the ANCOVA model, as described in the previous chapter. Another way to account for any baseline differences is to analyze raw scores (not change-scores) and account for potential baseline differences in the model. This can be done using another “extension” of the regression model, the mixed effects model.</p>
+<div id="statistical-name-dropping" class="section level2" number="29.1">
+<h2><span class="header-section-number">29.1</span> Statistical name dropping</h2>
+<p>Here we will very briefly talk about <em>mixed effects models</em> (or <em>linear mixed models</em>, or <em>hierarchical models</em>) which are models for <em>continuous outcomes</em> with <em>normally distributed errors</em>. These models can account for <em>non-independence</em> between data-points, meaning that we can fit a model using <em>correlated data</em>. This is advantageous when we want to analyze the same participants in a time-course manner (<em>repeated measures design</em>). Traditionally in exercise science, this has been done using <em>repeated measures analysis of variance</em> (<em>repeated measures ANOVA</em>). One might say that this is an outdated technique as the modern <em>mixed effects model</em> is more flexible and robust as it allows for e.g. <em>unbalanced data</em> (e.g. different number of participants in each group), <em>missing data</em> and more complex model formulations.</p>
+<p>The mixed effects model can be extended to other problems under the framework of <em>generalized linear models</em> that brings further flexibility as data from different distributions can be modeled.</p>
+</div>
+<div id="the-model" class="section level2" number="29.2">
+<h2><span class="header-section-number">29.2</span> The model</h2>
+<p>A mixed model contains two kinds of effects. In our previous models (made with <code>lm()</code>), we have dealt with “fixed effects,” these are the population-level effects that we try to estimate. This can be the difference between groups, or the slope in a model where we try to explain VO<sub>2max</sub> with height. In the mixed model, we also include “random effects.” In the simple case we can think of these as a separate starting point in the model for each participant. This simple case is called a model with <em>random intercepts</em>. Why <em>random</em>? This is because we can think of these effects as sampled from a population of possible effects. A fixed effect on the other hand have fixed (population) values. In the model we will create first, we will estimate population averages over time-points and training conditions. These estimates are fixed by design in the study, but participants has been sampled at random.</p>
+<p>We will use the function <code>lmer()</code> from the package <code>lme4</code> to fit mixed effects models.</p>
+<p>Hold up! Why use this new stuff, can we not just use the <code>lm</code> function?</p>
+<p>Let’s try. Before we do, we should agree that when fitting correlated data (data from the same participants sampled multiple times therefore creating data points “related” to each other) we violate an assumption of the ordinary linear model, the assumption of independence.</p>
+<p>In this example we will use the <code>tenthirty</code> data set. Let’s start by fitting a model where we try to estimate the difference between groups over time using <code>lm()</code>.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata)</span>
+<span id="cb220-2"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-3"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;tenthirty&quot;</span>)</span>
+<span id="cb220-4"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-5"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-6"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-6" aria-hidden="true" tabindex="-1"></a>tenthirty_reduced <span class="ot">&lt;-</span> tenthirty <span class="sc">%&gt;%</span> </span>
+<span id="cb220-7"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(exercise <span class="sc">==</span> <span class="st">&quot;legpress&quot;</span>, </span>
+<span id="cb220-8"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-8" aria-hidden="true" tabindex="-1"></a>         time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb220-9"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of the time factor</span></span>
+<span id="cb220-10"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb220-11"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span>
+<span id="cb220-12"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-13"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-14"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb220-15"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-16"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-16" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(load <span class="sc">~</span> time <span class="sc">*</span> group, <span class="at">data =</span> tenthirty_reduced)</span>
+<span id="cb220-17"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-18"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb220-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
+<p>The model formulation estimates four coefficients. The intercept is the mean in the 10RM group at baseline (<code>pre</code>). <code>timepost</code> is the mean in the 10RM group at time-point <code>post</code>. <code>groupRM30</code> is the difference at baseline between groups. The model formulation contains an interaction, meaning that the two groups are allowed to change differently between time-points and <code>timepost:group30RM</code> is the difference between groups at time-point <code>post</code> when taking the difference at baseline into account. This is the coefficient of interest in this study. We want to know if the difference from pre- to post-training differs between groups, we can assess this by testing if the difference is smaller or greater than zero.</p>
+<p>We can see that we estimate the difference in the interaction term (<code>timepost:group30RM</code>) to about -40 units. However, this difference is associated with a lot of uncertainty due to the large standard error. The resulting <em>t</em>-value is small, indicating that this result would be commonly found under the null-hypothesis of no differences between groups.</p>
+<p>Now let’s try to fit a mixed effects model.</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load package lme4</span></span>
+<span id="cb221-2"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb221-3"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb221-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-4"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb221-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb221-5"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb221-5" aria-hidden="true" tabindex="-1"></a>lmer1 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(load <span class="sc">~</span> time <span class="sc">*</span> group <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>participant), <span class="at">data =</span> tenthirty_reduced)</span>
+<span id="cb221-6"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb221-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb221-7"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb221-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lmer1)</span></code></pre></div>
+<p>From the fixed effects part of the summary, we can read about the same coefficients as were estimated in the above model. However, the estimates differs from the ordinary linear model especially when it comes to the standard errors <em>t</em>-values. The smaller standard errors is a result of telling the model that the same individuals are measured at both time-points. A lot of the unexplained variation in the ordinary linear model is explained by the difference between participants at baseline. We have added this information to the model through its random effects part. In the <code>lmer</code> function specifying a random intercept per participant is done through the addition of <code>(1|participant)</code>. We can see from the model summary (under Random effects) that the estimated standard deviation of participants intercepts at baseline is about 68 units. The random effect has a mean of zero and some estimated standard deviation, in this case the average deviation from zero is 68.</p>
+<p>Notice also that <code>lme4</code> does not produce p-values<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>. Instead of p-values we can use confidence intervals to evaluate our fixed effects. These are accessed with the <code>confint</code> function in both <code>lm</code> and <code>lmer</code>.</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence intervals from lm</span></span>
+<span id="cb222-2"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb222-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lm1)</span>
+<span id="cb222-3"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb222-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-4"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence intervals from lmer</span></span>
+<span id="cb222-5"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb222-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lmer1)</span></code></pre></div>
+<p>What is your interpretation of the results from these two models?</p>
+<p>In this comparison we have seen that the mixed effects model is more powerful by accounting for correlated data.</p>
+<div id="exercise-effect-of-training-volume-on-isokinetic-strength" class="section level3" number="29.2.1">
+<h3><span class="header-section-number">29.2.1</span> Exercise: Effect of training volume on isokinetic strength</h3>
+<p>The complete <code>strengthvolume</code> data set contains data from a within-participant trial where participants performed two training protocols during the study. Each leg was randomly allocated to either low- or moderate-volume training (see <span class="citation">(<a href="#ref-RN2358" role="doc-biblioref">Hammarström et al. 2020</a>)</span>). The trial can be analyzed as a cross-over trial using a mixed-model. To account for the fact that each participant has performed both training protocols we will add a random intercept per participant.</p>
+<p>Fit a mixed effects model to isokinetic strength (<code>isok.60</code>) data from <code>pre</code> and <code>post</code> training (<code>strengthvolume</code> data set in <code>exscidata</code>).</p>
+<p>After fitting the model, use <code>plot(model)</code> to assess the residual plot. This plot should not contain any clear patterns.</p>
+<p>If the residual plot is considered ok, interpret the model parameters and estimates.</p>
+<a id="displayText" href="javascript:toggle(8);">Example code</a>
+<div id="toggleText8" style="display: none">
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb223-2"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4); <span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata)</span>
+<span id="cb223-3"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-4"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb223-5"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;strengthvolume&quot;</span>)</span>
+<span id="cb223-6"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-7"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter and store a data set</span></span>
+<span id="cb223-8"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-8" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> strengthvolume <span class="sc">%&gt;%</span> </span>
+<span id="cb223-9"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter data set only to include...</span></span>
+<span id="cb223-10"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(exercise <span class="sc">==</span> <span class="st">&quot;isok.60&quot;</span>,  <span class="co"># Isokinetic data</span></span>
+<span id="cb223-11"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-11" aria-hidden="true" tabindex="-1"></a>         time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>),  <span class="co"># time points pre and post</span></span>
+<span id="cb223-12"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-12" aria-hidden="true" tabindex="-1"></a>         include <span class="sc">==</span> <span class="st">&quot;incl&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Participants included in final data analysis</span></span>
+<span id="cb223-13"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of time factor</span></span>
+<span id="cb223-14"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of the volume condidition factor</span></span>
+<span id="cb223-15"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>)), </span>
+<span id="cb223-16"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">sets =</span> <span class="fu">factor</span>(sets, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;single&quot;</span>, <span class="st">&quot;multiple&quot;</span>)))</span>
+<span id="cb223-17"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-18"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-19"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-20"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb223-21"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-21" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(load <span class="sc">~</span> time <span class="sc">*</span> sets <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>participant), <span class="at">data =</span> dat)</span>
+<span id="cb223-22"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-23"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-24"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the model assumption of homoscedasticity (equally distributed residuals)</span></span>
+<span id="cb223-25"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb223-25" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m2)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-217"></span>
+<img src="quant-methods_files/figure-html/unnamed-chunk-217-1.png" alt="Residuals vs. fitted values" width="2100" />
+<p class="caption">
+Figure 29.1: Residuals vs. fitted values
+</p>
+</div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the estimates from the model</span></span>
+<span id="cb224-2"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML [&#39;lmerMod&#39;]
+## Formula: load ~ time * sets + (1 | participant)
+##    Data: dat
+## 
+## REML criterion at convergence: 1270.6
+## 
+## Scaled residuals: 
+##      Min       1Q   Median       3Q      Max 
+## -2.83050 -0.44934 -0.06238  0.44151  2.27689 
+## 
+## Random effects:
+##  Groups      Name        Variance Std.Dev.
+##  participant (Intercept) 2506.2   50.06   
+##  Residual                 339.1   18.41   
+## Number of obs: 136, groups:  participant, 34
+## 
+## Fixed effects:
+##                       Estimate Std. Error t value
+## (Intercept)            176.941      9.148  19.342
+## timepost                17.029      4.466   3.813
+## setsmultiple             1.559      4.466   0.349
+## timepost:setsmultiple   12.382      6.316   1.960
+## 
+## Correlation of Fixed Effects:
+##             (Intr) timpst stsmlt
+## timepost    -0.244              
+## setsmultipl -0.244  0.500       
+## tmpst:stsml  0.173 -0.707 -0.707</code></pre>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m2)</span></code></pre></div>
+<pre><code>##                             2.5 %    97.5 %
+## .sig01                 39.1935049  64.27832
+## .sigma                 15.9103837  20.94700
+## (Intercept)           158.8490222 195.03333
+## timepost                8.3238676  25.73496
+## setsmultiple           -7.1467206  10.26437
+## timepost:setsmultiple   0.0708543  24.69385</code></pre>
+<div id="interpreting-the-model" class="section level4" number="29.2.1.1">
+<h4><span class="header-section-number">29.2.1.1</span> Interpreting the model</h4>
+<p>The intercept is the mean in the reference group (single-set) at time <code>pre</code>. Since we changed the levels of both the <code>time</code> and <code>sets</code> factors we determined the reference levels for both factors. The second coefficient, <code>timepost</code> tells us the average change from <code>pre</code>to <code>post</code> in the reference sets condition. <code>setsmultiple</code> is the difference at baseline between conditions and <code>timepost:setsmultiple</code> is the difference between single-set and multiple-set at time-point <code>post</code>, this is the coefficient of interest in this model (and study). We want to know if the change from pre to post differs between groups, we can assess this by testing if the difference is smaller or greater than zero. This is done with the difference at baseline in mind (we control for the baseline).</p>
+<p>Using the <code>confint</code> function we can see that the interaction term (<code>timepost:setsmultiple</code>) does not contain zero. How do you interpret the results?</p>
+</div>
+</div>
+<p></br></p>
+</div>
+<div id="multiple-time-point-mixed-models" class="section level3" number="29.2.2">
+<h3><span class="header-section-number">29.2.2</span> Multiple time-point – Mixed models</h3>
+<p>The mixed model can be extended using multiple time-points. When treating time-points as a factor variable we will estimate differences between volume condition at each time-point after taking the baseline into account. We do not anticipate any differences between time-points <code>pre</code> and <code>session1</code> nor between volume-conditions at these times, lets see if we are correct. Fit a model containing data from <code>isok.60</code> with time-points <code>pre</code>, <code>session1</code> and <code>post</code>, and both volume conditions. Keep the interaction in the model with the formula: <code>load ~ time * sets (1|participant)</code>. Intepret the results and calculate the average of each time and sets combination.</p>
+<a id="displayText" href="javascript:toggle(9);">An interpretation</a>
+<div id="toggleText9" style="display: none">
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> strengthvolume <span class="sc">%&gt;%</span> </span>
+<span id="cb228-2"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(exercise <span class="sc">==</span> <span class="st">&quot;isok.60&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb228-3"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of time-point and volume factors</span></span>
+<span id="cb228-4"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;session1&quot;</span>, <span class="st">&quot;post&quot;</span>)), </span>
+<span id="cb228-5"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">sets =</span> <span class="fu">factor</span>(sets, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;single&quot;</span>, <span class="st">&quot;multiple&quot;</span>))) </span>
+<span id="cb228-6"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-7"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-8"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-9"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-9" aria-hidden="true" tabindex="-1"></a><span class="co"># The model</span></span>
+<span id="cb228-10"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-10" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(load <span class="sc">~</span> time <span class="sc">*</span> sets <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>participant), <span class="at">data =</span> dat)</span>
+<span id="cb228-11"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-12"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the model residuals</span></span>
+<span id="cb228-13"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb228-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m) <span class="co"># Tendency of larger variation at high fitted values, but ok for now.</span></span></code></pre></div>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-218-1.png" width="2100" /></p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See the summary of the model</span></span>
+<span id="cb229-2"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML [&#39;lmerMod&#39;]
+## Formula: load ~ time * sets + (1 | participant)
+##    Data: dat
+## 
+## REML criterion at convergence: 2079.1
+## 
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -3.1657 -0.4663 -0.0762  0.5425  3.0151 
+## 
+## Random effects:
+##  Groups      Name        Variance Std.Dev.
+##  participant (Intercept) 2434.0   49.34   
+##  Residual                 323.2   17.98   
+## Number of obs: 228, groups:  participant, 39
+## 
+## Fixed effects:
+##                           Estimate Std. Error t value
+## (Intercept)               182.4615     8.4082  21.700
+## timesession1               -2.8205     4.0715  -0.693
+## timepost                   14.1831     4.1755   3.397
+## setsmultiple                0.4359     4.0715   0.107
+## timesession1:setsmultiple   1.4359     5.7579   0.249
+## timepost:setsmultiple      13.7585     5.8767   2.341
+## 
+## Correlation of Fixed Effects:
+##             (Intr) tmsss1 timpst stsmlt tmss1:
+## timesessin1 -0.242                            
+## timepost    -0.236  0.488                     
+## setsmultipl -0.242  0.500  0.488              
+## tmsssn1:sts  0.171 -0.707 -0.345 -0.707       
+## tmpst:stsml  0.168 -0.346 -0.704 -0.693  0.490</code></pre>
+<p>The mean in the single-set condition at <code>pre</code> is 182.46 Nm. From <code>pre</code> to <code>session1</code> the single-set condition increases by -2.82 Nm, from <code>pre</code> to <code>post</code> the single-set condition increases by 14.18 Nm. At <code>pre</code> there is a 0.44 unit difference between conditions Given this difference, at time-point <code>session1</code> the multiple-set condition is 1.44 units lower than the single-sets condition, and at time-point <code>post</code> the multiple-set condition is 13.76 Nm lower than the single-set condition given a baseline difference and an increase in the single-set condition.</p>
+<p>By adding these terms we can get the estimated mean for each group at <code>post</code>:</p>
+<p><code>single-set at post = (Intercept) + timetpost</code></p>
+<p><code>multiple-set at post = (Intercept) + timepost + groupmultiple + timepost:groupmultiple</code></p>
+</div>
+<p></br></p>
+<p>Since we have a data set with strength assessments performed at multiple time-points it could be valuable to model the strength over time instead at specific time-points. We will use the <code>isok.60</code> data again but reduce the data set to only containing data from participants wit a complete set of measurements. A number of participants did not complete all strength assessments (at weeks 2, 5, and 9) and are therefore filtered out from this analysis. We will filter out participants that do not have a full set of strength measurements (12, six assessments per leg). First we will model the time as a factor variable, resulting in a model with many coefficients. Run the code and inspect the resulting data frame to check if it is what you expect.</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> strengthvolume <span class="sc">%&gt;%</span> </span>
+<span id="cb231-2"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter to include isokinetic tests of included participants without missing values</span></span>
+<span id="cb231-3"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(exercise <span class="sc">==</span> <span class="st">&quot;isok.60&quot;</span>,</span>
+<span id="cb231-4"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-4" aria-hidden="true" tabindex="-1"></a>         include <span class="sc">==</span> <span class="st">&quot;incl&quot;</span>, </span>
+<span id="cb231-5"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(load)) <span class="sc">%&gt;%</span></span>
+<span id="cb231-6"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data frame by participants</span></span>
+<span id="cb231-7"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(participant) <span class="sc">%&gt;%</span></span>
+<span id="cb231-8"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter to only keep participants with 12 measurements</span></span>
+<span id="cb231-9"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">==</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb231-10"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ungroup the data frame to avoid problems</span></span>
+<span id="cb231-11"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb231-12"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of time-point and training volume factors</span></span>
+<span id="cb231-13"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;session1&quot;</span>, <span class="st">&quot;week2&quot;</span>, <span class="st">&quot;week5&quot;</span>, <span class="st">&quot;week9&quot;</span>, <span class="st">&quot;post&quot;</span>)),</span>
+<span id="cb231-14"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">sets =</span> <span class="fu">factor</span>(sets, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;single&quot;</span>, <span class="st">&quot;multiple&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb231-15"><a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#cb231-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<p>Next we will fit the model using the time factor, plot the residuals and inspect the results.</p>
+<p>When inspecting the results we can see that there is a negligible difference between the baseline (<code>pre</code>) and <code>session1</code> as indicated in the coefficient <code>timesession1</code>. Similarly, we did not expect any differences between volume conditions at this tests. The coefficient <code>timesession1:setsmultiple</code> shows us the estimated difference between volume conditions at <code>session1</code>. At later time-points we can see that the model suggests differences between volume conditions considerably larger than the estimated standard error, indicating a significant effect.</p>
+<p>We will now convert the factor <code>time</code> into a continuous variable that represents the number of weeks of training <code>timec</code> (c for continuous). Strength tests at <code>pre</code>and <code>session1</code> were both performed before the training had started, so there is no way any differences would have been a result of the training intervention. If converting this to a continuous scale, both <code>pre</code>and <code>session1</code> would be zero weeks of training. The <code>post</code> time point is collected after 12 weeks of training and weeks 2, 5 and 9 are self explanatory. We will convert the time factor to a continuous scale to model the increase in strength over time.</p>
+<p>By replacing the factor variable with a continuous variable we will reduce the number of estimated coefficients. A factor variable adds dummy variables to the regression model but the continuous variable can be interpreted as a single coefficient.</p>
+<p>Instead of reading the time factors as differences between a reference level (e.g. <code>pre</code>) and a specific level of interest we are now interpreting time as a difference between any to weeks. Technically, the slope for the coefficient <code>timec</code> can be read as for every week increase in <code>timec</code>, the strength increases about 1.63 Nm. There is a slight difference in baseline between volume conditions (4.91 Nm). The interaction coefficient tells us that in addition to the increase per week of 1.63 Nm in the single-set condition, the multiple-set condition increases an additional 1.16 Nm per week.</p>
+<p>We can translate this to a comparison over the full study. The single-set condition increases its strength 19.5 Nm (<span class="math inline">\(1.63 \times 12~weeks\)</span>). The single set condition adds another 13.9 Nm over twelve weeks (<span class="math inline">\(1.16 \times 12~weeks\)</span>) resulting in a total increase of 33.5 Nm.</p>
+<p>Treating time as a continuous variable in a simple model as the one we have used comes with the assumption that strength increases linearly over time. This can be assessed visually by plotting data from each participant over time. We can add a straight line per participant to the plot indicating the per participant model relationship between strength and time.</p>
+<p>There is some noise in the measurement but a straight line captures the overall pattern quite well. We do not need to make other assumptions regarding the relationship between time and strength other than a linear one (run the code to see the plot).</p>
+</div>
+<div id="more-on-diagnostics" class="section level3" number="29.2.3">
+<h3><span class="header-section-number">29.2.3</span> More on diagnostics</h3>
+<p>The same rules apply for the mixed effects model as for the ordinary linear model (except for the independence assumption). As already noted above, using simple commands we can first check the residual plot:</p>
+<p><code>plot(m4)</code></p>
+<p>The residuals should show no pattern.</p>
+<p>We can also make a qqplot of the residuals to check for normality:</p>
+<p><code>qqnorm(resid(m4)); qqline(resid(m4))</code></p>
+<p>This is really two commands separated with a <code>;</code> . The first plots the data, the second adds the line.</p>
+<p>The interpretations of the above is that the residual plot might indicate a tendency of larger variation at higher number of the fitted data, but this deviation is not that big. The second plot assesses normality of the residuals, they are plotted against a theoretical distribution (the line) and deviations from the line indicates problems with the model fit. However, <code>m4</code> from above looks good.</p>
+</div>
+<div id="more-about-mixed-effects-models" class="section level3" number="29.2.4">
+<h3><span class="header-section-number">29.2.4</span> More about mixed effects models</h3>
+<p>We have only scratched the surface. The models can be extended far beyond what this course covers. If you do an experiment in your master thesis, I’m pretty sure you will analyze it with a mixed model! It might be a good idea to read further.</p>
+<p>This is a nice paper (the first part is a general introduction):</p>
+<p>Harrison, X. A., et al. (2018). “A brief introduction to mixed effects modelling and multi-model inference in ecology.” PeerJ 6: e4794-e4794.</p>
+</div>
+<div id="references-1" class="section level3" number="29.2.5">
+<h3><span class="header-section-number">29.2.5</span> References</h3>
+
+</div>
+</div>
+</div>
+<h3> References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-RN2358" class="csl-entry">
+Hammarström, Daniel, Sjur Øfsteng, Lise Koll, Marita Hanestadhaugen, Ivana Hollan, William Apró, Jon Elling Whist, Eva Blomstrand, Bent R. Rønnestad, and Stian Ellefsen. 2020. <span>“Benefits of Higher Resistance-Training Volume Are Related to Ribosome Biogenesis.”</span> Journal Article. <em>The Journal of Physiology</em> 598 (3): 543–65. <a href="https://doi.org/10.1113/JP278455">https://doi.org/10.1113/JP278455</a>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="28">
+<li id="fn28"><p>If you write <code>?pvalues</code> in your console you will get some alternatives on how to get p-values. We will focus on the confidence intervals obtained with <code>confint</code> for inference.<a href="accounting-for-the-baseline-differences-between-group-and-mixed-models.html#fnref28" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="summary-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="study-questions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["quant-methods.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
