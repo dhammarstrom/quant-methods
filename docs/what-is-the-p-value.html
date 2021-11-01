@@ -456,7 +456,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="26.2.1" data-path="assignment5.html"><a href="assignment5.html#data-preparation"><i class="fa fa-check"></i><b>26.2.1</b> Data preparation</a></li>
 <li class="chapter" data-level="26.2.2" data-path="assignment5.html"><a href="assignment5.html#statistical-models"><i class="fa fa-check"></i><b>26.2.2</b> Statistical models</a></li>
+<li class="chapter" data-level="26.2.3" data-path="assignment5.html"><a href="assignment5.html#tools-for-writing-the-report"><i class="fa fa-check"></i><b>26.2.3</b> Tools for writing the report</a></li>
 </ul></li>
+<li class="chapter" data-level="26.3" data-path="assignment5.html"><a href="assignment5.html#handing-in-the-report"><i class="fa fa-check"></i><b>26.3</b> Handing in the report</a></li>
 </ul></li>
 <li class="chapter" data-level="27" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>27</b> Study questions</a>
 <ul>
@@ -495,17 +497,17 @@ div.csl-indent {
 <p><span class="math display">\[t = \frac{m - \mu}{s/\sqrt{n}}\]</span></p>
 <p>where <span class="math inline">\(m\)</span> is our sample mean, <span class="math inline">\(\mu\)</span> is the hypothesized mean, <span class="math inline">\(s\)</span> is our sample standard deviation and <span class="math inline">\(n\)</span> is the sample size. <span class="math inline">\(t\)</span> is the <em>sample statistic</em>. As we have covered in the previous chapter, we do not know the true variation in the imaginary distribution of samples, <span class="math inline">\(s\)</span> is our best guess of the population standard deviation. Using <span class="math inline">\(s\)</span> we can model the imaginary sampling distribution.</p>
 <p>It would look something like this:</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-158-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-139-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>The distribution above is the <em>t</em>-distribution with 10-1 degrees of freedom. Our calculated sample statistic can be inserted in the distribution.</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-159-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-140-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Using the calculated <em>t</em>-value we may answer questions like: "If the null-hypothesis is true, how often would we observe our <em>t</em>-value, or an even more extreme value? We can calculate this from the imaginary distribution as the area under the curve above our value.</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-160-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-141-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>In R, this probability can be calculated using the <code>pt()</code> function:</p>
 <p><code>t &lt;- (1-0) / (0.5 * sqrt(10))</code></p>
 <p><code>pt(t, df = 10-1, lower.tail = FALSE)</code></p>
 <p>It turns out that 27% of the distribution can be found in the blue shaded area. We have now completed a one-sample <em>t</em>-test. However, we have to look again at our null-hypothesis which states <span class="math inline">\(H_0 = 0\)</span>. There are two ways to disprove this hypothesis. We may find out that the value is lower or higher than 0. To account for both possibilities we calculate a “two sided <em>p</em>-value.” In practice we calculate the area under the curve above and below values corresponding to our observed distance from 0.</p>
 <p><code>2 * pt(t, df = 10-1, lower.tail = FALSE)</code></p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-161-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-142-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>As the area under the curve in the blue area is 54% of the distribution we may make a statement such as: “If the null-hypothesis is true, our observed value, or a value even more distant from 0 would appear 0.54% of the times upon repeated sampling.”</p>
 <p>We can not reject the null hypothesis as the result of our test is (our <em>t</em>-value, or a more extreme value) is so commonly found if the <span class="math inline">\(H_0\)</span> distribution is true.</p>
 <p>You sample a new mean from <span class="math inline">\(n=10\)</span> of 1.2, the standard deviation is 0.55. Calculate the <em>t</em>-statistic and the <em>p</em>-value with the <span class="math inline">\(H_0 = 0\)</span>.</p>

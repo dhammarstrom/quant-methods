@@ -456,7 +456,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="26.2.1" data-path="assignment5.html"><a href="assignment5.html#data-preparation"><i class="fa fa-check"></i><b>26.2.1</b> Data preparation</a></li>
 <li class="chapter" data-level="26.2.2" data-path="assignment5.html"><a href="assignment5.html#statistical-models"><i class="fa fa-check"></i><b>26.2.2</b> Statistical models</a></li>
+<li class="chapter" data-level="26.2.3" data-path="assignment5.html"><a href="assignment5.html#tools-for-writing-the-report"><i class="fa fa-check"></i><b>26.2.3</b> Tools for writing the report</a></li>
 </ul></li>
+<li class="chapter" data-level="26.3" data-path="assignment5.html"><a href="assignment5.html#handing-in-the-report"><i class="fa fa-check"></i><b>26.3</b> Handing in the report</a></li>
 </ul></li>
 <li class="chapter" data-level="27" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>27</b> Study questions</a>
 <ul>
@@ -516,7 +518,7 @@ p.caption {
 <div id="an-hypothetical-example" class="section level3" number="24.1.1">
 <h3><span class="header-section-number">24.1.1</span> An hypothetical example</h3>
 <p>A theoretical outcome of the study in this example could look something like in Figure 1 below.</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-208-1.png" width="1800" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-189-1.png" width="1800" style="display: block; margin: auto;" /></p>
 <p>The 30RM group starts off at approximately the same level as the 10RM group. After the first period (from Pre to Mid) the 10RM group potentially increases strength more than the 30RM group, the difference could be maintained to the Post time-point.</p>
 <p>Instead of modeling the effect of the baseline on the outcome we could control for it by adjusting the average levels at Mid and Post by removing the differences seen at baseline. This is the basic approach when analyzing repeated measures deigns with mixed models. Before we get to this step we will build the model from the bottom up.</p>
 <p>In a first model we do not include any “fixed effects.” We only estimate the mean of the whole data set, the very basic model formulation could look some thing like:</p>
@@ -528,8 +530,8 @@ In R, we would write this model formula as</p>
 Where <span class="math inline">\(\beta_{Mid}\)</span> is a dummy variable assigned number 1 when time = “mid” otherwise 0, and <span class="math inline">\(\beta_{Post}\)</span> is a dummy variable assigned 1 when time = “post” otherwise 0. This model, given our hypothetical data in this example could look like the black line in the plot below.</p>
 <p>In R, we would write this model formula as</p>
 <p>R automatically converts the time variable to two dummy variables as described in the formula above.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-211"></span>
-<img src="quant-methods_files/figure-html/unnamed-chunk-211-1.png" alt="Figure 2. Hypothetical model of a study strength development in two groups. The black cross represents a model of the data only modelling the mean, the black line represents a model modelling the average change over time in the two groups. Hypothetical values per group and time are represented in colored lines" width="1800" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-192"></span>
+<img src="quant-methods_files/figure-html/unnamed-chunk-192-1.png" alt="Figure 2. Hypothetical model of a study strength development in two groups. The black cross represents a model of the data only modelling the mean, the black line represents a model modelling the average change over time in the two groups. Hypothetical values per group and time are represented in colored lines" width="1800" />
 <p class="caption">
 Figure 24.1: Figure 2. Hypothetical model of a study strength development in two groups. The black cross represents a model of the data only modelling the mean, the black line represents a model modelling the average change over time in the two groups. Hypothetical values per group and time are represented in colored lines
 </p>
@@ -539,8 +541,8 @@ Figure 24.1: Figure 2. Hypothetical model of a study strength development in two
 Where the additional <span class="math inline">\(\beta_{Group}\)</span> is a dummy variable assigning 1 to all observations in the 30RM group and 0 otherwise. In R we extend the model formulation simply by adding group:</p>
 <p>In R, we would write this model formula as</p>
 <p>Estimates from the new model will have one “line” per group representing the average difference between groups at baseline but not accounting for differences in changes over time per group. The two black dashed lines in Figure 3 represents this model.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-213"></span>
-<img src="quant-methods_files/figure-html/unnamed-chunk-213-1.png" alt="Figure 3. Hypothetical model of a study strength development in two groups. The black cross represents a model of the data only modelling the mean, the solid black line represents a model modelling the average change over time in the two groups. The dashed black lines represents the average change over time with baseline difference between groups at baseline accounted for. Hypothetical values per group and time are represented in colored lines" width="1800" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-194"></span>
+<img src="quant-methods_files/figure-html/unnamed-chunk-194-1.png" alt="Figure 3. Hypothetical model of a study strength development in two groups. The black cross represents a model of the data only modelling the mean, the solid black line represents a model modelling the average change over time in the two groups. The dashed black lines represents the average change over time with baseline difference between groups at baseline accounted for. Hypothetical values per group and time are represented in colored lines" width="1800" />
 <p class="caption">
 Figure 24.2: Figure 3. Hypothetical model of a study strength development in two groups. The black cross represents a model of the data only modelling the mean, the solid black line represents a model modelling the average change over time in the two groups. The dashed black lines represents the average change over time with baseline difference between groups at baseline accounted for. Hypothetical values per group and time are represented in colored lines
 </p>
@@ -553,7 +555,7 @@ Figure 24.2: Figure 3. Hypothetical model of a study strength development in two
 <p>The output from this model given our hypothetical data could look like in table 1.</p>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-216">Table 24.1: </span>Table 1. Regression coefficients from an hypothetical data set.
+<span id="tab:unnamed-chunk-197">Table 24.1: </span>Table 1. Regression coefficients from an hypothetical data set.
 </caption>
 <thead>
 <tr>
@@ -627,8 +629,8 @@ The same principles apply if we want to know the estimated mean in the 10RM grou
 <span class="math display">\[y=0.9\]</span>
 By adding up the terms in a linear fashion (hence linear regression) we can calculate the estimated averages from both groups.</p>
 <p>The final model allows for different changes over time per group. And different regression estimates will reflect these patterns (Figure 4).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-217"></span>
-<img src="quant-methods_files/figure-html/unnamed-chunk-217-1.png" alt="Figure 4. Hypothetical model of a study on strength development in two groups. The dashed colored lines represents the average change over time per group with baseline difference between groups at baseline accounted for. Regression terms are printed to represent a full interaction model describing the data." width="1800" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-198"></span>
+<img src="quant-methods_files/figure-html/unnamed-chunk-198-1.png" alt="Figure 4. Hypothetical model of a study on strength development in two groups. The dashed colored lines represents the average change over time per group with baseline difference between groups at baseline accounted for. Regression terms are printed to represent a full interaction model describing the data." width="1800" />
 <p class="caption">
 Figure 24.3: Figure 4. Hypothetical model of a study on strength development in two groups. The dashed colored lines represents the average change over time per group with baseline difference between groups at baseline accounted for. Regression terms are printed to represent a full interaction model describing the data.
 </p>
@@ -643,7 +645,7 @@ Figure 24.3: Figure 4. Hypothetical model of a study on strength development in 
 <p>In the hypothetical example above the two coefficients that are of interest are the two interaction estimates. Let’s evaluate their confidence intervals. Table 2 gives hypothetical 95% confidence intervals on the interaction terms.</p>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-218">Table 24.2: </span>Table 2. Interaction coefficients from an hypothetical data set.
+<span id="tab:unnamed-chunk-199">Table 24.2: </span>Table 2. Interaction coefficients from an hypothetical data set.
 </caption>
 <thead>
 <tr>
@@ -709,7 +711,7 @@ TimePost:Group10RM
 <span id="cb204-4"><a href="mixed-models---interpretation-and-visualization.html#cb204-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># will take care of that.</span></span>
 <span id="cb204-5"><a href="mixed-models---interpretation-and-visualization.html#cb204-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, load, <span class="at">group =</span> participant, <span class="at">color =</span> group)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb204-6"><a href="mixed-models---interpretation-and-visualization.html#cb204-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-220-1.png" width="2100" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-201-1.png" width="2100" /></p>
 <p>We can see that most participants increase their strength, it is not clear if one group increases more than the other. We can add box-plots on top to get an idea.</p>
 <div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="mixed-models---interpretation-and-visualization.html#cb205-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
 <span id="cb205-2"><a href="mixed-models---interpretation-and-visualization.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># build the plot, each participant (subject) will get a line, group = subject</span></span>
@@ -720,7 +722,7 @@ TimePost:Group10RM
 <span id="cb205-7"><a href="mixed-models---interpretation-and-visualization.html#cb205-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># remove grouping from boxplots to plot group averages</span></span>
 <span id="cb205-8"><a href="mixed-models---interpretation-and-visualization.html#cb205-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="cn">NULL</span>), <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb205-9"><a href="mixed-models---interpretation-and-visualization.html#cb205-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-221-1.png" width="2100" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-202-1.png" width="2100" /></p>
 <p>The graphics suggests a small effect in favor of 10RM at post. Let’s fit the model.</p>
 </div>
 <div id="fit-a-mixed-model" class="section level3" number="24.2.2">
@@ -730,7 +732,7 @@ TimePost:Group10RM
 <span id="cb206-2"><a href="mixed-models---interpretation-and-visualization.html#cb206-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(load <span class="sc">~</span> time <span class="sc">*</span> group <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>participant), <span class="at">data =</span> dat)</span></code></pre></div>
 <p>Before doing anything with this model we will have to check if our assumptions are met. Let’s do a residuals plot.</p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="mixed-models---interpretation-and-visualization.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m1)</span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-223-1.png" width="2100" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-204-1.png" width="2100" /></p>
 <p>The residual plot indicates that there are no obvious patterns in the data, the residual variation is similar over the range of fitted values. The model is OK.</p>
 <p>We can now check if the model behaves similar to what we expect when looking at the raw data. We will use the <code>emmeans</code> package to get model estimates, estimated averages at each time-point within each group. The data may be plotted. <code>emmeans</code> performs the calculations based on the fixed effects estimates as we did by hand above.</p>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="mixed-models---interpretation-and-visualization.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the model (m1) we can specify the emmeans function to get model estimates</span></span>
@@ -743,7 +745,7 @@ TimePost:Group10RM
 <span id="cb209-2"><a href="mixed-models---interpretation-and-visualization.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb209-3"><a href="mixed-models---interpretation-and-visualization.html#cb209-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, emmean, <span class="at">group =</span> group, <span class="at">color =</span> group)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb209-4"><a href="mixed-models---interpretation-and-visualization.html#cb209-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-225-1.png" width="2100" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-206-1.png" width="2100" /></p>
 <p>In the code creating the plot above I specified the <code>group</code> and <code>color</code> arguments in ggplot to equal group in our data set. This means that lines will be drawn with different colors connecting data from each group.</p>
 <p>We can see in the figure that the 10RM group on average seems to increase more from pre to post than the 30RM group.</p>
 <p>We could add error-bars to this plot that represents the 95% confidence interval of each estimate. I will tweak the plot further to avoid over-plotting and add points to indicate where estimates have been made.</p>
@@ -759,7 +761,7 @@ TimePost:Group10RM
 <span id="cb210-10"><a href="mixed-models---interpretation-and-visualization.html#cb210-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.2</span>)) <span class="sc">+</span></span>
 <span id="cb210-11"><a href="mixed-models---interpretation-and-visualization.html#cb210-11" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb210-12"><a href="mixed-models---interpretation-and-visualization.html#cb210-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-226-1.png" width="2100" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-207-1.png" width="2100" /></p>
 <p>The <code>position = position_dodge(width = 0.2)</code> argument inside <code>geom_errorbar()</code>, <code>geom_point()</code> and <code>geom_line()</code> moves the points, lines and error-bars away from each other based on the grouping (<code>group = group</code> in <code>aes()</code>). The <code>width</code> argument in <code>geom_errobar</code> sets the width of the error-bars. There is nothing magical with these numbers, I just think it looks nice.</p>
 <p>The confidence bounds around each measurement does not really answer our question of differences between groups in change over time. These are just the 95% CI around the estimated means for each group at each time-point. Some would say that they are so non-informative that they should not be presented. I think it is good practice to plot what the model estimates, this gives you an opportunity to assess if the model actually captures the data! We get standard errors and 95% confidence intervals from model estimates and the 95% CI are preferred for plotting.</p>
 </div>
@@ -782,7 +784,7 @@ TimePost:Group10RM
 <span id="cb211-14"><a href="mixed-models---interpretation-and-visualization.html#cb211-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.2</span>)) <span class="sc">+</span></span>
 <span id="cb211-15"><a href="mixed-models---interpretation-and-visualization.html#cb211-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.2</span>)) <span class="sc">+</span></span>
 <span id="cb211-16"><a href="mixed-models---interpretation-and-visualization.html#cb211-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-227-1.png" width="2100" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-208-1.png" width="2100" /></p>
 <p>Using <code>alpha = 0.4</code> we make the lines representing individual data a bit more transparent. Nice! We now have a plot showing the raw data and the model estimates. They seem to capture the data pretty well (we have also seen the residual plot indicating this).</p>
 </div>
 <div id="inference-about-the-effect-of-interest" class="section level3" number="24.2.4">
@@ -970,7 +972,7 @@ timepost:groupRM10
 <span id="cb213-19"><a href="mixed-models---interpretation-and-visualization.html#cb213-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> X2.<span class="dv">5</span>.., <span class="at">ymax =</span> X97.<span class="dv">5</span>..), <span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb213-20"><a href="mixed-models---interpretation-and-visualization.html#cb213-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">24</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
 <span id="cb213-21"><a href="mixed-models---interpretation-and-visualization.html#cb213-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-229-1.png" width="2100" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-210-1.png" width="2100" /></p>
 <p>The plot shows the differences between groups at time-points “mid” and “post” after accounting for baseline differences (“pre”). This is the answer to our question regarding the differences between training intensity, 10RM seems to be superior!</p>
 <p>We can combine the two plots. The package <code>cowplot</code> has functions to plot several ggplots into one single plot.</p>
 <p>First we save each plot and the combine them using <code>plot_grid</code>. I will do some modifications to make the plot a bit nicer.</p>
@@ -1040,7 +1042,7 @@ timepost:groupRM10
 <span id="cb214-64"><a href="mixed-models---interpretation-and-visualization.html#cb214-64" aria-hidden="true" tabindex="-1"></a>          <span class="co"># Set alignment so that axis align both on the left (l) and right (r)</span></span>
 <span id="cb214-65"><a href="mixed-models---interpretation-and-visualization.html#cb214-65" aria-hidden="true" tabindex="-1"></a>          <span class="co"># axis</span></span>
 <span id="cb214-66"><a href="mixed-models---interpretation-and-visualization.html#cb214-66" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis =</span> <span class="st">&quot;lr&quot;</span>)</span></code></pre></div>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-230-1.png" width="2100" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-211-1.png" width="2100" /></p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="mixed-models---interpretation-and-visualization.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Learn more about aligning:</span></span>
 <span id="cb215-2"><a href="mixed-models---interpretation-and-visualization.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://wilkelab.org/cowplot/articles/aligning_plots.html</span></span></code></pre></div>
 <p>Success! We no have a two part figure showing model estimates and estimated mean differences between training conditions.</p>

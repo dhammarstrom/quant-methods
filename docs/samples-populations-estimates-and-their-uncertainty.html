@@ -456,7 +456,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="26.2.1" data-path="assignment5.html"><a href="assignment5.html#data-preparation"><i class="fa fa-check"></i><b>26.2.1</b> Data preparation</a></li>
 <li class="chapter" data-level="26.2.2" data-path="assignment5.html"><a href="assignment5.html#statistical-models"><i class="fa fa-check"></i><b>26.2.2</b> Statistical models</a></li>
+<li class="chapter" data-level="26.2.3" data-path="assignment5.html"><a href="assignment5.html#tools-for-writing-the-report"><i class="fa fa-check"></i><b>26.2.3</b> Tools for writing the report</a></li>
 </ul></li>
+<li class="chapter" data-level="26.3" data-path="assignment5.html"><a href="assignment5.html#handing-in-the-report"><i class="fa fa-check"></i><b>26.3</b> Handing in the report</a></li>
 </ul></li>
 <li class="chapter" data-level="27" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>27</b> Study questions</a>
 <ul>
@@ -623,7 +625,7 @@ div.csl-indent {
 <p>Distributions can be described in different ways depending on what distribution we are takling about. The most commonly used, the normal (or Gaussion) distribution can be described by the mean and the standard deviation.</p>
 </blockquote>
 <p>As the distribution of means is approximately normal we can determine where most of the means are. Let’s say that we are interested in determining a range where 95% of the means can be found. To do this we can use a theoretical distribution created by estimates from the distribution (the mean and standard deviation).</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-143-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-124-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>95% of all means are under the shaded area! This corresponds to a range of values that can be calculated in R:</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="samples-populations-estimates-and-their-uncertainty.html#cb158-1" aria-hidden="true" tabindex="-1"></a>lower <span class="ot">&lt;-</span> <span class="fu">mean</span>(results[,<span class="dv">1</span>]) <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sd</span>(results[,<span class="dv">1</span>])</span>
 <span id="cb158-2"><a href="samples-populations-estimates-and-their-uncertainty.html#cb158-2" aria-hidden="true" tabindex="-1"></a>upper <span class="ot">&lt;-</span> <span class="fu">mean</span>(results[,<span class="dv">1</span>]) <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sd</span>(results[,<span class="dv">1</span>])</span></code></pre></div>
@@ -757,7 +759,7 @@ where <span class="math inline">\(s\)</span> is the sample standard deviation, <
 <div id="why-isnt-it-5" class="section level4" number="18.5.1.1">
 <h4><span class="header-section-number">18.5.1.1</span> Why isn’t it 5%?</h4>
 <p>It may be due to the fact that the normal distribution is not a good distribution when sample sizes are low. We can instead use the <span class="math inline">\(t\)</span>-distribution. (This distribution has something to do with beer!)</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-149"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-130"></span>
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Guinness.jpg" alt="The *t*-distribution has something to do with beer!"  />
 <p class="caption">
 Figure 18.1: The <em>t</em>-distribution has something to do with beer!

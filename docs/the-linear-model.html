@@ -456,7 +456,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="26.2.1" data-path="assignment5.html"><a href="assignment5.html#data-preparation"><i class="fa fa-check"></i><b>26.2.1</b> Data preparation</a></li>
 <li class="chapter" data-level="26.2.2" data-path="assignment5.html"><a href="assignment5.html#statistical-models"><i class="fa fa-check"></i><b>26.2.2</b> Statistical models</a></li>
+<li class="chapter" data-level="26.2.3" data-path="assignment5.html"><a href="assignment5.html#tools-for-writing-the-report"><i class="fa fa-check"></i><b>26.2.3</b> Tools for writing the report</a></li>
 </ul></li>
+<li class="chapter" data-level="26.3" data-path="assignment5.html"><a href="assignment5.html#handing-in-the-report"><i class="fa fa-check"></i><b>26.3</b> Handing in the report</a></li>
 </ul></li>
 <li class="chapter" data-level="27" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>27</b> Study questions</a>
 <ul>
@@ -502,14 +504,14 @@ div.csl-indent {
 <p>A straight line can be used to describe a relationship between two variables. This relationship can also be described with a formula:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x\]</span></p>
 <p>Where <span class="math inline">\(y\)</span> is the outcome variable, <span class="math inline">\(\beta_0\)</span> is the intercept, <span class="math inline">\(\beta_1\)</span> is the slope and <span class="math inline">\(x\)</span> is the predictor.</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-70-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-51-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>In the model shown above, <span class="math inline">\(y\)</span> increases two units for every unit increase in <span class="math inline">\(x\)</span>. If we measure something in nature and find such a fit (every point on the line) we should check our calculations as perfect relationships are seldom found in measured variables. This because of measurement error and other non measured variables that affect the relationship. We quantify these unmeasured sources of variation in an additional term in the formula:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x + \epsilon\]</span></p>
 <p><span class="math inline">\(\epsilon\)</span> is the error-term. Here we quantify the distance from the best fit line for every observation. The best fit line is the line that minimizes the <em>squared residuals</em> (<span class="math inline">\(e_i^2\)</span>, in this case <span class="math inline">\(e\)</span> is used to signify the error as it is observed data). A more realistic regression model contains some error.</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-71-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-52-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>In the above figure, the error or residual is the distance (red lines) from the predicted (blue points) to the observed (black points).</p>
 <p>A two variable relationship can be positive (increase in <span class="math inline">\(y\)</span> as <span class="math inline">\(x\)</span> increases) or negative (<span class="math inline">\(y\)</span> decreases as <span class="math inline">\(x\)</span> increases).</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-72-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-53-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="fitting-regression-models-in-r" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> Fitting regression models in R</h2>
@@ -542,7 +544,7 @@ div.csl-indent {
 <p>The estimates from a summary in a two variable situation tells the value of <span class="math inline">\(y\)</span> when x is zero (the intercept) and the increase in <span class="math inline">\(y\)</span> for every unit increase in <span class="math inline">\(x\)</span> (the slope). Can you identify these from the output above?</p>
 <p>Two-variable regression (univariate regression) is closely related to the correlation. Try out the code <code>cor.test(df$x, df$y)</code> and see what similarities you find between the outputs.</p>
 <p>In the model we use in the example, the intercept is quite “far away” from the rest of the data (see figure below). This is, as noted above, because the intercept is the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x\)</span> is set to zero.</p>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-75-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-56-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Let’s fit some real data. We might wonder if there are some characteristic that is related to VO<sub>2max</sub>. For example, do taller individuals have greater VO<sub>2max</sub>? It is always a good idea to start with a plot before we do the modeling.</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="the-linear-model.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb89-2"><a href="the-linear-model.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
@@ -759,7 +761,7 @@ VO_{2max} = 4597\]</span></p>
 <li><p><em>Scale location</em> similarly to the residual plot, we can assess assumptions of heteroscedasticity and if we find the trend in the data. We are looking for a straight, flat line and points equally scattered around it.</p></li>
 <li><p><em>Residual vs. Leverage</em> is good to find influential data points. If a point is outside the dashed line it changes the conclusion of the regression to a large degree. Remember that we identified participant 5 as a potential problematic case. The Residual vs. leverage shows that number 5 has a large residual value but no leverage, meaning that it does not change the slope of the regression line.</p></li>
 </ul>
-<p><img src="quant-methods_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<p><img src="quant-methods_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
 </div>
 <div id="a-more-intepretable-model" class="section level2" number="12.8">
 <h2><span class="header-section-number">12.8</span> A more intepretable model</h2>

@@ -9,14 +9,6 @@ editor_options:
 
 In this assignment you will analyze and report on trial investigating the effect of resistance training volume on lean mass and muscle strength. The data are part of the `exscidata` package and can be accessed as `data("strengthvolume")` and `data("dxadata")`. Read the instructions carefully!
 
-```{r}
-library(exscidata)
-
-data()
-
-
-```
-
 ## Organizing the report
 
 Your report should consist of the sections Introduction, Methods, Results and Discussion. Each part of the report should be written as a reproducible document and a link or reference to the repository containing the source document(s) should be included in the report. Below follows detailed descriptions and requirements for each section.
@@ -57,7 +49,7 @@ End the discussion with a summary or conclusion. Some journals request that you 
 
 The data is already structured in the `exscidata` package. To access the data, use the following code:
 
-```{r, eval = TRUE}
+```{r, eval = TRUE, echo = TRUE}
 
 library(exscidata)
 data("dxadata"); data("strengthvolume")
@@ -67,7 +59,7 @@ data("dxadata"); data("strengthvolume")
 
 To get and overview of the variables in each data set use `?strengthvolume` and `?dxadata`. In the `dxadata` the variables of interest are organized in a more convenient way using the code below:
 
-```{r, message = FALSE, warning = FALSE}
+```{r, message = FALSE, warning = FALSE, echo = TRUE}
 
 library(tidyverse)
 
@@ -87,24 +79,27 @@ You are free to use any other part of the data set in the assignment.
 
 In the `strengthvolume` data set, strength measurement are made in several different exercises. In [@RN2358], one analysis was done on a combined score. This score was calculated as the scaled average. To obtain this combined score, use the code below:
 
-```{r, message = FALSE, warning = FALSE}
+```{r, message = FALSE, warning = FALSE, echo = TRUE}
 
 strengthvolume %>%
   group_by(exercise) %>%
   mutate(scaled.load = load / max(load, na.rm = TRUE)) %>%
   group_by(participant, time, sex, include, sets) %>%
   summarise(combined.load = mean(scaled.load, na.rm = TRUE)) %>%
+  ungroup() %>%
   print()
 
 ```
 
-The combined load calculated above is a measure of strength without unit (it is not e.g. kg). It can be used to calculate percentage or raw change.
+The combined load calculated above is a measure of strength without unit (it is not e.g. kg). It can be used to calculate percentage or raw change. You may however choose to only analyze one type of strength measurement.
 
 In the original analysis of this data, the maximum from the first two measurements were used as the baseline. It is up to you how you treat the data and what part of the data you use for your analysis. Most included participants have a measure of strength at pre/session1 and post. 18 participants have a complete data set with strength measured at weeks 2, 5, and 9 in addition to pre/post.
 
+Both data sets require more exploration for you to get fully familiar with them. Make sure you make these explorations outside the final report.
+
 ### Statistical models
 
-It is up to you what model you choose to analyze your data. You have to explain your choice of model, but you may keep it simple. If you use an ANCOVA model, remember that participants did both training conditions, this means that you will have to include a random effect giving information of participant. Your model will be a mixed-ANCOVA. The model formulation could look like this:
+It is up to you what model you choose to analyze your data. You have to explain your choice of model, but you may keep it simple. If you use an ANCOVA model, remember that participants did both training conditions, this means that you will have to include a random effect giving information of participant ID to the model. Your model will be a mixed-ANCOVA. If you use `lme4`, the model formulation could look like this:
 
 `change ~ baseline + sex + sets + (1|participant)`
 
@@ -114,4 +109,16 @@ If you use a mixed model approach you may use raw scores or e.g. log-transformed
 
 In the ANCOVA model, sex is important to account for differences in the baseline strength. Sex could explain some variation in the mixed-model but is unlikely to change the results regarding the `time:sets` interaction.
 
-You may extend or change these model formulations as long as these changes are explained and motivated by your question/purpose/hypothesis.
+You may extend or change these model formulations as long as these changes are explained and motivated by your question/purpose/hypothesis. Additional statistical tests/models such as correlation or regression models should be described and motivated by questions/purposes in your report.
+
+### Tools for writing the report
+
+By now, you should be familiar with writing in Rmarkdown. RStudio provides a nice interface in the "visual markdown editor" that also provides integration with citation managers and bibliographies. We have introduced `knitr` and `kableExtra` as two packages that you can use to create tables. You should also be familiar with making figures using `ggplot2`. In previous chapters we have mentioned `cowplot` as a way to combine several `ggplot2` objects in one plot.
+
+To fit models requiring random effects `lme4` is the package you have been introduced to. Estimates (group/condition averages) from these models can be obtained using the `emmeans` package.
+
+To format data you have been introduced to `dplyr` and `tidyr`, both packages are part of the `tidyverse` package.
+
+## Handing in the report
+
+As mentioned above, the report should have be reproducible as it should be built from a source `Rmd` file. In the report, include a statement regarding where to find the source document. This may be a link to your github repository. The report should be handed in for comments and then included in the portfolio exam.

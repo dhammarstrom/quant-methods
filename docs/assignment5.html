@@ -456,7 +456,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="26.2.1" data-path="assignment5.html"><a href="assignment5.html#data-preparation"><i class="fa fa-check"></i><b>26.2.1</b> Data preparation</a></li>
 <li class="chapter" data-level="26.2.2" data-path="assignment5.html"><a href="assignment5.html#statistical-models"><i class="fa fa-check"></i><b>26.2.2</b> Statistical models</a></li>
+<li class="chapter" data-level="26.2.3" data-path="assignment5.html"><a href="assignment5.html#tools-for-writing-the-report"><i class="fa fa-check"></i><b>26.2.3</b> Tools for writing the report</a></li>
 </ul></li>
+<li class="chapter" data-level="26.3" data-path="assignment5.html"><a href="assignment5.html#handing-in-the-report"><i class="fa fa-check"></i><b>26.3</b> Handing in the report</a></li>
 </ul></li>
 <li class="chapter" data-level="27" data-path="study-questions.html"><a href="study-questions.html"><i class="fa fa-check"></i><b>27</b> Study questions</a>
 <ul>
@@ -525,7 +527,20 @@ div.csl-indent {
 <div id="data-preparation" class="section level3" number="26.2.1">
 <h3><span class="header-section-number">26.2.1</span> Data preparation</h3>
 <p>The data is already structured in the <code>exscidata</code> package. To access the data, use the following code:</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="assignment5.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
+<span id="cb232-2"><a href="assignment5.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;dxadata&quot;</span>); <span class="fu">data</span>(<span class="st">&quot;strengthvolume&quot;</span>)</span></code></pre></div>
 <p>To get and overview of the variables in each data set use <code>?strengthvolume</code> and <code>?dxadata</code>. In the <code>dxadata</code> the variables of interest are organized in a more convenient way using the code below:</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="assignment5.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb233-2"><a href="assignment5.html#cb233-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb233-3"><a href="assignment5.html#cb233-3" aria-hidden="true" tabindex="-1"></a>dxadata <span class="sc">%&gt;%</span></span>
+<span id="cb233-4"><a href="assignment5.html#cb233-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant<span class="sc">:</span>include, lean.left_leg, lean.right_leg) <span class="sc">%&gt;%</span></span>
+<span id="cb233-5"><a href="assignment5.html#cb233-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;leg&quot;</span>, </span>
+<span id="cb233-6"><a href="assignment5.html#cb233-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;lean.mass&quot;</span>, </span>
+<span id="cb233-7"><a href="assignment5.html#cb233-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> lean.left_leg<span class="sc">:</span>lean.right_leg) <span class="sc">%&gt;%</span></span>
+<span id="cb233-8"><a href="assignment5.html#cb233-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">leg =</span> <span class="fu">if_else</span>(leg <span class="sc">==</span> <span class="st">&quot;lean.left_leg&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;R&quot;</span>), </span>
+<span id="cb233-9"><a href="assignment5.html#cb233-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">sets =</span> <span class="fu">if_else</span>(multiple <span class="sc">==</span> leg, <span class="st">&quot;multiple&quot;</span>, <span class="st">&quot;single&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb233-10"><a href="assignment5.html#cb233-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant, time, sex, include, sets, leg, lean.mass) <span class="sc">%&gt;%</span></span>
+<span id="cb233-11"><a href="assignment5.html#cb233-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 160 x 7
 ##    participant time  sex    include sets     leg   lean.mass
 ##    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;
@@ -542,8 +557,14 @@ div.csl-indent {
 ## # ... with 150 more rows</code></pre>
 <p>You are free to use any other part of the data set in the assignment.</p>
 <p>In the <code>strengthvolume</code> data set, strength measurement are made in several different exercises. In <span class="citation">(<a href="#ref-RN2358" role="doc-biblioref">Hammarström et al. 2020</a>)</span>, one analysis was done on a combined score. This score was calculated as the scaled average. To obtain this combined score, use the code below:</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="assignment5.html#cb235-1" aria-hidden="true" tabindex="-1"></a>strengthvolume <span class="sc">%&gt;%</span></span>
+<span id="cb235-2"><a href="assignment5.html#cb235-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(exercise) <span class="sc">%&gt;%</span></span>
+<span id="cb235-3"><a href="assignment5.html#cb235-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">scaled.load =</span> load <span class="sc">/</span> <span class="fu">max</span>(load, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb235-4"><a href="assignment5.html#cb235-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(participant, time, sex, include, sets) <span class="sc">%&gt;%</span></span>
+<span id="cb235-5"><a href="assignment5.html#cb235-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">combined.load =</span> <span class="fu">mean</span>(scaled.load, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb235-6"><a href="assignment5.html#cb235-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb235-7"><a href="assignment5.html#cb235-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 468 x 6
-## # Groups:   participant, time, sex, include [234]
 ##    participant time     sex   include sets     combined.load
 ##    &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt;
 ##  1 FP1         post     male  excl    multiple         0.696
@@ -557,19 +578,30 @@ div.csl-indent {
 ##  9 FP1         week5    male  excl    multiple         0.626
 ## 10 FP1         week5    male  excl    single           0.693
 ## # ... with 458 more rows</code></pre>
-<p>The combined load calculated above is a measure of strength without unit (it is not e.g. kg). It can be used to calculate percentage or raw change.</p>
+<p>The combined load calculated above is a measure of strength without unit (it is not e.g. kg). It can be used to calculate percentage or raw change. You may however choose to only analyze one type of strength measurement.</p>
 <p>In the original analysis of this data, the maximum from the first two measurements were used as the baseline. It is up to you how you treat the data and what part of the data you use for your analysis. Most included participants have a measure of strength at pre/session1 and post. 18 participants have a complete data set with strength measured at weeks 2, 5, and 9 in addition to pre/post.</p>
+<p>Both data sets require more exploration for you to get fully familiar with them. Make sure you make these explorations outside the final report.</p>
 </div>
 <div id="statistical-models" class="section level3" number="26.2.2">
 <h3><span class="header-section-number">26.2.2</span> Statistical models</h3>
-<p>It is up to you what model you choose to analyze your data. You have to explain your choice of model, but you may keep it simple. If you use an ANCOVA model, remember that participants did both training conditions, this means that you will have to include a random effect giving information of participant. Your model will be a mixed-ANCOVA. The model formulation could look like this:</p>
+<p>It is up to you what model you choose to analyze your data. You have to explain your choice of model, but you may keep it simple. If you use an ANCOVA model, remember that participants did both training conditions, this means that you will have to include a random effect giving information of participant ID to the model. Your model will be a mixed-ANCOVA. If you use <code>lme4</code>, the model formulation could look like this:</p>
 <p><code>change ~ baseline + sex + sets + (1|participant)</code></p>
 <p>If you use a mixed model approach you may use raw scores or e.g. log-transformed raw-scores. Your model could look like this:</p>
 <p><code>lean.mass ~ time * sets + (1|participant)</code></p>
 <p>In the ANCOVA model, sex is important to account for differences in the baseline strength. Sex could explain some variation in the mixed-model but is unlikely to change the results regarding the <code>time:sets</code> interaction.</p>
-<p>You may extend or change these model formulations as long as these changes are explained and motivated by your question/purpose/hypothesis.</p>
-
+<p>You may extend or change these model formulations as long as these changes are explained and motivated by your question/purpose/hypothesis. Additional statistical tests/models such as correlation or regression models should be described and motivated by questions/purposes in your report.</p>
 </div>
+<div id="tools-for-writing-the-report" class="section level3" number="26.2.3">
+<h3><span class="header-section-number">26.2.3</span> Tools for writing the report</h3>
+<p>By now, you should be familiar with writing in Rmarkdown. RStudio provides a nice interface in the “visual markdown editor” that also provides integration with citation managers and bibliographies. We have introduced <code>knitr</code> and <code>kableExtra</code> as two packages that you can use to create tables. You should also be familiar with making figures using <code>ggplot2</code>. In previous chapters we have mentioned <code>cowplot</code> as a way to combine several <code>ggplot2</code> objects in one plot.</p>
+<p>To fit models requiring random effects <code>lme4</code> is the package you have been introduced to. Estimates (group/condition averages) from these models can be obtained using the <code>emmeans</code> package.</p>
+<p>To format data you have been introduced to <code>dplyr</code> and <code>tidyr</code>, both packages are part of the <code>tidyverse</code> package.</p>
+</div>
+</div>
+<div id="handing-in-the-report" class="section level2" number="26.3">
+<h2><span class="header-section-number">26.3</span> Handing in the report</h2>
+<p>As mentioned above, the report should have be reproducible as it should be built from a source <code>Rmd</code> file. In the report, include a statement regarding where to find the source document. This may be a link to your github repository. The report should be handed in for comments and then included in the portfolio exam.</p>
+
 </div>
 </div>
 <h3> References</h3>
