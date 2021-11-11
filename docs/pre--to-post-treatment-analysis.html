@@ -783,17 +783,16 @@ This means that the difference between two variables on the log scale is the sam
 <span id="cb200-2"><a href="pre--to-post-treatment-analysis.html#cb200-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb200-3"><a href="pre--to-post-treatment-analysis.html#cb200-3" aria-hidden="true" tabindex="-1"></a>isom_data <span class="ot">&lt;-</span> strengthvolume <span class="sc">%&gt;%</span> </span>
 <span id="cb200-4"><a href="pre--to-post-treatment-analysis.html#cb200-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb200-5"><a href="pre--to-post-treatment-analysis.html#cb200-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(include <span class="sc">==</span> <span class="st">&quot;incl&quot;</span>, </span>
-<span id="cb200-6"><a href="pre--to-post-treatment-analysis.html#cb200-6" aria-hidden="true" tabindex="-1"></a>         time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>), </span>
-<span id="cb200-7"><a href="pre--to-post-treatment-analysis.html#cb200-7" aria-hidden="true" tabindex="-1"></a>         exercise <span class="sc">==</span> <span class="st">&quot;isok.60&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb200-8"><a href="pre--to-post-treatment-analysis.html#cb200-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(legs) <span class="sc">%&gt;%</span></span>
-<span id="cb200-9"><a href="pre--to-post-treatment-analysis.html#cb200-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(leg <span class="sc">==</span> selected.leg) <span class="sc">%&gt;%</span></span>
-<span id="cb200-10"><a href="pre--to-post-treatment-analysis.html#cb200-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(participant, sex, time, sets) <span class="sc">%&gt;%</span></span>
-<span id="cb200-11"><a href="pre--to-post-treatment-analysis.html#cb200-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">load =</span> <span class="fu">max</span>(load, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb200-12"><a href="pre--to-post-treatment-analysis.html#cb200-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> time, </span>
-<span id="cb200-13"><a href="pre--to-post-treatment-analysis.html#cb200-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> load) <span class="sc">%&gt;%</span></span>
-<span id="cb200-14"><a href="pre--to-post-treatment-analysis.html#cb200-14" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">change =</span> post <span class="sc">-</span> pre) <span class="sc">%&gt;%</span></span>
-<span id="cb200-15"><a href="pre--to-post-treatment-analysis.html#cb200-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<span id="cb200-5"><a href="pre--to-post-treatment-analysis.html#cb200-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>), </span>
+<span id="cb200-6"><a href="pre--to-post-treatment-analysis.html#cb200-6" aria-hidden="true" tabindex="-1"></a>         exercise <span class="sc">==</span> <span class="st">&quot;isok.60&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb200-7"><a href="pre--to-post-treatment-analysis.html#cb200-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(legs) <span class="sc">%&gt;%</span></span>
+<span id="cb200-8"><a href="pre--to-post-treatment-analysis.html#cb200-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(leg <span class="sc">==</span> selected.leg) <span class="sc">%&gt;%</span></span>
+<span id="cb200-9"><a href="pre--to-post-treatment-analysis.html#cb200-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(participant, sex, time, sets) <span class="sc">%&gt;%</span></span>
+<span id="cb200-10"><a href="pre--to-post-treatment-analysis.html#cb200-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">load =</span> <span class="fu">max</span>(load, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb200-11"><a href="pre--to-post-treatment-analysis.html#cb200-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> time, </span>
+<span id="cb200-12"><a href="pre--to-post-treatment-analysis.html#cb200-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> load) <span class="sc">%&gt;%</span></span>
+<span id="cb200-13"><a href="pre--to-post-treatment-analysis.html#cb200-13" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">change =</span> post <span class="sc">-</span> pre) <span class="sc">%&gt;%</span></span>
+<span id="cb200-14"><a href="pre--to-post-treatment-analysis.html#cb200-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 34 x 6
 ## # Groups:   participant, sex [34]
 ##    participant sex    sets      post   pre change

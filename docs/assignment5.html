@@ -560,23 +560,23 @@ div.csl-indent {
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="assignment5.html#cb235-1" aria-hidden="true" tabindex="-1"></a>strengthvolume <span class="sc">%&gt;%</span></span>
 <span id="cb235-2"><a href="assignment5.html#cb235-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(exercise) <span class="sc">%&gt;%</span></span>
 <span id="cb235-3"><a href="assignment5.html#cb235-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">scaled.load =</span> load <span class="sc">/</span> <span class="fu">max</span>(load, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb235-4"><a href="assignment5.html#cb235-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(participant, time, sex, include, sets) <span class="sc">%&gt;%</span></span>
+<span id="cb235-4"><a href="assignment5.html#cb235-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(participant, time, sex, sets) <span class="sc">%&gt;%</span></span>
 <span id="cb235-5"><a href="assignment5.html#cb235-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">combined.load =</span> <span class="fu">mean</span>(scaled.load, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb235-6"><a href="assignment5.html#cb235-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb235-7"><a href="assignment5.html#cb235-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 468 x 6
-##    participant time     sex   include sets     combined.load
-##    &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt;
-##  1 FP1         post     male  excl    multiple         0.696
-##  2 FP1         post     male  excl    single           0.687
-##  3 FP1         pre      male  excl    multiple         0.560
-##  4 FP1         pre      male  excl    single           0.603
-##  5 FP1         session1 male  excl    multiple         0.541
-##  6 FP1         session1 male  excl    single           0.628
-##  7 FP1         week2    male  excl    multiple         0.572
-##  8 FP1         week2    male  excl    single           0.674
-##  9 FP1         week5    male  excl    multiple         0.626
-## 10 FP1         week5    male  excl    single           0.693
+<pre><code>## # A tibble: 468 x 5
+##    participant time     sex   sets     combined.load
+##    &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;
+##  1 FP1         post     male  multiple         0.696
+##  2 FP1         post     male  single           0.687
+##  3 FP1         pre      male  multiple         0.560
+##  4 FP1         pre      male  single           0.603
+##  5 FP1         session1 male  multiple         0.541
+##  6 FP1         session1 male  single           0.628
+##  7 FP1         week2    male  multiple         0.572
+##  8 FP1         week2    male  single           0.674
+##  9 FP1         week5    male  multiple         0.626
+## 10 FP1         week5    male  single           0.693
 ## # ... with 458 more rows</code></pre>
 <p>The combined load calculated above is a measure of strength without unit (it is not e.g. kg). It can be used to calculate percentage or raw change. You may however choose to only analyze one type of strength measurement.</p>
 <p>In the original analysis of this data, the maximum from the first two measurements were used as the baseline. It is up to you how you treat the data and what part of the data you use for your analysis. Most included participants have a measure of strength at pre/session1 and post. 18 participants have a complete data set with strength measured at weeks 2, 5, and 9 in addition to pre/post.</p>

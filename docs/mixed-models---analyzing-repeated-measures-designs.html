@@ -563,21 +563,20 @@ div.csl-indent {
 <span id="cb223-8"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-8" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> strengthvolume <span class="sc">%&gt;%</span> </span>
 <span id="cb223-9"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter data set only to include...</span></span>
 <span id="cb223-10"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(exercise <span class="sc">==</span> <span class="st">&quot;isok.60&quot;</span>,  <span class="co"># Isokinetic data</span></span>
-<span id="cb223-11"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-11" aria-hidden="true" tabindex="-1"></a>         time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>),  <span class="co"># time points pre and post</span></span>
-<span id="cb223-12"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-12" aria-hidden="true" tabindex="-1"></a>         include <span class="sc">==</span> <span class="st">&quot;incl&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Participants included in final data analysis</span></span>
-<span id="cb223-13"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of time factor</span></span>
-<span id="cb223-14"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of the volume condidition factor</span></span>
-<span id="cb223-15"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>)), </span>
-<span id="cb223-16"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">sets =</span> <span class="fu">factor</span>(sets, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;single&quot;</span>, <span class="st">&quot;multiple&quot;</span>)))</span>
+<span id="cb223-11"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-11" aria-hidden="true" tabindex="-1"></a>         time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># time points pre and post</span></span>
+<span id="cb223-12"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of time factor</span></span>
+<span id="cb223-13"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of the volume condidition factor</span></span>
+<span id="cb223-14"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>)), </span>
+<span id="cb223-15"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">sets =</span> <span class="fu">factor</span>(sets, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;single&quot;</span>, <span class="st">&quot;multiple&quot;</span>)))</span>
+<span id="cb223-16"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb223-17"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb223-18"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-19"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-20"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
-<span id="cb223-21"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-21" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(load <span class="sc">~</span> time <span class="sc">*</span> sets <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>participant), <span class="at">data =</span> dat)</span>
+<span id="cb223-19"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb223-20"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-20" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(load <span class="sc">~</span> time <span class="sc">*</span> sets <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>participant), <span class="at">data =</span> dat)</span>
+<span id="cb223-21"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb223-22"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-23"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-24"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the model assumption of homoscedasticity (equally distributed residuals)</span></span>
-<span id="cb223-25"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-25" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m2)</span></code></pre></div>
+<span id="cb223-23"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the model assumption of homoscedasticity (equally distributed residuals)</span></span>
+<span id="cb223-24"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb223-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-217"></span>
 <img src="quant-methods_files/figure-html/unnamed-chunk-217-1.png" alt="Residuals vs. fitted values" width="2100" />
 <p class="caption">
@@ -590,38 +589,38 @@ Figure 25.1: Residuals vs. fitted values
 ## Formula: load ~ time * sets + (1 | participant)
 ##    Data: dat
 ## 
-## REML criterion at convergence: 1270.6
+## REML criterion at convergence: 1411.6
 ## 
 ## Scaled residuals: 
 ##      Min       1Q   Median       3Q      Max 
-## -2.83050 -0.44934 -0.06238  0.44151  2.27689 
+## -2.72030 -0.52152 -0.07838  0.52534  2.29654 
 ## 
 ## Random effects:
 ##  Groups      Name        Variance Std.Dev.
-##  participant (Intercept) 2506.2   50.06   
-##  Residual                 339.1   18.41   
-## Number of obs: 136, groups:  participant, 34
+##  participant (Intercept) 2507.3   50.07   
+##  Residual                 352.1   18.76   
+## Number of obs: 150, groups:  participant, 39
 ## 
 ## Fixed effects:
 ##                       Estimate Std. Error t value
-## (Intercept)            176.941      9.148  19.342
-## timepost                17.029      4.466   3.813
-## setsmultiple             1.559      4.466   0.349
-## timepost:setsmultiple   12.382      6.316   1.960
+## (Intercept)           182.4615     8.5625  21.309
+## timepost               14.1562     4.3770   3.234
+## setsmultiple            0.4359     4.2490   0.103
+## timepost:setsmultiple  13.7585     6.1330   2.243
 ## 
 ## Correlation of Fixed Effects:
 ##             (Intr) timpst stsmlt
-## timepost    -0.244              
-## setsmultipl -0.244  0.500       
-## tmpst:stsml  0.173 -0.707 -0.707</code></pre>
+## timepost    -0.241              
+## setsmultipl -0.248  0.485       
+## tmpst:stsml  0.172 -0.701 -0.693</code></pre>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m2)</span></code></pre></div>
-<pre><code>##                             2.5 %    97.5 %
-## .sig01                 39.1935049  64.27832
-## .sigma                 15.9103837  20.94700
-## (Intercept)           158.8490222 195.03333
-## timepost                8.3238676  25.73496
-## setsmultiple           -7.1467206  10.26437
-## timepost:setsmultiple   0.0708543  24.69385</code></pre>
+<pre><code>##                            2.5 %     97.5 %
+## .sig01                 39.795034  63.270318
+## .sigma                 16.316258  21.238845
+## (Intercept)           165.548599 199.374478
+## timepost                5.611650  22.684934
+## setsmultiple           -7.850492   8.722287
+## timepost:setsmultiple   1.798174  25.718920</code></pre>
 <div id="interpreting-the-model" class="section level4" number="25.3.1.1">
 <h4><span class="header-section-number">25.3.1.1</span> Interpreting the model</h4>
 <p>The intercept is the mean in the reference group (single-set) at time <code>pre</code>. Since we changed the levels of both the <code>time</code> and <code>sets</code> factors we determined the reference levels for both factors. The second coefficient, <code>timepost</code> tells us the average change from <code>pre</code>to <code>post</code> in the reference sets condition. <code>setsmultiple</code> is the difference at baseline between conditions and <code>timepost:setsmultiple</code> is the difference between single-set and multiple-set at time-point <code>post</code>, this is the coefficient of interest in this model (and study). We want to know if the change from pre to post differs between groups, we can assess this by testing if the difference is smaller or greater than zero. This is done with the difference at baseline in mind (we control for the baseline).</p>
@@ -693,18 +692,17 @@ Figure 25.1: Residuals vs. fitted values
 <div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> strengthvolume <span class="sc">%&gt;%</span> </span>
 <span id="cb231-2"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter to include isokinetic tests of included participants without missing values</span></span>
 <span id="cb231-3"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(exercise <span class="sc">==</span> <span class="st">&quot;isok.60&quot;</span>,</span>
-<span id="cb231-4"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-4" aria-hidden="true" tabindex="-1"></a>         include <span class="sc">==</span> <span class="st">&quot;incl&quot;</span>, </span>
-<span id="cb231-5"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(load)) <span class="sc">%&gt;%</span></span>
-<span id="cb231-6"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data frame by participants</span></span>
-<span id="cb231-7"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(participant) <span class="sc">%&gt;%</span></span>
-<span id="cb231-8"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter to only keep participants with 12 measurements</span></span>
-<span id="cb231-9"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">==</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb231-10"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ungroup the data frame to avoid problems</span></span>
-<span id="cb231-11"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb231-12"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of time-point and training volume factors</span></span>
-<span id="cb231-13"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;session1&quot;</span>, <span class="st">&quot;week2&quot;</span>, <span class="st">&quot;week5&quot;</span>, <span class="st">&quot;week9&quot;</span>, <span class="st">&quot;post&quot;</span>)),</span>
-<span id="cb231-14"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">sets =</span> <span class="fu">factor</span>(sets, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;single&quot;</span>, <span class="st">&quot;multiple&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb231-15"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
+<span id="cb231-4"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(load)) <span class="sc">%&gt;%</span></span>
+<span id="cb231-5"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data frame by participants</span></span>
+<span id="cb231-6"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(participant) <span class="sc">%&gt;%</span></span>
+<span id="cb231-7"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter to only keep participants with 12 measurements</span></span>
+<span id="cb231-8"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">==</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb231-9"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ungroup the data frame to avoid problems</span></span>
+<span id="cb231-10"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb231-11"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fix the order of time-point and training volume factors</span></span>
+<span id="cb231-12"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">factor</span>(time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;session1&quot;</span>, <span class="st">&quot;week2&quot;</span>, <span class="st">&quot;week5&quot;</span>, <span class="st">&quot;week9&quot;</span>, <span class="st">&quot;post&quot;</span>)),</span>
+<span id="cb231-13"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">sets =</span> <span class="fu">factor</span>(sets, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;single&quot;</span>, <span class="st">&quot;multiple&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb231-14"><a href="mixed-models---analyzing-repeated-measures-designs.html#cb231-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div>
 <p>Next we will fit the model using the time factor, plot the residuals and inspect the results.</p>
 <p>When inspecting the results we can see that there is a negligible difference between the baseline (<code>pre</code>) and <code>session1</code> as indicated in the coefficient <code>timesession1</code>. Similarly, we did not expect any differences between volume conditions at this tests. The coefficient <code>timesession1:setsmultiple</code> shows us the estimated difference between volume conditions at <code>session1</code>. At later time-points we can see that the model suggests differences between volume conditions considerably larger than the estimated standard error, indicating a significant effect.</p>
 <p>We will now convert the factor <code>time</code> into a continuous variable that represents the number of weeks of training <code>timec</code> (c for continuous). Strength tests at <code>pre</code>and <code>session1</code> were both performed before the training had started, so there is no way any differences would have been a result of the training intervention. If converting this to a continuous scale, both <code>pre</code>and <code>session1</code> would be zero weeks of training. The <code>post</code> time point is collected after 12 weeks of training and weeks 2, 5 and 9 are self explanatory. We will convert the time factor to a continuous scale to model the increase in strength over time.</p>

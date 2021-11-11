@@ -660,8 +660,7 @@ data("strengthvolume")
 
 isom_data <- strengthvolume %>% 
   
-  filter(include == "incl", 
-         time %in% c("pre", "post"), 
+  filter(time %in% c("pre", "post"), 
          exercise == "isok.60") %>%
   inner_join(legs) %>%
   filter(leg == selected.leg) %>%
@@ -703,8 +702,7 @@ data("strengthvolume")
 
 isom_data <- strengthvolume %>% 
   
-  filter(include == "incl", 
-         time %in% c("pre", "post"), 
+  filter(time %in% c("pre", "post"), 
          exercise == "isok.60") %>%
   inner_join(legs) %>%
   filter(leg == selected.leg) %>%

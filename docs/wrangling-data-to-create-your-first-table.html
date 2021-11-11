@@ -637,65 +637,65 @@ Body fat (%)
 <span id="cb56-3"><a href="wrangling-data-to-create-your-first-table.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dxadata)</span></code></pre></div>
 <pre><code>## Rows: 80
 ## Columns: 59
-## $ participant      &lt;chr&gt; &quot;FP28&quot;, &quot;FP40&quot;, &quot;FP21&quot;, &quot;FP34&quot;, &quot;FP23&quot;, &quot;FP26&quot;, &quot;FP36&quot;, &quot;~
-## $ time             &lt;chr&gt; &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;~
-## $ multiple         &lt;chr&gt; &quot;L&quot;, &quot;R&quot;, &quot;R&quot;, &quot;R&quot;, &quot;R&quot;, &quot;R&quot;, &quot;L&quot;, &quot;R&quot;, &quot;R&quot;, &quot;L&quot;, &quot;L&quot;, &quot;R~
-## $ single           &lt;chr&gt; &quot;R&quot;, &quot;L&quot;, &quot;L&quot;, &quot;L&quot;, &quot;L&quot;, &quot;L&quot;, &quot;R&quot;, &quot;L&quot;, &quot;L&quot;, &quot;R&quot;, &quot;R&quot;, &quot;L~
-## $ sex              &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;~
-## $ include          &lt;chr&gt; &quot;incl&quot;, &quot;incl&quot;, &quot;incl&quot;, &quot;incl&quot;, &quot;incl&quot;, &quot;excl&quot;, &quot;incl&quot;, &quot;~
-## $ age              &lt;dbl&gt; 24.5, 22.1, 26.8, 23.1, 24.8, 24.2, 20.5, 20.6, 37.4, 22.~
-## $ height           &lt;dbl&gt; 170.0, 175.0, 184.0, 164.0, 176.5, 163.0, 158.0, 181.0, 1~
-## $ weight           &lt;dbl&gt; 66.5, 64.0, 85.0, 53.0, 68.5, 56.0, 60.5, 83.5, 65.0, 73.~
-## $ BMD.head         &lt;dbl&gt; 2.477, 1.916, 2.306, 2.163, 2.108, 2.866, 1.849, 2.216, 1~
-## $ BMD.arms         &lt;dbl&gt; 0.9520, 0.8150, 0.9800, 0.8760, 0.9170, 0.9730, 0.8710, 0~
-## $ BMD.legs         &lt;dbl&gt; 1.430, 1.218, 1.598, 1.256, 1.402, 1.488, 1.372, 1.428, 1~
-## $ BMD.body         &lt;dbl&gt; 1.044, 0.860, 1.060, 0.842, 0.925, 0.984, 0.923, 1.015, 0~
-## $ BMD.ribs         &lt;dbl&gt; 0.770, 0.630, 0.765, 0.636, 0.721, 0.737, 0.648, 0.707, 0~
-## $ BMD.pelvis       &lt;dbl&gt; 1.252, 1.078, 1.314, 1.044, 1.154, 1.221, 1.194, 1.328, 1~
-## $ BMD.spine        &lt;dbl&gt; 1.316, 0.979, 1.293, 0.899, 1.047, 1.089, 1.006, 1.147, 1~
-## $ BMD.whole        &lt;dbl&gt; 1.268, 1.082, 1.325, 1.119, 1.181, 1.350, 1.166, 1.242, 1~
-## $ fat.left_arm     &lt;dbl&gt; 1168, 715, 871, 610, 788, 372, 932, 1312, 388, 668, 510, ~
-## $ fat.left_leg     &lt;dbl&gt; 4469, 4696, 3467, 3023, 3088, 2100, 4674, 5435, 1873, 230~
-## $ fat.left_body    &lt;dbl&gt; 6280, 4061, 7740, 3638, 6018, 2328, 4896, 9352, 2921, 525~
-## $ fat.left_whole   &lt;dbl&gt; 12365, 9846, 12518, 7565, 10259, 5048, 10736, 16499, 5392~
-## $ fat.right_arm    &lt;dbl&gt; 1205, 769, 871, 610, 741, 374, 940, 1292, 413, 716, 500, ~
-## $ fat.right_leg    &lt;dbl&gt; 4497, 4900, 3444, 3017, 3254, 2082, 4756, 5455, 1782, 233~
-## $ fat.right_body   &lt;dbl&gt; 6082, 3923, 8172, 3602, 5699, 2144, 4705, 8674, 2640, 523~
-## $ fat.right_whole  &lt;dbl&gt; 12102, 9862, 12856, 7479, 10020, 4821, 10806, 15876, 5048~
-## $ fat.arms         &lt;dbl&gt; 2373, 1484, 1742, 1220, 1529, 747, 1872, 2604, 802, 1384,~
-## $ fat.legs         &lt;dbl&gt; 8965, 9596, 6911, 6040, 6342, 4182, 9430, 10890, 3655, 46~
-## $ fat.body         &lt;dbl&gt; 12362, 7984, 15912, 7239, 11717, 4472, 9601, 18026, 5561,~
-## $ fat.android      &lt;dbl&gt; 1880, 963, 2460, 1203, 1933, 527, 1663, 3183, 1240, 1728,~
-## $ fat.gynoid       &lt;dbl&gt; 5064, 5032, 4779, 3739, 4087, 2740, 5217, 6278, 2309, 353~
-## $ fat.whole        &lt;dbl&gt; 24467, 19708, 25374, 15044, 20278, 9869, 21542, 32375, 10~
-## $ lean.left_arm    &lt;dbl&gt; 1987, 1931, 2884, 1753, 2652, 2425, 1913, 2266, 3066, 376~
-## $ lean.left_leg    &lt;dbl&gt; 7059, 7190, 10281, 6014, 8242, 7903, 6829, 8889, 9664, 97~
-## $ lean.left_body   &lt;dbl&gt; 9516, 10693, 13847, 9736, 11387, 10573, 8954, 11482, 1358~
-## $ lean.left_whole  &lt;dbl&gt; 20305, 21778, 29332, 19143, 24185, 22946, 18809, 24318, 2~
-## $ lean.right_arm   &lt;dbl&gt; 2049, 2081, 2888, 1754, 2487, 2439, 1930, 2236, 3253, 405~
-## $ lean.right_leg   &lt;dbl&gt; 7104, 7506, 10200, 6009, 8685, 7841, 6950, 8923, 9198, 98~
-## $ lean.right_body  &lt;dbl&gt; 9199, 10304, 14593, 9636, 10779, 9733, 8602, 10672, 12288~
-## $ lean.right_whole &lt;dbl&gt; 19605, 21310, 29643, 18792, 23653, 21837, 19407, 23727, 2~
-## $ lean.arms        &lt;dbl&gt; 4036, 4012, 5773, 3508, 5139, 4864, 3843, 4501, 6319, 781~
-## $ lean.legs        &lt;dbl&gt; 14163, 14696, 20482, 12023, 16928, 15744, 13779, 17812, 1~
-## $ lean.body        &lt;dbl&gt; 18715, 20998, 28440, 19372, 22166, 20306, 17556, 22155, 2~
-## $ lean.android     &lt;dbl&gt; 2669, 2782, 3810, 2455, 2904, 2656, 2297, 3094, 3344, 364~
-## $ lean.gynoid      &lt;dbl&gt; 6219, 7209, 10233, 5866, 7525, 5970, 5825, 8175, 7760, 96~
-## $ lean.whole       &lt;dbl&gt; 39910, 43088, 58976, 37934, 47837, 44783, 38216, 48045, 5~
-## $ BMC.left_arm     &lt;dbl&gt; 181, 138, 204, 144, 180, 173, 140, 173, 220, 226, 225, 17~
-## $ BMC.left_leg     &lt;dbl&gt; 567, 508, 728, 441, 562, 574, 482, 631, 633, 630, 672, 63~
-## $ BMC.left_body    &lt;dbl&gt; 622, 414, 696, 367, 526, 465, 370, 629, 473, 629, 509, 51~
-## $ BMC.left_whole   &lt;dbl&gt; 1680, 1321, 1945, 1201, 1527, 1580, 1131, 1688, 1544, 175~
-## $ BMC.right_arm    &lt;dbl&gt; 198, 150, 210, 142, 176, 183, 140, 176, 224, 251, 226, 16~
-## $ BMC.right_leg    &lt;dbl&gt; 574, 514, 739, 431, 552, 565, 491, 641, 622, 636, 690, 65~
-## $ BMC.right_body   &lt;dbl&gt; 592, 428, 730, 351, 502, 409, 358, 582, 420, 616, 483, 45~
-## $ BMC.right_whole  &lt;dbl&gt; 1582, 1288, 1958, 1130, 1451, 1466, 1229, 1668, 1478, 172~
-## $ BMC.arms         &lt;dbl&gt; 379, 288, 414, 285, 356, 357, 280, 348, 444, 478, 451, 34~
-## $ BMC.legs         &lt;dbl&gt; 1142, 1022, 1467, 872, 1115, 1139, 974, 1272, 1255, 1266,~
-## $ BMC.body         &lt;dbl&gt; 1214, 842, 1426, 718, 1028, 874, 728, 1211, 893, 1245, 99~
-## $ BMC.android      &lt;dbl&gt; 80, 57, 90, 44, 56, 54, 43, 77, 52, 72, 59, 60, 65, 52, 8~
-## $ BMC.gynoid       &lt;dbl&gt; 314, 285, 427, 245, 299, 262, 241, 379, 335, 378, 332, 30~
-## $ BMC.whole        &lt;dbl&gt; 3261, 2609, 3903, 2331, 2978, 3046, 2360, 3356, 3022, 346~</code></pre>
+## $ participant      &lt;chr&gt; &quot;FP28&quot;, &quot;FP40&quot;, &quot;FP21&quot;, &quot;FP34&quot;, &quot;FP23&quot;, &quot;FP26&quot;, &quot;FP36&quot;, &quot;FP~
+## $ time             &lt;chr&gt; &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pre&quot;, &quot;pr~
+## $ multiple         &lt;chr&gt; &quot;L&quot;, &quot;R&quot;, &quot;R&quot;, &quot;R&quot;, &quot;R&quot;, &quot;R&quot;, &quot;L&quot;, &quot;R&quot;, &quot;R&quot;, &quot;L&quot;, &quot;L&quot;, &quot;R&quot;,~
+## $ single           &lt;chr&gt; &quot;R&quot;, &quot;L&quot;, &quot;L&quot;, &quot;L&quot;, &quot;L&quot;, &quot;L&quot;, &quot;R&quot;, &quot;L&quot;, &quot;L&quot;, &quot;R&quot;, &quot;R&quot;, &quot;L&quot;,~
+## $ sex              &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;fe~
+## $ include          &lt;chr&gt; &quot;incl&quot;, &quot;incl&quot;, &quot;incl&quot;, &quot;incl&quot;, &quot;incl&quot;, &quot;excl&quot;, &quot;incl&quot;, &quot;in~
+## $ age              &lt;dbl&gt; 24.5, 22.1, 26.8, 23.1, 24.8, 24.2, 20.5, 20.6, 37.4, 22.3,~
+## $ height           &lt;dbl&gt; 170.0, 175.0, 184.0, 164.0, 176.5, 163.0, 158.0, 181.0, 183~
+## $ weight           &lt;dbl&gt; 66.5, 64.0, 85.0, 53.0, 68.5, 56.0, 60.5, 83.5, 65.0, 73.5,~
+## $ BMD.head         &lt;dbl&gt; 2.477, 1.916, 2.306, 2.163, 2.108, 2.866, 1.849, 2.216, 1.9~
+## $ BMD.arms         &lt;dbl&gt; 0.9520, 0.8150, 0.9800, 0.8760, 0.9170, 0.9730, 0.8710, 0.9~
+## $ BMD.legs         &lt;dbl&gt; 1.430, 1.218, 1.598, 1.256, 1.402, 1.488, 1.372, 1.428, 1.4~
+## $ BMD.body         &lt;dbl&gt; 1.044, 0.860, 1.060, 0.842, 0.925, 0.984, 0.923, 1.015, 0.9~
+## $ BMD.ribs         &lt;dbl&gt; 0.770, 0.630, 0.765, 0.636, 0.721, 0.737, 0.648, 0.707, 0.6~
+## $ BMD.pelvis       &lt;dbl&gt; 1.252, 1.078, 1.314, 1.044, 1.154, 1.221, 1.194, 1.328, 1.2~
+## $ BMD.spine        &lt;dbl&gt; 1.316, 0.979, 1.293, 0.899, 1.047, 1.089, 1.006, 1.147, 1.0~
+## $ BMD.whole        &lt;dbl&gt; 1.268, 1.082, 1.325, 1.119, 1.181, 1.350, 1.166, 1.242, 1.2~
+## $ fat.left_arm     &lt;dbl&gt; 1168, 715, 871, 610, 788, 372, 932, 1312, 388, 668, 510, 94~
+## $ fat.left_leg     &lt;dbl&gt; 4469, 4696, 3467, 3023, 3088, 2100, 4674, 5435, 1873, 2305,~
+## $ fat.left_body    &lt;dbl&gt; 6280, 4061, 7740, 3638, 6018, 2328, 4896, 9352, 2921, 5251,~
+## $ fat.left_whole   &lt;dbl&gt; 12365, 9846, 12518, 7565, 10259, 5048, 10736, 16499, 5392, ~
+## $ fat.right_arm    &lt;dbl&gt; 1205, 769, 871, 610, 741, 374, 940, 1292, 413, 716, 500, 91~
+## $ fat.right_leg    &lt;dbl&gt; 4497, 4900, 3444, 3017, 3254, 2082, 4756, 5455, 1782, 2330,~
+## $ fat.right_body   &lt;dbl&gt; 6082, 3923, 8172, 3602, 5699, 2144, 4705, 8674, 2640, 5234,~
+## $ fat.right_whole  &lt;dbl&gt; 12102, 9862, 12856, 7479, 10020, 4821, 10806, 15876, 5048, ~
+## $ fat.arms         &lt;dbl&gt; 2373, 1484, 1742, 1220, 1529, 747, 1872, 2604, 802, 1384, 1~
+## $ fat.legs         &lt;dbl&gt; 8965, 9596, 6911, 6040, 6342, 4182, 9430, 10890, 3655, 4635~
+## $ fat.body         &lt;dbl&gt; 12362, 7984, 15912, 7239, 11717, 4472, 9601, 18026, 5561, 1~
+## $ fat.android      &lt;dbl&gt; 1880, 963, 2460, 1203, 1933, 527, 1663, 3183, 1240, 1728, 8~
+## $ fat.gynoid       &lt;dbl&gt; 5064, 5032, 4779, 3739, 4087, 2740, 5217, 6278, 2309, 3532,~
+## $ fat.whole        &lt;dbl&gt; 24467, 19708, 25374, 15044, 20278, 9869, 21542, 32375, 1044~
+## $ lean.left_arm    &lt;dbl&gt; 1987, 1931, 2884, 1753, 2652, 2425, 1913, 2266, 3066, 3760,~
+## $ lean.left_leg    &lt;dbl&gt; 7059, 7190, 10281, 6014, 8242, 7903, 6829, 8889, 9664, 9704~
+## $ lean.left_body   &lt;dbl&gt; 9516, 10693, 13847, 9736, 11387, 10573, 8954, 11482, 13580,~
+## $ lean.left_whole  &lt;dbl&gt; 20305, 21778, 29332, 19143, 24185, 22946, 18809, 24318, 281~
+## $ lean.right_arm   &lt;dbl&gt; 2049, 2081, 2888, 1754, 2487, 2439, 1930, 2236, 3253, 4051,~
+## $ lean.right_leg   &lt;dbl&gt; 7104, 7506, 10200, 6009, 8685, 7841, 6950, 8923, 9198, 9806~
+## $ lean.right_body  &lt;dbl&gt; 9199, 10304, 14593, 9636, 10779, 9733, 8602, 10672, 12288, ~
+## $ lean.right_whole &lt;dbl&gt; 19605, 21310, 29643, 18792, 23653, 21837, 19407, 23727, 265~
+## $ lean.arms        &lt;dbl&gt; 4036, 4012, 5773, 3508, 5139, 4864, 3843, 4501, 6319, 7811,~
+## $ lean.legs        &lt;dbl&gt; 14163, 14696, 20482, 12023, 16928, 15744, 13779, 17812, 188~
+## $ lean.body        &lt;dbl&gt; 18715, 20998, 28440, 19372, 22166, 20306, 17556, 22155, 258~
+## $ lean.android     &lt;dbl&gt; 2669, 2782, 3810, 2455, 2904, 2656, 2297, 3094, 3344, 3644,~
+## $ lean.gynoid      &lt;dbl&gt; 6219, 7209, 10233, 5866, 7525, 5970, 5825, 8175, 7760, 9646~
+## $ lean.whole       &lt;dbl&gt; 39910, 43088, 58976, 37934, 47837, 44783, 38216, 48045, 547~
+## $ BMC.left_arm     &lt;dbl&gt; 181, 138, 204, 144, 180, 173, 140, 173, 220, 226, 225, 179,~
+## $ BMC.left_leg     &lt;dbl&gt; 567, 508, 728, 441, 562, 574, 482, 631, 633, 630, 672, 631,~
+## $ BMC.left_body    &lt;dbl&gt; 622, 414, 696, 367, 526, 465, 370, 629, 473, 629, 509, 513,~
+## $ BMC.left_whole   &lt;dbl&gt; 1680, 1321, 1945, 1201, 1527, 1580, 1131, 1688, 1544, 1750,~
+## $ BMC.right_arm    &lt;dbl&gt; 198, 150, 210, 142, 176, 183, 140, 176, 224, 251, 226, 167,~
+## $ BMC.right_leg    &lt;dbl&gt; 574, 514, 739, 431, 552, 565, 491, 641, 622, 636, 690, 652,~
+## $ BMC.right_body   &lt;dbl&gt; 592, 428, 730, 351, 502, 409, 358, 582, 420, 616, 483, 450,~
+## $ BMC.right_whole  &lt;dbl&gt; 1582, 1288, 1958, 1130, 1451, 1466, 1229, 1668, 1478, 1720,~
+## $ BMC.arms         &lt;dbl&gt; 379, 288, 414, 285, 356, 357, 280, 348, 444, 478, 451, 346,~
+## $ BMC.legs         &lt;dbl&gt; 1142, 1022, 1467, 872, 1115, 1139, 974, 1272, 1255, 1266, 1~
+## $ BMC.body         &lt;dbl&gt; 1214, 842, 1426, 718, 1028, 874, 728, 1211, 893, 1245, 992,~
+## $ BMC.android      &lt;dbl&gt; 80, 57, 90, 44, 56, 54, 43, 77, 52, 72, 59, 60, 65, 52, 87,~
+## $ BMC.gynoid       &lt;dbl&gt; 314, 285, 427, 245, 299, 262, 241, 379, 335, 378, 332, 307,~
+## $ BMC.whole        &lt;dbl&gt; 3261, 2609, 3903, 2331, 2978, 3046, 2360, 3356, 3022, 3469,~</code></pre>
 <p>We can see that we got 80 rows and 59 columns in the dataset. The columns of interest to us are:</p>
 <ul>
 <li>participant</li>
@@ -1555,114 +1555,6 @@ dxadata %&gt;% # take the dxadata data set
   </script>
 <p>In total 30 college students performed a heavy resistance training protocol where training volume was constantly increased over six weeks. In <span class="citation">(<a href="#ref-RN2149" role="doc-biblioref">Haun et al. 2018</a>)</span>, a part of the study, focusing on supplementation was reported. In <span class="citation">(<a href="#ref-RN2225" role="doc-biblioref">Haun et al. 2019</a>)</span>, participants were devided into two clusters based on training responses and the authors aimed to answer the question what separates high- from low-responders to resistance training.</p>
 <p>In this exercise we want to reproduce a big part of Table 1 in <span class="citation">(<a href="#ref-RN2225" role="doc-biblioref">Haun et al. 2019</a>)</span>. The Table as re-produced here can be seen below. See the orginal article for explenation of clusters. To select variables, see the data description in the <code>exscidata</code> package, the dataset is called <code>hypertrophy</code>.</p>
-<table>
-<caption>
-<span id="tab:unnamed-chunk-44">Table 6.1: </span>Table 1. Baseline characteristics at PRE and back squat training volume between clusters
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Variable
-</th>
-<th style="text-align:left;">
-LOW (n = 10)
-</th>
-<th style="text-align:left;">
-HIGH (n = 10)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Age (years)
-</td>
-<td style="text-align:left;">
-20.9 (1.9)
-</td>
-<td style="text-align:left;">
-21.5 (1)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Training age (years)
-</td>
-<td style="text-align:left;">
-5.5 (2.3)
-</td>
-<td style="text-align:left;">
-5.5 (2)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Body mass (kg)
-</td>
-<td style="text-align:left;">
-78.8 (8)
-</td>
-<td style="text-align:left;">
-83.1 (12.8)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-DXA LBM (kg)
-</td>
-<td style="text-align:left;">
-62.2 (5.9)
-</td>
-<td style="text-align:left;">
-65.1 (9.7)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-DXA FM (kg)
-</td>
-<td style="text-align:left;">
-13.5 (4.9)
-</td>
-<td style="text-align:left;">
-14.5 (4.9)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Type II fiber (%)
-</td>
-<td style="text-align:left;">
-59.4 (16.9)
-</td>
-<td style="text-align:left;">
-50.2 (13.6)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-3RM back squat (kg)
-</td>
-<td style="text-align:left;">
-127 (23.3)
-</td>
-<td style="text-align:left;">
-135.4 (14.1)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Total back squat training volume (kg)
-</td>
-<td style="text-align:left;">
-106610.2 (18679.4)
-</td>
-<td style="text-align:left;">
-111820.8 (12962.5)
-</td>
-</tr>
-</tbody>
-</table>
 <a id="displayText" href="javascript:toggle(1);">Click for a possible solution</a>
 <div id="toggleText1" style="display: none">
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="wrangling-data-to-create-your-first-table.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the data</span></span>

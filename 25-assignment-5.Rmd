@@ -84,7 +84,7 @@ In the `strengthvolume` data set, strength measurement are made in several diffe
 strengthvolume %>%
   group_by(exercise) %>%
   mutate(scaled.load = load / max(load, na.rm = TRUE)) %>%
-  group_by(participant, time, sex, include, sets) %>%
+  group_by(participant, time, sex, sets) %>%
   summarise(combined.load = mean(scaled.load, na.rm = TRUE)) %>%
   ungroup() %>%
   print()

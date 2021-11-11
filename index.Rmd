@@ -1,10 +1,11 @@
 ---
 title: "Quantitative methods and statistics (In Sport and Exercise Science)"
 author: "Daniel Hammarström"
-date: "Updated: `r Sys.Date()`"
-bibliography: resources/bib-final.bib
+date: 'Updated: `r Sys.Date()`'
 biblio-style: apalike
-description: These course notes let's you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com.
+description: These course notes let's you follow along in the course Quantitative
+  methods and Statistics (IDR4000) as given at the Section for Health and Exercise
+  Physiology, Inland University of Applied Sciences. Cover image Created with BioRender.com.
 documentclass: krantz
 link-citations: yes
 colorlinks: yes
@@ -15,7 +16,7 @@ fontsize: 11pt
 site: bookdown::bookdown_site
 github-repo: dhammarstrom/quant-methods
 cover-image: images/cover.png
-
+bibliography: resources/bib-final.bib
 ---
 
 ```{r nojekyll, message=FALSE, warning=FALSE, message=FALSE, echo = FALSE}
