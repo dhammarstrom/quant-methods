@@ -2,8 +2,6 @@
 
 ## About data in the world of sport and exercise
 
-<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/351503c176514d4e86aa1f812e8444961d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
-
 Data is everywhere. Most of us walk around with a data collection device in our pockets all the time. This device (your mobile phone), records and store data about you all throughout the day. Such data are the basis of the *quantified self movement*[^1] that have grown in popularity as capabilities to record data from daily life has become better. People interested in quantifying their personal life does so for different reasons, but often with the intent to improve their health[^2]. 
 
 [^1]: Read more about the quantified self movement [in this Wikipedia article](https://en.wikipedia.org/wiki/Quantified_self) 

@@ -30,13 +30,6 @@ file.create('./docs/.nojekyll') # this makes hosting on github possible
 Welcome to the course **Quantitative methods and Statistics (IDR4000)**. The course aims to give students an overview of methodological aspects within the field of sport and exercise-physiology. Specifically, planning, conducting and analyzing research projects with human participants will be covered. These course notes covers *almost* the entire course through the combination of video lectures, tutorials and references to the course literature and external resources.
 
 
-<center>
-
-<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/a236796813414a89b4136a7f0978cc201d" allowfullscreen msallowfullscreen allow="fullscreen"></iframe>
-
-</center>
-
-
 ## Quick links:
 
 **[Study questions](#study-questions)**
