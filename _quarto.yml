@@ -1,0 +1,22 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Quantitative methods and statistics (In Sport and Exercise Science)"
+  author: "Daniel Hammarström"
+  date: "2023-07-31"
+  chapters:
+    - index.qmd
+    - 01-intro-to-data.qmd
+    - 02-spreadsheets.qmd
+
+bibliography: resources/bib-final.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreport
+  epub:
+    cover-image: resources/cover.png
