@@ -178,16 +178,11 @@ R is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software d
 
 
 
-
-
 [RStudio](https://www.posit.co/) is a software designed to make it easier to use R. It is free to download and use. It is designed as an **integrated development environment** that lets you organize your work together with R and other tools. Install it by going to <https://www.posit.co/>.
 
 1.  Select "Products" and **RStudio IDE**
 2.  Scroll down and find the [FREE open source edition](https://posit.co/downloads/)
 3.  Download the installer made for your operating system.
-
-
-
 
 
 ### Git and Github
@@ -196,6 +191,96 @@ Git is a software that you need to install on your system in order to use versio
 
 1. Go to [https://git-scm.com/downloads](https://git-scm.com/downloads) and download the latest version for your operating system. 
 2. Run the installer. Make a note of where you installed it!
+
+3. To let RStudio know where git is located we need to open RStudio, go to *Global Options* under the *Tools* menu. Go to the *Git/SVN* sub-menu and find the **folder where git.exe** is located by browsing in the *"Git executable"* field.
+
+To registrer for a Github account
+
+1. Go to [Github.com](www.github.com).
+2. Find "Sign up" and follow the instructions.
+
+
+#### Git and clients
+
+As noted above, git is a software containing a number of functions for version control of files collected in a folder (or repository). A client in this context refers to a *user interface* that makes it easy to communicate with git. RStudio has some features that makes it possible to execute git commands by clicking, however this *client* is not very powerful, you might want another, or several other alternatives.
+
+First, git is available from the command line. It might look like this:
+
+```{code}
+#| eval: false
+
+> git add -A
+
+```
+
+We will touch upon more git commands for the command line later. The above adds all changes you have made to a list of changes that will be included in your next snapshot of your project. More on that later.
+
+Several Git clients can be run at the same time. This means that you might do some git on the command line in a terminal window in RStudio, and you might follow the changes in a graphical user interface, such as [GitHub Desktop](https://desktop.github.com/). The graphical user interface lets you navigate more easily and might help you understand what git is doing. We will be using GitHub desktop, so you might want to install it!
+
+1. Go to [desktop.github.com](https://desktop.github.com/)
+2. Download the installer and follow the instructions.
+
+
+### Quarto and friends
+
+The R community has pioneered literate programming for data analysis by early adoption of file formats that lets the user combine computer code and output with text [@RN1492]. A well adopted file format i recent years have been [R markdown](https://rmarkdown.rstudio.com/) which combines R code with text and lets the user compile reports in multiple output formats from a source document. R markdown is an "R-centric" approach to literate programming. Even though it lets you combine multiple computer languages, all code execution goes through R. Recently, a new format has been introduced, [Quarto](https://quarto.org/), which is not built through R but through a dedicated software, Quarto. 
+
+Rmarkdown and Quarto have many similarities in that you can use markdown, a well established [markup language](https://en.wikipedia.org/wiki/Markdown) to edit text with plain text. This means that for the R user, most differences in formatting your documents are irrelevant for getting started.
+
+As quarto authoring requires its own software, we need to do some installation.
+
+1. Go to [quarto.org](https://quarto.org/)
+2. Click "*Get Started*" and follow the instructions. 
+
+A nice output from a quarto source document in a PDF. In order to create PDFs using R/RStudio/quarto we need to install a version of the typesetting system [TeX](https://en.wikipedia.org/wiki/TeX). Quarto recommends[^11] using [tinytex](https://yihui.org/tinytex/) which is easilly istalled after you have installed quarto.
+
+1. Open up RStudio and a fresh terminal
+2. type `quarto install tinytex` and follow the instructions. 
+
+You should be ready to go now!
+
+[^11]: See the quarto documentation for details on creating pdfs and installing TeX distributions https://quarto.org/docs/output-formats/pdf-basics.html
+
+
+## Summing up and where to find help
+
+We have installed R, RStudio, git, quarto and tinytex. You have also created a github user. These are the tools that you will need to go further in this course. But what if you run into problems? Do not worry, the internet is at your service!
+
+PEP-TALK
+
+
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/index.html) is used as background material for our workshop in version control and collaborative data analysis. 
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

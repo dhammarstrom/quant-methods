@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -95,7 +96,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-intro-to-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data science</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -148,7 +149,14 @@ div.csl-indent {
   <li><a href="#about-data-in-the-world-of-sport-and-exercise" id="toc-about-data-in-the-world-of-sport-and-exercise" class="nav-link active" data-scroll-target="#about-data-in-the-world-of-sport-and-exercise"><span class="header-section-number">2.1</span> About data in the world of sport and exercise</a></li>
   <li><a href="#replication-and-reproducibility" id="toc-replication-and-reproducibility" class="nav-link" data-scroll-target="#replication-and-reproducibility"><span class="header-section-number">2.2</span> Replication and Reproducibility</a></li>
   <li><a href="#tools-in-data-science" id="toc-tools-in-data-science" class="nav-link" data-scroll-target="#tools-in-data-science"><span class="header-section-number">2.3</span> Tools in data science</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">2.4</span> References</a></li>
+  <li><a href="#installing-and-getting-to-know-the-required-software" id="toc-installing-and-getting-to-know-the-required-software" class="nav-link" data-scroll-target="#installing-and-getting-to-know-the-required-software"><span class="header-section-number">2.4</span> Installing and getting to know the required software</a>
+  <ul class="collapse">
+  <li><a href="#r-and-rstudio" id="toc-r-and-rstudio" class="nav-link" data-scroll-target="#r-and-rstudio"><span class="header-section-number">2.4.1</span> R and RStudio</a></li>
+  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github"><span class="header-section-number">2.4.2</span> Git and Github</a></li>
+  <li><a href="#quarto-and-friends" id="toc-quarto-and-friends" class="nav-link" data-scroll-target="#quarto-and-friends"><span class="header-section-number">2.4.3</span> Quarto and friends</a></li>
+  </ul></li>
+  <li><a href="#summing-up-and-where-to-find-help" id="toc-summing-up-and-where-to-find-help" class="nav-link" data-scroll-target="#summing-up-and-where-to-find-help"><span class="header-section-number">2.5</span> Summing up and where to find help</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">2.6</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -181,13 +189,13 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="01-intro-to-data_files/figure-html/iphone-data-1.png" class="img-fluid figure-img" width="768"></p>
-<p></p><figcaption class="figure-caption">Step count data from my iPhone displayed as all avalable data points (A, after data cleaning) and average step per weekday, per year and season (B).</figcaption><p></p>
+<figcaption class="figure-caption">Step count data from my iPhone displayed as all avalable data points (A, after data cleaning) and average step per weekday, per year and season (B).</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Data are also collected and stored in publicly available databases. Such databases are created for the purpose to store specific types of data, such as soccer<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> or biathlon results<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, or biological information such as gene sequences<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. Even data from scientific studies are now days often publicly available<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> meaning that we can perform scientific studies on unique data sets without collecting the data ourselves.</p>
-<p>The above examples shows that there are abundance of data around and available to us. The problem is that it is hard understand all this data. This is where data science and data literacy comes in. In the world of sport and exercise, regardless if you are interested in doing scientific investigations, coach a soccer-team or individual athletes or help patients recover from surgery using exercise therapy, you are faced with the problem of handling and make sense of data. Some of the key skills and deeper understanding about data science are very much transferable between such areas of practice.</p>
+<p>The above examples shows that there are abundance of data around and available to us. The problem is that in order to understand a phenomena better, we need techniques and methods to make sense of the data. This is where data science and data literacy comes in. In the world of sport and exercise, regardless if you are interested in doing scientific investigations, coach a soccer-team or individual athletes or help patients recover from surgery using exercise therapy, you are faced with the problem of handling and make sense of data. Some of the key skills and deeper understanding about data science are very much transferable between such areas of practice.</p>
 <blockquote class="blockquote">
 <p><strong>Think about the literature!</strong> Spiegelhalter (The Art of Statistics, in the introduction chapter) talks about how statistics has evolved towards the broader field of data science. In data science, statistical theory and methods are just parts of the problem solving cycle. Try to think about how you would use the PPDAC cycle as a exercise coach and a scientist. What are the similarities and differences?</p>
 </blockquote>
@@ -196,7 +204,7 @@ div.csl-indent {
 <section id="replication-and-reproducibility" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="replication-and-reproducibility"><span class="header-section-number">2.2</span> Replication and Reproducibility</h2>
 <p>In scientific research, replication is a way to confirm scientific claims. When a result can be confirmed by an independent group of researchers, the claim is more likely to be true. Many results will however never be possible to replicate due to the size of trials, costs and urgency of the research question. A recent example could perhaps be the many vaccine trials performed to develop a vaccines against COVID-19<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. Other examples concern studies with unique study populations, such as large scale epidemiological studies <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, but the same could be said to be true for unique investigations in sport and exercise science.</p>
-<p>When studies are not likely to be <em>replicated</em>, <em>reproducibility</em> of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that given the same datas, similar results or conclusions can be drawn by independent researchers <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>.</p>
+<p>When studies are not likely to be <em>replicated</em>, <em>reproducibility</em> of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that given the same data, similar results or conclusions can be drawn by independent researchers <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>.</p>
 <p>Peng et al. <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span> suggests that a <em>fully reproducible</em> study has</p>
 <ul>
 <li>Available data.</li>
@@ -209,7 +217,7 @@ div.csl-indent {
 </section>
 <section id="tools-in-data-science" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="tools-in-data-science"><span class="header-section-number">2.3</span> Tools in data science</h2>
-<p>Ways to interpret and make sense of data involves different methods. These methods are now days often implemented in computer software. This means that when you as a practitioner (scientist, coach, analyst …) want to understand data, you have to master some kind of computer software. The most common software used to understand data is probably Microsoft’s Excel. You can do amazing stuff with Excel! In the world of sport and exercise Excel has been used in such diverse activities such as scientific investigations, planning and recording training for Olympic medalists<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> and scheduling appointments.</p>
+<p>Ways to interpret and make sense of data involves different methods. These methods are now days often implemented in computer software. This means that when you as a practitioner (scientist, coach, analyst…) want to understand data, you have to master some kind of computer software. The most common software used to understand data is probably Microsoft’s Excel. You can do amazing stuff with Excel! In the world of sport and exercise Excel has been used in such diverse activities such as scientific investigations, planning and recording training for Olympic medalists<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> and scheduling appointments.</p>
 <p>For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education you have probably heard about SPSS, Stata or Jamovi. These are all specialized software used for statistical analyses.</p>
 <p>The above mentioned tools can all be used as part of a fully reproducible workflow. However, there are software solutions that actually suits this requirement better than others. Going back to the description of reproducible science as made by Peng et al. <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, we want software where analyses can be</p>
 <ul>
@@ -219,11 +227,88 @@ div.csl-indent {
 </ul>
 <p>This means that the software that we would prefer should be run using scripts (as opposed to point and click) and be free of charge (and open source, as opposed to expensive and proprietary). These criteria can be fulfilled when we use software that is written around the R language (although alternatives exists<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>).</p>
 <p>R is a computer language that is especially well suited for reproducible data analysis. As users are able to contribute software extensions, also called packages, many specialized software implementation exists for different tasks, such as creating figures or analyses of specific data. Around R, people have been developing auxiliary software to enable reproducible data analysis. The negative part of all these opportunities is that using R requires some effort. The learning curve is steep!</p>
-<p>Even though you might not use R ever again after this course, making and effort trying to learn it will let you know something about programming, capabilities of modern data science, statistical analysis and software/computers in general. These areas are all part of our modern society and are very much transferable regardless of what computer language we are talking about.</p>
-<p>In a following chapter of these course notes we will go through installing and starting up R.</p>
+<p>Even though you might not use R ever again after this course, making and effort trying to learn it will let you know something about programming, capabilities of modern data science, statistical analysis and software/computers in general. These areas are all aspects of our modern society and are very much transferable regardless of what computer language we are talking about.</p>
+<p>A big challenge when working with complex analyses or other large projects over time is keeping track of changes. Another challenge might be effective collaboration, with others and with yourself in the future. To overcome these challenges we can use a version control system that is connected to a social platform for distributing computer code and data. Github is a web-based platform that does provides this functionality. It is a very powerfull combination if you want to be able to collaborate and share what you are working on.</p>
 </section>
-<section id="references" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="references"><span class="header-section-number">2.4</span> References</h2>
+<section id="installing-and-getting-to-know-the-required-software" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="installing-and-getting-to-know-the-required-software"><span class="header-section-number">2.4</span> Installing and getting to know the required software</h2>
+<p>As noted above, there are multiple computer languages and software solutions that could satisfy our needs. However, in this course we will focus on a combination of tools that continuously are improved to make it easy for the user to collaborate and communicate data analyzes. Below is a checklist of what you need to have installed on your system to take full advantage of the proposed tools.</p>
+<section id="r-and-rstudio" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="r-and-rstudio"><span class="header-section-number">2.4.1</span> R and RStudio</h3>
+<p>R is a free, <a href="https://en.wikipedia.org/wiki/Open_source">open-source</a> software designed for statistical computing. We will use R as a part of an environment (using R Studio, introduced below). To download and install R:</p>
+<ol type="1">
+<li><p>Go to <a href="https://cran.uib.no/" class="uri">https://cran.uib.no/</a>,</p></li>
+<li><p>Select your operating system (Download R for Windows, MacOS or Linux).</p>
+<ul>
+<li>If you have Windows, choose <code>base</code>, click on “Download R (…) for windows”, save and run the file. The installation process should be self explanatory.</li>
+<li>If you have MacOS, download and install the latest release.</li>
+</ul></li>
+<li><p>Run the installer to install R.</p></li>
+</ol>
+<p><a href="https://www.posit.co/">RStudio</a> is a software designed to make it easier to use R. It is free to download and use. It is designed as an <strong>integrated development environment</strong> that lets you organize your work together with R and other tools. Install it by going to <a href="https://www.posit.co/" class="uri">https://www.posit.co/</a>.</p>
+<ol type="1">
+<li>Select “Products” and <strong>RStudio IDE</strong></li>
+<li>Scroll down and find the <a href="https://posit.co/downloads/">FREE open source edition</a></li>
+<li>Download the installer made for your operating system.</li>
+</ol>
+</section>
+<section id="git-and-github" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="git-and-github"><span class="header-section-number">2.4.2</span> Git and Github</h3>
+<p>Git is a software that you need to install on your system in order to use version control. Github is the web platform that allows collaboration and web-based storage of your work. First we will install git.</p>
+<ol type="1">
+<li><p>Go to <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> and download the latest version for your operating system.</p></li>
+<li><p>Run the installer. Make a note of where you installed it!</p></li>
+<li><p>To let RStudio know where git is located we need to open RStudio, go to <em>Global Options</em> under the <em>Tools</em> menu. Go to the <em>Git/SVN</em> sub-menu and find the <strong>folder where git.exe</strong> is located by browsing in the <em>“Git executable”</em> field.</p></li>
+</ol>
+<p>To registrer for a Github account</p>
+<ol type="1">
+<li>Go to <a href="www.github.com">Github.com</a>.</li>
+<li>Find “Sign up” and follow the instructions.</li>
+</ol>
+<section id="git-and-clients" class="level4" data-number="2.4.2.1">
+<h4 data-number="2.4.2.1" class="anchored" data-anchor-id="git-and-clients"><span class="header-section-number">2.4.2.1</span> Git and clients</h4>
+<p>As noted above, git is a software containing a number of functions for version control of files collected in a folder (or repository). A client in this context refers to a <em>user interface</em> that makes it easy to communicate with git. RStudio has some features that makes it possible to execute git commands by clicking, however this <em>client</em> is not very powerful, you might want another, or several other alternatives.</p>
+<p>First, git is available from the command line. It might look like this:</p>
+<div class="cell">
+<pre class="code cell-code"><code>&gt; git add -A
+</code></pre>
+</div>
+<p>We will touch upon more git commands for the command line later. The above adds all changes you have made to a list of changes that will be included in your next snapshot of your project. More on that later.</p>
+<p>Several Git clients can be run at the same time. This means that you might do some git on the command line in a terminal window in RStudio, and you might follow the changes in a graphical user interface, such as <a href="https://desktop.github.com/">GitHub Desktop</a>. The graphical user interface lets you navigate more easily and might help you understand what git is doing. We will be using GitHub desktop, so you might want to install it!</p>
+<ol type="1">
+<li>Go to <a href="https://desktop.github.com/">desktop.github.com</a></li>
+<li>Download the installer and follow the instructions.</li>
+</ol>
+</section>
+</section>
+<section id="quarto-and-friends" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="quarto-and-friends"><span class="header-section-number">2.4.3</span> Quarto and friends</h3>
+<p>The R community has pioneered literate programming for data analysis by early adoption of file formats that lets the user combine computer code and output with text <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>. A well adopted file format i recent years have been <a href="https://rmarkdown.rstudio.com/">R markdown</a> which combines R code with text and lets the user compile reports in multiple output formats from a source document. R markdown is an “R-centric” approach to literate programming. Even though it lets you combine multiple computer languages, all code execution goes through R. Recently, a new format has been introduced, <a href="https://quarto.org/">Quarto</a>, which is not built through R but through a dedicated software, Quarto.</p>
+<p>Rmarkdown and Quarto have many similarities in that you can use markdown, a well established <a href="https://en.wikipedia.org/wiki/Markdown">markup language</a> to edit text with plain text. This means that for the R user, most differences in formatting your documents are irrelevant for getting started.</p>
+<p>As quarto authoring requires its own software, we need to do some installation.</p>
+<ol type="1">
+<li>Go to <a href="https://quarto.org/">quarto.org</a></li>
+<li>Click “<em>Get Started</em>” and follow the instructions.</li>
+</ol>
+<p>A nice output from a quarto source document in a PDF. In order to create PDFs using R/RStudio/quarto we need to install a version of the typesetting system <a href="https://en.wikipedia.org/wiki/TeX">TeX</a>. Quarto recommends<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> using <a href="https://yihui.org/tinytex/">tinytex</a> which is easilly istalled after you have installed quarto.</p>
+<ol type="1">
+<li>Open up RStudio and a fresh terminal</li>
+<li>type <code>quarto install tinytex</code> and follow the instructions.</li>
+</ol>
+<p>You should be ready to go now!</p>
+</section>
+</section>
+<section id="summing-up-and-where-to-find-help" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="summing-up-and-where-to-find-help"><span class="header-section-number">2.5</span> Summing up and where to find help</h2>
+<p>We have installed R, RStudio, git, quarto and tinytex. You have also created a github user. These are the tools that you will need to go further in this course. But what if you run into problems? Do not worry, the internet is at your service!</p>
+<p>PEP-TALK</p>
+<ul>
+<li><a href="https://happygitwithr.com/index.html">Happy Git and GitHub for the useR</a> is used as background material for our workshop in version control and collaborative data analysis.</li>
+<li></li>
+</ul>
+</section>
+<section id="references" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="references"><span class="header-section-number">2.6</span> References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
@@ -254,6 +339,7 @@ Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</e
 <li id="fn8"><p>https://www.evaluate.com/vantage/articles/news/snippets/its-official-covid-19-vaccine-trials-rank-among-largest<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from <a href="http://obasen.orientering.se/traningsdagbok/installationshandledning.htm">swedish orienteering</a>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10"><p>In addition to R, Python offers a free open source environment for reproducible analyses. The choice between the two are <a href="https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis">matter of taste</a>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>See the quarto documentation for details on creating pdfs and installing TeX distributions https://quarto.org/docs/output-formats/pdf-basics.html<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
