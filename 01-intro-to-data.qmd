@@ -109,7 +109,7 @@ Data are also collected and stored in publicly available databases. Such databas
 
 [^7]: We published our raw data together with a recent paper (Mølmen et al 2021 [doi: 10.1186/s12967-021-02969-1.](https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-021-02969-1)) together with code to analyze it in a [public repository](https://github.com/dhammarstrom/rnaseq-copd).
 
-The above examples shows that there are abundance of data around and available to us. The problem is that it is hard understand all this data. This is where data science and data literacy comes in. In the world of sport and exercise, regardless if you are interested in doing scientific investigations, coach a soccer-team or individual athletes or help patients recover from surgery using exercise therapy, you are faced with the problem of handling and make sense of data. Some of the key skills and deeper understanding about data science are very much transferable between such areas of practice.  
+The above examples shows that there are abundance of data around and available to us. The problem is that in order to understand a phenomena better, we need techniques and methods to make sense of the data. This is where data science and data literacy comes in. In the world of sport and exercise, regardless if you are interested in doing scientific investigations, coach a soccer-team or individual athletes or help patients recover from surgery using exercise therapy, you are faced with the problem of handling and make sense of data. Some of the key skills and deeper understanding about data science are very much transferable between such areas of practice.  
 
 > **Think about the literature!**
   Spiegelhalter (The Art of Statistics, in the introduction chapter) talks about how statistics has evolved towards the broader field of data science. In data science, statistical theory and methods are just parts of the problem solving cycle. Try to think about how you would use the PPDAC cycle as a exercise coach and a scientist. What are the similarities and differences?
@@ -122,7 +122,7 @@ In scientific research, replication is a way to confirm scientific claims. When 
 
 [^8]: https://www.evaluate.com/vantage/articles/news/snippets/its-official-covid-19-vaccine-trials-rank-among-largest
 
-When studies are not likely to be *replicated*, *reproducibility* of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that given the same datas, similar results or conclusions can be drawn by independent researchers [@RN1492].
+When studies are not likely to be *replicated*, *reproducibility* of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that given the same data, similar results or conclusions can be drawn by independent researchers [@RN1492].
 
 Peng et al. [@RN1492] suggests that a *fully reproducible* study has 
 
@@ -137,7 +137,7 @@ A reproducible data analysis means that you will make it explicit and transparen
 
 ## Tools in data science
 
-Ways to interpret and make sense of data involves different methods. These methods are now days often implemented in computer software. This means that when you as a practitioner (scientist, coach, analyst ...) want to understand data, you have to master some kind of computer software. The most common software used to understand data is probably Microsoft's Excel. You can do amazing stuff with Excel! In the world of sport and exercise Excel has been used in such diverse activities such as scientific investigations, planning and recording training for Olympic medalists[^9] and scheduling appointments.
+Ways to interpret and make sense of data involves different methods. These methods are now days often implemented in computer software. This means that when you as a practitioner (scientist, coach, analyst...) want to understand data, you have to master some kind of computer software. The most common software used to understand data is probably Microsoft's Excel. You can do amazing stuff with Excel! In the world of sport and exercise Excel has been used in such diverse activities such as scientific investigations, planning and recording training for Olympic medalists[^9] and scheduling appointments.
 
 [^9]: The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from [swedish orienteering](http://obasen.orientering.se/traningsdagbok/installationshandledning.htm).
 
@@ -153,10 +153,54 @@ This means that the software that we would prefer should be run using scripts (a
 
 R is a computer language that is especially well suited for reproducible data analysis. As users are able to contribute software extensions, also called packages, many specialized software implementation exists for different tasks, such as creating figures or analyses of specific data. Around R, people have been developing auxiliary software to enable reproducible data analysis. The negative part of all these opportunities is that using R requires some effort. The learning curve is steep!
 
-Even though you might not use R ever again after this course, making and effort trying to learn it will let you know something about programming, capabilities of modern data science, statistical analysis and software/computers in general. These areas are all part of our modern society and are very much transferable regardless of what computer language we are talking about.
+Even though you might not use R ever again after this course, making and effort trying to learn it will let you know something about programming, capabilities of modern data science, statistical analysis and software/computers in general. These areas are all aspects of our modern society and are very much transferable regardless of what computer language we are talking about.
+
+A big challenge when working with complex analyses or other large projects over time is keeping track of changes. Another challenge might be effective collaboration, with others and with yourself in the future. To overcome these challenges we can use a version control system that is connected to a social platform for distributing computer code and data. Github is a web-based platform that does provides this functionality. It is a very powerfull combination if you want to be able to collaborate and share what you are working on.  
+
 
 [^10]: In addition to R, Python offers a free open source environment for reproducible analyses. The choice between the two are [matter of taste](https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis).
 
-In a following chapter of these course notes we will go through installing and starting up R.
+## Installing and getting to know the required software
+
+As noted above, there are multiple computer languages and software solutions that could satisfy our needs. However, in this course we will focus on a combination of tools that continuously are improved to make it easy for the user to collaborate and communicate data analyzes. Below is a checklist of what you need to have installed on your system to take full advantage of the proposed tools.
+
+### R and RStudio
+
+R is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software designed for statistical computing. We will use R as a part of an environment (using R Studio, introduced below). To download and install R:
+
+1.  Go to <https://cran.uib.no/>,
+
+2.  Select your operating system (Download R for Windows, MacOS or Linux).
+
+    -   If you have Windows, choose `base`, click on "Download R (...) for windows", save and run the file. The installation process should be self explanatory.
+    -   If you have MacOS, download and install the latest release.
+3. Run the installer to install R.
+
+
+
+
+
+[RStudio](https://www.posit.co/) is a software designed to make it easier to use R. It is free to download and use. It is designed as an **integrated development environment** that lets you organize your work together with R and other tools. Install it by going to <https://www.posit.co/>.
+
+1.  Select "Products" and **RStudio IDE**
+2.  Scroll down and find the [FREE open source edition](https://posit.co/downloads/)
+3.  Download the installer made for your operating system.
+
+
+
+
+
+### Git and Github
+
+Git is a software that you need to install on your system in order to use version control. Github is the web platform that allows collaboration and web-based storage of your work. First we will install git.
+
+1. Go to [https://git-scm.com/downloads](https://git-scm.com/downloads) and download the latest version for your operating system. 
+2. Run the installer. Make a note of where you installed it!
+
+
+
+
+
+
 
 ## References
