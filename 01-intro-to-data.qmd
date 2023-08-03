@@ -244,13 +244,23 @@ You should be ready to go now!
 
 ## Summing up and where to find help
 
-We have installed R, RStudio, git, quarto and tinytex. You have also created a github user. These are the tools that you will need to go further in this course. But what if you run into problems? Do not worry, the internet is at your service!
+We have installed R, RStudio, git, quarto and tinytex. You have also created a github account. These are the tools that you will need to go further in this course. But what if you run into problems? Do not worry, the internet is at your service!
 
-PEP-TALK
+Learning new skills, like doing data analysis by programming, can be hard but rewarding. If you want to make your learning experience less hard, consider these points:
+
+- **There are (almost always) multiple solutions to a problem**. When faced with difficulties, do not give up trying to search for a perfect single solution. Instead know that there are multiple ways of defining the problem and therefore multiple solutions.
+- **Someone else has already had the same problem**. The internet is full of questions and answers, also related to what ever problem you might have. Learning how to write "googleable" questions is a great skill. By adding "in R" to your problem in a google search term often helps finding R related solutions.
+- **Find your motivation**
+
+### A list of reference material and resources
 
 
-- [Happy Git and GitHub for the useR](https://happygitwithr.com/index.html) is used as background material for our workshop in version control and collaborative data analysis. 
-- 
+- [R for Data Science](https://r4ds.hadley.nz/) is a very comprehensive guide to working with R. It can be used chapter by chapter or by looking for tips on specific subjects. 
+
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/index.html) is used as background material for our workshop in version control and collaborative data analysis.
+
+- [Stack overflow](https://stackoverflow.com/) is a web platform where users provide answers to questions raised by other users. Here you will find answers to many of your R-related questions. Stack overflow will likely come up if you google a R problem by you can also search the website.
+
 
 
 
