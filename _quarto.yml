@@ -10,6 +10,8 @@ book:
     - index.qmd
     - 01-intro-to-data.qmd
     - 02-spreadsheets.qmd
+    - 03-intro-to-r.qmd
+    - 04-first-graph.qmd
 
 bibliography: resources/bib-final.bib
 

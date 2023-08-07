@@ -17,7 +17,10 @@ bibliography: resources/bib-final.bib
 #| message: false
 #| echo: false
 #| include: false
-file.create('./docs/.nojekyll') # this makes hosting on github possible
+
+
+
+
 ```
 
 

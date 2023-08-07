@@ -8,11 +8,11 @@ Data are everywhere. Most of us walk around with a data collection device in our
 
 [^2]: See this website for [intriguing examples](https://quantifiedself.com/show-and-tell/)
 
-Much of these kind of data are readily available to us due to the fact we are protected by data privacy policies and regarded as personal data[^3]. With some effort you yourself can get your data out of your iphone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016 and I tend to walk less steps on Sundays compared to Saturdays (see Figure \@ref(fig:iphone-data)).
+Much of these kind of data are readily available to us due to the fact we are protected by data privacy policies and regarded as personal data[^3]. With some effort you yourself can get your data out of your iphone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016 and I tend to walk less steps on Sundays compared to Saturdays (see Figure @fig-iphone).
 
 [^3]: See e.g. [Apples Privacy Policy](https://www.apple.com/legal/privacy/en-ww/).
 
-```{r iphone-data, fig.align='center', fig.height=8, fig.width=8, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Step count data from my iPhone displayed as all avalable data points (A, after data cleaning) and average step per weekday, per year and season (B)."}
+```{r fig-iphone, fig.align='center', fig.height=8, fig.width=8, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Step count data from my iPhone displayed as all avalable data points (A, after data cleaning) and average step per weekday, per year and season (B)."}
 
 
 library(tidyverse)
@@ -137,36 +137,36 @@ A reproducible data analysis means that you will make it explicit and transparen
 
 ## Tools in data science
 
-Ways to interpret and make sense of data involves different methods. These methods are now days often implemented in computer software. This means that when you as a practitioner (scientist, coach, analyst...) want to understand data, you have to master some kind of computer software. The most common software used to understand data is probably Microsoft's Excel. You can do amazing stuff with Excel! In the world of sport and exercise Excel has been used in such diverse activities such as scientific investigations, planning and recording training for Olympic medalists[^9] and scheduling appointments.
+Ways to interpret and make sense of data involve different methods. These methods are nowadays often implemented in computer software. This means that when you want to understand data as a practitioner (scientist, coach, analyst), you must master some computer software. The most common software used to understand data is probably Microsoft's Excel. You can do amazing stuff with Excel! In the world of sport and exercise, Excel has been used in diverse activities such as scientific investigations, planning and recording training for Olympic medalists[^9], and scheduling appointments.
 
 [^9]: The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from [swedish orienteering](http://obasen.orientering.se/traningsdagbok/installationshandledning.htm).
 
-For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education you have probably heard about SPSS, Stata or Jamovi. These are all specialized software used for statistical analyses.
+For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education, you have probably heard about SPSS, Stata, or Jamovi. These are all specialized software used for statistical analyses.
 
-The above mentioned tools can all be used as part of a fully reproducible workflow. However, there are software solutions that actually suits this requirement better than others. Going back to the description of reproducible science as made by Peng et al. [@RN1492], we want software where analyses can be 
+The tools mentioned above can all be used as part of a fully reproducible workflow. However, some software solutions suit this requirement better than others. Going back to the description of reproducible science as made by Peng et al. [@RN1492], we want software where analyses can be 
 
-- Human- and computer-readable, meaning that we want to be able to write scripts, or computer programs that execute the analyses.
-- Documented, meaning that along the code we want to be able to describe what the code does.
-- Available and able to share with other, meaning that we analyses can be run on open and free software to maximize ability to share them.
+- Human- and computer-readable, meaning that we want to be able to write scripts or computer programs that execute the analyses.
+- Documented, meaning that along the code, we want to be able to describe what the code does.
+- Available and able to share with others, meaning that our analyses can be run on open and free software to maximize the ability to share them.
 
-This means that the software that we would prefer should be run using scripts (as opposed to point and click) and be free of charge (and open source, as opposed to expensive and proprietary). These criteria can be fulfilled when we use software that is written around the R language (although alternatives exists[^10]).
+This means that the software we would prefer should be run using scripts (as opposed to point and click) and be free of charge (and open source, as opposed to expensive and proprietary). These criteria can be fulfilled when we use software written around the R language (although alternatives exist [^10]).
 
-R is a computer language that is especially well suited for reproducible data analysis. As users are able to contribute software extensions, also called packages, many specialized software implementation exists for different tasks, such as creating figures or analyses of specific data. Around R, people have been developing auxiliary software to enable reproducible data analysis. The negative part of all these opportunities is that using R requires some effort. The learning curve is steep!
+R is a computer language especially well suited for reproducible data analysis. As users can contribute software extensions, also called packages, many specialized software implementations exist for different tasks, such as creating figures or analyzing specific data. Around R, people have been developing auxiliary software for reproducible data analysis. The negative part of all these opportunities is that using R requires effort. The learning curve is steep!
 
-Even though you might not use R ever again after this course, making and effort trying to learn it will let you know something about programming, capabilities of modern data science, statistical analysis and software/computers in general. These areas are all aspects of our modern society and are very much transferable regardless of what computer language we are talking about.
+Even though you might not use R ever again after this course, trying to learn it will let you know something about programming, modern data science capabilities, statistical analysis, and software/computers in general. These areas are all aspects of our modern society and are transferable regardless of what computer language we are talking about.
 
-A big challenge when working with complex analyses or other large projects over time is keeping track of changes. Another challenge might be effective collaboration, with others and with yourself in the future. To overcome these challenges we can use a version control system that is connected to a social platform for distributing computer code and data. Github is a web-based platform that does provides this functionality. It is a very powerfull combination if you want to be able to collaborate and share what you are working on.  
+A big challenge when working with complex analyses or other large projects over time is keeping track of changes. Another challenge might be effective collaboration with others and with yourself in the future. To overcome these challenges, we can use a version control system connected to a social platform for distributing computer code and data. Github is a web-based platform that provides this functionality. It is a very powerful combination if you want to collaborate and share what you are working on.
 
 
 [^10]: In addition to R, Python offers a free open source environment for reproducible analyses. The choice between the two are [matter of taste](https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis).
 
 ## Installing and getting to know the required software
 
-As noted above, there are multiple computer languages and software solutions that could satisfy our needs. However, in this course we will focus on a combination of tools that continuously are improved to make it easy for the user to collaborate and communicate data analyzes. Below is a checklist of what you need to have installed on your system to take full advantage of the proposed tools.
+As noted above, there are multiple computer languages and software solutions that could satisfy our needs. However, in this course, we will focus on a combination of continuously improved tools to make it easy for the user to collaborate and communicate data analyses. Below is a checklist of what you must install on your system to take full advantage of the proposed tools.
 
 ### R and RStudio
 
-R is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software designed for statistical computing. We will use R as a part of an environment (using R Studio, introduced below). To download and install R:
+**R** is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software designed for statistical computing. We will use R as a part of an environment (using R Studio, introduced below). To download and install R:
 
 1.  Go to <https://cran.uib.no/>,
 
@@ -174,11 +174,12 @@ R is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software d
 
     -   If you have Windows, choose `base`, click on "Download R (...) for windows", save and run the file. The installation process should be self explanatory.
     -   If you have MacOS, download and install the latest release.
+    
 3. Run the installer to install R.
 
 
 
-[RStudio](https://www.posit.co/) is a software designed to make it easier to use R. It is free to download and use. It is designed as an **integrated development environment** that lets you organize your work together with R and other tools. Install it by going to <https://www.posit.co/>.
+**[RStudio](https://www.posit.co/)** is a software designed to make it easier to use R. It is free to download and use. It is designed as an **integrated development environment** that lets you organize your work together with R and other tools. Install it by going to <https://www.posit.co/>.
 
 1.  Select "Products" and **RStudio IDE**
 2.  Scroll down and find the [FREE open source edition](https://posit.co/downloads/)
@@ -187,52 +188,109 @@ R is a free, [open-source](https://en.wikipedia.org/wiki/Open_source) software d
 
 ### Git and Github
 
-Git is a software that you need to install on your system in order to use version control. Github is the web platform that allows collaboration and web-based storage of your work. First we will install git.
+Git is a software that you need to install on your system in order to use version control. Github is the web platform that allows collaboration and web-based storage of your work. First, we will install git.
 
-1. Go to [https://git-scm.com/downloads](https://git-scm.com/downloads) and download the latest version for your operating system. 
+For windows:
+
+1. If you have Windows, Go to [https://git-scm.com/downloads](https://git-scm.com/downloads) and download the latest version for your operating system.
+
 2. Run the installer. Make a note of where you installed it!
 
-3. To let RStudio know where git is located we need to open RStudio, go to *Global Options* under the *Tools* menu. Go to the *Git/SVN* sub-menu and find the **folder where git.exe** is located by browsing in the *"Git executable"* field.
 
-To registrer for a Github account
+For Mac:
+
+1. If you are on Mac, the easiest thing is to first install [*Homebrew*](https://brew.sh/), this will make it easy to get the latest version of what we will need. Go to [https://brew.sh/](https://brew.sh/) and follow the instructions. Note that you will need to open the terminal and enter the install command.
+
+2. Install git by entering the follwing command in a freshly opened terminal:
+
+`brew install git`
+
+Check if git was installed by restarting the terminal and write
+
+`git --version`
+
+Additional warnings might appear indicating that you'll need some extra software. More specifically, you might need Xcode command line tools. To install these, go to your terminal and enter
+
+`xcode-select --install`
+
+If you had problems with the homebrew installation itself or the brew installation of git before, try again after installing xcode command line tools. 
+
+
+### Connecting to GitHub
+
+
+First we will let RStudio know where git is located
+
+1. Open RStudio, go to *Global Options* under the *Tools* menu. Go to the *Git/SVN* sub-menu and find the **folder where git.exe** is located by browsing in the *"Git executable"* field.
+
+**On windows:**
+
+If you have installed git using default settings your `git.exe` should be located in `C:/Program Files/Git/bin/git.exe`.
+
+**On Mac**:
+
+If you have installed git using homebrew, your git version *may* be found in `/usr/local/bin/git`.
+
+
+To register for a Github account
 
 1. Go to [Github.com](www.github.com).
 2. Find "Sign up" and follow the instructions.
 
 
-#### Git and clients
+Next we need to connect our git software to github. This is done by *authentication*. [There are several options](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github), however below are two options that should work right away!
+
+#### Installing GitHub desktop
+
+1. Go to [desktop.github.com](https://desktop.github.com/)
+2. Download the installer and follow the instructions.
+3. Open GitHub Desktop and go to File > Options > Accounts and select **Sign In** to Github.com, follow the instructions
+
+
+#### Installing Github CLI
+
+If you were successful in authenticating with Github desktop as described above, you should be all set. However, as an alternative you could install and use Github CLI. This is a collection of command line commands that makes it easy to use github from the command line. I recommend installing them:
+
+1. Go to [https://cli.github.com/](https://cli.github.com/) and follow the instructions.
+
+  - For windows, install GitHub CLI with the installer. 
+  - For Mac, use homebrew: `brew install gh`
+
+
+Next we will perform the authentication process:
+
+1. Open a terminal and type `gh auth login`, follow the instructions. 
+
+Done!
+
+
+### A note on Git and clients
 
 As noted above, git is a software containing a number of functions for version control of files collected in a folder (or repository). A client in this context refers to a *user interface* that makes it easy to communicate with git. RStudio has some features that makes it possible to execute git commands by clicking, however this *client* is not very powerful, you might want another, or several other alternatives.
 
 First, git is available from the command line. It might look like this:
 
-```{code}
-#| eval: false
 
-> git add -A
+`git add -A`
 
-```
 
-We will touch upon more git commands for the command line later. The above adds all changes you have made to a list of changes that will be included in your next snapshot of your project. More on that later.
+We will touch upon more git commands for the command line later. The above adds all changes you have made to a list of changes that will be included in your next snapshot of your project. More on that later!
 
-Several Git clients can be run at the same time. This means that you might do some git on the command line in a terminal window in RStudio, and you might follow the changes in a graphical user interface, such as [GitHub Desktop](https://desktop.github.com/). The graphical user interface lets you navigate more easily and might help you understand what git is doing. We will be using GitHub desktop, so you might want to install it!
-
-1. Go to [desktop.github.com](https://desktop.github.com/)
-2. Download the installer and follow the instructions.
+Several Git clients can be run at the same time. This means that you might do some git on the command line in a terminal window in RStudio, and you might follow the changes in a graphical user interface, such as [GitHub Desktop](https://desktop.github.com/). The graphical user interface lets you navigate more easily and might help you understand what git is doing. We will be using GitHub desktop, so you make sure you have installed it (see above).
 
 
 ### Quarto and friends
 
-The R community has pioneered literate programming for data analysis by early adoption of file formats that lets the user combine computer code and output with text [@RN1492]. A well adopted file format i recent years have been [R markdown](https://rmarkdown.rstudio.com/) which combines R code with text and lets the user compile reports in multiple output formats from a source document. R markdown is an "R-centric" approach to literate programming. Even though it lets you combine multiple computer languages, all code execution goes through R. Recently, a new format has been introduced, [Quarto](https://quarto.org/), which is not built through R but through a dedicated software, Quarto. 
+The R community has pioneered literate programming for data analysis by early adoption of file formats that lets the user combine computer code and output with text [@RN1492]. A well adopted file format in recent years have been [R markdown](https://rmarkdown.rstudio.com/) which combines R code with text and lets the user compile reports in multiple output formats from a source document. R markdown is an "R-centric" approach to literate programming. Even though it lets you combine multiple computer languages, all code execution goes through R. Recently, a new format has been introduced, [Quarto](https://quarto.org/), which is not executed through R but its own dedicated software, Quarto. 
 
-Rmarkdown and Quarto have many similarities in that you can use markdown, a well established [markup language](https://en.wikipedia.org/wiki/Markdown) to edit text with plain text. This means that for the R user, most differences in formatting your documents are irrelevant for getting started.
+Rmarkdown and Quarto have many similarities in that you can use markdown, a well established [markup language](https://en.wikipedia.org/wiki/Markdown) to format text with a plain text editor (like notepad). This means that for the R user, most differences between RMarkdown and quarto in formatting your documents are irrelevant for getting started.
 
 As quarto authoring requires its own software, we need to do some installation.
 
 1. Go to [quarto.org](https://quarto.org/)
 2. Click "*Get Started*" and follow the instructions. 
 
-A nice output from a quarto source document in a PDF. In order to create PDFs using R/RStudio/quarto we need to install a version of the typesetting system [TeX](https://en.wikipedia.org/wiki/TeX). Quarto recommends[^11] using [tinytex](https://yihui.org/tinytex/) which is easilly istalled after you have installed quarto.
+A nice output from a quarto source documents is a PDF. In order to create PDFs using R/RStudio/quarto we need to install a version of the typesetting system [TeX](https://en.wikipedia.org/wiki/TeX). Quarto recommends[^11] using [tinytex](https://yihui.org/tinytex/) which is easily installed after you have installed quarto.
 
 1. Open up RStudio and a fresh terminal
 2. type `quarto install tinytex` and follow the instructions. 
@@ -244,58 +302,33 @@ You should be ready to go now!
 
 ## Summing up and where to find help
 
-We have installed R, RStudio, git, quarto and tinytex. You have also created a github account. These are the tools that you will need to go further in this course. But what if you run into problems? Do not worry, the internet is at your service!
+We have installed R, RStudio, git, github desktop/CLI, quarto and tinytex. You have also created a github account. These are the tools that you will need to go further in this course. But what if you run into problems? Do not worry, the internet is at your service! A lot of people work very hard to make it easy for beginners to adopt their tools. Documentation of the tools we have installed so far is available through google or any other search engine. People are also very helpful in answering questions, answers to large and small problems can be found in forums such as [stack overflow](https://stackoverflow.com/)(see below). 
 
 Learning new skills, like doing data analysis by programming, can be hard but rewarding. If you want to make your learning experience less hard, consider these points:
 
 - **There are (almost always) multiple solutions to a problem**. When faced with difficulties, do not give up trying to search for a perfect single solution. Instead know that there are multiple ways of defining the problem and therefore multiple solutions.
 - **Someone else has already had the same problem**. The internet is full of questions and answers, also related to what ever problem you might have. Learning how to write "googleable" questions is a great skill. By adding "in R" to your problem in a google search term often helps finding R related solutions.
-- **Find your motivation**
+- **Find your motivation**. The skills that you will learn in this course are transferable to countless potential work related roles for the future you! To be able to showcase these skills may lead you to your dream job! Find your motivation for learning how to analyze data and communicating insights!
+- **"Microdosing" statistical learning**. Replace your social media influencers with R users and data scientists! I find R people on [Twitter](twitter.com) and [mastodon](https://joinmastodon.org/). Tweets and posts in this format keeps your R brain going!
 
 ### A list of reference material and resources
 
 
-- [R for Data Science](https://r4ds.hadley.nz/) is a very comprehensive guide to working with R. It can be used chapter by chapter or by looking for tips on specific subjects. 
+- [R for Data Science](https://r4ds.hadley.nz/) is a very comprehensive guide to working with R. It can be used chapter by chapter or by looking for tips on specific subjects.
+
+- The official [An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.pdf) released by the R Core Team gives a thorough overview of R. This document can be used to find explanations to basic R code.
+
+- [Learning statistics with R](https://learningstatisticswithr.com/) Is a free textbook where statistical concepts are integrated with learning R. Use this book as a reference.
 
 - [Happy Git and GitHub for the useR](https://happygitwithr.com/index.html) is used as background material for our workshop in version control and collaborative data analysis.
 
+- [Tidyverse](https://www.tidyverse.org/) Is a collection of R packages that makes it easier to be productive in R. Here you will find documentation for ggplot, dplyr and tidyr which are all packages that we will use extensively in the course.
+
 - [Stack overflow](https://stackoverflow.com/) is a web platform where users provide answers to questions raised by other users. Here you will find answers to many of your R-related questions. Stack overflow will likely come up if you google a R problem by you can also search the website.
 
+- [R bloggers](https://www.r-bloggers.com/) collects blog posts from R users, here you can find interesting use cases of R and tips.
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## References
+## References and footnotes

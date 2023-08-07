@@ -1,6 +1,6 @@
-# Storing data in spreadsheets
+# Storing data in spreadsheets and tabular data
 
-I previously mentioned spreadsheets like those created in Excel. These are indeed great, but not great for reproducible science or data analysis. This is because they are not easily documented and scripted. The data is actually part of the analysis. Another danger with spreadsheets (like MS Excel) is that it re-formats your data. This is such a big problem for scientists that we have apparently started [renaming genes in order to avoid confusion](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates). 
+We have previously mentioned spreadsheets like those created in Excel. These are indeed great, but not great for reproducible science or data analysis. This is because they are not easily documented and scripted. The data is actually part of the analysis! Another danger with spreadsheets (like MS Excel) is that it re-formats your data. This is such a big problem for scientists that we have apparently started [renaming genes in order to avoid confusion](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates). 
 
 Errors are frequent in spreadsheets, not only because of renaming [@RN2927], but also because of bad formatting of formulas [@RN2928]. These are both reasons for using spreadsheets only for what they do best: data input and data storage.
 
@@ -21,10 +21,7 @@ knitr::include_graphics("./images/excel-spreadsheet.png")
 ```
 
 
-Cell B6 contains a simple formula: `= C6 + D6`. This formula adds cells `C6` and `D6` resulting in the sum, 8. In formulas, mathematical operators can be used ($+, -, \times , \div$ ). Formulas can be also extended with inbuilt function such as showed in \@ref(tab:excel-functions).
-
-
-Table: (\#tab:excel-functions) Often used functions in excel.
+Cell B6 contains a simple formula: `= C6 + D6`. This formula adds cells `C6` and `D6` resulting in the sum, 8. In formulas, mathematical operators can be used ($+, -, \times , \div$ ). Formulas can be also extended with inbuilt function such as showed in @tbl-excelfunctions.
 
 
 | Function | English | Norwegian |
@@ -36,6 +33,8 @@ Table: (\#tab:excel-functions) Often used functions in excel.
 | Intercept |    `INTERCEPT()`       | `SKJÆRINGSPUNKT()` |
 | Slope  | `SLOPE()` | `STIGNINGSTALL()` |
 | If  | `IF()`  | `HVIS()`  |
+
+: Often used functions in excel {#tbl-excelfunctions}
 
 The sum, average and standard deviation and count are simple functions for summarizing data. Intercept and slope are both examples of functions used to get simple associations from to sets of numbers (based on a regression model). The if function is an example of a function that can be used to conditionally enter data in a cell. For example, IF cell A1 contains a certain number, then cell B1 should display another a specified text.
 
@@ -56,10 +55,7 @@ knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/a/
 
 A tidy data set consists of *values* originating from *observations* and belonging to *variables*. A variable is a definition of the values based on attributes. An observation may consist of several variables [@RN1956].
 
-A tidy data set typically has got one observation per row and one variable per column. Let's say that we want to collect data from a strength test. A participant (**participant** is a variable) in our study conducts tests before and after the intervention (**time** is a variable) in two exercises (**exercise** is a variable) and we record the maximal strength in kg (**load** is a variable). The data set will look something like in the table below (\@ref(tab:tidy-data-example)). 
-
-
-Table: (\#tab:tidy-data-example) Example of tidy data.
+A tidy data set typically has got one observation per row and one variable per column. Let's say that we want to collect data from a strength test. A participant (**participant** is a variable) in our study conducts tests before and after the intervention (**time** is a variable) in two exercises (**exercise** is a variable) and we record the maximal strength in kg (**load** is a variable). The data set will look something like in the table below (@tbl-tidydata). 
 
 
 | Participant | Time| Exercise | Load |
@@ -69,21 +65,19 @@ Table: (\#tab:tidy-data-example) Example of tidy data.
 | Bruce Wayne | pre | Leg press | 180 |
 | Bruce Wayne | post | Leg press | 280 |
 
+: Example of tidy data {#tbl-tidydata}
 
-
-Another example contains variables that actually carries two pieces of information in one variable. We again did a strength test, this time as maximal isometric contractions and in each test consisted of two attempts. We record this in two different variables, attempt 1 and 2. The resulting data set could look something like in Table \@ref(tab:tidy-data-example-2).   
-
-Table: (\#tab:tidy-data-example-2) Another example of tidy data.
+Another example contains variables that actually carries two pieces of information in one variable. We again did a strength test, this time as maximal isometric contractions and in each test consisted of two attempts. We record this in two different variables, attempt 1 and 2. The resulting data set could look something like in Table @tbl-tidydata2).   
 
 | Participant | Time | Exercise | Attempt1 | Attempt2 |
 | --- |  --- | --- | --- | --- |
 | Selina Kyle | pre  | Isometric | 81.3 | 92.5 |
 | Selina Kyle | post | Isometric | 97.1| 114.1 |
 
-To make this data set tidy we need to extract the attempt information and record it in another variable as seen in Table \@ref(tab:tidy-data-example-3).
+: Another example of tidy data. {#tbl-tidydata2}
 
-Table: (\#tab:tidy-data-example-3) A third example of tidy data.
 
+To make this data set tidy we need to extract the attempt information and record it in another variable as seen in @tbl-tidydata3.
 
 | Participant | Time | Exercise | Attempt | load |
 | --- | --- | --- | --- | --- |
@@ -91,6 +85,8 @@ Table: (\#tab:tidy-data-example-3) A third example of tidy data.
 | Selina Kyle | pre  | Isometric | 2 | 92.5 |
 | Selina Kyle | post | Isometric | 1 | 97.1 |
 | Selina Kyle | post | Isometric | 2 | 114.1|
+
+: A third example of tidy data. {#tbl-tidydata3}
 
 This naturally gives additional rows to the data set. This is sometimes referred to as "long format" data as opposed to the structure where each attempt is given separate variables, something that is called "wide format". You will notice during the course that for most purposes, the long format is most convenient. This is true when we create graphs and do statistical modelling. But sometimes a variable needs to be structured in a wide format to allow for certain operations.
 
@@ -131,7 +127,7 @@ Data from spreadsheets can be saved as special spreadsheet files, such as `.xlsx
 This is actually quite nice. The data takes little space, the simple format requires that data is well documented using e.g. a data dictionary and it is available for many other softwares as the format is simple. The data can be documented using a `README` file that could describe the purpose and methods of data collection, how the data is structured and what kind of data the variables contains. A simple `README` file can be written in a text editor such as Notepad and saved as a `.txt` file. Later in this course we will introduce a "markup" language often used to create `README` files containing a syntax that formats the text to a more pleasant style when converted to other formats.
 
 
-## References
+## References and footnotes
 
 
 
