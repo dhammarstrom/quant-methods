@@ -23,23 +23,23 @@ editor_options:
 
 
 
-Data visualization is an efficient way of understanding data. By using graphs we can communicate characteristics of a data set that would have been impossible with a limited number of summary statistics (central tendencies, spread etc.). In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand different data sets. A great argument for the use of data visualization is the need to understand what factors might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of as an initial step in understanding data, data visualization as an exploratory tool.  
+Data visualization is an efficient way to understand data. Using graphs, we can communicate characteristics of a data set that would have been impossible with a limited number of summary statistics, such as the mean and standard deviation. In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand various data sets. An important argument for mastering data visualization is understanding what factors might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of as an initial step in understanding data; data visualization is an exploratory tool.  
 
 
-RStudio is a powerful environment for data visualization. Together with R (that is excellent for creating graphs), you can create and preview figures that represents your data in RStudio. 
+RStudio is a powerful environment for data visualization. Together with R (which is excellent for creating graphs), you can create and preview figures that represent your data in RStudio. 
 
 R has got several systems for creating figures, plots, graphs. In this course, we will use [ggplot2](https://ggplot2.tidyverse.org/). Another system for plotting comes with the base installation of R. This is sometimes referred to as base R ([see this tutorial](https://rstudio-pubs-static.s3.amazonaws.com/84527_6b8334fd3d9348579681b24d156e7e9d.html), or [this](http://www.sthda.com/english/wiki/r-base-graphs). Another well described and used system is [lattice](https://www.statmethods.net/advgraphs/trellis.html). We choose ggplot2 because it works well with the [tidyverse](https://www.tidyverse.org/), and it is well described.
 
 ## Resources
 There are several good resources aimed at ggplot2: 
 
-- [Chapter 4 in R for data science](https://r4ds.had.co.nz/data-visualisation.html)
+- [Chapter 2 in R for data science](https://r4ds.hadley.nz/data-visualize)
 - [The ggplot2 book](https://ggplot2-book.org/)
 - [The ggplot2 cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 
 ## Learning objectives
 
-After this session, you should be able to answer:
+After working through this chapter, you should be able to answer:
 
 - What are geoms?
 - What is mapping data to aesthetics?
@@ -49,11 +49,11 @@ You should also be able to create your first graph.
 
 ## Prerequisites
 
-To follow the exercises below you will need to some data. For the purpose of this course, I have created a package that contains the data sets we need. In this session we will work with the `cyclingstudy` data set. To install the package (`exscidata`) you will need another package called `remotes`. 
+To follow the exercises below you will need to some data. For the purpose of this course, I have created a package that contains the data sets we need. In this chapter we will work with the `cyclingstudy` data set. To install the package (`exscidata`) you will need another package called `remotes`. 
 
 The code below first checks if the package `remotes` is installed, or more specifically, if `"remotes"` cannot be found in the list of installed packages. Using the `if` function makes `install.packages(remotes)` conditional. If we do not find `"remotes"` among installed packages, then install `remotes`.
 
-The next line of code does the same with the `exscidata` package. However, since the package is not on CRAN but hosted on github we will need to use `remotes` to install it. The part of the second line of code that says `remotes::install_github("dhammarstrom/exscidata")` uses the function `install_github` without loading the remotes package. The last line of the code below loads the package `exscidata` using the `library` function.
+The next line of code does the same with the `exscidata` package. However, since the package is not on CRAN but hosted on GitHub we will need to use `remotes` to install it. The part of the second line of code that says `remotes::install_github("dhammarstrom/exscidata")` uses the function `install_github` without loading the remotes package. The last line of the code below loads the package `exscidata` using the `library` function.
 
 
 ```{r}
@@ -67,7 +67,7 @@ if (!"exscidata" %in% installed.packages()) remotes::install_github("dhammarstro
 library(exscidata)
 ```
 
-Next we need to load the `tidyverse` package. This package in turn loads several packages that we will use when transforming data and making our figures. I will include the line of code that checks if the package is installed, if not R will download and install it. We subsequently load the package using `library`. 
+Next we need to load the `tidyverse` package. This package in turn loads several packages that we will use when transforming data and making our figures. I will include the line of code that checks if the package is installed, if not, R will download and install it. We subsequently load the package using `library`. 
 
 ```{r}
 
@@ -82,41 +82,52 @@ library(tidyverse)
 We are now ready to explore the data set. But first we should talk about the main components of the `ggplot2` system.
 
 ## The `ggplot2` system
-When using the ggplot2 system we can think of the resulting graph as containing data that has been *mapped* to different coordinates, colors, shapes, sizes and other attributes that determines what is being visualized. We are using different geometric representations of the data in the visualization. 
 
-When we *map* data in ggplot we use a specific function, `aes()` (short for aesthetic). We will use this inside the main engine, `ggplot()`. For this first simple example we will create a data set. When you simulate data in R you can tell R what should be the starting point in the random number generator. Using `set.seed(100)` we can recreate the same numbers from what ever "number generator" we later use. In the example below, we use `rnorm()` to simulate numbers from a normal distribution. The settings `n = 10`, `mean = 0` and `sd = 1` we will simulate randomly picking 10 numbers from a distribution that has a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that as assigned to an object that we have named `dat`.    
+When using the ggplot2 system we can think of the resulting graph as containing data that has been *mapped* to different coordinates, colors, shapes, sizes, and other attributes that determine what is being visualized. We are using different geometric representations of the data in the visualization. 
+
+When we *map* data in ggplot we use a specific function, `aes()` (short for aesthetic). We will use this inside the main engine, `ggplot()`. For this first simple example, we will create a data set by simulating some data. When you simulate data in R, you can tell R what should be the starting point in the random number generator. Using `set.seed(100)`, we can recreate the same numbers from our "number generator" later. In the example below, we use `rnorm()` to simulate numbers from a normal distribution. Using the arguments `n = 10`, `mean = 0`, and `sd = 1`, we simulate randomly picking ten numbers from a distribution with a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that is assigned to an object that we have named `dat`.  
 
 ```{r}
+# Set the seed for random generation of numbers
+set.seed(100)
 
-set.seed(99)
-
+# Store data in a data frame
 dat <- data.frame(x = rnorm(10, mean = 0, sd = 1), 
                   y = rnorm(10, mean = 10, sd = 2))
 
 
 ```
 
-The dataset consist of two variables. We will start by creating the canvas, this basically sets the border of the figure we want to create. The `ggplot()` function takes the dataset as its first argument, followed by the `aes()` function that is used to map data to coordinates and other attributes. 
+The data set consists of two variables. We will start the process of creating the graph by creating the canvas, and this basically sets the border of the figure we want to make. The `ggplot()` function takes the data set as its first argument, followed by the `aes()` function that maps data to coordinates and other attributes. In this case, we have mapped our data to the x- and y-coordinates of the figure.
 
-```{r empty-canvas, fig.height=3, fig.cap = "An empty `ggplot` canvas."}
+```{r}
+#| label: fig-empty-canvas
+#| fig-height: 3
+#| fig-cap: "An empty `ggplot` canvas."
+
 
 ggplot(dat, aes(x = x, y = y))
 
 ```
 
-As you can see in Figure \@ref(fig:empty-canvas) the code above creates an "empty canvas" that has enough room to visualize our data. The x- and y-axes are adjusted to give room for graphical representations of the data. Next we need to add geometric shapes. These are functions that we add to the plot using the `+` sign. These functions all start with `geom_` and has and ending that describes the geoms, like point, line, etc.
+As you can see in @fig-empty-canvas, the code above creates an "empty canvas" that has enough room to visualize our data. The x- and y-axes are adjusted to give room for graphical representations of the data. Next we need to add geometric shapes (`geom` for short). These are functions that we add to the plot using the `+` sign. These functions all start with `geom_` and has and ending that describes the geometric shape, like for example point or line.
 
-We will add `geom_point()` to our empty canvas as plotted in Figure \@ref(fig:empty-canvas). The `geom_point` function *inherits* the mapping from from `ggplot()`. This means that we do not need to specify anything in `geom_point` at this stage.
+We will add `geom_point()` to our empty canvas as plotted in @fig-empty-canvas. The `geom_point` function *inherits* the mapping from from `ggplot()`. Shapes, in this case points will be placed according to x- and y-coordinates specified in `aes()` used in the main `ggplot` function call. This means that we do not need to specify anything in `geom_point` at this stage.
 
-```{r point-and-canvas, fig.height=3, fig.cap = "A `ggplot` canvas with points added."}
+```{r}
+#| label: fig-point-and-canvas
+#| fig-height: 3
+#| fig-cap: "A `ggplot` canvas with points added."
+
+
 
 ggplot(dat, aes(x = x, y = y)) + geom_point()
 
 ```
 
-In Figure \@ref(fig:point-and-canvas) we have added black points to each x- and y-coordinate representing `x` and `y` from our data set.
+In @fig-point-and-canvas we have added black points to each x- and y-coordinate representing `x` and `y` from our data set.
 
-To extend the example we will add data to our dataset. In the code below, we create a new variable in the dataset using `$` effectively giving us a new column in the data. We use `rep("A", 5)` to replicate the letter `A` five times and the same for `B`. The `c()` function combines the two in a single vector. We can use `head(dat)` to see what we accomplished with these operations. The `head()` function *prints* the first six rows from the dataset.
+To extend the example we will add data to our data set. In the code below, we create a new variable in the data set using `$` effectively giving us a new column in the data. We use `rep("A", 5)` to replicate the letter `A` five times and the same for `B`. The `c()` function combines the two in a single vector. We can use `head(dat)` to see what we accomplished with these operations. The `head()` function *prints* the first six rows from the data set.
 
 ```{r}
 
@@ -126,18 +137,27 @@ head(dat)
 
 ```
 
-We can see that we have an additional variable `z` that contains `"A"` and `"B"`. This new variable can be used to add more information to the plot. Let's say that we want to map the `z` variable to different colors. We do this by adding `color = z` to `aes`. This means that we want the z variable to determine colors.
+We can see that we have an additional variable, `z` that contains the letters `"A"` and `"B"`. This new variable can be used to add more information to the plot. Let's say that we want to map the `z` variable to different colors. We do this by adding `color = z` to `aes`. This means that we want the z variable to determine colors.
 
-```{r point-with-color, fig.height=3, fig.cap = "A `ggplot` canvas with colored points added."}
+```{r}
+#| label: fig-point-with-color
+#| fig-height: 3
+#| fig-cap: "A `ggplot` canvas with colored points added."
+
 
 ggplot(dat, aes(x = x, y = y, color = z)) + geom_point()
 
 ```
 
-In Figure \@ref(fig:point-with-color) we can see that different colors are used for the two letters `"A"` and `"B"`. Other attributes can also be specified like `shape`, `fill` or `size`. The `shape` specifies the appearance of the points. When we use use data to map to shapes, ggplot2 will start from the standard shape. 
+In @fig-point-with-color we can see that different colors are used for the two letters `"A"` and `"B"`. Other attributes can also be specified like `shape`, `fill` or `size`. The `shape` specifies the appearance of the points. When we use use data to map to shapes, ggplot2 will start from the standard shape. 
 
 
-```{r shapes-in-r, echo = FALSE, fig.height=5, fig.cap = "Shapes in R"}
+```{r}
+#| label: fig-shapes-in-r
+#| echo: false
+#| fig-height: 5
+#| fig-cap: "Shapes in R"
+
 
 shape_dat <- data.frame(shape = seq(0, 25), x = c(1, rep(c(1, 2, 3, 4, 5), times = 5)), 
                         y = c(6, rep(c(5, 4, 3, 2, 1), each = 5)))
@@ -157,17 +177,23 @@ ggplot(shape_dat, aes(x, y, shape = as.factor(shape))) +
 
 ```
 
-Possible shapes in the standard framework in R are shown in Figure \@ref(fig:shapes-in-r). We may use this information to either fix the shape of the points. Let's say that instead of colored points we want filled points. We would change the `color = z` argument to `fill = z` instead and select a point shape that can be filled (shapes 21-25, see Figure \@ref(fig:shapes-in-r). Notice in the code below that `shape = 21` has been added to `geom_point()`. We have specified how points should be displayed.
+Possible shapes in the standard framework in R are shown in @fig-shapes-in-r. Shapes 0 to 20 can change colors while shapes 21 to 25 may have different border colors but also different fill colors.  We may use this information to change the shape, color and fill of our points. Let's say that instead of colored points we want filled points. We would then change the `color = z` argument to `fill = z` and select a point shape that can be filled (shapes 21-25, see @fig-shapes-in-r. Notice in the code below that `shape = 21` has been added to `geom_point()`. We have specified how points should be displayed.
 
-```{r point-with-fill, fig.height=3, fig.cap = "A `ggplot` canvas with filled points added."}
+```{r}
+#| label: fig-point-with-fill
+#| fig-height: 3
+#| fig-cap: "A `ggplot` canvas with filled points added."
 
 ggplot(dat, aes(x = x, y = y, fill = z)) + geom_point(shape = 21)
 
 ```
 
-Since shape is an attribute it to can be mapped by data. If we want data to determine both shape and fill we could add this information in the `aes()` function by setting both `shape = z` and `fill = z`. We now have to specify what shapes ggplot should use in order to be sure we can combine both shapes and fill. We will use `scale_fill_manual` and `scale_shape_manual` to do this. These functions takes lets you specify different values for aesthetics. Notice that we removed `shape = 21` from the `geom_point()` function, but we added size to increase the size of the points.
+Since shape is an attribute we can map data to it. If we want data to determine both shape and fill we could add this information in the `aes()` function by setting both `shape = z` and `fill = z`. We now have to specify what shapes ggplot should use in order to be sure we can combine both shapes and fill. We will use `scale_fill_manual` and `scale_shape_manual` to do this. These functions lets you specify different values for aesthetics. Notice that we removed `shape = 21` from the `geom_point()` function, but we added size to increase the size of the points (see @fig-point-with-fill-and-shape).
 
-```{r point-with-fill-and-shape, fig.height=3, fig.cap = "Data mapped to fill and shape, and size specified manually to override the default."}
+```{r}
+#| label: fig-point-with-fill-and-shape
+#| fig-height: 3
+#| fig-cap: "Data mapped to fill and shape, and size specified manually to override the default."
 
 ggplot(dat, aes(x = x, y = y, fill = z, shape = z)) + 
   geom_point(size = 3) +
@@ -178,7 +204,9 @@ ggplot(dat, aes(x = x, y = y, fill = z, shape = z)) +
 
 ## Different geoms using real data
 
-We have now seen that the basic `ggplot2` figure maps underlying data to coordinates and geometric representations, such as points. We will go further by using some real data. We will be using the `cyclingstudy` dataset from the `exscidata`-package. We will start by loading the data and select a few columns that we are interested in. By using `data("cyclingstudy")` we will load the data set that is part of the `exscidata`-package to our environment. By looking at the environment tab you can see that this operation adds a data set to the environment. It has 80 observations and 101 variables. Using the `glimpse()` function from `dplyr` (which is loaded by loading `tidyverse`) we will get an overview of all variables in the dataset. I have omitted the output from the code below
+We have seen that the basic `ggplot2` figure maps underlying data to coordinates and geometric representations, such as points. We will go further by using some real data. We will be using the `cyclingstudy` data set from the `exscidata`-package. We will start by loading the data and select a few columns that we are interested in.
+
+By using `data("cyclingstudy")` we will load the data set that is part of the `exscidata`-package to our environment. By looking at the environment tab you can see that this operation adds a data set to the environment. It has 80 observations and 101 variables. Using the `glimpse()` function from `dplyr` (which is loaded by loading `tidyverse`) we will get an overview of all variables in the data set. I have omitted the output from the code below, feel free to run the code in a quarto- or rmarkdown-document on your own.
 
 ```{r, eval = FALSE}
 

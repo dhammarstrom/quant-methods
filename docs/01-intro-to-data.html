@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -95,7 +96,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-intro-to-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data science</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -132,7 +133,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-spreadsheets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and tabular data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -170,7 +171,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#summing-up-and-where-to-find-help" id="toc-summing-up-and-where-to-find-help" class="nav-link" data-scroll-target="#summing-up-and-where-to-find-help"><span class="header-section-number">2.5</span> Summing up and where to find help</a>
   <ul class="collapse">
-  <li><a href="#a-list-of-reference-material-and-resources" id="toc-a-list-of-reference-material-and-resources" class="nav-link" data-scroll-target="#a-list-of-reference-material-and-resources"><span class="header-section-number">2.5.1</span> A list of reference material and resources</a></li>
+  <li><a href="#a-small-list-of-reference-material-and-resources" id="toc-a-small-list-of-reference-material-and-resources" class="nav-link" data-scroll-target="#a-small-list-of-reference-material-and-resources"><span class="header-section-number">2.5.1</span> A (small) list of reference material and resources</a></li>
   </ul></li>
   <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">2.6</span> References and footnotes</a></li>
   </ul>
@@ -198,29 +199,28 @@ div.csl-indent {
 
 <section id="about-data-in-the-world-of-sport-and-exercise" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="about-data-in-the-world-of-sport-and-exercise"><span class="header-section-number">2.1</span> About data in the world of sport and exercise</h2>
-<p>Data are everywhere. Most of us walk around with a data collection device in our pockets all the time. This device (your mobile phone), records and store data about you all throughout the day. Such data are the basis of the <em>quantified self movement</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that have grown in popularity as capabilities to record data from daily life has become better. People interested in quantifying their personal life does so for different reasons, but often with the intent to improve their health<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
-<p>Much of these kind of data are readily available to us due to the fact we are protected by data privacy policies and regarded as personal data<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. With some effort you yourself can get your data out of your iphone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016 and I tend to walk less steps on Sundays compared to Saturdays (see Figure <a href="#fig-iphone">Figure&nbsp;<span>2.1</span></a>).</p>
+<p>Data are everywhere. Most of us always walk around with a data collection device in our pockets. This device (your mobile phone) records and store data about you throughout the day. Such data are the basis of the <em>quantified self-movement</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, which has grown in popularity as capabilities to record data from daily life have improved. People interested in quantifying their personal life does so for different reasons, but often with the intent to improve their health<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>Much of this kind of data is readily available to us because data privacy policies regard it as personal <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. With some effort, you can get your data out of your iPhone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016, and I tend to walk fewer steps on Sundays than Saturdays (see Figure <a href="#fig-iphone">Figure&nbsp;<span>2.1</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-iphone" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="01-intro-to-data_files/figure-html/fig-iphone-1.png" class="img-fluid figure-img" width="768"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2.1: Step count data from my iPhone displayed as all avalable data points (A, after data cleaning) and average step per weekday, per year and season (B).</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2.1: Step count data from my iPhone displayed as all avalable data points (A, after data cleaning) and average step per weekday, per year and season (B).</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Data are also collected and stored in publicly available databases. Such databases are created for the purpose to store specific types of data, such as soccer<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> or biathlon results<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, or biological information such as gene sequences<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. Even data from scientific studies are now days often publicly available<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> meaning that we can perform scientific studies on unique data sets without collecting the data ourselves.</p>
-<p>The above examples shows that there are abundance of data around and available to us. The problem is that in order to understand a phenomena better, we need techniques and methods to make sense of the data. This is where data science and data literacy comes in. In the world of sport and exercise, regardless if you are interested in doing scientific investigations, coach a soccer-team or individual athletes or help patients recover from surgery using exercise therapy, you are faced with the problem of handling and make sense of data. Some of the key skills and deeper understanding about data science are very much transferable between such areas of practice.</p>
+<p>Data are also collected and stored in publicly available databases. Such databases are created for the purpose of storing specific types of data, such as soccer<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> or biathlon results<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, or biological information, such as gene sequences<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. Even data from scientific studies are often publicly available<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, meaning we can perform scientific studies on unique data sets without collecting the data ourselves.</p>
+<p>The above examples show an abundance of available data. The problem is that to understand a phenomenon better, we need techniques and methods to make sense of the data, and this is where data science and data literacy comes in. In the world of sports and exercise, regardless if you are interested in doing scientific investigations, coaching a soccer team or individual athletes, or helping patients recover from surgery using exercise therapy, you are faced with the problem of handling and making sense of data. Essential skills and a deeper understanding of data science are transferable between such areas of practice. One broader aim of this course is for you to develop skills to better understand data.</p>
 <blockquote class="blockquote">
 <p><strong>Think about the literature!</strong> Spiegelhalter (The Art of Statistics, in the introduction chapter) talks about how statistics has evolved towards the broader field of data science. In data science, statistical theory and methods are just parts of the problem solving cycle. Try to think about how you would use the PPDAC cycle as a exercise coach and a scientist. What are the similarities and differences?</p>
 </blockquote>
-<p>One broader aim of this course is for you to develop skills to better understand data.</p>
 </section>
 <section id="replication-and-reproducibility" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="replication-and-reproducibility"><span class="header-section-number">2.2</span> Replication and Reproducibility</h2>
-<p>In scientific research, replication is a way to confirm scientific claims. When a result can be confirmed by an independent group of researchers, the claim is more likely to be true. Many results will however never be possible to replicate due to the size of trials, costs and urgency of the research question. A recent example could perhaps be the many vaccine trials performed to develop a vaccines against COVID-19<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. Other examples concern studies with unique study populations, such as large scale epidemiological studies <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, but the same could be said to be true for unique investigations in sport and exercise science.</p>
-<p>When studies are not likely to be <em>replicated</em>, <em>reproducibility</em> of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that given the same data, similar results or conclusions can be drawn by independent researchers <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>.</p>
+<p>In scientific research, replication is a way to confirm scientific claims. When an independent group of researchers can confirm a result, the claim is more likely to be true. However, many results will be impossible to replicate due to the size of trials, costs, and urgency of the research question. A recent example is the many vaccine trials performed to develop a vaccine against COVID-19<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. Other examples concern studies with unique study populations, such as large-scale epidemiological studies <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, but the same is true for unique investigations in sport and exercise science.</p>
+<p>When studies are not likely to be <em>replicated</em>, <em>reproducibility</em> of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that independent researchers can draw similar results or conclusions from the same data <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>.</p>
 <p>Peng et al. <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span> suggests that a <em>fully reproducible</em> study has</p>
 <ul>
 <li>Available data.</li>
@@ -228,12 +228,12 @@ div.csl-indent {
 <li>Documentation that describes the software and data used in the study, and</li>
 <li>ways to share the data and code.</li>
 </ul>
-<p>The above principally relates to the trust we can place in scientific results. However, the minimum standard of reproducibility has advantages also for the individual researcher (or master student)! When working with reproducible methods we will develop ways of documenting and automating our analyses. This will make it easier to collaborate with others. And, as it turns out, your most frequent collaborator is you, in the future!</p>
-<p>A reproducible data analysis means that you will make it explicit and transparent. In a traditional data analysis, most activities are in the “black box”. In order to avoid bias <span class="citation" data-cites="RN1953">(<a href="#ref-RN1953" role="doc-biblioref">Ioannidis 2005</a>)</span>, the “black box” needs to be opened and you need to actively make transparent decisions all along the analytic pipeline <span class="citation" data-cites="RN1955">(<a href="#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. This pipeline preferably involves the whole problem solving cycle described by Spiegelhalter <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. However the tools that we will learn about in this course focuses primarily on the steps from the experimental design to presentation of statistical results <span class="citation" data-cites="RN1955">(<a href="#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. These steps includes data collection (and storage), data cleaning, exploratory data analysis, statistical modelling and statistical inference (and communication) <span class="citation" data-cites="RN1955">(<a href="#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>.</p>
+<p>The above principally relates to the trust we can place in scientific results. However, the minimum reproducibility standard also has advantages for the individual researcher (or master’s student)! When working with reproducible methods, we will develop ways of documenting and automating our analyses. This way of working with analyses will make it easier to collaborate with others. And, as it turns out, your most frequent collaborator is you in the future!</p>
+<p>Reproducible data analysis means that you will make it explicit and transparent. In traditional data analysis, most activities are in the “black box.” To avoid bias <span class="citation" data-cites="RN1953">(<a href="#ref-RN1953" role="doc-biblioref">Ioannidis 2005</a>)</span>, the “black box” needs to be opened, and you need to actively make transparent decisions all along the analytic pipeline <span class="citation" data-cites="RN1955">(<a href="#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. This pipeline preferably involves the whole problem-solving cycle described by Spiegelhalter <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. However, the tools we will learn in this course focus primarily on the steps from the experimental design to the presentation of statistical results <span class="citation" data-cites="RN1955">(<a href="#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. These steps include data collection (and storage), data cleaning, exploratory data analysis, statistical modeling, and statistical inference (and communication) <span class="citation" data-cites="RN1955">(<a href="#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>.</p>
 </section>
 <section id="tools-in-data-science" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="tools-in-data-science"><span class="header-section-number">2.3</span> Tools in data science</h2>
-<p>Ways to interpret and make sense of data involve different methods. These methods are nowadays often implemented in computer software. This means that when you want to understand data as a practitioner (scientist, coach, analyst), you must master some computer software. The most common software used to understand data is probably Microsoft’s Excel. You can do amazing stuff with Excel! In the world of sport and exercise, Excel has been used in diverse activities such as scientific investigations, planning and recording training for Olympic medalists<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>, and scheduling appointments.</p>
+<p>Ways to interpret and make sense of data involve different methods. These methods are often implemented in computer software, which means that when you want to understand data as a practitioner (scientist, coach, analyst), you must master some computer software. Microsoft’s Excel is one of the most common software used to understand data, even among professional data scientists<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. You can do fantastic stuff with Excel! In the world of sport and exercise, Excel has been used in diverse activities such as scientific investigations, planning and recording training for world champions<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>, and scheduling appointments.</p>
 <p>For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education, you have probably heard about SPSS, Stata, or Jamovi. These are all specialized software used for statistical analyses.</p>
 <p>The tools mentioned above can all be used as part of a fully reproducible workflow. However, some software solutions suit this requirement better than others. Going back to the description of reproducible science as made by Peng et al. <span class="citation" data-cites="RN1492">(<a href="#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, we want software where analyses can be</p>
 <ul>
@@ -241,10 +241,10 @@ div.csl-indent {
 <li>Documented, meaning that along the code, we want to be able to describe what the code does.</li>
 <li>Available and able to share with others, meaning that our analyses can be run on open and free software to maximize the ability to share them.</li>
 </ul>
-<p>This means that the software we would prefer should be run using scripts (as opposed to point and click) and be free of charge (and open source, as opposed to expensive and proprietary). These criteria can be fulfilled when we use software written around the R language (although alternatives exist <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>).</p>
-<p>R is a computer language especially well suited for reproducible data analysis. As users can contribute software extensions, also called packages, many specialized software implementations exist for different tasks, such as creating figures or analyzing specific data. Around R, people have been developing auxiliary software for reproducible data analysis. The negative part of all these opportunities is that using R requires effort. The learning curve is steep!</p>
+<p>This means that the software we would prefer should be run using scripts (as opposed to point and click) and be free of charge (and open source, as opposed to expensive and proprietary). These criteria can be fulfilled when we use software written around the R language (although alternatives exist <a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>).</p>
+<p>R is a computer language especially well suited for reproducible data analysis. As users can contribute software extensions, also called packages, many specialized software implementations exist for tasks such as creating figures or analyzing specific data. Around R, people have been developing auxiliary software for reproducible data analysis. The negative part of all these opportunities is that using R requires effort. The learning curve is steep!</p>
 <p>Even though you might not use R ever again after this course, trying to learn it will let you know something about programming, modern data science capabilities, statistical analysis, and software/computers in general. These areas are all aspects of our modern society and are transferable regardless of what computer language we are talking about.</p>
-<p>A big challenge when working with complex analyses or other large projects over time is keeping track of changes. Another challenge might be effective collaboration with others and with yourself in the future. To overcome these challenges, we can use a version control system connected to a social platform for distributing computer code and data. Github is a web-based platform that provides this functionality. It is a very powerful combination if you want to collaborate and share what you are working on.</p>
+<p>A big challenge when working with complex analyses or other large projects over time is keeping track of changes. Another challenge might be effective collaboration with others and with yourself in the future. To overcome these challenges, we can use a version control system connected to a social platform for distributing computer code and data. Github is a web-based platform that provides this functionality. It is a potent combination if you want to collaborate and share what you are working on.</p>
 </section>
 <section id="installing-and-getting-to-know-the-required-software" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="installing-and-getting-to-know-the-required-software"><span class="header-section-number">2.4</span> Installing and getting to know the required software</h2>
@@ -346,7 +346,7 @@ div.csl-indent {
 <li>Go to <a href="https://quarto.org/">quarto.org</a></li>
 <li>Click “<em>Get Started</em>” and follow the instructions.</li>
 </ol>
-<p>A nice output from a quarto source documents is a PDF. In order to create PDFs using R/RStudio/quarto we need to install a version of the typesetting system <a href="https://en.wikipedia.org/wiki/TeX">TeX</a>. Quarto recommends<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> using <a href="https://yihui.org/tinytex/">tinytex</a> which is easily installed after you have installed quarto.</p>
+<p>A nice output from a quarto source documents is a PDF. In order to create PDFs using R/RStudio/quarto we need to install a version of the typesetting system <a href="https://en.wikipedia.org/wiki/TeX">TeX</a>. Quarto recommends<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> using <a href="https://yihui.org/tinytex/">tinytex</a> which is easily installed after you have installed quarto.</p>
 <ol type="1">
 <li>Open up RStudio and a fresh terminal</li>
 <li>type <code>quarto install tinytex</code> and follow the instructions.</li>
@@ -356,16 +356,16 @@ div.csl-indent {
 </section>
 <section id="summing-up-and-where-to-find-help" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="summing-up-and-where-to-find-help"><span class="header-section-number">2.5</span> Summing up and where to find help</h2>
-<p>We have installed R, RStudio, git, github desktop/CLI, quarto and tinytex. You have also created a github account. These are the tools that you will need to go further in this course. But what if you run into problems? Do not worry, the internet is at your service! A lot of people work very hard to make it easy for beginners to adopt their tools. Documentation of the tools we have installed so far is available through google or any other search engine. People are also very helpful in answering questions, answers to large and small problems can be found in forums such as <a href="https://stackoverflow.com/">stack overflow</a>(see below).</p>
+<p>We have installed R, RStudio, git, GitHub desktop/CLI, quarto and tinytex. You have also created a github account. These are the tools that you will need to go further in this course. But what if you run into problems? Do not worry, the internet is at your service! A lot of people work very hard to make it easy for beginners to adopt their tools. Documentation of the tools we have installed so far is available through google or any other search engine. People are also very helpful in answering questions, answers to large and small problems can be found in forums such as <a href="https://stackoverflow.com/">stack overflow</a>(see below).</p>
 <p>Learning new skills, like doing data analysis by programming, can be hard but rewarding. If you want to make your learning experience less hard, consider these points:</p>
 <ul>
-<li><strong>There are (almost always) multiple solutions to a problem</strong>. When faced with difficulties, do not give up trying to search for a perfect single solution. Instead know that there are multiple ways of defining the problem and therefore multiple solutions.</li>
+<li><strong>There are (almost always) multiple solutions to a problem</strong>. When faced with difficulties, do not give up trying to search for a perfect single solution. Instead know that there are multiple ways of defining the problem and therefore multiple ways of making stuff work.</li>
 <li><strong>Someone else has already had the same problem</strong>. The internet is full of questions and answers, also related to what ever problem you might have. Learning how to write “googleable” questions is a great skill. By adding “in R” to your problem in a google search term often helps finding R related solutions.</li>
 <li><strong>Find your motivation</strong>. The skills that you will learn in this course are transferable to countless potential work related roles for the future you! To be able to showcase these skills may lead you to your dream job! Find your motivation for learning how to analyze data and communicating insights!</li>
 <li><strong>“Microdosing” statistical learning</strong>. Replace your social media influencers with R users and data scientists! I find R people on <a href="twitter.com">Twitter</a> and <a href="https://joinmastodon.org/">mastodon</a>. Tweets and posts in this format keeps your R brain going!</li>
 </ul>
-<section id="a-list-of-reference-material-and-resources" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="a-list-of-reference-material-and-resources"><span class="header-section-number">2.5.1</span> A list of reference material and resources</h3>
+<section id="a-small-list-of-reference-material-and-resources" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="a-small-list-of-reference-material-and-resources"><span class="header-section-number">2.5.1</span> A (small) list of reference material and resources</h3>
 <ul>
 <li><p><a href="https://r4ds.hadley.nz/">R for Data Science</a> is a very comprehensive guide to working with R. It can be used chapter by chapter or by looking for tips on specific subjects.</p></li>
 <li><p>The official <a href="https://cran.r-project.org/doc/manuals/R-intro.pdf">An Introduction to R</a> released by the R Core Team gives a thorough overview of R. This document can be used to find explanations to basic R code.</p></li>
@@ -407,9 +407,10 @@ Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</e
 <li id="fn6"><p><a href="https://www.ensembl.org/">Ensembl</a> and the <a href="https://www.ncbi.nlm.nih.gov/">National center for biotechnology information</a> are commonly used databases in the biomedical sciences.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>We published our raw data together with a recent paper (Mølmen et al 2021 <a href="https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-021-02969-1">doi: 10.1186/s12967-021-02969-1.</a>) together with code to analyze it in a <a href="https://github.com/dhammarstrom/rnaseq-copd">public repository</a>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>https://www.evaluate.com/vantage/articles/news/snippets/its-official-covid-19-vaccine-trials-rank-among-largest<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from <a href="http://obasen.orientering.se/traningsdagbok/installationshandledning.htm">swedish orienteering</a>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>In addition to R, Python offers a free open source environment for reproducible analyses. The choice between the two are <a href="https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis">matter of taste</a>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>See the quarto documentation for details on creating pdfs and installing TeX distributions https://quarto.org/docs/output-formats/pdf-basics.html<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>(See for example this ranking)[https://www.kdnuggets.com/2019/05/poll-top-data-science-machine-learning-platforms.html].<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from <a href="http://obasen.orientering.se/traningsdagbok/installationshandledning.htm">swedish orienteering</a>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>In addition to R, Python offers a free open source environment for reproducible analyses. The choice between the two are <a href="https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis">matter of taste</a>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>See the quarto documentation for details on creating pdfs and installing TeX distributions https://quarto.org/docs/output-formats/pdf-basics.html<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -655,7 +656,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./02-spreadsheets.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and tabular data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

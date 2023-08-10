@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -109,7 +109,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -128,7 +129,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-first-graph.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -165,7 +166,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-spreadsheets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and tabular data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -240,21 +241,21 @@ div.csl-indent {
       }
    } 
   </script>
-<p>Data visualization is an efficient way of understanding data. By using graphs we can communicate characteristics of a data set that would have been impossible with a limited number of summary statistics (central tendencies, spread etc.). In Chapter 2 of his book <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>, Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand different data sets. A great argument for the use of data visualization is the need to understand what factors might explain variation in a given data set <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. In this sense, data visualization can be thought of as an initial step in understanding data, data visualization as an exploratory tool.</p>
-<p>RStudio is a powerful environment for data visualization. Together with R (that is excellent for creating graphs), you can create and preview figures that represents your data in RStudio.</p>
+<p>Data visualization is an efficient way to understand data. Using graphs, we can communicate characteristics of a data set that would have been impossible with a limited number of summary statistics, such as the mean and standard deviation. In Chapter 2 of his book <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>, Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand various data sets. An important argument for mastering data visualization is understanding what factors might explain variation in a given data set <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. In this sense, data visualization can be thought of as an initial step in understanding data; data visualization is an exploratory tool.</p>
+<p>RStudio is a powerful environment for data visualization. Together with R (which is excellent for creating graphs), you can create and preview figures that represent your data in RStudio.</p>
 <p>R has got several systems for creating figures, plots, graphs. In this course, we will use <a href="https://ggplot2.tidyverse.org/">ggplot2</a>. Another system for plotting comes with the base installation of R. This is sometimes referred to as base R (<a href="https://rstudio-pubs-static.s3.amazonaws.com/84527_6b8334fd3d9348579681b24d156e7e9d.html">see this tutorial</a>, or <a href="http://www.sthda.com/english/wiki/r-base-graphs">this</a>. Another well described and used system is <a href="https://www.statmethods.net/advgraphs/trellis.html">lattice</a>. We choose ggplot2 because it works well with the <a href="https://www.tidyverse.org/">tidyverse</a>, and it is well described.</p>
 <section id="resources" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="resources"><span class="header-section-number">5.1</span> Resources</h2>
 <p>There are several good resources aimed at ggplot2:</p>
 <ul>
-<li><a href="https://r4ds.had.co.nz/data-visualisation.html">Chapter 4 in R for data science</a></li>
+<li><a href="https://r4ds.hadley.nz/data-visualize">Chapter 2 in R for data science</a></li>
 <li><a href="https://ggplot2-book.org/">The ggplot2 book</a></li>
 <li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf">The ggplot2 cheatsheet</a></li>
 </ul>
 </section>
 <section id="learning-objectives" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">5.2</span> Learning objectives</h2>
-<p>After this session, you should be able to answer:</p>
+<p>After working through this chapter, you should be able to answer:</p>
 <ul>
 <li>What are geoms?</li>
 <li>What is mapping data to aesthetics?</li>
@@ -264,153 +265,139 @@ div.csl-indent {
 </section>
 <section id="prerequisites" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">5.3</span> Prerequisites</h2>
-<p>To follow the exercises below you will need to some data. For the purpose of this course, I have created a package that contains the data sets we need. In this session we will work with the <code>cyclingstudy</code> data set. To install the package (<code>exscidata</code>) you will need another package called <code>remotes</code>.</p>
+<p>To follow the exercises below you will need to some data. For the purpose of this course, I have created a package that contains the data sets we need. In this chapter we will work with the <code>cyclingstudy</code> data set. To install the package (<code>exscidata</code>) you will need another package called <code>remotes</code>.</p>
 <p>The code below first checks if the package <code>remotes</code> is installed, or more specifically, if <code>"remotes"</code> cannot be found in the list of installed packages. Using the <code>if</code> function makes <code>install.packages(remotes)</code> conditional. If we do not find <code>"remotes"</code> among installed packages, then install <code>remotes</code>.</p>
-<p>The next line of code does the same with the <code>exscidata</code> package. However, since the package is not on CRAN but hosted on github we will need to use <code>remotes</code> to install it. The part of the second line of code that says <code>remotes::install_github("dhammarstrom/exscidata")</code> uses the function <code>install_github</code> without loading the remotes package. The last line of the code below loads the package <code>exscidata</code> using the <code>library</code> function.</p>
+<p>The next line of code does the same with the <code>exscidata</code> package. However, since the package is not on CRAN but hosted on GitHub we will need to use <code>remotes</code> to install it. The part of the second line of code that says <code>remotes::install_github("dhammarstrom/exscidata")</code> uses the function <code>install_github</code> without loading the remotes package. The last line of the code below loads the package <code>exscidata</code> using the <code>library</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if remotes is not installed, if TRUE, install remotes</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"remotes"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()) <span class="fu">install.packages</span>(remotes)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if exscidata is not installed, if TRUE, install exscidata from github</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"exscidata"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()) remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"dhammarstrom/exscidata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Downloading GitHub repo dhammarstrom/exscidata@HEAD</code></pre>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"exscidata"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()) remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"dhammarstrom/exscidata"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load exscidata</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in Sys.setlocale("LC_CTYPE", ctype): OS reports request to set locale
-to "Norwegian BokmC%l_Norway.utf8" cannot be honored</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>-- R CMD build -----------------------------------------------------------------
-* checking for file 'C:\Users\706194\AppData\Local\Temp\Rtmpq0Mylk\remotes3f70419231ff\dhammarstrom-exscidata-f70efb3/DESCRIPTION' ... OK
-* preparing 'exscidata':
-* checking DESCRIPTION meta-information ... OK
-* checking for LF line-endings in source and make files and shell scripts
-* checking for empty or unneeded directories
-* building 'exscidata_0.05.tar.gz'
-</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load exscidata</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Next we need to load the <code>tidyverse</code> package. This package in turn loads several packages that we will use when transforming data and making our figures. I will include the line of code that checks if the package is installed, if not R will download and install it. We subsequently load the package using <code>library</code>.</p>
+<p>Next we need to load the <code>tidyverse</code> package. This package in turn loads several packages that we will use when transforming data and making our figures. I will include the line of code that checks if the package is installed, if not, R will download and install it. We subsequently load the package using <code>library</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if tidyverse is not installed, if TRUE, install remotes</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tidyverse"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()) <span class="fu">install.packages</span>(tidyverse)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if tidyverse is not installed, if TRUE, install remotes</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tidyverse"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()) <span class="fu">install.packages</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
-v dplyr     1.1.1     v readr     2.1.4
-v forcats   1.0.0     v stringr   1.5.0
-v ggplot2   3.4.1     v tibble    3.2.1
-v lubridate 1.9.2     v tidyr     1.3.0
-v purrr     1.0.1     
--- Conflicts ------------------------------------------ tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
-i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 </div>
 <p>We are now ready to explore the data set. But first we should talk about the main components of the <code>ggplot2</code> system.</p>
 </section>
 <section id="the-ggplot2-system" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="the-ggplot2-system"><span class="header-section-number">5.4</span> The <code>ggplot2</code> system</h2>
-<p>When using the ggplot2 system we can think of the resulting graph as containing data that has been <em>mapped</em> to different coordinates, colors, shapes, sizes and other attributes that determines what is being visualized. We are using different geometric representations of the data in the visualization.</p>
-<p>When we <em>map</em> data in ggplot we use a specific function, <code>aes()</code> (short for aesthetic). We will use this inside the main engine, <code>ggplot()</code>. For this first simple example we will create a data set. When you simulate data in R you can tell R what should be the starting point in the random number generator. Using <code>set.seed(100)</code> we can recreate the same numbers from what ever “number generator” we later use. In the example below, we use <code>rnorm()</code> to simulate numbers from a normal distribution. The settings <code>n = 10</code>, <code>mean = 0</code> and <code>sd = 1</code> we will simulate randomly picking 10 numbers from a distribution that has a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that as assigned to an object that we have named <code>dat</code>.</p>
+<p>When using the ggplot2 system we can think of the resulting graph as containing data that has been <em>mapped</em> to different coordinates, colors, shapes, sizes, and other attributes that determine what is being visualized. We are using different geometric representations of the data in the visualization.</p>
+<p>When we <em>map</em> data in ggplot we use a specific function, <code>aes()</code> (short for aesthetic). We will use this inside the main engine, <code>ggplot()</code>. For this first simple example, we will create a data set by simulating some data. When you simulate data in R, you can tell R what should be the starting point in the random number generator. Using <code>set.seed(100)</code>, we can recreate the same numbers from our “number generator” later. In the example below, we use <code>rnorm()</code> to simulate numbers from a normal distribution. Using the arguments <code>n = 10</code>, <code>mean = 0</code>, and <code>sd = 1</code>, we simulate randomly picking ten numbers from a distribution with a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that is assigned to an object that we have named <code>dat</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the seed for random generation of numbers</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store data in a data frame</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The dataset consist of two variables. We will start by creating the canvas, this basically sets the border of the figure we want to create. The <code>ggplot()</code> function takes the dataset as its first argument, followed by the <code>aes()</code> function that is used to map data to coordinates and other attributes.</p>
+<p>The data set consists of two variables. We will start the process of creating the graph by creating the canvas, and this basically sets the border of the figure we want to make. The <code>ggplot()</code> function takes the data set as its first argument, followed by the <code>aes()</code> function that maps data to coordinates and other attributes. In this case, we have mapped our data to the x- and y-coordinates of the figure.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-empty-canvas" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="04-first-graph_files/figure-html/empty-canvas-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">An empty <code>ggplot</code> canvas.</figcaption><p></p>
+<p><img src="04-first-graph_files/figure-html/fig-empty-canvas-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;5.1: An empty <code>ggplot</code> canvas.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>As you can see in Figure @ref(fig:empty-canvas) the code above creates an “empty canvas” that has enough room to visualize our data. The x- and y-axes are adjusted to give room for graphical representations of the data. Next we need to add geometric shapes. These are functions that we add to the plot using the <code>+</code> sign. These functions all start with <code>geom_</code> and has and ending that describes the geoms, like point, line, etc.</p>
-<p>We will add <code>geom_point()</code> to our empty canvas as plotted in Figure @ref(fig:empty-canvas). The <code>geom_point</code> function <em>inherits</em> the mapping from from <code>ggplot()</code>. This means that we do not need to specify anything in <code>geom_point</code> at this stage.</p>
+<p>As you can see in <a href="#fig-empty-canvas">Figure&nbsp;<span>5.1</span></a>, the code above creates an “empty canvas” that has enough room to visualize our data. The x- and y-axes are adjusted to give room for graphical representations of the data. Next we need to add geometric shapes (<code>geom</code> for short). These are functions that we add to the plot using the <code>+</code> sign. These functions all start with <code>geom_</code> and has and ending that describes the geometric shape, like for example point or line.</p>
+<p>We will add <code>geom_point()</code> to our empty canvas as plotted in <a href="#fig-empty-canvas">Figure&nbsp;<span>5.1</span></a>. The <code>geom_point</code> function <em>inherits</em> the mapping from from <code>ggplot()</code>. Shapes, in this case points will be placed according to x- and y-coordinates specified in <code>aes()</code> used in the main <code>ggplot</code> function call. This means that we do not need to specify anything in <code>geom_point</code> at this stage.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-point-and-canvas" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="04-first-graph_files/figure-html/point-and-canvas-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">A <code>ggplot</code> canvas with points added.</figcaption><p></p>
+<p><img src="04-first-graph_files/figure-html/fig-point-and-canvas-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;5.2: A <code>ggplot</code> canvas with points added.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In Figure @ref(fig:point-and-canvas) we have added black points to each x- and y-coordinate representing <code>x</code> and <code>y</code> from our data set.</p>
-<p>To extend the example we will add data to our dataset. In the code below, we create a new variable in the dataset using <code>$</code> effectively giving us a new column in the data. We use <code>rep("A", 5)</code> to replicate the letter <code>A</code> five times and the same for <code>B</code>. The <code>c()</code> function combines the two in a single vector. We can use <code>head(dat)</code> to see what we accomplished with these operations. The <code>head()</code> function <em>prints</em> the first six rows from the dataset.</p>
+<p>In <a href="#fig-point-and-canvas">Figure&nbsp;<span>5.2</span></a> we have added black points to each x- and y-coordinate representing <code>x</code> and <code>y</code> from our data set.</p>
+<p>To extend the example we will add data to our data set. In the code below, we create a new variable in the data set using <code>$</code> effectively giving us a new column in the data. We use <code>rep("A", 5)</code> to replicate the letter <code>A</code> five times and the same for <code>B</code>. The <code>c()</code> function combines the two in a single vector. We can use <code>head(dat)</code> to see what we accomplished with these operations. The <code>head()</code> function <em>prints</em> the first six rows from the data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"A"</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">"B"</span>, <span class="dv">5</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"A"</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">"B"</span>, <span class="dv">5</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           x         y z
-1  0.2139625  8.508462 A
-2  0.4796581 11.843101 A
-3  0.0878287 11.500109 A
-4  0.4438585  4.982892 A
-5 -0.3628379  3.918132 A
-6  0.1226740 10.000532 B</code></pre>
+<pre><code>            x         y z
+1 -0.50219235 10.179772 A
+2  0.13153117 10.192549 A
+3 -0.07891709  9.596732 A
+4  0.88678481 11.479681 A
+5  0.11697127 10.246759 A
+6  0.31863009  9.941367 B</code></pre>
 </div>
 </div>
-<p>We can see that we have an additional variable <code>z</code> that contains <code>"A"</code> and <code>"B"</code>. This new variable can be used to add more information to the plot. Let’s say that we want to map the <code>z</code> variable to different colors. We do this by adding <code>color = z</code> to <code>aes</code>. This means that we want the z variable to determine colors.</p>
+<p>We can see that we have an additional variable, <code>z</code> that contains the letters <code>"A"</code> and <code>"B"</code>. This new variable can be used to add more information to the plot. Let’s say that we want to map the <code>z</code> variable to different colors. We do this by adding <code>color = z</code> to <code>aes</code>. This means that we want the z variable to determine colors.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-point-with-color" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="04-first-graph_files/figure-html/point-with-color-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">A <code>ggplot</code> canvas with colored points added.</figcaption><p></p>
+<p><img src="04-first-graph_files/figure-html/fig-point-with-color-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;5.3: A <code>ggplot</code> canvas with colored points added.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In Figure @ref(fig:point-with-color) we can see that different colors are used for the two letters <code>"A"</code> and <code>"B"</code>. Other attributes can also be specified like <code>shape</code>, <code>fill</code> or <code>size</code>. The <code>shape</code> specifies the appearance of the points. When we use use data to map to shapes, ggplot2 will start from the standard shape.</p>
+<p>In <a href="#fig-point-with-color">Figure&nbsp;<span>5.3</span></a> we can see that different colors are used for the two letters <code>"A"</code> and <code>"B"</code>. Other attributes can also be specified like <code>shape</code>, <code>fill</code> or <code>size</code>. The <code>shape</code> specifies the appearance of the points. When we use use data to map to shapes, ggplot2 will start from the standard shape.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-shapes-in-r" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="04-first-graph_files/figure-html/shapes-in-r-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Shapes in R</figcaption><p></p>
+<p><img src="04-first-graph_files/figure-html/fig-shapes-in-r-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;5.4: Shapes in R</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Possible shapes in the standard framework in R are shown in Figure @ref(fig:shapes-in-r). We may use this information to either fix the shape of the points. Let’s say that instead of colored points we want filled points. We would change the <code>color = z</code> argument to <code>fill = z</code> instead and select a point shape that can be filled (shapes 21-25, see Figure @ref(fig:shapes-in-r). Notice in the code below that <code>shape = 21</code> has been added to <code>geom_point()</code>. We have specified how points should be displayed.</p>
+<p>Possible shapes in the standard framework in R are shown in <a href="#fig-shapes-in-r">Figure&nbsp;<span>5.4</span></a>. Shapes 0 to 20 can change colors while shapes 21 to 25 may have different border colors but also different fill colors. We may use this information to change the shape, color and fill of our points. Let’s say that instead of colored points we want filled points. We would then change the <code>color = z</code> argument to <code>fill = z</code> and select a point shape that can be filled (shapes 21-25, see <a href="#fig-shapes-in-r">Figure&nbsp;<span>5.4</span></a>. Notice in the code below that <code>shape = 21</code> has been added to <code>geom_point()</code>. We have specified how points should be displayed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-point-with-fill" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="04-first-graph_files/figure-html/point-with-fill-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">A <code>ggplot</code> canvas with filled points added.</figcaption><p></p>
+<p><img src="04-first-graph_files/figure-html/fig-point-with-fill-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;5.5: A <code>ggplot</code> canvas with filled points added.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Since shape is an attribute it to can be mapped by data. If we want data to determine both shape and fill we could add this information in the <code>aes()</code> function by setting both <code>shape = z</code> and <code>fill = z</code>. We now have to specify what shapes ggplot should use in order to be sure we can combine both shapes and fill. We will use <code>scale_fill_manual</code> and <code>scale_shape_manual</code> to do this. These functions takes lets you specify different values for aesthetics. Notice that we removed <code>shape = 21</code> from the <code>geom_point()</code> function, but we added size to increase the size of the points.</p>
+<p>Since shape is an attribute we can map data to it. If we want data to determine both shape and fill we could add this information in the <code>aes()</code> function by setting both <code>shape = z</code> and <code>fill = z</code>. We now have to specify what shapes ggplot should use in order to be sure we can combine both shapes and fill. We will use <code>scale_fill_manual</code> and <code>scale_shape_manual</code> to do this. These functions lets you specify different values for aesthetics. Notice that we removed <code>shape = 21</code> from the <code>geom_point()</code> function, but we added size to increase the size of the points (see <a href="#fig-point-with-fill-and-shape">Figure&nbsp;<span>5.6</span></a>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> z, <span class="at">shape =</span> z)) <span class="sc">+</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>)) <span class="sc">+</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">23</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> z, <span class="at">shape =</span> z)) <span class="sc">+</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>)) <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">23</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-point-with-fill-and-shape" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="04-first-graph_files/figure-html/point-with-fill-and-shape-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Data mapped to fill and shape, and size specified manually to override the default.</figcaption><p></p>
+<p><img src="04-first-graph_files/figure-html/fig-point-with-fill-and-shape-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;5.6: Data mapped to fill and shape, and size specified manually to override the default.</figcaption>
 </figure>
 </div>
 </div>
@@ -418,20 +405,21 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 </section>
 <section id="different-geoms-using-real-data" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="different-geoms-using-real-data"><span class="header-section-number">5.5</span> Different geoms using real data</h2>
-<p>We have now seen that the basic <code>ggplot2</code> figure maps underlying data to coordinates and geometric representations, such as points. We will go further by using some real data. We will be using the <code>cyclingstudy</code> dataset from the <code>exscidata</code>-package. We will start by loading the data and select a few columns that we are interested in. By using <code>data("cyclingstudy")</code> we will load the data set that is part of the <code>exscidata</code>-package to our environment. By looking at the environment tab you can see that this operation adds a data set to the environment. It has 80 observations and 101 variables. Using the <code>glimpse()</code> function from <code>dplyr</code> (which is loaded by loading <code>tidyverse</code>) we will get an overview of all variables in the dataset. I have omitted the output from the code below</p>
+<p>We have seen that the basic <code>ggplot2</code> figure maps underlying data to coordinates and geometric representations, such as points. We will go further by using some real data. We will be using the <code>cyclingstudy</code> data set from the <code>exscidata</code>-package. We will start by loading the data and select a few columns that we are interested in.</p>
+<p>By using <code>data("cyclingstudy")</code> we will load the data set that is part of the <code>exscidata</code>-package to our environment. By looking at the environment tab you can see that this operation adds a data set to the environment. It has 80 observations and 101 variables. Using the <code>glimpse()</code> function from <code>dplyr</code> (which is loaded by loading <code>tidyverse</code>) we will get an overview of all variables in the data set. I have omitted the output from the code below, feel free to run the code in a quarto- or rmarkdown-document on your own.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data and have a first look</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"cyclingstudy"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cyclingstudy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data and have a first look</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"cyclingstudy"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cyclingstudy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will store a selected set of variables in a new object for ease of use. We will call this object <code>cycdat</code>. We select variables using the function with the very suitable name <code>select</code> where the first argument specifies the dataset, following arguments specifies what variables we want. Let’s say that we are interested in squat jump height. The <code>exscidata</code> package comes with descriptions of the datasets. By writing <code>?cyclingstudy</code> in your console you will see the description of the data in your help tab. Squat jump is recorded as <code>sj.max</code>, we select this variable together with <code>subject</code>, <code>group</code> and <code>timepoint</code> to create a smaller data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign a selected set of variables to a smaller data set</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>cycdat <span class="ot">&lt;-</span> <span class="fu">select</span>(cyclingstudy, subject, group, timepoint, sj.max)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Printing the data set</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>cycdat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign a selected set of variables to a smaller data set</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cycdat <span class="ot">&lt;-</span> <span class="fu">select</span>(cyclingstudy, subject, group, timepoint, sj.max)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Printing the data set</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>cycdat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 80 x 4
+<pre><code># A tibble: 80 × 4
    subject group timepoint sj.max
      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;
  1       1 INCR  pre         31.0
@@ -444,7 +432,7 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
  8       8 MIX   pre         32.8
  9       9 MIX   pre         22.7
 10      10 INCR  pre         29.7
-# i 70 more rows</code></pre>
+# ℹ 70 more rows</code></pre>
 </div>
 </div>
 <p>By printing the object we can see that we have a tibble of 80 rows and 4 columns. A tibble can to a large extent be regarded as a data frame, and we will use these words interchangeably. Tibbles are new in the sense that they are developed as part of the tidyverse <span class="citation" data-cites="r4ds">(<a href="#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Printing a tibble will display the first 10 rows as we can see from the resulting output.</p>
@@ -452,8 +440,8 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <h3 data-number="5.5.1" class="anchored" data-anchor-id="a-plot-of-values-per-group"><span class="header-section-number">5.5.1</span> A plot of values per group</h3>
 <p>Let’s say that we want to see how the values differs between groups. Boxplots are a good way to start as they will bring a standardized way of summarizing data. Boxplots can be plotted using the <code>geom_boxplot</code> function. Notice below that we put <code>group</code> on the x-axis (the first argument in the <code>aes</code> function) and <code>sj.max</code> on the y-axis. By doing so <code>ggplot</code> will make the x-axis discrete and the y-axis continuous.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 4 rows containing non-finite values (`stat_boxplot()`).</code></pre>
 </div>
@@ -461,15 +449,15 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/sq-boxplot-simple-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Boxplot of all data per group from the cycling dataset.</figcaption><p></p>
+<figcaption class="figure-caption">Boxplot of all data per group from the cycling dataset.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>We can layers of more geoms to the same plot. We might want to add individual data points also. <code>geom_jitter</code> might be a good place to start. This geom is good as it can be plotted over a group variable and points gets “jittered” or spread so we avoid overlap.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 4 rows containing non-finite values (`stat_boxplot()`).</code></pre>
 </div>
@@ -480,7 +468,7 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/sq-boxplot-jitter-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Boxplot and jittered points of all data per group from the cycling dataset.</figcaption><p></p>
+<figcaption class="figure-caption">Boxplot and jittered points of all data per group from the cycling dataset.</figcaption>
 </figure>
 </div>
 </div>
@@ -491,12 +479,12 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <h3 data-number="5.5.2" class="anchored" data-anchor-id="data-over-time-per-group-and-individual"><span class="header-section-number">5.5.2</span> Data over time per group and individual</h3>
 <p>In the data set we have a time variable consisting of the labels “pre”, “meso1”, “meso2” and “meso3”. When we load the data into R we do so without providing information about the order of these labels. R will put them in alphabetical order when order is required (as in a figure). If we want to plot these data in the right order we have to tell R that these data should have an order. We will convert the <code>timepoint</code> variable to a factor. Factors are variables that can contain more information than what is contained in each cell. Using the <code>factor</code> function we will set the order of the <code>timepoint</code> variable. We assign this transformation of the variable to its original place in the data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>timepoint, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso1"</span>, <span class="st">"meso2"</span>, <span class="st">"meso3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>timepoint, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso1"</span>, <span class="st">"meso2"</span>, <span class="st">"meso3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We are now ready to plot data over time, where the time variable is correctly ordered. Let’s use the boxplot again to plot all values over time.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per time point</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per time point</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 4 rows containing non-finite values (`stat_boxplot()`).</code></pre>
 </div>
@@ -504,15 +492,15 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/sq-boxplot-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Boxplot of all data per time-point from the cycling dataset.</figcaption><p></p>
+<figcaption class="figure-caption">Boxplot of all data per time-point from the cycling dataset.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>We do not see any great tendencies in the whole data set. To further explore the data we might want to have different boxes per group per time. We can accomplish this by adding <code>fill = group</code> to our <code>aes</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group over time</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">fill =</span> group)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a boxplot of all values per group over time</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">fill =</span> group)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 4 rows containing non-finite values (`stat_boxplot()`).</code></pre>
 </div>
@@ -520,7 +508,7 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/sq-boxplot-time-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption><p></p>
+<figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption>
 </figure>
 </div>
 </div>
@@ -528,9 +516,9 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <p>This is possible because <code>geom_boxplots</code> can be filled. The same separation of groups would have been accomplished using <code>color = group</code>, however, then the boxes would get different border colors instead. You might have noticed that the boxplots do not contain all the data, a few data points are outside 1.5 IQR (interquartile range). This, by standard definitions, defines the data point as an “outlier”.</p>
 <p>As mentioned above, boxplots does some summarizing and not all data is shown. To explore further we might want to track every participant. To do this we have to tell <code>ggplot</code> on what factor to group the data. In <code>aes()</code> the group argument let’s you connect lines based on some grouping variable, in our case it will be <code>subject</code>. We will use a line to connect each participants score over time. Using <code>color = group</code> will additionally give every line a different color depending on which group it belongs to.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a line plot of all values per participant over time, color per group</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a line plot of all values per participant over time, color per group</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
 </div>
@@ -538,7 +526,7 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/sq-ind-data-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption><p></p>
+<figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption>
 </figure>
 </div>
 </div>
@@ -549,11 +537,11 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <h3 data-number="5.5.3" class="anchored" data-anchor-id="titles-and-labels"><span class="header-section-number">5.5.3</span> Titles and labels</h3>
 <p>Often we need to add information to the plot to better communicate its message. Such information could be appropriate titles on axes and legends and extra text needed to explain aspects of the plot. Using the <code>labs()</code> function we can add information that will replace variable names that are being used for all variables that have been mapped in the figure. In the figure below we will start by adding better axis titles. This information goes into <code>x</code> and <code>y</code> in <code>labs()</code> which simply changes the titles of the x- and y-axis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a line plot of all values per participant over time, color per group</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a line plot of all values per participant over time, color per group</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
 </div>
@@ -561,7 +549,7 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/sq-ind-data-axis-title-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption><p></p>
+<figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption>
 </figure>
 </div>
 </div>
@@ -569,11 +557,11 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <p>The resulting Figure @ref(fig:sq-ind-data-axis-title) now have better titles for each axis. Notice in the code above that titles needs to be specified with quotation marks. This is a tricky aspect of R, if we wold have omitted the quotation marks we would have told R to look for objects by the name of e.g.&nbsp;<code>Time-point</code>, and this would actually mean that we tryed to subtract <code>time</code> from <code>point</code> since <code>-</code> is interpreted as a minus sign.</p>
 <p>We might want to add information to the legend also. Since we specified <code>color = group</code> in the <code>aes()</code> function, the same can be manipulated in <code>labs</code>. Lets just add a capital G.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
 </div>
@@ -581,21 +569,21 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/sq-ind-data-axis-title2-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption><p></p>
+<figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>We still have the original labels for the tim variable. Remember that we used the <code>factor</code> function above to set the order of the labels. Actually we specified the “levels” of the factor. We can use the same function to add better “labels”. In the code below, I will first change the variable in the dataset and then use the exact same code for the plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>timepoint, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso1"</span>, <span class="st">"meso2"</span>, <span class="st">"meso3"</span>), </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Pre-training"</span>, <span class="st">"Meso-cycle 1"</span>, <span class="st">"Meso-cycle 2"</span>, <span class="st">"Meso-cycle 3"</span>))</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>timepoint, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso1"</span>, <span class="st">"meso2"</span>, <span class="st">"meso3"</span>), </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Pre-training"</span>, <span class="st">"Meso-cycle 1"</span>, <span class="st">"Meso-cycle 2"</span>, <span class="st">"Meso-cycle 3"</span>))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
 </div>
@@ -603,7 +591,7 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/sq-ind-data-axis-title3-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption><p></p>
+<figcaption class="figure-caption">Boxplot of all data per time-point and group from the cycling dataset.</figcaption>
 </figure>
 </div>
 </div>
@@ -612,18 +600,18 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <a id="displayText" href="javascript:toggle(1);">Click here to display a possible solution</a>
 <div id="toggleText1" style="display: none">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the grouping variable</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"DECR"</span>, <span class="st">"INCR"</span>, <span class="st">"MIX"</span>), </span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Decreased</span><span class="sc">\n</span><span class="st">intensity"</span>, </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Increased</span><span class="sc">\n</span><span class="st">intensity"</span>, </span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Mixed</span><span class="sc">\n</span><span class="st">intensity"</span>))</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the data as before with the new information added</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Periodization strategy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the grouping variable</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"DECR"</span>, <span class="st">"INCR"</span>, <span class="st">"MIX"</span>), </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Decreased</span><span class="sc">\n</span><span class="st">intensity"</span>, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Increased</span><span class="sc">\n</span><span class="st">intensity"</span>, </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Mixed</span><span class="sc">\n</span><span class="st">intensity"</span>))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the data as before with the new information added</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Periodization strategy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note: Adding <code>\n</code> in the the text string breaks the line to get two rows.</p>
 </div>
@@ -632,37 +620,37 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <h3 data-number="5.5.4" class="anchored" data-anchor-id="annotations"><span class="header-section-number">5.5.4</span> Annotations</h3>
 <p>Annotation may become handy when you want to add elements to the graph that is not in the data set. Using ggplot2 annotations are added using the <code>annotate()</code> function. This function first needs to be specified with a geom, these are commonly text or lines or segments. In the code chunk below are several examples of annotations. Firts I save the plot as an object called <code>myplot</code> and then add different annotations to it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Periodization strategy"</span>) </span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># A text annotation</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>myplot <span class="sc">+</span> <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">37</span>, <span class="at">label =</span> <span class="st">"This is an annotation"</span>)</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A line/segment </span></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>myplot <span class="sc">+</span> <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">xend =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">25</span>, <span class="at">yend =</span> <span class="dv">35</span>,  <span class="at">colour =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Periodization strategy"</span>) </span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># A text annotation</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>myplot <span class="sc">+</span> <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">37</span>, <span class="at">label =</span> <span class="st">"This is an annotation"</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A line/segment </span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>myplot <span class="sc">+</span> <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">1</span>, <span class="at">xend =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">25</span>, <span class="at">yend =</span> <span class="dv">35</span>,  <span class="at">colour =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can copy the code and run it yourself to see the results. <code>annotate</code> is documented <a href="https://ggplot2.tidyverse.org/reference/annotate.html">here</a> but documentation can also be accessed by typing <code>?annotate</code> in your console. Try to read the documentation and add a transparent rectangle to a previous plot.</p>
 <a id="displayText" href="javascript:toggle(2);">Click here for a solution</a>
 <div id="toggleText2" style="display: none">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the grouping variable</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"DECR"</span>, <span class="st">"INCR"</span>, <span class="st">"MIX"</span>), </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Decreased</span><span class="sc">\n</span><span class="st">intensity"</span>, </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Increased</span><span class="sc">\n</span><span class="st">intensity"</span>, </span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Mixed</span><span class="sc">\n</span><span class="st">intensity"</span>))</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the data as before with the new information added</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Periodization strategy"</span>) <span class="sc">+</span></span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A rectangular annotation (alpha = 0.4 makes the rectangle transparent)</span></span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a> <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">1</span>, <span class="at">xmax =</span> <span class="dv">2</span>, <span class="at">ymin =</span> <span class="dv">30</span>, <span class="at">ymax =</span> <span class="dv">35</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the grouping variable</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"DECR"</span>, <span class="st">"INCR"</span>, <span class="st">"MIX"</span>), </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Decreased</span><span class="sc">\n</span><span class="st">intensity"</span>, </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Increased</span><span class="sc">\n</span><span class="st">intensity"</span>, </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Mixed</span><span class="sc">\n</span><span class="st">intensity"</span>))</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the data as before with the new information added</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Periodization strategy"</span>) <span class="sc">+</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># A rectangular annotation (alpha = 0.4 makes the rectangle transparent)</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a> <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">1</span>, <span class="at">xmax =</span> <span class="dv">2</span>, <span class="at">ymin =</span> <span class="dv">30</span>, <span class="at">ymax =</span> <span class="dv">35</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note: Adding <code>\n</code> in the the text string breaks the line to get two rows.</p>
 </div>
@@ -672,12 +660,12 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <h2 data-number="5.6" class="anchored" data-anchor-id="themes"><span class="header-section-number">5.6</span> Themes</h2>
 <p>Themes in <code>ggplot2</code> can be used to change everything else about the plot concerning text, colors etc. <code>ggplot2</code> has some built in themes that are easily activated by adding them to the plot. For example the <code>theme_bw()</code> function will change the theme to a black and white one as in the figure below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Group"</span>) <span class="sc">+</span> </span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Group"</span>) <span class="sc">+</span> </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
 </div>
@@ -685,7 +673,7 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/bw-theme-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">A figure using the black and white theme from <code>theme_bw</code>.</figcaption><p></p>
+<figcaption class="figure-caption">A figure using the black and white theme from <code>theme_bw</code>.</figcaption>
 </figure>
 </div>
 </div>
@@ -693,13 +681,13 @@ i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all
 <p>A collection of built in themes are documented <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here</a>. Individual components of the theme can also be changed using the <code>theme()</code> function. There is a long list of theme components that can be changed using this function. The list can be found <a href="https://ggplot2.tidyverse.org/reference/theme.html">here</a>.<br>
 If we put the <code>theme</code> function last in the <code>ggplot</code> call we will modify one part of the existing theme. Let’s say that we want to change the color of the text on the x axis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Group"</span>) <span class="sc">+</span> </span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Group"</span>) <span class="sc">+</span> </span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
 </div>
@@ -707,7 +695,7 @@ If we put the <code>theme</code> function last in the <code>ggplot</code> call w
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/bw-theme-changed-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">A figure using the black and white theme from <code>theme_bw</code>.</figcaption><p></p>
+<figcaption class="figure-caption">A figure using the black and white theme from <code>theme_bw</code>.</figcaption>
 </figure>
 </div>
 </div>
@@ -723,7 +711,7 @@ If we put the <code>theme</code> function last in the <code>ggplot</code> call w
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/example-fig-1-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Example figure 1</figcaption><p></p>
+<figcaption class="figure-caption">Example figure 1</figcaption>
 </figure>
 </div>
 </div>
@@ -731,32 +719,32 @@ If we put the <code>theme</code> function last in the <code>ggplot</code> call w
 <a id="displayText" href="javascript:toggle(3);">Click for a solution</a>
 <div id="toggleText3" style="display: none">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package ggtext to make markdown avalable in axis labels.</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext) </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># For ease of use I save a smaller dataset in a new object</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>cycdat <span class="ot">&lt;-</span> <span class="fu">select</span>(cyclingstudy, subject, timepoint, VO2.max)</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the labels of the time variable</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>timepoint, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso1"</span>, <span class="st">"meso2"</span>, <span class="st">"meso3"</span>), </span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Pre-training"</span>, <span class="st">"Meso-cycle 1"</span>, <span class="st">"Meso-cycle 2"</span>, <span class="st">"Meso-cycle 3"</span>))</span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create the basic plot</span></span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> cycdat, <span class="fu">aes</span>(timepoint, VO2.max, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add lines to connect dots. Putting the lines first and plotting points on top</span></span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add points foe each participant/time</span></span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adding correct axis titles and a figure title</span></span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>, </span>
-<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"VO&lt;sub&gt;2max&lt;/sub&gt; (ml min&lt;sup&gt; -1&lt;/sup&gt;)"</span>, </span>
-<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Maximal aerobic power in response to systematic training in trained cyclists"</span>) <span class="sc">+</span></span>
-<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Changing the text rendering using element_markdown from the ggtext package.</span></span>
-<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_markdown</span>(<span class="at">size =</span> <span class="dv">12</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package ggtext to make markdown avalable in axis labels.</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext) </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># For ease of use I save a smaller dataset in a new object</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>cycdat <span class="ot">&lt;-</span> <span class="fu">select</span>(cyclingstudy, subject, timepoint, VO2.max)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the labels of the time variable</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>cycdat<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>timepoint, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso1"</span>, <span class="st">"meso2"</span>, <span class="st">"meso3"</span>), </span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Pre-training"</span>, <span class="st">"Meso-cycle 1"</span>, <span class="st">"Meso-cycle 2"</span>, <span class="st">"Meso-cycle 3"</span>))</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create the basic plot</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> cycdat, <span class="fu">aes</span>(timepoint, VO2.max, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add lines to connect dots. Putting the lines first and plotting points on top</span></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add points foe each participant/time</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span> </span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adding correct axis titles and a figure title</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>, </span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"VO&lt;sub&gt;2max&lt;/sub&gt; (ml min&lt;sup&gt; -1&lt;/sup&gt;)"</span>, </span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Maximal aerobic power in response to systematic training in trained cyclists"</span>) <span class="sc">+</span></span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Changing the text rendering using element_markdown from the ggtext package.</span></span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_markdown</span>(<span class="at">size =</span> <span class="dv">12</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note: Adding <code>\n</code> in the the text string breaks the line to get two rows.</p>
 </div>

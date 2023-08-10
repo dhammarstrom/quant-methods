@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -110,7 +110,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -129,7 +130,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-intro-to-r.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -166,7 +167,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-spreadsheets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and tabular data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -206,11 +207,7 @@ div.csl-indent {
   <li><a href="#r-markdown-and-quarto-files" id="toc-r-markdown-and-quarto-files" class="nav-link" data-scroll-target="#r-markdown-and-quarto-files"><span class="header-section-number">4.4.2</span> R markdown and quarto files</a></li>
   </ul></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">4.5</span> Packages</a></li>
-  <li><a href="#microsoft-word-intergration-in-r-markdown-and-quarto" id="toc-microsoft-word-intergration-in-r-markdown-and-quarto" class="nav-link" data-scroll-target="#microsoft-word-intergration-in-r-markdown-and-quarto"><span class="header-section-number">4.6</span> Microsoft Word intergration in R Markdown and Quarto</a>
-  <ul class="collapse">
-  <li><a href="#adding-references" id="toc-adding-references" class="nav-link" data-scroll-target="#adding-references"><span class="header-section-number">4.6.1</span> Adding references</a></li>
-  </ul></li>
-  <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">4.7</span> References and footnotes</a></li>
+  <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">4.6</span> References and footnotes</a></li>
   </ul>
 </nav>
     </div>
@@ -242,7 +239,7 @@ div.csl-indent {
 <div id="fig-customize" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/ch3/03-customizerstudio.gif" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.1: Customize the appearance of RStudio</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;4.1: Customize the appearance of RStudio</figcaption>
 </figure>
 </div>
 <p>As you may have spotted in the image above, it is possible to change the font of your editor. I like <a href="https://github.com/tonsky/FiraCode/wiki/RStudio-instructions">Fira code</a>.</p>
@@ -279,7 +276,7 @@ Defining concepts
 </section>
 <section id="the-console" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="the-console"><span class="header-section-number">4.1.3</span> The console</h3>
-<p>By pressing Ctrl+Enter from the script as described above you sent your code to the console. You can also interact with R directly here. By writing <code>a</code> in the console and hitting enter you will get the value from the object called a. This means that it is also where output from R is usually printed. In the image below, the console is in the top right corner.</p>
+<p>By pressing Ctrl+Enter from the script, as described above, you sent your code to the console. You can also interact with R directly here. By writing <code>a</code> in the console and hitting enter you will get the value from the object called a. This means that it is also where output from R is usually printed. In the image below, the console is in the top right corner.</p>
 </section>
 <section id="files-plots-packages-and-help-files" class="level3" data-number="4.1.4">
 <h3 data-number="4.1.4" class="anchored" data-anchor-id="files-plots-packages-and-help-files"><span class="header-section-number">4.1.4</span> Files, plots, packages and help files</h3>
@@ -287,19 +284,19 @@ Defining concepts
 <div id="fig-interactionrstudio" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/ch3/03-interactingrstudio.gif" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.2: Interacting with RStudio</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;4.2: Interacting with RStudio</figcaption>
 </figure>
 </div>
 </section>
 </section>
 <section id="reproducible-data-science-using-rstudio" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="reproducible-data-science-using-rstudio"><span class="header-section-number">4.2</span> Reproducible data science using RStudio</h2>
-<p>When starting up RStudio for the first time we will set some rules that will allow for reproducible programming. Remember from <a href="01-intro-to-data.html#replication-and-reproducibility">Chapter 2</a> that part of a fully reproducible study is software/code that produces the results. It turns out that when working interactively with R you can fool yourself that you have included all steps needed to produce some results in your script. However, variables may be stored in your environment but not by assigning values to them in your script. This will become a problem if you want to share your code, a certain value/variable needed to make the program work may be missing from your script.</p>
+<p>When starting to work more systematically in RStudio we will set some rules that will allow for reproducible programming. Remember from <a href="01-intro-to-data.html#replication-and-reproducibility">Chapter 2</a> that part of a fully reproducible study is software/code that produces the results. It turns out that when working interactively with R you can fool yourself to belive that you have included all steps needed to produce some results in your script. However, variables may be stored in your environment but not by assigning values to them in your script. This will become a problem if you want to share your code, a certain value/variable needed to make the program work may be missing from your script.</p>
 <p>To avoid making such a mistake it is good practice not to save variables in your environment between sessions, everything should be scripted and documented and assumed not defined elsewhere. In RStudio we can make an explicit setting Not to save the workspace (See <a href="#fig-saveworkspace">Figure&nbsp;<span>4.3</span></a>).</p>
 <div id="fig-saveworkspace" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/ch3/03-ask-workspace.gif" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.3: Never save the workspace.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;4.3: Never save the workspace.</figcaption>
 </figure>
 </div>
 </section>
@@ -323,7 +320,7 @@ Defining concepts
 <div id="fig-rscript" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/ch3/03-rscript.gif" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.4: Commenting and coding in an R script</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;4.4: Commenting and coding in an R script</figcaption>
 </figure>
 </div>
 <p>Try the code for yourself to see what it produces. The details will be covered later.</p>
@@ -344,28 +341,13 @@ Defining concepts
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/ch3/03-quartoauthor.gif" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Authoring in a quarto source document and preview in the visual editor</figcaption><p></p>
+<figcaption class="figure-caption">Authoring in a quarto source document and preview in the visual editor</figcaption>
 </figure>
 </div>
-<p><a href="https://rmarkdown.rstudio.com/">R markdown</a> and <a href="https://quarto.org/docs/guide/">quarto</a> has many similarities as the basic organization is similar between the two. The text parts are written using a special syntax, markdown. The point of markdown is that you will use the same syntax that is later possible to convert to multiple formats. The syntax let’s you do all formatting explicitly, for example instead of getting your mouse to superscript some text you can add syntax <code>a^2^</code> to achieve a<sup>2</sup>.</p>
-<p>A full guide to RMarkdown can be found on the official <a href="https://rmarkdown.rstudio.com/lesson-1.html">R markdown web pages</a>. I suggest you take the time to get an overview of this langiage as it will make more fluent in the tools that enables reproducible computing. When writing R markdown, it is handy to have a <em>cheat sheet</em> close by when writing, <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">here is an example</a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-</section>
-</section>
-<section id="packages" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="packages"><span class="header-section-number">4.5</span> Packages</h2>
-<p>The R ecosystem consists of packages. These are <em>functions</em> organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g.&nbsp;analyses of a specific kind of data, or more general task such as making figures or handle data.</p>
-<p>In this course we will use many different packages, for example <a href="https://dplyr.tidyverse.org/">dplyr</a>, <a href="https://tidyr.tidyverse.org/">tidyr</a> and <a href="https://ggplot2.tidyverse.org/">ggplot2</a>. dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.</p>
-<p>To install a package, you use the <code>install.packages()</code> function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Alternatively, click “Packages” and “Install” and search for the package you want to install. To use a package, you have to load it into your environment. Use the <code>library()</code> function to load a package.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="microsoft-word-intergration-in-r-markdown-and-quarto" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="microsoft-word-intergration-in-r-markdown-and-quarto"><span class="header-section-number">4.6</span> Microsoft Word intergration in R Markdown and Quarto</h2>
+<p><a href="https://rmarkdown.rstudio.com/">R markdown</a> and <a href="https://quarto.org/docs/guide/">quarto</a> have many similarities as the basic organization is similar between the two. The text parts are written using a special syntax, markdown. The point of markdown is that you will use the same syntax that is later possible to convert to multiple formats. The syntax let’s you do all formatting explicitly, for example instead of getting your mouse to superscript some text you can add syntax <code>a^2^</code> to achieve a<sup>2</sup>.</p>
+<p>A full guide to RMarkdown can be found on the official <a href="https://rmarkdown.rstudio.com/lesson-1.html">R markdown web pages</a>. I suggest you take the time to get an overview of this language as it will make you more fluent in the tools that enables reproducible computing. When writing R markdown, it is handy to have a <em>cheat sheet</em> close by when writing, <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">here is an example for Rmarkdown</a>, and here is <a href="https://rstudio.github.io/cheatsheets/html/quarto.html">another one for quarto</a> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<section id="microsoft-word-intergration-in-r-markdown-and-quarto" class="level4" data-number="4.4.2.1">
+<h4 data-number="4.4.2.1" class="anchored" data-anchor-id="microsoft-word-intergration-in-r-markdown-and-quarto"><span class="header-section-number">4.4.2.1</span> Microsoft Word intergration in R Markdown and Quarto</h4>
 <p>Sometimes it is useful to “knit” to a word file. For example when you want to share a report with fellow students who are not familiar with R. R Markdown/Quarto can be used as a source for word documents (.docx).</p>
 <p>To create a word document from your Rmd-file/qmd-file you need a working installation of Microsoft Word. Settings for the output is specified in the YAML metadata field in the Rmd-file. This is the first section of a Rmd file, and when you want it to create a word file you specify it like this:</p>
 <pre><code>---
@@ -386,8 +368,9 @@ output:
 <p>Edit styles (Stiler in Norwegian) used in the reference file (right click on the style and edit). For example, editing the “Title” style (Tittel in Norwegian) will change the main titel of the document. After you have edited the document, save it.</p>
 <p>When you knit the document again, your updated styles will be used your word document.</p>
 <p><a href="https://rmarkdown.rstudio.com/articles_docx.html">Here</a> you can read more about using R Markdown together with word. If you do not have word installed, you can also use Open Office. Read more about it <a href="https://bookdown.org/yihui/rmarkdown/opendocument-text-document.html">here</a>.</p>
-<section id="adding-references" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="adding-references"><span class="header-section-number">4.6.1</span> Adding references</h3>
+</section>
+<section id="adding-references-to-r-markdown-and-quarto-files" class="level4" data-number="4.4.2.2">
+<h4 data-number="4.4.2.2" class="anchored" data-anchor-id="adding-references-to-r-markdown-and-quarto-files"><span class="header-section-number">4.4.2.2</span> Adding references to R Markdown and Quarto files</h4>
 <p>References/citations can be added to the report using the <code>bibliography</code> option in the YAML field. Citations needs to be listed in a file, multiple formats are availiable. A convenient format is bibtex. When using this format, create a text file with the ending <code>.bib</code>, for example, <code>bibliography.bib</code>.</p>
 <p>The <code>bibliography.bib</code>-file needs to be activated in the YAML-field. Do it by adding this information:</p>
 <pre><code>---
@@ -420,8 +403,22 @@ bibliography: bibliography.bib
 <p>Recently RStudio added support for adding citations inside the visual markdown editor.</p>
 </section>
 </section>
-<section id="references-and-footnotes" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="references-and-footnotes"><span class="header-section-number">4.7</span> References and footnotes</h2>
+</section>
+<section id="packages" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="packages"><span class="header-section-number">4.5</span> Packages</h2>
+<p>The R ecosystem consists of packages. These are <em>functions</em> organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g.&nbsp;analyses of a specific kind of data, or more general task such as making figures or handle data.</p>
+<p>In this course we will use many different packages, for example <a href="https://dplyr.tidyverse.org/">dplyr</a>, <a href="https://tidyr.tidyverse.org/">tidyr</a> and <a href="https://ggplot2.tidyverse.org/">ggplot2</a>. dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.</p>
+<p>To install a package, you use the <code>install.packages()</code> function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Alternatively, click “Packages” and “Install” and search for the package you want to install. To use a package, you have to load it into your environment. Use the <code>library()</code> function to load a package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="references-and-footnotes" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="references-and-footnotes"><span class="header-section-number">4.6</span> References and footnotes</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
@@ -674,7 +671,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./02-spreadsheets.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and tabular data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

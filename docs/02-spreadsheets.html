@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantitative methods and statistics (In Sport and Exercise Science) - 3&nbsp; Storing data in spreadsheets and tabular data</title>
+<title>Quantitative methods and statistics (In Sport and Exercise Science) - 3&nbsp; Storing data in spreadsheets and understanding tabular data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +76,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -94,10 +95,10 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-spreadsheets.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and tabular data</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-spreadsheets.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -134,13 +135,13 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-spreadsheets.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and tabular data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-intro-to-r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Installing and starting up R (and R Studio)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -172,7 +173,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and tabular data</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></h1>
 </div>
 
 
@@ -187,8 +188,8 @@ div.csl-indent {
 
 </header>
 
-<p>We have previously mentioned spreadsheets like those created in Excel. These are indeed great, but not great for reproducible science or data analysis. This is because they are not easily documented and scripted. The data is actually part of the analysis! Another danger with spreadsheets (like MS Excel) is that it re-formats your data. This is such a big problem for scientists that we have apparently started <a href="https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates">renaming genes in order to avoid confusion</a>.</p>
-<p>Errors are frequent in spreadsheets, not only because of renaming <span class="citation" data-cites="RN2927">(<a href="#ref-RN2927" role="doc-biblioref">Ziemann, Eren, and El-Osta 2016</a>)</span>, but also because of bad formatting of formulas <span class="citation" data-cites="RN2928">(<a href="#ref-RN2928" role="doc-biblioref">Stephen, Kenneth, and Barry 2009</a>)</span>. These are both reasons for using spreadsheets only for what they do best: data input and data storage.</p>
+<p>We have previously mentioned spreadsheets like those created in Excel. These are great but not great for reproducible science or data analysis. This drawback is because they are not easily documented and scripted. The data is part of the analysis! Another danger with spreadsheets (like MS Excel) is that it re-format your data. Re-formatting is such a big problem for scientists that they have started <a href="https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates">renaming genes to avoid confusion</a>.</p>
+<p>Errors are frequent in spreadsheets, not only because of renaming <span class="citation" data-cites="RN2927">(<a href="#ref-RN2927" role="doc-biblioref">Ziemann, Eren, and El-Osta 2016</a>)</span>, but also because of wrong formatting of formulas <span class="citation" data-cites="RN2928">(<a href="#ref-RN2928" role="doc-biblioref">Stephen, Kenneth, and Barry 2009</a>)</span>. These are both reasons for using spreadsheets only for what they do best: data input and storage.</p>
 <blockquote class="blockquote">
 <p><strong>Think about the literature</strong> Broman and Woo <span class="citation" data-cites="RN2391">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> gives several pointers on how to use spreadsheets for data input and storage. Think about your experince with Excel, what is the most common mistake you made when handling data in spreadsheets?</p>
 </blockquote>
@@ -201,7 +202,7 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/excel-spreadsheet.png" class="img-fluid figure-img" style="width:120.0%"></p>
-<p></p><figcaption class="figure-caption">Example entries from an Excel spreadsheet</figcaption><p></p>
+<figcaption class="figure-caption">Example entries from an Excel spreadsheet</figcaption>
 </figure>
 </div>
 </div>
@@ -256,24 +257,24 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p>The sum, average and standard deviation and count are simple functions for summarizing data. Intercept and slope are both examples of functions used to get simple associations from to sets of numbers (based on a regression model). The if function is an example of a function that can be used to conditionally enter data in a cell. For example, IF cell A1 contains a certain number, then cell B1 should display another a specified text.</p>
-<p>When looking for tips and tricks online, you may come across functions for excel in other languages than what is installed on your computer. To translate functions, and for a full overview of functions included in Microsoft Excel, see this website <a href="https://en.excel-translator.de/">en.excel-translator.de/</a>.</p>
+<p>The sum, average, standard deviation, and count are simple functions for summarizing data. Intercept and slope are functions used to get simple associations from two sets of numbers (based on a regression model). The IF function is an example of a function that can be used to enter data in a cell conditionally. For example, IF cell A1 contains a certain number, then cell B1 should display another specified text.</p>
+<p>When looking for tips and tricks online, you may come across functions for excel in other languages than what is installed on your computer. To translate functions and for a complete overview of functions included in Microsoft Excel, see this website <a href="https://en.excel-translator.de/">en.excel-translator.de/</a>.</p>
 </section>
 <section id="tidy-data-and-data-storage" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="tidy-data-and-data-storage"><span class="header-section-number">3.2</span> Tidy data and data storage</h2>
-<p>Hadley Wickham uses a quote from Tolstoy when describing the principle of tidy data <span class="citation" data-cites="RN1956">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that when something goes wrong, it can be wrong in multiple ways. But when it is right/correct/works/succeeds, it does so in only one way<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This principle can be applied to data sets. There are so many ways that formatting of data sets can be problematic, but a limited sets of principles makes it good.</p>
+<p>Hadley Wickham (the author of many commonly used R packages) quotes Tolstoy when describing the principle of tidy data <span class="citation" data-cites="RN1956">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that when something goes wrong, it can be wrong in multiple ways. But when it is right/correct/works/succeeds, it does so in only one way<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This principle can be applied to data sets. There are so many ways that formatting of data sets can be problematic, but a limited set of principles makes it good.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Leon_tolstoi.jpg/800px-Leon_tolstoi.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">Leo Tolstoy at the time when he was (possibly) authoring Anna Karenina. (Source: https://en.wikipedia.org/wiki/Leo_Tolstoy)</figcaption><p></p>
+<figcaption class="figure-caption">Leo Tolstoy at the time when he was (possibly) authoring Anna Karenina. (Source: https://en.wikipedia.org/wiki/Leo_Tolstoy)</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>A tidy data set consists of <em>values</em> originating from <em>observations</em> and belonging to <em>variables</em>. A variable is a definition of the values based on attributes. An observation may consist of several variables <span class="citation" data-cites="RN1956">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>.</p>
-<p>A tidy data set typically has got one observation per row and one variable per column. Let’s say that we want to collect data from a strength test. A participant (<strong>participant</strong> is a variable) in our study conducts tests before and after the intervention (<strong>time</strong> is a variable) in two exercises (<strong>exercise</strong> is a variable) and we record the maximal strength in kg (<strong>load</strong> is a variable). The data set will look something like in the table below (<a href="#tbl-tidydata">Table&nbsp;<span>3.2</span></a>).</p>
+<p>A tidy data set typically has one observation per row and one variable per column. Let’s say that we want to collect data from a strength test. A participant (<strong>participant</strong> is a variable) in our study conducts tests before and after the intervention (<strong>time</strong> is a variable) in two exercises (<strong>exercise</strong> is a variable), and we record the maximal strength in kg (<strong>load</strong> is a variable). The data set will look like the table below (<a href="#tbl-tidydata">Table&nbsp;<span>3.2</span></a>).</p>
 <div id="tbl-tidydata" class="anchored">
 <table class="table">
 <caption>Table&nbsp;3.2: Example of tidy data</caption>
@@ -313,7 +314,7 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p>Another example contains variables that actually carries two pieces of information in one variable. We again did a strength test, this time as maximal isometric contractions and in each test consisted of two attempts. We record this in two different variables, attempt 1 and 2. The resulting data set could look something like in Table <a href="#tbl-tidydata2">Table&nbsp;<span>3.3</span></a>).</p>
+<p>Another example contains variables that actually carries two pieces of information in one variable. We again did a strength test, this time as maximal isometric contractions and in each test consisted of two attempts. We record this in two different variables, attempt 1 and 2. The resulting data set could look something like in Table <a href="#tbl-tidydata2">Table&nbsp;<span>3.3</span></a>.</p>
 <div id="tbl-tidydata2" class="anchored">
 <table class="table">
 <caption>Table&nbsp;3.3: Another example of tidy data.</caption>
@@ -389,34 +390,34 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p>This naturally gives additional rows to the data set. This is sometimes referred to as “long format” data as opposed to the structure where each attempt is given separate variables, something that is called “wide format”. You will notice during the course that for most purposes, the long format is most convenient. This is true when we create graphs and do statistical modelling. But sometimes a variable needs to be structured in a wide format to allow for certain operations.</p>
-<p>If we follow what is recommended by Broman and Woo <span class="citation" data-cites="RN2391">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>, it is clear that each cell in a spreadsheet should only contain one value. If we for example decide to format a cell to a certain color, we add data to that cell on top of the actual data. You might add color to a cell in order to remember to add or change data. However, when you use the data set in other software, this information is lost. You should instead add another variable to allow for such data to be properly recorded. Using a variable called <code>comments</code> you can add text thta actually describes some information about that particular observation, information that is not lost when you use the data set in another software.</p>
+<p>This transformation naturally gives additional rows to the data set. It is sometimes referred to as “long format” data instead of the structure where each attempt is given separate variables, called “wide format.” You will notice during the course that the long format is most convenient for most purposes. This is true when we create graphs and do statistical modeling. But sometimes, a variable must be structured in a wide format to allow certain operations.</p>
+<p>If we follow what is recommended by Broman and Woo <span class="citation" data-cites="RN2391">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>, it is clear that each cell in a spreadsheet should only contain one value. If we, for example, decide to format a cell to a certain color, we add data to that cell on top of the actual data. You might add color to a cell to remember to add or change data. However, this information is lost when you use the data set in other software. Instead, you should add another variable to allow such data to be properly recorded. Using a variable called <code>comments</code>, you can add text describing information about that particular observation, information that is not lost when you use the data set in another software.</p>
 </section>
 <section id="recording-data" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="recording-data"><span class="header-section-number">3.3</span> Recording data</h2>
-<p>A trade secret<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> from people who work all day with data and programming is that they are lazy. Lazy in the sense that you do not want to type too much, and absolutely not use the computer mouse when it can be avoided. When recording data we can try to be lazy to. We can do this by shortening variable names and not e.g.&nbsp;using CAPITAL letters when entering text in data storage. After a hard day at the keyboard, you will be happy to write <code>strtest</code> instead of <code>Strength Test</code>. The extra effort of using two capital letters might be the thing to tip you over the edge<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. However, we should not be too lazy either, variable names and values should “short, but meaningful” <span class="citation" data-cites="RN2391">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>.</p>
+<p>A trade secret<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> from people who work all day with data and programming is that they are lazy. Lazy in the sense that you want to type as little as possible and avoid moving your arm to the computer mouse whenever possible. When recording data, we can be lazy too. We can do this by shortening variable names and not using CAPITAL letters when entering text in data storage. After a hard day at the keyboard, you will be happy to write <code>strtest</code> instead of <code>Strength Test</code>. The extra effort of using two capital letters might be the thing to tip you over the edge<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. However, we should not be too lazy either; variable names and values should be “short but meaningful” <span class="citation" data-cites="RN2391">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://upload.wikimedia.org/wikipedia/en/2/22/Falling_Down_%281993_film%29_poster.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">D-FENS Foster gets pushed over the edge (Source: https://en.wikipedia.org/wiki/Falling_Down)</figcaption><p></p>
+<figcaption class="figure-caption">D-FENS Foster gets pushed over the edge (Source: https://en.wikipedia.org/wiki/Falling_Down)</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Data and variables should also be consistent. Do not mix data type, use a consistent way of entering e.g.&nbsp;dates and time, do not uses spaces or special characters. To enforce this you might want start your data collection with writing up a data dictionary that describes all variables you are collection. The dictionary can set the rules for your variables. This dictionary can also guide your data validation.</p>
-<p>In Excel, data validation can be used to set rules for data entry. For example, if you have a numeric variable, you can set Excel only to accept numbers in specified set of cells. This makes it harder to enter erroneous data.</p>
+<p>Data and variables should also be consistent. Do not mix data type; use a consistent way of entering e.g., dates and time, and do not use spaces or special characters. To enforce this, you might want to start your data collection by writing up a data dictionary describing all variables you collect. The dictionary can set the rules for your variables. This dictionary can also guide your data validation.</p>
+<p>In Excel, you can use data validation to set rules for data entry. For example, if you have a numeric variable, you can set Excel only to accept numbers in a specified set of cells. Such rules make it harder to enter erroneous data.</p>
 </section>
 <section id="saving-data" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="saving-data"><span class="header-section-number">3.4</span> Saving data</h2>
-<p>Data from spreadsheets can be saved as special spreadsheet files, such as <code>.xlsx</code>. This format allows for functions, multiple spreadsheets in the same file (tabs) and cell formatting. If you follow the tips described above and in <span class="citation" data-cites="RN2391">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span> you do not need this fancy format. Instead you can store your data as a <code>.csv</code> file. This format may be read and edited with Excel (or another spreadsheet software) but also in a plain text editor. Data entered in this format (comma-separated values; csv) can look like this in a text editor:</p>
+<p>Data from spreadsheets can be saved as special spreadsheet files, such as <code>.xlsx</code>. This format allows for functions, multiple spreadsheets in the same file (tabs), and cell formatting. You do not need this fancy format if you follow the tips described above and in <span class="citation" data-cites="RN2391">(<a href="#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>. Instead, you can store your data as a <code>.csv</code> file. This format may be read and edited with Excel (or another spreadsheet software) and in plain text. Data entered in this format (comma-separated values; csv) can look like this in a text editor:</p>
 <pre><code> Participant;Time;Exercise;Attempt;load
  Selina Kyle;pre;Isometric;1;81.3  
  Selina Kyle;pre;Isometric;2;92.5
  Selina Kyle;post;Isometric;1;97.1
  Selina Kyle;post;Isometric;2;114.1</code></pre>
-<p>This is actually quite nice. The data takes little space, the simple format requires that data is well documented using e.g.&nbsp;a data dictionary and it is available for many other softwares as the format is simple. The data can be documented using a <code>README</code> file that could describe the purpose and methods of data collection, how the data is structured and what kind of data the variables contains. A simple <code>README</code> file can be written in a text editor such as Notepad and saved as a <code>.txt</code> file. Later in this course we will introduce a “markup” language often used to create <code>README</code> files containing a syntax that formats the text to a more pleasant style when converted to other formats.</p>
+<p>This format is quite lovely. The data takes little space; the simple format requires that data is well documented using e.g., a data dictionary; and it is available for many other software as the format is simple. You can document the data using a <code>README</code> file that could describe the purpose and methods of data collection, how the data is structured, and what kind of data the variables contains. A simple <code>README</code> file can be written in a text editor such as Notepad and saved as a <code>.txt</code> file. Later in this course, we will introduce a “markup” language often used to create <code>README</code> files containing a syntax that formats the text to a more pleasant style when converted to other formats.</p>
 </section>
 <section id="references-and-footnotes" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="references-and-footnotes"><span class="header-section-number">3.5</span> References and footnotes</h2>
@@ -688,7 +689,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./03-intro-to-r.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Installing and starting up R (and R Studio)</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

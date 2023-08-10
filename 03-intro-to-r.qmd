@@ -55,7 +55,7 @@ plot(a)
 
 ### The console
 
-By pressing Ctrl+Enter from the script as described above you sent your code to the console. You can also interact with R directly here. By writing `a` in the console and hitting enter you will get the value from the object called a. This means that it is also where output from R is usually printed. In the image below, the console is in the top right corner.
+By pressing Ctrl+Enter from the script, as described above, you sent your code to the console. You can also interact with R directly here. By writing `a` in the console and hitting enter you will get the value from the object called a. This means that it is also where output from R is usually printed. In the image below, the console is in the top right corner.
 
 ### Files, plots, packages and help files
 
@@ -67,9 +67,7 @@ In RStudio files are accessible from the Files tab. The files tab shows the file
 
 ## Reproducible data science using RStudio
 
-When starting up RStudio for the first time we will set some rules that will allow for reproducible programming. Remember from [Chapter 2](01-intro-to-data.html#replication-and-reproducibility) that part of a fully reproducible study is software/code that produces the results. It turns out that when working interactively with R you can fool yourself that you have included all steps needed to produce some results in your script. However, variables may be stored in your environment but not by assigning values to them in your script. This will become a problem if you want to share your code, a certain value/variable needed to make the program work may be missing from your script.
-
-
+When starting to work more systematically in RStudio we will set some rules that will allow for reproducible programming. Remember from [Chapter 2](01-intro-to-data.html#replication-and-reproducibility) that part of a fully reproducible study is software/code that produces the results. It turns out that when working interactively with R you can fool yourself to belive that you have included all steps needed to produce some results in your script. However, variables may be stored in your environment but not by assigning values to them in your script. This will become a problem if you want to share your code, a certain value/variable needed to make the program work may be missing from your script.
 
 To avoid making such a mistake it is good practice not to save variables in your environment between sessions, everything should be scripted and documented and assumed not defined elsewhere. In RStudio we can make an explicit setting Not to save the workspace (See @fig-saveworkspace).
 
@@ -127,34 +125,13 @@ Adding headlines and makes it possible to navigate the document through the outl
 
 ![Authoring in a quarto source document and preview in the visual editor](images/ch3/03-quartoauthor.gif)
 
-[R markdown](https://rmarkdown.rstudio.com/) and [quarto](https://quarto.org/docs/guide/) has many similarities as the basic organization is similar between the two. The text parts are written using a special syntax, markdown. The point of markdown is that you will use the same syntax that is later possible to convert to multiple formats. The syntax let's you do all formatting explicitly, for example instead of getting your mouse to superscript some text you can add syntax `a^2^` to achieve a^2^.
+[R markdown](https://rmarkdown.rstudio.com/) and [quarto](https://quarto.org/docs/guide/) have many similarities as the basic organization is similar between the two. The text parts are written using a special syntax, markdown. The point of markdown is that you will use the same syntax that is later possible to convert to multiple formats. The syntax let's you do all formatting explicitly, for example instead of getting your mouse to superscript some text you can add syntax `a^2^` to achieve a^2^.
 
-A full guide to RMarkdown can be found on the official [R markdown web pages](https://rmarkdown.rstudio.com/lesson-1.html). I suggest you take the time to get an overview of this langiage as it will make more fluent in the tools that enables reproducible computing. When writing R markdown, it is handy to have a *cheat sheet* close by when writing, [here is an example](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)[^1].
+A full guide to RMarkdown can be found on the official [R markdown web pages](https://rmarkdown.rstudio.com/lesson-1.html). I suggest you take the time to get an overview of this language as it will make you more fluent in the tools that enables reproducible computing. When writing R markdown, it is handy to have a *cheat sheet* close by when writing, [here is an example for Rmarkdown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf), and here is [another one for quarto](https://rstudio.github.io/cheatsheets/html/quarto.html) [^1].
 
 [^1]: Cheat sheets are available in R Studio: *Help \> Cheatsheets*
 
-
-
-
-## Packages
-
-The R ecosystem consists of packages. These are *functions* organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g. analyses of a specific kind of data, or more general task such as making figures or handle data.
-
-In this course we will use many different packages, for example [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.
-
-To install a package, you use the `install.packages()` function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.
-
-```{r, eval = FALSE}
-install.packages("dplyr")
-```
-
-Alternatively, click "Packages" and "Install" and search for the package you want to install. To use a package, you have to load it into your environment. Use the `library()` function to load a package.
-
-```{r, eval = FALSE}
-library("dplyr")
-```
-
-## Microsoft Word intergration in R Markdown and Quarto
+#### Microsoft Word intergration in R Markdown and Quarto
 
 Sometimes it is useful to "knit" to a word file. For example when you want to share a report with fellow students who are not familiar with R. R Markdown/Quarto can be used as a source for word documents (.docx).
 
@@ -184,7 +161,7 @@ When you knit the document again, your updated styles will be used your word doc
 
 [Here](https://rmarkdown.rstudio.com/articles_docx.html) you can read more about using R Markdown together with word. If you do not have word installed, you can also use Open Office. Read more about it [here](https://bookdown.org/yihui/rmarkdown/opendocument-text-document.html).
 
-### Adding references
+#### Adding references to R Markdown and Quarto files
 
 References/citations can be added to the report using the `bibliography` option in the YAML field. Citations needs to be listed in a file, multiple formats are availiable. A convenient format is bibtex. When using this format, create a text file with the ending `.bib`, for example, `bibliography.bib`.
 
@@ -225,5 +202,26 @@ The reference will end up in the end of the document (as on this webpage).
 You can gather references in bibtex format from Oria (use the BIBTEX icon) and from PubMed using [TeXMed](https://www.bioinformatics.org/texmed/). You can also export reference in bibtex format from citation software like Endnote or Zotero. Make sure you check all references when entering them, especially MedTex gives some problems with "scandinavian" letters (å æ ä ø ö).
 
 Recently RStudio added support for adding citations inside the visual markdown editor.
+
+
+## Packages
+
+The R ecosystem consists of packages. These are *functions* organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g. analyses of a specific kind of data, or more general task such as making figures or handle data.
+
+In this course we will use many different packages, for example [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.
+
+To install a package, you use the `install.packages()` function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.
+
+```{r, eval = FALSE}
+install.packages("dplyr")
+```
+
+Alternatively, click "Packages" and "Install" and search for the package you want to install. To use a package, you have to load it into your environment. Use the `library()` function to load a package.
+
+```{r, eval = FALSE}
+library("dplyr")
+```
+
+
 
 ## References and footnotes
