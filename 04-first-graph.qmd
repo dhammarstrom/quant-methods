@@ -208,7 +208,8 @@ We have seen that the basic `ggplot2` figure maps underlying data to coordinates
 
 By using `data("cyclingstudy")` we will load the data set that is part of the `exscidata`-package to our environment. By looking at the environment tab you can see that this operation adds a data set to the environment. It has 80 observations and 101 variables. Using the `glimpse()` function from `dplyr` (which is loaded by loading `tidyverse`) we will get an overview of all variables in the data set. I have omitted the output from the code below, feel free to run the code in a quarto- or rmarkdown-document on your own.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 
 # Load the data and have a first look
 data("cyclingstudy")
@@ -218,12 +219,17 @@ glimpse(cyclingstudy)
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
 data("cyclingstudy")
 ```
 
 
-We will store a selected set of variables in a new object for ease of use. We will call this object `cycdat`. We select variables using the function with the very suitable name `select` where the first argument specifies the dataset, following arguments specifies what variables we want. Let's say that we are interested in squat jump height. The `exscidata` package comes with descriptions of the datasets. By writing `?cyclingstudy` in your console you will see the description of the data in your help tab. Squat jump is recorded as `sj.max`, we select this variable together with `subject`, `group` and `timepoint` to create a smaller data set. 
+We will store a selected set of variables in a new object for ease of use. We will call this object `cycdat`. We select variables using the function with the very suitable name `select` where the first argument specifies the data set, following arguments specifies what variables we want. Let's say that we are interested in squat jump height. The `exscidata` package comes with descriptions of the data sets. By writing `?cyclingstudy` in your console you will see the description of the data in your help tab. Squat jump is recorded as `sj.max`, we select this variable together with `subject`, `group` and `timepoint` to create a smaller data set. 
 
 ```{r}
 # Assign a selected set of variables to a smaller data set
@@ -234,39 +240,52 @@ cycdat
 
 By printing the object we can see that we have a tibble of 80 rows and 4 columns. A tibble can to a large extent be regarded as a data frame, and we will use these words interchangeably. Tibbles are new in the sense that they are developed as part of the tidyverse [@r4ds] [^a]. Printing a tibble will display the first 10 rows as we can see from the resulting output.
 
-[^a]: See [Chapter 10 in R for data science](https://r4ds.had.co.nz/tibbles.html)
+[^a]: See [Chapter 10 in R for data science (2 edition)](https://r4ds.had.co.nz/tibbles.html)
 
 ### A plot of values per group
 
-Let's say that we want to see how the values differs between groups. Boxplots are a good way to start as they will bring a standardized way of summarizing data. Boxplots can be plotted using the `geom_boxplot` function. Notice below that we put `group` on the x-axis (the first argument in the `aes` function) and `sj.max` on the y-axis. By doing so `ggplot` will make the x-axis discrete and the y-axis continuous.
+Let's say that we want to see how the values differs between groups. Box-plots are a good way to start as they will bring a standardized way of summarizing data. Box-plots can be plotted using the `geom_boxplot` function. Notice below that we put `group` on the x-axis (the first argument in the `aes` function) and `sj.max` on the y-axis. By doing so `ggplot` will make the x-axis discrete and the y-axis continuous.
 
-```{r sq-boxplot-simple, fig.height=3, fig.cap = "Boxplot of all data per group from the cycling dataset."}
-# Creating a boxplot of all values per group
+```{r}
+#| label: fig-boxplot-simple
+#| fig-height: 3
+#| fig-cap: "Boxplot of all data per group from the cycling dataset."
+
+
+# Creating a box-plot of all values per group
 ggplot(cycdat, aes(group, sj.max)) + geom_boxplot()
 
 ```
 
-We can layers of more geoms to the same plot. We might want to add individual data points also. `geom_jitter` might be a good place to start. This geom is good as it can be plotted over a group variable and points gets "jittered" or spread so we avoid overlap. 
+We can add layers of more geoms to the same plot. We might want to add individual data points also. `geom_jitter` might be a good place to start. This geom is good as it can be plotted over a group variable and points gets "jittered" or spread so we avoid overlap. 
 
-```{r sq-boxplot-jitter, fig.height=3, fig.cap = "Boxplot and jittered points of all data per group from the cycling dataset."}
+```{r}
+#| label: fig-boxplot-jitter
+#| fig-height: 3
+#| fig-cap: "Box-plot and jittered points of all data per group from the cycling dataset."
+
 # Creating a boxplot of all values per group
 ggplot(cycdat, aes(group, sj.max)) + geom_boxplot() + geom_jitter()
 
 ```
 
-Notice that we get warnings saying that there are some data missing, these are removed from the calculation of summary statistics in the boxplots and omitted from plotting the values as points.
+Notice that we get warnings saying that there are some data missing, these values are removed from the calculation of summary statistics in the box-plots and omitted from plotting of the points.
 
 ### Data over time per group and individual
 
-In the data set we have a time variable consisting of the labels "pre", "meso1", "meso2" and "meso3". When we load the data into R we do so without providing information about the order of these labels. R will put them in alphabetical order when order is required (as in a figure). If we want to plot these data in the right order we have to tell R that these data should have an order. We will convert the `timepoint` variable to a factor. Factors are variables that can contain more information than what is contained in each cell. Using the `factor` function we will set the order of the `timepoint` variable. We assign this transformation of the variable to its original place in the data frame.
+In the data set we have a time variable consisting of the labels "pre", "meso1", "meso2" and "meso3". When we load the data into R we do so without providing information about the order of these labels. R will put them in alphabetical order when order is required (as in a figure). If we want to plot these data in the right order, we have to tell R that these data should have an order. We will convert the `timepoint` variable to a factor. Factors are variables that can contain more information than what is contained in each cell. Using the `factor` function we will set the order of the `timepoint` variable. We assign this transformation of the variable to its original place in the data frame.
 
 ```{r}
 cycdat$timepoint <- factor(cycdat$timepoint, levels = c("pre", "meso1", "meso2", "meso3"))
 ```
 
-We are now ready to plot data over time, where the time variable is correctly ordered. Let's use the boxplot again to plot all values over time.
+We are now ready to plot data over time, where the time variable is correctly ordered. Let's use the box-plot again to plot all values over time.
 
-```{r sq-boxplot, fig.height=3, fig.cap = "Boxplot of all data per time-point from the cycling dataset."}
+```{r}
+#| label: fig-boxplot-time
+#| fig-height: 3
+#| fig-cap: "Boxplot of all data per time-point from the cycling dataset."
+
 # Creating a boxplot of all values per time point
 ggplot(cycdat, aes(timepoint, sj.max)) + geom_boxplot()
 
@@ -274,33 +293,47 @@ ggplot(cycdat, aes(timepoint, sj.max)) + geom_boxplot()
 
 We do not see any great tendencies in the whole data set. To further explore the data we might want to have different boxes per group per time. We can accomplish this by adding `fill = group` to our `aes` function.
 
-```{r sq-boxplot-time, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
+```{r}
+#| label: fig-boxplot-time-fill
+#| fig-height: 3
+#| fig-cap: "Boxplot of all data per time-point and group from the cycling dataset."
+
 # Creating a boxplot of all values per group over time
 ggplot(cycdat, aes(timepoint, sj.max, fill = group)) + geom_boxplot()
 
 ```
 
-This is possible because `geom_boxplots` can be filled. The same separation of groups would have been accomplished using `color = group`, however, then the boxes would get different border colors instead. You might have noticed that the boxplots do not contain all the data, a few data points are outside 1.5 \times IQR (interquartile range). This, by standard definitions, defines the data point as an "outlier".
+This is possible because `geom_boxplots` can be filled. The same separation of groups would have been accomplished using `color = group`, however, then the boxes would get different border colors instead. You might have noticed that the box-plots do not contain all the data, a few data points are outside $1.5 \times IQR$ (interquartile range). This, by standard definitions, defines the data point as an "outlier".
 
-As mentioned above, boxplots does some summarizing and not all data is shown. To explore further we might want to track every participant. To do this we have to tell `ggplot` on what factor to group the data. In `aes()` the group argument let's you connect lines based on some grouping variable, in our case it will be `subject`. We will use a line to connect each participants score over time. Using `color = group` will additionally give every line a different color depending on which group it belongs to.
+As mentioned above, box-plots does some summarizing and not all data is shown. To explore further we might want to track every participant. To do this we have to tell `ggplot` how to group the data. In `aes()` the group argument let's you connect lines based on some grouping variable, in our case it will be `subject`. We will use a line to connect each participants score over time. Using `color = group` will additionally give every line a different color depending on which group it belongs to.
 
 
-```{r sq-ind-data, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
+```{r}
+#| label: fig-sj-ind-data
+#| fig-height: 3
+#| fig-cap: "Figure with lines corresponding to indivudal values per participant."
+
 # Creating a line plot of all values per participant over time, color per group
-ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+
+gplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
 geom_line()
 
 ```
 
-In Figure \@ref(fig:sq-ind-data) each line represents a participant, different colors represents different groups.
+In @fig-sj-ind-data, each line represents a participant, different colors represents different groups.
 
 ### Titles and labels
 
 Often we need to add information to the plot to better communicate its message. Such information could be appropriate titles on axes and legends and extra text needed to explain aspects of the plot. Using the `labs()` function we can add information that will replace variable names that are being used for all variables that have been mapped in the figure. In the figure below we will start by adding better axis titles. This information goes into `x` and `y` in `labs()` which simply changes the titles of the x- and y-axis.
 
 
-```{r sq-ind-data-axis-title, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
-# Creating a line plot of all values per participant over time, color per group
+```{r}
+#| label: fig-ind-data-axis-title
+#| fig-height: 3
+#| fig-cap: "Figure with updated axis labels"
+
+# Creating a line plot of all values per participant over time, color per group, 
+# adding axis labels
 ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
   geom_line() +
   labs(x = "Time-point",
@@ -308,11 +341,14 @@ ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) +
 
 ```
 
-The resulting Figure \@ref(fig:sq-ind-data-axis-title) now have better titles for each axis. Notice in the code above that titles needs to be specified with quotation marks. This is a tricky aspect of R, if we wold have omitted the quotation marks we would have told R to look for objects by the name of e.g. `Time-point`, and this would actually mean that we tryed to subtract `time` from `point` since `-` is interpreted as a minus sign.
+The resulting @fig-ind-data-axis-title now have better titles for each axis. Notice in the code above that titles needs to be specified with quotation marks. This is a tricky aspect of R, if we would have omitted the quotation marks we would have told R to look for objects by the name of e.g. `Time-point`, and this would actually mean that we tried to subtract `time` from `point` since `-` is interpreted as a minus sign.
 
 We might want to add information to the legend also. Since we specified `color = group` in the `aes()` function, the same can be manipulated in `labs`. Lets just add a capital G.
 
-```{r sq-ind-data-axis-title2, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
+```{r}
+#| label: fig-ind-data-axis-color-title
+#| fig-height: 3
+#| fig-cap: "Additional labels"
 
 ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
   geom_line() +
@@ -322,10 +358,12 @@ ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) +
 
 ```
 
-We still have the original labels for the tim variable. Remember that we used the `factor` function above to set the order of the labels. Actually we specified the "levels" of the factor. We can use the same function to add better "labels". In the code below, I will first change the variable in the dataset and then use the exact same code for the plot. 
+We still have the original labels for the time variable. Remember that we used the `factor` function above to set the order of the labels. Actually we specified the "levels" of the factor. We can use the same function to add better "labels". In the code below, I will first change the variable in the data set and then use the exact same code for the plot. 
 
 ```{r sq-ind-data-axis-title3, fig.height=3, fig.cap = "Boxplot of all data per time-point and group from the cycling dataset."}
-
+#| label: fig-factor-labels
+#| fig-height: 3
+#| fig-cap: "Changing labels by changing a factor variable prior to plotting"
 
 cycdat$timepoint <- factor(cycdat$timepoint, levels = c("pre", "meso1", "meso2", "meso3"), 
                            labels = c("Pre-training", "Meso-cycle 1", "Meso-cycle 2", "Meso-cycle 3"))
@@ -338,12 +376,13 @@ ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) +
 
 ```
 
-The same goes for the group variable. You can try to change the levels and labels of the grouping variable to make it more descriptive. You can type `?cyclingstudy` in your console to read about the group variable and then use this infomation to write better labels using the `factor` function. In the factor function, the first argument is the variable you want to use as basis of your new factor, the second argument you need to specify is `levels` which sets the order and lastly you will need to set the labels for each level using `labels = `. If you write `?factor` in your console you will get the help pages for the `factor` function.
+The same goes for the group variable. You can try to change the levels and labels of the grouping variable to make it more descriptive. You can type `?cyclingstudy` in your console to read about the group variable and then use this information to write better labels using the `factor` function. In the factor function, the first argument is the variable you want to use as basis of your new factor, the second argument you need to specify is `levels` which sets the order and lastly you will need to set the labels for each level using `labels = `. If you write `?factor` in your console you will get the help pages for the `factor` function.
 
   <a id="displayText" href="javascript:toggle(1);">Click here to display a possible solution</a>
   <div id="toggleText1" style="display: none">
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 
 # Change the grouping variable
 cycdat$group <- factor(cycdat$group, levels = c("DECR", "INCR", "MIX"), 
@@ -367,9 +406,11 @@ Note: Adding `\n` in the the text string breaks the line to get two rows.
 
 ### Annotations
 
-Annotation may become handy when you want to add elements to the graph that is not in the data set. Using ggplot2 annotations are added using the `annotate()` function. This function first needs to be specified with a geom, these are commonly text or lines or segments. In the code chunk below are several examples of annotations. Firts I save the plot as an object called `myplot` and then add different annotations to it.
+Annotation may become handy when you want to add elements to the graph that is not in the data set. Using ggplot2, annotations are added using the `annotate()` function. This function first needs to be specified with a geom, these are commonly text or lines or segments. In the code chunk below are several examples of annotations. First I save the plot as an object called `myplot` and then add different annotations to it.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+
 
 myplot <- ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
   geom_line() +
@@ -424,22 +465,29 @@ Note: Adding `\n` in the the text string breaks the line to get two rows.
 
 Themes in `ggplot2` can be used to change everything else about the plot concerning text, colors etc. `ggplot2` has some built in themes that are easily activated by adding them to the plot. For example the `theme_bw()` function will change the theme to a black and white one as in the figure below. 
 
-```{r bw-theme, fig.height=3, fig.cap = "A figure using the black and white theme from `theme_bw`."}
+```{r}
+#| label: fig-theme-bw
+#| fig-height: 3
+#| fig-cap: "A figure using the black and white theme from `theme_bw`."
+
 
 ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
   geom_line() +
   labs(x = "Time-point",
        y = "Squat jump height (cm)", 
        color = "Group") + 
-  theme_bw()
+  theme_bw() # Adding a pre-specified theme
 
 ```
 
 A collection of built in themes are documented [here](https://ggplot2.tidyverse.org/reference/ggtheme.html). Individual components of the theme can also be changed using the `theme()` function. There is a long list of theme components that can be changed using this function. The list can be found [here](https://ggplot2.tidyverse.org/reference/theme.html).   
-If we put the `theme` function last in the `ggplot` call we will modify one part of the existing theme. Let's say that we want to change the color of the text on the x axis. 
+If we put the `theme` function last in the `ggplot` call we will modify the existing theme. Let's say that we want to change the color of the text on the x axis. 
 
 
-```{r bw-theme-changed, fig.height=3, fig.cap = "A figure using the black and white theme from `theme_bw`."}
+```{r}
+#| label: fig-theme-bw-changed
+#| fig-height: 3
+#| fig-cap: "A figure using the black and white theme from `theme_bw`, with modifications"
 
 ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
   geom_line() +
@@ -447,21 +495,28 @@ ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) +
        y = "Squat jump height (cm)", 
        color = "Group") + 
   theme_bw() +
-  theme(axis.text.x = element_text(color = "black", size = 12, face = "bold"))
+  theme(axis.text.x = element_text(color = "steelblue", size = 12, face = "bold"))
 
 ```
 
-The component `axis.text.x` can be modified using a function that changes appearance of text components, namely `element_text`. Similarly, other components are changed with specific functions for lines and rectangular shapes (see the help pages for `theme`.
+The component `axis.text.x` can be modified using a function that changes appearance of text components, namely `element_text`. Similarly, other components are changed with specific functions for lines and rectangular shapes (see the help pages for `theme`).
 
 ## Test your understandning
 
-In this section you can try to implement what we have discussed above An example solution exists below each figure by press of button. 
+In this section you can try to implement what we have discussed above. An example solution exists below each figure by press of button. 
 
-In Figure \@ref(fig:example-fig-1), I have used the VO<sub>2max</sub> data from the `cyclingstudy` dataset. I have made changes to the time variable (`timepoint`) to make the labels better. I have added a title to the figure and changed the appearance of the text. I will use an extra package called (ggtext)[https://wilkelab.org/ggtext/index.html] to make it possible to use markdown syntaxt in axis labels. In order to use `ggtext` you have to install it from CRAN.
+In @fig-example-1, I have used the VO<sub>2max</sub> data from the `cyclingstudy` data set. I have made changes to the time variable (`timepoint`) to make the labels better. I have added a title to the figure and changed the appearance of the text. I will use an extra package called (ggtext)[https://wilkelab.org/ggtext/index.html] to make it possible to use markdown syntax in axis labels. In order to use `ggtext` you have to install it from CRAN.
 
-```{r example-fig-1, echo = FALSE, warning=FALSE, message=FALSE, fig.cap="Example figure 1"}
+```{r}
+#| label: fig-example-1
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-cap: "Example figure 1"
 
-# Load the package ggtext to make markdown avalable in axis labels.
+
+
+# Load the package ggtext to make markdown available in axis labels.
 library(ggtext) 
 
 # For ease of use I save a smaller dataset in a new object
@@ -496,7 +551,9 @@ ggplot(data = cycdat, aes(timepoint, VO2.max, group = subject)) +
   <div id="toggleText3" style="display: none">
 
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+#| 
 # Load the package ggtext to make markdown avalable in axis labels.
 library(ggtext) 
 
