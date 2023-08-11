@@ -12,6 +12,7 @@ book:
     - 02-spreadsheets.qmd
     - 03-intro-to-r.qmd
     - 04-first-graph.qmd
+    - 05-first-tables.qmd
 
 bibliography: resources/bib-final.bib
 

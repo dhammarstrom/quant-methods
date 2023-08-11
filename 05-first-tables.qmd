@@ -34,13 +34,19 @@ library(gt) # for creating tables
 library(exscidata) # the dxadata
 ```
 
-The end result of this exercise can be found below in Table \@ref(tab:table1_example). This summary table contains the average and standard deviation per group for the variables age, body mass and stature (height) and body fat as a percentage of the body mass. This table is a reproduction of the first part of Table 1 from [@RN2358].
+The end result of this exercise can be found below in @tbl-table1-example. This summary table contains the average and standard deviation per group for the variables age, body mass and stature (height) and body fat as a percentage of the body mass. This table is a reproduction of the first part of Table 1 from [@RN2358].
 
 
-```{r table1_example, echo = FALSE, warning = FALSE, message=FALSE, results = "asis"}
+```{r}
+#| label: tbl-table1-example
+#| tbl-cap: "Participant characteristics"
+#| echo: false
+#| warning: false
+#| message: false
+
 
 data(dxadata)
-?dxadata
+
 dxadata %>%
   select(participant, time, sex, include:weight, fat.whole) %>%
   mutate(fat.whole = ((fat.whole / 1000) / weight) * 100) %>%
@@ -69,22 +75,29 @@ dxadata %>%
                                       "Stature (cm)", "Body fat (%)"))) %>%
   arrange(variable) %>%
   
-  kable(format = "html", 
-        col.names = c(" ", "Included", "Excluded", "Included", "Excluded")) %>%
-  add_header_above(c(" " = 1, "Female" = 2, "Male" = 2)) %>%
-  kable_styling(position = "center")
+  gt() %>%
+  tab_footnote(footnote = "Values are mean and (SD)") %>%
+  tab_spanner(label = "Female", columns = c("female_incl", "female_excl")) %>%
+  tab_spanner(label = "Male", columns = c("male_incl", "male_excl")) %>%
+  cols_label(variable = " ", 
+             female_incl = "Included", 
+             female_excl = "Excluded", 
+             male_incl = "Included", 
+             male_excl = "Excluded")
+
 
 ```
 
-We have to make several operations to re-create this table. First we can select the columns we want to work with further from the data set that also contains a lot of other variables. Let us start by looking at the full data set. Below we use the function `glmipse` from the `dplyr `tibble` package (which is also loaded with `tidyverse`).
+We have to make several operations to re-create this table. First we can select the columns we want to work with further from the data set that also contains a lot of other variables. Let us start by looking at the full data set. Below we use the function `glmipse` from the `dplyr` package (which is loaded with `tidyverse`).
 
 ```{r}
+
 data("dxadata")
 
 glimpse(dxadata)
 ```
 
-We can see that we got 80 rows and 59 columns in the dataset. The columns of interest to us are:
+We can see that we got 80 rows and 59 columns in the data set. The columns of interest to us are:
 
 - participant
 - time
@@ -95,15 +108,15 @@ We can see that we got 80 rows and 59 columns in the dataset. The columns of int
 - weight
 - fat.whole
 
-For a full description of the data set, you can type `?dxadata` in your console. The `participant` columns is good to have to keep track of the dataset in the beginning. You might want to have this information to perform "sanity checks" on some results. `time` is needed to remove some observation that are not needed. This pre-training table only sums up information from before the intervention starts. `sex` is a grouping variable together with `include`, Table 1 in [@RN2358] uses Sex and Inclusion in data analysis as grouping for descriptive data. The other variables are used to describe the data sample.
+For a full description of the data set, you can type `?dxadata` in your console. The `participant` column is good to have to keep track of the data set in the beginning. `time` is needed to remove some observation that are not needed. This pre-training table only sums up information from before the intervention starts. `sex` is a grouping variable together with `include`, Table 1 in [@RN2358] uses Sex and Inclusion in data analysis as grouping for descriptive data. The other variables are used to describe the data sample.
 
 ### The pipe operator and select
 
-As mentioned above, we will start by selecting the variables we want to work further with. Using the `select` function from dplyr we can select columns that we need. In the code below I will use select as part of a "pipe". Think of the pipe as doing operations in sequel. Each time you use the pipe operator (`%>%`) you say "then do". The code below translates to: 
+As mentioned above, we will start by selecting the variables we want to work further with. Using the `select` function from `dplyr` we can select columns that we need. In the code below I will use select as part of a "pipe". Think of the pipe as doing operations in sequel. Each time you use the pipe operator (`%>%`) you say "then do". The code below translates to: 
 
-- Take the dataset `dxadata`, *then do*
-- `select` the following variables, *then do*
-- print
+- Take the data set `dxadata`, *then do*
+- `select()` the following variables, *then do*
+- `print()`
 
 `print`, is a function that outputs the results of the operations. In each new function of a pipe, the data that we take with us from the above line ends up as the first argument. A representation of this behavior can be expressed as:
 
@@ -114,10 +127,10 @@ As mentioned above, we will start by selecting the variables we want to work fur
   
 We do not need to type the data part, instead the pipe operator (`%>%`) gathers the data from each step and puts it in the subsequent function.
 
-Copy the code below to your own script or Rmarkdown document and run it. If you use a Rmarkdown document (.Rmd), you might want to set "Chunk output in console" in the settings menu. In my experience, this makes developing code a bit faster. 
+Copy the code below to your own quarto document and run it. When using quarto you might want to set "Chunk output in console" in the settings menu. In my experience, this makes developing code a bit faster. 
 
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
   # select participant, time, sex, include to height and fat.whole
@@ -125,13 +138,16 @@ dxadata %>% # take the dxadata data set
 
 ```
 
-Notice that I have added short comments after each line to make it clear what I want to accomplish. We will build further on the above code, and this is a common work-flow. Using pipes, it is easy to extend the code by adding lines doing certain operations, one at the time. Notice also that the select function uses a list of variable names with `include:weight` being short for "take all variables *from* include *to* weight.
+Notice that I have added short comments after each line to make it clear what I want to accomplish. We will build further on the above code, and this is a common workflow. Using pipes, it is easy to extend the code by adding lines doing certain operations, one at the time. Notice also that the select function uses a list of variable names with `include:weight` being short for "take all variables *from* include *to* weight".
 
 ### Filter observations
 
-The next step will be to filter observations. We need to remove the observations that comes from the post-intervention tests. The `time` variable contains to values `pre` and `post` to remove post-values we need to tell R to remove these all observations (rows) containing `post`. We will use the `filter` function from dplyr. This will be our first experience with logical operators. Let's try out to alternatives, copy the code to your console to see the results.
+The next step will be to filter observations. We need to remove the observations that comes from the post-intervention tests. The `time` variable contains to values `pre` and `post` to remove post-values we need to tell R to remove all observations (rows) containing `post`. We will use the `filter` function from dplyr. This will be our first experience with logical operators. Let's try out two alternatives, copy the code to your console to see the results.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+
+
 ## Alternative 1: ##
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
@@ -157,17 +173,17 @@ dxadata %>% # take the dxadata data set
 
 ```
 
-The above code should give the same output. The operator `!=` says "not equal to", the operator `==` says equal to. Notice that R uses two equal signs to say equal to. A single equal sign is used as an assignment operator in R.
+The above code should give the same output. The operator `!=` says "not equal to", the operator `==` says "equal to". Notice that R uses two equal signs to say equal to. A single equal sign is used as an assignment operator in R.
 
 ### Create or change variables
 
 The next problem for us is that we need to manipulate or combine information from two variables in order to calculate body fat percentage. The formula that we will use is simply expressing body fat as a percentage of the body weight.
 
-$$Body~fat~(\%) = \frac{Body~fat~(g)/1000}{Body~weight~(kg)} \times 100$$
+$$\text{Body fat (\%)} = \frac{\text{Body fat (g)}/1000}{\text{Body weight (kg)}} \times 100$$
 By using the mutate function we can add or manipulate existing variables in a pipe. Mutate takes as arguments a list of new variables:
 
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
 
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
@@ -185,13 +201,15 @@ dxadata %>% # take the dxadata data set
 
 ```
 
-In the code above, we "replace" the variable `fat.whole` with the re-calculated variable.
+In the code above, we overwrite the variable `fat.whole` with the re-calculated variable.
 
 ### Grouped operations and summary statistics
 
-In a pipe, we can group the data set giving us opportunities to calculate summary statistics over one or several grouping variables. In Table 1 in [@RN2358], `include` and `sex` are the two grouping variables. Using the `group_by()` function from `dplyr` sets a grouping of the data frame. If we use functions that summarizes data, such summarizes will be per group. In Table 1 in [@RN2358] the number of participants in each group are specified. We can use the function `n()` to calculate the number of observations per group in a `mutate` call.
+In a pipe, we can group the data set giving us opportunities to calculate summary statistics over one or several grouping variables. In Table 1 in [@RN2358], `include` and `sex` are the two grouping variables. Using the `group_by()` function from `dplyr` sets the grouping of the data frame. If we use functions that summarizes data, such summaries will be per group. In Table 1 in [@RN2358] the number of participants in each group are specified. We can use the function `n()` to calculate the number of observations per group in a `mutate` call.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
   # select participant, time, sex, include to height and fat.whole
@@ -214,7 +232,7 @@ dxadata %>% # take the dxadata data set
 
 The new variable `n` now contains the number of observations in each group. For now we can regard this as a new variable. Each participant belongs to a specified group, and this specific group has `n` number of members.
 
-We can now go further and use the `summarise` function. Instead of adding variables to the existing data set, summarize reduces the data set using some summarizing function, such as `mean()` or `sd()`. These estimates are what we are looking for in our data set. Example of other summarizing functions for descriptive data are `min()` and `max()` for the minimum and maximum.
+We can now go further and use the `summarise` function. Instead of adding variables to the existing data set, summarize reduces the data set using some summarizing function, such as `mean()` or `sd()`. These summary statistics are what we are looking for in our data set. Example of other summarizing functions for descriptive data are `min()` and `max()` for the minimum and maximum.
 
 We can use the `summarise()` function to calculate the mean and standard deviation for the weight variable.
 
@@ -242,7 +260,7 @@ dxadata %>% # take the dxadata data set
   print() # print the output
 ```
 
-Try out the code in your own script. The above example gives us what we want, however, it means that we need to type a lot. Instead of needing to make a summary for each variable, we can combine the variables in a long format. To get to the long format we will use the `pivot_longer()` function. This function gathers several variables into two columns, one with the variables names as values and a second column with each value from the original variables. In our case we want to gather the variables `age`, `height`, `weight`, `fat.whole` and `n`. I will call the new variables that we create `variable` and `value`.
+Try out the code in your own quarto document. The above example gives us what we want, however, it means that we need to type a lot. Instead of needing to make a summary for each variable, we can combine the variables in a long format. To get to the long format we will use the `pivot_longer()` function. This function gathers several variables into two columns, one with the variables names as values and a second column with each value from the original variables. In our case we want to gather the variables `age`, `height`, `weight`, `fat.whole` and `n`. I will call the new variables that we create `variable` and `value`.
 
 ```{r, eval = FALSE}
 
@@ -271,7 +289,7 @@ dxadata %>% # take the dxadata data set
 
 ```
 
-The `cols = age:n` part of pivot_longer specifies what columns to gather. The dataset is still grouped by `include` and `sex`. We may now proceed by summarizing over these groups, however, we need to add another group to specify that we want differnt numbers per variable. To do this we re-specify the grouping. After this we add the `summarize` function. 
+The `cols = age:n` part of pivot_longer specifies what columns to gather. The data set is still grouped by `include` and `sex`. We may now proceed by summarizing over these groups, however, we need to add another group to specify that we want different values per `variable`. To do this we re-specify the grouping. After this we add the `summarise` function. 
 
 ```{r, eval = FALSE}
 
@@ -305,10 +323,10 @@ dxadata %>% # take the dxadata data set
 
 If you run the above code you will notice that the the standard deviation of each variable is larger than zero except for `n` which has no variability. This is because we created it per group and simply calculated it as the sum of observations.
 
-Take a look at [Table 1](https://physoc.onlinelibrary.wiley.com/doi/full/10.1113/JP278455) in [@RN2358]. The format of the descriptive statistics are mean (SD), this is a preferred way of reporting these estimates. In order to achieve this we need to "manually" convert the numbers. In the example below, I will start by making a new variable by simply pasting the numbers together. I will also add the brackets.
+Take a look at [Table 1](https://physoc.onlinelibrary.wiley.com/doi/full/10.1113/JP278455) in [@RN2358]. The format of the descriptive statistics are mean (SD), this is a preferred way of reporting these statistics. In order to achieve this we need to "manually" convert the numbers. In the example below, I will start by making a new variable by simply pasting the numbers together. I will also add the parentheses.
 
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
   # select participant, time, sex, include to height and fat.whole
@@ -341,16 +359,16 @@ dxadata %>% # take the dxadata data set
 
 ```
 
-In `mutate(ms = paste0(m, " (", s, ")"))`, the `paste0` function simply paste components together to form a string of text. First, the *vector* of means are being used, then we add a parenthesis, followed by the SD and finally a parenthesis.
+In `mutate(ms = paste0(m, " (", s, ")"))`, the `paste0` function simply glues components together to form a string of text. First, the *vector* of means are being used, then we add a parenthesis, followed by the SD and finally a parenthesis.
 
 If you run the above code you will notice that you end up with numbers looking like this:
 
 `167.666666666667 (6.86851298231541)`
 
-This is neither good or good looking. We have to take care of the decimal places. There are a number of ways to do this but in this case the function `signif` seems to make the situation better. `signif` rounds to significant digits. This means that we will get different rounding dependning on the "size" of the value. I find `signif(m, 3)` to be agood starting point.
+This is neither good or good looking. We have to take care of the decimal places. There are a number of ways to do this but in this case the function `signif` seems to make the situation better. `signif` rounds to significant digits. This means that we will get different rounding depending on the "size" of the value. I find `signif(m, 3)` to be a good starting point.
 
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
 
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
@@ -387,12 +405,12 @@ dxadata %>% # take the dxadata data set
 
 ```
 
-Things are starting to look good. Run the code, what do you think. A problem with the above is that we do not want any dispersion/variability in the `n` variable. So if the variable is `n`we do not want that kind of formatting. It is time to add a conditional statment. In `dplyr` there are easy-to-use if/else functions. The function `if_else` sets a condition, if this is met then we can decide what to do, and likewise decide what to do if it is not met.
+Things are starting to look good. Run the code, what do you think. A problem with the above is that we do not want any variability in the `n` variable. So if the variable is `n` we do not want that kind of formatting. It is time to add a conditional statement. In `dplyr` there are easy-to-use if/else functions. The function `if_else` sets a condition, if this is met then we can decide what to do, and likewise decide what to do if it is not met.
 
 This looks something like this inside a `dplyr` pipe:
 
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
 ... %>%
   if_else(IF_THIS_IS_TRUE, THE_DO_THIS, OTHERWISE_DO_THIS) %>%
   print()
@@ -446,7 +464,7 @@ The `as.character` part is needed because the output of `if_else` must be the sa
 
 We are getting close to something!
 
-The next step is to remove variables that we do not longer need. The `select` function will help us with that. we can remove `m`and `s` by `select(-m, -s)`, the minus sign tells are to remove them from the list of variables in the dataset. We can then combine the grouping variables into a `include_sex` variable. Similarly to what we did above, we can simply paste them together. Now we will use the `paste` (function instead of `paste0`). In `paste` we specify a separator, maybe `_` is a nice alternative. Selecting away the individual variables from the new combined one leaves us with this code and data set.
+The next step is to remove variables that we do not longer need. The `select` function will help us with that. we can remove `m` and `s` by `select(-m, -s)`, the minus sign tells R to remove them from the list of variables in the data set. We can then combine the grouping variables into a `include_sex` variable. Similarly to what we did above, we can simply paste them together. Now we will use the `paste` (function instead of `paste0`). In `paste` we specify a separator, maybe `_` is a nice alternative. Selecting away the individual variables from the new combined one leaves us with this code and data set.
 
 ```{r, eval = FALSE}
 
@@ -486,16 +504,17 @@ dxadata %>% # take the dxadata data set
          include_sex = paste(include, sex, sep = "_")) %>%
   # removing unnecessary variables after ungrouping
   ungroup() %>%
-  select(-sex, -include, -m, -s)
+  select(-sex, -include, -m, -s) %>%
   print()
 
 ```
 
-If `ungroup` is not used, we cannot select away variables since they are used to group the dataset. We will now perform the last operations befor we can make it a table. To make it formatted as in Table 1 in [@RN2358], we can make the present dataset wider. Each group has its own variable in addition to the variable name column. We will use the opposite function to `pivoy_longer`, namely `pivot_wider`[^pivot]. `pivot_wider` takes a variable or "key" column and a "values" column and divide the values based on the "key".
+If `ungroup` is not used, we cannot select away variables since they are used to group the data set. We will now perform the last operations before we can make it a table. To make it formatted as in Table 1 in [@RN2358], we can make the present data set wider. Each group as its own column in addition to the variable name column. We will use the opposite function to `pivot_longer`, namely `pivot_wider`[^pivot]. `pivot_wider` takes a variable or "key" column and a "values" column and divide the values based on the "key".
 
 [^pivot]: All this talk about pivot, take a break and [watch this clip](https://www.youtube.com/watch?v=L_PWbnHABsM) from the hit series "Friends", its about "pivot"!
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
@@ -540,9 +559,11 @@ dxadata %>% # take the dxadata data set
 
 ```
 
-A final step is to format the `variable` variable(!). The easiest is to make it a factor variable with specified levels and names. After we have added this information, we can use `arrange` to sort the dataset. Using `select` will help you sort the columns to match wath we want.
+A final step is to format the `variable` variable(!). The easiest is to make it a factor variable with specified levels and names. In the factor function we use `levels = c("n", "age", "weight", "height", "fat.whole")` to specify the order of values contained in the variable. Using `labels = c("N", "Age (years)", "Mass (kg)", "Stature (cm)", "Body fat (%)"`, we set corresponding labels on each level. After we have added this information to the variable we can use `arrange` to sort the data set. `arrange` will sort the data set based on the order we have given to the variable. `select` will help you sort the columns to match what we want.
 
-```{r, eval = FALSE}
+```{r}
+
+#| eval: false
 
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
@@ -591,9 +612,229 @@ dxadata %>% # take the dxadata data set
 
 ```
 
-### Starting the table generator - The `kable` function
+### Starting the table generator - The `gt()` function.
 
-The next step is to "pipe" everything into the table generator. `kable` from the `knitr` package creates the framework for the table we are going to create. Next we will use functions from the `kableExtra` package to customize the table. Use the help pages for `kable` to see what can be specified in the function. We will make use of only a few arguments. `kable` can be part of a pipe, the same as the following `kableExtra` functions.
+The next step is to "pipe" everything into the table generator. 
+
+
+
+
+```{r}
+
+#| eval: false
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  # Create a new grouping, adding variable
+  group_by(include, sex, variable) %>%
+  # Summarize in two new variables m for mean and s for SD
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  # Add descriptive statistics together for nice formatting
+  mutate(ms = if_else(variable == "n", # If the variable is n
+                      as.character(m), # the only display the mean, otherwise:
+                        paste0(signif(m, 3), # Use signif to round to significant numbers
+                        " (",
+                        signif(s, 3), 
+                        ")")), 
+         # Doing a new grouping variable
+         include_sex = paste(include, sex, sep = "_")) %>%
+  # removing unnecessary variables after ungrouping
+  ungroup() %>%
+  select(-sex, -include, -m, -s) %>%
+  # pivot wider to match the desired data
+  pivot_wider(names_from = include_sex, 
+              values_from = ms) %>%
+    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
+                           labels = c("N", "Age (years)", "Mass (kg)", 
+                                      "Stature (cm)", "Body fat (%)"))) %>%
+  arrange(variable) %>%
+  
+  # Piping into the table generator (gt)
+
+  gt()  
+  
+  
+
+```
+
+As per our strategy to first summarize and set up the data table, we already have nice first draft. However, we need to format variable names and add column labels. We can also add a footnote.
+
+The `gt` package has several functions for manipulating the raw tables created with the `gt()` function. The `gt` package also use a consistent vocabulary for tables as seen in @fig-gt-parts. 
+
+![Nomenclature for parts of a gt table (source: https://gt.rstudio.com/)](https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg){#fig-gt-parts}
+
+First, using `tab_footnote()` we can add the footnote indicating that "Values are mean and (SD)". We do this by piping the whole table, created with `gt()` into `tab_footnote(footnote = "Values are mean and (SD)")`. We have two columns representing females and two representing males, these can be more clearly separated by adding a spanner column label. This column label adds rows to the table. Using `tab_spanner(label = "Female", columns = c("female_incl", "female_excl"))` we add "Female" above the two columns representing females. We can do the same for males. Using `cols_label()` we specify new column names to match what we want. The resulting full code can be seen below.
+
+
+```{r}
+#| eval: false
+
+
+dxadata %>%
+  select(participant, time, sex, include:weight, fat.whole) %>%
+  mutate(fat.whole = ((fat.whole / 1000) / weight) * 100) %>%
+  filter(time == "pre") %>%
+  group_by(sex, include) %>%
+  mutate(n = n()) %>%
+
+  pivot_longer(names_to =  "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  group_by(sex, include, variable) %>%
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  ungroup() %>%
+  mutate(m = signif(m, digits = 3), 
+         s = signif(s, digits = 2), 
+         ms = if_else(variable == "n", as.character(m), paste0(m, " (", s, ")")), 
+         sex_incl = paste(sex, include, sep = "_")) %>%
+  dplyr::select(-m, -s, - sex, -include) %>%
+
+  pivot_wider(names_from = sex_incl, 
+              values_from = ms) %>%
+  select(variable, female_incl, female_excl, male_incl, male_excl) %>%
+  mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
+                           labels = c("N", "Age (years)", "Mass (kg)", 
+                                      "Stature (cm)", "Body fat (%)"))) %>%
+  arrange(variable) %>%
+  
+  gt() %>%
+  tab_footnote(footnote = "Values are mean and (SD)") %>%
+  tab_spanner(label = "Female", columns = c("female_incl", "female_excl")) %>%
+  tab_spanner(label = "Male", columns = c("male_incl", "male_excl")) %>%
+  cols_label(variable = " ", 
+             female_incl = "Included", 
+             female_excl = "Excluded", 
+             male_incl = "Included", 
+             male_excl = "Excluded")
+
+
+```
+
+### Working with tables in quarto
+
+If we where to use this table in a report created with quarto we would like to be able to cross-reference it. This will work if we add information to the code chunk where the table is created. More specifically we need to set a table label and a table caption. Quarto has built in support for cross referencing figures and tables. Adding chunk options that sets a label and table caption will make it possible to reference the table. Note that the label must start with "tbl-" to make quarto identify it as a table. 
+
+
+  ```{{r}}
+  #| label: tbl-participant-characteristics
+  #| tbl-cap: "Participant characteristics"
+  
+  dxadata %>%
+  select(participant, time, sex, include:weight, fat.whole) %>%
+  mutate(fat.whole = ((fat.whole / 1000) / weight) * 100) %>%
+  filter(time == "pre") %>%
+  group_by(sex, include) %>%
+  mutate(n = n()) %>%
+
+  pivot_longer(names_to =  "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  group_by(sex, include, variable) %>%
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  ungroup() %>%
+  mutate(m = signif(m, digits = 3), 
+         s = signif(s, digits = 2), 
+         ms = if_else(variable == "n", as.character(m), paste0(m, " (", s, ")")), 
+         sex_incl = paste(sex, include, sep = "_")) %>%
+  dplyr::select(-m, -s, - sex, -include) %>%
+
+  pivot_wider(names_from = sex_incl, 
+              values_from = ms) %>%
+  select(variable, female_incl, female_excl, male_incl, male_excl) %>%
+  mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
+                           labels = c("N", "Age (years)", "Mass (kg)", 
+                                      "Stature (cm)", "Body fat (%)"))) %>%
+  arrange(variable) %>%
+  
+  gt() %>%
+  tab_footnote(footnote = "Values are mean and (SD)") %>%
+  tab_spanner(label = "Female", columns = c("female_incl", "female_excl")) %>%
+  tab_spanner(label = "Male", columns = c("male_incl", "male_excl")) %>%
+  cols_label(variable = " ", 
+             female_incl = "Included", 
+             female_excl = "Excluded", 
+             male_incl = "Included", 
+             male_excl = "Excluded")
+             
+  ```
+  
+The above code will produce referable table, as seen in @tbl-table2!
+
+```{r}
+#| label: tbl-table2
+#| tbl-cap: "Participant characteristics"
+
+  dxadata %>%
+  select(participant, time, sex, include:weight, fat.whole) %>%
+  mutate(fat.whole = ((fat.whole / 1000) / weight) * 100) %>%
+  filter(time == "pre") %>%
+  group_by(sex, include) %>%
+  mutate(n = n()) %>%
+
+  pivot_longer(names_to =  "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  group_by(sex, include, variable) %>%
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  ungroup() %>%
+  mutate(m = signif(m, digits = 3), 
+         s = signif(s, digits = 2), 
+         ms = if_else(variable == "n", as.character(m), paste0(m, " (", s, ")")), 
+         sex_incl = paste(sex, include, sep = "_")) %>%
+  dplyr::select(-m, -s, - sex, -include) %>%
+
+  pivot_wider(names_from = sex_incl, 
+              values_from = ms) %>%
+  select(variable, female_incl, female_excl, male_incl, male_excl) %>%
+  mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
+                           labels = c("N", "Age (years)", "Mass (kg)", 
+                                      "Stature (cm)", "Body fat (%)"))) %>%
+  arrange(variable) %>%
+  
+  gt() %>%
+  tab_footnote(footnote = "Values are mean and (SD)") %>%
+  tab_spanner(label = "Female", columns = c("female_incl", "female_excl")) %>%
+  tab_spanner(label = "Male", columns = c("male_incl", "male_excl")) %>%
+  cols_label(variable = " ", 
+             female_incl = "Included", 
+             female_excl = "Excluded", 
+             male_incl = "Included", 
+             male_excl = "Excluded")
+
+
+```
+
+
+
+
+<!--
+
+
+
+
+
+`kable` from the `knitr` package creates the framework for the table we are going to create. Next we will use functions from the `kableExtra` package to customize the table. Use the help pages for `kable` to see what can be specified in the function. We will make use of only a few arguments. `kable` can be part of a pipe, the same as the following `kableExtra` functions.
 
 The `kable`function is well described in the [Rmarkdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html). For functions belonging to the `kableExtra` package, see the [vignettes](https://cran.r-project.org/web/packages/kableExtra/).
 
@@ -1226,4 +1467,8 @@ hypertrophy %>%
 
 
   </div>
+-->
 
+
+
+## References and footnotes

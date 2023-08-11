@@ -1,0 +1,66 @@
+---
+title: "Table test"
+editor: visual
+format: pdf
+---
+
+See @tbl-participant-characteristics
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| label: tbl-participant-characteristics
+#| tbl-cap: "Participant characteristics"
+#| tbl-cap-location: margin
+
+
+library(tidyverse) # for data wrangling
+library(gt) # for creating tables
+library(exscidata) # the dxadata
+
+
+data(dxadata)
+
+dxadata %>%
+  select(participant, time, sex, include:weight, fat.whole) %>%
+  mutate(fat.whole = ((fat.whole / 1000) / weight) * 100) %>%
+  filter(time == "pre") %>%
+  group_by(sex, include) %>%
+  mutate(n = n()) %>%
+
+  pivot_longer(names_to =  "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  group_by(sex, include, variable) %>%
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  ungroup() %>%
+  mutate(m = signif(m, digits = 3), 
+         s = signif(s, digits = 2), 
+         ms = if_else(variable == "n", as.character(m), paste0(m, " (", s, ")")), 
+         sex_incl = paste(sex, include, sep = "_")) %>%
+  dplyr::select(-m, -s, - sex, -include) %>%
+
+  pivot_wider(names_from = sex_incl, 
+              values_from = ms) %>%
+  select(variable, female_incl, female_excl, male_incl, male_excl) %>%
+  mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
+                           labels = c("N", "Age (years)", "Mass (kg)", 
+                                      "Stature (cm)", "Body fat (%)"))) %>%
+  arrange(variable) %>%
+  
+
+  gt() %>%
+  tab_footnote(footnote = "Values are mean and (SD)") %>%
+  tab_spanner(label = "Female", columns = c("female_incl", "female_excl")) %>%
+  tab_spanner(label = "Male", columns = c("male_incl", "male_excl")) %>%
+  cols_label(variable = " ",
+             female_incl = "Included", 
+             female_excl = "Excluded", 
+             male_incl = "Included", 
+             male_excl = "Excluded") 
+
+
+```
+
