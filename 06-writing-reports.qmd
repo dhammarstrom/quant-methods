@@ -1,0 +1,113 @@
+# Writing your first reproducible report
+
+As we have already discussed, the degree to which research is reproducible is determined by the availability of:
+
+- The data
+- Code to analyze the data
+- Text to describe the code
+
+To make these ingredients even more tasty, we might want to have them nicely stored together. A way of doing this using the tools we discuss in this course is to think of data analysis projects as self-contained projects with all necessary ingredients. RStudio projects can help you organize your data and code in one place. You can also link your project to an online repository for others to access. In this chapter we will discuss the reproducible report as belonging to such a project. The online repository/sharing part will be discussed in the next chapter.
+
+## RStudio projects and your reproducible report
+
+When you build an analysis in a R markdown or quarto file, R will use the folder that the file is in as the **root directory**. This directory (or folder) is the top directory in a file system. This means that R will look for data or other files used to generate the report in this folder structure. Think of this folder as `./` (confusing, I know! But bare with me!). Any sub-folders to the root directory can be called things like
+
+- `./data/` (a folder where you keep data files),
+- `./figures/` (a folder where you output figures from analyses).
+
+The R markdown file, being in the root directory will have the "address" `./my_rmarkdown_file.Rmd`
+
+This has several advantages, as long as you stick to one rule: When doing an analysis, always use relative paths ("addresses" to files and folders). Never reference a folder or file by their absolute path. The absolute path for the file I'm writing in now is `/Users/Daniel1/Documents/projects/quant-methods/06-writing-reports.qmd`. The relative path is `./06-writing-reports.qmd`. When working in a "project" you may move the folder containing your project to other locations, but relative paths will not break.
+
+If you want to share your analysis, all you need to do is share the folder with all content with your friend. If you use relative paths, everything will work on your friends computer. If you use absolute paths, nothing will work, unless your friends computer uses a very similar folder structure (highly unlikely).
+
+RStudio projects makes it easy to jump back and forth between projects. The project menu (top right corner in RStudio) contains all your recent projects. When starting a new project, R will create a `.Rproj` file that contains the settings for your project. If you start a project and click this file, a settings menu will appear where you can customize settings for your particular project.
+
+What does this have to do with my quarto/RMarkdown file? As mentioned above, the source file is often written in a context where you have data and other files that help you create your desired output. By always working in a project makes it easy to keep every file in the right place.
+
+
+
+## Getting started with R projects
+To start a new project in RStudio
+
+1. Press the project menu in the upper right corner, choose "Start a project in a brand new working directory"
+
+2. In the next menu, select "New Project" and chose a suitable location on your machine for the project to live.
+
+3. Un-check the option of creating a git repository. We will do this later.
+
+4. Name the project with an informative name. "Project1" is not good enough, "rproject-tutorial" or "rproject-report-workshop" is better as you will be able to track it down afterwards.
+
+We have now started up a brand new project without version control. The next step is to make sure the setting of the project is up date with our Global settings in RStudio. By clicking the `.Rproj` file in our files tab, we will open up a settings window. These are the settings for the project. Under *General* we see that we can set RStudio to handle the workspace and history as **default**. This means that our global options will be used. The global options regarding workspace should be to never save workspace, do not restore on startup and do not save history.
+
+### What folder am I in?
+
+The great advantage of an RProject is that it will make it easier to keep everything contained in our folder. To check what folder we are currently in, type `getwd()` in the console. R should return the full path to our working directory. If this is the case, success. If not, you have probably not succeeded in opening up a project, or you have somehow told R to set another working directory.
+
+The working directory is the root directory. It is possible to set this directory manually. However, we should aim not to do that! The R command `setwd()` should not be used as it breaks relative paths.
+
+See R for Data Science, [chapter 7](https://r4ds.hadley.nz/workflow-scripts) for more details on RStudio projects.
+
+
+## Authoring reports in quarto
+
+So much fuzz just for writing a report? Yes, it is a bit more work. The upside is that this system is much more easy to navigate with increasing complexity compared to a system where text, figures, tables and software are located on different locations in your computer.
+
+As mentioned before, we will focus on the more modern format for authoring reports in R, quarto. In this section we will introduce the basic building blocks of a report and how to put them together. We have already covered figures and tables, now its time to put the into context.
+
+### The Markdown syntax
+
+
+### Code chunks
+
+
+### References, footnotes and cross-referencing
+
+
+## Additional files and folder structures in a complete analysis project
+
+### The readme-file
+
+### `/resources`
+
+### `/data`
+
+### `/figures`
+
+### `/R`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,11 +7,11 @@ editor_options:
 
 ## Introduction
 
-We can use tables to communicate a lot of information in a compact form while maintaining precision. This advantage is why creating tables is essential for effectively communicating data. We can easily create tables programmatically as part of an R markdown or quarto document. R has many packages that essentially work as "table generators" that translate your draft table to an output format of your choice. A great format to start authoring an analysis in is HTML; however, most "table generators" need to know your output format to be properly formatted and work in the output format. Tables are special since their creation depends more heavily on the output format than other elements of R markdown documents. For example, when using the `kable` function from the `knitr` package, you must specify if you want HTML or latex output. Word output is not possible using the `knitr` package, but other table generators, such as `flextable` or `gt`,  *can* produce word output, meaning you can put tables in word documents from your R markdown or quarto file.
+We can use tables to communicate a lot of information in a compact form while maintaining precision. This advantage is why creating tables is essential for effectively communicating data. We can easily create tables programmatically as part of an R markdown or quarto document. R has many "table generator" packages that translate your draft table to an output format of your choice. A great format to start authoring an analysis in is HTML; however, most "table generators" need to know your output format to be properly formatted and work in the output format. Below we will introduce a new package for the purpose of creating tables. This package, `gt` has the advantage that it does not require the user to change code when we switch to another output format. The `gt` package can create tables in HTML, PDF and word format. 
 
 Since we are concerned with reproducibility, we would like to avoid copy-and-paste operations. The strength of writing reports in R markdown or quarto is the ability to combine data, code, and text to produce a formatted output programmatically. Therefore, We will choose a table generator that allows for consistently selecting multiple formats. One such table generator is part of the `gt` package.
 
-As mentioned previously, authoring in R markdown and quarto makes little difference. However, we will now focus on the more modern file format, knowing that examples and tutorials written in R markdown will translate to quarto with few problems.
+As mentioned previously, authoring in R markdown and quarto makes little difference. However, we will now focus on the more modern file format, quarto, knowing that examples and tutorials written in R markdown will translate to quarto with few problems.
 
 The basic workflow of creating a table in R markdown or quarto is to transform the data into a nice format and then get this underlying data into the table generator. The table generator is written in a code chunk, and upon rendering the source file, the table generator will create, for example, HTML output. In this chapter, we will introduce some data-wrangling tools since the table we will produce consists of summarized data. The functions we introduce are found in the packages `dplyr` and `tidyr`. These packages are loaded as part of the `tidyverse` package.
 
@@ -19,7 +19,7 @@ The basic workflow of creating a table in R markdown or quarto is to transform t
 
 All `tidyverse`packages are [well documented](https://www.tidyverse.org/) and generally well represented in help forums. Google is your friend when looking for help.
 
-The [`gt` package](https://gt.rstudio.com/) now a mature package for generating tables in R. This chapter is written on the basis of this package. If you are looking for alternatives, the `kable` function from the `knitr` package is described in a newly developed book, available online called [the R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html). The package, `kableExtra` comes with excellent [vignettes](https://cran.r-project.org/web/packages/kableExtra/) for both html and pdf outputs. `kableExtra` provides extra functions to customize your basic `knitr` table. Note that kabale and kableExtra will only produce output in HTML and pdf-formats. Another package the can create tables in HTML, pdf, and word formats is the [`flextable` package](https://ardata-fr.github.io/flextable-book/)
+The [`gt` package](https://gt.rstudio.com/) is now a mature package for generating tables in R. This chapter is written on the basis of this package. If you are looking for alternatives, the `kable` function from the `knitr` package is described in a newly developed book, available online called [the R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html). The package, `kableExtra` comes with excellent [vignettes](https://cran.r-project.org/web/packages/kableExtra/) for both html and pdf outputs. `kableExtra` provides extra functions to customize your basic `knitr` table. Note that kabale and kableExtra will only produce output in HTML and pdf-formats. Another package the can create tables in HTML, pdf, and word formats is the [`flextable` package](https://ardata-fr.github.io/flextable-book/)
 
 ## Making "Table 1"
 
@@ -236,7 +236,8 @@ We can now go further and use the `summarise` function. Instead of adding variab
 
 We can use the `summarise()` function to calculate the mean and standard deviation for the weight variable.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
@@ -262,7 +263,8 @@ dxadata %>% # take the dxadata data set
 
 Try out the code in your own quarto document. The above example gives us what we want, however, it means that we need to type a lot. Instead of needing to make a summary for each variable, we can combine the variables in a long format. To get to the long format we will use the `pivot_longer()` function. This function gathers several variables into two columns, one with the variables names as values and a second column with each value from the original variables. In our case we want to gather the variables `age`, `height`, `weight`, `fat.whole` and `n`. I will call the new variables that we create `variable` and `value`.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
@@ -291,8 +293,8 @@ dxadata %>% # take the dxadata data set
 
 The `cols = age:n` part of pivot_longer specifies what columns to gather. The data set is still grouped by `include` and `sex`. We may now proceed by summarizing over these groups, however, we need to add another group to specify that we want different values per `variable`. To do this we re-specify the grouping. After this we add the `summarise` function. 
 
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
   # select participant, time, sex, include to height and fat.whole
@@ -420,8 +422,8 @@ This looks something like this inside a `dplyr` pipe:
 If `variable` is `n`, then we only want to display `m` otherwise we want the full code as described above: `paste0(signif(m, 3), " (", signif(s, 3), ")")`. We add this to the code:
 
 
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
 
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
@@ -466,8 +468,8 @@ We are getting close to something!
 
 The next step is to remove variables that we do not longer need. The `select` function will help us with that. we can remove `m` and `s` by `select(-m, -s)`, the minus sign tells R to remove them from the list of variables in the data set. We can then combine the grouping variables into a `include_sex` variable. Similarly to what we did above, we can simply paste them together. Now we will use the `paste` (function instead of `paste0`). In `paste` we specify a separator, maybe `_` is a nice alternative. Selecting away the individual variables from the new combined one leaves us with this code and data set.
 
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
 
 dxadata %>% # take the dxadata data set
   select(participant, time, sex, include:weight, fat.whole) %>% 
@@ -620,7 +622,6 @@ The next step is to "pipe" everything into the table generator.
 
 
 ```{r}
-
 #| eval: false
 
 dxadata %>% # take the dxadata data set
@@ -826,553 +827,17 @@ The above code will produce referable table, as seen in @tbl-table2!
 ```
 
 
+## An exercise in data wrangling and tables
 
+In total 30 college students performed a heavy-resistance training protocol where training volume was constantly increased over six weeks. In [@RN2149], a part of the study, focusing on supplementation was reported. In [@RN2225], participants were divided into two clusters based on training responses and the authors aimed to answer the question what separates high- from low-responders to resistance training.
 
-<!--
-
-
-
-
-
-`kable` from the `knitr` package creates the framework for the table we are going to create. Next we will use functions from the `kableExtra` package to customize the table. Use the help pages for `kable` to see what can be specified in the function. We will make use of only a few arguments. `kable` can be part of a pipe, the same as the following `kableExtra` functions.
-
-The `kable`function is well described in the [Rmarkdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html). For functions belonging to the `kableExtra` package, see the [vignettes](https://cran.r-project.org/web/packages/kableExtra/).
-
-We will add the kable function to the end of the pipe we have built so far.
-
-```{r, eval = FALSE}
-
-dxadata %>% # take the dxadata data set
-  select(participant, time, sex, include:weight, fat.whole) %>% 
-  # select participant, time, sex, include to height and fat.whole
-  
-  # Filter to keep all observations with pre
-  filter(time == "pre") %>%
-  
-  # Calculate body fat
-  # fat.whole in grams, needs to be divided by 1000 to express as kg
-  # Multiply by 100 to get percentage
-  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
-  
-  # Group the data frame and add a variable specifying the number of observations per group
-  group_by(include, sex) %>%
-  mutate(n = n()) %>%
-  # Collect all variables for convenient summarizing
-  pivot_longer(names_to = "variable", 
-               values_to = "value", 
-               cols = age:n) %>%
-  # Create a new grouping, adding variable
-  group_by(include, sex, variable) %>%
-  # Summarize in two new variables m for mean and s for SD
-  summarise(m = mean(value), 
-            s = sd(value)) %>%
-  # Add descriptive statistics together for nice formatting
-  mutate(ms = if_else(variable == "n", # If the variable is n
-                      as.character(m), # the only display the mean, otherwise:
-                        paste0(signif(m, 3), # Use signif to round to significant numbers
-                        " (",
-                        signif(s, 3), 
-                        ")")), 
-         # Doing a new grouping variable
-         include_sex = paste(include, sex, sep = "_")) %>%
-  # removing unnecessary variables after ungrouping
-  ungroup() %>%
-  select(-sex, -include, -m, -s) %>%
-  # pivot wider to match the desired data
-  pivot_wider(names_from = include_sex, 
-              values_from = ms) %>%
-    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
-                           labels = c("N", "Age (years)", "Mass (kg)", 
-                                      "Stature (cm)", "Body fat (%)"))) %>%
-  arrange(variable) %>%
-  kable(format = "html")
-
-```
-
-An important aspect is that we need to work in a RMarkdown document (.Rmd). This allows for conversion of "html" code generated by `kable` to the output file, if the output file format is "html". In kable, as you can see in the example above, we specify this with the argument `format =`. Possible common formats are "html" and "latex". $\LaTeX$ is a more advanced syntax for document preparation, the output is often a pdf file. In this session we are working with "html", so we will keep `format = "html"`.
-
-When "knitting" your `.Rmd`-document, the code chunk where you keep your table code needs to have a setting specifying `results = "asis"`. The top of the code chunk should look like this:
-
-````
-`r ''````{r my_table, results="asis"}
-
-dxadata %>% # take the dxadata data set
-  select(participant, time, sex, include:weight, fat.whole) %>% 
-  # select participant, time, sex, include to height and fat.whole
-  
-  # Filter to keep all observations with pre
-  filter(time == "pre") %>%
-  ...
-
-```
-````
-
-
-When you run the above code, you may get output in your console. This output will look something like this:
-
-```{r, eval = FALSE}
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> variable </th>
-   <th style="text-align:left;"> excl_female </th>
-   <th style="text-align:left;"> excl_male </th>
-   <th style="text-align:left;"> incl_female </th>
-   <th style="text-align:left;"> incl_male </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> N </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 18 </td>
-   <td style="text-align:left;"> 16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Age (years) </td>
-   <td style="text-align:left;"> 22.9 (1.57) </td>
-   <td style="text-align:left;"> 24.3 (1.46) </td>
-   <td style="text-align:left;"> 22 (1.25) </td>
-   <td style="text-align:left;"> 23.6 (4.11) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mass (kg) </td>
-   <td style="text-align:left;"> 64.6 (9.71) </td>
-   <td style="text-align:left;"> 88.2 (22.4) </td>
-   <td style="text-align:left;"> 64.4 (10.4) </td>
-   <td style="text-align:left;"> 75.8 (10.7) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Stature (cm) </td>
-   <td style="text-align:left;"> 166 (7.59) </td>
-   <td style="text-align:left;"> 189 (4.58) </td>
-   <td style="text-align:left;"> 168 (6.87) </td>
-   <td style="text-align:left;"> 183 (5.88) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Body fat (%) </td>
-   <td style="text-align:left;"> 28.8 (8.69) </td>
-   <td style="text-align:left;"> 24.3 (15.3) </td>
-   <td style="text-align:left;"> 34.1 (5.64) </td>
-   <td style="text-align:left;"> 20.4 (5.99) </td>
-  </tr>
-</tbody>
-</table>
-
-```
-
-This is "html" code. For some reason, RStudio will not interpret it as html-code and preview it in the Viewer pane, yet. We will now add some information to our table. First we want to change the headings. In `kable` we do this by setting the `col.names` argument. We do not need to repeat ourselves adding "Female" and "Male" to columns 2 and 3, and 4 and 5, respectively. Instead we specify the "Include"/"Exclude" grouping.
-
-```{r, eval = FALSE}
-
-dxadata %>% # take the dxadata data set
-  select(participant, time, sex, include:weight, fat.whole) %>% 
-  # select participant, time, sex, include to height and fat.whole
-  
-  # Filter to keep all observations with pre
-  filter(time == "pre") %>%
-  
-  # Calculate body fat
-  # fat.whole in grams, needs to be divided by 1000 to express as kg
-  # Multiply by 100 to get percentage
-  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
-  
-  # Group the data frame and add a variable specifying the number of observations per group
-  group_by(include, sex) %>%
-  mutate(n = n()) %>%
-  # Collect all variables for convenient summarizing
-  pivot_longer(names_to = "variable", 
-               values_to = "value", 
-               cols = age:n) %>%
-  # Create a new grouping, adding variable
-  group_by(include, sex, variable) %>%
-  # Summarize in two new variables m for mean and s for SD
-  summarise(m = mean(value), 
-            s = sd(value)) %>%
-  # Add descriptive statistics together for nice formatting
-  mutate(ms = if_else(variable == "n", # If the variable is n
-                      as.character(m), # the only display the mean, otherwise:
-                        paste0(signif(m, 3), # Use signif to round to significant numbers
-                        " (",
-                        signif(s, 3), 
-                        ")")), 
-         # Doing a new grouping variable
-         include_sex = paste(include, sex, sep = "_")) %>%
-  # removing unnecessary variables after ungrouping
-  ungroup() %>%
-
-  select(-sex, -include, -m, -s) %>%
-  # pivot wider to match the desired data
-  pivot_wider(names_from = include_sex, 
-              values_from = ms) %>%
-    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
-                           labels = c("N", "Age (years)", "Mass (kg)", 
-                                      "Stature (cm)", "Body fat (%)"))) %>%
-  select(variable, incl_female, excl_female, incl_male, excl_male) %>%
-  arrange(variable) %>%
-  kable(format = "html", col.names = c(" ", "Included", "Excluded", "Included", "Excluded"))
-
-```
-
-Notice that I added a final `select` function to arrange the columns of the table. The `col.names=` argeumnet is specified in the same order. But how to separate male from females. This is where `kableExtra` comes in. This package provides functions for customizing the simple `kable` table. Using the function `add_header_above` we can specify in a "named character vector" what headers we want over a certain column span. We do not want any information in the first column, but we want "Female" to span two columns followed by "Male" spanning two columns. The resulting code will look like this: `add_header_above(c(" " = 1, "Female" = 2, "Male", = 2))`. Adding this code to our pipe (for some reason at least in my RStudio) puts the table output in the viewer pane!
-
-```{r, eval = FALSE}
-
-dxadata %>% # take the dxadata data set
-  select(participant, time, sex, include:weight, fat.whole) %>% 
-  # select participant, time, sex, include to height and fat.whole
-  
-  # Filter to keep all observations with pre
-  filter(time == "pre") %>%
-  
-  # Calculate body fat
-  # fat.whole in grams, needs to be divided by 1000 to express as kg
-  # Multiply by 100 to get percentage
-  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
-  
-  # Group the data frame and add a variable specifying the number of observations per group
-  group_by(include, sex) %>%
-  mutate(n = n()) %>%
-  # Collect all variables for convenient summarizing
-  pivot_longer(names_to = "variable", 
-               values_to = "value", 
-               cols = age:n) %>%
-  # Create a new grouping, adding variable
-  group_by(include, sex, variable) %>%
-  # Summarize in two new variables m for mean and s for SD
-  summarise(m = mean(value), 
-            s = sd(value)) %>%
-  # Add descriptive statistics together for nice formatting
-  mutate(ms = if_else(variable == "n", # If the variable is n
-                      as.character(m), # the only display the mean, otherwise:
-                        paste0(signif(m, 3), # Use signif to round to significant numbers
-                        " (",
-                        signif(s, 3), 
-                        ")")), 
-         # Doing a new grouping variable
-         include_sex = paste(include, sex, sep = "_")) %>%
-  # removing unnecessary variables after ungrouping
-  ungroup() %>%
-
-  select(-sex, -include, -m, -s) %>%
-  # pivot wider to match the desired data
-  pivot_wider(names_from = include_sex, 
-              values_from = ms) %>%
-    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
-                           labels = c("N", "Age (years)", "Mass (kg)", 
-                                      "Stature (cm)", "Body fat (%)"))) %>%
-  select(variable, incl_female, excl_female, incl_male, excl_male) %>%
-  arrange(variable) %>%
-  kable(format = "html", col.names = c(" ", "Included", "Excluded", "Included", "Excluded")) %>%
-  add_header_above(c(" "= 1, "Female" = 2, "Male" = 2))
-
-```
-
-The table is almost done! We need to add some last information. Maybe a caption is in place and a footnote describing what the data represents. The caption is added in the `kable` function using `caption = "Table 1. Participant characteristics"`. The footnote is added using a function from `kableExtra`, `add
-
-
-```{r, eval = FALSE}
-
-dxadata %>% # take the dxadata data set
-  select(participant, time, sex, include:weight, fat.whole) %>% 
-  # select participant, time, sex, include to height and fat.whole
-  
-  # Filter to keep all observations with pre
-  filter(time == "pre") %>%
-  
-  # Calculate body fat
-  # fat.whole in grams, needs to be divided by 1000 to express as kg
-  # Multiply by 100 to get percentage
-  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
-  
-  # Group the data frame and add a variable specifying the number of observations per group
-  group_by(include, sex) %>%
-  mutate(n = n()) %>%
-  # Collect all variables for convenient summarizing
-  pivot_longer(names_to = "variable", 
-               values_to = "value", 
-               cols = age:n) %>%
-  # Create a new grouping, adding variable
-  group_by(include, sex, variable) %>%
-  # Summarize in two new variables m for mean and s for SD
-  summarise(m = mean(value), 
-            s = sd(value)) %>%
-  # Add descriptive statistics together for nice formatting
-  mutate(ms = if_else(variable == "n", # If the variable is n
-                      as.character(m), # the only display the mean, otherwise:
-                        paste0(signif(m, 3), # Use signif to round to significant numbers
-                        " (",
-                        signif(s, 3), 
-                        ")")), 
-         # Doing a new grouping variable
-         include_sex = paste(include, sex, sep = "_")) %>%
-  # removing unnecessary variables after ungrouping
-  ungroup() %>%
-
-  select(-sex, -include, -m, -s) %>%
-  # pivot wider to match the desired data
-  pivot_wider(names_from = include_sex, 
-              values_from = ms) %>%
-    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
-                           labels = c("N", "Age (years)", "Mass (kg)", 
-                                      "Stature (cm)", "Body fat (%)"))) %>%
-  select(variable, incl_female, excl_female, incl_male, excl_male) %>%
-  arrange(variable) %>%
-  kable(format = "html", 
-        col.names = c(" ", "Included", "Excluded", "Included", "Excluded"), 
-        caption = "Table 1. Participant characteristics.") %>%
-  add_header_above(c(" "= 1, "Female" = 2, "Male" = 2)) %>%
-  add_footnote(label = "Data are means and standard deviations (SD).",
-               notation = "none")
-
-```
-
-Success! The table is complete. As with alot of things in R, there are *at least* five ways of getting to this end result, and there still might be some things to tweak to make it look even more like Table 1 in [@RN2358].
-
-
-## Summary
-
-In the example above we have introduced functions from `dplyr`, from the [`dplyr` documentation](https://dplyr.tidyverse.org/):
-
-- `mutate()` adds new variables that are functions of existing variables
-- `select()` picks variables based on their names.
-- `filter()` picks cases based on their values.
-- `summarise()` reduces multiple values down to a single summary.
-- `arrange()` changes the ordering of the rows.
-
-We have also explored `pivot_wider` and `pivot_longer` from the [`tidyr` package](https://tidyr.tidyverse.org/). 
-
-We used the above functions to prepare a table. The table was then made pretty by using [`kable`](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html) from the `knitr` package. Functions from `kableExtra` gave us ways of making the table more suited to what we wanted to show.
-
-The [vignette describining the kableExtra package](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) is highly recommended! If you want to extend to pdf-tables (which are really nice!). Use the $\LaTeX$ vignette found [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_pdf.pdf). When creating pdf/$\LaTeX$ tables/reports some basic understandning of $\LaTeX$ is good. 
-
-
-
-## Flextable
-
-Flextable comes with the option of specifying tables directly in word outputs. This does not need any further formatting compared to HTML formatting. 
-
-Lets use the the same pipe as used above to specify the flextable. Flextable also works as part of a pipe. The basic function is `flextable`.
-
-```{r, eval = FALSE} 
-
-library(flextable)
-
-dxadata %>% # take the dxadata data set
-  select(participant, time, sex, include:weight, fat.whole) %>% 
-  # select participant, time, sex, include to height and fat.whole
-  
-  # Filter to keep all observations with pre
-  filter(time == "pre") %>%
-  
-  # Calculate body fat
-  # fat.whole in grams, needs to be divided by 1000 to express as kg
-  # Multiply by 100 to get percentage
-  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
-  
-  # Group the data frame and add a variable specifying the number of observations per group
-  group_by(include, sex) %>%
-  mutate(n = n()) %>%
-  # Collect all variables for convenient summarizing
-  pivot_longer(names_to = "variable", 
-               values_to = "value", 
-               cols = age:n) %>%
-  # Create a new grouping, adding variable
-  group_by(include, sex, variable) %>%
-  # Summarize in two new variables m for mean and s for SD
-  summarise(m = mean(value), 
-            s = sd(value)) %>%
-  # Add descriptive statistics together for nice formatting
-  mutate(ms = if_else(variable == "n", # If the variable is n
-                      as.character(m), # the only display the mean, otherwise:
-                        paste0(signif(m, 3), # Use signif to round to significant numbers
-                        " (",
-                        signif(s, 3), 
-                        ")")), 
-         # Doing a new grouping variable
-         include_sex = paste(include, sex, sep = "_")) %>%
-  # removing unnecessary variables after ungrouping
-  ungroup() %>%
-
-  select(-sex, -include, -m, -s) %>%
-  # pivot wider to match the desired data
-  pivot_wider(names_from = include_sex, 
-              values_from = ms) %>%
-    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
-                           labels = c("N", "Age (years)", "Mass (kg)", 
-                                      "Stature (cm)", "Body fat (%)"))) %>%
-  select(variable, incl_female, excl_female, incl_male, excl_male) %>%
-  arrange(variable) %>%
-   flextable()
-
-```
-
-We can now add changes to the underlying table and add new header labels to produce a table similar to the one above.
-
-```{r, eval = FALSE} 
-
-library(flextable)
-
-dxadata %>% # take the dxadata data set
-  select(participant, time, sex, include:weight, fat.whole) %>% 
-  # select participant, time, sex, include to height and fat.whole
-  
-  # Filter to keep all observations with pre
-  filter(time == "pre") %>%
-  
-  # Calculate body fat
-  # fat.whole in grams, needs to be divided by 1000 to express as kg
-  # Multiply by 100 to get percentage
-  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
-  
-  # Group the data frame and add a variable specifying the number of observations per group
-  group_by(include, sex) %>%
-  mutate(n = n()) %>%
-  # Collect all variables for convenient summarizing
-  pivot_longer(names_to = "variable", 
-               values_to = "value", 
-               cols = age:n) %>%
-  # Create a new grouping, adding variable
-  group_by(include, sex, variable) %>%
-  # Summarize in two new variables m for mean and s for SD
-  summarise(m = mean(value), 
-            s = sd(value)) %>%
-  # Add descriptive statistics together for nice formatting
-  mutate(ms = if_else(variable == "n", # If the variable is n
-                      as.character(m), # the only display the mean, otherwise:
-                        paste0(signif(m, 3), # Use signif to round to significant numbers
-                        " (",
-                        signif(s, 3), 
-                        ")")), 
-         # Doing a new grouping variable
-         include_sex = paste(include, sex, sep = "_")) %>%
-  # removing unnecessary variables after ungrouping
-  ungroup() %>%
-
-  select(-sex, -include, -m, -s) %>%
-  # pivot wider to match the desired data
-  pivot_wider(names_from = include_sex, 
-              values_from = ms) %>%
-    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
-                           labels = c("N", "Age (years)", "Mass (kg)", 
-                                      "Stature (cm)", "Body fat (%)"))) %>%
-  select(variable, incl_female, excl_female, incl_male, excl_male) %>%
-  arrange(variable) %>%
-   flextable()  %>%
-   set_header_labels(variable = "",
-                    incl_female = "Include", 
-                     excl_female = "Exclude",
-                     incl_male = "Include", 
-                     excl_male = "Exclude")
-
-```
-
-Note that flextable does not need `results = "asis"` to work in rmarkdown files. Similar to kable, flextable can give a preview by just running the code, meaning you do not have to knit the whole document to see what changes you have done.
-
-Lets finnish up by adding a header and a footnote.
-
-```{r, eval = FALSE} 
-
-
-dxadata %>% # take the dxadata data set
-  select(participant, time, sex, include:weight, fat.whole) %>% 
-  # select participant, time, sex, include to height and fat.whole
-  
-  # Filter to keep all observations with pre
-  filter(time == "pre") %>%
-  
-  # Calculate body fat
-  # fat.whole in grams, needs to be divided by 1000 to express as kg
-  # Multiply by 100 to get percentage
-  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
-  
-  # Group the data frame and add a variable specifying the number of observations per group
-  group_by(include, sex) %>%
-  mutate(n = n()) %>%
-  # Collect all variables for convenient summarizing
-  pivot_longer(names_to = "variable", 
-               values_to = "value", 
-               cols = age:n) %>%
-  # Create a new grouping, adding variable
-  group_by(include, sex, variable) %>%
-  # Summarize in two new variables m for mean and s for SD
-  summarise(m = mean(value), 
-            s = sd(value)) %>%
-  # Add descriptive statistics together for nice formatting
-  mutate(ms = if_else(variable == "n", # If the variable is n
-                      as.character(m), # the only display the mean, otherwise:
-                        paste0(signif(m, 3), # Use signif to round to significant numbers
-                        " (",
-                        signif(s, 3), 
-                        ")")), 
-         # Doing a new grouping variable
-         include_sex = paste(include, sex, sep = "_")) %>%
-  # removing unnecessary variables after ungrouping
-  ungroup() %>%
-
-  select(-sex, -include, -m, -s) %>%
-  # pivot wider to match the desired data
-  pivot_wider(names_from = include_sex, 
-              values_from = ms) %>%
-    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
-                           labels = c("N", "Age (years)", "Mass (kg)", 
-                                      "Stature (cm)", "Body fat (%)"))) %>%
-  select(variable, incl_female, excl_female, incl_male, excl_male) %>%
-  arrange(variable) %>%
-   flextable()  %>%
-
-   set_header_labels(variable = "",
-                    incl_female = "Include", 
-                     excl_female = "Exclude",
-                     incl_male = "Include", 
-                     excl_male = "Exclude") %>%
-    # Adds a header specified for all columns of the table
-    add_header_row(values = c("", "Female", "Female", "Male", "Male")) %>%
-    
-    # Merge the new cells with the same data
-    # part = "header" meands that we want to add a row in the "header" part of the table.
-    # i = 1 means row 1
-    # j = 2:3 means column 2 to 3
-    merge_at(part = "header", i = 1, j = 2:3) %>%
-    merge_at(part = "header", i = 1, j = 4:5) %>%
-    # Add footnote
-    add_footer_row(values = "Values are mean and (SD)", colwidths = 5) %>%
-    # Make the columns widths match the content
-    autofit()
-    
-    
-    
-
-```
-
-Nice! This table should also print if the code chunk is included in a R Markdown file and the output is choosen to be "Knit to word". See [flextable documentation](https://davidgohel.github.io/flextable/) for more customizations.
-
-## An exercise, reproduce Table 1 from [@RN2225]
-
- <script language="javascript"> 
-    function toggle(num) {
-      var ele = document.getElementById("toggleText" + num);
-      var text = document.getElementById("displayText" + num);
-      if(ele.style.display == "block") {
-        ele.style.display = "none";
-        text.innerHTML = "show";
-      }
-      else {
-        ele.style.display = "block";
-        text.innerHTML = "hide";
-      }
-   } 
-  </script>
-
-
-
-In total 30 college students performed a heavy resistance training protocol where training volume was constantly increased over six weeks. In [@RN2149], a part of the study, focusing on supplementation was reported. In [@RN2225], participants were devided into two clusters based on training responses and the authors aimed to answer the question what separates high- from low-responders to resistance training.
-
-In this exercise we want to reproduce a big part of Table 1 in [@RN2225]. The Table as re-produced here can be seen below. See the orginal article for explenation of clusters. To select variables, see the data description in the `exscidata` package, the dataset is called `hypertrophy`.
+In this exercise we want to reproduce a big part of Table 1 in [@RN2225]. The Table as re-produced here can be seen below. See the original article for explanation of clusters. To select variables, see the data description in the `exscidata` package, the data set is called `hypertrophy`.
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
+#| echo: false
+#| message: false
+#| warning: false
+#| tbl-cap: "Baseline characteristics at PRE and back squat training volume between clusters"
 
 data(hypertrophy)
 
@@ -1397,8 +862,9 @@ hypertrophy %>%
   mutate(variable = factor(variable, levels = c("AGE", "TRAINING_AGE", "BODYMASS_T1", "DXA_LBM_T1", "DXA_FM_T1", "PERCENT_TYPE_II_T1", "SQUAT_3RM", "SQUAT_VOLUME"), 
                     labels = c("Age (years)", "Training age (years)", "Body mass (kg)", "DXA LBM (kg)", "DXA FM (kg)", "Type II fiber (%)", "3RM back squat (kg)", "Total back squat training volume (kg)"))) %>%
   arrange(variable) %>%
-  kable(col.names = c("Variable", "LOW (n = 10)", "HIGH (n = 10)"), 
-          caption = "Table 1. Baseline characteristics at PRE and back squat training volume between clusters")
+  gt() %>%
+  cols_label(variable = " ", HIGH = "HIGH (n = 10)", LOW = "LOW (n = 10)") %>%
+    tab_footnote(footnote = "Values are mean and (SD)")
 
 
 
@@ -1459,15 +925,17 @@ hypertrophy %>%
                                                 "Total back squat training volume (kg)"))) %>%
   # Sort/order the dataset
   arrange(variable) %>%
-  # Use kable to output the table with appropriate caption and column names. 
-  kable(col.names = c("Variable", "LOW (n = 10)", "HIGH (n = 10)"), 
-          caption = "Table 1. Baseline characteristics at PRE and back squat training volume between clusters")
+  # Use gt to output the table with appropriate caption and column names. 
+  gt() %>%
+  cols_label(variable = " ", HIGH = "HIGH (n = 10)", LOW = "LOW (n = 10)") %>%
+    tab_footnote(footnote = "Values are mean and (SD)")
+
 
 ```
 
 
   </div>
--->
+
 
 
 

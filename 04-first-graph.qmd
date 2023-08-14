@@ -23,7 +23,7 @@ editor_options:
 
 
 
-Data visualization is an efficient way to understand data. Using graphs, we can communicate characteristics of a data set that would have been impossible with a limited number of summary statistics, such as the mean and standard deviation. In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand various data sets. An important argument for mastering data visualization is understanding what factors might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of as an initial step in understanding data; data visualization is an exploratory tool.  
+Data visualization is an efficient way to understand data. Using graphs, we can communicate characteristics of a data set in a way that would have been impossible with a limited number of summary statistics, such as the mean and standard deviation. In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand various data sets. An important argument for mastering data visualization is understanding what variables might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of as an initial step in understanding data; data visualization is an exploratory tool.  
 
 
 RStudio is a powerful environment for data visualization. Together with R (which is excellent for creating graphs), you can create and preview figures that represent your data in RStudio. 
@@ -315,7 +315,7 @@ As mentioned above, box-plots does some summarizing and not all data is shown. T
 
 # Creating a line plot of all values per participant over time, color per group
 
-gplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
+ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
 geom_line()
 
 ```
@@ -554,6 +554,7 @@ ggplot(data = cycdat, aes(timepoint, VO2.max, group = subject)) +
 ```{r}
 #| eval: false
 #| 
+
 # Load the package ggtext to make markdown avalable in axis labels.
 library(ggtext) 
 
@@ -588,5 +589,5 @@ Note: Adding `\n` in the the text string breaks the line to get two rows.
 
   </div>
 
-
+## References and footnotes
 

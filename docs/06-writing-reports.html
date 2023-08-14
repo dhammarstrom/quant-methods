@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Daniel Hammarström">
-<meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences.">
 
-<title>Quantitative methods and statistics (In Sport and Exercise Science)</title>
+<title>Quantitative methods and statistics (In Sport and Exercise Science) - 7&nbsp; Writing your first reproducible report</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-intro-to-data.html" rel="next">
+<link href="./05-first-tables.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -76,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-writing-reports.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -103,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></span></a>
   </div>
 </li>
@@ -137,6 +135,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-writing-reports.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -147,9 +151,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <li><a href="#rstudio-projects-and-your-reproducible-report" id="toc-rstudio-projects-and-your-reproducible-report" class="nav-link active" data-scroll-target="#rstudio-projects-and-your-reproducible-report"><span class="header-section-number">7.1</span> RStudio projects and your reproducible report</a></li>
+  <li><a href="#getting-started-with-r-projects" id="toc-getting-started-with-r-projects" class="nav-link" data-scroll-target="#getting-started-with-r-projects"><span class="header-section-number">7.2</span> Getting started with R projects</a></li>
+  <li><a href="#authoring-reports-in-quarto" id="toc-authoring-reports-in-quarto" class="nav-link" data-scroll-target="#authoring-reports-in-quarto"><span class="header-section-number">7.3</span> Authoring reports in quarto</a>
   <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">1.1</span> Prerequisites</a></li>
+  <li><a href="#the-markdown-syntax" id="toc-the-markdown-syntax" class="nav-link" data-scroll-target="#the-markdown-syntax"><span class="header-section-number">7.3.1</span> The Markdown syntax</a></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">7.3.2</span> Code chunks</a></li>
+  <li><a href="#references-footnotes-and-cross-referencing" id="toc-references-footnotes-and-cross-referencing" class="nav-link" data-scroll-target="#references-footnotes-and-cross-referencing"><span class="header-section-number">7.3.3</span> References, footnotes and cross-referencing</a></li>
+  </ul></li>
+  <li><a href="#additional-files-and-folder-structures-in-a-complete-analysis-project" id="toc-additional-files-and-folder-structures-in-a-complete-analysis-project" class="nav-link" data-scroll-target="#additional-files-and-folder-structures-in-a-complete-analysis-project"><span class="header-section-number">7.4</span> Additional files and folder structures in a complete analysis project</a>
+  <ul class="collapse">
+  <li><a href="#the-readme-file" id="toc-the-readme-file" class="nav-link" data-scroll-target="#the-readme-file"><span class="header-section-number">7.4.1</span> The readme-file</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">7.4.2</span> <code>/resources</code></a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">7.4.3</span> <code>/data</code></a></li>
+  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures"><span class="header-section-number">7.4.4</span> <code>/figures</code></a></li>
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r"><span class="header-section-number">7.4.5</span> <code>/R</code></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -159,31 +175,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quantitative methods and statistics (In Sport and Exercise Science)</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></h1>
 </div>
 
-<div>
-  <div class="description">
-    These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Daniel Hammarström </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Updated: 2023-08-08</p>
-    </div>
-  </div>
   
     
   </div>
@@ -191,13 +190,57 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1><p><img src="resources/cover.png" title="Quantitative methods and statistics (In Sport and Exercise Science)" class="quarto-cover-image img-fluid"></p>
-<p>Welcome to the course <strong>Quantitative methods and Statistics (IDR4000)</strong>. The course aims to give students an overview of methodological aspects within the field of sport and exercise-physiology. Specifically, planning, conducting and analyzing research projects with human participants will be covered. These course notes covers <em>almost</em> the entire course through the combination of video lectures, tutorials and references to the course literature and external resources.</p>
-<p>This book contains lecture notes for the course. Assignments, tutorials and other cours material has been moved to the <a href="https://dhammarstrom.github.io/quant-methods-workshops/">course workshop site</a></p>
-<section id="prerequisites" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">1.1</span> Prerequisites</h2>
+<p>As we have already discussed, the degree to which research is reproducible is determined by the availability of:</p>
+<ul>
+<li>The data</li>
+<li>Code to analyze the data</li>
+</ul>
+<p>To make these ingredients even more tasty, we might want to have them nicely stored together. A way of doing this using the tools we discuss in this course is to think of data analysis projects as self-contained projects with all necessary ingredients. In RStudio, projects can help you organize your data and code in one place. You can also link your project to an online repository for others to access. In this chapter we will discuss the reproducible report as belonging to such a project. The online repository/sharing part will be discussed in the next chapter.</p>
+<section id="rstudio-projects-and-your-reproducible-report" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="rstudio-projects-and-your-reproducible-report"><span class="header-section-number">7.1</span> RStudio projects and your reproducible report</h2>
+<p>When you build an analysis in a R markdown or quarto file, R will use the folder that the file is in as the <strong>root directory</strong>. This directory (or folder) is the top directory in a file system. This means that R will look for data or other files used to generate the report in this folder structure. Think of this folder as <code>./</code> (confusing, I know! But bare with me!). Any sub-folders to the root directory can be called things like</p>
+<ul>
+<li><code>./data/</code> (a folder where you keep data files),</li>
+<li><code>./figures/</code> (a folder where you output figures from analyses).</li>
+</ul>
+<p>The R markdown file, being in the root directory will have the “address” <code>./my_rmarkdown_file.Rmd</code></p>
+<p>This has several advantages, as long as you stick to one rule: When doing an analysis, always use relative paths (“addresses” to files and folders). Never reference a folder or file by their absolute path. The absolute path for the file I’m writing in now is <code>/Users/Daniel1/Documents/projects/quant-methods/06-writing-reports.qmd</code>. The relative path is <code>./06-writing-reports.qmd</code>. When working in a “project” you may move the folder containing your project to other locations, but relative paths will not break.</p>
+<p>If you want to share your analysis, all you need to do is share the folder with all content with your friend. If you use relative paths, everything will work on your friends computer. If you use absolute paths, nothing will work, unless your friends computer uses a very similar folder structure (highly unlikely).</p>
+<p>RStudio projects makes it easy to jump back and forth between projects. The project menu (top right corner in RStudio) contains all your recent projects. When starting a new project, R will create a <code>.Rproj</code> file that contains the settings for your project. If you start a project and click this file, a settings menu will appear where you can customize settings for your particular project.</p>
+<p>What does this have to do with my quarto/RMarkdown file? As mentioned above, the source file is often written in a context where you have data and other files that help you create your desired output. By always working in a project makes it easy to keep every file in the right place.</p>
+</section>
+<section id="getting-started-with-r-projects" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="getting-started-with-r-projects"><span class="header-section-number">7.2</span> Getting started with R projects</h2>
+</section>
+<section id="authoring-reports-in-quarto" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="authoring-reports-in-quarto"><span class="header-section-number">7.3</span> Authoring reports in quarto</h2>
+<p>As mentioned before, we will focus on the more modern format for authoring reports in R, quarto. In this section we will introduce the basic building blocks of a report and how to put them together. We have already covered figures and tables, now its time to put the into context.</p>
+<section id="the-markdown-syntax" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="the-markdown-syntax"><span class="header-section-number">7.3.1</span> The Markdown syntax</h3>
+</section>
+<section id="code-chunks" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">7.3.2</span> Code chunks</h3>
+</section>
+<section id="references-footnotes-and-cross-referencing" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="references-footnotes-and-cross-referencing"><span class="header-section-number">7.3.3</span> References, footnotes and cross-referencing</h3>
+</section>
+</section>
+<section id="additional-files-and-folder-structures-in-a-complete-analysis-project" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="additional-files-and-folder-structures-in-a-complete-analysis-project"><span class="header-section-number">7.4</span> Additional files and folder structures in a complete analysis project</h2>
+<section id="the-readme-file" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="the-readme-file"><span class="header-section-number">7.4.1</span> The readme-file</h3>
+</section>
+<section id="resources" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="resources"><span class="header-section-number">7.4.2</span> <code>/resources</code></h3>
+</section>
+<section id="data" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="data"><span class="header-section-number">7.4.3</span> <code>/data</code></h3>
+</section>
+<section id="figures" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="figures"><span class="header-section-number">7.4.4</span> <code>/figures</code></h3>
+</section>
+<section id="r" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="r"><span class="header-section-number">7.4.5</span> <code>/R</code></h3>
 
 
 </section>
@@ -437,13 +480,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./05-first-tables.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-intro-to-data.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data science</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

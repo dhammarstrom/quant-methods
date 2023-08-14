@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -83,6 +83,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./06-writing-reports.html" rel="next">
 <link href="./04-first-graph.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -109,7 +110,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -131,7 +133,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-first-tables.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -189,6 +191,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-writing-reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -212,7 +220,8 @@ div.csl-indent {
   <li><a href="#starting-the-table-generator---the-gt-function." id="toc-starting-the-table-generator---the-gt-function." class="nav-link" data-scroll-target="#starting-the-table-generator---the-gt-function."><span class="header-section-number">6.2.5</span> Starting the table generator - The <code>gt()</code> function.</a></li>
   <li><a href="#working-with-tables-in-quarto" id="toc-working-with-tables-in-quarto" class="nav-link" data-scroll-target="#working-with-tables-in-quarto"><span class="header-section-number">6.2.6</span> Working with tables in quarto</a></li>
   </ul></li>
-  <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">6.3</span> References and footnotes</a></li>
+  <li><a href="#an-exercise-in-data-wrangling-and-tables" id="toc-an-exercise-in-data-wrangling-and-tables" class="nav-link" data-scroll-target="#an-exercise-in-data-wrangling-and-tables"><span class="header-section-number">6.3</span> An exercise in data wrangling and tables</a></li>
+  <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">6.4</span> References and footnotes</a></li>
   </ul>
 </nav>
     </div>
@@ -238,14 +247,14 @@ div.csl-indent {
 
 <section id="introduction" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
-<p>We can use tables to communicate a lot of information in a compact form while maintaining precision. This advantage is why creating tables is essential for effectively communicating data. We can easily create tables programmatically as part of an R markdown or quarto document. R has many packages that essentially work as “table generators” that translate your draft table to an output format of your choice. A great format to start authoring an analysis in is HTML; however, most “table generators” need to know your output format to be properly formatted and work in the output format. Tables are special since their creation depends more heavily on the output format than other elements of R markdown documents. For example, when using the <code>kable</code> function from the <code>knitr</code> package, you must specify if you want HTML or latex output. Word output is not possible using the <code>knitr</code> package, but other table generators, such as <code>flextable</code> or <code>gt</code>, <em>can</em> produce word output, meaning you can put tables in word documents from your R markdown or quarto file.</p>
+<p>We can use tables to communicate a lot of information in a compact form while maintaining precision. This advantage is why creating tables is essential for effectively communicating data. We can easily create tables programmatically as part of an R markdown or quarto document. R has many “table generator” packages that translate your draft table to an output format of your choice. A great format to start authoring an analysis in is HTML; however, most “table generators” need to know your output format to be properly formatted and work in the output format. Below we will introduce a new package for the purpose of creating tables. This package, <code>gt</code> has the advantage that it does not require the user to change code when we switch to another output format. The <code>gt</code> package can create tables in HTML, PDF and word format.</p>
 <p>Since we are concerned with reproducibility, we would like to avoid copy-and-paste operations. The strength of writing reports in R markdown or quarto is the ability to combine data, code, and text to produce a formatted output programmatically. Therefore, We will choose a table generator that allows for consistently selecting multiple formats. One such table generator is part of the <code>gt</code> package.</p>
-<p>As mentioned previously, authoring in R markdown and quarto makes little difference. However, we will now focus on the more modern file format, knowing that examples and tutorials written in R markdown will translate to quarto with few problems.</p>
+<p>As mentioned previously, authoring in R markdown and quarto makes little difference. However, we will now focus on the more modern file format, quarto, knowing that examples and tutorials written in R markdown will translate to quarto with few problems.</p>
 <p>The basic workflow of creating a table in R markdown or quarto is to transform the data into a nice format and then get this underlying data into the table generator. The table generator is written in a code chunk, and upon rendering the source file, the table generator will create, for example, HTML output. In this chapter, we will introduce some data-wrangling tools since the table we will produce consists of summarized data. The functions we introduce are found in the packages <code>dplyr</code> and <code>tidyr</code>. These packages are loaded as part of the <code>tidyverse</code> package.</p>
 <section id="resources" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="resources"><span class="header-section-number">6.1.1</span> Resources</h3>
 <p>All <code>tidyverse</code>packages are <a href="https://www.tidyverse.org/">well documented</a> and generally well represented in help forums. Google is your friend when looking for help.</p>
-<p>The <a href="https://gt.rstudio.com/"><code>gt</code> package</a> now a mature package for generating tables in R. This chapter is written on the basis of this package. If you are looking for alternatives, the <code>kable</code> function from the <code>knitr</code> package is described in a newly developed book, available online called <a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">the R Markdown Cookbook</a>. The package, <code>kableExtra</code> comes with excellent <a href="https://cran.r-project.org/web/packages/kableExtra/">vignettes</a> for both html and pdf outputs. <code>kableExtra</code> provides extra functions to customize your basic <code>knitr</code> table. Note that kabale and kableExtra will only produce output in HTML and pdf-formats. Another package the can create tables in HTML, pdf, and word formats is the <a href="https://ardata-fr.github.io/flextable-book/"><code>flextable</code> package</a></p>
+<p>The <a href="https://gt.rstudio.com/"><code>gt</code> package</a> is now a mature package for generating tables in R. This chapter is written on the basis of this package. If you are looking for alternatives, the <code>kable</code> function from the <code>knitr</code> package is described in a newly developed book, available online called <a href="https://bookdown.org/yihui/rmarkdown-cookbook/kable.html">the R Markdown Cookbook</a>. The package, <code>kableExtra</code> comes with excellent <a href="https://cran.r-project.org/web/packages/kableExtra/">vignettes</a> for both html and pdf outputs. <code>kableExtra</code> provides extra functions to customize your basic <code>knitr</code> table. Note that kabale and kableExtra will only produce output in HTML and pdf-formats. Another package the can create tables in HTML, pdf, and word formats is the <a href="https://ardata-fr.github.io/flextable-book/"><code>flextable</code> package</a></p>
 </section>
 </section>
 <section id="making-table-1" class="level2" data-number="6.2">
@@ -261,23 +270,23 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="tbl-table1-example" class="anchored">
 
-<div id="sndlxvzhvq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#sndlxvzhvq table {
+<div id="zlbtqyqagw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zlbtqyqagw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sndlxvzhvq thead, #sndlxvzhvq tbody, #sndlxvzhvq tfoot, #sndlxvzhvq tr, #sndlxvzhvq td, #sndlxvzhvq th {
+#zlbtqyqagw thead, #zlbtqyqagw tbody, #zlbtqyqagw tfoot, #zlbtqyqagw tr, #zlbtqyqagw td, #zlbtqyqagw th {
   border-style: none;
 }
 
-#sndlxvzhvq p {
+#zlbtqyqagw p {
   margin: 0;
   padding: 0;
 }
 
-#sndlxvzhvq .gt_table {
+#zlbtqyqagw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -303,12 +312,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_caption {
+#zlbtqyqagw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#sndlxvzhvq .gt_title {
+#zlbtqyqagw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -320,7 +329,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#sndlxvzhvq .gt_subtitle {
+#zlbtqyqagw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -332,7 +341,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#sndlxvzhvq .gt_heading {
+#zlbtqyqagw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -344,13 +353,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_bottom_border {
+#zlbtqyqagw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_col_headings {
+#zlbtqyqagw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -365,7 +374,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_col_heading {
+#zlbtqyqagw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -385,7 +394,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#sndlxvzhvq .gt_column_spanner_outer {
+#zlbtqyqagw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -397,15 +406,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#sndlxvzhvq .gt_column_spanner_outer:first-child {
+#zlbtqyqagw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sndlxvzhvq .gt_column_spanner_outer:last-child {
+#zlbtqyqagw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sndlxvzhvq .gt_column_spanner {
+#zlbtqyqagw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -417,11 +426,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#sndlxvzhvq .gt_spanner_row {
+#zlbtqyqagw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#sndlxvzhvq .gt_group_heading {
+#zlbtqyqagw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -447,7 +456,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#sndlxvzhvq .gt_empty_group_heading {
+#zlbtqyqagw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -462,15 +471,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#sndlxvzhvq .gt_from_md > :first-child {
+#zlbtqyqagw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sndlxvzhvq .gt_from_md > :last-child {
+#zlbtqyqagw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sndlxvzhvq .gt_row {
+#zlbtqyqagw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -489,7 +498,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#sndlxvzhvq .gt_stub {
+#zlbtqyqagw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -502,7 +511,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#sndlxvzhvq .gt_stub_row_group {
+#zlbtqyqagw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -516,15 +525,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#sndlxvzhvq .gt_row_group_first td {
+#zlbtqyqagw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sndlxvzhvq .gt_row_group_first th {
+#zlbtqyqagw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#sndlxvzhvq .gt_summary_row {
+#zlbtqyqagw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -534,16 +543,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#sndlxvzhvq .gt_first_summary_row {
+#zlbtqyqagw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_first_summary_row.thick {
+#zlbtqyqagw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sndlxvzhvq .gt_last_summary_row {
+#zlbtqyqagw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -553,7 +562,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_grand_summary_row {
+#zlbtqyqagw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -563,7 +572,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#sndlxvzhvq .gt_first_grand_summary_row {
+#zlbtqyqagw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -573,7 +582,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_last_grand_summary_row_top {
+#zlbtqyqagw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -583,11 +592,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_striped {
+#zlbtqyqagw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sndlxvzhvq .gt_table_body {
+#zlbtqyqagw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -596,7 +605,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_footnotes {
+#zlbtqyqagw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -610,7 +619,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_footnote {
+#zlbtqyqagw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -619,7 +628,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#sndlxvzhvq .gt_sourcenotes {
+#zlbtqyqagw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -633,7 +642,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#sndlxvzhvq .gt_sourcenote {
+#zlbtqyqagw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -641,63 +650,63 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#sndlxvzhvq .gt_left {
+#zlbtqyqagw .gt_left {
   text-align: left;
 }
 
-#sndlxvzhvq .gt_center {
+#zlbtqyqagw .gt_center {
   text-align: center;
 }
 
-#sndlxvzhvq .gt_right {
+#zlbtqyqagw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sndlxvzhvq .gt_font_normal {
+#zlbtqyqagw .gt_font_normal {
   font-weight: normal;
 }
 
-#sndlxvzhvq .gt_font_bold {
+#zlbtqyqagw .gt_font_bold {
   font-weight: bold;
 }
 
-#sndlxvzhvq .gt_font_italic {
+#zlbtqyqagw .gt_font_italic {
   font-style: italic;
 }
 
-#sndlxvzhvq .gt_super {
+#zlbtqyqagw .gt_super {
   font-size: 65%;
 }
 
-#sndlxvzhvq .gt_footnote_marks {
+#zlbtqyqagw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#sndlxvzhvq .gt_asterisk {
+#zlbtqyqagw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sndlxvzhvq .gt_indent_1 {
+#zlbtqyqagw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#sndlxvzhvq .gt_indent_2 {
+#zlbtqyqagw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#sndlxvzhvq .gt_indent_3 {
+#zlbtqyqagw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#sndlxvzhvq .gt_indent_4 {
+#zlbtqyqagw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#sndlxvzhvq .gt_indent_5 {
+#zlbtqyqagw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1265,679 +1274,188 @@ the `.groups` argument.</code></pre>
 <h3 data-number="6.2.5" class="anchored" data-anchor-id="starting-the-table-generator---the-gt-function."><span class="header-section-number">6.2.5</span> Starting the table generator - The <code>gt()</code> function.</h3>
 <p>The next step is to “pipe” everything into the table generator.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>dxadata <span class="sc">%&gt;%</span> <span class="co"># take the dxadata data set</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant, time, sex, include<span class="sc">:</span>weight, fat.whole) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select participant, time, sex, include to height and fat.whole</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter to keep all observations with pre</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate body fat</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fat.whole in grams, needs to be divided by 1000 to express as kg</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Multiply by 100 to get percentage</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fat.whole =</span> ((fat.whole<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">/</span> weight) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data frame and add a variable specifying the number of observations per group</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(include, sex) <span class="sc">%&gt;%</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Collect all variables for convenient summarizing</span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"variable"</span>, </span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>, </span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> age<span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a new grouping, adding variable</span></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(include, sex, variable) <span class="sc">%&gt;%</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Summarize in two new variables m for mean and s for SD</span></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(value), </span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add descriptive statistics together for nice formatting</span></span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ms =</span> <span class="fu">if_else</span>(variable <span class="sc">==</span> <span class="st">"n"</span>, <span class="co"># If the variable is n</span></span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">as.character</span>(m), <span class="co"># the only display the mean, otherwise:</span></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">paste0</span>(<span class="fu">signif</span>(m, <span class="dv">3</span>), <span class="co"># Use signif to round to significant numbers</span></span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>                        <span class="st">" ("</span>,</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">signif</span>(s, <span class="dv">3</span>), </span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>                        <span class="st">")"</span>)), </span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>         <span class="co"># Doing a new grouping variable</span></span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>         <span class="at">include_sex =</span> <span class="fu">paste</span>(include, sex, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># removing unnecessary variables after ungrouping</span></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>sex, <span class="sc">-</span>include, <span class="sc">-</span>m, <span class="sc">-</span>s) <span class="sc">%&gt;%</span></span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pivot wider to match the desired data</span></span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> include_sex, </span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> ms) <span class="sc">%&gt;%</span></span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">factor</span>(variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"age"</span>, <span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"fat.whole"</span>), </span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Age (years)"</span>, <span class="st">"Mass (kg)"</span>, </span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Stature (cm)"</span>, <span class="st">"Body fat (%)"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable) <span class="sc">%&gt;%</span></span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Piping into the table generator (gt)</span></span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'include', 'sex'. You can override using
-the `.groups` argument.</code></pre>
-</div>
-<div class="cell-output-display">
-
-<div id="xqyjfhdxvh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xqyjfhdxvh table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#xqyjfhdxvh thead, #xqyjfhdxvh tbody, #xqyjfhdxvh tfoot, #xqyjfhdxvh tr, #xqyjfhdxvh td, #xqyjfhdxvh th {
-  border-style: none;
-}
-
-#xqyjfhdxvh p {
-  margin: 0;
-  padding: 0;
-}
-
-#xqyjfhdxvh .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#xqyjfhdxvh .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#xqyjfhdxvh .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#xqyjfhdxvh .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#xqyjfhdxvh .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#xqyjfhdxvh .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#xqyjfhdxvh .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#xqyjfhdxvh .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#xqyjfhdxvh .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#xqyjfhdxvh .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#xqyjfhdxvh .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#xqyjfhdxvh .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#xqyjfhdxvh .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#xqyjfhdxvh .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#xqyjfhdxvh .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#xqyjfhdxvh .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#xqyjfhdxvh .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#xqyjfhdxvh .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#xqyjfhdxvh .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#xqyjfhdxvh .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#xqyjfhdxvh .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#xqyjfhdxvh .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#xqyjfhdxvh .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#xqyjfhdxvh .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#xqyjfhdxvh .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#xqyjfhdxvh .gt_left {
-  text-align: left;
-}
-
-#xqyjfhdxvh .gt_center {
-  text-align: center;
-}
-
-#xqyjfhdxvh .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#xqyjfhdxvh .gt_font_normal {
-  font-weight: normal;
-}
-
-#xqyjfhdxvh .gt_font_bold {
-  font-weight: bold;
-}
-
-#xqyjfhdxvh .gt_font_italic {
-  font-style: italic;
-}
-
-#xqyjfhdxvh .gt_super {
-  font-size: 65%;
-}
-
-#xqyjfhdxvh .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#xqyjfhdxvh .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#xqyjfhdxvh .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#xqyjfhdxvh .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#xqyjfhdxvh .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#xqyjfhdxvh .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#xqyjfhdxvh .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="variable">variable</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="excl_female">excl_female</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="excl_male">excl_male</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="incl_female">incl_female</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="incl_male">incl_male</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="variable" class="gt_row gt_center">N</td>
-<td headers="excl_female" class="gt_row gt_right">4</td>
-<td headers="excl_male" class="gt_row gt_right">3</td>
-<td headers="incl_female" class="gt_row gt_right">18</td>
-<td headers="incl_male" class="gt_row gt_right">16</td></tr>
-    <tr><td headers="variable" class="gt_row gt_center">Age (years)</td>
-<td headers="excl_female" class="gt_row gt_right">22.9 (1.57)</td>
-<td headers="excl_male" class="gt_row gt_right">24.3 (1.46)</td>
-<td headers="incl_female" class="gt_row gt_right">22 (1.25)</td>
-<td headers="incl_male" class="gt_row gt_right">23.6 (4.11)</td></tr>
-    <tr><td headers="variable" class="gt_row gt_center">Mass (kg)</td>
-<td headers="excl_female" class="gt_row gt_right">64.6 (9.71)</td>
-<td headers="excl_male" class="gt_row gt_right">88.2 (22.4)</td>
-<td headers="incl_female" class="gt_row gt_right">64.4 (10.4)</td>
-<td headers="incl_male" class="gt_row gt_right">75.8 (10.7)</td></tr>
-    <tr><td headers="variable" class="gt_row gt_center">Stature (cm)</td>
-<td headers="excl_female" class="gt_row gt_right">166 (7.59)</td>
-<td headers="excl_male" class="gt_row gt_right">189 (4.58)</td>
-<td headers="incl_female" class="gt_row gt_right">168 (6.87)</td>
-<td headers="incl_male" class="gt_row gt_right">183 (5.88)</td></tr>
-    <tr><td headers="variable" class="gt_row gt_center">Body fat (%)</td>
-<td headers="excl_female" class="gt_row gt_right">28.8 (8.69)</td>
-<td headers="excl_male" class="gt_row gt_right">24.3 (15.3)</td>
-<td headers="incl_female" class="gt_row gt_right">34.1 (5.64)</td>
-<td headers="incl_male" class="gt_row gt_right">20.4 (5.99)</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dxadata <span class="sc">%&gt;%</span> <span class="co"># take the dxadata data set</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant, time, sex, include<span class="sc">:</span>weight, fat.whole) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select participant, time, sex, include to height and fat.whole</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter to keep all observations with pre</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate body fat</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fat.whole in grams, needs to be divided by 1000 to express as kg</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Multiply by 100 to get percentage</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fat.whole =</span> ((fat.whole<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">/</span> weight) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data frame and add a variable specifying the number of observations per group</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(include, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Collect all variables for convenient summarizing</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"variable"</span>, </span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>, </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> age<span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a new grouping, adding variable</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(include, sex, variable) <span class="sc">%&gt;%</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Summarize in two new variables m for mean and s for SD</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(value), </span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add descriptive statistics together for nice formatting</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ms =</span> <span class="fu">if_else</span>(variable <span class="sc">==</span> <span class="st">"n"</span>, <span class="co"># If the variable is n</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">as.character</span>(m), <span class="co"># the only display the mean, otherwise:</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">paste0</span>(<span class="fu">signif</span>(m, <span class="dv">3</span>), <span class="co"># Use signif to round to significant numbers</span></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>                        <span class="st">" ("</span>,</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">signif</span>(s, <span class="dv">3</span>), </span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>                        <span class="st">")"</span>)), </span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>         <span class="co"># Doing a new grouping variable</span></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>         <span class="at">include_sex =</span> <span class="fu">paste</span>(include, sex, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># removing unnecessary variables after ungrouping</span></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>sex, <span class="sc">-</span>include, <span class="sc">-</span>m, <span class="sc">-</span>s) <span class="sc">%&gt;%</span></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pivot wider to match the desired data</span></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> include_sex, </span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> ms) <span class="sc">%&gt;%</span></span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">factor</span>(variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"age"</span>, <span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"fat.whole"</span>), </span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Age (years)"</span>, <span class="st">"Mass (kg)"</span>, </span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Stature (cm)"</span>, <span class="st">"Body fat (%)"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Piping into the table generator (gt)</span></span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As per our strategy to first summarize and set up the data table, we already have nice first draft. However, we need to format variable names and add column labels. We can also add a footnote.</p>
 <p>The <code>gt</code> package has several functions for manipulating the raw tables created with the <code>gt()</code> function. The <code>gt</code> package also use a consistent vocabulary for tables as seen in <a href="#fig-gt-parts">Figure&nbsp;<span>6.1</span></a>.</p>
 <div id="fig-gt-parts" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: Nomenclature for parts of a gt table (source: https://gt.rstudio.com/)</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;6.1: Nomenclature for parts of a gt table (source: https://gt.rstudio.com/)</figcaption>
 </figure>
 </div>
 <p>First, using <code>tab_footnote()</code> we can add the footnote indicating that “Values are mean and (SD)”. We do this by piping the whole table, created with <code>gt()</code> into <code>tab_footnote(footnote = "Values are mean and (SD)")</code>. We have two columns representing females and two representing males, these can be more clearly separated by adding a spanner column label. This column label adds rows to the table. Using <code>tab_spanner(label = "Female", columns = c("female_incl", "female_excl"))</code> we add “Female” above the two columns representing females. We can do the same for males. Using <code>cols_label()</code> we specify new column names to match what we want. The resulting full code can be seen below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dxadata <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant, time, sex, include<span class="sc">:</span>weight, fat.whole) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fat.whole =</span> ((fat.whole <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">/</span> weight) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, include) <span class="sc">%&gt;%</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span>  <span class="st">"variable"</span>, </span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>, </span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> age<span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, include, variable) <span class="sc">%&gt;%</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(value), </span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">signif</span>(m, <span class="at">digits =</span> <span class="dv">3</span>), </span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">s =</span> <span class="fu">signif</span>(s, <span class="at">digits =</span> <span class="dv">2</span>), </span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">ms =</span> <span class="fu">if_else</span>(variable <span class="sc">==</span> <span class="st">"n"</span>, <span class="fu">as.character</span>(m), <span class="fu">paste0</span>(m, <span class="st">" ("</span>, s, <span class="st">")"</span>)), </span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">sex_incl =</span> <span class="fu">paste</span>(sex, include, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>m, <span class="sc">-</span>s, <span class="sc">-</span> sex, <span class="sc">-</span>include) <span class="sc">%&gt;%</span></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex_incl, </span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> ms) <span class="sc">%&gt;%</span></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, female_incl, female_excl, male_incl, male_excl) <span class="sc">%&gt;%</span></span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">factor</span>(variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"age"</span>, <span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"fat.whole"</span>), </span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Age (years)"</span>, <span class="st">"Mass (kg)"</span>, </span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Stature (cm)"</span>, <span class="st">"Body fat (%)"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable) <span class="sc">%&gt;%</span></span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="st">"Values are mean and (SD)"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Female"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"female_incl"</span>, <span class="st">"female_excl"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Male"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"male_incl"</span>, <span class="st">"male_excl"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">variable =</span> <span class="st">" "</span>, </span>
-<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">female_incl =</span> <span class="st">"Included"</span>, </span>
-<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">female_excl =</span> <span class="st">"Excluded"</span>, </span>
-<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>             <span class="at">male_incl =</span> <span class="st">"Included"</span>, </span>
-<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">male_excl =</span> <span class="st">"Excluded"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dxadata <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant, time, sex, include<span class="sc">:</span>weight, fat.whole) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fat.whole =</span> ((fat.whole <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">/</span> weight) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, include) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span>  <span class="st">"variable"</span>, </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>, </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> age<span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, include, variable) <span class="sc">%&gt;%</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(value), </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">signif</span>(m, <span class="at">digits =</span> <span class="dv">3</span>), </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">s =</span> <span class="fu">signif</span>(s, <span class="at">digits =</span> <span class="dv">2</span>), </span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">ms =</span> <span class="fu">if_else</span>(variable <span class="sc">==</span> <span class="st">"n"</span>, <span class="fu">as.character</span>(m), <span class="fu">paste0</span>(m, <span class="st">" ("</span>, s, <span class="st">")"</span>)), </span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">sex_incl =</span> <span class="fu">paste</span>(sex, include, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>m, <span class="sc">-</span>s, <span class="sc">-</span> sex, <span class="sc">-</span>include) <span class="sc">%&gt;%</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex_incl, </span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> ms) <span class="sc">%&gt;%</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, female_incl, female_excl, male_incl, male_excl) <span class="sc">%&gt;%</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">factor</span>(variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"age"</span>, <span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"fat.whole"</span>), </span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Age (years)"</span>, <span class="st">"Mass (kg)"</span>, </span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Stature (cm)"</span>, <span class="st">"Body fat (%)"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="st">"Values are mean and (SD)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Female"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"female_incl"</span>, <span class="st">"female_excl"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Male"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"male_incl"</span>, <span class="st">"male_excl"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">variable =</span> <span class="st">" "</span>, </span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">female_incl =</span> <span class="st">"Included"</span>, </span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">female_excl =</span> <span class="st">"Excluded"</span>, </span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>             <span class="at">male_incl =</span> <span class="st">"Included"</span>, </span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">male_excl =</span> <span class="st">"Excluded"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="working-with-tables-in-quarto" class="level3" data-number="6.2.6">
 <h3 data-number="6.2.6" class="anchored" data-anchor-id="working-with-tables-in-quarto"><span class="header-section-number">6.2.6</span> Working with tables in quarto</h3>
 <p>If we where to use this table in a report created with quarto we would like to be able to cross-reference it. This will work if we add information to the code chunk where the table is created. More specifically we need to set a table label and a table caption. Quarto has built in support for cross referencing figures and tables. Adding chunk options that sets a label and table caption will make it possible to reference the table. Note that the label must start with “tbl-” to make quarto identify it as a table.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-participant-characteristics</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Participant characteristics"</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>dxadata <span class="sc">%&gt;%</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(participant, time, sex, include<span class="sc">:</span>weight, fat.whole) <span class="sc">%&gt;%</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">fat.whole =</span> ((fat.whole <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">/</span> weight) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(sex, include) <span class="sc">%&gt;%</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(<span class="at">names_to =</span>  <span class="st">"variable"</span>, </span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">values_to =</span> <span class="st">"value"</span>, </span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">cols =</span> age<span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(sex, include, variable) <span class="sc">%&gt;%</span></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(value), </span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">s =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">signif</span>(m, <span class="at">digits =</span> <span class="dv">3</span>), </span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">s =</span> <span class="fu">signif</span>(s, <span class="at">digits =</span> <span class="dv">2</span>), </span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">ms =</span> <span class="fu">if_else</span>(variable <span class="sc">==</span> <span class="st">"n"</span>, <span class="fu">as.character</span>(m), <span class="fu">paste0</span>(m, <span class="st">" ("</span>, s, <span class="st">")"</span>)), </span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">sex_incl =</span> <span class="fu">paste</span>(sex, include, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>m, <span class="sc">-</span>s, <span class="sc">-</span> sex, <span class="sc">-</span>include) <span class="sc">%&gt;%</span></span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex_incl, </span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">values_from =</span> ms) <span class="sc">%&gt;%</span></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(variable, female_incl, female_excl, male_incl, male_excl) <span class="sc">%&gt;%</span></span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">factor</span>(variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"age"</span>, <span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"fat.whole"</span>), </span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Age (years)"</span>, <span class="st">"Mass (kg)"</span>, </span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"Stature (cm)"</span>, <span class="st">"Body fat (%)"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(variable) <span class="sc">%&gt;%</span></span>
-<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="st">"Values are mean and (SD)"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Female"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"female_incl"</span>, <span class="st">"female_excl"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Male"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"male_incl"</span>, <span class="st">"male_excl"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a><span class="fu">cols_label</span>(<span class="at">variable =</span> <span class="st">" "</span>, </span>
-<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">female_incl =</span> <span class="st">"Included"</span>, </span>
-<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>           <span class="at">female_excl =</span> <span class="st">"Excluded"</span>, </span>
-<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>           <span class="at">male_incl =</span> <span class="st">"Included"</span>, </span>
-<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>           <span class="at">male_excl =</span> <span class="st">"Excluded"</span>)</span>
-<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>           </span>
-<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-participant-characteristics</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Participant characteristics"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>dxadata <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(participant, time, sex, include<span class="sc">:</span>weight, fat.whole) <span class="sc">%&gt;%</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">fat.whole =</span> ((fat.whole <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">/</span> weight) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(sex, include) <span class="sc">%&gt;%</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(<span class="at">names_to =</span>  <span class="st">"variable"</span>, </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">values_to =</span> <span class="st">"value"</span>, </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">cols =</span> age<span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(sex, include, variable) <span class="sc">%&gt;%</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(value), </span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">s =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">signif</span>(m, <span class="at">digits =</span> <span class="dv">3</span>), </span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">s =</span> <span class="fu">signif</span>(s, <span class="at">digits =</span> <span class="dv">2</span>), </span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">ms =</span> <span class="fu">if_else</span>(variable <span class="sc">==</span> <span class="st">"n"</span>, <span class="fu">as.character</span>(m), <span class="fu">paste0</span>(m, <span class="st">" ("</span>, s, <span class="st">")"</span>)), </span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">sex_incl =</span> <span class="fu">paste</span>(sex, include, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>m, <span class="sc">-</span>s, <span class="sc">-</span> sex, <span class="sc">-</span>include) <span class="sc">%&gt;%</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex_incl, </span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">values_from =</span> ms) <span class="sc">%&gt;%</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(variable, female_incl, female_excl, male_incl, male_excl) <span class="sc">%&gt;%</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">factor</span>(variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"age"</span>, <span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"fat.whole"</span>), </span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Age (years)"</span>, <span class="st">"Mass (kg)"</span>, </span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"Stature (cm)"</span>, <span class="st">"Body fat (%)"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="st">"Values are mean and (SD)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Female"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"female_incl"</span>, <span class="st">"female_excl"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Male"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"male_incl"</span>, <span class="st">"male_excl"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a><span class="fu">cols_label</span>(<span class="at">variable =</span> <span class="st">" "</span>, </span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">female_incl =</span> <span class="st">"Included"</span>, </span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>           <span class="at">female_excl =</span> <span class="st">"Excluded"</span>, </span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>           <span class="at">male_incl =</span> <span class="st">"Included"</span>, </span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>           <span class="at">male_excl =</span> <span class="st">"Excluded"</span>)</span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>           </span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The above code will produce referable table, as seen in <a href="#tbl-table2">Table&nbsp;<span>6.2</span></a>!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>  dxadata <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant, time, sex, include<span class="sc">:</span>weight, fat.whole) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fat.whole =</span> ((fat.whole <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">/</span> weight) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, include) <span class="sc">%&gt;%</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span>  <span class="st">"variable"</span>, </span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>, </span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> age<span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, include, variable) <span class="sc">%&gt;%</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(value), </span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">signif</span>(m, <span class="at">digits =</span> <span class="dv">3</span>), </span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">s =</span> <span class="fu">signif</span>(s, <span class="at">digits =</span> <span class="dv">2</span>), </span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">ms =</span> <span class="fu">if_else</span>(variable <span class="sc">==</span> <span class="st">"n"</span>, <span class="fu">as.character</span>(m), <span class="fu">paste0</span>(m, <span class="st">" ("</span>, s, <span class="st">")"</span>)), </span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">sex_incl =</span> <span class="fu">paste</span>(sex, include, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>m, <span class="sc">-</span>s, <span class="sc">-</span> sex, <span class="sc">-</span>include) <span class="sc">%&gt;%</span></span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex_incl, </span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> ms) <span class="sc">%&gt;%</span></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, female_incl, female_excl, male_incl, male_excl) <span class="sc">%&gt;%</span></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">factor</span>(variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"age"</span>, <span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"fat.whole"</span>), </span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Age (years)"</span>, <span class="st">"Mass (kg)"</span>, </span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Stature (cm)"</span>, <span class="st">"Body fat (%)"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable) <span class="sc">%&gt;%</span></span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="st">"Values are mean and (SD)"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Female"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"female_incl"</span>, <span class="st">"female_excl"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Male"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"male_incl"</span>, <span class="st">"male_excl"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">variable =</span> <span class="st">" "</span>, </span>
-<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">female_incl =</span> <span class="st">"Included"</span>, </span>
-<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">female_excl =</span> <span class="st">"Excluded"</span>, </span>
-<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>             <span class="at">male_incl =</span> <span class="st">"Included"</span>, </span>
-<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">male_excl =</span> <span class="st">"Excluded"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>  dxadata <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(participant, time, sex, include<span class="sc">:</span>weight, fat.whole) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fat.whole =</span> ((fat.whole <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">/</span> weight) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, include) <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span>  <span class="st">"variable"</span>, </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">cols =</span> age<span class="sc">:</span>n) <span class="sc">%&gt;%</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, include, variable) <span class="sc">%&gt;%</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(value), </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(value)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m =</span> <span class="fu">signif</span>(m, <span class="at">digits =</span> <span class="dv">3</span>), </span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">s =</span> <span class="fu">signif</span>(s, <span class="at">digits =</span> <span class="dv">2</span>), </span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">ms =</span> <span class="fu">if_else</span>(variable <span class="sc">==</span> <span class="st">"n"</span>, <span class="fu">as.character</span>(m), <span class="fu">paste0</span>(m, <span class="st">" ("</span>, s, <span class="st">")"</span>)), </span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">sex_incl =</span> <span class="fu">paste</span>(sex, include, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>m, <span class="sc">-</span>s, <span class="sc">-</span> sex, <span class="sc">-</span>include) <span class="sc">%&gt;%</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex_incl, </span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> ms) <span class="sc">%&gt;%</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, female_incl, female_excl, male_incl, male_excl) <span class="sc">%&gt;%</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">factor</span>(variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"age"</span>, <span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"fat.whole"</span>), </span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"Age (years)"</span>, <span class="st">"Mass (kg)"</span>, </span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">"Stature (cm)"</span>, <span class="st">"Body fat (%)"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="st">"Values are mean and (SD)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Female"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"female_incl"</span>, <span class="st">"female_excl"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(<span class="at">label =</span> <span class="st">"Male"</span>, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"male_incl"</span>, <span class="st">"male_excl"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">variable =</span> <span class="st">" "</span>, </span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">female_incl =</span> <span class="st">"Included"</span>, </span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">female_excl =</span> <span class="st">"Excluded"</span>, </span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>             <span class="at">male_incl =</span> <span class="st">"Included"</span>, </span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>             <span class="at">male_excl =</span> <span class="st">"Excluded"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'sex', 'include'. You can override using
 the `.groups` argument.</code></pre>
@@ -1945,23 +1463,23 @@ the `.groups` argument.</code></pre>
 <div class="cell-output-display">
 <div id="tbl-table2" class="anchored">
 
-<div id="ckgxsayhrk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ckgxsayhrk table {
+<div id="rvltxqlofw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rvltxqlofw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ckgxsayhrk thead, #ckgxsayhrk tbody, #ckgxsayhrk tfoot, #ckgxsayhrk tr, #ckgxsayhrk td, #ckgxsayhrk th {
+#rvltxqlofw thead, #rvltxqlofw tbody, #rvltxqlofw tfoot, #rvltxqlofw tr, #rvltxqlofw td, #rvltxqlofw th {
   border-style: none;
 }
 
-#ckgxsayhrk p {
+#rvltxqlofw p {
   margin: 0;
   padding: 0;
 }
 
-#ckgxsayhrk .gt_table {
+#rvltxqlofw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1987,12 +1505,12 @@ the `.groups` argument.</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_caption {
+#rvltxqlofw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ckgxsayhrk .gt_title {
+#rvltxqlofw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2004,7 +1522,7 @@ the `.groups` argument.</code></pre>
   border-bottom-width: 0;
 }
 
-#ckgxsayhrk .gt_subtitle {
+#rvltxqlofw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2016,7 +1534,7 @@ the `.groups` argument.</code></pre>
   border-top-width: 0;
 }
 
-#ckgxsayhrk .gt_heading {
+#rvltxqlofw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2028,13 +1546,13 @@ the `.groups` argument.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_bottom_border {
+#rvltxqlofw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_col_headings {
+#rvltxqlofw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2049,7 +1567,7 @@ the `.groups` argument.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_col_heading {
+#rvltxqlofw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2069,7 +1587,7 @@ the `.groups` argument.</code></pre>
   overflow-x: hidden;
 }
 
-#ckgxsayhrk .gt_column_spanner_outer {
+#rvltxqlofw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2081,15 +1599,15 @@ the `.groups` argument.</code></pre>
   padding-right: 4px;
 }
 
-#ckgxsayhrk .gt_column_spanner_outer:first-child {
+#rvltxqlofw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ckgxsayhrk .gt_column_spanner_outer:last-child {
+#rvltxqlofw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ckgxsayhrk .gt_column_spanner {
+#rvltxqlofw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2101,11 +1619,11 @@ the `.groups` argument.</code></pre>
   width: 100%;
 }
 
-#ckgxsayhrk .gt_spanner_row {
+#rvltxqlofw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ckgxsayhrk .gt_group_heading {
+#rvltxqlofw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2131,7 +1649,7 @@ the `.groups` argument.</code></pre>
   text-align: left;
 }
 
-#ckgxsayhrk .gt_empty_group_heading {
+#rvltxqlofw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2146,15 +1664,15 @@ the `.groups` argument.</code></pre>
   vertical-align: middle;
 }
 
-#ckgxsayhrk .gt_from_md > :first-child {
+#rvltxqlofw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ckgxsayhrk .gt_from_md > :last-child {
+#rvltxqlofw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ckgxsayhrk .gt_row {
+#rvltxqlofw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2173,7 +1691,7 @@ the `.groups` argument.</code></pre>
   overflow-x: hidden;
 }
 
-#ckgxsayhrk .gt_stub {
+#rvltxqlofw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2186,7 +1704,7 @@ the `.groups` argument.</code></pre>
   padding-right: 5px;
 }
 
-#ckgxsayhrk .gt_stub_row_group {
+#rvltxqlofw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2200,15 +1718,15 @@ the `.groups` argument.</code></pre>
   vertical-align: top;
 }
 
-#ckgxsayhrk .gt_row_group_first td {
+#rvltxqlofw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ckgxsayhrk .gt_row_group_first th {
+#rvltxqlofw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ckgxsayhrk .gt_summary_row {
+#rvltxqlofw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2218,16 +1736,16 @@ the `.groups` argument.</code></pre>
   padding-right: 5px;
 }
 
-#ckgxsayhrk .gt_first_summary_row {
+#rvltxqlofw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_first_summary_row.thick {
+#rvltxqlofw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ckgxsayhrk .gt_last_summary_row {
+#rvltxqlofw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2237,7 +1755,7 @@ the `.groups` argument.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_grand_summary_row {
+#rvltxqlofw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2247,7 +1765,7 @@ the `.groups` argument.</code></pre>
   padding-right: 5px;
 }
 
-#ckgxsayhrk .gt_first_grand_summary_row {
+#rvltxqlofw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2257,7 +1775,7 @@ the `.groups` argument.</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_last_grand_summary_row_top {
+#rvltxqlofw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2267,11 +1785,11 @@ the `.groups` argument.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_striped {
+#rvltxqlofw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ckgxsayhrk .gt_table_body {
+#rvltxqlofw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2280,7 +1798,7 @@ the `.groups` argument.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_footnotes {
+#rvltxqlofw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2294,7 +1812,7 @@ the `.groups` argument.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_footnote {
+#rvltxqlofw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2303,7 +1821,7 @@ the `.groups` argument.</code></pre>
   padding-right: 5px;
 }
 
-#ckgxsayhrk .gt_sourcenotes {
+#rvltxqlofw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2317,7 +1835,7 @@ the `.groups` argument.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ckgxsayhrk .gt_sourcenote {
+#rvltxqlofw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2325,63 +1843,63 @@ the `.groups` argument.</code></pre>
   padding-right: 5px;
 }
 
-#ckgxsayhrk .gt_left {
+#rvltxqlofw .gt_left {
   text-align: left;
 }
 
-#ckgxsayhrk .gt_center {
+#rvltxqlofw .gt_center {
   text-align: center;
 }
 
-#ckgxsayhrk .gt_right {
+#rvltxqlofw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ckgxsayhrk .gt_font_normal {
+#rvltxqlofw .gt_font_normal {
   font-weight: normal;
 }
 
-#ckgxsayhrk .gt_font_bold {
+#rvltxqlofw .gt_font_bold {
   font-weight: bold;
 }
 
-#ckgxsayhrk .gt_font_italic {
+#rvltxqlofw .gt_font_italic {
   font-style: italic;
 }
 
-#ckgxsayhrk .gt_super {
+#rvltxqlofw .gt_super {
   font-size: 65%;
 }
 
-#ckgxsayhrk .gt_footnote_marks {
+#rvltxqlofw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ckgxsayhrk .gt_asterisk {
+#rvltxqlofw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ckgxsayhrk .gt_indent_1 {
+#rvltxqlofw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ckgxsayhrk .gt_indent_2 {
+#rvltxqlofw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ckgxsayhrk .gt_indent_3 {
+#rvltxqlofw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ckgxsayhrk .gt_indent_4 {
+#rvltxqlofw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ckgxsayhrk .gt_indent_5 {
+#rvltxqlofw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2444,13 +1962,572 @@ the `.groups` argument.</code></pre>
 </div>
 </section>
 </section>
-<section id="references-and-footnotes" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="references-and-footnotes"><span class="header-section-number">6.3</span> References and footnotes</h2>
+<section id="an-exercise-in-data-wrangling-and-tables" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="an-exercise-in-data-wrangling-and-tables"><span class="header-section-number">6.3</span> An exercise in data wrangling and tables</h2>
+<p>In total 30 college students performed a heavy-resistance training protocol where training volume was constantly increased over six weeks. In <span class="citation" data-cites="RN2149">(<a href="#ref-RN2149" role="doc-biblioref">Haun et al. 2018</a>)</span>, a part of the study, focusing on supplementation was reported. In <span class="citation" data-cites="RN2225">(<a href="#ref-RN2225" role="doc-biblioref">Haun et al. 2019</a>)</span>, participants were divided into two clusters based on training responses and the authors aimed to answer the question what separates high- from low-responders to resistance training.</p>
+<p>In this exercise we want to reproduce a big part of Table 1 in <span class="citation" data-cites="RN2225">(<a href="#ref-RN2225" role="doc-biblioref">Haun et al. 2019</a>)</span>. The Table as re-produced here can be seen below. See the original article for explanation of clusters. To select variables, see the data description in the <code>exscidata</code> package, the data set is called <code>hypertrophy</code>.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="azlzxcuovx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#azlzxcuovx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#azlzxcuovx thead, #azlzxcuovx tbody, #azlzxcuovx tfoot, #azlzxcuovx tr, #azlzxcuovx td, #azlzxcuovx th {
+  border-style: none;
+}
+
+#azlzxcuovx p {
+  margin: 0;
+  padding: 0;
+}
+
+#azlzxcuovx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#azlzxcuovx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#azlzxcuovx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#azlzxcuovx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#azlzxcuovx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#azlzxcuovx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#azlzxcuovx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#azlzxcuovx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#azlzxcuovx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#azlzxcuovx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#azlzxcuovx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#azlzxcuovx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#azlzxcuovx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#azlzxcuovx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#azlzxcuovx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#azlzxcuovx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#azlzxcuovx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#azlzxcuovx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#azlzxcuovx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#azlzxcuovx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#azlzxcuovx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#azlzxcuovx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#azlzxcuovx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#azlzxcuovx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#azlzxcuovx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#azlzxcuovx .gt_left {
+  text-align: left;
+}
+
+#azlzxcuovx .gt_center {
+  text-align: center;
+}
+
+#azlzxcuovx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#azlzxcuovx .gt_font_normal {
+  font-weight: normal;
+}
+
+#azlzxcuovx .gt_font_bold {
+  font-weight: bold;
+}
+
+#azlzxcuovx .gt_font_italic {
+  font-style: italic;
+}
+
+#azlzxcuovx .gt_super {
+  font-size: 65%;
+}
+
+#azlzxcuovx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#azlzxcuovx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#azlzxcuovx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#azlzxcuovx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#azlzxcuovx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#azlzxcuovx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#azlzxcuovx .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption><p>Baseline characteristics at PRE and back squat training volume
+between clusters</p></caption>
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id=" "> </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="HIGH (n = 10)">HIGH (n = 10)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="LOW (n = 10)">LOW (n = 10)</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="variable" class="gt_row gt_center">Age (years)</td>
+<td headers="HIGH" class="gt_row gt_right">20.9 (1.9)</td>
+<td headers="LOW" class="gt_row gt_right">21.5 (1)</td></tr>
+    <tr><td headers="variable" class="gt_row gt_center">Training age (years)</td>
+<td headers="HIGH" class="gt_row gt_right">5.5 (2.3)</td>
+<td headers="LOW" class="gt_row gt_right">5.5 (2)</td></tr>
+    <tr><td headers="variable" class="gt_row gt_center">Body mass (kg)</td>
+<td headers="HIGH" class="gt_row gt_right">78.8 (8)</td>
+<td headers="LOW" class="gt_row gt_right">83.1 (12.8)</td></tr>
+    <tr><td headers="variable" class="gt_row gt_center">DXA LBM (kg)</td>
+<td headers="HIGH" class="gt_row gt_right">62.2 (5.9)</td>
+<td headers="LOW" class="gt_row gt_right">65.1 (9.7)</td></tr>
+    <tr><td headers="variable" class="gt_row gt_center">DXA FM (kg)</td>
+<td headers="HIGH" class="gt_row gt_right">13.5 (4.9)</td>
+<td headers="LOW" class="gt_row gt_right">14.5 (4.9)</td></tr>
+    <tr><td headers="variable" class="gt_row gt_center">Type II fiber (%)</td>
+<td headers="HIGH" class="gt_row gt_right">59.4 (16.9)</td>
+<td headers="LOW" class="gt_row gt_right">50.2 (13.6)</td></tr>
+    <tr><td headers="variable" class="gt_row gt_center">3RM back squat (kg)</td>
+<td headers="HIGH" class="gt_row gt_right">127 (23.3)</td>
+<td headers="LOW" class="gt_row gt_right">135.4 (14.1)</td></tr>
+    <tr><td headers="variable" class="gt_row gt_center">Total back squat training volume (kg)</td>
+<td headers="HIGH" class="gt_row gt_right">106610.2 (18679.4)</td>
+<td headers="LOW" class="gt_row gt_right">111820.8 (12962.5)</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="3"> Values are mean and (SD)</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+</div>
+<a id="displayText" href="javascript:toggle(1);">Click for a possible solution</a>
+<div id="toggleText1" style="display: none">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the data</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(hypertrophy)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>hypertrophy <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the variables needed to reproduce the table</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(PARTICIPANT, </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                GROUP, </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                CLUSTER,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>                AGE, </span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>                BODYMASS_T1, </span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>                TRAINING_AGE,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>                PERCENT_TYPE_II_T1, </span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>                SQUAT_3RM, </span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>                DXA_LBM_T1,</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>                DXA_FM_T1, </span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>                SQUAT_VOLUME) <span class="sc">%&gt;%</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pivot longer to gather all variables</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> AGE<span class="sc">:</span>SQUAT_VOLUME, <span class="at">names_to =</span> <span class="st">"variable"</span>, <span class="at">values_to =</span> <span class="st">"values"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove participants not belonging to a cluster</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(CLUSTER)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a grouping before summarizing</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(CLUSTER, variable) <span class="sc">%&gt;%</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(values), </span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(values)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># For nice printing, paste mean and SD </span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">m.s =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(m,<span class="dv">1</span>), <span class="st">" ("</span>, <span class="fu">round</span>(s,<span class="dv">1</span>), <span class="st">")"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select only variables needed for the table</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(CLUSTER, variable, m.s) <span class="sc">%&gt;%</span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Transform the data set to a wide format based on clusters</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> CLUSTER, <span class="at">values_from =</span> m.s) <span class="sc">%&gt;%</span></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Re-arrange the "variable" variable, correct order with levels, and correct labels</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">factor</span>(variable, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"AGE"</span>,</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"TRAINING_AGE"</span>, </span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"BODYMASS_T1"</span>, </span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"DXA_LBM_T1"</span>, </span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"DXA_FM_T1"</span>, </span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"PERCENT_TYPE_II_T1"</span>, </span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"SQUAT_3RM"</span>, </span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"SQUAT_VOLUME"</span>), </span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Age (years)"</span>, </span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"Training age (years)"</span>, </span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"Body mass (kg)"</span>, </span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"DXA LBM (kg)"</span>, </span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"DXA FM (kg)"</span>, </span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"Type II fiber (%)"</span>, </span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"3RM back squat (kg)"</span>, </span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"Total back squat training volume (kg)"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sort/order the dataset</span></span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use gt to output the table with appropriate caption and column names. </span></span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">variable =</span> <span class="st">" "</span>, <span class="at">HIGH =</span> <span class="st">"HIGH (n = 10)"</span>, <span class="at">LOW =</span> <span class="st">"LOW (n = 10)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_footnote</span>(<span class="at">footnote =</span> <span class="st">"Values are mean and (SD)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="references-and-footnotes" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="references-and-footnotes"><span class="header-section-number">6.4</span> References and footnotes</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-RN2358" class="csl-entry" role="listitem">
 Hammarström, Daniel, Sjur Øfsteng, Lise Koll, Marita Hanestadhaugen, Ivana Hollan, William Apró, Jon Elling Whist, Eva Blomstrand, Bent R. Rønnestad, and Stian Ellefsen. 2020. <span>“Benefits of Higher Resistance-Training Volume Are Related to Ribosome Biogenesis.”</span> Journal Article. <em>The Journal of Physiology</em> 598 (3): 543–65. <a href="https://doi.org/10.1113/JP278455">https://doi.org/10.1113/JP278455</a>.
+</div>
+<div id="ref-RN2225" class="csl-entry" role="listitem">
+Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Paul A. Roberson, Matthew A. Romero, et al. 2019. <span>“Pre-Training Skeletal Muscle Fiber Size and Predominant Fiber Type Best Predict Hypertrophic Responses to 6 Weeks of Resistance Training in Previously Trained Young Men.”</span> Journal Article. <em>Frontiers in Physiology</em> 10 (297). <a href="https://doi.org/10.3389/fphys.2019.00297">https://doi.org/10.3389/fphys.2019.00297</a>.
+</div>
+<div id="ref-RN2149" class="csl-entry" role="listitem">
+Haun, C. T., C. G. Vann, C. B. Mobley, P. A. Roberson, S. C. Osburn, H. M. Holmes, P. M. Mumford, et al. 2018. <span>“Effects of Graded Whey Supplementation During Extreme-Volume Resistance Training.”</span> Journal Article. <em>Front Nutr</em> 5: 84. <a href="https://doi.org/10.3389/fnut.2018.00084">https://doi.org/10.3389/fnut.2018.00084</a>.
 </div>
 </div>
 </section>
@@ -2702,6 +2779,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./06-writing-reports.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
