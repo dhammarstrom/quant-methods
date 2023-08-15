@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantitative methods and statistics (In Sport and Exercise Science) - 8&nbsp; Version control and collaborative coding – introducing git and github.com</title>
+<title>Quantitative methods and statistics (In Sport and Exercise Science) - 8&nbsp; Version control and collaboration</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,10 +36,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -56,7 +58,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -73,10 +76,10 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-version-control-git.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaborative coding – introducing git and github.com</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-version-control-git.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -89,6 +92,11 @@ ul.task-list li input[type="checkbox"] {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/dhammarstrom/quant-methods" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Quantitative-methods-and-statistics--In-Sport-and-Exercise-Science-.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -143,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-version-control-git.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaborative coding – introducing git and github.com</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span></a>
   </div>
 </li>
     </ul>
@@ -173,14 +181,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#when-will-this-knowledge-be-handy" id="toc-when-will-this-knowledge-be-handy" class="nav-link" data-scroll-target="#when-will-this-knowledge-be-handy"><span class="header-section-number">8.5</span> When will this knowledge be handy?</a></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">8.6</span> Resources</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/dhammarstrom/quant-methods/edit/master/07-version-control-git.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/blob/master/07-version-control-git.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaborative coding – introducing git and github.com</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></h1>
 </div>
 
 
@@ -195,7 +203,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>In the previous chapter we underlined the importance of the project as a way of keeping data, code (and text) in an organized manner. The project concept in RStudio can easily be extended to include version control and ways to collaborate on different kinds of projects. Most often, collaborating on writing a report, assignment or paper is hard. You send a file, get another one in return. Some files are on dropbox, some are lost. What if we had a system for collaboration that made it easy to follow the progress of a project. Connecting R projects to git and GitHub makes this possible.</p>
+<p>In the previous chapter we underlined the importance of the project as a way of keeping data, code (and text) in an organized manner. The project concept in RStudio can easily be extended to include version control. Version control also makes collaboration easier. Most often, collaborating on writing a report, assignment or paper is hard. You send a file, get another one in return. Some files are on dropbox, some are lost. What if we had a system for collaboration that made it easy to follow the progress of a project. Connecting RStudio projects to git and GitHub makes this possible.</p>
 <section id="why-version-control" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="why-version-control"><span class="header-section-number">8.1</span> Why version control</h2>
 <p><a href="www.github.com">Github</a> is a platform for collaborative coding. As we have noted before, collaboration concerns both others and you, in the future! This means that having a formal system for keeping track of your projects is a good thing.</p>
@@ -236,10 +244,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="8.3" class="anchored" data-anchor-id="git-commands-and-workflows"><span class="header-section-number">8.3</span> Git commands and workflows</h2>
 <section id="add-commit-and-push" class="level3" data-number="8.3.1">
 <h3 data-number="8.3.1" class="anchored" data-anchor-id="add-commit-and-push"><span class="header-section-number">8.3.1</span> Add, commit and push</h3>
-<p>The day to day workflow when working on a git project involves making changes to your files and saving those changes locally and in the version control system. By the end of the day you might also want to make sure all changes are synchronized with the online repository.</p>
+<p>The day to day workflow when working on a git project involves making changes to your files and saving those changes locally, and in the version control system. By the end of the day you might also want to make sure all changes are synchronized with the online repository.</p>
 <p>This workflow includes the git commands <code>add</code>, <code>commit</code> and <code>push</code>.</p>
-<p>Using the terminal <code>git add &lt;filename&gt;</code> or <code>git add -A</code> adds a specific file or all changes to a list of changes to be commit into version history. The equivalent operation in GitHub desktop is checking all boxes under changes. This is done automatically and you have to uncheck files or changes that you do not want to commit to history.</p>
-<p>In the terminal we can commit changes to the git history using the command <code>git commit -m "a commit description message"</code> the additional part <code>-m "a message...</code> is a required commit message. It is good to be informative if you need to find a specific change to a file. In GitHub desktop this is easily done by writing a commit message under <em>summary</em> in the bottom left corner once you have changes in your repository.</p>
+<p>Using the terminal <code>git add &lt;filename&gt;</code> or <code>git add -A</code> adds a specific file or all changes to a list of changes to be “committed” into version history. The equivalent operation in GitHub desktop is checking all boxes under changes. This is done automatically and you have to uncheck files or changes that you do not want to commit to history.</p>
+<p>In the terminal we can commit changes to the git history using the command <code>git commit -m "a commit description message"</code> the additional part <code>-m "a commit...</code> is the required commit message. It is good to be informative if you need to find a specific change to a file. In GitHub desktop this is easily done by writing a commit message under <em>summary</em> in the bottom left corner once you have changes in your repository.</p>
 <p>The last step, <code>git push</code>, means that you are uploading all changes to the online repository. This will update the repository on GitHub, your version history is now up to date in your online repository. This also means that you have an online backup of your work.</p>
 </section>
 <section id="collaboration-pull-clone-and-fork" class="level3" data-number="8.3.2">
@@ -306,6 +314,121 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

@@ -6,6 +6,11 @@ book:
   title: "Quantitative methods and statistics (In Sport and Exercise Science)"
   author: "Daniel Hammarström"
   date: "2023-07-31"
+  search: true
+  repo-url: https://github.com/dhammarstrom/quant-methods
+  repo-branch: master
+  repo-actions: [edit, issue, source]
+  downloads: [pdf]
   chapters:
     - index.qmd
     - 01-intro-to-data.qmd
@@ -17,11 +22,16 @@ book:
     - 07-version-control-git.qmd
 
 bibliography: resources/bib-final.bib
-
 format:
   html:
-    theme: cosmo
+    theme:
+      light: flatly
+      dark: darkly
   pdf:
-    documentclass: scrreport
+    documentclass: scrbook
   epub:
     cover-image: resources/cover.png
+code-link: true
+code-fold: false
+code-line-numbers: true
+code-copy: hover

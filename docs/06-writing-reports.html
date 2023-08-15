@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -90,10 +90,12 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,7 +112,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -132,7 +135,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-writing-reports.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -145,6 +148,11 @@ div.csl-indent {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/dhammarstrom/quant-methods" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Quantitative-methods-and-statistics--In-Sport-and-Exercise-Science-.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -199,7 +207,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-version-control-git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaborative coding – introducing git and github.com</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span></a>
   </div>
 </li>
     </ul>
@@ -235,7 +243,7 @@ div.csl-indent {
   <li><a href="#quarto-formats" id="toc-quarto-formats" class="nav-link" data-scroll-target="#quarto-formats"><span class="header-section-number">7.5</span> Quarto formats</a></li>
   <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">7.6</span> References and footnotes</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/dhammarstrom/quant-methods/edit/master/06-writing-reports.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/blob/master/06-writing-reports.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -365,16 +373,16 @@ A table can be added also, like this:
 <div class="cell">
 <details>
 <summary>See here for syntax</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>HTML is convenient when we want to add formatted text </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>beyond the capabilities of markdown, such as </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>span style<span class="ot">=</span><span class="st">"color:red"</span><span class="sc">&gt;</span>color<span class="sc">&lt;</span><span class="er">/</span>span<span class="sc">&gt;</span>. Some formatting </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>might be considered more easily remembered such as </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>sub<span class="sc">&gt;</span>subscript<span class="sc">&lt;</span><span class="er">/</span>sub<span class="sc">&gt;</span> and <span class="sc">&lt;</span>sup<span class="sc">&gt;</span>superscript<span class="sc">&lt;</span><span class="er">/</span>sup<span class="sc">&gt;</span>. </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Notice that HTML and markdown syntax can be combined<span class="sc">:</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>Some Markdown text with <span class="sc">&lt;</span>span style<span class="ot">=</span><span class="st">"color:blue"</span><span class="sc">&gt;</span>some <span class="sc">*</span>blue<span class="sc">*</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  text, <span class="sc">&lt;</span>sup<span class="sc">&gt;</span><span class="er">&lt;</span>span style<span class="ot">=</span><span class="st">"color:red"</span><span class="sc">&gt;</span>super<span class="sc">&lt;</span><span class="er">/</span>span<span class="sc">&gt;</span><span class="er">**</span>script<span class="sc">**</span><span class="er">&lt;/</span>sup<span class="sc">&gt;</span><span class="er">&lt;/</span>span<span class="sc">&gt;</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>HTML is convenient when we want to add formatted text </span>
+<span id="cb2-2"><a href="#cb2-2"></a>beyond the capabilities of markdown, such as </span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="sc">&lt;</span>span style<span class="ot">=</span><span class="st">"color:red"</span><span class="sc">&gt;</span>color<span class="sc">&lt;</span><span class="er">/</span>span<span class="sc">&gt;</span>. Some formatting </span>
+<span id="cb2-4"><a href="#cb2-4"></a>might be considered more easily remembered such as </span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="sc">&lt;</span>sub<span class="sc">&gt;</span>subscript<span class="sc">&lt;</span><span class="er">/</span>sub<span class="sc">&gt;</span> and <span class="sc">&lt;</span>sup<span class="sc">&gt;</span>superscript<span class="sc">&lt;</span><span class="er">/</span>sup<span class="sc">&gt;</span>. </span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a>Notice that HTML and markdown syntax can be combined<span class="sc">:</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a>Some Markdown text with <span class="sc">&lt;</span>span style<span class="ot">=</span><span class="st">"color:blue"</span><span class="sc">&gt;</span>some <span class="sc">*</span>blue<span class="sc">*</span> </span>
+<span id="cb2-10"><a href="#cb2-10"></a>  text, <span class="sc">&lt;</span>sup<span class="sc">&gt;</span><span class="er">&lt;</span>span style<span class="ot">=</span><span class="st">"color:red"</span><span class="sc">&gt;</span>super<span class="sc">&lt;</span><span class="er">/</span>span<span class="sc">&gt;</span><span class="er">**</span>script<span class="sc">**</span><span class="er">&lt;/</span>sup<span class="sc">&gt;</span><span class="er">&lt;/</span>span<span class="sc">&gt;</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><span class="math inline">\(\LaTeX\)</span> is another plain text formatting system, or markup language, but it far more complex than markdown. Text formatting using <span class="math inline">\(\LaTeX\)</span> is probably not needed for simpler documents as markdown and HTML will be enough. The additional advantage of using <span class="math inline">\(\LaTeX\)</span> comes with equations.</p>
@@ -382,8 +390,8 @@ A table can be added also, like this:
 <p><span id="eq-force"><span class="math display">\[
 F=ma
 \tag{7.1}\]</span></span></p>
-<p>We are also able to cross-reference the equation <a href="#eq-force">Equation&nbsp;<span>7.1</span></a> for force (<span class="math inline">\(F\)</span>).</p>
-<p>A larger collection of equations is sometimes needed to describe a statistical model, as in <a href="#eq-model">Equation&nbsp;<span>7.2</span></a>.</p>
+<p>We are also able to cross-reference the equation <a href="#eq-force">Equation&nbsp;<span class="quarto-unresolved-ref">eq-force</span></a> for force (<span class="math inline">\(F\)</span>).</p>
+<p>A larger collection of equations is sometimes needed to describe a statistical model, as in <a href="#eq-model">Equation&nbsp;<span class="quarto-unresolved-ref">eq-model</span></a>.</p>
 <p><span id="eq-model"><span class="math display">\[
 \begin{align}
 \text{y}_i &amp; \sim \operatorname{Normal}(\mu_i, \sigma) \\
@@ -392,65 +400,62 @@ F=ma
 \tag{7.2}\]</span></span></p>
 <p>The equation above could look like this in your editor, including the tag (<code>{#eq-model}</code>) used for cross-referencing:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span><span class="er">$</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>\text{y}_i <span class="sc">&amp;</span> \sim \operatorname{Normal}(\mu_i, \sigma) \\</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>\mu_i <span class="sc">&amp;</span> <span class="er">=</span> \beta_0 <span class="sc">+</span> \beta_1 \text{x}_i,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span><span class="er">$</span> {<span class="co">#eq-model}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="sc">$</span><span class="er">$</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>\begin{align}</span>
+<span id="cb3-3"><a href="#cb3-3"></a>\text{y}_i <span class="sc">&amp;</span> \sim \operatorname{Normal}(\mu_i, \sigma) \\</span>
+<span id="cb3-4"><a href="#cb3-4"></a>\mu_i <span class="sc">&amp;</span> <span class="er">=</span> \beta_0 <span class="sc">+</span> \beta_1 \text{x}_i,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>\end{align}</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="sc">$</span><span class="er">$</span> {<span class="co">#eq-model}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>See this <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">wikibook on <span class="math inline">\(\LaTeX\)</span></a> for an overview on mathematics in <span class="math inline">\(\LaTeX\)</span>.</p>
 </section>
 <section id="code-chunks" class="level3" data-number="7.3.3">
 <h3 data-number="7.3.3" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">7.3.3</span> Code chunks</h3>
 <p>Using RMarkdown syntax we can add a code chunk using the following syntax:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-simple-plot</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>), </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">b =</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="dv">20</span>))</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>#| label: fig-simple-plot</span>
+<span id="cb4-2"><a href="#cb4-2"></a>#| message: false</span>
+<span id="cb4-3"><a href="#cb4-3"></a>#| echo: true</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>dat &lt;- data.frame(a = rnorm(10, 10, 10), </span>
+<span id="cb4-6"><a href="#cb4-6"></a>                  b = runif(10, 1, 20))</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>plot(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We recognize the R code inside the code chunk but we have only touched upon code chunk settings. These are settings that tells R (or quarto) how to handle output from the code chunk. <code>message: false</code> indicate that any messages from R code should not be displayed in the output document. <code>echo: true</code> indicates that the code in the code chunk should be displayed in the output document. The label is important as it enables cross-referencing the output. If your code chunk outputs a figure the prefix <code>fig-</code> must be in the label to enable cross-referencing. Likewise, if your code chunk creates an table, the prefix <code>tbl-</code> must be in the label. Possible code chunk settings also include figure and table captions.</p>
 <p>Settings can also be specified in the YAML field in quarto files. We might not want to display our code, messages or warnings in the final output. We would specify this in the YAML field as</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"A basic quarto report without code"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>execute<span class="sc">:</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  echo<span class="sc">:</span> false</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  message<span class="sc">:</span> false</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  warning<span class="sc">:</span> false</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="sc">---</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>title<span class="sc">:</span> <span class="st">"A basic quarto report without code"</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>execute<span class="sc">:</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  echo<span class="sc">:</span> false</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  message<span class="sc">:</span> false</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  warning<span class="sc">:</span> false</span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>See here for documentation on <a href="https://quarto.org/docs/computations/execution-options.html#output-options">execution options for code chunks in quarto</a>. See also <a href="https://r4ds.hadley.nz/quarto.html">Chapter 29 in R for data science</a>.</p>
 </section>
 <section id="sec-cross-reference" class="level3" data-number="7.3.4">
 <h3 data-number="7.3.4" class="anchored" data-anchor-id="sec-cross-reference"><span class="header-section-number">7.3.4</span> Cross-referencing, references and footnotes</h3>
-<p>We have mentioned cross-referencing above, this basically means referencing specific parts of your document in the text. A figure might be mentioned in the text, such as <a href="#fig-figure-example">Figure&nbsp;<span>7.1</span></a>. To insert the cross-reference in text, use the <code>@fig-label</code> syntax where <code>fig-</code> is the required prefix for figures and <code>label</code> is a user defined unique identifier. The label should be included in the code chunk under such as <code>#| label: fig-label</code>. The equivalent prefix for tables is <code>tbl-</code>.</p>
+<p>We have mentioned cross-referencing above, this basically means referencing specific parts of your document in the text. A figure might be mentioned in the text, such as <a href="#fig-figure-example">Figure&nbsp;<span class="quarto-unresolved-ref">fig-figure-example</span></a>. To insert the cross-reference in text, use the <code>@fig-label</code> syntax where <code>fig-</code> is the required prefix for figures and <code>label</code> is a user defined unique identifier. The label should be included in the code chunk under such as <code>#| label: fig-label</code>. The equivalent prefix for tables is <code>tbl-</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-figure-example" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-writing-reports_files/figure-html/fig-figure-example-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.1: This is an example of a Figure with a caption.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;7.1: This is an example of a Figure with a caption.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>We might want to cross-reference a section in our document. This is easily done by inserting a tag at the section header such as <code>{#sec-cross-reference}</code>, this tag can be referenced in text using <code>@sec-cross-reference</code> resulting in <a href="#sec-cross-reference"><span>Section&nbsp;7.3.4</span></a>. The <code>sec-</code> part is the required prefix for a section.</p>
+<p>We might want to cross-reference a section in our document. This is easily done by inserting a tag at the section header such as <code>{#sec-cross-reference}</code>, this tag can be referenced in text using <code>@sec-cross-reference</code> resulting in <a href="#sec-cross-reference"><span class="quarto-unresolved-ref">sec-cross-reference</span></a>. The <code>sec-</code> part is the required prefix for a section.</p>
 <p>For additional details on cross-referencing, see the <a href="https://quarto.org/docs/authoring/cross-references.html">quarto documentation on cross-referencing</a>.</p>
 <p>Citations are mandatory in academic writing. Be sure to take advantage of the built in support for citations. When writing in quarto (or RMarkdown) we can think of a reference as having three parts. The identifier, the reference and the style. We use the identifier when authoring. For example, let’s cite the R for Data Science book, we do this by using the following syntax <span class="citation" data-cites="r4ds">(<a href="#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span>. The syntax requires that we have linked a bibliography to the document. The bibliography should include the reference, with the same identifier. The bibliography is a collection of reference entries written in bibtext format (see below). It must be included in the document meta data field (YAML field).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>book{r4ds,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  title<span class="ot">=</span>{R <span class="cf">for</span> data science},</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  author<span class="ot">=</span>{Wickham, Hadley and {\c{C}}etinkaya<span class="sc">-</span>Rundel, Mine and Grolemund, Garrett},</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  year<span class="ot">=</span>{<span class="dv">2023</span>},</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  publisher<span class="ot">=</span>{<span class="st">" O'Reilly Media, Inc."</span>}</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="sc">@</span>book{r4ds,</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  title<span class="ot">=</span>{R <span class="cf">for</span> data science},</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  author<span class="ot">=</span>{Wickham, Hadley and {\c{C}}etinkaya<span class="sc">-</span>Rundel, Mine and Grolemund, Garrett},</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  year<span class="ot">=</span>{<span class="dv">2023</span>},</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  publisher<span class="ot">=</span>{<span class="st">" O'Reilly Media, Inc."</span>}</span>
+<span id="cb6-6"><a href="#cb6-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice the identifier. When adding the citation <code>[@r4ds]</code> it will turn out to <span class="citation" data-cites="r4ds">(<a href="#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span> in the formatted text and added to the bottom of the document as a full reference. If we want another <em>citation style</em> we can specify a file responsible for citation styles. The default is the Chicago style. Specifying a citation style file in YAML will change the style, for example <code>csl: my-citation-style.csl</code> tells quarto to use the file <code>my-citation-style.csl</code> when formatting citations. This file can be edited or copied from a large collection of possible styles located in the <a href="https://github.com/citation-style-language/styles">citation style language repository</a>. The repository is hosted on GitHub and searchable, click “Go to file” and type “vancouver” to get examples of CSL files that uses a Vancouver-type citation style.</p>
 <p>Footnotes can be handy when writing. In the default mode, these will be included as superscript numbers, like this<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, numbered by order of appearance.</p>
@@ -458,11 +463,11 @@ F=ma
 <div class="cell">
 <details>
 <summary>See here for footnote syntax</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Footnotes can be handy when writing. In the default mode, </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>these will be included as superscript numbers, like </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>this[<span class="sc">^</span>footnote], numbered by order of appearance. </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>[<span class="sc">^</span>footnote]<span class="sc">:</span> This is a footnote.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Footnotes can be handy when writing. In the default mode, </span>
+<span id="cb7-2"><a href="#cb7-2"></a>these will be included as superscript numbers, like </span>
+<span id="cb7-3"><a href="#cb7-3"></a>this[<span class="sc">^</span>footnote], numbered by order of appearance. </span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a>[<span class="sc">^</span>footnote]<span class="sc">:</span> This is a footnote.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>See the quarto documentation on <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html">citations and footnotes</a>.</p>
@@ -478,21 +483,21 @@ F=ma
 <p>I find it very helpful to work with the README-file continuously as the project evolves. It helps me remember where the project is going.</p>
 <p>A very basic ouline of the README-file can be</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># My project</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Author<span class="sc">:</span> </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Date<span class="sc">:</span> </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Project description </span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>A description of what this prject is about, the </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>purpose and how to get there. </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Organization of the repository</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>Files are organized as...</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Changes and logs</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="dv">2023-08-15</span><span class="sc">:</span> Added a description of the project...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># My project</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a>Author<span class="sc">:</span> </span>
+<span id="cb8-4"><a href="#cb8-4"></a>Date<span class="sc">:</span> </span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="do">## Project description </span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>A description of what this prject is about, the </span>
+<span id="cb8-8"><a href="#cb8-8"></a>purpose and how to get there. </span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="do">## Organization of the repository</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a>Files are organized as...</span>
+<span id="cb8-13"><a href="#cb8-13"></a></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="do">## Changes and logs</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="dv">2023-08-15</span><span class="sc">:</span> Added a description of the project...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="resources" class="level3" data-number="7.4.2">
@@ -557,6 +562,121 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -779,7 +899,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./07-version-control-git.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaborative coding – introducing git and github.com</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

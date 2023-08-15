@@ -56,10 +56,12 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -88,6 +90,7 @@ div.csl-indent {
 
 <body class="nav-sidebar floating">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
@@ -111,6 +114,11 @@ div.csl-indent {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/dhammarstrom/quant-methods" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Quantitative-methods-and-statistics--In-Sport-and-Exercise-Science-.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -150,6 +158,24 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-first-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-writing-reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-version-control-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -166,7 +192,7 @@ div.csl-indent {
   <li><a href="#saving-data" id="toc-saving-data" class="nav-link" data-scroll-target="#saving-data"><span class="header-section-number">3.4</span> Saving data</a></li>
   <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">3.5</span> References and footnotes</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/dhammarstrom/quant-methods/edit/master/02-spreadsheets.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/blob/master/02-spreadsheets.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -207,7 +233,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Cell B6 contains a simple formula: <code>= C6 + D6</code>. This formula adds cells <code>C6</code> and <code>D6</code> resulting in the sum, 8. In formulas, mathematical operators can be used (<span class="math inline">\(+, -, \times , \div\)</span> ). Formulas can be also extended with inbuilt function such as showed in <a href="#tbl-excelfunctions">Table&nbsp;<span>3.1</span></a>.</p>
+<p>Cell B6 contains a simple formula: <code>= C6 + D6</code>. This formula adds cells <code>C6</code> and <code>D6</code> resulting in the sum, 8. In formulas, mathematical operators can be used (<span class="math inline">\(+, -, \times , \div\)</span> ). Formulas can be also extended with inbuilt function such as showed in <a href="#tbl-excelfunctions">Table&nbsp;<span class="quarto-unresolved-ref">tbl-excelfunctions</span></a>.</p>
 <div id="tbl-excelfunctions" class="anchored">
 <table class="table">
 <caption>Table&nbsp;3.1: Often used functions in excel</caption>
@@ -274,7 +300,7 @@ div.csl-indent {
 </div>
 </div>
 <p>A tidy data set consists of <em>values</em> originating from <em>observations</em> and belonging to <em>variables</em>. A variable is a definition of the values based on attributes. An observation may consist of several variables <span class="citation" data-cites="RN1956">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>.</p>
-<p>A tidy data set typically has one observation per row and one variable per column. Let’s say that we want to collect data from a strength test. A participant (<strong>participant</strong> is a variable) in our study conducts tests before and after the intervention (<strong>time</strong> is a variable) in two exercises (<strong>exercise</strong> is a variable), and we record the maximal strength in kg (<strong>load</strong> is a variable). The data set will look like the table below (<a href="#tbl-tidydata">Table&nbsp;<span>3.2</span></a>).</p>
+<p>A tidy data set typically has one observation per row and one variable per column. Let’s say that we want to collect data from a strength test. A participant (<strong>participant</strong> is a variable) in our study conducts tests before and after the intervention (<strong>time</strong> is a variable) in two exercises (<strong>exercise</strong> is a variable), and we record the maximal strength in kg (<strong>load</strong> is a variable). The data set will look like the table below (<a href="#tbl-tidydata">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tidydata</span></a>).</p>
 <div id="tbl-tidydata" class="anchored">
 <table class="table">
 <caption>Table&nbsp;3.2: Example of tidy data</caption>
@@ -314,7 +340,7 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p>Another example contains variables that actually carries two pieces of information in one variable. We again did a strength test, this time as maximal isometric contractions and in each test consisted of two attempts. We record this in two different variables, attempt 1 and 2. The resulting data set could look something like in Table <a href="#tbl-tidydata2">Table&nbsp;<span>3.3</span></a>.</p>
+<p>Another example contains variables that actually carries two pieces of information in one variable. We again did a strength test, this time as maximal isometric contractions and in each test consisted of two attempts. We record this in two different variables, attempt 1 and 2. The resulting data set could look something like in Table <a href="#tbl-tidydata2">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tidydata2</span></a>.</p>
 <div id="tbl-tidydata2" class="anchored">
 <table class="table">
 <caption>Table&nbsp;3.3: Another example of tidy data.</caption>
@@ -345,7 +371,7 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p>To make this data set tidy we need to extract the attempt information and record it in another variable as seen in <a href="#tbl-tidydata3">Table&nbsp;<span>3.4</span></a>.</p>
+<p>To make this data set tidy we need to extract the attempt information and record it in another variable as seen in <a href="#tbl-tidydata3">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tidydata3</span></a>.</p>
 <div id="tbl-tidydata3" class="anchored">
 <table class="table">
 <caption>Table&nbsp;3.4: A third example of tidy data.</caption>
@@ -468,6 +494,121 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

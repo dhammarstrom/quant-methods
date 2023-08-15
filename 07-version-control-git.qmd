@@ -1,6 +1,6 @@
-# Version control and collaborative coding – introducing git and github.com
+# Version control and collaboration
 
-In the previous chapter we underlined the importance of the project as a way of keeping data, code (and text) in an organized manner. The project concept in RStudio can easily be extended to include version control and ways to collaborate on different kinds of projects. Most often, collaborating on writing a report, assignment or paper is hard. You send a file, get another one in return. Some files are on dropbox, some are lost. What if we had a system for collaboration that made it easy to follow the progress of a project. Connecting R projects to git and GitHub makes this possible.
+In the previous chapter we underlined the importance of the project as a way of keeping data, code (and text) in an organized manner. The project concept in RStudio can easily be extended to include version control. Version control also makes collaboration easier. Most often, collaborating on writing a report, assignment or paper is hard. You send a file, get another one in return. Some files are on dropbox, some are lost. What if we had a system for collaboration that made it easy to follow the progress of a project. Connecting RStudio projects to git and GitHub makes this possible.
 
 ## Why version control
 
@@ -47,13 +47,13 @@ If you have already initialized a RStudio project as a git repository you can fo
 
 ### Add, commit and push
 
-The day to day workflow when working on a git project involves making changes to your files and saving those changes locally and in the version control system. By the end of the day you might also want to make sure all changes are synchronized with the online repository.
+The day to day workflow when working on a git project involves making changes to your files and saving those changes locally, and in the version control system. By the end of the day you might also want to make sure all changes are synchronized with the online repository.
 
 This workflow includes the git commands `add`, `commit` and `push`.
 
-Using the terminal `git add <filename>` or `git add -A` adds a specific file or all changes to a list of changes to be commit into version history. The equivalent operation in GitHub desktop is checking all boxes under changes. This is done automatically and you have to uncheck files or changes that you do not want to commit to history.
+Using the terminal `git add <filename>` or `git add -A` adds a specific file or all changes to a list of changes to be "committed" into version history. The equivalent operation in GitHub desktop is checking all boxes under changes. This is done automatically and you have to uncheck files or changes that you do not want to commit to history.
 
-In the terminal we can commit changes to the git history using the command `git commit -m "a commit description message"` the additional part `-m "a message...` is a required commit message. It is good to be informative if you need to find a specific change to a file. In GitHub desktop this is easily done by writing a commit message under *summary* in the bottom left corner once you have changes in your repository.
+In the terminal we can commit changes to the git history using the command `git commit -m "a commit description message"` the additional part `-m "a commit...` is the required commit message. It is good to be informative if you need to find a specific change to a file. In GitHub desktop this is easily done by writing a commit message under *summary* in the bottom left corner once you have changes in your repository.
 
 The last step, `git push`, means that you are uploading all changes to the online repository. This will update the repository on GitHub, your version history is now up to date in your online repository. This also means that you have an online backup of your work.
 
@@ -74,7 +74,7 @@ If a fork is used to suggest changes this is done through a *pull request*. Usin
 ### Branches
 Much like a fork, we can create copies of our own repository. These are called branches. A branch might contain changes that we want to try out before we make it the "official" version of our repository. These changes can include experiments that might mess up things or break code. 
 
-Using GitHub desktop we can create a new branch by clicking *Current branch* in the upper left and then *Create branch*. 
+Using GitHub desktop we can create a new branch by clicking *Current branch* in the upper left and then *Create branch*. In GitHub desktop it is easy to switch between branches. 
 
 
 
