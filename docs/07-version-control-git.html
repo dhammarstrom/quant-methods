@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.330">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Quantitative methods and statistics (In Sport and Exercise Science) - 8&nbsp; Version control and collaborative coding – introducing git and github.com</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06-writing-reports.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-version-control-git.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaborative coding – introducing git and github.com</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro-to-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data science</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-spreadsheets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-intro-to-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-first-graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-first-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-writing-reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-version-control-git.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaborative coding – introducing git and github.com</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-version-control" id="toc-why-version-control" class="nav-link active" data-scroll-target="#why-version-control"><span class="header-section-number">8.1</span> Why version control</a></li>
+  <li><a href="#three-ways-of-hooking-up-to-github" id="toc-three-ways-of-hooking-up-to-github" class="nav-link" data-scroll-target="#three-ways-of-hooking-up-to-github"><span class="header-section-number">8.2</span> Three ways of hooking up to GitHub</a>
+  <ul class="collapse">
+  <li><a href="#create-a-new-repository-on-github-and-clone-it" id="toc-create-a-new-repository-on-github-and-clone-it" class="nav-link" data-scroll-target="#create-a-new-repository-on-github-and-clone-it"><span class="header-section-number">8.2.1</span> Create a new repository on GitHub and clone it</a></li>
+  <li><a href="#create-an-online-repository-from-a-local-folder" id="toc-create-an-online-repository-from-a-local-folder" class="nav-link" data-scroll-target="#create-an-online-repository-from-a-local-folder"><span class="header-section-number">8.2.2</span> Create an online repository from a local folder</a></li>
+  <li><a href="#create-an-online-repository-from-a-local-git-repository" id="toc-create-an-online-repository-from-a-local-git-repository" class="nav-link" data-scroll-target="#create-an-online-repository-from-a-local-git-repository"><span class="header-section-number">8.2.3</span> Create an online repository from a local git repository</a></li>
+  </ul></li>
+  <li><a href="#git-commands-and-workflows" id="toc-git-commands-and-workflows" class="nav-link" data-scroll-target="#git-commands-and-workflows"><span class="header-section-number">8.3</span> Git commands and workflows</a>
+  <ul class="collapse">
+  <li><a href="#add-commit-and-push" id="toc-add-commit-and-push" class="nav-link" data-scroll-target="#add-commit-and-push"><span class="header-section-number">8.3.1</span> Add, commit and push</a></li>
+  <li><a href="#collaboration-pull-clone-and-fork" id="toc-collaboration-pull-clone-and-fork" class="nav-link" data-scroll-target="#collaboration-pull-clone-and-fork"><span class="header-section-number">8.3.2</span> Collaboration, <code>pull</code>, <code>clone</code> and <code>fork</code></a></li>
+  <li><a href="#branches" id="toc-branches" class="nav-link" data-scroll-target="#branches"><span class="header-section-number">8.3.3</span> Branches</a></li>
+  </ul></li>
+  <li><a href="#additional-great-things-about-github" id="toc-additional-great-things-about-github" class="nav-link" data-scroll-target="#additional-great-things-about-github"><span class="header-section-number">8.4</span> Additional great things about GitHub</a></li>
+  <li><a href="#when-will-this-knowledge-be-handy" id="toc-when-will-this-knowledge-be-handy" class="nav-link" data-scroll-target="#when-will-this-knowledge-be-handy"><span class="header-section-number">8.5</span> When will this knowledge be handy?</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">8.6</span> Resources</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaborative coding – introducing git and github.com</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In the previous chapter we underlined the importance of the project as a way of keeping data, code (and text) in an organized manner. The project concept in RStudio can easily be extended to include version control and ways to collaborate on different kinds of projects. Most often, collaborating on writing a report, assignment or paper is hard. You send a file, get another one in return. Some files are on dropbox, some are lost. What if we had a system for collaboration that made it easy to follow the progress of a project. Connecting R projects to git and GitHub makes this possible.</p>
+<section id="why-version-control" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="why-version-control"><span class="header-section-number">8.1</span> Why version control</h2>
+<p><a href="www.github.com">Github</a> is a platform for collaborative coding. As we have noted before, collaboration concerns both others and you, in the future! This means that having a formal system for keeping track of your projects is a good thing.</p>
+<p>Github also provides version control. Version control can help you track changes in your entire analysis or writing project. This is helpful when multiple files make up a complex project, including e.g.&nbsp;scripts, data and manuscript files. It is also helpful when multiple collaborators work together (e.g.&nbsp;writing a report). You will, by using version control, avoid overwriting other peoples work. With multiple changes made to the project, <strong>merging</strong> will create the latest up-to-date version. When you change a file in your analysis you will be required to describe the changes you have made. Git creates a record of your changes. This also means that we have “backups” of previous versions.</p>
+</section>
+<section id="three-ways-of-hooking-up-to-github" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="three-ways-of-hooking-up-to-github"><span class="header-section-number">8.2</span> Three ways of hooking up to GitHub</h2>
+<section id="create-a-new-repository-on-github-and-clone-it" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="create-a-new-repository-on-github-and-clone-it"><span class="header-section-number">8.2.1</span> Create a new repository on GitHub and clone it</h3>
+<p>Access your personal GitHub account and click <strong>New</strong> under repositories. This is equivalent to going to <a href="www.github.com/new">www.github.com/new</a>. GitHub will ask for a repository name, a description and whether you want the repository to be public or not. You can also chose to add a Readme-file.</p>
+<p>Names and descriptions are important, a better name and description makes it easier for you and others to find and make use of your repository. Even when making repositories for school assignments, a good name will likely make it more re-usable in the future. The same is true for the readme file. So, name the repository with a <strong>descriptive name</strong>, write a short <strong>description with the purpose</strong> of the repository and <strong>add a readme-file</strong> to the repository.</p>
+<p>A public repository is open for everyone, private repositories have restricted access.</p>
+<p>Once the repository is created you can clone it. This means that you will copy the content to your local machine (PC/Mac). In RStudio this is most conveniently done by starting a new RStudio project and selecting <em>Version Control</em> in the project menu. You will be asked to copy the address shown under “Code” on GitHub.</p>
+</section>
+<section id="create-an-online-repository-from-a-local-folder" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="create-an-online-repository-from-a-local-folder"><span class="header-section-number">8.2.2</span> Create an online repository from a local folder</h3>
+<p>Let’s say that we have a local folder that is a RStudio Project, without version control and we want to create a online repository together with version control. We can use GitHub desktop to accomplish this or GitHub CLI.</p>
+<p><strong>Using the terminal and GitHub desktop:</strong></p>
+<ol type="1">
+<li>The first step is to make the local folder a git repository, in RStudio with the project running go to a terminal and type <code>git init</code>. The terminal will let you know that you have initialized a git repository.</li>
+<li>Start up GitHub desktop, under <em>File</em> choose <em>Add local repository</em> and find the folder on your computer where you have your RStudio project. Once open in GitHub desktop you will see all changes and additions of new files.</li>
+<li>Commit your changes by writing a first commit message, and possibly a longer description of the commit.</li>
+<li>Click “Publish repository”, you will be asked to edit the name and description of the repository and choose whether to have the repository private or not (see above for recommendations).</li>
+<li>Go to GitHub.com and check if the repository is published.</li>
+</ol>
+<p><strong>Using the terminal and GitHub terminal client (CLI):</strong></p>
+<ol type="1">
+<li>Be sure to be in your RStudio project and use the terminal in RStudio to initiate a git repository, type <code>git init</code> in the terminal.</li>
+<li>Also in the terminal type <code>gh repo create</code>, this will guide you through the same process as with GitHub desktop but all selections are done in the terminal.</li>
+</ol>
+</section>
+<section id="create-an-online-repository-from-a-local-git-repository" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="create-an-online-repository-from-a-local-git-repository"><span class="header-section-number">8.2.3</span> Create an online repository from a local git repository</h3>
+<p>If you have already initialized a RStudio project as a git repository you can follow the steps above without the <code>git init</code> command. Using <code>git init</code> on an already initialized git repository will reinitialize it. This will not remove git history of the repository (see <a href="https://git-scm.com/docs/git-init">here for documentation</a>).</p>
+</section>
+</section>
+<section id="git-commands-and-workflows" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="git-commands-and-workflows"><span class="header-section-number">8.3</span> Git commands and workflows</h2>
+<section id="add-commit-and-push" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="add-commit-and-push"><span class="header-section-number">8.3.1</span> Add, commit and push</h3>
+<p>The day to day workflow when working on a git project involves making changes to your files and saving those changes locally and in the version control system. By the end of the day you might also want to make sure all changes are synchronized with the online repository.</p>
+<p>This workflow includes the git commands <code>add</code>, <code>commit</code> and <code>push</code>.</p>
+<p>Using the terminal <code>git add &lt;filename&gt;</code> or <code>git add -A</code> adds a specific file or all changes to a list of changes to be commit into version history. The equivalent operation in GitHub desktop is checking all boxes under changes. This is done automatically and you have to uncheck files or changes that you do not want to commit to history.</p>
+<p>In the terminal we can commit changes to the git history using the command <code>git commit -m "a commit description message"</code> the additional part <code>-m "a message...</code> is a required commit message. It is good to be informative if you need to find a specific change to a file. In GitHub desktop this is easily done by writing a commit message under <em>summary</em> in the bottom left corner once you have changes in your repository.</p>
+<p>The last step, <code>git push</code>, means that you are uploading all changes to the online repository. This will update the repository on GitHub, your version history is now up to date in your online repository. This also means that you have an online backup of your work.</p>
+</section>
+<section id="collaboration-pull-clone-and-fork" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="collaboration-pull-clone-and-fork"><span class="header-section-number">8.3.2</span> Collaboration, <code>pull</code>, <code>clone</code> and <code>fork</code></h3>
+<p>Collaboration is most often done with yourself in the future. The <code>git pull</code> command (using the terminal) downloads all changes to your working directory. You want to do this when you have changes in the online repository that is not synchronized with the local repository. This might be the case if you have made changes to your repository on GitHub, like added a readme file. Or if you are collaborating with someone who have made changes to the repository. I work on multiple computers, sometimes on the same repository, the online repository is where a keep the most up to date version of my project.</p>
+<p>Using GitHub desktop, we can click <em>Fetch origin</em> to get the latest changes from the online repository. GitHub desktop will suggest to pull these changes to the working directory after you have done this operation.</p>
+<p>We have already covered <code>git clone</code>, this essentially means downloading an online repository to your local machine. This is most easily done while initializing a new RStudio project.</p>
+<p>A fork is a copy of someones online repository that is created as a new repository under your user. You now have access to this repository and can make changes. The repository can have its own life or be used to create changes that later are suggested as changes to the “parent repository”.</p>
+<p>In this course you can fork a template for the portfolio exam. This is an example where your fork will have its own life.</p>
+<p>If a fork is used to suggest changes this is done through a <em>pull request</em>. Using the web client (GitHub), we can click <em>create pull request</em> when inside a forked repository. This will take you a few steps where you are expected to describe changes to the repository. The original author will get a notification to review the pull request and can chose to incorporate the changes into the parent repository.</p>
+</section>
+<section id="branches" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="branches"><span class="header-section-number">8.3.3</span> Branches</h3>
+<p>Much like a fork, we can create copies of our own repository. These are called branches. A branch might contain changes that we want to try out before we make it the “official” version of our repository. These changes can include experiments that might mess up things or break code.</p>
+<p>Using GitHub desktop we can create a new branch by clicking <em>Current branch</em> in the upper left and then <em>Create branch</em>.</p>
+</section>
+</section>
+<section id="additional-great-things-about-github" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="additional-great-things-about-github"><span class="header-section-number">8.4</span> Additional great things about GitHub</h2>
+<p>GitHub has great capabilities for managing projects. You can for example:</p>
+<ul>
+<li>Post <strong>issues</strong> that are suggestions or questions regarding a repository. Issues can be categorized with labels and assigned.</li>
+<li>You can create to-do lists in the Projects tab (in the web interface). This could be a nice way of sharing and tracking the progress of a project.</li>
+<li>You can build a wiki. This is simply a collection of pages that can be used to document the repository or a project (in a wider sense) that you are working on.</li>
+<li>All of the above can be private and public. You can choose whom have access to your repository. This makes it easy to work on a project even if you need to keep things a secret.</li>
+</ul>
+<p>In this course I want you to contribute to the wiki pages of the course. The wiki is hosted at <a href="https://github.com/dhammarstrom/IDR4000-2021">github.com/dhammarstrom/IDR4000-2021</a>. To contribute you need to have created your own GitHub user account.</p>
+</section>
+<section id="when-will-this-knowledge-be-handy" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="when-will-this-knowledge-be-handy"><span class="header-section-number">8.5</span> When will this knowledge be handy?</h2>
+<p>When writing your master thesis, it will be extremely easy to share your code with your supervisor or other students, whit whom you collaborate. You can just invite someone to make changes in your repository and then download them. As noted several times before, your most frequent collaborator is you. Using git makes it easy to keep track of changes in your project and it keeps your most frequent collaborator from messing up your work.</p>
+<p>Version control workflows are part of almost all technology companies, and will most certainly be part of many more types of businesses, institutions and workplaces in the future as we need to collaborate on large, complex projects. Knowing about these systems is in that sense quite handy!</p>
+</section>
+<section id="resources" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="resources"><span class="header-section-number">8.6</span> Resources</h2>
+<p>There are of course more functions in git, here are some resources for deeper understanding.</p>
+<ul>
+<li><a href="https://happygitwithr.com/">Extensive resources can be found on Happy Git and GitHub for the useR</a></li>
+<li><a href="https://kbroman.org/github_tutorial/">Karl Broman provides a “minimal tutorial”</a></li>
+<li><a href="https://try.github.io/">GitHub hosts resources for learning Git</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-writing-reports.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
