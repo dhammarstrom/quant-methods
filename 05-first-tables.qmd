@@ -678,9 +678,8 @@ dxadata %>% # take the dxadata data set
 
 As per our strategy to first summarize and set up the data table, we already have nice first draft. However, we need to format variable names and add column labels. We can also add a footnote.
 
-The `gt` package has several functions for manipulating the raw tables created with the `gt()` function. The `gt` package also use a consistent vocabulary for tables as seen in @fig-gt-parts. 
+The `gt` package has several functions for manipulating the raw tables created with the `gt()` function. The `gt` package also use a consistent vocabulary for tables as seen in [this figure]((https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg). 
 
-![Nomenclature for parts of a gt table (source: https://gt.rstudio.com/)](https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg){#fig-gt-parts}
 
 First, using `tab_footnote()` we can add the footnote indicating that "Values are mean and (SD)". We do this by piping the whole table, created with `gt()` into `tab_footnote(footnote = "Values are mean and (SD)")`. We have two columns representing females and two representing males, these can be more clearly separated by adding a spanner column label. This column label adds rows to the table. Using `tab_spanner(label = "Female", columns = c("female_incl", "female_excl"))` we add "Female" above the two columns representing females. We can do the same for males. Using `cols_label()` we specify new column names to match what we want. The resulting full code can be seen below.
 

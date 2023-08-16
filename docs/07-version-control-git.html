@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.330">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,8 +58,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -79,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-version-control-git.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -94,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
       <a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dhammarstrom/quant-methods" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Quantitative-methods-and-statistics--In-Sport-and-Exercise-Science-.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="./Quantitative-methods-and-statistics--In-Sport-and-Exercise-Science-.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -164,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-version-control" id="toc-why-version-control" class="nav-link active" data-scroll-target="#why-version-control"><span class="header-section-number">8.1</span> Why version control</a></li>
+  <li><a href="#why-version-control" id="toc-why-version-control" class="nav-link active" data-scroll-target="#why-version-control"><span class="header-section-number">8.1</span> Why version control?</a></li>
   <li><a href="#three-ways-of-hooking-up-to-github" id="toc-three-ways-of-hooking-up-to-github" class="nav-link" data-scroll-target="#three-ways-of-hooking-up-to-github"><span class="header-section-number">8.2</span> Three ways of hooking up to GitHub</a>
   <ul class="collapse">
   <li><a href="#create-a-new-repository-on-github-and-clone-it" id="toc-create-a-new-repository-on-github-and-clone-it" class="nav-link" data-scroll-target="#create-a-new-repository-on-github-and-clone-it"><span class="header-section-number">8.2.1</span> Create a new repository on GitHub and clone it</a></li>
@@ -176,6 +175,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#add-commit-and-push" id="toc-add-commit-and-push" class="nav-link" data-scroll-target="#add-commit-and-push"><span class="header-section-number">8.3.1</span> Add, commit and push</a></li>
   <li><a href="#collaboration-pull-clone-and-fork" id="toc-collaboration-pull-clone-and-fork" class="nav-link" data-scroll-target="#collaboration-pull-clone-and-fork"><span class="header-section-number">8.3.2</span> Collaboration, <code>pull</code>, <code>clone</code> and <code>fork</code></a></li>
   <li><a href="#branches" id="toc-branches" class="nav-link" data-scroll-target="#branches"><span class="header-section-number">8.3.3</span> Branches</a></li>
+  <li><a href="#conflicts" id="toc-conflicts" class="nav-link" data-scroll-target="#conflicts"><span class="header-section-number">8.3.4</span> Conflicts</a></li>
   </ul></li>
   <li><a href="#additional-great-things-about-github" id="toc-additional-great-things-about-github" class="nav-link" data-scroll-target="#additional-great-things-about-github"><span class="header-section-number">8.4</span> Additional great things about GitHub</a></li>
   <li><a href="#when-will-this-knowledge-be-handy" id="toc-when-will-this-knowledge-be-handy" class="nav-link" data-scroll-target="#when-will-this-knowledge-be-handy"><span class="header-section-number">8.5</span> When will this knowledge be handy?</a></li>
@@ -204,8 +204,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>In the previous chapter we underlined the importance of the project as a way of keeping data, code (and text) in an organized manner. The project concept in RStudio can easily be extended to include version control. Version control also makes collaboration easier. Most often, collaborating on writing a report, assignment or paper is hard. You send a file, get another one in return. Some files are on dropbox, some are lost. What if we had a system for collaboration that made it easy to follow the progress of a project. Connecting RStudio projects to git and GitHub makes this possible.</p>
+<p>Before you go any further you might want to spend about 25 minutes on a couple of videos explaining the concepts of version control and git. <a href="https://git-scm.com/doc">Find the videos here</a></p>
 <section id="why-version-control" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="why-version-control"><span class="header-section-number">8.1</span> Why version control</h2>
+<h2 data-number="8.1" class="anchored" data-anchor-id="why-version-control"><span class="header-section-number">8.1</span> Why version control?</h2>
 <p><a href="www.github.com">Github</a> is a platform for collaborative coding. As we have noted before, collaboration concerns both others and you, in the future! This means that having a formal system for keeping track of your projects is a good thing.</p>
 <p>Github also provides version control. Version control can help you track changes in your entire analysis or writing project. This is helpful when multiple files make up a complex project, including e.g.&nbsp;scripts, data and manuscript files. It is also helpful when multiple collaborators work together (e.g.&nbsp;writing a report). You will, by using version control, avoid overwriting other peoples work. With multiple changes made to the project, <strong>merging</strong> will create the latest up-to-date version. When you change a file in your analysis you will be required to describe the changes you have made. Git creates a record of your changes. This also means that we have “backups” of previous versions.</p>
 </section>
@@ -249,6 +250,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Using the terminal <code>git add &lt;filename&gt;</code> or <code>git add -A</code> adds a specific file or all changes to a list of changes to be “committed” into version history. The equivalent operation in GitHub desktop is checking all boxes under changes. This is done automatically and you have to uncheck files or changes that you do not want to commit to history.</p>
 <p>In the terminal we can commit changes to the git history using the command <code>git commit -m "a commit description message"</code> the additional part <code>-m "a commit...</code> is the required commit message. It is good to be informative if you need to find a specific change to a file. In GitHub desktop this is easily done by writing a commit message under <em>summary</em> in the bottom left corner once you have changes in your repository.</p>
 <p>The last step, <code>git push</code>, means that you are uploading all changes to the online repository. This will update the repository on GitHub, your version history is now up to date in your online repository. This also means that you have an online backup of your work.</p>
+<p>In GitHub desktop we can examine the commit history of a project by looking in the <em>History</em> tab. Using the web interface at <a href="http://www.github.com">www.github.com</a> we can get an overview of all commits by clicking <em>Activity</em> or <em>commits</em> in the repository view. Using the command line we can look at the the commit history by using <code>git log</code>. This will list all commits and you can scroll trough them by pressing enter. To exit this list press <code>q</code>.</p>
+<p>Further descriptions of a certain state of the repository can be added using tags. Using a tag we can make a note of a certain state of the repository, for example when an assignment is ready to exam or when a journal article is ready for submission. In GitHub desktop we might want to put a tag on a specific commit. We can do this by right-clicking on a commit in the history followed by <em>Create tag</em>. Using the command line, tags are added with <code>git tag</code>, see the <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">git documentation for details</a>.</p>
 </section>
 <section id="collaboration-pull-clone-and-fork" class="level3" data-number="8.3.2">
 <h3 data-number="8.3.2" class="anchored" data-anchor-id="collaboration-pull-clone-and-fork"><span class="header-section-number">8.3.2</span> Collaboration, <code>pull</code>, <code>clone</code> and <code>fork</code></h3>
@@ -262,7 +265,25 @@ ul.task-list li input[type="checkbox"] {
 <section id="branches" class="level3" data-number="8.3.3">
 <h3 data-number="8.3.3" class="anchored" data-anchor-id="branches"><span class="header-section-number">8.3.3</span> Branches</h3>
 <p>Much like a fork, we can create copies of our own repository. These are called branches. A branch might contain changes that we want to try out before we make it the “official” version of our repository. These changes can include experiments that might mess up things or break code.</p>
-<p>Using GitHub desktop we can create a new branch by clicking <em>Current branch</em> in the upper left and then <em>Create branch</em>.</p>
+<p>Using GitHub desktop we can create a new branch by clicking <em>Current branch</em> in the upper left and then <em>Create branch</em>. In GitHub desktop it is easy to switch between branches.</p>
+<p>Using the command line we can create a branch by typing <code>git branch &lt;new-branch-name&gt;</code> where <code>&lt;new-branch-name&gt;</code> is a name of the branch that you choose. Using the command <code>git checkout &lt;new-branch-name&gt;</code> we switch to the new branch from the current branch, which is often called <code>master</code>. We can use <code>git checkout master</code> to get back to the original branch. If you switch between branches while working in both your work can be saved using a commit.</p>
+</section>
+<section id="conflicts" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="conflicts"><span class="header-section-number">8.3.4</span> Conflicts</h3>
+<p>A conflict emerges when two versions of a files cannot be merged into one. The web client will check if, for example, two branches will be possible to merge. If you try to merge two versions of a file that have different changes made to the same line you will get a message from GitHub desktop or on the command line tool. A conflict needs to be resolved manually.</p>
+<p>Find the file that is affected by the conflict. This is possible to do by using <code>git status</code> on the command line. Next, find the lines that are affected by the conflict and edit them to what should be correct content. A conflict can be seen in the file as</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:filename.file
+
+content
+
+=======
+
+
+other content 
+
+&gt;&gt;&gt;&gt;&gt; branch:filename.file
+</code></pre>
+<p>In the above example, “content” and “other content” is the content of the two conflicting versions of the file (<code>filename.file</code>). You have to pick one or write something else instead. You also need to remove markers (<code>&lt;&lt;&lt;</code>, <code>====</code> and <code>&gt;&gt;&gt;</code>). When you are satisfied with the changes commit the changes. This will resolve the conflict.</p>
 </section>
 </section>
 <section id="additional-great-things-about-github" class="level2" data-number="8.4">
@@ -274,7 +295,6 @@ ul.task-list li input[type="checkbox"] {
 <li>You can build a wiki. This is simply a collection of pages that can be used to document the repository or a project (in a wider sense) that you are working on.</li>
 <li>All of the above can be private and public. You can choose whom have access to your repository. This makes it easy to work on a project even if you need to keep things a secret.</li>
 </ul>
-<p>In this course I want you to contribute to the wiki pages of the course. The wiki is hosted at <a href="https://github.com/dhammarstrom/IDR4000-2021">github.com/dhammarstrom/IDR4000-2021</a>. To contribute you need to have created your own GitHub user account.</p>
 </section>
 <section id="when-will-this-knowledge-be-handy" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="when-will-this-knowledge-be-handy"><span class="header-section-number">8.5</span> When will this knowledge be handy?</h2>
@@ -288,6 +308,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://happygitwithr.com/">Extensive resources can be found on Happy Git and GitHub for the useR</a></li>
 <li><a href="https://kbroman.org/github_tutorial/">Karl Broman provides a “minimal tutorial”</a></li>
 <li><a href="https://try.github.io/">GitHub hosts resources for learning Git</a></li>
+<li><a href="https://git-scm.com/doc">Git documentation, here you will find all git commands</a></li>
 </ul>
 
 

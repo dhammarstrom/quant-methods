@@ -121,7 +121,7 @@ A table can be added also, like this:
 
 ### Additional formatting
 
-In addition to plain markdown, we can also write HTML or $\LaTeX$ in RMarkdown or quarto files. 
+In addition to plain markdown, we can also write HTML or LaTeX in RMarkdown or quarto files. 
 
 HTML is convenient when we want to add formatted text beyond the capabilities of markdown, such as <span style="color:red">color</span>. Some formatting might be considered more easily remembered such as <sub>subscript</sub> and <sup>superscript</sup>. Notice that HTML and markdown syntax can be combined:
 
@@ -145,7 +145,7 @@ Some Markdown text with <span style="color:blue">some *blue*
 
 ```
 
-$\LaTeX$ is another plain text formatting system, or markup language, but it far more complex than markdown. Text formatting using $\LaTeX$ is probably not needed for simpler documents as markdown and HTML will be enough. The additional advantage of using $\LaTeX$ comes with equations.
+LaTeX is another plain text formatting system, or markup language, but it far more complex than markdown. Text formatting using LaTeX is probably not needed for simpler documents as markdown and HTML will be enough. The additional advantage of using LaTeX comes with equations.
 
 Equations can be written inline, such as the standard deviation $s = \sqrt{\frac{\sum{(x_i - \bar{x})^2}}{n-1}}$. An equation can also be written on the center of the document
 
@@ -159,10 +159,13 @@ We are also able to cross-reference the equation @eq-force for force ($F$).
 A larger collection of equations is sometimes needed to describe a statistical model, as in @eq-model.
 
 $$
-\begin{align}
-\text{y}_i & \sim \operatorname{Normal}(\mu_i, \sigma) \\
-\mu_i & = \beta_0 + \beta_1 \text{x}_i,
-\end{align}
+\begin{aligned}
+\begin{split}
+\text{y}_i &\sim \operatorname{Normal}(\mu_i, \sigma)
+\\
+\mu_i &= \beta_0 + \beta_1 \text{x}_i,
+\end{split}
+\end{aligned}
 $$ {#eq-model}
 
 
@@ -186,7 +189,7 @@ $$ {#eq-model}
 
 
 
-See this [wikibook on $\LaTeX$](https://en.wikibooks.org/wiki/LaTeX/Mathematics) for an overview on mathematics in $\LaTeX$.
+See this [wikibook on LaTeX](https://en.wikibooks.org/wiki/LaTeX/Mathematics) for an overview on mathematics in LaTeX.
 
 
 ### Code chunks

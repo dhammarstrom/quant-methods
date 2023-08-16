@@ -42,7 +42,7 @@ The source editor is where you edit your code. When writing your code in a text-
 
 The environment is where all your objects are located. Objects can be variables or data sets that you are working with. In RStudio the environment is listed under the environment tab (bottom left in the image).
 
-Copy the code below to a R script. To run it line by line, set your cursor on the first line a press Ctrl+Enter.What happened in your environment? Press Ctrl+Enter again and you will see a plot in the plot window. Amazing stuff! 
+Copy the code below to a R script. To run it line by line, set your cursor on the first line a press Ctrl+Enter. What happened in your environment? Press Ctrl+Enter again and you will see a plot in the plot window. Amazing stuff! 
 
 ```{r, eval = FALSE}
 
@@ -71,8 +71,8 @@ When starting to work more systematically in RStudio we will set some rules that
 
 To avoid making such a mistake it is good practice not to save variables in your environment between sessions, everything should be scripted and documented and assumed not defined elsewhere. In RStudio we can make an explicit setting Not to save the workspace (See @fig-saveworkspace).
 
-![Never save the workspace.](images/ch3/03-ask-workspace.gif){#fig-saveworkspace}
 
+![Never save the workspace.](images/ch3/03-ask-workspace.gif){#fig-saveworkspace}
 
 ## Basics R programming, Installing and using `swirl`
 
@@ -95,7 +95,9 @@ When you run the above command in your console you will get a message saying to 
 
 ### R scripts
 
-RStudio has capabilities to highlight code for multiple languages. We will focus on R. The most basic file format for R code is an R script, as we have already touched upon. An R script contains code and comments. Code is executed by R and comments are ignored. Ideally, R scripts are commented to improve readability of what the do. Commenting code is also a good way of creating a roadmap of what you want to do. In the image below (@fig-rscript), R code is written based on a plan written with comments. Note that when a line starts with at least one `#` it is interpreted by R as a comment.     
+RStudio has capabilities to highlight code for multiple languages. We will focus on R. The most basic file format for R code is an R script, as we have already touched upon. An R script contains code and comments. Code is executed by R and comments are ignored. Ideally, R scripts are commented to improve readability of what the do. Commenting code is also a good way of creating a roadmap of what you want to do.
+
+In the image below (@fig-rscript), R code is written based on a plan written with comments. Note that when a line starts with at least one `#` it is interpreted by R as a comment.     
 
 ![Commenting and coding in an R script](images/ch3/03-rscript.gif){#fig-rscript}
 

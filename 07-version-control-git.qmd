@@ -2,7 +2,10 @@
 
 In the previous chapter we underlined the importance of the project as a way of keeping data, code (and text) in an organized manner. The project concept in RStudio can easily be extended to include version control. Version control also makes collaboration easier. Most often, collaborating on writing a report, assignment or paper is hard. You send a file, get another one in return. Some files are on dropbox, some are lost. What if we had a system for collaboration that made it easy to follow the progress of a project. Connecting RStudio projects to git and GitHub makes this possible.
 
-## Why version control
+Before you go any further you might want to spend about 25 minutes on a couple of videos explaining the concepts of version control and git. [Find the videos here](https://git-scm.com/doc)
+
+
+## Why version control?
 
 [Github](www.github.com) is a platform for collaborative coding. As we have noted before, collaboration concerns both others and you, in the future! This means that having a formal system for keeping track of your projects is a good thing.
 
@@ -83,15 +86,26 @@ Using GitHub desktop we can create a new branch by clicking *Current branch* in 
 
 Using the command line we can create a branch by typing `git branch <new-branch-name>` where `<new-branch-name>` is a name of the branch that you choose. Using the command `git checkout <new-branch-name>` we switch to the new branch from the current branch, which is often called `master`. We can use `git checkout master` to get back to the original branch. If you switch between branches while working in both your work can be saved using a commit.
 
+### Conflicts
+A conflict emerges when two versions of a files cannot be merged into one. The web client will check if, for example, two branches will be possible to merge. If you try to merge two versions of a file that have different changes made to the same line you will get a message from GitHub desktop or on the command line tool. A conflict needs to be resolved manually.
+
+Find the file that is affected by the conflict. This is possible to do by using `git status` on the command line. Next, find the lines that are affected by the conflict and edit them to what should be correct content. A conflict can be seen in the file as
+
+```
+<<<<<<< HEAD:filename.file
+
+content
+
+=======
 
 
+other content 
 
+>>>>> branch:filename.file
 
+```
 
-
-
-
-
+In the above example, "content" and "other content" is the content of the two conflicting versions of the file (`filename.file`). You have to pick one or write something else instead. You also need to remove markers (`<<<`, `====` and `>>>`). When you are satisfied with the changes commit the changes. This will resolve the conflict.
 
 
 ## Additional great things about GitHub
@@ -103,7 +117,6 @@ GitHub has great capabilities for managing projects. You can for example:
 - You can build a wiki. This is simply a collection of pages that can be used to document the repository or a project (in a wider sense) that you are working on.
 - All of the above can be private and public. You can choose whom have access to your repository. This makes it easy to work on a project even if you need to keep things a secret.
 
-In this course I want you to contribute to the wiki pages of the course. The wiki is hosted at [github.com/dhammarstrom/IDR4000-2021](https://github.com/dhammarstrom/IDR4000-2021). To contribute you need to have created your own GitHub user account.
 
 ## When will this knowledge be handy?
 
@@ -120,6 +133,7 @@ There are of course more functions in git, here are some resources for deeper un
 -   [Extensive resources can be found on Happy Git and GitHub for the useR](https://happygitwithr.com/)
 -   [Karl Broman provides a "minimal tutorial"](https://kbroman.org/github_tutorial/)
 -   [GitHub hosts resources for learning Git](https://try.github.io/)
+-   [Git documentation, here you will find all git commands](https://git-scm.com/doc)
 
 
 

@@ -13,13 +13,9 @@ Although data storage and data input are great ways to use spreadsheets, it's go
 
 ## Cells and simple functions
 
-A spreadsheet consists of cells, these can contain values, such as text, numbers, formulas and functions. Cells may also be formatted with attributes such as color or text styles. Below is an example of some data entered in a spreadsheet.
+A spreadsheet consists of cells, these can contain values, such as text, numbers, formulas and functions. Cells may also be formatted with attributes such as color or text styles. Below is an example of some data entered in a spreadsheet (@fig-excel-spreadsheet).
 
-```{r excel-spreadsheet-1, echo=FALSE, message=FALSE, fig.cap = "Example entries from an Excel spreadsheet", fig.align='center', out.width="120%"}
-
-knitr::include_graphics("./images/excel-spreadsheet.png")
-
-```
+![Example entries from an Excel spreadsheet](./images/excel-spreadsheet.png){#fig-excel-spreadsheet}
 
 
 Cell B6 contains a simple formula: `= C6 + D6`. This formula adds cells `C6` and `D6` resulting in the sum, 8. In formulas, mathematical operators can be used ($+, -, \times , \div$ ). Formulas can be also extended with inbuilt function such as showed in @tbl-excelfunctions.
@@ -44,15 +40,13 @@ When looking for tips and tricks online, you may come across functions for excel
 
 ## Tidy data and data storage
 
-Hadley Wickham (the author of many commonly used R packages) quotes Tolstoy when describing the principle of tidy data [@RN1956]. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that when something goes wrong, it can be wrong in multiple ways. But when it is right/correct/works/succeeds, it does so in only one way[^anna-karenina-principle]. This principle can be applied to data sets. There are so many ways that formatting of data sets can be problematic, but a limited set of principles makes it good.    
+Hadley Wickham (the author of many commonly used R packages) quotes Tolstoy (@fig-tolstoy) when describing the principle of tidy data [@RN1956]. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that when something goes wrong, it can be wrong in multiple ways. But when it is right/correct/works/succeeds, it does so in only one way[^anna-karenina-principle]. This principle can be applied to data sets. There are so many ways that formatting of data sets can be problematic, but a limited set of principles makes it good.    
 
 [^anna-karenina-principle]: See https://en.wikipedia.org/wiki/Anna_Karenina_principle
 
-```{r tolstoy, echo=FALSE, message=FALSE, fig.cap = "Leo Tolstoy at the time when he was (possibly) authoring Anna Karenina. (Source: https://en.wikipedia.org/wiki/Leo_Tolstoy)", fig.scap = "Leo Tolstoy", out.width="50%", fig.align='center'}
+![Leo Tolstoy at the time when he was (possibly) authoring Anna Karenina. (Source: https://en.wikipedia.org/wiki/Leo_Tolstoy)](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Leon_tolstoi.jpg/800px-Leon_tolstoi.jpg){width=50% #fig-tolstoy}
 
-knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Leon_tolstoi.jpg/800px-Leon_tolstoi.jpg")
 
-```
 
 A tidy data set consists of *values* originating from *observations* and belonging to *variables*. A variable is a definition of the values based on attributes. An observation may consist of several variables [@RN1956].
 
@@ -95,19 +89,15 @@ If we follow what is recommended by Broman and Woo [@RN2391], it is clear that e
 
 ## Recording data
 
-A trade secret[^trade-secret] from people who work all day with data and programming is that they are lazy. Lazy in the sense that you want to type as little as possible and avoid moving your arm to the computer mouse whenever possible. When recording data, we can be lazy too. We can do this by shortening variable names and not using CAPITAL letters when entering text in data storage. After a hard day at the keyboard, you will be happy to write `strtest` instead of `Strength Test`. The extra effort of using two capital letters might be the thing to tip you over the edge[^falling-down]. However, we should not be too lazy either; variable names and values should be "short but meaningful" [@RN2391].
+A trade secret[^trade-secret] from people who work all day with data and programming is that they are lazy. Lazy in the sense that you want to type as little as possible and avoid moving your arm to the computer mouse whenever possible. When recording data, we can be lazy too. We can do this by shortening variable names and not using CAPITAL letters when entering text in data storage. After a hard day at the keyboard, you will be happy to write `strtest` instead of `Strength Test`. The extra effort of using two capital letters might be the thing to tip you over the edge (@fig-falling-down[^falling-down]). However, we should not be too lazy either; variable names and values should be "short but meaningful" [@RN2391].
 
 
 [^trade-secret]: A trade secret as in "not generally known to the public". See [en.wikipedia.org/wiki/Trade_secret](https://en.wikipedia.org/wiki/Trade_secret).
 
 [^falling-down]: In the movie Falling Down, Michael Douglas plays a unemployed engineer who gets push over edge, would it have been enough with a few to many capital letters?  
 
+![D-FENS Foster gets pushed over the edge (Source: https://en.wikipedia.org/wiki/Falling_Down)](https://upload.wikimedia.org/wikipedia/en/2/22/Falling_Down_%281993_film%29_poster.jpg){width=50% #fig-falling-down}
 
-```{r falling-down, echo=FALSE, message=FALSE, fig.cap = "D-FENS Foster gets pushed over the edge (Source: https://en.wikipedia.org/wiki/Falling_Down)", fig.scap = "Michael Douglas in Falling Down", out.width="50%", fig.align='center'}
-
-knitr::include_graphics("https://upload.wikimedia.org/wikipedia/en/2/22/Falling_Down_%281993_film%29_poster.jpg")
-
-```
 
 Data and variables should also be consistent. Do not mix data type; use a consistent way of entering e.g., dates and time, and do not use spaces or special characters. To enforce this, you might want to start your data collection by writing up a data dictionary describing all variables you collect. The dictionary can set the rules for your variables. This dictionary can also guide your data validation.
 

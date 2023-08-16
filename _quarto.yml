@@ -10,7 +10,7 @@ book:
   repo-url: https://github.com/dhammarstrom/quant-methods
   repo-branch: master
   repo-actions: [edit, issue, source]
-  downloads: [pdf]
+  downloads: [epub]
   chapters:
     - index.qmd
     - 01-intro-to-data.qmd
@@ -27,11 +27,5 @@ format:
     theme:
       light: flatly
       dark: darkly
-  pdf:
-    documentclass: scrbook
   epub:
     cover-image: resources/cover.png
-code-link: true
-code-fold: false
-code-line-numbers: true
-code-copy: hover
