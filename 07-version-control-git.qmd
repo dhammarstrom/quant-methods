@@ -57,6 +57,11 @@ In the terminal we can commit changes to the git history using the command `git 
 
 The last step, `git push`, means that you are uploading all changes to the online repository. This will update the repository on GitHub, your version history is now up to date in your online repository. This also means that you have an online backup of your work.
 
+In GitHub desktop we can examine the commit history of a project by looking in the *History* tab. Using the web interface at [www.github.com](http://www.github.com) we can get an overview of all commits by clicking *Activity*. Using the command line we can look at the the commit history by using `git log`. This will list all commits and you can scroll trough them by pressing enter. To exit this list press `q`.
+
+Further descriptions of a certain state of the repository can be added using tags. Using a tag we can make a note of a certain state of the repository, for example when an assignment is ready to exam or when a journal article is ready for submission. In GitHub desktop we might  
+
+
 ### Collaboration, `pull`, `clone` and `fork`
 
 Collaboration is most often done with yourself in the future. The `git pull` command (using the terminal) downloads all changes to your working directory. You want to do this when you have changes in the online repository that is not synchronized with the local repository. This might be the case if you have made changes to your repository on GitHub, like added a readme file. Or if you are collaborating with someone who have made changes to the repository. I work on multiple computers, sometimes on the same repository, the online repository is where a keep the most up to date version of my project.
