@@ -57,9 +57,9 @@ In the terminal we can commit changes to the git history using the command `git 
 
 The last step, `git push`, means that you are uploading all changes to the online repository. This will update the repository on GitHub, your version history is now up to date in your online repository. This also means that you have an online backup of your work.
 
-In GitHub desktop we can examine the commit history of a project by looking in the *History* tab. Using the web interface at [www.github.com](http://www.github.com) we can get an overview of all commits by clicking *Activity*. Using the command line we can look at the the commit history by using `git log`. This will list all commits and you can scroll trough them by pressing enter. To exit this list press `q`.
+In GitHub desktop we can examine the commit history of a project by looking in the *History* tab. Using the web interface at [www.github.com](http://www.github.com) we can get an overview of all commits by clicking *Activity* or *commits* in the repository view. Using the command line we can look at the the commit history by using `git log`. This will list all commits and you can scroll trough them by pressing enter. To exit this list press `q`.
 
-Further descriptions of a certain state of the repository can be added using tags. Using a tag we can make a note of a certain state of the repository, for example when an assignment is ready to exam or when a journal article is ready for submission. In GitHub desktop we might  
+Further descriptions of a certain state of the repository can be added using tags. Using a tag we can make a note of a certain state of the repository, for example when an assignment is ready to exam or when a journal article is ready for submission. In GitHub desktop we might want to put a tag on a specific commit. We can do this by right-clicking on a commit in the history followed by *Create tag*. Using the command line, tags are added with `git tag`, see the [git documentation for details](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
 
 
 ### Collaboration, `pull`, `clone` and `fork`
@@ -79,7 +79,9 @@ If a fork is used to suggest changes this is done through a *pull request*. Usin
 ### Branches
 Much like a fork, we can create copies of our own repository. These are called branches. A branch might contain changes that we want to try out before we make it the "official" version of our repository. These changes can include experiments that might mess up things or break code. 
 
-Using GitHub desktop we can create a new branch by clicking *Current branch* in the upper left and then *Create branch*. In GitHub desktop it is easy to switch between branches. 
+Using GitHub desktop we can create a new branch by clicking *Current branch* in the upper left and then *Create branch*. In GitHub desktop it is easy to switch between branches.
+
+Using the command line we can create a branch by typing `git branch <new-branch-name>` where `<new-branch-name>` is a name of the branch that you choose. Using the command `git checkout <new-branch-name>` we switch to the new branch from the current branch, which is often called `master`. We can use `git checkout master` to get back to the original branch. If you switch between branches while working in both your work can be saved using a commit.
 
 
 
