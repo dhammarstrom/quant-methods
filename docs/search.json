@@ -341,5 +341,12 @@
     "title": "8  Version control and collaboration",
     "section": "8.6 Resources",
     "text": "8.6 Resources\nThere are of course more functions in git, here are some resources for deeper understanding.\n\nExtensive resources can be found on Happy Git and GitHub for the useR\nKarl Broman provides a “minimal tutorial”\nGitHub hosts resources for learning Git\nGit documentation, here you will find all git commands"
+  },
+  {
+    "objectID": "07-version-control-git.html#footnotes-and-references",
+    "href": "07-version-control-git.html#footnotes-and-references",
+    "title": "8  Version control and collaboration",
+    "section": "8.7 Footnotes and references",
+    "text": "8.7 Footnotes and references"
   }
 ]

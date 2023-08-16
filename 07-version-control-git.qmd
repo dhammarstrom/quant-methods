@@ -136,4 +136,4 @@ There are of course more functions in git, here are some resources for deeper un
 -   [Git documentation, here you will find all git commands](https://git-scm.com/doc)
 
 
-
+## Footnotes and references
