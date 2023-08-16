@@ -76,7 +76,7 @@ Much like a fork, we can create copies of our own repository. These are called b
 
 Using GitHub desktop we can create a new branch by clicking *Current branch* in the upper left and then *Create branch*. In GitHub desktop it is easy to switch between branches. 
 
-
+Text text
 
 
 
