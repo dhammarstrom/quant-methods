@@ -365,41 +365,11 @@ R-scripts that are not figures but contains analyses or data cleaning or the lik
 
 ## Quarto formats
 
-Quarto brings many possibilities for authoring data-driven formats, including but not restricted to websites, books, blogs and presentations. In this course 
-
-
+Quarto brings many possibilities for authoring data-driven formats, including but not restricted to websites, books, blogs and presentations. In this course we will cover simple reports and books. These formats are easily extended to websites and blogs. The [quarto documentation](https://quarto.org/docs/guide/) is really good in conveying this message. Se also [Chapter 30 in R 4 DS](https://r4ds.hadley.nz/quarto-formats).
 
 
 
 ## References and footnotes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

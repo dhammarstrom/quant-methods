@@ -284,7 +284,7 @@
     "href": "06-writing-reports.html#quarto-formats",
     "title": "7  Writing your first reproducible report",
     "section": "7.5 Quarto formats",
-    "text": "7.5 Quarto formats\nQuarto brings many possibilities for authoring data-driven formats, including but not restricted to websites, books, blogs and presentations. In this course"
+    "text": "7.5 Quarto formats\nQuarto brings many possibilities for authoring data-driven formats, including but not restricted to websites, books, blogs and presentations. In this course we will cover simple reports and books. These formats are easily extended to websites and blogs. The quarto documentation is really good in conveying this message. Se also Chapter 30 in R 4 DS."
   },
   {
     "objectID": "06-writing-reports.html#references-and-footnotes",
@@ -348,5 +348,54 @@
     "title": "8  Version control and collaboration",
     "section": "8.7 Footnotes and references",
     "text": "8.7 Footnotes and references"
+  },
+  {
+    "objectID": "08-phys-lab-reliability.html#smallest-worthwhile-change-or-effect",
+    "href": "08-phys-lab-reliability.html#smallest-worthwhile-change-or-effect",
+    "title": "9  Reliability in the physiology lab",
+    "section": "9.1 Smallest worthwhile change or effect",
+    "text": "9.1 Smallest worthwhile change or effect\nWhen we do not have any measures of reliability, nor clinically relevant thresholds for a test, the smallest worthwhile effect may provide an indication of important changes in a test. An arbitrary number of the smallest effect of interest in an average change score has been defined as 20% of the between participant standard deviation (\\(0.2\\times SD\\)). This tells you nothing about the reliability of your test, it simply gives a proportion of the expected population variation."
+  },
+  {
+    "objectID": "08-phys-lab-reliability.html#video-from-seminar",
+    "href": "08-phys-lab-reliability.html#video-from-seminar",
+    "title": "9  Reliability in the physiology lab",
+    "section": "9.2 Video from seminar",
+    "text": "9.2 Video from seminar\nPart 1: \n\n\n\n\nPart 2:\n\n\n\n\n\n\n\n\n\nHopkins, W. G. 2000. “Measures of Reliability in Sports Medicine and Science.” Journal Article. Sports Med 30 (1): 1–15. http://www.ncbi.nlm.nih.gov/pubmed/10907753."
+  },
+  {
+    "objectID": "10-mol-lab-intro.html#health-and-safety-in-the-lab",
+    "href": "10-mol-lab-intro.html#health-and-safety-in-the-lab",
+    "title": "10  Introduction to the molecular exercise physiology lab",
+    "section": "10.1 Health and safety in the lab",
+    "text": "10.1 Health and safety in the lab"
+  },
+  {
+    "objectID": "10-mol-lab-intro.html#good-laboratory-practice",
+    "href": "10-mol-lab-intro.html#good-laboratory-practice",
+    "title": "10  Introduction to the molecular exercise physiology lab",
+    "section": "10.2 Good laboratory practice",
+    "text": "10.2 Good laboratory practice"
+  },
+  {
+    "objectID": "10-mol-lab-intro.html#the-laboratory-journal",
+    "href": "10-mol-lab-intro.html#the-laboratory-journal",
+    "title": "10  Introduction to the molecular exercise physiology lab",
+    "section": "10.3 The laboratory journal",
+    "text": "10.3 The laboratory journal\nYour laboratory journal fills several purposes. It helps you in keeping track of what you have done, why you did it, what were the results of your experiments and what were your conclusions. The journal also helps your collaborators (fellow students, supervisors, laboratory managers) to understand what you have done. In a broader perspective the laboratory journal can be viewed as a primary source of data for your prospective manuscript, and when the manuscript has been published, the journal is source data kept for records at your department."
+  },
+  {
+    "objectID": "10-mol-lab-intro.html#keeping-it-digital---using-our-electronic-lab-journal",
+    "href": "10-mol-lab-intro.html#keeping-it-digital---using-our-electronic-lab-journal",
+    "title": "10  Introduction to the molecular exercise physiology lab",
+    "section": "10.4 Keeping it digital - Using our electronic lab journal",
+    "text": "10.4 Keeping it digital - Using our electronic lab journal\nAfter a couple of years running our lab in Lillehammer, we have arrived at the conclusion that we need to organize the molecular lab using a electronic laboratory journal system. This will solve several issues with organizing laboratory work like storage of data, collaborating, running multiple projects in parallel, having guests and students contributing to projects etc.\nTraditionally, laboratory journals are stored in a fire safe cabinets in the lab, in notebooks. In some labs, each page must be “read and understood” and subsequently signed by a lab administrator or principle investigator. People working in laboratories typically have strong feeling about their laboratory journal system, regardless of digital or analog alternatives. The above observations indicate that, as a new lab member you should take care to learn the laboratory journal system and culture of the lab. This will make your work more important to the lab, as it will contribute to the collective knowledge based on the groups work.\nOur electronic laboratory journal system can be found at elab.inn.no. As a student at inn you may log in using your student username and password. The system has link to the documentation of the software which can also be found through this web address: doc.elabftw.net/. As a student you will be added to the group related to this course.\n\n10.4.1 What to write in the journal\nA laboratory journal should consist of all necessary information needed to replicate your experiments. The tricky thing is that you do not always know what information is needed to do a replication. This means that you will need to include all relevant information about your experiment, and a bit more, within reasonable limits.\n\n\n10.4.2 Structure of an entry\nIn the electronic journal (elab.inn.no), entries are recorded as experiments. An experiment starts on a specific date, it has a status, a title and tags can be added. This will make it easy to keep track of the entry. eLabFTW will keep a specific record of your entry and time stamp it. The actual entry has three parts, namely purpose, methods and results. These are suggested in the template when you start a new entry.\nThe purpose of an experiments should give a clear description of why you are performing the experiment. This description could be “To extract and analyze DNA for ACTN3 genotyping”. Further descriptions could be necessary if you are performing more complex experiments. Maybe you found something out in previous experiment that needs to be validated in this experiemnt. If you spend some time to write this up, your subsequent report will be easier to write and your collaborators will understand what you did.\nThe methods in an experiment “need to include all relevant information about your experiment, and a bit more, within reasonable limits”, as already mentioned above. A detailed protocol should be included. If you are using pre-written protocols, this entry should refer to this protocol and include any changes made to the protocol. You should also note batch numbers on chemicals and reagents etc. If an experiment fail, a complete record of reagents and machines etc. will make it easier to track potential methodological issues.\nThe method describes the experiment, e.g. by a step-by-step approach. This section includes recipes of solutions, what samples were used, in what order different steps of the protocol was done, if any problems occurred and so on. Remember to write explicit, you might remember tomorrow, but in one week or one year, you have no idea. A method section (as the other sections) can refer back in the laboratory journal system. For example, maybe you prepared and validated the lysis buffer in a previous experiment, write this and refer to the experiment describing the buffer. A part of a method section can look something like this:\n\nOverview: Freeze dried muscle samples are homogenized in lysis buffer (Refer to experiment: Lysis buffer test) and protein concentrations are determined in the plate reader (raw data included below). Based on protein concentrations, supernatant is normalized to a common 2 μg/μl. Step-by-step: 1. Freeze dry muscle over-night (at least 20 h). 2. Dissect away fat, connective tissue and blood 3. Move ~2 mg to a new tube and add 80 μl of ice-cold lysis buffer per mg of tissue. 4. …”\n\nFinally, the results should be a description of the actual results, and a description of what this means. If you would pick up your experiment later this will help you understand the results. This also applies to collaborations. In eLabFTW you can include raw data files. This will be the primary way of storing raw data from machines and instruments. Importantly, eLabFTW will not give you a way of structuring large amount of data. This step could instead be done outside eLabFTW.\n\n\n10.4.3 Relationship between the laboratory journal and your samples, solutions, tubes etc.\nWhen you do work in the laboratory, you will notice that you accumulate a lot of micro-centrifuge tubes, boxes full of intermediate sample preparations, solutions etc. To keep track of all this you need to “connect” the content of your laboratory journal entries to the place where you keep all your stuff. For example, when marking a new cryo-box, this should be done with information about what is the content of the box, the date when the box was “started”, your name, and the experiment. Your name, date and experiment can be tracked back to your laboratory journal entries. This means that when your collaborator finds a mystical “Sample X1 2017 10 10, experiment Y”, she can go back to your journal and find out what you did. In summary: label everything!"
+  },
+  {
+    "objectID": "10-mol-lab-intro.html#protocols-and-experiments-in-the-course",
+    "href": "10-mol-lab-intro.html#protocols-and-experiments-in-the-course",
+    "title": "10  Introduction to the molecular exercise physiology lab",
+    "section": "10.5 Protocols and experiments in the course",
+    "text": "10.5 Protocols and experiments in the course\nProtocols used in the course are as for now available at trainome.github.io."
   }
 ]
