@@ -1,0 +1,53 @@
+---
+title: "Associations and causation"
+---
+
+We have previously been introduced to a general purpose algorithm for describing associations among variables of choice, the regression model. 
+
+
+## Association does not imply causation
+
+
+## Drawing a scientific model using Directed Acyclic Graphs (DAGs)
+
+- Chains 
+- Forks
+- Inverted forks
+
+- Confounding
+- Collider bias
+
+- Descendants
+- Ancestors
+
+- Back-door paths
+
+- Post-treatment variables
+
+## Causality and randomized experiments
+
+
+
+```{r}
+
+a <- rnorm(100, 0, 1)
+
+c <- rnorm(100, 0, 1)
+
+b <- a*0.5 + c*0.5 + rnorm(100, 0, 1)
+
+
+summary(lm(a ~ c + b))
+
+
+plot(a,c)
+plot(b,c)
+
+
+```
+
+
+
+
+
+
