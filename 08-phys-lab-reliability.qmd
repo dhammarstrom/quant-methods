@@ -5,7 +5,7 @@ editor_options:
 ---
 # Reliability in the physiology lab
 
-We will follow Hopkins definition of reliability in this section [@RN130], and specifically concern ourselves with reliability in test/measurements that produces continuous numbers as results. For this lab you have collected data in several tests (or measurements), at least two times, from several individuals. You can now estimate the reliability of each test (or measurement). The reliability, expressed as typical error is an estimate of what we may expect as the random variation around a measurement if repeated under similar circumstances in the same individual [@RN130].
+We will follow Hopkins definition of reliability in this section [@RN130], and specifically concern ourselves with reliability in test/measurements that produces continuous numbers as results. For this purpose you have collected data in several tests (or measurements), at least two times, from several individuals. You can now estimate the reliability of each test (or measurement). The reliability, expressed as typical error is an estimate of what we may expect as the random variation around a measurement if repeated under similar circumstances in the same individual [@RN130].
 
 Hopkins [@RN130] details two measures of reliability for estimates of within-individual reliability that are closely related, the typical error and limits of agreement. Using the example data in [@RN130] we can calculate first the typical error.
 
@@ -31,7 +31,7 @@ example_data %>%
 
 ```
 
-The interpretation of the typical error is that this is the typical variation of the test. If you repeat the test, this is the random variation that can be expected. If expressed as a percentage of the mean, it can be compared to other tests. For example, is test A more reliable than test B? In the code below, we will add the mean to allow calculation of the coefficient of variation (CV, or as referred to in [@RN130], typical percentage error).
+The interpretation of the typical error is that this is the average variation of the test. If you repeat the test, this is the random variation that can be expected. If expressed as a percentage of the mean, it can be compared to other tests. For example, is test A more reliable than test B? In the code below, we will add the mean to allow calculation of the coefficient of variation (CV, or as referred to in [@RN130], typical percentage error).
 
 
 ```{r}
@@ -76,18 +76,6 @@ The part with `qt(0.975, 4)` is the R-code equivalent to $t_{0.975, 4}$ (See equ
 When we do not have any measures of reliability, nor clinically relevant thresholds for a test, the smallest worthwhile effect may provide an indication of important changes in a test. An arbitrary number of the smallest effect of interest in an average change score has been defined as 20% of the between participant standard deviation ($0.2\times SD$). This tells you nothing about the reliability of your test, it simply gives a proportion of the expected population variation. 
 
 
-## Why does it matter?
-
-```{r}
-
-library(tidyverse)
-
-
-
-
-
-
-```
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -112,7 +112,8 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -134,7 +135,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-phys-lab-reliability.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -232,7 +233,6 @@ div.csl-indent {
    
   <ul>
   <li><a href="#smallest-worthwhile-change-or-effect" id="toc-smallest-worthwhile-change-or-effect" class="nav-link active" data-scroll-target="#smallest-worthwhile-change-or-effect"><span class="header-section-number">9.1</span> Smallest worthwhile change or effect</a></li>
-  <li><a href="#video-from-seminar" id="toc-video-from-seminar" class="nav-link" data-scroll-target="#video-from-seminar"><span class="header-section-number">9.2</span> Video from seminar</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/dhammarstrom/quant-methods/edit/master/08-phys-lab-reliability.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/blob/master/08-phys-lab-reliability.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
@@ -256,13 +256,9 @@ div.csl-indent {
 
 </header>
 
-<p>We will follow Hopkins definition of reliability in this section <span class="citation" data-cites="RN130">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>, and specifically concern ourselves with reliability in test/measurements that produces continuous numbers as results. For this lab you have collected data in several tests, at least two times, from several individuals. You can now estimate the reliability of each test. The reliability, expressed as typical error is an estimate of what we may expect as the random variation around a measurement if repeated under similar circumstances in the same individual <span class="citation" data-cites="RN130">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>.</p>
-<center>
-<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/db185c761f114b149aab9345de84fe5b1d" allowfullscreen="" msallowfullscreen="" allow="fullscreen">
-</iframe>
-</center>
+<p>We will follow Hopkins definition of reliability in this section <span class="citation" data-cites="RN130">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>, and specifically concern ourselves with reliability in test/measurements that produces continuous numbers as results. For this purpose you have collected data in several tests (or measurements), at least two times, from several individuals. You can now estimate the reliability of each test (or measurement). The reliability, expressed as typical error is an estimate of what we may expect as the random variation around a measurement if repeated under similar circumstances in the same individual <span class="citation" data-cites="RN130">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>.</p>
 <p>Hopkins <span class="citation" data-cites="RN130">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span> details two measures of reliability for estimates of within-individual reliability that are closely related, the typical error and limits of agreement. Using the example data in <span class="citation" data-cites="RN130">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span> we can calculate first the typical error.</p>
-<p>We will take advantage of the change scores between two duplicate measures and derive the estimate of the typical error from them. (To run the code, copy and paste into your own Rmarkdown file).</p>
+<p>We will take advantage of the change scores between two duplicate measures and derive the estimate of the typical error from them. (To run the code, copy and paste into your own source file).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -278,7 +274,7 @@ div.csl-indent {
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Round is used to get less decimal places...</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The interpretation of the typical error is that this is the typical variation of the test. If you repeat the test, this is the random variation that can be expected. If expressed as a percentage of the mean, it can be compared to other tests. In the code below, we will add the mean to allow calculation of the coefficient of variation (CV, or as referred to in <span class="citation" data-cites="RN130">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>, typical percentage error).</p>
+<p>The interpretation of the typical error is that this is the average variation of the test. If you repeat the test, this is the random variation that can be expected. If expressed as a percentage of the mean, it can be compared to other tests. For example, is test A more reliable than test B? In the code below, we will add the mean to allow calculation of the coefficient of variation (CV, or as referred to in <span class="citation" data-cites="RN130">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>, typical percentage error).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the typical error </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span></span>
@@ -297,29 +293,16 @@ div.csl-indent {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> trial2 <span class="sc">-</span> trial1) <span class="sc">%&gt;%</span> <span class="co"># Change/difference score</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">s =</span> <span class="fu">sd</span>(diff),  <span class="co"># Summarize to calculate sd, and... </span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(trial1, trial2)), <span class="co"># mean</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">te =</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>, <span class="co"># the typical error.</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">cv =</span> <span class="dv">100</span> <span class="sc">*</span> (te <span class="sc">/</span> m), <span class="dv">1</span>, </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">L =</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">4</span>) <span class="sc">*</span> s) <span class="sc">%&gt;%</span>  <span class="co"># Calculate as a percentage of the mean</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">te =</span> <span class="fu">round</span>(s <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>), <span class="co"># the typical error.</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">cv =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> (te <span class="sc">/</span> m), <span class="dv">1</span>), <span class="co"># Calculate as a percentage of the mean</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">upr.L =</span> <span class="fu">mean</span>(diff) <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">4</span>) <span class="sc">*</span> s, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">lwr.L =</span> <span class="fu">mean</span>(diff) <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">4</span>) <span class="sc">*</span> s) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The part with <code>qt(0.975, 4)</code> is the R-code equivalent to <span class="math inline">\(t_{0.975, 4}\)</span> (See equation 1 in <span class="citation" data-cites="RN130">(<a href="#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>) which is the <em>t</em>-distribution with 4 degrees of freedom. The degrees of freedom comes from the number of participants in the data set minus 1 (<span class="math inline">\(n - 1\)</span>). As noted by Hopkins, we may use the CV in the calculation of limits of agreement.</p>
 <section id="smallest-worthwhile-change-or-effect" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="smallest-worthwhile-change-or-effect"><span class="header-section-number">9.1</span> Smallest worthwhile change or effect</h2>
 <p>When we do not have any measures of reliability, nor clinically relevant thresholds for a test, the smallest worthwhile effect may provide an indication of important changes in a test. An arbitrary number of the smallest effect of interest in an average change score has been defined as 20% of the between participant standard deviation (<span class="math inline">\(0.2\times SD\)</span>). This tells you nothing about the reliability of your test, it simply gives a proportion of the expected population variation.</p>
-</section>
-<section id="video-from-seminar" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="video-from-seminar"><span class="header-section-number">9.2</span> Video from seminar</h2>
-Part 1: <br>
-<center>
-<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/b14668baee744c41a418a73e254624131d" allowfullscreen="" msallowfullscreen="" allow="fullscreen">
-</iframe>
-</center>
-<p>Part 2:</p>
-<br>
-<center>
-<iframe width="450" height="300" frameborder="0" scrolling="auto" marginheight="0" marginwidth="0" src="https://media.inn.no/Mediasite/Play/07bd6b818e8844788b281b55b5681bff1d" allowfullscreen="" msallowfullscreen="" allow="fullscreen">
-</iframe>
-</center>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">

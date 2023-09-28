@@ -10,12 +10,17 @@ We have previously been introduced to a general purpose algorithm for describing
 
 ## Drawing a scientific model using Directed Acyclic Graphs (DAGs)
 
+
+
+
+
 - Chains 
 - Forks
 - Inverted forks
 
 - Confounding
 - Collider bias
+- Overcontrol bias 
 
 - Descendants
 - Ancestors
