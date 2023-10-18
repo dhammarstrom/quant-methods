@@ -22,6 +22,9 @@ book:
     - 07-version-control-git.qmd
     - 08-phys-lab-reliability.qmd
     - 10-mol-lab-intro.qmd
+    - 11-the-linear-model.qmd
+    - 12-linear-and-curvlinear-relationships.qmd
+    - 13-categorical-predictors-and-multiple-regression.qmd
 
 bibliography: resources/bib-final.bib
 format:

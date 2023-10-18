@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # The linear model
 
 
@@ -32,11 +37,15 @@ ggplot(data.frame(x = x, y = y), aes(x, y)) +
 
 ```
 
-In the model shown above, $y$ increases two units for every unit increase in $x$. If we measure something in nature and find such a fit (every point on the line) we should check our calculations as perfect relationships are seldom found in measured variables. This because of measurement error and other non measured variables that affect the relationship. We quantify these unmeasured sources of variation in an additional term in the formula:
+In the model shown above, $y$ increases two units for every unit increase in $x$. If we measure something in nature and find such a fit (every point on the line) we should check our calculations as perfect relationships are seldom found in measured variables. This because of measurement error and other non measured variables that affect the relationship. We could also add some details to the notation presented above. For a specific observation ($y_i$), we quantify unmeasured sources of variation in an additional term in the formula
 
-$$y = \beta_0 + \beta_1x + \epsilon$$
+$$y_i = \beta_0 + \beta_1x_i + \epsilon_i$$
 
-$\epsilon$ is the error-term. Here we quantify the distance from the best fit line for every observation. The best fit line is the line that minimizes the *squared residuals* ($e_i^2$, in this case $e$ is used to signify the error as it is observed data). A more realistic regression model contains some error.
+$\epsilon$ is the error-term. Here we quantify the distance from the best fit line, or the estimated value for each observation ($\hat{y}_i$) to the observed value ($y_i$). The best fit line is the line that *minimizes* the sum of the *squared residual error*, or the differences between estimated and observed values: 
+
+$$\sum\limits_{i=1}^{n}\epsilon_i^2 = \sum\limits_{i=1}^{n}(y_i - \hat{y}_i)^2$$ 
+
+A more realistic regression model contains some error.
 
 
 ```{r, echo = FALSE, fig.align='center', fig.width=4, fig.height=4}
@@ -63,7 +72,7 @@ ggplot(data.frame(x = x, y = y2, error = error,resid = resid, pred = pred), aes(
         
 ```
 
-In the above figure, the error or residual is the distance (red lines) from the predicted (blue points) to the observed (black points).
+In the above figure, the errors or residuals are highlighted as the distance (red lines) from the predicted (blue points) to the observed (black points).
 
 A two variable relationship can be positive (increase in $y$ as $x$ increases) or negative ($y$ decreases as $x$ increases). 
 
@@ -151,16 +160,23 @@ ggplot(data.frame(x = x, y = y2, error = error,resid = resid, pred = pred), aes(
 
 Let's fit some real data. We might wonder if there are some characteristic that is related to VO~2max~. For example, do taller individuals have greater VO~2max~? It is always a good idea to start with a plot before we do the modeling. 
 
-```{r, eval = FALSE}
+```{r}
+#| eval: true
+#| fig-cap: "Height and VO<sub>2max</sub> from the cycling study data set"
+
+
 library(tidyverse)
 library(exscidata)
-data("cyclingstudy")
 
 
- cyclingstudy %>%
+
+exscidata::cyclingstudy %>%
         filter(timepoint == "pre") %>%
         select(subject, group, VO2.max, height.T1) %>%
-         ggplot(aes(height.T1, VO2.max)) + geom_point(size = 3, fill = "lightblue", shape = 21) +
+         ggplot(aes(height.T1, VO2.max)) + 
+  geom_point(size = 3, 
+             fill = "lightblue", 
+             shape = 21) +
          labs(x = "Height (cm)", 
               y = expression("VO"["2max"]~(ml^-1~min^-1))) +
          theme_minimal()
@@ -168,21 +184,33 @@ data("cyclingstudy")
 
 ```
 
-There might be a positive relationship, what do you think? You might get a clearer picture if you use `geom_smooth(method = "lm")` in your ggplot command, try it out!
+There might be a positive relationship, what do you think? You might get a clearer picture if you use `geom_smooth(method = "lm")` in your ggplot command, try it out (or see below)!
 
 To quantify the relationship between Height (`height.T1`) and VO~2max~ (`VO2.max`) we can fit a linear model. Below I store the model in an object called `m1`. Before we look at the results of the regression model, we should think about the data and inspect the fit to see if it matches with our assumptions. Assumptions that generally needs to be met in order to get a valid regression model are:
 
 - **Independent observations**. This is an assumption about the design of the study and the data at hand. If we have observations that are related, the ordinary linear model will give us biased conclusions. As an example, if we collect data from the same participants over time we will not have independent observations and this will lead to pseudo-replication, lower standard errors and biased confidence intervals. Another way to see it is that non-independent observations will give non-independence of the residuals which is the mechanism that creates bad inference (as the residuals are used to estimate the sampling distribution of parameters).
 
-- **Linear relationship**. In the basic case, we expect a linear trend that can be described with a straight line. If the relationship is curve-linear, we may adjust the fit using e.g. polynomials.
+- **Linear relationship**. In the basic case, we expect a linear trend that can be described with a straight line. If the relationship is curve-linear, we may adjust the fit using e.g. polynomials. The relationship between Height and VO<sub>2max</sub> is plotted in @fig-resid-analysis A and highlighted with a best fit line.
 
-- **Normal residuals**. This condition might be violated when there is an outlier. 
+- **Normal residuals**. This condition might be violated when there is an outlier. Residuals from a model of the relationship Height and VO<sub>2max</sub> are plotted in @fig-resid-analysis B and C.
 
-- **Constant variance**. This assumption says that we want to be equally wrong all along the explanatory variable. If we predict $y$ with greater error at large $x$ we have heteroscedasticity (unequal variance), if we are "equally wrong" we have homoscedasticity (equal variance).
+- **Constant variance**. This assumption says that we want to be equally wrong all along the explanatory variable. If we predict $y$ with greater error at large $x$ we have heteroscedasticity (unequal variance), if we are "equally wrong" we have homoscedasticity (equal variance). Residuals from a model of the relationship Height and VO<sub>2max</sub> are plotted in @fig-resid-analysis D against the predictor variable (Height).
 
 #### Code for fitting a preliminary model
 
-```{r, eval = TRUE}
+```{r}
+#| code-fold: true
+#| code-summary: "Fitting the model and plotting the data"
+#| eval: true
+#| label: fig-resid-analysis
+#| fig-cap: "An analysis of the model fit. In A we do have a pattern indicating a linear relationship between Height and VO<sub>2max</sub>. In B we visualize each observation together with its estimated value and the distance between the two (residuals). The residuals (c) are approximately normal, although we do not have a lot of data to really be confident. Finnaly we plot the distance between observed and estimated values against the predictor, we are approximately equally wrong along all values of Height (although we do not have a lot of data to really be confident)"
+#| fig-height: 8
+
+
+library(exscidata)
+library(ggtext)
+library(cowplot)
+
 
 cyc_select <-  cyclingstudy %>%
         filter(timepoint == "pre") %>%
@@ -190,28 +218,152 @@ cyc_select <-  cyclingstudy %>%
 
 m1 <- lm(VO2.max ~ height.T1, data = cyc_select)
 
+
+## Plotting the raw data together with a best-fit line
+
+figa <- cyclingstudy %>%
+        filter(timepoint == "pre") %>%
+        select(subject, group, VO2.max, height.T1) %>%
+  ggplot(aes(height.T1, VO2.max)) +
+    geom_point(size = 3, 
+             fill = "lightblue", 
+             shape = 21) +
+  
+  geom_smooth(method = "lm", se = FALSE) +
+  
+         labs(x = "Height (cm)", 
+              y = expression("VO"["2max"]~(ml^-1~min^-1))) +
+         theme_minimal()
+
+## Extracting and plotting residuals
+
+figb <- cyclingstudy %>%
+        filter(timepoint == "pre") %>%
+        select(subject, group, VO2.max, height.T1) %>%
+  mutate(yhat = fitted(m1)) %>%
+  
+  ggplot(aes(height.T1, VO2.max, group = subject)) +
+    
+  geom_segment(aes(y = yhat, yend = VO2.max, x = height.T1, xend = height.T1), 
+               color = "red") +
+  
+  geom_point(size = 3, 
+             fill = "lightblue", 
+             shape = 21) +
+  
+  geom_point(aes(height.T1, yhat), 
+             size = 3, fill = "orange", shape = 21) + 
+  
+  
+  
+  geom_smooth(method = "lm", se = FALSE) +
+  
+         labs(x = "Height (cm)", 
+              y = expression("VO"["2max"]~(ml^-1~min^-1))) +
+         theme_minimal()
+  
+ figc <- cyclingstudy %>%
+        filter(timepoint == "pre") %>%
+        select(subject, group, VO2.max, height.T1) %>%
+  mutate(yhat = fitted(m1), 
+         resid = resid(m1)) %>%
+ 
+   
+   ggplot(aes(resid)) + 
+   
+      
+   geom_density(aes(resid),
+              
+                color = "orange") + 
+     geom_rug(color = "orange") +
+   
+   scale_x_continuous(limits = c(-1200, 1200)) +
+   
+   stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 425), 
+                 color = "steelblue") +
+   
+   labs(x = "Residuals", 
+        subtitle = "The <span style = 'color: orange;'>observed residual distribution</span> <br> and a <span style = 'color: #4682b4;'>Normal distribution</span> with mean 0 and SD of 425") +
+   
+   theme_minimal() + 
+   theme(axis.text.y = element_blank(), 
+         axis.ticks.y = element_blank(), 
+         axis.title.y = element_blank(), 
+         plot.subtitle = element_markdown())
+
+   
+ 
+   
+figd <- cyclingstudy %>%
+        filter(timepoint == "pre") %>%
+        select(subject, group, VO2.max, height.T1) %>%
+  mutate(yhat = fitted(m1), 
+         resid = resid(m1)) %>%
+  ggplot(aes(height.T1, resid)) + geom_point() + theme_minimal() + 
+  labs(y = "Residuals", x = "Height (cm)")
+
+
+plot_grid(figa, figb, figc, figd, ncol = 2, labs = c("A", "B", "C", "D"))
+
+
 ```
 
 ### Linear relationship
+A plot (e.g. @fig-resid-analysis) can be used to see if the relationship is generally linear. We do not have that many data points, but a curve-linear relationship is not evident. 
 
-The plot can be used to see if the relationship is generally linear. We do not have that many data points, but a curve-linear relationship is not evident. 
+### Normal residuals
 
-### Constant variance
-This assumption can be checked by creating a residual plot. We will do it here by hand to see how it works. The model is fitted and stored in the object `m1`. From this object we can use the `residuals()` function to get every residual. We can add this data to the data set by creating a new variable called `resid`. It is common practice to plot the residuals against the fitted values. We can get the fitted values using the `fitted()`, these are the predicted values from the model.
+To check if the residuals are normal (like @fig-resid-analysis C suggests), we can create a plot that plot every observed residual against its theoretical position in a normal distribution. This is a quantile-quantile plot. To show the concept we may sample data from a normal distribution and plot it against the theoretical quantile (@fig-qqexample).
 
+```{r}
+#| fig-cap: "An example of a quantile-quantile plot (qq-plot)"
+#| label: fig-qqexample 
+#| code-fold: true
+#| code-summary: "Show the code"
 
-```{r, eval = FALSE}
-cyc_select$resid <- residuals(m1)
-cyc_select$fitted <- fitted(m1)
+set.seed(1)
+ggplot(data.frame(y = rnorm(100, 0, 1)), aes(sample = y)) + 
+  stat_qq(size = 3, fill = "lightblue", shape = 21) + 
+  stat_qq_line() + 
+  theme_minimal()
 ```
 
-We will now plot the fitted values against the residuals. If the model is equally wrong all along the fitted values (or the predictor values), we have homoscedasticity. The residual plot should not show any obvious patterns.
+The code above samples 100 observations. They are plotted against their "theoretical values". If the values (points) follows the straight line, we have data that follows a normal distribution. The same can be assessed from our fitted model (@fig-qqexample2).
+
+```{r}
+#| fig-cap: "A qq-plot constructed from the residuals of our model"
+#| label: fig-qqexample2 
+#| code-fold: true
+#| code-summary: "Show the code"
+
+cyclingstudy %>%
+        filter(timepoint == "pre") %>%
+        select(subject, group, VO2.max, height.T1)  %>%
+        mutate(resid = resid(m1), 
+               st.resid = resid/sd(resid)) %>%
+        ggplot(aes(sample = st.resid)) +
+         stat_qq(size = 3, fill = "lightblue", shape = 21) + 
+                 stat_qq_line() +
+                 theme_minimal()
+
+```
+
+The resulting plot looks nice. Except from one or two observation, the residuals follows the normal distribution. This corresponds to our overlay in @fig-resid-analysis C. The qq-plot is however a more formal way of assessing the assumption of normally distributed errors.
 
 
-```{r, eval = FALSE}
-library(tidyverse)
+### Constant variance
+This assumption can be checked by creating a residual plot (e.g. @fig-resid-analysis D). We will do a variation of this plot below by hand to see how it works. The model is fitted and stored in the object `m1`. From this object we can use the `residuals()` function to get every residual. We can add this data to the data set by creating a new variable called `resid`. It is common practice to plot the residuals against the fitted values. We can get the fitted values using the `fitted()`, these are the predicted values from the model.
 
-cyc_select %>%
+We will plot the fitted values against the residuals. If the model is equally wrong all along the fitted values (or the predictor values as in @fig-resid-analysis D), we have homoscedasticity. The residual plot should not show any obvious patterns.
+
+```{r}
+#| fig-cap: "Residuals plotted against the fitted values from our model of VO<sub>2max</sub> against Height"
+#| label: fig-resid-raw
+#| code-fold: true
+#| code-summary: "Show the code"
+
+data.frame(resid = resid(m1), 
+           fitted = fitted(m1)) %>%
         ggplot(aes(fitted, resid)) + 
         geom_hline(yintercept = 0) +
         geom_point(size = 3, fill = "lightblue", shape = 21) +
@@ -223,8 +375,13 @@ Sometimes you will see standardized residuals. This is the residual divided by t
 
 
 ```{r, eval = FALSE}
+#| fig-cap: "Standradized residuals plotted against the fitted values from our model of VO<sub>2max</sub> against Height"
+#| label: fig-resid-standard
+#| code-fold: true
+#| code-summary: "Show the code"
 
-cyc_select %>%
+data.frame(resid = resid(m1), 
+           fitted = fitted(m1)) %>%
         mutate(st.resid = resid/sd(resid)) %>%
         ggplot(aes(fitted, st.resid)) + 
         geom_hline(yintercept = 0) +
@@ -233,85 +390,52 @@ cyc_select %>%
 
 ```
 
-Looking at the plot tells us that observation with the largest error is about 2.5 standard deviation away from its predicted value. We are suffering a bit from having a small amount of data here. But the residual plot does not invalidate the regression model. 
+Looking at the plot (@fig-resid-standard) tells us that observation with the largest error is about 2.5 standard deviation away from its predicted value. We are suffering a bit from having a small amount of data here. But the residual plot does not invalidate the regression model. 
 
-### Normal residuals
 
-To check if the residuals are normal, we can create a plot that plot every observed residual against its theoretical position in a normal distribution. This is a quantile-quantile plot. To show the concept we may sample data from a normal distribution and plot it against the theoretical quantile.
-
-```{r, eval = FALSE}
-set.seed(1)
-ggplot(data.frame(y = rnorm(100, 0, 1)), aes(sample = y)) + 
-  stat_qq(size = 3, fill = "lightblue", shape = 21) + 
-  stat_qq_line() + 
-  theme_minimal()
-```
-
-The code above samples 100 observations. They are plotted against their "theoretical values". If the values (points) follows the straight line, we have data that follows a normal distribution. The same can be assessed from our fitted model.
-
-```{r, eval = FALSE}
-
-cyc_select %>%
-        mutate(st.resid = resid/sd(resid)) %>%
-        ggplot(aes(sample = st.resid)) +
-         stat_qq(size = 3, fill = "lightblue", shape = 21) + 
-                 stat_qq_line() +
-                 theme_minimal()
-
-```
-
-The resulting plot looks nice. Except from one or two observation, the residuals follows the normal distribution 
-
-### Independent observations 
-This is an assumption about the data and design of the study. We created the model based on values only from the pre-training test. If we would have used all observations (all time-points) we would have violated the assumption. 
 
 ## Check the results
 To examine the results of the analysis we can use the `summary()` function.
 
-```{r, eval = FALSE}
+```{r}
+
 summary(m1)
 ```
 
-The output will show you the following things:
-
+The output (see above) will show you the following things:
+- *Call* this summary contains your instructions to R.
 - *Residuals* which contains the minimum, maximum, median and quartiles of the residuals. The tails should be approximately similar above and below the median. 
 - *Coefficients* contains the estimates and their standard errors. As we have fitted a univariate model, we only see the increase in VO~2max~ with every unit increase of `height.T1` and the intercept.
-- *R-squared* shows the general fit of the model, this is a value between 0 and 1 where 1 shows if the data fits perfectly.
+- *R-squared* and additional statistics: shows the general fit of the model, the R squared value is a value between 0 and 1 where 1 shows if the data fits perfectly.
 
-## A note about printing the regression table
-We might want to print the regression table in our reports. To do this in a nice way we might want to format the output a bit. This can be done using a package called `broom`. `broom` is not part of the tidyverse so you might need to install it. The package has a function called tidy that takes model objects and formats it into nice data frames that are more easy to work with. Together with the `knitr` package we can create tables for use in the report. The `knitr` package contains the function `kable` that makes nice tables with some arguments to format the table.
+### A note about printing the regression tables
+We might want to print the regression table (coefficients) in our reports. To do this in a nice way we might want to format the output a bit. This can be done using a package called `broom`. `broom` is not part of the tidyverse so you might need to install it. The package has a function called tidy that takes model objects and formats it into nice data frames that are more easy to work with. Together with the `gt` package we can create tables for use in the report. The function `gt` makes nice tables with some arguments to format the table.
 
-```{r, eval = FALSE}
-library(knitr); library(broom)
+```{r}
+#| echo: true
+#| label: "tbl-m1"
+#| tbl-cap: "A partly formatted regression table"
+
+
+library(gt); library(broom)
 
 tidy(m1) %>%
-        print()
+  gt() %>%
+  fmt_auto()
+
 
 ```
 
-To get a table out of this for the report we need to set a chunk option, `results = 'asis'`. The `kable()` function is used to create the table. It can take several arguments that we can use to customize the table. Below I set the following settings `col.names = c("", "Estimate", "SE", "t-statistic", "p-value")` which names the column of the table, `digits = c(NA, 1, 1, 2, 3)`which sets the number of decimals of numeric variables.
-
-
-```{r, eval = TRUE, results = "asis"}
-library(knitr); library(broom)
-
-tidy(m1) %>%
-        kable(col.names = c("", "Estimate", "SE", "t-statistic", "p-value"), 
-              digits = c(NA, 1, 1, 2, 3))
-
-```
-
-The `kable()` function is easily extended using another package called [`kableExtra()`](https://cran.r-project.org/web/packages/kableExtra/). See the vignettes for more details. 
 
 ## Interpreting the results
-From our model we can predict that a participant with a height of 175 cm will have a VO~2max~ of `r round(coef(m1)[1] + coef(m1)[2]*175, 0)` ml min^-1^. We can do this prediction by combining the intercept and slope term multiplied with 175 as x-value. Remember the equation:
+From our model we can **predict** that a participant with a height of 175 cm will have a VO~2max~ of `r round(coef(m1)[1] + coef(m1)[2]*175, 0)` ml min^-1^. We can do this prediction by combining the intercept and the slope multiplied with 175 as x-value, as we remember the equation for our model:
 
-$$Y = \beta_0 + \beta_1X$$
 
-$$VO_{2max} = -2596.3 + 41.1 \times 175 \\ 
-VO_{2max} = 4597$$
-
-As we have estimated this relationship we get the $\beta$'s from the regression table and can input 175 instead of X.
+\begin{align}
+y_i &= \beta_0 + \beta_1x_i \\
+VO_{2max} &= -2596.3 + 41.1 \times 175 \\ 
+VO_{2max} &= 4597
+\end{align}
 
 Actual values from the regression table can be accessed from a `tidy` table created with broom. But we can also use `coef()` to get the coefficients. Using `confint()` we will get confidence intervals for all parameters in a linear model. 
 
@@ -333,8 +457,11 @@ In the residual plot we could identify at least one potentially problematic obse
 
 ```{r, eval = FALSE}
 
-cyc_select %>%
-        mutate(st.resid = resid/sd(resid)) %>% 
+cyclingstudy %>%
+        filter(timepoint == "pre") %>%
+        select(subject, group, VO2.max, height.T1)  %>%
+        mutate(st.resid = resid(m1)/sd(resid(m1)), 
+               fitted = fitted(m1)) %>% 
         ggplot(aes(fitted, st.resid, label = subject)) + 
         geom_hline(yintercept = 0) +
         geom_point(size = 3, fill = "lightblue", shape = 21) +
@@ -343,7 +470,7 @@ cyc_select %>%
 
 ```
 
-The plot shows that participant 5 has the largest residual. If we would fit the model without the potentially problematic observation we can see if this changes the conclusion of the analysis.
+The plot shows that participant 5 has the largest distance between observed and predicted values. If we would fit the model without the potentially problematic observation we can see if this changes the conclusion of the analysis.
 
 
 ```{r, eval = TRUE}
@@ -362,7 +489,7 @@ delta_beta <- 100 * (coef(m1_reduced)[2]/coef(m1)[2] - 1)
 
 ```
 
-The delta beta above calculates the percentage change in the slope as a consequence of removing the observation with the greatest residual. The slope changes `r round(delta_beta, 0)`% when we remove the potentially problematic observation. This might be of importance in your analysis. Another way to look for potential influential data points would be to check the scatter plot.
+The `delta_beta` above calculates the percentage change in the slope as a consequence of removing the observation with the greatest residual. The slope changes `r round(delta_beta, 0)`% when we remove the potentially problematic observation. This might be of importance in your analysis. Another way to look for potential influential data points would be to check the scatter plot.
 
 ```{r, eval = FALSE}
 
