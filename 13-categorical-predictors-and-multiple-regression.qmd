@@ -5,18 +5,22 @@ editor_options:
 ---
 # Categorical predictors and multiple regression
 
-We have up to now used a single continuous predictor to predict a dependent variables. We will now show that the ordinary regression models can be the same as other statistical tests, they can be extended and modified. This will show that the ordinary regression model is very flexible.
+We have up to now used a single continuous predictor to predict a dependent variables. We will now show that the ordinary regression models can be extended and modified to perform statistical tests such as the *t*-test. This will show that the ordinary regression model is very flexible.
 
 ## Linear models can be used instead of t-tests
-*t*-test are designed to compare means. A question you might want to answer using a *t*-test is how unlikely the results from your test is if there were no true differences between values from two groups (independent *t*-test), two samples from the same individuals (paired sample *t*-test) or to a set value (one sample *t*-test). Another way of describing these tests are; tests of differences from zero in a one-sample case or differences between groups with paired or unpaired observations.
+*t*-test are designed to compare means. A question you might want to answer using a *t*-test is how unlikely the results from your test is if there were no true differences between values from two groups (independent *t*-test), or two samples from the same individuals (paired sample *t*-test) or comparing a group to a specific value (one sample *t*-test). Another way of describing these tests are; tests of differences from zero in a one-sample case or differences between groups with paired or unpaired observations.
 
 Using the `cyclingstudy` data set we can perform *t*-tests. In the code below we will select the variable squat jump and filter it from two time-points. `pivot_wider` is used to put squat jump performance from the two time-points in separate columns. A change score is then calculated.  
 
-```{r, eval = TRUE}
+```{r}
+#| eval: true
+#| warning: false
+#| message: false
+
 
 library(tidyverse)
 library(exscidata)
-data("cyclingstudy")
+
 
 cyc_select <- cyclingstudy %>%
   # select a subset of variables, squat jump max is the outcome of interest.
@@ -28,30 +32,38 @@ cyc_select <- cyclingstudy %>%
                     values_from = sj.max) %>%
   # create a change score
         mutate(change = meso3 - pre) 
+
+
 ```
 
-The data above may be used to perform the paired sample t-test and a one sample t-test. These are basically equivalent. In the first case we use both vectors of numbers and test if the difference between them are different from zero. In the other case we calculate the differences first and then test if this *change-score* is different from zero. In the paired sample *t*-test, the argument `paired = TRUE` must be added to the `t.test`call to make sure you do a paired comparison. In the one-sample case we have to set the mean we want to campare to, in this case zero (`mu = 0`).
+The data above may be used to perform the paired sample t-test, or one sample t-test. These are basically equivalent. In the first case we use both vectors of numbers and test if the difference between them are different from zero. In the other case we calculate the differences first and then test if the mean *change-score* is different from zero. In the paired sample *t*-test, the argument `paired = TRUE` must be added to the `t.test`call to make sure you do a paired comparison. In the one-sample case we have to set the mean we want to compare to, in this case zero (`mu = 0`).
 
-```{r, eval = TRUE}
+```{r}
+#| eval: true
+#| warning: false
+#| message: false
+
 
 paired <- t.test(cyc_select$meso3, cyc_select$pre, paired = TRUE)
 one_sample <- t.test(cyc_select$change, mu = 0)
 
+
+
 ```
 
-These tests are equal as we can see from the comparison below. Next code chunk produces the table comparing the results. 
-
-If we use a linear model we can perform the same test. When fitting the `change` variable to test against the same hypothesis (0), the same results will appear. We can add this information in the same table.
+These tests are equal as we can see from the comparison below. They are also equivalent to a linear model where we simply model the mean of the change score. When fitting the `change` variable without any predictors we estimate a single parameter in our model, the intercept. The intercept coefficient can be used to test against the same null-hypothesis (change not different from zero), the same results will appear. We can add all result to the same table (@tbl-model-comp).
 
 ```{r, eval = TRUE}
+#| eval: true
+#| warning: false
+#| message: false
+#| label: tbl-model-comp
+#| tbl-cap: "Comparing a paired sample t-test, one sample t-testa and a linear regression model"
+
 linear_model <- lm(change ~ 1, data = cyc_select)
-```
 
-
-
-```{r, results="asis", echo = FALSE}
  
-library(knitr); library(kableExtra)
+library(gt)
 
 data.frame(test = c("Paired sample t-test", "One sample t-test", "Linear model"), 
            t.value = c(paired$statistic, one_sample$statistic, coef(summary(linear_model))[1, 3]), 
@@ -61,21 +73,20 @@ data.frame(test = c("Paired sample t-test", "One sample t-test", "Linear model")
            upr.ci = c(paired$conf.int[2], one_sample$conf.int[2], confint(linear_model)[2]),
            se = c(paired$stderr, one_sample$stderr, coef(summary(linear_model))[1, 2])) %>%
   tibble() %>%
-  kable(caption = "Comparison of paired sample t-test, one-sample t-test of change scores and a linear model", 
-        col.names = c("Test", "*t*-value", "*p*-value", "Estimate", "Lower CI", "Upper CI", "Standard error"), 
-        digits = c(NULL, rep(3, 6))) %>%
-  kable_styling(full_width = TRUE, font_size = 9)
   
-
+  gt() %>%
+  fmt_auto() %>%
+  cols_label(test = "Test", t.value = md("*t*-value"), p.value = md("*p*-value"), estimate = "Estimate", lwr.ci = "Lower CI", upr.ci = "Upper CI", se = "Standard error")
+  
 
 ```
 
+We can also test if there is a true difference in `VO2.max` change between group `INCR`and `DECR` using a t-test.
 
-By using the syntax `change ~ 1` in the formula we specify that we want to estimate the intercept of the model. The intercept is tested against the null-hypothesis that it is 0.
-
-We can also test if there is a true difference in `VO2.max` percentage change between group `INCR`and `DECR` using a t-test. Run the code in your own session to explore the results.
-
-```{r, eval = FALSE}
+```{r}
+#| eval: true
+#| warning: false
+#| message: false
 
 cyc_select <- cyclingstudy %>%
   # Select appropriate variables and filter time-points
@@ -85,21 +96,29 @@ cyc_select <- cyclingstudy %>%
   # make the data set wider and calculate a change score (%-change).
         pivot_wider(names_from = timepoint, 
                     values_from = VO2.max) %>%
-        mutate(change = 100 * (meso3-pre)/pre) %>%
+        mutate(change = meso3-pre) %>%
         print()
-# Perform an unpaired sample t-test (or two-sample t-test)
-unpaired <- t.test(change ~ group, data = cyc_select, var.equal = TRUE)
+
+
+# Perform a two-sample t-test
+t.test(change ~ group, data = cyc_select, var.equal = TRUE)
+
 ```
 
 Above we use the formula method to specify the *t*-test (see `?t.test`). `var.equal = TRUE` tells the `t.test` function to assume equal variances between groups.
 
-The same result will appear when we instead fit the data to a linear model. The `summary` function is a generic function, meaning that many type of R objects has summary methods. From `summary` we get a regression table of estimates. The first row is the intercept, we can interpret this as the mean change in one of the groups (`DECR`). This rows has all the statistics associated with this estimate including the average (Estimate), standard error, *t*-value and a *p*-value. 
+The same result will appear when we fit the data to a linear model. The `summary` function is a generic function, meaning that many type of R objects has summary methods. From `summary` we get a regression table of estimates. The first row is the intercept, we can interpret this as the mean change in one of the groups (`DECR`). This rows has all the statistics associated with this estimate including the average (Estimate), standard error, *t*-value and a *p*-value. 
 
-The second row is the difference between groups. The `INCR` group has a change score that is 3.016 units larger than the `DECR` group. The associated statistics can be used to assess if this difference is large enough to declare surprisingly large if the null hypothesis is actually true.
+The second row represents the difference between groups. The `INCR` group has a change score that is 164.8 units larger than the `DECR` group. The associated statistics can be used to assess if this difference is large enough to declare surprisingly large if the null hypothesis is actually true.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: true
+#| warning: false
+#| message: false
+
 
 lin_mod <- lm(change ~ group, data = cyc_select)
+
 summary(lin_mod)
 
 ```
