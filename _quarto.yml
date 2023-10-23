@@ -25,6 +25,8 @@ book:
     - 11-the-linear-model.qmd
     - 12-linear-and-curvlinear-relationships.qmd
     - 13-categorical-predictors-and-multiple-regression.qmd
+    - 14-correlations.qmd
+    
 
 bibliography: resources/bib-final.bib
 format:

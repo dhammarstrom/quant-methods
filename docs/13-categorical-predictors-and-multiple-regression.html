@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.330">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./14-correlations.html" rel="next">
 <link href="./12-linear-and-curvlinear-relationships.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -92,12 +93,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -117,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./13-categorical-predictors-and-multiple-regression.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Categorical predictors and multiple regression</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -222,6 +221,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Categorical predictors and multiple regression</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-correlations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlations</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -258,123 +263,613 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>We have up to now used a single continuous predictor to predict a dependent variables. We will now show that the ordinary regression models can be the same as other statistical tests, they can be extended and modified. This will show that the ordinary regression model is very flexible.</p>
+<p>We have up to now used a single continuous predictor to predict a dependent variables. We will now show that the ordinary regression models can be extended and modified to perform statistical tests such as the <em>t</em>-test. This will show that the ordinary regression model is very flexible.</p>
 <section id="linear-models-can-be-used-instead-of-t-tests" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="linear-models-can-be-used-instead-of-t-tests"><span class="header-section-number">13.1</span> Linear models can be used instead of t-tests</h2>
-<p><em>t</em>-test are designed to compare means. A question you might want to answer using a <em>t</em>-test is how unlikely the results from your test is if there were no true differences between values from two groups (independent <em>t</em>-test), two samples from the same individuals (paired sample <em>t</em>-test) or to a set value (one sample <em>t</em>-test). Another way of describing these tests are; tests of differences from zero in a one-sample case or differences between groups with paired or unpaired observations.</p>
+<p><em>t</em>-test are designed to compare means. A question you might want to answer using a <em>t</em>-test is how unlikely the results from your test is if there were no true differences between values from two groups (independent <em>t</em>-test), or two samples from the same individuals (paired sample <em>t</em>-test) or comparing a group to a specific value (one sample <em>t</em>-test). Another way of describing these tests are; tests of differences from zero in a one-sample case or differences between groups with paired or unpaired observations.</p>
 <p>Using the <code>cyclingstudy</code> data set we can perform <em>t</em>-tests. In the code below we will select the variable squat jump and filter it from two time-points. <code>pivot_wider</code> is used to put squat jump performance from the two time-points in separate columns. A change score is then calculated.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.1     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select a subset of variables, squat jump max is the outcome of interest.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, timepoint, sj.max) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># time-points of interest</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso3"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># spread the data based on time-points</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> sj.max) <span class="sc">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a change score</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> meso3 <span class="sc">-</span> pre) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"cyclingstudy"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select a subset of variables, squat jump max is the outcome of interest.</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject, timepoint, sj.max) <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># time-points of interest</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso3"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># spread the data based on time-points</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> sj.max) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a change score</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> meso3 <span class="sc">-</span> pre) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The data above may be used to perform the paired sample t-test and a one sample t-test. These are basically equivalent. In the first case we use both vectors of numbers and test if the difference between them are different from zero. In the other case we calculate the differences first and then test if this <em>change-score</em> is different from zero. In the paired sample <em>t</em>-test, the argument <code>paired = TRUE</code> must be added to the <code>t.test</code>call to make sure you do a paired comparison. In the one-sample case we have to set the mean we want to campare to, in this case zero (<code>mu = 0</code>).</p>
+<p>The data above may be used to perform the paired sample t-test, or one sample t-test. These are basically equivalent. In the first case we use both vectors of numbers and test if the difference between them are different from zero. In the other case we calculate the differences first and then test if the mean <em>change-score</em> is different from zero. In the paired sample <em>t</em>-test, the argument <code>paired = TRUE</code> must be added to the <code>t.test</code>call to make sure you do a paired comparison. In the one-sample case we have to set the mean we want to compare to, in this case zero (<code>mu = 0</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>paired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cyc_select<span class="sc">$</span>meso3, cyc_select<span class="sc">$</span>pre, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>one_sample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cyc_select<span class="sc">$</span>change, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>paired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cyc_select<span class="sc">$</span>meso3, cyc_select<span class="sc">$</span>pre, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>one_sample <span class="ot">&lt;-</span> <span class="fu">t.test</span>(cyc_select<span class="sc">$</span>change, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>These tests are equal as we can see from the comparison below. Next code chunk produces the table comparing the results.</p>
-<p>If we use a linear model we can perform the same test. When fitting the <code>change</code> variable to test against the same hypothesis (0), the same results will appear. We can add this information in the same table.</p>
+<p>These tests are equal as we can see from the comparison below. They are also equivalent to a linear model where we simply model the mean of the change score. When fitting the <code>change</code> variable without any predictors we estimate a single parameter in our model, the intercept. The intercept coefficient can be used to test against the same null-hypothesis (change not different from zero), the same results will appear. We can add all result to the same table (<a href="#tbl-model-comp">Table&nbsp;<span>13.1</span></a>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> cyc_select)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<pre><code>
-Attaching package: 'kableExtra'</code></pre>
-<pre><code>The following object is masked from 'package:dplyr':
-
-    group_rows</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> cyc_select)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">test =</span> <span class="fu">c</span>(<span class="st">"Paired sample t-test"</span>, <span class="st">"One sample t-test"</span>, <span class="st">"Linear model"</span>), </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">t.value =</span> <span class="fu">c</span>(paired<span class="sc">$</span>statistic, one_sample<span class="sc">$</span>statistic, <span class="fu">coef</span>(<span class="fu">summary</span>(linear_model))[<span class="dv">1</span>, <span class="dv">3</span>]), </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">p.value =</span> <span class="fu">c</span>(paired<span class="sc">$</span>p.value, one_sample<span class="sc">$</span>p.value, <span class="fu">coef</span>(<span class="fu">summary</span>(linear_model))[<span class="dv">1</span>, <span class="dv">4</span>]), </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">estimate =</span> <span class="fu">c</span>(paired<span class="sc">$</span>estimate, one_sample<span class="sc">$</span>estimate, <span class="fu">coef</span>(<span class="fu">summary</span>(linear_model))[<span class="dv">1</span>, <span class="dv">1</span>]), </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">lwr.ci =</span> <span class="fu">c</span>(paired<span class="sc">$</span>conf.int[<span class="dv">1</span>], one_sample<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="fu">confint</span>(linear_model)[<span class="dv">1</span>]),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">upr.ci =</span> <span class="fu">c</span>(paired<span class="sc">$</span>conf.int[<span class="dv">2</span>], one_sample<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="fu">confint</span>(linear_model)[<span class="dv">2</span>]),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">se =</span> <span class="fu">c</span>(paired<span class="sc">$</span>stderr, one_sample<span class="sc">$</span>stderr, <span class="fu">coef</span>(<span class="fu">summary</span>(linear_model))[<span class="dv">1</span>, <span class="dv">2</span>])) <span class="sc">%&gt;%</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_auto</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">test =</span> <span class="st">"Test"</span>, <span class="at">t.value =</span> <span class="fu">md</span>(<span class="st">"*t*-value"</span>), <span class="at">p.value =</span> <span class="fu">md</span>(<span class="st">"*p*-value"</span>), <span class="at">estimate =</span> <span class="st">"Estimate"</span>, <span class="at">lwr.ci =</span> <span class="st">"Lower CI"</span>, <span class="at">upr.ci =</span> <span class="st">"Upper CI"</span>, <span class="at">se =</span> <span class="st">"Standard error"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true">
-<caption>Comparison of paired sample t-test, one-sample t-test of change scores and a linear model</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Test</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">*t*-value</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">*p*-value</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Lower CI</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Upper CI</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Standard error</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Paired sample t-test</td>
-<td style="text-align: right;">-1.788</td>
-<td style="text-align: right;">0.091</td>
-<td style="text-align: right;">-0.891</td>
-<td style="text-align: right;">-1.938</td>
-<td style="text-align: right;">0.156</td>
-<td style="text-align: right;">0.498</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">One sample t-test</td>
-<td style="text-align: right;">-1.788</td>
-<td style="text-align: right;">0.091</td>
-<td style="text-align: right;">-0.891</td>
-<td style="text-align: right;">-1.938</td>
-<td style="text-align: right;">0.156</td>
-<td style="text-align: right;">0.498</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Linear model</td>
-<td style="text-align: right;">-1.788</td>
-<td style="text-align: right;">0.091</td>
-<td style="text-align: right;">-0.891</td>
-<td style="text-align: right;">-1.938</td>
-<td style="text-align: right;">0.156</td>
-<td style="text-align: right;">0.498</td>
-</tr>
-</tbody>
+<div id="tbl-model-comp" class="anchored">
+
+<div id="lbznfmufyb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lbznfmufyb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#lbznfmufyb thead, #lbznfmufyb tbody, #lbznfmufyb tfoot, #lbznfmufyb tr, #lbznfmufyb td, #lbznfmufyb th {
+  border-style: none;
+}
+
+#lbznfmufyb p {
+  margin: 0;
+  padding: 0;
+}
+
+#lbznfmufyb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#lbznfmufyb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lbznfmufyb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lbznfmufyb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lbznfmufyb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lbznfmufyb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lbznfmufyb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lbznfmufyb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lbznfmufyb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#lbznfmufyb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#lbznfmufyb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lbznfmufyb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lbznfmufyb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lbznfmufyb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lbznfmufyb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lbznfmufyb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#lbznfmufyb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#lbznfmufyb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#lbznfmufyb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lbznfmufyb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#lbznfmufyb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lbznfmufyb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lbznfmufyb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lbznfmufyb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lbznfmufyb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lbznfmufyb .gt_left {
+  text-align: left;
+}
+
+#lbznfmufyb .gt_center {
+  text-align: center;
+}
+
+#lbznfmufyb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lbznfmufyb .gt_font_normal {
+  font-weight: normal;
+}
+
+#lbznfmufyb .gt_font_bold {
+  font-weight: bold;
+}
+
+#lbznfmufyb .gt_font_italic {
+  font-style: italic;
+}
+
+#lbznfmufyb .gt_super {
+  font-size: 65%;
+}
+
+#lbznfmufyb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#lbznfmufyb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#lbznfmufyb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#lbznfmufyb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#lbznfmufyb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#lbznfmufyb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#lbznfmufyb .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;13.1:  <p>Comparing a paired sample t-test, one sample t-testa and a linear
+regression model</p> </caption>
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Test">Test</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<em>t</em>-value"><em>t</em>-value</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="<em>p</em>-value"><em>p</em>-value</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimate">Estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Lower CI">Lower CI</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Upper CI">Upper CI</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standard error">Standard error</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="test" class="gt_row gt_left">Paired sample t-test</td>
+<td headers="t.value" class="gt_row gt_right">−1.788</td>
+<td headers="p.value" class="gt_row gt_right">0.091</td>
+<td headers="estimate" class="gt_row gt_right">−0.891</td>
+<td headers="lwr.ci" class="gt_row gt_right">−1.938</td>
+<td headers="upr.ci" class="gt_row gt_right">0.156</td>
+<td headers="se" class="gt_row gt_right">0.498</td></tr>
+    <tr><td headers="test" class="gt_row gt_left">One sample t-test</td>
+<td headers="t.value" class="gt_row gt_right">−1.788</td>
+<td headers="p.value" class="gt_row gt_right">0.091</td>
+<td headers="estimate" class="gt_row gt_right">−0.891</td>
+<td headers="lwr.ci" class="gt_row gt_right">−1.938</td>
+<td headers="upr.ci" class="gt_row gt_right">0.156</td>
+<td headers="se" class="gt_row gt_right">0.498</td></tr>
+    <tr><td headers="test" class="gt_row gt_left">Linear model</td>
+<td headers="t.value" class="gt_row gt_right">−1.788</td>
+<td headers="p.value" class="gt_row gt_right">0.091</td>
+<td headers="estimate" class="gt_row gt_right">−0.891</td>
+<td headers="lwr.ci" class="gt_row gt_right">−1.938</td>
+<td headers="upr.ci" class="gt_row gt_right">0.156</td>
+<td headers="se" class="gt_row gt_right">0.498</td></tr>
+  </tbody>
+  
+  
 </table>
-
-
 </div>
-<p>By using the syntax <code>change ~ 1</code> in the formula we specify that we want to estimate the intercept of the model. The intercept is tested against the null-hypothesis that it is 0.</p>
-<p>We can also test if there is a true difference in <code>VO2.max</code> percentage change between group <code>INCR</code>and <code>DECR</code> using a t-test. Run the code in your own session to explore the results.</p>
+</div>
+</div>
+</div>
+<p>We can also test if there is a true difference in <code>VO2.max</code> change between group <code>INCR</code>and <code>DECR</code> using a t-test.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select appropriate variables and filter time-points</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso3"</span>), </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>               group <span class="sc">!=</span> <span class="st">"MIX"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make the data set wider and calculate a change score (%-change).</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> <span class="dv">100</span> <span class="sc">*</span> (meso3<span class="sc">-</span>pre)<span class="sc">/</span>pre) <span class="sc">%&gt;%</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform an unpaired sample t-test (or two-sample t-test)</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>unpaired <span class="ot">&lt;-</span> <span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cyc_select <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select appropriate variables and filter time-points</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(subject,group, timepoint, VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(timepoint <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso3"</span>), </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>               group <span class="sc">!=</span> <span class="st">"MIX"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make the data set wider and calculate a change score (%-change).</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> timepoint, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_from =</span> VO2.max) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">change =</span> meso3<span class="sc">-</span>pre) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 5
+   subject group   pre meso3 change
+     &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1       1 INCR  5629   5330 -299  
+ 2       2 DECR  4471   4886  415  
+ 3       3 INCR  5598.  6380  782. 
+ 4       4 DECR  4944.  5171  227. 
+ 5       5 DECR  5748     NA   NA  
+ 6       6 INCR  4633.  4864  231. 
+ 7      10 INCR  5226   5755  529  
+ 8      13 DECR  4981.  5045   63.6
+ 9      15 INCR  4486   4991  505  
+10      16 INCR  4604   5087  483  
+11      18 DECR  5135.  5315  180. 
+12      19 DECR  4018.  4404  386. 
+13      20 INCR  4739   5119  380  
+14      21 DECR  4753.  4730  -22.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a two-sample t-test</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  change by group
+t = -1.0703, df = 11, p-value = 0.3074
+alternative hypothesis: true difference in means between group DECR and group INCR is not equal to 0
+95 percent confidence interval:
+ -503.6842  174.0833
+sample estimates:
+mean in group DECR mean in group INCR 
+          208.2119           373.0123 </code></pre>
+</div>
 </div>
 <p>Above we use the formula method to specify the <em>t</em>-test (see <code>?t.test</code>). <code>var.equal = TRUE</code> tells the <code>t.test</code> function to assume equal variances between groups.</p>
-<p>The same result will appear when we instead fit the data to a linear model. The <code>summary</code> function is a generic function, meaning that many type of R objects has summary methods. From <code>summary</code> we get a regression table of estimates. The first row is the intercept, we can interpret this as the mean change in one of the groups (<code>DECR</code>). This rows has all the statistics associated with this estimate including the average (Estimate), standard error, <em>t</em>-value and a <em>p</em>-value.</p>
-<p>The second row is the difference between groups. The <code>INCR</code> group has a change score that is 3.016 units larger than the <code>DECR</code> group. The associated statistics can be used to assess if this difference is large enough to declare surprisingly large if the null hypothesis is actually true.</p>
+<p>The same result will appear when we fit the data to a linear model. The <code>summary</code> function is a generic function, meaning that many type of R objects has summary methods. From <code>summary</code> we get a regression table of estimates. The first row is the intercept, we can interpret this as the mean change in one of the groups (<code>DECR</code>). This rows has all the statistics associated with this estimate including the average (Estimate), standard error, <em>t</em>-value and a <em>p</em>-value.</p>
+<p>The second row represents the difference between groups. The <code>INCR</code> group has a change score that is 164.8 units larger than the <code>DECR</code> group. The associated statistics can be used to assess if this difference is large enough to declare surprisingly large if the null hypothesis is actually true.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lin_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(change <span class="sc">~</span> group, <span class="at">data =</span> cyc_select)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = change ~ group, data = cyc_select)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-672.01 -141.94   18.76  155.99  409.00 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)    208.2      113.0   1.843   0.0924 .
+groupINCR      164.8      154.0   1.070   0.3074  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 276.7 on 11 degrees of freedom
+  (1 observation deleted due to missingness)
+Multiple R-squared:  0.09433,   Adjusted R-squared:  0.01199 
+F-statistic: 1.146 on 1 and 11 DF,  p-value: 0.3074</code></pre>
+</div>
 </div>
 <p>If you compare the two tests, do they tell you the same?</p>
 <p>Using <code>var.equal = TRUE</code> in the unpaired <em>t</em>-test we assumed that the variation was similar in both groups. This might not be the case, and R uses the Welch two-sample <em>t</em>-test by default which does not assum equal variance between groups. Even the Welch two sample t-test can be replicated using a linear model. However, we have to specify it in a slightly different framework using the <code>gls()</code> function from the <code>nlme</code> package.</p>
@@ -802,6 +1297,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./14-correlations.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlations</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

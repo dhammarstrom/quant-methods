@@ -2,13 +2,37 @@
 title: "Associations and causation"
 ---
 
-We have previously been introduced to a general purpose algorithm for describing associations among variables of choice, the regression model. 
+We have previously been introduced to a general purpose algorithm for describing associations among variables of choice, the regression model. From a univariate regression model we can also get the correlation coefficient which tells to which degree two variables are associated on a unit-less scale between -1 and +1.
+
+We can further extend our definition of association by also including other types of data variables. A discrete variable, such as sex, may be associated with body weight. We could assess this by examining the average body weight among males and females. Sex could also be associated with the prevalence of Anterior Cruciate Ligament (ACL) Injuries. We could assess this by looking at the occurrence of injuries (injured/not injured) among males and females. This would be an investigation of an association between two discrete variables. Similarly, discrete variables with more than two levels can be analyzed for association with other discrete or continuous variables.
+
+However, we must be aware, as **association does not imply causation**. Assuming that a variable is causally associated with another variable may guide us in making decision about how we organize our society, or our everyday life. For example, USA should decrees funding of science, space and technology as it is highly, and positively correlated with suicides by hanging, strangling and suffocation[^corr-sciencefunding]. If the US government decided to   
+
+[^corr-sciencefunding]: See [here](https://www.tylervigen.com/spurious-correlations)
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-spurious-correlation
+#| fig-cap: "US spending on science, space and technology is posetively related to the number of suicied by hanging, strangulation and suffocation."
+
+library(tidyverse)
+
+data.frame(suicides = c(5427, 5688, 6198, 6462, 6635, 7336, 7248, 
+                        7491, 8161, 8578, 9000), 
+           spending = c(18079, 18594, 19753, 20734, 20831, 23029, 
+                        23597, 23584, 25525, 27731, 29449)) %>%
 
 
-## Association does not imply causation
+```
+
+
 
 
 ## Drawing a scientific model using Directed Acyclic Graphs (DAGs)
+
+Using Directed Acyclic Graphs we can describe 
 
 
 
