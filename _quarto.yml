@@ -26,6 +26,10 @@ book:
     - 12-linear-and-curvlinear-relationships.qmd
     - 13-categorical-predictors-and-multiple-regression.qmd
     - 14-correlations.qmd
+    - 16-special-topic-functions-and-iterations.qmd
+    - 17-sample-and-population.qmd
+    - 18-p-values.qmd
+    - 19-statistical-power.qmd
     
 
 bibliography: resources/bib-final.bib

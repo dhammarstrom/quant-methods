@@ -5,7 +5,7 @@ editor_options:
 ---
 # Special topics: Iterations and functions
 
-To reduce the number of repetitive tasks performed manually or through copy-and-paste coding, R provides functions and frameworks for iterative operations. The programmer (you), could benefit greatly from building your own functions as these will reduce the risk of making mistakes, make the code more readeble and easier to change [@r4ds, Chapter 19]. 
+To reduce the number of repetitive tasks performed manually or through copy-and-paste coding, R provides functions and frameworks for iterative operations. The programmer (you), could benefit greatly from building your own functions as these will reduce the risk of making mistakes, make the code more readable and easier to change [@r4ds, Chapter 19]. 
 
 
 ## Building a simple function
@@ -28,7 +28,7 @@ sum_two_values(3, 6)
 
 ```
 
-The **name** of a function is defined by saving the function in an object. When the function is defined in a script or RMarkdown file it is availbale in the R **environment**. The difference from packages is that functions defined as part of packages are available when you load the package using `library()`. 
+The **name** of a function is defined by saving the function in an object. When the function is defined in a script or RMarkdown file it is available in the R **environment**. The difference from packages is that functions defined as part of packages are available when you load the package using `library()`. 
 
 ## An applied problem where a function might help
 
@@ -167,7 +167,7 @@ Great sucess! We have now calculated lactate threshold values for each participa
 1. Modify the `lt` function to return two fixed lactate values.
 2. Modify the `lt` function to include an extra argument specifying the level of the lactate value you are interested in.
 
-
+## References
 
 
 

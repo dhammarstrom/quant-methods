@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.330">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -112,8 +112,7 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -135,7 +134,7 @@ div.csl-indent {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-first-graph.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -220,6 +219,54 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="./10-mol-lab-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to the molecular exercise physiology lab</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-the-linear-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">The linear model</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-linear-and-curvlinear-relationships.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear and curve-linear relationships, and predictions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-categorical-predictors-and-multiple-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Categorical predictors and multiple regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-correlations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-special-topic-functions-and-iterations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Special topics: Iterations and functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-sample-and-population.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Samples, populations estimates and their uncertainty</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-p-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">What is the <em>p</em>-value?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-statistical-power.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Hypothesis tests and statistical power</span></span></a>
   </div>
 </li>
     </ul>
@@ -328,9 +375,9 @@ div.csl-indent {
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ dplyr     1.1.1     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ ggplot2   3.4.1     ✔ tibble    3.2.1
 ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
 ✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -360,7 +407,7 @@ div.csl-indent {
 <div id="fig-empty-canvas" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-empty-canvas-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.1: An empty <code>ggplot</code> canvas.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.1: An empty <code>ggplot</code> canvas.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -373,7 +420,7 @@ div.csl-indent {
 <div id="fig-point-and-canvas" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-point-and-canvas-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.2: A <code>ggplot</code> canvas with points added.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.2: A <code>ggplot</code> canvas with points added.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -401,7 +448,7 @@ div.csl-indent {
 <div id="fig-point-with-color" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-point-with-color-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.3: A <code>ggplot</code> canvas with colored points added.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.3: A <code>ggplot</code> canvas with colored points added.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -412,7 +459,7 @@ div.csl-indent {
 <div id="fig-shapes-in-r" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-shapes-in-r-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.4: Shapes in R</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.4: Shapes in R</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -424,7 +471,7 @@ div.csl-indent {
 <div id="fig-point-with-fill" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-point-with-fill-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.5: A <code>ggplot</code> canvas with filled points added.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.5: A <code>ggplot</code> canvas with filled points added.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -439,7 +486,7 @@ div.csl-indent {
 <div id="fig-point-with-fill-and-shape" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-point-with-fill-and-shape-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.6: Data mapped to fill and shape, and size specified manually to override the default.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.6: Data mapped to fill and shape, and size specified manually to override the default.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -491,7 +538,7 @@ div.csl-indent {
 <div id="fig-boxplot-simple" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-boxplot-simple-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.7: Boxplot of all data per group from the cycling dataset.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.7: Boxplot of all data per group from the cycling dataset.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -510,7 +557,7 @@ div.csl-indent {
 <div id="fig-boxplot-jitter" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-boxplot-jitter-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.8: Box-plot and jittered points of all data per group from the cycling dataset.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.8: Box-plot and jittered points of all data per group from the cycling dataset.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -534,7 +581,7 @@ div.csl-indent {
 <div id="fig-boxplot-time" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-boxplot-time-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.9: Boxplot of all data per time-point from the cycling dataset.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.9: Boxplot of all data per time-point from the cycling dataset.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -550,7 +597,7 @@ div.csl-indent {
 <div id="fig-boxplot-time-fill" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-boxplot-time-fill-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.10: Boxplot of all data per time-point and group from the cycling dataset.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.10: Boxplot of all data per time-point and group from the cycling dataset.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -569,7 +616,7 @@ div.csl-indent {
 <div id="fig-sj-ind-data" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-sj-ind-data-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.11: Figure with lines corresponding to indivudal values per participant.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.11: Figure with lines corresponding to indivudal values per participant.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -593,7 +640,7 @@ div.csl-indent {
 <div id="fig-ind-data-axis-title" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-ind-data-axis-title-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.12: Figure with updated axis labels</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.12: Figure with updated axis labels</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -613,7 +660,7 @@ div.csl-indent {
 <div id="fig-ind-data-axis-color-title" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-ind-data-axis-color-title-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.13: Additional labels</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.13: Additional labels</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -635,7 +682,7 @@ div.csl-indent {
 <div id="fig-factor-labels" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-factor-labels-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.14: Changing labels by changing a factor variable prior to plotting</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.14: Changing labels by changing a factor variable prior to plotting</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -717,7 +764,7 @@ div.csl-indent {
 <div id="fig-theme-bw" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-theme-bw-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.15: A figure using the black and white theme from <code>theme_bw</code>.</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.15: A figure using the black and white theme from <code>theme_bw</code>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -739,7 +786,7 @@ If we put the <code>theme</code> function last in the <code>ggplot</code> call w
 <div id="fig-theme-bw-changed" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-theme-bw-changed-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.16: A figure using the black and white theme from <code>theme_bw</code>, with modifications</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.16: A figure using the black and white theme from <code>theme_bw</code>, with modifications</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -755,7 +802,7 @@ If we put the <code>theme</code> function last in the <code>ggplot</code> call w
 <div id="fig-example-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-first-graph_files/figure-html/fig-example-1-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.17: Example figure 1</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.17: Example figure 1</figcaption><p></p>
 </figure>
 </div>
 </div>
