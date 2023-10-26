@@ -30,6 +30,9 @@ book:
     - 17-sample-and-population.qmd
     - 18-p-values.qmd
     - 19-statistical-power.qmd
+    - 22-analyzing-trials.qmd
+    - 23-visualizing-mixed-models.qmd
+    - 24-mixed-models.qmd
     
 
 bibliography: resources/bib-final.bib
