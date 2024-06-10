@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
-
+<meta name="generator" content="quarto-1.4.554">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Quantitative methods and statistics (In Sport and Exercise Science) - 4&nbsp; Getting to know R and RStudio</title>
 <style>
 code{white-space: pre-wrap;}
@@ -22,7 +19,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +55,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -74,7 +72,6 @@ div.csl-right-inline {
 div.csl-indent {
   margin-left: 2em;
 }</style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -95,14 +92,19 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -111,39 +113,30 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
-<body class="nav-sidebar floating">
-
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-intro-to-r.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-intro-to-r.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a> 
         <div class="sidebar-tools-main tools-wide">
@@ -160,7 +153,7 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></span></a>
@@ -209,40 +202,39 @@ div.csl-indent {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-anatomy-of-rstudio" id="toc-the-anatomy-of-rstudio" class="nav-link active" data-scroll-target="#the-anatomy-of-rstudio"><span class="header-section-number">4.1</span> The Anatomy of RStudio</a>
+<li>
+<a href="#the-anatomy-of-rstudio" id="toc-the-anatomy-of-rstudio" class="nav-link active" data-scroll-target="#the-anatomy-of-rstudio"><span class="header-section-number">4.1</span> The Anatomy of RStudio</a>
   <ul class="collapse">
-  <li><a href="#the-source-editor" id="toc-the-source-editor" class="nav-link" data-scroll-target="#the-source-editor"><span class="header-section-number">4.1.1</span> The source editor</a></li>
+<li><a href="#the-source-editor" id="toc-the-source-editor" class="nav-link" data-scroll-target="#the-source-editor"><span class="header-section-number">4.1.1</span> The source editor</a></li>
   <li><a href="#environment" id="toc-environment" class="nav-link" data-scroll-target="#environment"><span class="header-section-number">4.1.2</span> Environment</a></li>
   <li><a href="#the-console" id="toc-the-console" class="nav-link" data-scroll-target="#the-console"><span class="header-section-number">4.1.3</span> The console</a></li>
   <li><a href="#files-plots-packages-and-help-files" id="toc-files-plots-packages-and-help-files" class="nav-link" data-scroll-target="#files-plots-packages-and-help-files"><span class="header-section-number">4.1.4</span> Files, plots, packages and help files</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#reproducible-data-science-using-rstudio" id="toc-reproducible-data-science-using-rstudio" class="nav-link" data-scroll-target="#reproducible-data-science-using-rstudio"><span class="header-section-number">4.2</span> Reproducible data science using RStudio</a></li>
   <li><a href="#basics-r-programming-installing-and-using-swirl" id="toc-basics-r-programming-installing-and-using-swirl" class="nav-link" data-scroll-target="#basics-r-programming-installing-and-using-swirl"><span class="header-section-number">4.3</span> Basics R programming, Installing and using <code>swirl</code></a></li>
-  <li><a href="#file-formats-for-editing-and-executiong-r-code" id="toc-file-formats-for-editing-and-executiong-r-code" class="nav-link" data-scroll-target="#file-formats-for-editing-and-executiong-r-code"><span class="header-section-number">4.4</span> File formats for editing and executiong R code</a>
+  <li>
+<a href="#file-formats-for-editing-and-executiong-r-code" id="toc-file-formats-for-editing-and-executiong-r-code" class="nav-link" data-scroll-target="#file-formats-for-editing-and-executiong-r-code"><span class="header-section-number">4.4</span> File formats for editing and executiong R code</a>
   <ul class="collapse">
-  <li><a href="#r-scripts" id="toc-r-scripts" class="nav-link" data-scroll-target="#r-scripts"><span class="header-section-number">4.4.1</span> R scripts</a></li>
+<li><a href="#r-scripts" id="toc-r-scripts" class="nav-link" data-scroll-target="#r-scripts"><span class="header-section-number">4.4.1</span> R scripts</a></li>
   <li><a href="#r-markdown-and-quarto-files" id="toc-r-markdown-and-quarto-files" class="nav-link" data-scroll-target="#r-markdown-and-quarto-files"><span class="header-section-number">4.4.2</span> R markdown and quarto files</a></li>
-  </ul></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">4.5</span> Packages</a></li>
-  <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">4.6</span> References and footnotes</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/dhammarstrom/quant-methods/edit/master/03-intro-to-r.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/blob/master/03-intro-to-r.qmd" class="toc-action">View source</a></p></div></div></nav>
+</li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">4.5</span> Packages</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/03-intro-to-r.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/03-intro-to-r.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></h1>
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span>
+</h1>
 </div>
 
 
@@ -255,18 +247,18 @@ div.csl-indent {
   </div>
   
 
-</header>
 
-<p>In <a href="./01-intro-to-data.html">Chapter 2</a>, we went through all the trouble of installing and setting up the tools needed to become data scientists. It is now assumed that everything was indeed installed and working. In this chapter we will introduce the usage of R and Rstudio. First we will set up and customize RStudio and then learn how to communicate with R.</p>
-<section id="the-anatomy-of-rstudio" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="the-anatomy-of-rstudio"><span class="header-section-number">4.1</span> The Anatomy of RStudio</h2>
-<p>The appearance of RStudio can be changed for a more pleasant user experience. I like a dark theme as it is easier on the eye. We can also move the different components of RStudio. I like to have The console on the top right and the source on the top left. I think this makes it easier to see output when coding interactively.</p>
-<p>All this will be clearer as thing evolve, but for now, start R Studio, go to Tools &gt; Global options and make it personal (see <a href="#fig-customize">Figure&nbsp;<span class="quarto-unresolved-ref">fig-customize</span></a>)!</p>
-<div id="fig-customize" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/ch3/03-customizerstudio.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.1: Customize the appearance of RStudio</figcaption>
-</figure>
+</header><p>In <a href="./01-intro-to-data.html">Chapter 2</a>, we went through all the trouble of installing and setting up the tools needed to become data scientists. It is now assumed that everything was indeed installed and working. In this chapter we will introduce the usage of R and Rstudio. First we will set up and customize RStudio and then learn how to communicate with R.</p>
+<section id="the-anatomy-of-rstudio" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="the-anatomy-of-rstudio">
+<span class="header-section-number">4.1</span> The Anatomy of RStudio</h2>
+<p>The appearance of RStudio can be changed for a more pleasant user experience. I like a dark theme as it is easier on the eye. We can also move the different components of RStudio. I like to have the console on the top right and the source on the top left. I think this makes it easier to see output when coding interactively. All this will be clearer as thing evolve, but for now, start R Studio, go to Tools &gt; Global options and make it personal (see <a href="#fig-customize" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>)!</p>
+<div id="fig-customize" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-customize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch3/03-customizerstudio.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-customize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Customize the appearance of RStudio
+</figcaption></figure>
 </div>
 <p>As you may have spotted in the image above, it is possible to change the font of your editor. I like <a href="https://github.com/tonsky/FiraCode/wiki/RStudio-instructions">Fira code</a>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -286,48 +278,47 @@ Defining concepts
 <p><strong>Workspace</strong>: This is your environments as represented on your computer. A workspace can be, but should not be saved between sessions.</p>
 </div>
 </div>
-<section id="the-source-editor" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="the-source-editor"><span class="header-section-number">4.1.1</span> The source editor</h3>
-<p>The source editor is where you edit your code. When writing your code in a text-file, you can call it a script, this is essentially a computer program where you tell R what to do. It is executed from top to bottom. You can send one line of code, multiple lines or whole sections into R. In the image below (<a href="#fig-interactionrstudio">Figure&nbsp;<span class="quarto-unresolved-ref">fig-interactionrstudio</span></a>), the source window is in the top left corner.</p>
-</section>
-<section id="environment" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="environment"><span class="header-section-number">4.1.2</span> Environment</h3>
+<section id="the-source-editor" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="the-source-editor">
+<span class="header-section-number">4.1.1</span> The source editor</h3>
+<p>The source editor is where you edit your code. When writing your code in a text-file, you can call it a script, this is essentially a computer program where you tell R what to do. It is executed from top to bottom. You can send one line of code, multiple lines or whole sections into R. In the image below (<a href="#fig-interactionrstudio" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>), the source window is in the top left corner.</p>
+</section><section id="environment" class="level3" data-number="4.1.2"><h3 data-number="4.1.2" class="anchored" data-anchor-id="environment">
+<span class="header-section-number">4.1.2</span> Environment</h3>
 <p>The environment is where all your objects are located. Objects can be variables or data sets that you are working with. In RStudio the environment is listed under the environment tab (bottom left in the image).</p>
-<p>Copy the code below to a R script. To run it line by line, set your cursor on the first line a press Ctrl+Enter.What happened in your environment? Press Ctrl+Enter again and you will see a plot in the plot window. Amazing stuff!</p>
+<p>Copy the code below to a R script. To run it line by line, set your cursor on the first line a press Ctrl+Enter. What happened in your environment? Press Ctrl+Enter again and you will see a plot in the plot window. Amazing stuff!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">plot</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="the-console" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="the-console"><span class="header-section-number">4.1.3</span> The console</h3>
+</section><section id="the-console" class="level3" data-number="4.1.3"><h3 data-number="4.1.3" class="anchored" data-anchor-id="the-console">
+<span class="header-section-number">4.1.3</span> The console</h3>
 <p>By pressing Ctrl+Enter from the script, as described above, you sent your code to the console. You can also interact with R directly here. By writing <code>a</code> in the console and hitting enter you will get the value from the object called a. This means that it is also where output from R is usually printed. In the image below, the console is in the top right corner.</p>
-</section>
-<section id="files-plots-packages-and-help-files" class="level3" data-number="4.1.4">
-<h3 data-number="4.1.4" class="anchored" data-anchor-id="files-plots-packages-and-help-files"><span class="header-section-number">4.1.4</span> Files, plots, packages and help files</h3>
+</section><section id="files-plots-packages-and-help-files" class="level3" data-number="4.1.4"><h3 data-number="4.1.4" class="anchored" data-anchor-id="files-plots-packages-and-help-files">
+<span class="header-section-number">4.1.4</span> Files, plots, packages and help files</h3>
 <p>In RStudio files are accessible from the Files tab. The files tab shows the files in you root folder. The root folder is where R will search for files if you tell it to. We will talk more about the root folder later in connection with projects. Plots are displayed in the Plot tab. Packages are listed in the packages tab. If you access the help files, these will be displayed in the help tab. In the image below all these tabs are in the bottom right corner. More on help files and packages later.</p>
-<div id="fig-interactionrstudio" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/ch3/03-interactingrstudio.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.2: Interacting with RStudio</figcaption>
-</figure>
+<div id="fig-interactionrstudio" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-interactionrstudio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch3/03-interactingrstudio.gif" class="img-fluid figure-img">
 </div>
-</section>
-</section>
-<section id="reproducible-data-science-using-rstudio" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="reproducible-data-science-using-rstudio"><span class="header-section-number">4.2</span> Reproducible data science using RStudio</h2>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interactionrstudio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: Interacting with RStudio
+</figcaption></figure>
+</div>
+</section></section><section id="reproducible-data-science-using-rstudio" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="reproducible-data-science-using-rstudio">
+<span class="header-section-number">4.2</span> Reproducible data science using RStudio</h2>
 <p>When starting to work more systematically in RStudio we will set some rules that will allow for reproducible programming. Remember from <a href="01-intro-to-data.html#replication-and-reproducibility">Chapter 2</a> that part of a fully reproducible study is software/code that produces the results. It turns out that when working interactively with R you can fool yourself to belive that you have included all steps needed to produce some results in your script. However, variables may be stored in your environment but not by assigning values to them in your script. This will become a problem if you want to share your code, a certain value/variable needed to make the program work may be missing from your script.</p>
-<p>To avoid making such a mistake it is good practice not to save variables in your environment between sessions, everything should be scripted and documented and assumed not defined elsewhere. In RStudio we can make an explicit setting Not to save the workspace (See <a href="#fig-saveworkspace">Figure&nbsp;<span class="quarto-unresolved-ref">fig-saveworkspace</span></a>).</p>
-<div id="fig-saveworkspace" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/ch3/03-ask-workspace.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.3: Never save the workspace.</figcaption>
-</figure>
+<p>To avoid making such a mistake it is good practice not to save variables in your environment between sessions, everything should be scripted and documented and assumed not defined elsewhere. In RStudio we can make an explicit setting Not to save the workspace (See <a href="#fig-saveworkspace" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>).</p>
+<div id="fig-saveworkspace" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-saveworkspace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch3/03-ask-workspace.gif" class="img-fluid figure-img">
 </div>
-</section>
-<section id="basics-r-programming-installing-and-using-swirl" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="basics-r-programming-installing-and-using-swirl"><span class="header-section-number">4.3</span> Basics R programming, Installing and using <code>swirl</code></h2>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-saveworkspace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.3: Never save the workspace.
+</figcaption></figure>
+</div>
+</section><section id="basics-r-programming-installing-and-using-swirl" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="basics-r-programming-installing-and-using-swirl">
+<span class="header-section-number">4.3</span> Basics R programming, Installing and using <code>swirl</code>
+</h2>
 <p>Swirl is a great way to get to know how to talk with R. Swirl consists of lessons created for different topics. Install swirl by typing the following into your console:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">install.packages</span>(<span class="st">"swirl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -337,17 +328,18 @@ Defining concepts
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(<span class="st">"swirl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When you run the above command in your console you will get a message saying to call <code>swirl()</code> when you are ready to learn. I would like you to run the course “R Programming: The basics of programming in R”. Swirl will ask if you want to install it. After installation, just follow the instructions in the console. To get out of swirl, just press ESC.</p>
-</section>
-<section id="file-formats-for-editing-and-executiong-r-code" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="file-formats-for-editing-and-executiong-r-code"><span class="header-section-number">4.4</span> File formats for editing and executiong R code</h2>
-<section id="r-scripts" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="r-scripts"><span class="header-section-number">4.4.1</span> R scripts</h3>
-<p>RStudio has capabilities to highlight code for multiple languages. We will focus on R. The most basic file format for R code is an R script, as we have already touched upon. An R script contains code and comments. Code is executed by R and comments are ignored. Ideally, R scripts are commented to improve readability of what the do. Commenting code is also a good way of creating a roadmap of what you want to do. In the image below (<a href="#fig-rscript">Figure&nbsp;<span class="quarto-unresolved-ref">fig-rscript</span></a>), R code is written based on a plan written with comments. Note that when a line starts with at least one <code>#</code> it is interpreted by R as a comment.</p>
-<div id="fig-rscript" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/ch3/03-rscript.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;4.4: Commenting and coding in an R script</figcaption>
-</figure>
+</section><section id="file-formats-for-editing-and-executiong-r-code" class="level2 page-columns page-full" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="file-formats-for-editing-and-executiong-r-code">
+<span class="header-section-number">4.4</span> File formats for editing and executiong R code</h2>
+<section id="r-scripts" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="r-scripts">
+<span class="header-section-number">4.4.1</span> R scripts</h3>
+<p>RStudio has capabilities to highlight code for multiple languages. We will focus on R. The most basic file format for R code is an R script, as we have already touched upon. An R script contains code and comments. Code is executed by R and comments are ignored. Ideally, R scripts are commented to improve readability of what the do. Commenting code is also a good way of creating a roadmap of what you want to do. In the image below (<a href="#fig-rscript" class="quarto-xref">Figure&nbsp;<span>4.4</span></a>), R code is written based on a plan written with comments. Note that when a line starts with at least one <code>#</code> it is interpreted by R as a comment.</p>
+<div id="fig-rscript" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rscript-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch3/03-rscript.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rscript-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.4: Commenting and coding in an R script
+</figcaption></figure>
 </div>
 <p>Try the code for yourself to see what it produces. The details will be covered later.</p>
 <div class="cell">
@@ -358,22 +350,19 @@ Defining concepts
 <span id="cb4-5"><a href="#cb4-5"></a><span class="do">## Create an x-y plot of the two vectors</span></span>
 <span id="cb4-6"><a href="#cb4-6"></a><span class="fu">plot</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="r-markdown-and-quarto-files" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="r-markdown-and-quarto-files"><span class="header-section-number">4.4.2</span> R markdown and quarto files</h3>
+</section><section id="r-markdown-and-quarto-files" class="level3 page-columns page-full" data-number="4.4.2"><h3 data-number="4.4.2" class="anchored" data-anchor-id="r-markdown-and-quarto-files">
+<span class="header-section-number">4.4.2</span> R markdown and quarto files</h3>
 <p>The more advanced file formats for R are RMarkdown (<code>.rmd</code>) and quarto (<code>.qmd</code>) files. These have the capabilities of combining formatted text with computer code. The source document may contain multiple pieces of code organized in code chunks together with text formatted with markdown syntax. A meta data field in the top of the source file specifies settings for the conversion to output formats. Multiple output formats are available, including HTML, word and PDF. The image below shows the basic outline of a very simple quarto file destined to create a HTML document.</p>
 <p>Notice also that RStudio offers an visual editor where the output is approximated and formatting is available from a menu.</p>
 <p>Adding headlines and makes it possible to navigate the document through the outline or the list of components in the bottom of the document.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ch3/03-quartoauthor.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Authoring in a quarto source document and preview in the visual editor</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/ch3/03-quartoauthor.gif" class="img-fluid figure-img"></p>
+<figcaption>Authoring in a quarto source document and preview in the visual editor</figcaption></figure>
 </div>
 <p><a href="https://rmarkdown.rstudio.com/">R markdown</a> and <a href="https://quarto.org/docs/guide/">quarto</a> have many similarities as the basic organization is similar between the two. The text parts are written using a special syntax, markdown. The point of markdown is that you will use the same syntax that is later possible to convert to multiple formats. The syntax let’s you do all formatting explicitly, for example instead of getting your mouse to superscript some text you can add syntax <code>a^2^</code> to achieve a<sup>2</sup>.</p>
 <p>A full guide to RMarkdown can be found on the official <a href="https://rmarkdown.rstudio.com/lesson-1.html">R markdown web pages</a>. I suggest you take the time to get an overview of this language as it will make you more fluent in the tools that enables reproducible computing. When writing R markdown, it is handy to have a <em>cheat sheet</em> close by when writing, <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">here is an example for Rmarkdown</a>, and here is <a href="https://rstudio.github.io/cheatsheets/html/quarto.html">another one for quarto</a> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<section id="microsoft-word-intergration-in-r-markdown-and-quarto" class="level4" data-number="4.4.2.1">
-<h4 data-number="4.4.2.1" class="anchored" data-anchor-id="microsoft-word-intergration-in-r-markdown-and-quarto"><span class="header-section-number">4.4.2.1</span> Microsoft Word intergration in R Markdown and Quarto</h4>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Cheat sheets are available in R Studio: <em>Help &gt; Cheatsheets</em></p></div></div><section id="microsoft-word-intergration-in-r-markdown-and-quarto" class="level4" data-number="4.4.2.1"><h4 data-number="4.4.2.1" class="anchored" data-anchor-id="microsoft-word-intergration-in-r-markdown-and-quarto">
+<span class="header-section-number">4.4.2.1</span> Microsoft Word intergration in R Markdown and Quarto</h4>
 <p>Sometimes it is useful to “knit” to a word file. For example when you want to share a report with fellow students who are not familiar with R. R Markdown/Quarto can be used as a source for word documents (.docx).</p>
 <p>To create a word document from your Rmd-file/qmd-file you need a working installation of Microsoft Word. Settings for the output is specified in the YAML metadata field in the Rmd-file. This is the first section of a Rmd file, and when you want it to create a word file you specify it like this:</p>
 <pre><code>---
@@ -394,9 +383,8 @@ output:
 <p>Edit styles (Stiler in Norwegian) used in the reference file (right click on the style and edit). For example, editing the “Title” style (Tittel in Norwegian) will change the main titel of the document. After you have edited the document, save it.</p>
 <p>When you knit the document again, your updated styles will be used your word document.</p>
 <p><a href="https://rmarkdown.rstudio.com/articles_docx.html">Here</a> you can read more about using R Markdown together with word. If you do not have word installed, you can also use Open Office. Read more about it <a href="https://bookdown.org/yihui/rmarkdown/opendocument-text-document.html">here</a>.</p>
-</section>
-<section id="adding-references-to-r-markdown-and-quarto-files" class="level4" data-number="4.4.2.2">
-<h4 data-number="4.4.2.2" class="anchored" data-anchor-id="adding-references-to-r-markdown-and-quarto-files"><span class="header-section-number">4.4.2.2</span> Adding references to R Markdown and Quarto files</h4>
+</section><section id="adding-references-to-r-markdown-and-quarto-files" class="level4 page-columns page-full" data-number="4.4.2.2"><h4 data-number="4.4.2.2" class="anchored" data-anchor-id="adding-references-to-r-markdown-and-quarto-files">
+<span class="header-section-number">4.4.2.2</span> Adding references to R Markdown and Quarto files</h4>
 <p>References/citations can be added to the report using the <code>bibliography</code> option in the YAML field. Citations needs to be listed in a file, multiple formats are availiable. A convenient format is bibtex. When using this format, create a text file with the ending <code>.bib</code>, for example, <code>bibliography.bib</code>.</p>
 <p>The <code>bibliography.bib</code>-file needs to be activated in the YAML-field. Do it by adding this information:</p>
 <pre><code>---
@@ -421,47 +409,30 @@ bibliography: bibliography.bib
 <p>The part that says <code>refID1</code> can be edited to something appropriate. This is a reference identification, you use it to get the citation into the text. When citing you do it in the form</p>
 <pre><code>Blood flow-restricted training leads to similar adaptations as traditional training [@refID1].</code></pre>
 <p>This will appear in text as:</p>
-<blockquote class="blockquote">
+<div class="page-columns page-full"><blockquote class="blockquote">
 <p>Blood flow-restricted training leads to similar adaptations as traditional training <span class="citation" data-cites="refID1">(<a href="#ref-refID1" role="doc-biblioref">Ellefsen et al. 2015</a>)</span>.</p>
-</blockquote>
+</blockquote><div class="no-row-height column-margin column-container"><div id="ref-refID1" class="csl-entry" role="listitem">
+Ellefsen, S., D. Hammarstrom, T. A. Strand, E. Zacharoff, J. E. Whist, I. Rauk, H. Nygaard, et al. 2015. <span>“<span class="nocase">Blood flow-restricted strength training displays high functional and biological efficacy in women: a within-subject comparison with high-load strength training</span>.”</span> <em>Am. J. Physiol. Regul. Integr. Comp. Physiol.</em> 309 (7): R767–779.
+</div></div></div>
 <p>The reference will end up in the end of the document (as on this webpage).</p>
 <p>You can gather references in bibtex format from Oria (use the BIBTEX icon) and from PubMed using <a href="https://www.bioinformatics.org/texmed/">TeXMed</a>. You can also export reference in bibtex format from citation software like Endnote or Zotero. Make sure you check all references when entering them, especially MedTex gives some problems with “scandinavian” letters (å æ ä ø ö).</p>
 <p>Recently RStudio added support for adding citations inside the visual markdown editor.</p>
-</section>
-</section>
-</section>
-<section id="packages" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="packages"><span class="header-section-number">4.5</span> Packages</h2>
+</section></section></section><section id="packages" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="packages">
+<span class="header-section-number">4.5</span> Packages</h2>
 <p>The R ecosystem consists of packages. These are <em>functions</em> organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g.&nbsp;analyses of a specific kind of data, or more general task such as making figures or handle data.</p>
 <p>In this course we will use many different packages, for example <a href="https://dplyr.tidyverse.org/">dplyr</a>, <a href="https://tidyr.tidyverse.org/">tidyr</a> and <a href="https://ggplot2.tidyverse.org/">ggplot2</a>. dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.</p>
-<p>To install a package, you use the <code>install.packages()</code> function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.</p>
+<p>To install a package, you use the <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Alternatively, click “Packages” and “Install” and search for the package you want to install. To use a package, you have to load it into your environment. Use the <code>library()</code> function to load a package.</p>
+<p>Alternatively, click “Packages” and “Install” and search for the package you want to install. To use a package, you have to load it into your environment. Use the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function to load a package.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="references-and-footnotes" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="references-and-footnotes"><span class="header-section-number">4.6</span> References and footnotes</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-refID1" class="csl-entry" role="listitem">
-Ellefsen, S., D. Hammarstrom, T. A. Strand, E. Zacharoff, J. E. Whist, I. Rauk, H. Nygaard, et al. 2015. <span>“<span class="nocase">Blood flow-restricted strength training displays high functional and biological efficacy in women: a within-subject comparison with high-load strength training</span>.”</span> <em>Am. J. Physiol. Regul. Integr. Comp. Physiol.</em> 309 (7): R767–779.
-</div>
-</div>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Cheat sheets are available in R Studio: <em>Help &gt; Cheatsheets</em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -502,6 +473,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -570,13 +568,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -655,10 +655,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -668,8 +685,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -681,7 +707,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -725,6 +874,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -750,6 +900,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -808,15 +984,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./02-spreadsheets.html" class="pagination-link">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./02-spreadsheets.html" class="pagination-link" aria-label="Storing data in spreadsheets and understanding tabular data">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-first-graph.html" class="pagination-link">
+      <a href="./04-first-graph.html" class="pagination-link" aria-label="Creating your first graph">
         <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -825,4 +999,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/03-intro-to-r.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/03-intro-to-r.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

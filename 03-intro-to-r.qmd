@@ -10,9 +10,7 @@ In [Chapter 2](01-intro-to-data.qmd), we went through all the trouble of install
 
 ## The Anatomy of RStudio
 
-The appearance of RStudio can be changed for a more pleasant user experience. I like a dark theme as it is easier on the eye. We can also move the different components of RStudio. I like to have The console on the top right and the source on the top left. I think this makes it easier to see output when coding interactively. 
-
-All this will be clearer as thing evolve, but for now, start R Studio, go to Tools > Global options and make it personal (see @fig-customize)!
+The appearance of RStudio can be changed for a more pleasant user experience. I like a dark theme as it is easier on the eye. We can also move the different components of RStudio. I like to have the console on the top right and the source on the top left. I think this makes it easier to see output when coding interactively. All this will be clearer as thing evolve, but for now, start R Studio, go to Tools > Global options and make it personal (see @fig-customize)!
 
 ![Customize the appearance of RStudio](images/ch3/03-customizerstudio.gif){#fig-customize}
 
@@ -42,7 +40,7 @@ The source editor is where you edit your code. When writing your code in a text-
 
 The environment is where all your objects are located. Objects can be variables or data sets that you are working with. In RStudio the environment is listed under the environment tab (bottom left in the image).
 
-Copy the code below to a R script. To run it line by line, set your cursor on the first line a press Ctrl+Enter.What happened in your environment? Press Ctrl+Enter again and you will see a plot in the plot window. Amazing stuff! 
+Copy the code below to a R script. To run it line by line, set your cursor on the first line a press Ctrl+Enter. What happened in your environment? Press Ctrl+Enter again and you will see a plot in the plot window. Amazing stuff! 
 
 ```{r, eval = FALSE}
 
@@ -223,5 +221,3 @@ library("dplyr")
 ```
 
 
-
-## References and footnotes

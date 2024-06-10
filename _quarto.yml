@@ -24,6 +24,9 @@ book:
 bibliography: resources/bib-final.bib
 format:
   html:
+    reference-location: margin
+    citation-location: margin
+    footnotes-hover: false
     theme:
       light: flatly
       dark: darkly

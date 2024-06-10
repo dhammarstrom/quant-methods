@@ -27,11 +27,16 @@ bibliography: resources/bib-final.bib
 
 # Introduction
 
-Welcome to the course **Quantitative methods and Statistics (IDR4000)**. The course aims to give students an overview of methodological aspects within the field of sport and exercise-physiology. Specifically, planning, conducting and analyzing research projects with human participants will be covered. These course notes covers *almost* the entire course through the combination of video lectures, tutorials and references to the course literature and external resources.
+Welcome to the course *Quantitative methods and Statistics (IDR4000)*. The course aims to give students an overview of methodological challenges within the sport and exercise-sciences, and strategies of addressing them. Specifically, planning, conducting and analysing research projects with human participants will be discussed in the course. During the course we will build habits for reproducible data analysis. Such habits includes developing knowledge about open-source tools for data science and statistics.
 
-This book contains lecture notes for the course. Assignments, tutorials and other cours material has been moved to the [course workshop site](https://dhammarstrom.github.io/quant-methods-workshops/)
+This book contains lecture notes for the course. Assignments, tutorials and other course material can be found at the [course workshop site](https://dhammarstrom.github.io/quant-methods-workshops/)
 
 ## Prerequisites
+
+To fully benefit from the course I recommend that students bring a basic understanding of statistical concepts to the course, such as knowledge about descriptive data summarises, usage of inferential statistics and regression models. We aim to cover these concepts in the course but also hope to get further. If you are not sure your basic understanding is up to date you may want to review introductory material, such as [Statistisk dataanalyse med jamovi](https://dhammarstrom.github.io/statistisk-dataanalyse/).
+
+In the course we will use R to do analyses, create figures and tables, and write reports. If you are unfamiliar with R, that is OK, the course hopefully provides a gentle introduction. Using R, together with additional data science tools, means that you will encounter many infuriating problems. Such problems might arise from a missing comma or a misspelled word making your computer program produce [gibberish](https://en.wikipedia.org/wiki/Gibberish). Solving such problems requires patience, systematic thinking and a positive attitude! The skill set I hope you will develop during the course includes knowledge about how to identify problems, where to find help to address problems and how to learn from problems.
+
 
 
 

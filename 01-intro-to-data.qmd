@@ -1,14 +1,8 @@
 # Introduction to data science
 
-## About data in the world of sport and exercise
+## Making sense of data, transferable skills and teamwork
 
-Data are everywhere. Most of us always walk around with a data collection device in our pockets. This device (your mobile phone) records and store data about you throughout the day. Such data are the basis of the *quantified self-movement*[^1], which has grown in popularity as capabilities to record data from daily life have improved. People interested in quantifying their personal life does so for different reasons, but often with the intent to improve their health[^2]. 
-
-[^1]: Read more about the quantified self movement [in this Wikipedia article](https://en.wikipedia.org/wiki/Quantified_self) 
-
-[^2]: See this website for [intriguing examples](https://quantifiedself.com/show-and-tell/)
-
-Much of this kind of data is readily available to us because data privacy policies regard it as personal [^3]. With some effort, you can get your data out of your iPhone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016, and I tend to walk fewer steps on Sundays than Saturdays (see Figure @fig-iphone).
+Data are everywhere! Most of us always walk around with a data collection device in our pockets. This device (your mobile phone) records and store data about you throughout the day. Much of this data is readily available to us because data privacy policies regard it as personal [^3]. With some effort, you can get your data out of your iPhone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016, and I tend to walk fewer steps on Sundays than Saturdays (see Figure @fig-iphone).
 
 [^3]: See e.g. [Apples Privacy Policy](https://www.apple.com/legal/privacy/en-ww/).
 
@@ -109,20 +103,16 @@ Data are also collected and stored in publicly available databases. Such databas
 
 [^7]: We published our raw data together with a recent paper (Mølmen et al 2021 [doi: 10.1186/s12967-021-02969-1.](https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-021-02969-1)) together with code to analyze it in a [public repository](https://github.com/dhammarstrom/rnaseq-copd).
 
-The above examples show an abundance of available data. The problem is that to understand a phenomenon better, we need techniques and methods to make sense of the data, and this is where data science and data literacy comes in. In the world of sports and exercise, regardless if you are interested in doing scientific investigations, coaching a soccer team or individual athletes, or helping patients recover from surgery using exercise therapy, you are faced with the problem of handling and making sense of data. Essential skills and a deeper understanding of data science are transferable between such areas of practice. One broader aim of this course is for you to develop skills to better understand data. 
+The above are examples of data that are available to us. However, to make sense of the data we have we need special techniques and methods, and this is where data science comes in. In the world of sport and exercise, regardless if you are interested in doing scientific investigations, coaching a soccer team or individual athletes, or helping patients recover from surgery using exercise therapy, you are faced with the problem of making sense of data. It turns out that this is a very general problem and the skills you need to work on that problem are transferable between fields. This means that when you develop your data analysis skills within the sport and exercise sciences, you will likely also get better at solving problems outside this particular field.
 
-> **Think about the literature!**
-  Spiegelhalter (The Art of Statistics, in the introduction chapter) talks about how statistics has evolved towards the broader field of data science. In data science, statistical theory and methods are just parts of the problem solving cycle. Try to think about how you would use the PPDAC cycle as a exercise coach and a scientist. What are the similarities and differences?
-
-
+In your future career, within, or outside the field of sport and exercise you will most likely be tasked with making sense of data, but making sense of data is often a team effort. Developing a better understanding of data science in general will make you a better team player in data intensive tasks. For example, knowing about possibilities and limitations for gaining knowledge from a particular data set can make you able to advice decision-making in your organization.
 
 ## Replication and Reproducibility
 
-In scientific research, replication is a way to confirm scientific claims. When an independent group of researchers can confirm a result, the claim is more likely to be true. However, many results will be impossible to replicate due to the size of trials, costs, and urgency of the research question. A recent example is the many vaccine trials performed to develop a vaccine against COVID-19[^8]. Other examples concern studies with unique study populations, such as large-scale epidemiological studies [@RN1492], but the same is true for unique investigations in sport and exercise science.  
+In scientific research, replication is a way to confirm scientific claims. A scientific claim is replicated when independent new data and new analyses brings us to similar conclusions as previous studies. When an independent group of researchers can confirm a result, the claim is more likely to be true. However, many results will be impossible to replicate due to the size of trials, costs, and urgency of the research question. A recent example is the many vaccine trials performed to develop a vaccine against COVID-19. Other examples are large-scale epidemiological studies [@RN1492], or studies with unique study populations such as elite athletes.  
 
-[^8]: https://www.evaluate.com/vantage/articles/news/snippets/its-official-covid-19-vaccine-trials-rank-among-largest
 
-When studies are not likely to be *replicated*, *reproducibility* of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that independent researchers can draw similar results or conclusions from the same data [@RN1492].
+When studies are not likely to be *replicated*, *reproducibility* of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that independent researchers can draw similar conclusions from the same data [@RN1492].
 
 Peng et al. [@RN1492] suggests that a *fully reproducible* study has 
 
@@ -133,7 +123,7 @@ Peng et al. [@RN1492] suggests that a *fully reproducible* study has
 
 The above principally relates to the trust we can place in scientific results. However, the minimum reproducibility standard also has advantages for the individual researcher (or master's student)! When working with reproducible methods, we will develop ways of documenting and automating our analyses. This way of working with analyses will make it easier to collaborate with others. And, as it turns out, your most frequent collaborator is you in the future!
 
-Reproducible data analysis means that you will make it explicit and transparent. In traditional data analysis, most activities are in the "black box." To avoid bias [@RN1953], the "black box" needs to be opened, and you need to actively make transparent decisions all along the analytic pipeline [@RN1955]. This pipeline preferably involves the whole problem-solving cycle described by Spiegelhalter [@RN2902]. However, the tools we will learn in this course focus primarily on the steps from the experimental design to the presentation of statistical results [@RN1955]. These steps include data collection (and storage), data cleaning, exploratory data analysis, statistical modeling, and statistical inference (and communication) [@RN1955].
+Reproducible data analysis means that you will make it explicit and transparent. In traditional data analysis, most activities are in the "black box." To avoid bias [@RN1953], the "black box" needs to be opened, and you need to actively make transparent decisions all along the analytic pipeline [@RN1955]. This pipeline preferably involves the whole problem-solving cycle [@RN2902]. However, the tools we will learn in this course focus primarily on the steps from the experimental design to the presentation of statistical results [@RN1955]. These steps include data collection (and storage), data cleaning, exploratory data analysis, statistical modelling, and statistical inference (and communication) [@RN1955].
 
 ## Tools in data science
 
@@ -144,17 +134,15 @@ Ways to interpret and make sense of data involve different methods. These method
 
 [^10]: The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from [swedish orienteering](http://obasen.orientering.se/traningsdagbok/installationshandledning.htm).
 
-For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education, you have probably heard about SPSS, Stata, or Jamovi. These are all specialized software used for statistical analyses.
-
-The tools mentioned above can all be used as part of a fully reproducible workflow. However, some software solutions suit this requirement better than others. Going back to the description of reproducible science as made by Peng et al. [@RN1492], we want software where analyses can be 
+For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education, you have probably heard about SPSS, Stata, or Jamovi. These are all specialized software used for statistical analyses and can be part of a fully reproducible workflow. However, some software solutions suit this requirement better than others. Going back to the description of reproducible science as made by Peng et al. [@RN1492], we want software where analyses can be 
 
 - Human- and computer-readable, meaning that we want to be able to write scripts or computer programs that execute the analyses.
-- Documented, meaning that along the code, we want to be able to describe what the code does.
+- Documented, meaning that combined with the code, we want to be able to describe what the code does.
 - Available and able to share with others, meaning that our analyses can be run on open and free software to maximize the ability to share them.
 
-This means that the software we would prefer should be run using scripts (as opposed to point and click) and be free of charge (and open source, as opposed to expensive and proprietary). These criteria can be fulfilled when we use software written around the R language (although alternatives exist [^11]).
+Together this means that the software we would prefer should be run using scripts (as opposed to point and click) and be free of charge (and open source, as opposed to expensive and proprietary). These criteria can be fulfilled when we use software written around the R language (although alternatives exist [^11]).
 
-R is a computer language especially well suited for reproducible data analysis. As users can contribute software extensions, also called packages, many specialized software implementations exist for tasks such as creating figures or analyzing specific data. Around R, people have been developing auxiliary software for reproducible data analysis. The negative part of all these opportunities is that using R requires effort. The learning curve is steep!
+R is a computer language especially well suited for reproducible data analysis. As users can contribute software extensions, also called packages, many specialized software implementations exist for tasks such as creating figures or analysing specific data. Around R, people have been developing auxiliary software for reproducible data analysis. The negative part of all these opportunities is that using R requires effort. The learning curve is steep!
 
 Even though you might not use R ever again after this course, trying to learn it will let you know something about programming, modern data science capabilities, statistical analysis, and software/computers in general. These areas are all aspects of our modern society and are transferable regardless of what computer language we are talking about.
 
@@ -165,7 +153,7 @@ A big challenge when working with complex analyses or other large projects over 
 
 ## Installing and getting to know the required software
 
-As noted above, there are multiple computer languages and software solutions that could satisfy our needs. However, in this course, we will focus on a combination of continuously improved tools to make it easy for the user to collaborate and communicate data analyses. Below is a checklist of what you must install on your system to take full advantage of the proposed tools.
+As noted above, there are multiple computer languages and software solutions that could satisfy our needs. However, in this course, we will focus on a combination of continuously improved tools to make it easy for the user to collaborate and communicate data analyses. Below is a check-list of what you must install on your system to take full advantage of the proposed tools.
 
 ### R and RStudio
 
@@ -284,7 +272,7 @@ Several Git clients can be run at the same time. This means that you might do so
 
 ### Quarto and friends
 
-The R community has pioneered literate programming for data analysis by early adoption of file formats that lets the user combine computer code and output with text [@RN1492]. A well adopted file format in recent years have been [R markdown](https://rmarkdown.rstudio.com/) which combines R code with text and lets the user compile reports in multiple output formats from a source document. R markdown is an "R-centric" approach to literate programming. Even though it lets you combine multiple computer languages, all code execution goes through R. Recently, a new format has been introduced, [Quarto](https://quarto.org/), which is not executed through R but its own dedicated software, Quarto. 
+The R community has pioneered literate programming for data analysis by early adoption of file formats that lets the user combine computer code and output with text [@RN1492]. A well adopted file format in recent years have been [R markdown](https://rmarkdown.rstudio.com/) which combines R code with text and lets the user compile reports in multiple output formats from a source document. R markdown is an "R-centric" approach to literate programming. Even though it lets you combine multiple computer languages, all code execution goes through R. Recently, a new format was introduced, [Quarto](https://quarto.org/), which is not executed through R but its own dedicated software, Quarto. 
 
 Rmarkdown and Quarto have many similarities in that you can use markdown, a well established [markup language](https://en.wikipedia.org/wiki/Markdown) to format text with a plain text editor (like notepad). This means that for the R user, most differences between RMarkdown and quarto in formatting your documents are irrelevant for getting started.
 
@@ -332,6 +320,3 @@ Learning new skills, like doing data analysis by programming, can be hard but re
 - [R bloggers](https://www.r-bloggers.com/) collects blog posts from R users, here you can find interesting use cases of R and tips.
 
 
-
-
-## References and footnotes
