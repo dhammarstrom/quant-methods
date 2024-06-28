@@ -26,9 +26,11 @@ editor_options:
 Data visualization is an efficient way to understand data. Using graphs, we can communicate characteristics of a data set in a way that would have been impossible with a limited number of summary statistics, such as the mean and standard deviation. In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand various data sets. An important argument for mastering data visualization is understanding what variables might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of as an initial step in understanding data; data visualization is an exploratory tool.  
 
 
-RStudio is a powerful environment for data visualization. Together with R (which is excellent for creating graphs), you can create and preview figures that represent your data in RStudio. 
+RStudio is a powerful environment for data visualization. Together with R (which is excellent for creating graphs), you can create and preview figures that represent your data. 
 
-R has got several systems for creating figures, plots, graphs. In this course, we will use [ggplot2](https://ggplot2.tidyverse.org/). Another system for plotting comes with the base installation of R. This is sometimes referred to as base R ([see this tutorial](https://rstudio-pubs-static.s3.amazonaws.com/84527_6b8334fd3d9348579681b24d156e7e9d.html), or [this](http://www.sthda.com/english/wiki/r-base-graphs). Another well described and used system is [lattice](https://www.statmethods.net/advgraphs/trellis.html). We choose ggplot2 because it works well with the [tidyverse](https://www.tidyverse.org/), and it is well described.
+R has got several systems for creating figures, plots, graphs. In this course, we will use [ggplot2](https://ggplot2.tidyverse.org/). Another system for plotting comes with the base installation of R. This is sometimes referred to as base R ([see this tutorial](https://rstudio-pubs-static.s3.amazonaws.com/84527_6b8334fd3d9348579681b24d156e7e9d.html), or [this](http://www.sthda.com/english/wiki/r-base-graphs). Another well described and used system is [lattice](https://www.statmethods.net/advgraphs/trellis.html).
+
+We choose ggplot2 because it works well with the [tidyverse](https://www.tidyverse.org/), it is well described and used by many.
 
 ## Resources
 There are several good resources aimed at ggplot2: 
@@ -85,20 +87,24 @@ We are now ready to explore the data set. But first we should talk about the mai
 
 When using the ggplot2 system we can think of the resulting graph as containing data that has been *mapped* to different coordinates, colors, shapes, sizes, and other attributes that determine what is being visualized. We are using different geometric representations of the data in the visualization. 
 
-When we *map* data in ggplot we use a specific function, `aes()` (short for aesthetic). We will use this inside the main engine, `ggplot()`. For this first simple example, we will create a data set by simulating some data. When you simulate data in R, you can tell R what should be the starting point in the random number generator. Using `set.seed(100)`, we can recreate the same numbers from our "number generator" later. In the example below, we use `rnorm()` to simulate numbers from a normal distribution. Using the arguments `n = 10`, `mean = 0`, and `sd = 1`, we simulate randomly picking ten numbers from a distribution with a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that is assigned to an object that we have named `dat`.  
+When we *map* data in ggplot we use a specific function, `aes()` (short for aesthetic). We will use this inside the main engine, `ggplot()`. For this first simple example, we will create a data set by simulating some data[^rand-number].
+
+[^rand-number]: When you simulate data in R, you can tell R what should be the starting point in the random number generator. Using `set.seed(100)`, we can recreate the same numbers from our "number generator" later.
+
+In the example below, we use `rnorm()` to simulate numbers from a normal distribution. Using the arguments `n = 10`, `mean = 0`, and `sd = 1`, we simulate randomly picking ten numbers from a distribution with a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that is assigned to an object that we have named `dat`.  
 
 ```{r}
 # Set the seed for random generation of numbers
 set.seed(100)
 
 # Store data in a data frame
-dat <- data.frame(x = rnorm(10, mean = 0, sd = 1), 
-                  y = rnorm(10, mean = 10, sd = 2))
+dat <- data.frame(Xdata = rnorm(10, mean = 0, sd = 1), 
+                  Ydata = rnorm(10, mean = 10, sd = 2))
 
 
 ```
 
-The data set consists of two variables. We will start the process of creating the graph by creating the canvas, and this basically sets the border of the figure we want to make. The `ggplot()` function takes the data set as its first argument, followed by the `aes()` function that maps data to coordinates and other attributes. In this case, we have mapped our data to the x- and y-coordinates of the figure.
+The data set consists of two variables, we call them `Xdata` and `Ydata`. We will start the process of creating the graph by creating the canvas, and this basically sets the border of the figure we want to make. The `ggplot()` function takes the data set as its first argument, followed by the `aes()` function that maps data to coordinates and other attributes. In this case, we have mapped our data to the x- and y-coordinates of the figure.
 
 ```{r}
 #| label: fig-empty-canvas
@@ -106,7 +112,7 @@ The data set consists of two variables. We will start the process of creating th
 #| fig-cap: "An empty `ggplot` canvas."
 
 
-ggplot(dat, aes(x = x, y = y))
+ggplot(dat, aes(x = Xdata, y = Ydata))
 
 ```
 
