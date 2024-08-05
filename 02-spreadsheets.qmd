@@ -1,6 +1,6 @@
 # Storing data in spreadsheets and understanding tabular data
 
-We have previously mentioned spreadsheets like those created in Excel. These are great but not great for reproducible science or data analysis. This drawback is because they are not easily documented and scripted. The data is part of the analysis! Another danger with spreadsheets (like MS Excel) is that it re-format your data. Re-formatting is such a big problem for scientists that they have started renaming genes to avoid confusion[^rename-genes]
+We have previously mentioned spreadsheets like those created in Excel. These are great but not great for reproducible science or data analysis. This drawback is because they are not easily documented and scripted. The data is part of the analysis! Another danger with spreadsheets (like MS Excel) is that it re-formats your data. Re-formatting is such a big problem for scientists that they have started renaming genes to avoid confusion[^rename-genes]
 
 
 
@@ -41,7 +41,7 @@ When looking for tips and tricks online, you may come across functions for excel
 
 ## Tidy data and data storage
 
-Hadley Wickham (the author of many commonly used R packages) quotes Tolstoy when describing the principle of tidy data [@RN1956]. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that there are endless possibilities for something to break but only a limited number of ways that same thing can work[^anna-karenina-principle]. This principle can be applied to data sets. There are endless ways that formatting of data sets can be problematic, but a limited set of ways that formatting will allow for analysis.    
+Hadley Wickham (the author of many commonly used R packages) quotes Tolstoy when describing the principle of tidy data [@RN1956]. This Tolstoy quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that there are endless possibilities for something to break but only a limited number of ways that same thing can work[^anna-karenina-principle]. This principle can be applied to data sets. There are endless ways that formatting of data sets can be problematic, but a limited set of ways that formatting will allow for analysis.    
 
 [^anna-karenina-principle]: See https://en.wikipedia.org/wiki/Anna_Karenina_principle
 
@@ -55,7 +55,9 @@ knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/a/
 
 :::
 
-A tidy data set consists of *values* originating from *observations* and belonging to *variables*. A variable is a definition of the values based on attributes. An observation may consist of several variables [@RN1956]. A tidy data set typically has one observation per row and one variable per column. Let's say that we want to collect data from a strength test. A participant (**participant** identification is a variable) in our study conducts tests before and after the intervention (**time** is a variable) in two exercises (**exercise** is a variable), and we record the maximal strength in kg (**load** is a variable). The data set will look like the table below (@tbl-tidydata).  
+A tidy data set consists of *values* originating from *observations* and belonging to *variables*. A variable is a definition of the values based on attributes. An observation may consist of several variables [@RN1956]. A tidy data set typically has one observation per row and one variable per column.
+
+Let's say that we want to collect data from a strength test. A participant (**participant** identification is a variable) in our study conducts tests before and after the intervention (**time** is a variable) in two exercises (**exercise** is a variable), and we record the maximal strength in kg (**load** is a variable). The data set will look like the table below (@tbl-tidydata).  
 
 
 | Participant | Time| Exercise | Load |
@@ -74,7 +76,7 @@ Another example contains variables that actually carries two pieces of informati
 | Selina Kyle | pre  | Isometric | 81.3 | 92.5 |
 | Selina Kyle | post | Isometric | 97.1| 114.1 |
 
-: Another example of tidy data. {#tbl-tidydata2}
+: Another example of (almost) tidy data. {#tbl-tidydata2}
 
 
 To make this data set tidy we need to extract the attempt information and record it in another variable as seen in @tbl-tidydata3.

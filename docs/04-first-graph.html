@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
-
+<meta name="generator" content="quarto-1.4.554">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Quantitative methods and statistics (In Sport and Exercise Science) - 5&nbsp; Creating your first graph</title>
 <style>
 code{white-space: pre-wrap;}
@@ -22,7 +19,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +55,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -74,7 +72,6 @@ div.csl-right-inline {
 div.csl-indent {
   margin-left: 2em;
 }</style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -95,14 +92,19 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -111,41 +113,55 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
+}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 </head>
-
-<body class="nav-sidebar floating">
-
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-first-graph.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-first-graph.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a> 
         <div class="sidebar-tools-main tools-wide">
@@ -162,7 +178,7 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></span></a>
@@ -211,38 +227,36 @@ div.csl-indent {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#resources" id="toc-resources" class="nav-link active" data-scroll-target="#resources"><span class="header-section-number">5.1</span> Resources</a></li>
+<li><a href="#resources" id="toc-resources" class="nav-link active" data-scroll-target="#resources"><span class="header-section-number">5.1</span> Resources</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">5.2</span> Learning objectives</a></li>
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">5.3</span> Prerequisites</a></li>
   <li><a href="#the-ggplot2-system" id="toc-the-ggplot2-system" class="nav-link" data-scroll-target="#the-ggplot2-system"><span class="header-section-number">5.4</span> The <code>ggplot2</code> system</a></li>
-  <li><a href="#different-geoms-using-real-data" id="toc-different-geoms-using-real-data" class="nav-link" data-scroll-target="#different-geoms-using-real-data"><span class="header-section-number">5.5</span> Different geoms using real data</a>
+  <li>
+<a href="#different-geoms-using-real-data" id="toc-different-geoms-using-real-data" class="nav-link" data-scroll-target="#different-geoms-using-real-data"><span class="header-section-number">5.5</span> Different geoms using real data</a>
   <ul class="collapse">
-  <li><a href="#a-plot-of-values-per-group" id="toc-a-plot-of-values-per-group" class="nav-link" data-scroll-target="#a-plot-of-values-per-group"><span class="header-section-number">5.5.1</span> A plot of values per group</a></li>
+<li><a href="#a-plot-of-values-per-group" id="toc-a-plot-of-values-per-group" class="nav-link" data-scroll-target="#a-plot-of-values-per-group"><span class="header-section-number">5.5.1</span> A plot of values per group</a></li>
   <li><a href="#data-over-time-per-group-and-individual" id="toc-data-over-time-per-group-and-individual" class="nav-link" data-scroll-target="#data-over-time-per-group-and-individual"><span class="header-section-number">5.5.2</span> Data over time per group and individual</a></li>
   <li><a href="#titles-and-labels" id="toc-titles-and-labels" class="nav-link" data-scroll-target="#titles-and-labels"><span class="header-section-number">5.5.3</span> Titles and labels</a></li>
   <li><a href="#annotations" id="toc-annotations" class="nav-link" data-scroll-target="#annotations"><span class="header-section-number">5.5.4</span> Annotations</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes"><span class="header-section-number">5.6</span> Themes</a></li>
   <li><a href="#test-your-understandning" id="toc-test-your-understandning" class="nav-link" data-scroll-target="#test-your-understandning"><span class="header-section-number">5.7</span> Test your understandning</a></li>
   <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">5.8</span> References and footnotes</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/dhammarstrom/quant-methods/edit/master/04-first-graph.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/blob/master/04-first-graph.qmd" class="toc-action">View source</a></p></div></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/04-first-graph.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/04-first-graph.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span></h1>
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span>
+</h1>
 </div>
 
 
@@ -255,36 +269,22 @@ div.csl-indent {
   </div>
   
 
-</header>
 
-<script language="javascript"> 
-    function toggle(num) {
-      var ele = document.getElementById("toggleText" + num);
-      var text = document.getElementById("displayText" + num);
-      if(ele.style.display == "block") {
-        ele.style.display = "none";
-        text.innerHTML = "show";
-      }
-      else {
-        ele.style.display = "block";
-        text.innerHTML = "hide";
-      }
-   } 
-  </script>
-<p>Data visualization is an efficient way to understand data. Using graphs, we can communicate characteristics of a data set in a way that would have been impossible with a limited number of summary statistics, such as the mean and standard deviation. In Chapter 2 of his book <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>, Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand various data sets. An important argument for mastering data visualization is understanding what variables might explain variation in a given data set <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. In this sense, data visualization can be thought of as an initial step in understanding data; data visualization is an exploratory tool.</p>
-<p>RStudio is a powerful environment for data visualization. Together with R (which is excellent for creating graphs), you can create and preview figures that represent your data in RStudio.</p>
-<p>R has got several systems for creating figures, plots, graphs. In this course, we will use <a href="https://ggplot2.tidyverse.org/">ggplot2</a>. Another system for plotting comes with the base installation of R. This is sometimes referred to as base R (<a href="https://rstudio-pubs-static.s3.amazonaws.com/84527_6b8334fd3d9348579681b24d156e7e9d.html">see this tutorial</a>, or <a href="http://www.sthda.com/english/wiki/r-base-graphs">this</a>. Another well described and used system is <a href="https://www.statmethods.net/advgraphs/trellis.html">lattice</a>. We choose ggplot2 because it works well with the <a href="https://www.tidyverse.org/">tidyverse</a>, and it is well described.</p>
-<section id="resources" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="resources"><span class="header-section-number">5.1</span> Resources</h2>
+</header><p>Data visualization is an efficient way to understand data. Using graphs, we can communicate characteristics of a data set in a way that would have been impossible with a limited number of summary statistics, such as the mean and standard deviation. In Chapter 2 of his book <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>, Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand various data sets. An important argument for mastering data visualization is understanding what variables might explain variation in a given data set <span class="citation" data-cites="RN2902">(<a href="#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. In this sense, data visualization can be thought of as an initial step in understanding data; data visualization is an exploratory tool.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-RN2902" class="csl-entry" role="listitem">
+Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</em>. Book. First US edition. New York: Basic Books.
+</div></div><p>RStudio is a powerful environment for data visualization. Together with R (which is excellent for creating graphs), you can create and preview figures that represent your data.</p>
+<p>R has got several systems for creating figures, plots, graphs. In this course, we will use <a href="https://ggplot2.tidyverse.org/">ggplot2</a>. Another system for plotting comes with the base installation of R. This is sometimes referred to as base R (<a href="https://rstudio-pubs-static.s3.amazonaws.com/84527_6b8334fd3d9348579681b24d156e7e9d.html">see this tutorial</a>, or <a href="http://www.sthda.com/english/wiki/r-base-graphs">this</a>. Another well described and used system is <a href="https://www.statmethods.net/advgraphs/trellis.html">lattice</a>.</p>
+<p>We choose ggplot2 because it works well with the <a href="https://www.tidyverse.org/">tidyverse</a>, it is well described and used by many.</p>
+<section id="resources" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="resources">
+<span class="header-section-number">5.1</span> Resources</h2>
 <p>There are several good resources aimed at ggplot2:</p>
 <ul>
 <li><a href="https://r4ds.hadley.nz/data-visualize">Chapter 2 in R for data science</a></li>
 <li><a href="https://ggplot2-book.org/">The ggplot2 book</a></li>
 <li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf">The ggplot2 cheatsheet</a></li>
-</ul>
-</section>
-<section id="learning-objectives" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">5.2</span> Learning objectives</h2>
+</ul></section><section id="learning-objectives" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="learning-objectives">
+<span class="header-section-number">5.2</span> Learning objectives</h2>
 <p>After working through this chapter, you should be able to answer:</p>
 <ul>
 <li>What are geoms?</li>
@@ -292,9 +292,8 @@ div.csl-indent {
 <li>What are theme components?</li>
 </ul>
 <p>You should also be able to create your first graph.</p>
-</section>
-<section id="prerequisites" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">5.3</span> Prerequisites</h2>
+</section><section id="prerequisites" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="prerequisites">
+<span class="header-section-number">5.3</span> Prerequisites</h2>
 <p>To follow the exercises below you will need to some data. For the purpose of this course, I have created a package that contains the data sets we need. In this chapter we will work with the <code>cyclingstudy</code> data set. To install the package (<code>exscidata</code>) you will need another package called <code>remotes</code>.</p>
 <p>The code below first checks if the package <code>remotes</code> is installed, or more specifically, if <code>"remotes"</code> cannot be found in the list of installed packages. Using the <code>if</code> function makes <code>install.packages(remotes)</code> conditional. If we do not find <code>"remotes"</code> among installed packages, then install <code>remotes</code>.</p>
 <p>The next line of code does the same with the <code>exscidata</code> package. However, since the package is not on CRAN but hosted on GitHub we will need to use <code>remotes</code> to install it. The part of the second line of code that says <code>remotes::install_github("dhammarstrom/exscidata")</code> uses the function <code>install_github</code> without loading the remotes package. The last line of the code below loads the package <code>exscidata</code> using the <code>library</code> function.</p>
@@ -316,11 +315,11 @@ div.csl-indent {
 <span id="cb2-4"><a href="#cb2-4"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -328,52 +327,56 @@ div.csl-indent {
 </div>
 </div>
 <p>We are now ready to explore the data set. But first we should talk about the main components of the <code>ggplot2</code> system.</p>
-</section>
-<section id="the-ggplot2-system" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="the-ggplot2-system"><span class="header-section-number">5.4</span> The <code>ggplot2</code> system</h2>
+</section><section id="the-ggplot2-system" class="level2 page-columns page-full" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="the-ggplot2-system">
+<span class="header-section-number">5.4</span> The <code>ggplot2</code> system</h2>
 <p>When using the ggplot2 system we can think of the resulting graph as containing data that has been <em>mapped</em> to different coordinates, colors, shapes, sizes, and other attributes that determine what is being visualized. We are using different geometric representations of the data in the visualization.</p>
-<p>When we <em>map</em> data in ggplot we use a specific function, <code>aes()</code> (short for aesthetic). We will use this inside the main engine, <code>ggplot()</code>. For this first simple example, we will create a data set by simulating some data. When you simulate data in R, you can tell R what should be the starting point in the random number generator. Using <code>set.seed(100)</code>, we can recreate the same numbers from our “number generator” later. In the example below, we use <code>rnorm()</code> to simulate numbers from a normal distribution. Using the arguments <code>n = 10</code>, <code>mean = 0</code>, and <code>sd = 1</code>, we simulate randomly picking ten numbers from a distribution with a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that is assigned to an object that we have named <code>dat</code>.</p>
+<p>When we <em>map</em> data in ggplot we use a specific function, <code>aes()</code> (short for aesthetic). We will use this inside the main engine, <code>ggplot()</code>. For this first simple example, we will create a data set by simulating some data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;When you simulate data in R, you can tell R what should be the starting point in the random number generator. Using <code>set.seed(100)</code>, we can recreate the same numbers from our “number generator” later.</p></div></div><p>In the example below, we use <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> to simulate numbers from a normal distribution. Using the arguments <code>n = 10</code>, <code>mean = 0</code>, and <code>sd = 1</code>, we simulate randomly picking ten numbers from a distribution with a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that is assigned to an object that we have named <code>dat</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Set the seed for random generation of numbers</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Store data in a data frame</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
-<span id="cb4-6"><a href="#cb4-6"></a>                  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xdata =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb4-6"><a href="#cb4-6"></a>                  <span class="at">Ydata =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The data set consists of two variables. We will start the process of creating the graph by creating the canvas, and this basically sets the border of the figure we want to make. The <code>ggplot()</code> function takes the data set as its first argument, followed by the <code>aes()</code> function that maps data to coordinates and other attributes. In this case, we have mapped our data to the x- and y-coordinates of the figure.</p>
+<p>The data set consists of two variables, we call them <code>Xdata</code> and <code>Ydata</code>. We will start the process of creating the graph by creating the canvas, and this basically sets the border of the figure we want to make. The <code>ggplot()</code> function takes the data set as its first argument, followed by the <code>aes()</code> function that maps data to coordinates and other attributes. In this case, we have mapped our data to the x- and y-coordinates of the figure.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> Xdata, <span class="at">y =</span> Ydata))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-empty-canvas" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-empty-canvas-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.1: An empty <code>ggplot</code> canvas.</figcaption>
-</figure>
+<div id="fig-empty-canvas" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-empty-canvas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-empty-canvas-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-empty-canvas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: An empty <code>ggplot</code> canvas.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>As you can see in <a href="#fig-empty-canvas">Figure&nbsp;<span class="quarto-unresolved-ref">fig-empty-canvas</span></a>, the code above creates an “empty canvas” that has enough room to visualize our data. The x- and y-axes are adjusted to give room for graphical representations of the data. Next we need to add geometric shapes (<code>geom</code> for short). These are functions that we add to the plot using the <code>+</code> sign. These functions all start with <code>geom_</code> and has and ending that describes the geometric shape, like for example point or line.</p>
-<p>We will add <code>geom_point()</code> to our empty canvas as plotted in <a href="#fig-empty-canvas">Figure&nbsp;<span class="quarto-unresolved-ref">fig-empty-canvas</span></a>. The <code>geom_point</code> function <em>inherits</em> the mapping from from <code>ggplot()</code>. Shapes, in this case points will be placed according to x- and y-coordinates specified in <code>aes()</code> used in the main <code>ggplot</code> function call. This means that we do not need to specify anything in <code>geom_point</code> at this stage.</p>
+<p>As you can see in <a href="#fig-empty-canvas" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, the code above creates an “empty canvas” that has enough room to visualize our data. The x- and y-axes are adjusted to give room for graphical representations of the data. Next we need to add geometric shapes (<code>geom</code> for short). These are functions that we add to the plot using the <code>+</code> sign. These functions all start with <code>geom_</code> and has and ending that describes the geometric shape, like for example point or line.</p>
+<p>We will add <code>geom_point()</code> to our empty canvas as plotted in <a href="#fig-empty-canvas" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. The <code>geom_point</code> function <em>inherits</em> the mapping from from <code>ggplot()</code>. Shapes, in this case points will be placed according to x- and y-coordinates specified in <code>aes()</code> used in the main <code>ggplot</code> function call. This means that we do not need to specify anything in <code>geom_point</code> at this stage.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> Xdata, <span class="at">y =</span> Ydata)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-point-and-canvas" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-point-and-canvas-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.2: A <code>ggplot</code> canvas with points added.</figcaption>
-</figure>
+<div id="fig-point-and-canvas" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-point-and-canvas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-point-and-canvas-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-point-and-canvas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: A <code>ggplot</code> canvas with points added.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>In <a href="#fig-point-and-canvas">Figure&nbsp;<span class="quarto-unresolved-ref">fig-point-and-canvas</span></a> we have added black points to each x- and y-coordinate representing <code>x</code> and <code>y</code> from our data set.</p>
-<p>To extend the example we will add data to our data set. In the code below, we create a new variable in the data set using <code>$</code> effectively giving us a new column in the data. We use <code>rep("A", 5)</code> to replicate the letter <code>A</code> five times and the same for <code>B</code>. The <code>c()</code> function combines the two in a single vector. We can use <code>head(dat)</code> to see what we accomplished with these operations. The <code>head()</code> function <em>prints</em> the first six rows from the data set.</p>
+<p>In <a href="#fig-point-and-canvas" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> we have added black points to each x- and y-coordinate representing <code>x</code> and <code>y</code> from our data set.</p>
+<p>To extend the example we will add data to our data set. In the code below, we create a new variable in the data set using <code>$</code> effectively giving us a new column in the data. We use <code>rep("A", 5)</code> to replicate the letter <code>A</code> five times and the same for <code>B</code>. The <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function combines the two in a single vector. We can use <code>head(dat)</code> to see what we accomplished with these operations. The <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> function <em>prints</em> the first six rows from the data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>dat<span class="sc">$</span>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"A"</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="st">"B"</span>, <span class="dv">5</span>))</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            x         y z
+<pre><code>        Xdata     Ydata z
 1 -0.50219235 10.179772 A
 2  0.13153117 10.192549 A
 3 -0.07891709  9.596732 A
@@ -384,57 +387,64 @@ div.csl-indent {
 </div>
 <p>We can see that we have an additional variable, <code>z</code> that contains the letters <code>"A"</code> and <code>"B"</code>. This new variable can be used to add more information to the plot. Let’s say that we want to map the <code>z</code> variable to different colors. We do this by adding <code>color = z</code> to <code>aes</code>. This means that we want the z variable to determine colors.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> Xdata, <span class="at">y =</span> Ydata, <span class="at">color =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-point-with-color" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-point-with-color-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.3: A <code>ggplot</code> canvas with colored points added.</figcaption>
-</figure>
+<div id="fig-point-with-color" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-point-with-color-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-point-with-color-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-point-with-color-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: A <code>ggplot</code> canvas with colored points added.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>In <a href="#fig-point-with-color">Figure&nbsp;<span class="quarto-unresolved-ref">fig-point-with-color</span></a> we can see that different colors are used for the two letters <code>"A"</code> and <code>"B"</code>. Other attributes can also be specified like <code>shape</code>, <code>fill</code> or <code>size</code>. The <code>shape</code> specifies the appearance of the points. When we use use data to map to shapes, ggplot2 will start from the standard shape.</p>
+<p>In <a href="#fig-point-with-color" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> we can see that different colors are used for the two letters <code>"A"</code> and <code>"B"</code>. Other attributes can also be specified like <code>shape</code>, <code>fill</code> or <code>size</code>. The <code>shape</code> specifies the appearance of the points. When we use use data to map to shapes, ggplot2 will start from the standard shape.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-shapes-in-r" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-shapes-in-r-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.4: Shapes in R</figcaption>
-</figure>
+<div id="fig-shapes-in-r" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-shapes-in-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-shapes-in-r-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shapes-in-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Shapes in R
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Possible shapes in the standard framework in R are shown in <a href="#fig-shapes-in-r">Figure&nbsp;<span class="quarto-unresolved-ref">fig-shapes-in-r</span></a>. Shapes 0 to 20 can change colors while shapes 21 to 25 may have different border colors but also different fill colors. We may use this information to change the shape, color and fill of our points. Let’s say that instead of colored points we want filled points. We would then change the <code>color = z</code> argument to <code>fill = z</code> and select a point shape that can be filled (shapes 21-25, see <a href="#fig-shapes-in-r">Figure&nbsp;<span class="quarto-unresolved-ref">fig-shapes-in-r</span></a>. Notice in the code below that <code>shape = 21</code> has been added to <code>geom_point()</code>. We have specified how points should be displayed.</p>
+<p>Possible shapes in the standard framework in R are shown in <a href="#fig-shapes-in-r" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>. Shapes 0 to 20 can change colors while shapes 21 to 25 may have different border colors but also different fill colors. We may use this information to change the shape, color and fill of our points. Let’s say that instead of colored points we want filled points. We would then change the <code>color = z</code> argument to <code>fill = z</code> and select a point shape that can be filled (shapes 21-25, see <a href="#fig-shapes-in-r" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>. Notice in the code below that <code>shape = 21</code> has been added to <code>geom_point()</code>. We have specified how points should be displayed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> Xdata, <span class="at">y =</span> Ydata, <span class="at">fill =</span> z)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-point-with-fill" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-point-with-fill-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.5: A <code>ggplot</code> canvas with filled points added.</figcaption>
-</figure>
+<div id="fig-point-with-fill" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-point-with-fill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-point-with-fill-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-point-with-fill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: A <code>ggplot</code> canvas with filled points added.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Since shape is an attribute we can map data to it. If we want data to determine both shape and fill we could add this information in the <code>aes()</code> function by setting both <code>shape = z</code> and <code>fill = z</code>. We now have to specify what shapes ggplot should use in order to be sure we can combine both shapes and fill. We will use <code>scale_fill_manual</code> and <code>scale_shape_manual</code> to do this. These functions lets you specify different values for aesthetics. Notice that we removed <code>shape = 21</code> from the <code>geom_point()</code> function, but we added size to increase the size of the points (see <a href="#fig-point-with-fill-and-shape">Figure&nbsp;<span class="quarto-unresolved-ref">fig-point-with-fill-and-shape</span></a>).</p>
+<p>Since shape is an attribute we can map data to it. If we want data to determine both shape and fill we could add this information in the <code>aes()</code> function by setting both <code>shape = z</code> and <code>fill = z</code>. We now have to specify what shapes ggplot should use in order to be sure we can combine both shapes and fill. We will use <code>scale_fill_manual</code> and <code>scale_shape_manual</code> to do this. These functions lets you specify different values for aesthetics. Notice that we removed <code>shape = 21</code> from the <code>geom_point()</code> function, but we added size to increase the size of the points (see <a href="#fig-point-with-fill-and-shape" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> z, <span class="at">shape =</span> z)) <span class="sc">+</span> </span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> Xdata, <span class="at">y =</span> Ydata, <span class="at">fill =</span> z, <span class="at">shape =</span> z)) <span class="sc">+</span> </span>
 <span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>)) <span class="sc">+</span> </span>
 <span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">23</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-point-with-fill-and-shape" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-point-with-fill-and-shape-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.6: Data mapped to fill and shape, and size specified manually to override the default.</figcaption>
-</figure>
+<div id="fig-point-with-fill-and-shape" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-point-with-fill-and-shape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-point-with-fill-and-shape-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-point-with-fill-and-shape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.6: Data mapped to fill and shape, and size specified manually to override the default.
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-<section id="different-geoms-using-real-data" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="different-geoms-using-real-data"><span class="header-section-number">5.5</span> Different geoms using real data</h2>
+</section><section id="different-geoms-using-real-data" class="level2 page-columns page-full" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="different-geoms-using-real-data">
+<span class="header-section-number">5.5</span> Different geoms using real data</h2>
 <p>We have seen that the basic <code>ggplot2</code> figure maps underlying data to coordinates and geometric representations, such as points. We will go further by using some real data. We will be using the <code>cyclingstudy</code> data set from the <code>exscidata</code>-package. We will start by loading the data and select a few columns that we are interested in.</p>
 <p>By using <code>data("cyclingstudy")</code> we will load the data set that is part of the <code>exscidata</code>-package to our environment. By looking at the environment tab you can see that this operation adds a data set to the environment. It has 80 observations and 101 variables. Using the <code>glimpse()</code> function from <code>dplyr</code> (which is loaded by loading <code>tidyverse</code>) we will get an overview of all variables in the data set. I have omitted the output from the code below, feel free to run the code in a quarto- or rmarkdown-document on your own.</p>
 <div class="cell">
@@ -465,22 +475,27 @@ div.csl-indent {
 # ℹ 70 more rows</code></pre>
 </div>
 </div>
-<p>By printing the object we can see that we have a tibble of 80 rows and 4 columns. A tibble can to a large extent be regarded as a data frame, and we will use these words interchangeably. Tibbles are new in the sense that they are developed as part of the tidyverse <span class="citation" data-cites="r4ds">(<a href="#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Printing a tibble will display the first 10 rows as we can see from the resulting output.</p>
-<section id="a-plot-of-values-per-group" class="level3" data-number="5.5.1">
-<h3 data-number="5.5.1" class="anchored" data-anchor-id="a-plot-of-values-per-group"><span class="header-section-number">5.5.1</span> A plot of values per group</h3>
+<p>By printing the object we can see that we have a tibble of 80 rows and 4 columns. A tibble can to a large extent be regarded as a data frame, and we will use these words interchangeably. Tibbles are new in the sense that they are developed as part of the tidyverse <span class="citation" data-cites="r4ds">(<a href="#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Printing a tibble will display the first 10 rows as we can see from the resulting output.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-r4ds" class="csl-entry" role="listitem">
+Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. 1st ed. Paperback; O’Reilly Media. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
+</div><div id="fn2"><p><sup>2</sup>&nbsp;See <a href="https://r4ds.had.co.nz/tibbles.html">Chapter 10 in R for data science (2 edition)</a></p></div></div><section id="a-plot-of-values-per-group" class="level3" data-number="5.5.1"><h3 data-number="5.5.1" class="anchored" data-anchor-id="a-plot-of-values-per-group">
+<span class="header-section-number">5.5.1</span> A plot of values per group</h3>
 <p>Let’s say that we want to see how the values differs between groups. Box-plots are a good way to start as they will bring a standardized way of summarizing data. Box-plots can be plotted using the <code>geom_boxplot</code> function. Notice below that we put <code>group</code> on the x-axis (the first argument in the <code>aes</code> function) and <code>sj.max</code> on the y-axis. By doing so <code>ggplot</code> will make the x-axis discrete and the y-axis continuous.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Creating a box-plot of all values per group</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing non-finite values (`stat_boxplot()`).</code></pre>
+<pre><code>Warning: Removed 4 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-boxplot-simple" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-boxplot-simple-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.7: Boxplot of all data per group from the cycling dataset.</figcaption>
-</figure>
+<div id="fig-boxplot-simple" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-boxplot-simple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-boxplot-simple-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-simple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.7: Boxplot of all data per group from the cycling dataset.
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -489,24 +504,27 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Creating a boxplot of all values per group</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(group, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing non-finite values (`stat_boxplot()`).</code></pre>
+<pre><code>Warning: Removed 4 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 4 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-boxplot-jitter" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-boxplot-jitter-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.8: Box-plot and jittered points of all data per group from the cycling dataset.</figcaption>
-</figure>
+<div id="fig-boxplot-jitter" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-boxplot-jitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-boxplot-jitter-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-jitter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.8: Box-plot and jittered points of all data per group from the cycling dataset.
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>Notice that we get warnings saying that there are some data missing, these values are removed from the calculation of summary statistics in the box-plots and omitted from plotting of the points.</p>
-</section>
-<section id="data-over-time-per-group-and-individual" class="level3" data-number="5.5.2">
-<h3 data-number="5.5.2" class="anchored" data-anchor-id="data-over-time-per-group-and-individual"><span class="header-section-number">5.5.2</span> Data over time per group and individual</h3>
+</section><section id="data-over-time-per-group-and-individual" class="level3" data-number="5.5.2"><h3 data-number="5.5.2" class="anchored" data-anchor-id="data-over-time-per-group-and-individual">
+<span class="header-section-number">5.5.2</span> Data over time per group and individual</h3>
 <p>In the data set we have a time variable consisting of the labels “pre”, “meso1”, “meso2” and “meso3”. When we load the data into R we do so without providing information about the order of these labels. R will put them in alphabetical order when order is required (as in a figure). If we want to plot these data in the right order, we have to tell R that these data should have an order. We will convert the <code>timepoint</code> variable to a factor. Factors are variables that can contain more information than what is contained in each cell. Using the <code>factor</code> function we will set the order of the <code>timepoint</code> variable. We assign this transformation of the variable to its original place in the data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>cycdat<span class="sc">$</span>timepoint <span class="ot">&lt;-</span> <span class="fu">factor</span>(cycdat<span class="sc">$</span>timepoint, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"meso1"</span>, <span class="st">"meso2"</span>, <span class="st">"meso3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -516,14 +534,17 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Creating a boxplot of all values per time point</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing non-finite values (`stat_boxplot()`).</code></pre>
+<pre><code>Warning: Removed 4 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-boxplot-time" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-boxplot-time-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.9: Boxplot of all data per time-point from the cycling dataset.</figcaption>
-</figure>
+<div id="fig-boxplot-time" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-boxplot-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-boxplot-time-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.9: Boxplot of all data per time-point from the cycling dataset.
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -532,14 +553,17 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Creating a boxplot of all values per group over time</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">fill =</span> group)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing non-finite values (`stat_boxplot()`).</code></pre>
+<pre><code>Warning: Removed 4 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-boxplot-time-fill" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-boxplot-time-fill-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.10: Boxplot of all data per time-point and group from the cycling dataset.</figcaption>
-</figure>
+<div id="fig-boxplot-time-fill" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-boxplot-time-fill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-boxplot-time-fill-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-time-fill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.10: Boxplot of all data per time-point and group from the cycling dataset.
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -551,21 +575,23 @@ div.csl-indent {
 <span id="cb25-3"><a href="#cb25-3"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
 <span id="cb25-4"><a href="#cb25-4"></a><span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-sj-ind-data" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-sj-ind-data-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.11: Figure with lines corresponding to indivudal values per participant.</figcaption>
-</figure>
+<div id="fig-sj-ind-data" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-sj-ind-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-sj-ind-data-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sj-ind-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.11: Figure with lines corresponding to indivudal values per participant.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>In <a href="#fig-sj-ind-data">Figure&nbsp;<span class="quarto-unresolved-ref">fig-sj-ind-data</span></a>, each line represents a participant, different colors represents different groups.</p>
-</section>
-<section id="titles-and-labels" class="level3" data-number="5.5.3">
-<h3 data-number="5.5.3" class="anchored" data-anchor-id="titles-and-labels"><span class="header-section-number">5.5.3</span> Titles and labels</h3>
+<p>In <a href="#fig-sj-ind-data" class="quarto-xref">Figure&nbsp;<span>5.11</span></a>, each line represents a participant, different colors represents different groups.</p>
+</section><section id="titles-and-labels" class="level3" data-number="5.5.3"><h3 data-number="5.5.3" class="anchored" data-anchor-id="titles-and-labels">
+<span class="header-section-number">5.5.3</span> Titles and labels</h3>
 <p>Often we need to add information to the plot to better communicate its message. Such information could be appropriate titles on axes and legends and extra text needed to explain aspects of the plot. Using the <code>labs()</code> function we can add information that will replace variable names that are being used for all variables that have been mapped in the figure. In the figure below we will start by adding better axis titles. This information goes into <code>x</code> and <code>y</code> in <code>labs()</code> which simply changes the titles of the x- and y-axis.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Creating a line plot of all values per participant over time, color per group, </span></span>
@@ -575,18 +601,21 @@ div.csl-indent {
 <span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time-point"</span>,</span>
 <span id="cb27-6"><a href="#cb27-6"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-ind-data-axis-title" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-ind-data-axis-title-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.12: Figure with updated axis labels</figcaption>
-</figure>
+<div id="fig-ind-data-axis-title" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ind-data-axis-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-ind-data-axis-title-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ind-data-axis-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.12: Figure with updated axis labels
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>The resulting <a href="#fig-ind-data-axis-title">Figure&nbsp;<span class="quarto-unresolved-ref">fig-ind-data-axis-title</span></a> now have better titles for each axis. Notice in the code above that titles needs to be specified with quotation marks. This is a tricky aspect of R, if we would have omitted the quotation marks we would have told R to look for objects by the name of e.g.&nbsp;<code>Time-point</code>, and this would actually mean that we tried to subtract <code>time</code> from <code>point</code> since <code>-</code> is interpreted as a minus sign.</p>
+<p>The resulting <a href="#fig-ind-data-axis-title" class="quarto-xref">Figure&nbsp;<span>5.12</span></a> now have better titles for each axis. Notice in the code above that titles needs to be specified with quotation marks. This is a tricky aspect of R, if we would have omitted the quotation marks we would have told R to look for objects by the name of e.g.&nbsp;<code>Time-point</code>, and this would actually mean that we tried to subtract <code>time</code> from <code>point</code> since <code>-</code> is interpreted as a minus sign.</p>
 <p>We might want to add information to the legend also. Since we specified <code>color = group</code> in the <code>aes()</code> function, the same can be manipulated in <code>labs</code>. Lets just add a capital G.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
@@ -595,14 +624,17 @@ div.csl-indent {
 <span id="cb29-4"><a href="#cb29-4"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
 <span id="cb29-5"><a href="#cb29-5"></a>       <span class="at">color =</span> <span class="st">"Group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-ind-data-axis-color-title" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-ind-data-axis-color-title-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.13: Additional labels</figcaption>
-</figure>
+<div id="fig-ind-data-axis-color-title" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ind-data-axis-color-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-ind-data-axis-color-title-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ind-data-axis-color-title-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.13: Additional labels
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -617,18 +649,21 @@ div.csl-indent {
 <span id="cb31-7"><a href="#cb31-7"></a>       <span class="at">y =</span> <span class="st">"Squat jump height (cm)"</span>, </span>
 <span id="cb31-8"><a href="#cb31-8"></a>       <span class="at">color =</span> <span class="st">"Group"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-factor-labels" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-factor-labels-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.14: Changing labels by changing a factor variable prior to plotting</figcaption>
-</figure>
+<div id="fig-factor-labels" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-factor-labels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-factor-labels-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-factor-labels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.14: Changing labels by changing a factor variable prior to plotting
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>The same goes for the group variable. You can try to change the levels and labels of the grouping variable to make it more descriptive. You can type <code>?cyclingstudy</code> in your console to read about the group variable and then use this information to write better labels using the <code>factor</code> function. In the factor function, the first argument is the variable you want to use as basis of your new factor, the second argument you need to specify is <code>levels</code> which sets the order and lastly you will need to set the labels for each level using <code>labels =</code>. If you write <code>?factor</code> in your console you will get the help pages for the <code>factor</code> function.</p>
+<p>The same goes for the group variable. You can try to change the levels and labels of the grouping variable to make it more descriptive. You can type <code>?cyclingstudy</code> in your console to read about the group variable and then use this information to write better labels using the <code>factor</code> function. In the factor function, the first argument is the variable you want to use as basis of your new factor, the second argument you need to specify is <code>levels</code> which sets the order and lastly you will need to set the labels for each level using <code>labels =</code>. If you write <code><a href="https://rdrr.io/r/base/factor.html">?factor</a></code> in your console you will get the help pages for the <code>factor</code> function.</p>
 <a id="displayText" href="javascript:toggle(1);">Click here to display a possible solution</a>
 <div id="toggleText1" style="display: none">
 <div class="cell">
@@ -647,9 +682,8 @@ div.csl-indent {
 </div>
 <p>Note: Adding <code>\n</code> in the the text string breaks the line to get two rows.</p>
 </div>
-</section>
-<section id="annotations" class="level3" data-number="5.5.4">
-<h3 data-number="5.5.4" class="anchored" data-anchor-id="annotations"><span class="header-section-number">5.5.4</span> Annotations</h3>
+</section><section id="annotations" class="level3" data-number="5.5.4"><h3 data-number="5.5.4" class="anchored" data-anchor-id="annotations">
+<span class="header-section-number">5.5.4</span> Annotations</h3>
 <p>Annotation may become handy when you want to add elements to the graph that is not in the data set. Using ggplot2, annotations are added using the <code>annotate()</code> function. This function first needs to be specified with a geom, these are commonly text or lines or segments. In the code chunk below are several examples of annotations. First I save the plot as an object called <code>myplot</code> and then add different annotations to it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>myplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
@@ -686,10 +720,8 @@ div.csl-indent {
 </div>
 <p>Note: Adding <code>\n</code> in the the text string breaks the line to get two rows.</p>
 </div>
-</section>
-</section>
-<section id="themes" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="themes"><span class="header-section-number">5.6</span> Themes</h2>
+</section></section><section id="themes" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="themes">
+<span class="header-section-number">5.6</span> Themes</h2>
 <p>Themes in <code>ggplot2</code> can be used to change everything else about the plot concerning text, colors etc. <code>ggplot2</code> has some built in themes that are easily activated by adding them to the plot. For example the <code>theme_bw()</code> function will change the theme to a black and white one as in the figure below.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">ggplot</span>(cycdat, <span class="fu">aes</span>(timepoint, sj.max, <span class="at">color =</span> group, <span class="at">group =</span> subject)) <span class="sc">+</span> </span>
@@ -699,14 +731,17 @@ div.csl-indent {
 <span id="cb36-5"><a href="#cb36-5"></a>       <span class="at">color =</span> <span class="st">"Group"</span>) <span class="sc">+</span> </span>
 <span id="cb36-6"><a href="#cb36-6"></a>  <span class="fu">theme_bw</span>() <span class="co"># Adding a pre-specified theme</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-theme-bw" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-theme-bw-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.15: A figure using the black and white theme from <code>theme_bw</code>.</figcaption>
-</figure>
+<div id="fig-theme-bw" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-theme-bw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-theme-bw-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-theme-bw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.15: A figure using the black and white theme from <code>theme_bw</code>.
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -721,30 +756,34 @@ If we put the <code>theme</code> function last in the <code>ggplot</code> call w
 <span id="cb38-6"><a href="#cb38-6"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb38-7"><a href="#cb38-7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-theme-bw-changed" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-theme-bw-changed-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.16: A figure using the black and white theme from <code>theme_bw</code>, with modifications</figcaption>
-</figure>
+<div id="fig-theme-bw-changed" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-theme-bw-changed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-theme-bw-changed-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-theme-bw-changed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.16: A figure using the black and white theme from <code>theme_bw</code>, with modifications
+</figcaption></figure>
 </div>
 </div>
 </div>
 <p>The component <code>axis.text.x</code> can be modified using a function that changes appearance of text components, namely <code>element_text</code>. Similarly, other components are changed with specific functions for lines and rectangular shapes (see the help pages for <code>theme</code>).</p>
-</section>
-<section id="test-your-understandning" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="test-your-understandning"><span class="header-section-number">5.7</span> Test your understandning</h2>
+</section><section id="test-your-understandning" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="test-your-understandning">
+<span class="header-section-number">5.7</span> Test your understandning</h2>
 <p>In this section you can try to implement what we have discussed above. An example solution exists below each figure by press of button.</p>
-<p>In <a href="#fig-example-1">Figure&nbsp;<span class="quarto-unresolved-ref">fig-example-1</span></a>, I have used the VO<sub>2max</sub> data from the <code>cyclingstudy</code> data set. I have made changes to the time variable (<code>timepoint</code>) to make the labels better. I have added a title to the figure and changed the appearance of the text. I will use an extra package called (ggtext)[https://wilkelab.org/ggtext/index.html] to make it possible to use markdown syntax in axis labels. In order to use <code>ggtext</code> you have to install it from CRAN.</p>
+<p>In <a href="#fig-example-1" class="quarto-xref">Figure&nbsp;<span>5.17</span></a>, I have used the VO<sub>2max</sub> data from the <code>cyclingstudy</code> data set. I have made changes to the time variable (<code>timepoint</code>) to make the labels better. I have added a title to the figure and changed the appearance of the text. I will use an extra package called (ggtext)[https://wilkelab.org/ggtext/index.html] to make it possible to use markdown syntax in axis labels. In order to use <code>ggtext</code> you have to install it from CRAN.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-example-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-first-graph_files/figure-html/fig-example-1-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;5.17: Example figure 1</figcaption>
-</figure>
+<div id="fig-example-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-example-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-first-graph_files/figure-html/fig-example-1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-example-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.17: Example figure 1
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -780,29 +819,12 @@ If we put the <code>theme</code> function last in the <code>ggplot</code> call w
 </div>
 <p>Note: Adding <code>\n</code> in the the text string breaks the line to get two rows.</p>
 </div>
-</section>
-<section id="references-and-footnotes" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="references-and-footnotes"><span class="header-section-number">5.8</span> References and footnotes</h2>
+</section><section id="references-and-footnotes" class="level2" data-number="5.8"><h2 data-number="5.8" class="anchored" data-anchor-id="references-and-footnotes">
+<span class="header-section-number">5.8</span> References and footnotes</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-RN2902" class="csl-entry" role="listitem">
-Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</em>. Book. First US edition. New York: Basic Books.
-</div>
-<div id="ref-r4ds" class="csl-entry" role="listitem">
-Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. 1st ed. Paperback; O’Reilly Media. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
-</div>
-</div>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>See <a href="https://r4ds.had.co.nz/tibbles.html">Chapter 10 in R for data science (2 edition)</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -843,6 +865,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -911,13 +960,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -996,10 +1047,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1009,20 +1077,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1066,6 +1250,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1091,6 +1276,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1149,16 +1360,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./03-intro-to-r.html" class="pagination-link">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./03-intro-to-r.html" class="pagination-link" aria-label="Getting to know R and RStudio">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05-first-tables.html" class="pagination-link">
+      <a href="./05-first-tables.html" class="pagination-link" aria-label="Wrangling data to create your first table">
         <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1167,4 +1375,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/04-first-graph.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/04-first-graph.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

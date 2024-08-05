@@ -6,23 +6,6 @@ editor_options:
 
 # Creating your first graph
 
- <script language="javascript"> 
-    function toggle(num) {
-      var ele = document.getElementById("toggleText" + num);
-      var text = document.getElementById("displayText" + num);
-      if(ele.style.display == "block") {
-        ele.style.display = "none";
-        text.innerHTML = "show";
-      }
-      else {
-        ele.style.display = "block";
-        text.innerHTML = "hide";
-      }
-   } 
-  </script>
-
-
-
 Data visualization is an efficient way to understand data. Using graphs, we can communicate characteristics of a data set in a way that would have been impossible with a limited number of summary statistics, such as the mean and standard deviation. In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand various data sets. An important argument for mastering data visualization is understanding what variables might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of as an initial step in understanding data; data visualization is an exploratory tool.  
 
 
@@ -127,7 +110,7 @@ We will add `geom_point()` to our empty canvas as plotted in @fig-empty-canvas. 
 
 
 
-ggplot(dat, aes(x = x, y = y)) + geom_point()
+ggplot(dat, aes(x = Xdata, y = Ydata)) + geom_point()
 
 ```
 
@@ -151,7 +134,7 @@ We can see that we have an additional variable, `z` that contains the letters `"
 #| fig-cap: "A `ggplot` canvas with colored points added."
 
 
-ggplot(dat, aes(x = x, y = y, color = z)) + geom_point()
+ggplot(dat, aes(x = Xdata, y = Ydata, color = z)) + geom_point()
 
 ```
 
@@ -190,7 +173,7 @@ Possible shapes in the standard framework in R are shown in @fig-shapes-in-r. Sh
 #| fig-height: 3
 #| fig-cap: "A `ggplot` canvas with filled points added."
 
-ggplot(dat, aes(x = x, y = y, fill = z)) + geom_point(shape = 21)
+ggplot(dat, aes(x = Xdata, y = Ydata, fill = z)) + geom_point(shape = 21)
 
 ```
 
@@ -201,7 +184,7 @@ Since shape is an attribute we can map data to it. If we want data to determine 
 #| fig-height: 3
 #| fig-cap: "Data mapped to fill and shape, and size specified manually to override the default."
 
-ggplot(dat, aes(x = x, y = y, fill = z, shape = z)) + 
+ggplot(dat, aes(x = Xdata, y = Ydata, fill = z, shape = z)) + 
   geom_point(size = 3) +
   scale_fill_manual(values = c("red", "green")) + 
   scale_shape_manual(values = c(21, 23))

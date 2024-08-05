@@ -224,7 +224,7 @@ window.Quarto = {
   
 
 
-</header><p>We have previously mentioned spreadsheets like those created in Excel. These are great but not great for reproducible science or data analysis. This drawback is because they are not easily documented and scripted. The data is part of the analysis! Another danger with spreadsheets (like MS Excel) is that it re-format your data. Re-formatting is such a big problem for scientists that they have started renaming genes to avoid confusion<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</header><p>We have previously mentioned spreadsheets like those created in Excel. These are great but not great for reproducible science or data analysis. This drawback is because they are not easily documented and scripted. The data is part of the analysis! Another danger with spreadsheets (like MS Excel) is that it re-formats your data. Re-formatting is such a big problem for scientists that they have started renaming genes to avoid confusion<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;See <a href="https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates">this</a>.</p></div><div id="ref-RN2927" class="csl-entry" role="listitem">
 Ziemann, Mark, Yotam Eren, and Assam El-Osta. 2016. <span>“Gene Name Errors Are Widespread in the Scientific Literature.”</span> Journal Article. <em>Genome Biology</em> 17 (1): 177. <a href="https://doi.org/10.1186/s13059-016-1044-7">https://doi.org/10.1186/s13059-016-1044-7</a>.
 </div><div id="ref-RN2928" class="csl-entry" role="listitem">
@@ -241,7 +241,7 @@ Stephen, G. Powell, R. Baker Kenneth, and Lawson Barry. 2009. <span>“Errors in
 </div>
 </div>
 </div>
-<p>Cell B6 contains a simple formula: <code>= C6 + D6</code>. This formula adds cells <code>C6</code> and <code>D6</code> resulting in the sum, 8. In formulas, mathematical operators can be used (<span class="math inline">\(+, -, \times , \div\)</span> ). Formulas can be also extended with inbuilt function such as showed in <a href="#tbl-excelfunctions" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+<p>Cell B6 contains a simple formula: <code>= C6 + D6</code>. This formula adds cells <code>C6</code> and <code>D6</code> resulting in the sum, 8. In formulas, mathematical operators can be used (<span class="math inline">\(+, -, \times , \div\)</span> ). Formulas can be also extended with inbuilt function such as showed in <a href="#tbl-excelfunctions" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-excelfunctions</span></a>.</p>
 <div id="tbl-excelfunctions" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-excelfunctions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;3.1: Often used functions in excel
@@ -297,7 +297,7 @@ Table&nbsp;3.1: Often used functions in excel
 <p>When looking for tips and tricks online, you may come across functions for excel in other languages than what is installed on your computer. To translate functions and for a complete overview of functions included in Microsoft Excel, see this website <a href="https://en.excel-translator.de/">en.excel-translator.de/</a>.</p>
 </section><section id="tidy-data-and-data-storage" class="level2 page-columns page-full" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="tidy-data-and-data-storage">
 <span class="header-section-number">3.2</span> Tidy data and data storage</h2>
-<p>Hadley Wickham (the author of many commonly used R packages) quotes Tolstoy when describing the principle of tidy data <span class="citation" data-cites="RN1956">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. This quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that there are endless possibilities for something to break but only a limited number of ways that same thing can work<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. This principle can be applied to data sets. There are endless ways that formatting of data sets can be problematic, but a limited set of ways that formatting will allow for analysis.</p>
+<p>Hadley Wickham (the author of many commonly used R packages) quotes Tolstoy when describing the principle of tidy data <span class="citation" data-cites="RN1956">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. This Tolstoy quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that there are endless possibilities for something to break but only a limited number of ways that same thing can work<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. This principle can be applied to data sets. There are endless ways that formatting of data sets can be problematic, but a limited set of ways that formatting will allow for analysis.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-RN1956" class="csl-entry" role="listitem">
 Wickham, Hadley. 2014. <span>“Tidy Data.”</span> Journal Article. <em>Journal of Statistical Software; Vol 1, Issue 10 (2014)</em>. <a href="https://www.jstatsoft.org/v059/i10">https://www.jstatsoft.org/v059/i10</a>.
 </div><div id="fn2"><p><sup>2</sup>&nbsp;See https://en.wikipedia.org/wiki/Anna_Karenina_principle</p></div><div class="">
@@ -310,7 +310,8 @@ Wickham, Hadley. 2014. <span>“Tidy Data.”</span> Journal Article. <em>Journa
 </div>
 </div>
 </div></div>
-<p>A tidy data set consists of <em>values</em> originating from <em>observations</em> and belonging to <em>variables</em>. A variable is a definition of the values based on attributes. An observation may consist of several variables <span class="citation" data-cites="RN1956">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. A tidy data set typically has one observation per row and one variable per column. Let’s say that we want to collect data from a strength test. A participant (<strong>participant</strong> identification is a variable) in our study conducts tests before and after the intervention (<strong>time</strong> is a variable) in two exercises (<strong>exercise</strong> is a variable), and we record the maximal strength in kg (<strong>load</strong> is a variable). The data set will look like the table below (<a href="#tbl-tidydata" class="quarto-xref">Table&nbsp;<span>3.2</span></a>).</p>
+<p>A tidy data set consists of <em>values</em> originating from <em>observations</em> and belonging to <em>variables</em>. A variable is a definition of the values based on attributes. An observation may consist of several variables <span class="citation" data-cites="RN1956">(<a href="#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. A tidy data set typically has one observation per row and one variable per column.</p>
+<p>Let’s say that we want to collect data from a strength test. A participant (<strong>participant</strong> identification is a variable) in our study conducts tests before and after the intervention (<strong>time</strong> is a variable) in two exercises (<strong>exercise</strong> is a variable), and we record the maximal strength in kg (<strong>load</strong> is a variable). The data set will look like the table below (<a href="#tbl-tidydata" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tidydata</span></a>).</p>
 <div id="tbl-tidydata" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tidydata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;3.2: Example of tidy data
@@ -352,10 +353,10 @@ Table&nbsp;3.2: Example of tidy data
 </div>
 </figure>
 </div>
-<p>Another example contains variables that actually carries two pieces of information in one variable. We again did a strength test, this time as maximal isometric contractions and in each test consisted of two attempts. We record this in two different variables, attempt 1 and 2. The resulting data set could look something like in Table <a href="#tbl-tidydata2" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
+<p>Another example contains variables that actually carries two pieces of information in one variable. We again did a strength test, this time as maximal isometric contractions and in each test consisted of two attempts. We record this in two different variables, attempt 1 and 2. The resulting data set could look something like in Table <a href="#tbl-tidydata2" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tidydata2</span></a>.</p>
 <div id="tbl-tidydata2" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tidydata2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.3: Another example of tidy data.
+Table&nbsp;3.3: Another example of (almost) tidy data.
 </figcaption><div aria-describedby="tbl-tidydata2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
 <thead><tr class="header">
@@ -385,7 +386,7 @@ Table&nbsp;3.3: Another example of tidy data.
 </div>
 </figure>
 </div>
-<p>To make this data set tidy we need to extract the attempt information and record it in another variable as seen in <a href="#tbl-tidydata3" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</p>
+<p>To make this data set tidy we need to extract the attempt information and record it in another variable as seen in <a href="#tbl-tidydata3" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tidydata3</span></a>.</p>
 <div id="tbl-tidydata3" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tidydata3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;3.4: A third example of tidy data.
@@ -718,22 +719,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       config.onUntrigger = onUntriggerFn;
     }
     window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
   const processXRef = (id, note) => {

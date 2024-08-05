@@ -2,6 +2,8 @@
 output: html_document
 editor_options: 
   chunk_output_type: console
+filters:
+ - webr
 ---
 
 # Getting to know R and RStudio
@@ -65,11 +67,237 @@ In RStudio files are accessible from the Files tab. The files tab shows the file
 
 ## Reproducible data science using RStudio
 
-When starting to work more systematically in RStudio we will set some rules that will allow for reproducible programming. Remember from [Chapter 2](01-intro-to-data.html#replication-and-reproducibility) that part of a fully reproducible study is software/code that produces the results. It turns out that when working interactively with R you can fool yourself to belive that you have included all steps needed to produce some results in your script. However, variables may be stored in your environment but not by assigning values to them in your script. This will become a problem if you want to share your code, a certain value/variable needed to make the program work may be missing from your script.
+When starting to work more systematically in RStudio we will set some rules that will allow for reproducible programming. Remember from [Chapter 2](01-intro-to-data.html#replication-and-reproducibility) that part of a fully reproducible study is software/code that produces the results. It turns out that when working interactively with R you can fool yourself to believe that you have included all steps needed to produce some results in your script. However, variables may be stored in your environment but not by assigning values to them in your script. This will become a problem if you want to share your code, a certain value/variable needed to make the program work may be missing from your script.
 
 To avoid making such a mistake it is good practice not to save variables in your environment between sessions, everything should be scripted and documented and assumed not defined elsewhere. In RStudio we can make an explicit setting Not to save the workspace (See @fig-saveworkspace).
 
 ![Never save the workspace.](images/ch3/03-ask-workspace.gif){#fig-saveworkspace}
+
+## Basic R programming, first steps
+
+You have already been asked to run commands in your version of RStudio, below we will run some very basic commands here on this website to get first hand experience with the R language. Below you will find several script boxes that you may edit before pressing *Run Code*. When you run code, the results you would see in your terminal will appear below the script.
+
+### Objects and assignment
+
+Everything in R are objects [@chambers2009]. What does this mean? Let's say that we want to store some information in R, this information is a value, let's say the number *12*. To store this information we will *assign* the value to an *object* and call this object `twelve`. An *object* is a container of data "of all kinds" [@chambers2009, p. 111] that we create in our working memory to hold our data (the value). We assign the value to our object by using an *assignment operator*. The most common assignment operator is `<-`. Think of the assignment operator as an arrow pointing from the value towards the object, like this:
+
+```{r}
+#| eval: false
+
+twevle <- 12
+
+```
+
+We can also reverse the direction of the assignment operator and make the object and value change places. 
+
+```{r}
+#| eval: false
+
+12 -> twelve
+
+```
+
+To call an object, or tell R that we want to look at our object, we would simply type the object name in our R console. We may try this in the R script box below. I have already entered some information in the script, these are comments starting with the hash symbol (`#`). The comments tells us what to do. You can enter R code on the line below the comments, R will ignore everything following a comment sign and start to interpret code again on the subsequent line. When you have entered your code, press "Run Code" to inspect the results.
+
+
+
+```{webr-r}
+# Store the value 12 in an object called twelve
+
+# Call the object 'twelve'
+
+```
+
+It is also possible to use the equal sign (`=`) to assign data to objects. The equal sign used as an assignment operator, as in `twelve = 12`, is equivalent to `twelve <- 12`.
+
+### R as a giant calculator
+
+R can make use of all basic arithmetic operators like plus (`+`), minus (`-`), divided by (`*`) and multiplied by (`/`). These operators can be used on objects, and directly on values. In the script box below, try to calculate (and store) the following:
+
+$$y = 5 * 2 + 1 * 0.5$$
+Then use the object and add 10, store the new result in a new object called `z`.
+
+```{webr-r}
+# Use 'y <-' to assign the expression to the object y 
+```
+
+A possible solution to the above challenge would be
+
+```{r}
+#| echo: true
+
+y <- 5 * 2 + 1 * 0.5
+
+z <- y + 10
+
+```
+
+The result of your computations should be `r z`. In the above example we have discovered that mathematical expression can be written using values and objects already stored in the environment.
+
+We can also use *functions* to perform mathematical operations on objects. Examples of such functions are `log()`, `exp()`, `abs()` and `sqrt()`. A function is a special object that itself can be use other objects (or variables/values) as input. A function often takes arguments, these arguments are supplied to the function inside its brackets. 
+
+The `log()` function returns the natural logarithm of a numeric object. Mathematically, the log function returns the exponent ($x$) with the base $e$ that give us our input number $y$ ($e^x = y$). To get the natural logarithm of 100 we would use R and write `log(100)` which results in `r log(100)`. This corresponds to $100 = 2.718282 ^ {4.60517}$. The base $e$ must be raised to the power of 4.60517 to yield 100.
+
+What is the natural logarithm of 50? Try to calculate it in the script box below.
+
+```{webr-r}
+# What is the natural logarithm of 50?
+
+
+
+```
+
+We can of course make similar computations on stored objects.
+
+```{webr-r}
+# What is the natural logarithm of 25?
+my_object <- 25
+
+log(my_object)
+```
+
+Above we have learned that numbers and objects that store numbers can be used in computations using basic arithmetic operators and functions that perform mathematical operations.
+
+### Different types of data
+
+Above we have worked on numeric data. These are values represented either as integers (whole numbers; e.g. 1, 2, 3) or what is sometimes called "double" or "numerical", i.e. decimal numbers (e.g. 1.2 or 2.781).
+
+In the code example below we will store an integer and a double and inspect its "class", the class decides what R can do with an object.
+
+```{r}
+#| eval: false
+
+num <- as.numeric(2.456)
+
+int <- as.integer(2)
+
+class(num)
+class(int)
+
+
+```
+
+Use the script box below to test out the code example. What is the purpose of the `class` function?
+
+```{webr-r}
+
+```
+
+There are other types of data that we can use in R, these are character, logical and complex (we will not discuss complex numbers further here).
+
+A character or string value can be though of as text, e.g. `"this is a character"` could be the data contained in a character object. A logical value is either `TRUE` or `FALSE`. This type of data is also known as [Boolean](https://en.wikipedia.org/wiki/Boolean_data_type)
+
+As mentioned above, the type of data restricts what operations that can be performed using the data. For example, we cannot do mathematical operations on characters or logicals. Try out the code below and inspect the results. What does the error message tells you?
+
+```{webr-r}
+
+char <- "a"
+
+logic <- TRUE
+
+num <- 3.456
+
+int <- as.integer(2)
+
+
+num + int
+
+num + int + char + logic
+
+
+```
+
+We can define data types by using functions such as `as.numeric()` or `as.character()` these will tell R to try to convert data to a specific type. If this is not possible you will get an error message. Try the code below and inspect the error message. 
+
+```{webr-r}
+
+char <- "this is a string"
+
+as.numeric(char)
+
+```
+
+
+The result of the conversion of a character to a numeric is `NA`, that can be read as **N**ot **A**vailable. `NA` is an example of a protected symbol in R. We cannot use this as a name of an object. It is used to indicate missingness, or missing values.
+
+In the above section we have identified different type of data that are used in R
+
+
+
+### Combining data
+
+So far we have work on single valued objects. This is not very efficient. Conveniently, R has an efficient way of working with data using vectors. A vector is a structure for combining data of the same type. For example, we can construct a numeric vector of heights using the combine function `c()`. Let's say `height <- c(1.74, 1.81, 1.51, 1.92)`. An additional vector of weights can also be constructed as `weight <- c(85.1, 81.1, 48.9, 88.4)`. We can use these vector to do calculations, these calculations will be "vectorized".
+
+The body mass index is calculated as 
+
+$$BMI = \frac{\text{Weight (kg)}}{\text{Height (m)}^2}$$
+Using vectorized operations we can calculate BMI for *each row* of the two vectors defined above simply using `BMI <- weight/height^2`. Modify the code below to inspect each vector and the resulting `BMI` vector.
+
+```{webr-r}
+weight <- c(85.1, 81.1, 48.9, 88.4)
+height <- c(1.74, 1.81, 1.51, 1.92)
+
+BMI <- weight/height^2
+
+```
+
+Vectors can be combined into data frames. These are convenient tabular two-dimensional representations of multiple, equal length vectors. To combine the vectors defined above into a data frame we could directly put them in a data frame. In the example below we use `df` to name the data frame. To add a new variable (or vector) to the data frame we can use the `$` operator which creates a new variable (or overwrites it!). Notice also that we access weight and height in the existing data.frame using the `$` operator.
+
+```{webr-r}
+
+df <- data.frame(weight = c(85.1, 81.1, 48.9, 88.4), 
+                 height = c(1.74, 1.81, 1.51, 1.92))
+
+df$BMI <- df$weight / df$height^2
+
+```
+
+Alternatively we may access specific rows and columns of data frames using brackets. The syntax is `df[`**row**`,`**column**`]`. To access all row of a specific column, for example "weight" we would write `df[,1]`since weight is the first column of the data frame called "df".
+
+Try to calculate BMI using the row index method explained above.
+
+A data frame can combine different data types in the same data structure. The data are, as indicate above related by row as one row contains e.g. weight and height from one individual. We might add information on the individuals by adding variables of different types. Modify and run the code below to inspect the data frame.
+
+
+```{webr-r}
+
+df <- data.frame(name = c("David", "Even", "Julie", "Hubert"), 
+                 male = c(TRUE, TRUE, FALSE, TRUE), 
+                 weight = c(85.1, 81.1, 48.9, 88.4), 
+                 height = c(1.74, 1.81, 1.51, 1.92))
+
+
+```
+
+We can further combine data into a list. A list can contain different data structures or values/objects. A list can even contain other lists. To combine objects into a list we simply put them into the `list()` function. To access objects in lists we can use double brackets. E.g., using the code below we could access the second item in the list using `my_list[[2]]`. Objects in lists can also be named, in such cases we can use the `$` operator to access them. Modify the code below to explore this concept.
+
+```{webr-r}
+
+df <- data.frame(name = c("David", "Even", "Julie", "Hubert"), 
+                 male = c(TRUE, TRUE, FALSE, TRUE), 
+                 weight = c(85.1, 81.1, 48.9, 88.4), 
+                 height = c(1.74, 1.81, 1.51, 1.92))
+
+a_value <- 56
+
+multiple_characters <- c("this", "is", "a", "string")
+
+my_list <- list(df, a_value, characters = multiple_characters)
+
+
+```
+
+
+### Logical operations and conditions 
+
+
+
+
+
+
+
+
+
 
 
 ## Basics R programming, Installing and using `swirl`

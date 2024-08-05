@@ -2,7 +2,7 @@
 
 ## Making sense of data, transferable skills and teamwork
 
-Data are everywhere! Most of us always walk around with a data collection device in our pockets. This device (your mobile phone) records and store data about you throughout the day. Much of this data is readily available to us because data privacy policies regard it as personal [^3]. With some effort, you can get your data out of your iPhone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016, and I tend to walk fewer steps on Sundays than Saturdays (see Figure @fig-iphone).
+Data are everywhere! Most of us always walk around with a data collection device in our pockets. This device (your mobile phone) records and store data about you throughout the day. Much of this data is readily available to us because data privacy policies regard it as personal [^3]. With some effort, you can get your data out of your mobile phone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016, and I tend to walk fewer steps on Sundays than Saturdays (see Figure @fig-iphone).
 
 [^3]: See e.g. [Apples Privacy Policy](https://www.apple.com/legal/privacy/en-ww/).
 
@@ -105,14 +105,14 @@ Data are also collected and stored in publicly available databases. Such databas
 
 The above are examples of data that are available to us. However, to make sense of the data we have we need special techniques and methods, and this is where data science comes in. In the world of sport and exercise, regardless if you are interested in doing scientific investigations, coaching a soccer team or individual athletes, or helping patients recover from surgery using exercise therapy, you are faced with the problem of making sense of data. It turns out that this is a very general problem and the skills you need to work on that problem are transferable between fields. This means that when you develop your data analysis skills within the sport and exercise sciences, you will likely also get better at solving problems outside this particular field.
 
-In your future career, within, or outside the field of sport and exercise you will most likely be tasked with making sense of data, but making sense of data is often a team effort. Developing a better understanding of data science in general will make you a better team player in data intensive tasks. For example, knowing about possibilities and limitations for gaining knowledge from a particular data set can make you able to advice decision-making in your organization.
+In your future career, within, or outside the field of sport and exercise you will most likely be tasked with making sense of data, but making sense of data is often a team effort. Developing a better understanding of data science in general will make you a better team player in data intensive tasks. For example, knowing about possibilities and limitations for gaining knowledge from a particular data set can make you able to advice on decision-making in your organization.
 
 ## Replication and Reproducibility
 
 In scientific research, replication is a way to confirm scientific claims. A scientific claim is replicated when independent new data and new analyses brings us to similar conclusions as previous studies. When an independent group of researchers can confirm a result, the claim is more likely to be true. However, many results will be impossible to replicate due to the size of trials, costs, and urgency of the research question. A recent example is the many vaccine trials performed to develop a vaccine against COVID-19. Other examples are large-scale epidemiological studies [@RN1492], or studies with unique study populations such as elite athletes.  
 
 
-When studies are not likely to be *replicated*, *reproducibility* of the analyses and results has been suggested to be a minimum standard for scientific studies. Reproducibility means that independent researchers can draw similar conclusions from the same data [@RN1492].
+When studies are not likely to be *replicated*, *reproducibility* of the analyses and results has been suggested to be a minimum standard for scientific studies [@RN1492]. Reproducibility means that independent researchers can draw similar conclusions from the same data [@RN1492].
 
 Peng et al. [@RN1492] suggests that a *fully reproducible* study has 
 
@@ -123,16 +123,16 @@ Peng et al. [@RN1492] suggests that a *fully reproducible* study has
 
 The above principally relates to the trust we can place in scientific results. However, the minimum reproducibility standard also has advantages for the individual researcher (or master's student)! When working with reproducible methods, we will develop ways of documenting and automating our analyses. This way of working with analyses will make it easier to collaborate with others. And, as it turns out, your most frequent collaborator is you in the future!
 
-Reproducible data analysis means that you will make it explicit and transparent. In traditional data analysis, most activities are in the "black box." To avoid bias [@RN1953], the "black box" needs to be opened, and you need to actively make transparent decisions all along the analytic pipeline [@RN1955]. This pipeline preferably involves the whole problem-solving cycle [@RN2902]. However, the tools we will learn in this course focus primarily on the steps from the experimental design to the presentation of statistical results [@RN1955]. These steps include data collection (and storage), data cleaning, exploratory data analysis, statistical modelling, and statistical inference (and communication) [@RN1955].
+Reproducible data analysis means that you will make your analysis explicit and transparent. In traditional data analysis, most activities are in the "black box." To avoid bias [@RN1953], the "black box" needs to be opened, and you need to actively make transparent decisions all along the analytic pipeline [@RN1955]. This pipeline preferably involves the whole problem-solving cycle [@RN2902]. However, the tools we will learn in this course focus primarily on the steps from the experimental design to the presentation of statistical results [@RN1955]. These steps include data collection (and storage), data cleaning, exploratory data analysis, statistical modelling, and statistical inference (and communication) [@RN1955].
 
 ## Tools in data science
 
-Ways to interpret and make sense of data involve different methods. These methods are often implemented in computer software, which means that when you want to understand data as a practitioner (scientist, coach, analyst), you must master some computer software. Microsoft's Excel is one of the most common software used to understand data, even among professional data scientists[^9]. You can do fantastic stuff with Excel! In the world of sport and exercise, Excel has been used in diverse activities such as scientific investigations, planning and recording training for world champions[^10], and scheduling appointments.
+The ways to interpret and make sense of data involve different methods. These methods are often implemented in computer software, which means that when you want to understand data as a practitioner (scientist, coach, analyst), you must master some computer software. Microsoft's Excel is one of the most common software used to understand data, even among professional data scientists[^9]. You can do fantastic stuff with Excel! In the world of sport and exercise, Excel has been used in diverse activities such as scientific investigations, planning and recording training for world champions[^10], and scheduling appointments.
 
 
 [^9]: (See for example this ranking)[https://www.kdnuggets.com/2019/05/poll-top-data-science-machine-learning-platforms.html]. 
 
-[^10]: The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from [swedish orienteering](http://obasen.orientering.se/traningsdagbok/installationshandledning.htm).
+[^10]: The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from [swedish orienteering](http://obasen.orientering.se/traningsdagbok/installationshandledning.htm). See also Microsofts own advertisement for Excel, it can be used to [create fitness and diet plans](https://tinyurl.com/yzppdn6f)!
 
 For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education, you have probably heard about SPSS, Stata, or Jamovi. These are all specialized software used for statistical analyses and can be part of a fully reproducible workflow. However, some software solutions suit this requirement better than others. Going back to the description of reproducible science as made by Peng et al. [@RN1492], we want software where analyses can be 
 
@@ -297,9 +297,10 @@ We have installed R, RStudio, git, GitHub desktop/CLI, quarto and tinytex. You h
 
 Learning new skills, like doing data analysis by programming, can be hard but rewarding. If you want to make your learning experience less hard, consider these points:
 
+- **Practice by imitation**. When you learn a new language, or when learning your first language as a baby you most likely start by imitating what you hear. Imitation is a pretty effective first step for learning a computer language too. Copy code, change small pieces and find out what it does. Whenever possible, *write code*, this will make you better at catching mistakes in your own code.   
 - **There are (almost always) multiple solutions to a problem**. When faced with difficulties, do not give up trying to search for a perfect single solution. Instead know that there are multiple ways of defining the problem and therefore multiple ways of making stuff work.
 - **Someone else has already had the same problem**. The internet is full of questions and answers, also related to what ever problem you might have. Learning how to write "googleable" questions is a great skill. By adding "in R" to your problem in a google search term often helps finding R related solutions.
-- **Find your motivation**. The skills that you will learn in this course are transferable to countless potential work related roles for the future you! To be able to showcase these skills may lead you to your dream job! Find your motivation for learning how to analyze data and communicating insights!
+- **Find your motivation**. The skills that you will learn in this course are transferable to countless potential work related roles for the future you! The ability to showcase these skills may lead you to your dream job! Find your motivation for learning how to analyze data and communicating insights!
 - **"Microdosing" statistical learning**. Replace your social media influencers with R users and data scientists! I find R people on [Twitter](twitter.com) and [mastodon](https://joinmastodon.org/). Tweets and posts in this format keeps your R brain going!
 
 ### A (small) list of reference material and resources
