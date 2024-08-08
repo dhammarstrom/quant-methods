@@ -290,8 +290,77 @@ my_list <- list(df, a_value, characters = multiple_characters)
 
 ### Logical operations and conditions 
 
+In the future you will select observations based on some specific conditions. This could for example mean that you would want to keep all observations where the variable X is greater than 5. To communicate this to R we would create a vector of `TRUE` and `FALSE`. R will keep all observations that satisfy our condition and therefore are `TRUE`.
+
+In the script box below, we first construct a vector of numbers followed by a logical test. The test will result in `TRUE` when the condition is satisfied. Notice that the "test" gives you a vector of `TRUE`/`FALSE`.   
+
+```{webr-r}
+# Construct a vector of numbers
+my_values <- c(3,4,6,7,5,7,8,9,2,1,3)
+# Create a logical test
+my_values > 5
+```
+
+In the example above we used the 'greater than' operator (`>`). There are a few more usefull operators:
 
 
+|Operator|Meaning|
+|---|---|
+|`==`|equal to |
+|`!=`|not equal to|
+|`<`|less than|
+|`>`|greater than|
+|`<=`|less than or equal to|
+|`>=`|greater than or equal to|
+
+Try to modify the script box above to test out the different operators.
+
+Using the "AND" operator (`&`) we can add conditions that needs to be fulfilled to produce `TRUE`. This might be useful when two or more conditions needs to be satisfied. In addition to our values stored in `my_values` in the script box above, we might want to see the condition `colors == "green"` satisfied as well, where `colors` is a vector of colours. Run the codse below and inspect the results
+
+```{webr-r}
+colors <- c("green", "red", "violet", "brown", "green", "green", "blue", "green", "yellow", "yellow", "red")
+
+# Combined conditions, both needs to be true
+my_values > 5 & colors == "green"
+```
+
+We can put store the results in a vector or use it to select values in a vector. Using brackets on a vector (or data frame) we can select observations based on a logical vector (produced by logical tests).
+
+```{webr-r}
+
+my_values[my_values > 5 & colors == "green"]
+
+```
+
+Using the "NOT" operator (`!`) we can perform negation on any of the logical operators. Let's say we want have all observations that do not satisfy our filter above. Run the code below and inspect the results. Notice the parentheses which indicates that we put the negation on the whole expression.
+
+```{r}
+
+my_values[!(my_values > 5 & colors == "green")]
+
+```
+
+The "OR" operator (`|`) gives us the possibility to select values that satisfies one or both of tqo conditions. 
+
+```{web-r}
+
+my_values > 5 | colors == "green"
+
+```
+
+Try to put the above in square brackets and filter one of the vectors to see that you get what you anticipate.
+
+Finally, we could test if a logical vector contains `TRUE` or if all values are `TRUE`. To do this we would use the functions `any()` and `all()`. 
+
+```{webr-r}
+
+any(colors == "green") # There are at least one TRUE
+all(colors == "green") # Not all values are TRUE
+
+```
+
+
+### Functions
 
 
 
