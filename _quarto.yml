@@ -20,6 +20,7 @@ book:
     - 05-first-tables.qmd
     - 06-writing-reports.qmd
     - 07-version-control-git.qmd
+    - 99-refs.qmd
 
 bibliography: resources/bib-final.bib
 format:

@@ -34,7 +34,7 @@ You should also be able to create your first graph.
 
 ## Prerequisites
 
-To follow the exercises below you will need to some data. For the purpose of this course, I have created a package that contains the data sets we need. In this chapter we will work with the `cyclingstudy` data set. To install the package (`exscidata`) you will need another package called `remotes`. 
+To follow the exercises below you will need some data. For the purpose of this course, I have created a package that contains the data sets we need. In this chapter we will work with the `cyclingstudy` data set that is a part of the `exscidata` package. To install the package (`exscidata`) you will need another package, called `remotes`. 
 
 The code below first checks if the package `remotes` is installed, or more specifically, if `"remotes"` cannot be found in the list of installed packages. Using the `if` function makes `install.packages(remotes)` conditional. If we do not find `"remotes"` among installed packages, then install `remotes`.
 
@@ -42,6 +42,8 @@ The next line of code does the same with the `exscidata` package. However, since
 
 
 ```{r}
+#| message: false
+#| warning: false
 # Check if remotes is not installed, if TRUE, install remotes
 if (!"remotes" %in% installed.packages()) install.packages(remotes)
 
@@ -55,7 +57,8 @@ library(exscidata)
 Next we need to load the `tidyverse` package. This package in turn loads several packages that we will use when transforming data and making our figures. I will include the line of code that checks if the package is installed, if not, R will download and install it. We subsequently load the package using `library`. 
 
 ```{r}
-
+#| message: false
+#| warning: false
 # Check if tidyverse is not installed, if TRUE, install remotes
 if (!"tidyverse" %in% installed.packages()) install.packages(tidyverse)
 
@@ -64,17 +67,19 @@ library(tidyverse)
 
 ```
 
+To follow along in this chapter you may want to open up a new R script (a text file with the file ending `.R`) and store this in a folder on your computer. In this file you can add code to incrementally create figures and store commands used for loading packages. You will most likely work interactively with your first graphs, this means that you will go back and forth between different sections in your script. Remember that you need to execute code in a specific sequence to recreate a graph from a script, this means you should also structure your code in that way.  
+
 We are now ready to explore the data set. But first we should talk about the main components of the `ggplot2` system.
 
 ## The `ggplot2` system
 
-When using the ggplot2 system we can think of the resulting graph as containing data that has been *mapped* to different coordinates, colors, shapes, sizes, and other attributes that determine what is being visualized. We are using different geometric representations of the data in the visualization. 
+When using the ggplot2 system we can think of the resulting graph as containing data that has been *mapped* to different coordinates, colours, shapes, sizes, and other attributes that determine what is being visualized. We are using different geometric representations of the data in the visualization. 
 
 When we *map* data in ggplot we use a specific function, `aes()` (short for aesthetic). We will use this inside the main engine, `ggplot()`. For this first simple example, we will create a data set by simulating some data[^rand-number].
 
 [^rand-number]: When you simulate data in R, you can tell R what should be the starting point in the random number generator. Using `set.seed(100)`, we can recreate the same numbers from our "number generator" later.
 
-In the example below, we use `rnorm()` to simulate numbers from a normal distribution. Using the arguments `n = 10`, `mean = 0`, and `sd = 1`, we simulate randomly picking ten numbers from a distribution with a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that is assigned to an object that we have named `dat`.  
+In the example below, we use `rnorm()` to simulate numbers from a normal distribution. Using the arguments `n = 10`, `mean = 0`, and `sd = 1`, we simulate the process of randomly picking ten numbers from a distribution with a mean of 0 and a standard deviation of 1. These numbers are stored in a data frame that is assigned to an object that we have named `dat`.  
 
 ```{r}
 # Set the seed for random generation of numbers
@@ -239,7 +244,8 @@ Let's say that we want to see how the values differs between groups. Box-plots a
 #| label: fig-boxplot-simple
 #| fig-height: 3
 #| fig-cap: "Boxplot of all data per group from the cycling dataset."
-
+#| message: false
+#| warning: false
 
 # Creating a box-plot of all values per group
 ggplot(cycdat, aes(group, sj.max)) + geom_boxplot()
@@ -252,7 +258,8 @@ We can add layers of more geoms to the same plot. We might want to add individua
 #| label: fig-boxplot-jitter
 #| fig-height: 3
 #| fig-cap: "Box-plot and jittered points of all data per group from the cycling dataset."
-
+#| message: false
+#| warning: false
 # Creating a boxplot of all values per group
 ggplot(cycdat, aes(group, sj.max)) + geom_boxplot() + geom_jitter()
 
@@ -274,7 +281,8 @@ We are now ready to plot data over time, where the time variable is correctly or
 #| label: fig-boxplot-time
 #| fig-height: 3
 #| fig-cap: "Boxplot of all data per time-point from the cycling dataset."
-
+#| message: false
+#| warning: false
 # Creating a boxplot of all values per time point
 ggplot(cycdat, aes(timepoint, sj.max)) + geom_boxplot()
 
@@ -286,7 +294,8 @@ We do not see any great tendencies in the whole data set. To further explore the
 #| label: fig-boxplot-time-fill
 #| fig-height: 3
 #| fig-cap: "Boxplot of all data per time-point and group from the cycling dataset."
-
+#| message: false
+#| warning: false
 # Creating a boxplot of all values per group over time
 ggplot(cycdat, aes(timepoint, sj.max, fill = group)) + geom_boxplot()
 
@@ -301,7 +310,8 @@ As mentioned above, box-plots does some summarizing and not all data is shown. T
 #| label: fig-sj-ind-data
 #| fig-height: 3
 #| fig-cap: "Figure with lines corresponding to indivudal values per participant."
-
+#| message: false
+#| warning: false
 # Creating a line plot of all values per participant over time, color per group
 
 ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
@@ -320,7 +330,8 @@ Often we need to add information to the plot to better communicate its message. 
 #| label: fig-ind-data-axis-title
 #| fig-height: 3
 #| fig-cap: "Figure with updated axis labels"
-
+#| message: false
+#| warning: false
 # Creating a line plot of all values per participant over time, color per group, 
 # adding axis labels
 ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
@@ -338,7 +349,8 @@ We might want to add information to the legend also. Since we specified `color =
 #| label: fig-ind-data-axis-color-title
 #| fig-height: 3
 #| fig-cap: "Additional labels"
-
+#| message: false
+#| warning: false
 ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
   geom_line() +
   labs(x = "Time-point",
@@ -353,7 +365,8 @@ We still have the original labels for the time variable. Remember that we used t
 #| label: fig-factor-labels
 #| fig-height: 3
 #| fig-cap: "Changing labels by changing a factor variable prior to plotting"
-
+#| message: false
+#| warning: false
 cycdat$timepoint <- factor(cycdat$timepoint, levels = c("pre", "meso1", "meso2", "meso3"), 
                            labels = c("Pre-training", "Meso-cycle 1", "Meso-cycle 2", "Meso-cycle 3"))
 
@@ -367,12 +380,14 @@ ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) +
 
 The same goes for the group variable. You can try to change the levels and labels of the grouping variable to make it more descriptive. You can type `?cyclingstudy` in your console to read about the group variable and then use this information to write better labels using the `factor` function. In the factor function, the first argument is the variable you want to use as basis of your new factor, the second argument you need to specify is `levels` which sets the order and lastly you will need to set the labels for each level using `labels = `. If you write `?factor` in your console you will get the help pages for the `factor` function.
 
-  <a id="displayText" href="javascript:toggle(1);">Click here to display a possible solution</a>
-  <div id="toggleText1" style="display: none">
+
 
 ```{r}
 #| eval: false
-
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "A possible solution"
 # Change the grouping variable
 cycdat$group <- factor(cycdat$group, levels = c("DECR", "INCR", "MIX"), 
                            labels = c("Decreased\nintensity", 
@@ -388,9 +403,9 @@ ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) +
 
 ```
 
-Note: Adding `\n` in the the text string breaks the line to get two rows.
+Note: Adding `\n` in the the text string above breaks the line to get two rows.
 
-  </div>
+
 
 
 ### Annotations
@@ -420,12 +435,13 @@ myplot + annotate("segment", x = 1, xend = 3, y = 25, yend = 35,  colour = "red"
 You can copy the code and run it yourself to see the results. `annotate` is documented [here](https://ggplot2.tidyverse.org/reference/annotate.html) but documentation can also be accessed by typing `?annotate` in your console. Try to read the documentation and add a transparent rectangle to a previous plot.
 
 
-  <a id="displayText" href="javascript:toggle(2);">Click here for a solution</a>
-  <div id="toggleText2" style="display: none">
 
-
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "A possible solution"
 # Change the grouping variable
 cycdat$group <- factor(cycdat$group, levels = c("DECR", "INCR", "MIX"), 
                            labels = c("Decreased\nintensity", 
@@ -447,8 +463,6 @@ ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) +
 Note: Adding `\n` in the the text string breaks the line to get two rows.
 
 
-  </div>
-
 
 ## Themes
 
@@ -458,7 +472,8 @@ Themes in `ggplot2` can be used to change everything else about the plot concern
 #| label: fig-theme-bw
 #| fig-height: 3
 #| fig-cap: "A figure using the black and white theme from `theme_bw`."
-
+#| message: false
+#| warning: false
 
 ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
   geom_line() +
@@ -477,7 +492,8 @@ If we put the `theme` function last in the `ggplot` call we will modify the exis
 #| label: fig-theme-bw-changed
 #| fig-height: 3
 #| fig-cap: "A figure using the black and white theme from `theme_bw`, with modifications"
-
+#| message: false
+#| warning: false
 ggplot(cycdat, aes(timepoint, sj.max, color = group, group = subject)) + 
   geom_line() +
   labs(x = "Time-point",
@@ -536,13 +552,14 @@ ggplot(data = cycdat, aes(timepoint, VO2.max, group = subject)) +
 ```
 
 
-  <a id="displayText" href="javascript:toggle(3);">Click for a solution</a>
-  <div id="toggleText3" style="display: none">
 
 
 ```{r}
 #| eval: false
-#| 
+#| message: false
+#| warning: false
+#| code-fold: true
+#| code-summary: "A possible solution"
 
 # Load the package ggtext to make markdown avalable in axis labels.
 library(ggtext) 
@@ -573,10 +590,5 @@ ggplot(data = cycdat, aes(timepoint, VO2.max, group = subject)) +
 
 ```
 
-Note: Adding `\n` in the the text string breaks the line to get two rows.
 
-
-  </div>
-
-## References and footnotes
 

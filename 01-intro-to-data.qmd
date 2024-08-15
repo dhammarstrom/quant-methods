@@ -1,4 +1,4 @@
-# Introduction to data science
+# Introduction to data science {#sec-intro-to-data-sci}
 
 ## Making sense of data, transferable skills and teamwork
 

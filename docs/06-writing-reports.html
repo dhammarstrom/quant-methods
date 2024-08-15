@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
-
+<meta name="generator" content="quarto-1.4.554">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Quantitative methods and statistics (In Sport and Exercise Science) - 7&nbsp; Writing your first reproducible report</title>
 <style>
 code{white-space: pre-wrap;}
@@ -22,7 +19,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +55,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -74,7 +72,6 @@ div.csl-right-inline {
 div.csl-indent {
   margin-left: 2em;
 }</style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -95,14 +92,19 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -111,41 +113,55 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
+}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 </head>
-
-<body class="nav-sidebar floating">
-
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-writing-reports.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-writing-reports.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a> 
         <div class="sidebar-tools-main tools-wide">
@@ -162,7 +178,7 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></span></a>
@@ -210,47 +226,60 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-refs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#rstudio-projects-and-your-reproducible-report" id="toc-rstudio-projects-and-your-reproducible-report" class="nav-link active" data-scroll-target="#rstudio-projects-and-your-reproducible-report"><span class="header-section-number">7.1</span> RStudio projects and your reproducible report</a></li>
-  <li><a href="#getting-started-with-r-projects" id="toc-getting-started-with-r-projects" class="nav-link" data-scroll-target="#getting-started-with-r-projects"><span class="header-section-number">7.2</span> Getting started with R projects</a>
+<li><a href="#rstudio-projects-and-your-reproducible-report" id="toc-rstudio-projects-and-your-reproducible-report" class="nav-link active" data-scroll-target="#rstudio-projects-and-your-reproducible-report"><span class="header-section-number">7.1</span> RStudio projects and your reproducible report</a></li>
+  <li>
+<a href="#getting-started-with-r-projects" id="toc-getting-started-with-r-projects" class="nav-link" data-scroll-target="#getting-started-with-r-projects"><span class="header-section-number">7.2</span> Getting started with R projects</a>
   <ul class="collapse">
-  <li><a href="#what-folder-am-i-in" id="toc-what-folder-am-i-in" class="nav-link" data-scroll-target="#what-folder-am-i-in"><span class="header-section-number">7.2.1</span> What folder am I in?</a></li>
-  </ul></li>
-  <li><a href="#authoring-reports-in-quarto" id="toc-authoring-reports-in-quarto" class="nav-link" data-scroll-target="#authoring-reports-in-quarto"><span class="header-section-number">7.3</span> Authoring reports in quarto</a>
+<li><a href="#what-folder-am-i-in" id="toc-what-folder-am-i-in" class="nav-link" data-scroll-target="#what-folder-am-i-in"><span class="header-section-number">7.2.1</span> What folder am I in?</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#authoring-reports-in-quarto" id="toc-authoring-reports-in-quarto" class="nav-link" data-scroll-target="#authoring-reports-in-quarto"><span class="header-section-number">7.3</span> Authoring reports in quarto</a>
   <ul class="collapse">
-  <li><a href="#the-markdown-syntax-and-friends" id="toc-the-markdown-syntax-and-friends" class="nav-link" data-scroll-target="#the-markdown-syntax-and-friends"><span class="header-section-number">7.3.1</span> The Markdown syntax, and friends</a></li>
+<li><a href="#the-markdown-syntax-and-friends" id="toc-the-markdown-syntax-and-friends" class="nav-link" data-scroll-target="#the-markdown-syntax-and-friends"><span class="header-section-number">7.3.1</span> The Markdown syntax, and friends</a></li>
   <li><a href="#additional-formatting" id="toc-additional-formatting" class="nav-link" data-scroll-target="#additional-formatting"><span class="header-section-number">7.3.2</span> Additional formatting</a></li>
   <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">7.3.3</span> Code chunks</a></li>
   <li><a href="#sec-cross-reference" id="toc-sec-cross-reference" class="nav-link" data-scroll-target="#sec-cross-reference"><span class="header-section-number">7.3.4</span> Cross-referencing, references and footnotes</a></li>
-  </ul></li>
-  <li><a href="#additional-files-and-folder-structures-in-a-complete-analysis-project" id="toc-additional-files-and-folder-structures-in-a-complete-analysis-project" class="nav-link" data-scroll-target="#additional-files-and-folder-structures-in-a-complete-analysis-project"><span class="header-section-number">7.4</span> Additional files and folder structures in a complete analysis project</a>
+  </ul>
+</li>
+  <li>
+<a href="#additional-files-and-folder-structures-in-a-complete-analysis-project" id="toc-additional-files-and-folder-structures-in-a-complete-analysis-project" class="nav-link" data-scroll-target="#additional-files-and-folder-structures-in-a-complete-analysis-project"><span class="header-section-number">7.4</span> Additional files and folder structures in a complete analysis project</a>
   <ul class="collapse">
-  <li><a href="#the-readme-file" id="toc-the-readme-file" class="nav-link" data-scroll-target="#the-readme-file"><span class="header-section-number">7.4.1</span> The readme-file</a></li>
+<li><a href="#the-readme-file" id="toc-the-readme-file" class="nav-link" data-scroll-target="#the-readme-file"><span class="header-section-number">7.4.1</span> The readme-file</a></li>
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">7.4.2</span> <code>/resources</code></a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">7.4.3</span> <code>/data</code></a></li>
   <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures"><span class="header-section-number">7.4.4</span> <code>/figures</code></a></li>
   <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r"><span class="header-section-number">7.4.5</span> <code>/R</code></a></li>
-  </ul></li>
-  <li><a href="#quarto-formats" id="toc-quarto-formats" class="nav-link" data-scroll-target="#quarto-formats"><span class="header-section-number">7.5</span> Quarto formats</a></li>
-  <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">7.6</span> References and footnotes</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/dhammarstrom/quant-methods/edit/master/06-writing-reports.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/dhammarstrom/quant-methods/blob/master/06-writing-reports.qmd" class="toc-action">View source</a></p></div></div></nav>
+</li>
+  <li>
+<a href="#quarto-formats" id="toc-quarto-formats" class="nav-link" data-scroll-target="#quarto-formats"><span class="header-section-number">7.5</span> Quarto formats</a>
+  <ul class="collapse">
+<li><a href="#microsoft-word-intergration-in-r-markdown-and-quarto" id="toc-microsoft-word-intergration-in-r-markdown-and-quarto" class="nav-link" data-scroll-target="#microsoft-word-intergration-in-r-markdown-and-quarto"><span class="header-section-number">7.5.1</span> Microsoft Word intergration in R Markdown and Quarto</a></li>
+  </ul>
+</li>
+  <li><a href="#references-and-footnotes" id="toc-references-and-footnotes" class="nav-link" data-scroll-target="#references-and-footnotes"><span class="header-section-number">7.6</span> References and footnotes</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/06-writing-reports.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/06-writing-reports.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></h1>
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span>
+</h1>
 </div>
 
 
@@ -263,30 +292,30 @@ div.csl-indent {
   </div>
   
 
-</header>
 
-<p>As we have already discussed, the degree to which research is reproducible is determined by the availability of:</p>
+</header><p>As we have already discussed, the degree to which research is reproducible is determined by the availability of:</p>
 <ul>
 <li>The data</li>
-<li>Code to analyze the data</li>
+<li>Code to analyse the data</li>
 <li>Text to describe the code</li>
 </ul>
 <p>To make these ingredients even more tasty, we might want to have them nicely stored together. Using the tools we discuss in this course we can think of data analysis projects as self-contained projects with all necessary ingredients. RStudio projects can help you organize your data and code, and text in one place. You can also link your project to an online repository for others to access. In this chapter we will discuss how reproducible report can be regarded as such a project. Online collaboration will be discussed in the next chapter.</p>
-<section id="rstudio-projects-and-your-reproducible-report" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="rstudio-projects-and-your-reproducible-report"><span class="header-section-number">7.1</span> RStudio projects and your reproducible report</h2>
+<section id="rstudio-projects-and-your-reproducible-report" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="rstudio-projects-and-your-reproducible-report">
+<span class="header-section-number">7.1</span> RStudio projects and your reproducible report</h2>
 <p>When you build an analysis in a R markdown or quarto file, R will use the folder that the source file is in as the <strong>root directory</strong>. This directory (or folder) is the top directory in a file system. This means that R will look for data or other files used to generate the report in this folder structure. Think of this folder as <code>./</code> (confusing, I know! But bare with me!). Any sub-folders to the root directory can be called things like</p>
 <ul>
-<li><code>./data/</code> (a folder where you keep data files),</li>
-<li><code>./figures/</code> (a folder where you output figures from analyses).</li>
+<li>
+<code>./data/</code> (a folder where you keep data files),</li>
+<li>
+<code>./figures/</code> (a folder where you output figures from analyses).</li>
 </ul>
 <p>The R markdown or quarto file, being in the root directory will have the “address” <code>./my_rmarkdown_file.Rmd</code>.</p>
-<p>This has several advantages, as long as you stick to one rule: When doing an analysis, always use relative paths (“addresses” to files and folders). Never reference a folder or file by their absolute path. The absolute path for the file I’m writing in now is <code>/Users/Daniel1/Documents/projects/quant-methods/06-writing-reports.qmd</code>. The relative path is <code>./06-writing-reports.qmd</code>. When working in a “project” you may move the folder containing your project to other locations, but relative paths will not break.</p>
+<p>This has several advantages, as long as you stick to one rule: When doing an analysis, always use relative paths (“addresses” to files and folders). Never reference a folder or file by their absolute path. The absolute path for the file I’m writing in now is <code>C:/Users/Daniel1/Documents/projects/quant-methods/06-writing-reports.qmd</code>. The relative path is <code>./06-writing-reports.qmd</code>. When working in a “project” you may move the folder containing your project to other locations, but relative paths will not break.</p>
 <p>If you want to share your analysis, all you need to do is share the folder with all content with your friend. If you use relative paths, everything will work on your friends computer. If you use absolute paths, nothing will work, unless your friends computer uses the same folder structure (highly unlikely).</p>
 <p>RStudio projects makes it easy to jump back and forth between projects. The project menu (top right corner in RStudio) contains all your recent projects. When starting a new project, R will create a <code>.Rproj</code> file that contains the settings for your project. If you start a project and click this file, a settings menu will appear where you can customize settings for your particular project.</p>
 <p>What does this have to do with my quarto/RMarkdown file? As mentioned above, the source file is often written in a context where you have data and other files that help you create your desired output. By always working in a project makes it easy to keep every file in the right place.</p>
-</section>
-<section id="getting-started-with-r-projects" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="getting-started-with-r-projects"><span class="header-section-number">7.2</span> Getting started with R projects</h2>
+</section><section id="getting-started-with-r-projects" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="getting-started-with-r-projects">
+<span class="header-section-number">7.2</span> Getting started with R projects</h2>
 <p>To start a new project in RStudio:</p>
 <ol type="1">
 <li><p>Press the project menu in the upper right corner, choose “Start a project in a brand new working directory”</p></li>
@@ -295,22 +324,20 @@ div.csl-indent {
 <li><p>Name the project with an informative name. “Project1” is not good enough, “rproject-tutorial” or “rproject-report-workshop” is better as you will be able to track it down afterwards.</p></li>
 </ol>
 <p>We have now started up a brand new project without version control. The next step is to make sure the setting of the project is up date with our Global settings in RStudio. By clicking the <code>.Rproj</code> file in our files tab, we will open up a settings window. These are the settings for the project. Under <em>General</em> we see that we can set RStudio to handle the workspace and history as <strong>default</strong>. This means that our global options will be used. The global options regarding workspace should be to never save workspace, do not restore on start up and do not save history.</p>
-<section id="what-folder-am-i-in" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="what-folder-am-i-in"><span class="header-section-number">7.2.1</span> What folder am I in?</h3>
-<p>The great advantage of an RStudio Project is that it will make it easier to keep everything contained in our folder. To check what folder we are currently in, type <code>getwd()</code> in the console. R should return the full path to our working directory. If this is the case, success. If not, you have probably not succeeded in opening up a project, or you have somehow told R to set another working directory.</p>
-<p>The working directory is the root directory. It is possible to set the working directory manually. However, we should aim not to do that! The R command <code>setwd()</code> should not be used as it breaks relative paths.</p>
+<section id="what-folder-am-i-in" class="level3" data-number="7.2.1"><h3 data-number="7.2.1" class="anchored" data-anchor-id="what-folder-am-i-in">
+<span class="header-section-number">7.2.1</span> What folder am I in?</h3>
+<p>The great advantage of an RStudio Project is that it will make it easier to keep everything contained in our folder. To check what folder we are currently in, type <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> in the console. R should return the full path to our working directory. If this is the case, success. If not, you have probably not succeeded in opening up a project, or you have somehow told R to set another working directory.</p>
+<p>The working directory is the root directory. It is possible to set the working directory manually. However, we should aim not to do that! The R command <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> should not be used as it breaks relative paths.</p>
 <p>See R for Data Science, <a href="https://r4ds.hadley.nz/workflow-scripts">chapter 7</a> for more details on RStudio projects.</p>
-</section>
-</section>
-<section id="authoring-reports-in-quarto" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="authoring-reports-in-quarto"><span class="header-section-number">7.3</span> Authoring reports in quarto</h2>
+</section></section><section id="authoring-reports-in-quarto" class="level2 page-columns page-full" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="authoring-reports-in-quarto">
+<span class="header-section-number">7.3</span> Authoring reports in quarto</h2>
 <p>So much fuzz just for writing a report? Yes, it is a bit more work to get started. The upside is that this system is easier to navigate with increasing complexity compared to a system where text, figures, tables and software are located on different locations in your computer and the final report requires copy-paste operations.</p>
-<p>As mentioned before, we will focus on the more modern format for authoring reports in R, quarto. In this section we will introduce the basic building blocks of a report and how to put them together. We have already covered figures and tables, now its time to put the into context.</p>
-<section id="the-markdown-syntax-and-friends" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="the-markdown-syntax-and-friends"><span class="header-section-number">7.3.1</span> The Markdown syntax, and friends</h3>
+<p>As mentioned before, we will focus on the more modern format for authoring reports in R, quarto. In this section we will introduce the basic building blocks of a report and how to put them together. We have already covered figures and tables, now its time to put that into context.</p>
+<section id="the-markdown-syntax-and-friends" class="level3 page-columns page-full" data-number="7.3.1"><h3 data-number="7.3.1" class="anchored" data-anchor-id="the-markdown-syntax-and-friends">
+<span class="header-section-number">7.3.1</span> The Markdown syntax, and friends</h3>
 <p>We have already mentioned the markup language <strong>markdown</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This enables an author like yourself to format your text in a plain text editor. This has the advantage of keeping formatting explicit and available from the keyboard. In a word editor like MS Word, formatting is sometimes not obvious and you need to point and click make changes. The R-markdown style of markdown includes the ability to combine code in code chunks and embedded in text. This makes it possible to include code output in the final report. Another technical achievement that makes RMarkdown and quarto possible is Pandoc, a general document conversion software. Pandoc can convert files from one format to another, this includes the operations that we use, from markdown to HTML, PDF or Word. Both markdown and pandoc are free and open source software that makes life easy for us!</p>
-<section id="markdown-basics" class="level4" data-number="7.3.1.1">
-<h4 data-number="7.3.1.1" class="anchored" data-anchor-id="markdown-basics"><span class="header-section-number">7.3.1.1</span> Markdown basics</h4>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Markdown was introduced in 2004 as a syntax to convert plain text to formatted HTML. Markdown is primarily attributed to <a href="https://daringfireball.net/projects/markdown/">John Gruber</a>.</p></div></div><section id="markdown-basics" class="level4" data-number="7.3.1.1"><h4 data-number="7.3.1.1" class="anchored" data-anchor-id="markdown-basics">
+<span class="header-section-number">7.3.1.1</span> Markdown basics</h4>
 <p>The idea of using markdown is that everything is formatted in plain text. This requires a little bit of extra syntax. We can use <strong>bold</strong> or <em>italic</em>, <del>striketrough</del> and <sup>superscript</sup>. Lists are also an option as numbered:</p>
 <ol type="1">
 <li>Item one</li>
@@ -322,23 +349,20 @@ div.csl-indent {
 <li>Item y
 <ul>
 <li>With sub item z</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>Links can be added <a href="https://rmarkdown.rstudio.com/authoring_basics.html">like this</a>.</p>
 <p>A table can be added also, like this:</p>
 <table class="table">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Column 1</th>
 <th>Column2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td>Item1</td>
 <td>Item 2</td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <p>The whole section above will look like this in your plain text editor:</p>
 <pre><code>
@@ -363,17 +387,13 @@ A table can be added also, like this:
 |---| ---|
 |Item1 | Item 2|
 </code></pre>
-</section>
-</section>
-<section id="additional-formatting" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="additional-formatting"><span class="header-section-number">7.3.2</span> Additional formatting</h3>
+</section></section><section id="additional-formatting" class="level3" data-number="7.3.2"><h3 data-number="7.3.2" class="anchored" data-anchor-id="additional-formatting">
+<span class="header-section-number">7.3.2</span> Additional formatting</h3>
 <p>In addition to plain markdown, we can also write HTML or <span class="math inline">\(\LaTeX\)</span> in RMarkdown or quarto files.</p>
 <p>HTML is convenient when we want to add formatted text beyond the capabilities of markdown, such as <span style="color:red">color</span>. Some formatting might be considered more easily remembered such as <sub>subscript</sub> and <sup>superscript</sup>. Notice that HTML and markdown syntax can be combined:</p>
 <p>Some Markdown text with <span style="color:blue">some <em>blue</em> text, <sup><span style="color:red">super</span><strong>script</strong></sup></span>.</p>
 <div class="cell">
-<details>
-<summary>See here for syntax</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>HTML is convenient when we want to add formatted text </span>
+<details class="code-fold"><summary>See here for syntax</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>HTML is convenient when we want to add formatted text </span>
 <span id="cb2-2"><a href="#cb2-2"></a>beyond the capabilities of markdown, such as </span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="sc">&lt;</span>span style<span class="ot">=</span><span class="st">"color:red"</span><span class="sc">&gt;</span>color<span class="sc">&lt;</span><span class="er">/</span>span<span class="sc">&gt;</span>. Some formatting </span>
 <span id="cb2-4"><a href="#cb2-4"></a>might be considered more easily remembered such as </span>
@@ -390,8 +410,8 @@ A table can be added also, like this:
 <p><span id="eq-force"><span class="math display">\[
 F=ma
 \tag{7.1}\]</span></span></p>
-<p>We are also able to cross-reference the equation <a href="#eq-force">Equation&nbsp;<span class="quarto-unresolved-ref">eq-force</span></a> for force (<span class="math inline">\(F\)</span>).</p>
-<p>A larger collection of equations is sometimes needed to describe a statistical model, as in <a href="#eq-model">Equation&nbsp;<span class="quarto-unresolved-ref">eq-model</span></a>.</p>
+<p>We are also able to cross-reference the equation <a href="#eq-force" class="quarto-xref">Equation&nbsp;<span>7.1</span></a> for force (<span class="math inline">\(F\)</span>).</p>
+<p>A larger collection of equations is sometimes needed to describe a statistical model, as in <a href="#eq-model" class="quarto-xref">Equation&nbsp;<span>7.2</span></a>.</p>
 <p><span id="eq-model"><span class="math display">\[
 \begin{align}
 \text{y}_i &amp; \sim \operatorname{Normal}(\mu_i, \sigma) \\
@@ -408,18 +428,20 @@ F=ma
 <span id="cb3-6"><a href="#cb3-6"></a><span class="sc">$</span><span class="er">$</span> {<span class="co">#eq-model}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>See this <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">wikibook on <span class="math inline">\(\LaTeX\)</span></a> for an overview on mathematics in <span class="math inline">\(\LaTeX\)</span>.</p>
-</section>
-<section id="code-chunks" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">7.3.3</span> Code chunks</h3>
+</section><section id="code-chunks" class="level3" data-number="7.3.3"><h3 data-number="7.3.3" class="anchored" data-anchor-id="code-chunks">
+<span class="header-section-number">7.3.3</span> Code chunks</h3>
 <p>Using RMarkdown syntax we can add a code chunk using the following syntax:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {{r}} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>#| label: fig-simple-plot</span>
-<span id="cb4-2"><a href="#cb4-2"></a>#| message: false</span>
-<span id="cb4-3"><a href="#cb4-3"></a>#| echo: true</span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a>dat &lt;- data.frame(a = rnorm(10, 10, 10), </span>
-<span id="cb4-6"><a href="#cb4-6"></a>                  b = runif(10, 1, 20))</span>
-<span id="cb4-7"><a href="#cb4-7"></a></span>
-<span id="cb4-8"><a href="#cb4-8"></a>plot(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="in">#| label: fig-simple-plot</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="in">#| message: false</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="in">#| echo: true</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="in">dat &lt;- data.frame(a = rnorm(10, 10, 10), </span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="in">                  b = runif(10, 1, 20))</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="in">plot(dat)</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We recognize the R code inside the code chunk but we have only touched upon code chunk settings. These are settings that tells R (or quarto) how to handle output from the code chunk. <code>message: false</code> indicate that any messages from R code should not be displayed in the output document. <code>echo: true</code> indicates that the code in the code chunk should be displayed in the output document. The label is important as it enables cross-referencing the output. If your code chunk outputs a figure the prefix <code>fig-</code> must be in the label to enable cross-referencing. Likewise, if your code chunk creates an table, the prefix <code>tbl-</code> must be in the label. Possible code chunk settings also include figure and table captions.</p>
 <p>Settings can also be specified in the YAML field in quarto files. We might not want to display our code, messages or warnings in the final output. We would specify this in the YAML field as</p>
 <div class="cell">
@@ -432,24 +454,25 @@ F=ma
 <span id="cb5-7"><a href="#cb5-7"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>See here for documentation on <a href="https://quarto.org/docs/computations/execution-options.html#output-options">execution options for code chunks in quarto</a>. See also <a href="https://r4ds.hadley.nz/quarto.html">Chapter 29 in R for data science</a>.</p>
-</section>
-<section id="sec-cross-reference" class="level3" data-number="7.3.4">
-<h3 data-number="7.3.4" class="anchored" data-anchor-id="sec-cross-reference"><span class="header-section-number">7.3.4</span> Cross-referencing, references and footnotes</h3>
-<p>We have mentioned cross-referencing above, this basically means referencing specific parts of your document in the text. A figure might be mentioned in the text, such as <a href="#fig-figure-example">Figure&nbsp;<span class="quarto-unresolved-ref">fig-figure-example</span></a>. To insert the cross-reference in text, use the <code>@fig-label</code> syntax where <code>fig-</code> is the required prefix for figures and <code>label</code> is a user defined unique identifier. The label should be included in the code chunk under such as <code>#| label: fig-label</code>. The equivalent prefix for tables is <code>tbl-</code>.</p>
+</section><section id="sec-cross-reference" class="level3 page-columns page-full" data-number="7.3.4"><h3 data-number="7.3.4" class="anchored" data-anchor-id="sec-cross-reference">
+<span class="header-section-number">7.3.4</span> Cross-referencing, references and footnotes</h3>
+<p>We have mentioned cross-referencing above, this basically means referencing specific parts of your document in the text. A figure might be mentioned in the text, such as <a href="#fig-figure-example" class="quarto-xref">Figure&nbsp;<span>7.1</span></a>. To insert the cross-reference in text, use the <code>@fig-label</code> syntax where <code>fig-</code> is the required prefix for figures and <code>label</code> is a user defined unique identifier. The label should be included in the code chunk under such as <code>#| label: fig-label</code>. The equivalent prefix for tables is <code>tbl-</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figure-example" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-writing-reports_files/figure-html/fig-figure-example-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;7.1: This is an example of a Figure with a caption.</figcaption>
-</figure>
+<div id="fig-figure-example" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-figure-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-writing-reports_files/figure-html/fig-figure-example-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-figure-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: This is an example of a Figure with a caption.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>We might want to cross-reference a section in our document. This is easily done by inserting a tag at the section header such as <code>{#sec-cross-reference}</code>, this tag can be referenced in text using <code>@sec-cross-reference</code> resulting in <a href="#sec-cross-reference"><span class="quarto-unresolved-ref">sec-cross-reference</span></a>. The <code>sec-</code> part is the required prefix for a section.</p>
+<p>We might want to cross-reference a section in our document. This is easily done by inserting a tag at the section header such as <code>{#sec-cross-reference}</code>, this tag can be referenced in text using <code>@sec-cross-reference</code> resulting in <a href="#sec-cross-reference" class="quarto-xref"><span>Section 7.3.4</span></a>. The <code>sec-</code> part is the required prefix for a section.</p>
 <p>For additional details on cross-referencing, see the <a href="https://quarto.org/docs/authoring/cross-references.html">quarto documentation on cross-referencing</a>.</p>
-<p>Citations are mandatory in academic writing. Be sure to take advantage of the built in support for citations. When writing in quarto (or RMarkdown) we can think of a reference as having three parts. The identifier, the reference and the style. We use the identifier when authoring. For example, let’s cite the R for Data Science book, we do this by using the following syntax <span class="citation" data-cites="r4ds">(<a href="#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span>. The syntax requires that we have linked a bibliography to the document. The bibliography should include the reference, with the same identifier. The bibliography is a collection of reference entries written in bibtext format (see below). It must be included in the document meta data field (YAML field).</p>
-<div class="cell">
+<p>Citations are mandatory in academic writing. Be sure to take advantage of the built in support for citations. When writing in quarto (or RMarkdown) we can think of a reference as having three parts. The identifier, the reference and the style. We use the identifier when authoring. For example, let’s cite the R for Data Science book, we do this by using the following syntax <span class="citation" data-cites="r4ds">(<a href="99-refs.html#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span>. The syntax requires that we have linked a bibliography to the document. The bibliography should include the reference, with the same identifier. The bibliography is a collection of reference entries written in bibtext format (see below). It must be included in the document meta data field (YAML field).</p>
+<div class="no-row-height column-margin column-container"></div><div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="sc">@</span>book{r4ds,</span>
 <span id="cb6-2"><a href="#cb6-2"></a>  title<span class="ot">=</span>{R <span class="cf">for</span> data science},</span>
 <span id="cb6-3"><a href="#cb6-3"></a>  author<span class="ot">=</span>{Wickham, Hadley and {\c{C}}etinkaya<span class="sc">-</span>Rundel, Mine and Grolemund, Garrett},</span>
@@ -457,13 +480,13 @@ F=ma
 <span id="cb6-5"><a href="#cb6-5"></a>  publisher<span class="ot">=</span>{<span class="st">" O'Reilly Media, Inc."</span>}</span>
 <span id="cb6-6"><a href="#cb6-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Notice the identifier. When adding the citation <code>[@r4ds]</code> it will turn out to <span class="citation" data-cites="r4ds">(<a href="#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span> in the formatted text and added to the bottom of the document as a full reference. If we want another <em>citation style</em> we can specify a file responsible for citation styles. The default is the Chicago style. Specifying a citation style file in YAML will change the style, for example <code>csl: my-citation-style.csl</code> tells quarto to use the file <code>my-citation-style.csl</code> when formatting citations. This file can be edited or copied from a large collection of possible styles located in the <a href="https://github.com/citation-style-language/styles">citation style language repository</a>. The repository is hosted on GitHub and searchable, click “Go to file” and type “vancouver” to get examples of CSL files that uses a Vancouver-type citation style.</p>
-<p>Footnotes can be handy when writing. In the default mode, these will be included as superscript numbers, like this<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, numbered by order of appearance.</p>
+<p>Notice the identifier. When adding the citation <code>[@r4ds]</code> it will turn out to <span class="citation" data-cites="r4ds">(<a href="99-refs.html#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span> in the formatted text and added to the bottom of the document as a full reference. If we want another <em>citation style</em> we can specify a file responsible for citation styles. The default is the Chicago style. Specifying a citation style file in YAML will change the style, for example <code>csl: my-citation-style.csl</code> tells quarto to use the file <code>my-citation-style.csl</code> when formatting citations. This file can be edited or copied from a large collection of possible styles located in the <a href="https://github.com/citation-style-language/styles">citation style language repository</a>. The repository is hosted on GitHub and searchable, click “Go to file” and type “vancouver” to get examples of CSL files that uses a Vancouver-type citation style.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-r4ds" class="csl-entry" role="listitem">
+Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. 1st ed. Paperback; O’Reilly Media. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
+</div><div id="fn2"><p><sup>2</sup>&nbsp;This is a footnote.</p></div></div><p>Footnotes can be handy when writing. In the default mode, these will be included as superscript numbers, like this<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, numbered by order of appearance.</p>
 <p>The syntax for including footnotes is straight forward. Notice that the text for the footnote is included below the paragraph using the identifier created in the text.</p>
 <div class="cell">
-<details>
-<summary>See here for footnote syntax</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Footnotes can be handy when writing. In the default mode, </span>
+<details class="code-fold"><summary>See here for footnote syntax</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Footnotes can be handy when writing. In the default mode, </span>
 <span id="cb7-2"><a href="#cb7-2"></a>these will be included as superscript numbers, like </span>
 <span id="cb7-3"><a href="#cb7-3"></a>this[<span class="sc">^</span>footnote], numbered by order of appearance. </span>
 <span id="cb7-4"><a href="#cb7-4"></a></span>
@@ -472,13 +495,11 @@ F=ma
 </div>
 <p>See the quarto documentation on <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html">citations and footnotes</a>.</p>
 <p>see also <a href="https://r4ds.hadley.nz/quarto.html">Chapter 29 in R for data science</a>.</p>
-</section>
-</section>
-<section id="additional-files-and-folder-structures-in-a-complete-analysis-project" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="additional-files-and-folder-structures-in-a-complete-analysis-project"><span class="header-section-number">7.4</span> Additional files and folder structures in a complete analysis project</h2>
+</section></section><section id="additional-files-and-folder-structures-in-a-complete-analysis-project" class="level2 page-columns page-full" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="additional-files-and-folder-structures-in-a-complete-analysis-project">
+<span class="header-section-number">7.4</span> Additional files and folder structures in a complete analysis project</h2>
 <p>As we starting to notice, a report authored in quarto or R Markdown often requires additional files to render properly. We might have a collection of references, some data sets and possibly some analysis files that are not included in the quarto or R markdown file. To keep everything organized I recommend a general folder structure for every analysis project. This structure might change as the project grows or changes. The parts listed below are what I usually end up with as a common set in the majority of projects I work with<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
-<section id="the-readme-file" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="the-readme-file"><span class="header-section-number">7.4.1</span> The readme-file</h3>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;This organization was initially inspired by <a href="https://kbroman.org/steps2rr/pages/organize.html">Karl Broman’s</a> steps towards reproducible science.</p></div></div><section id="the-readme-file" class="level3" data-number="7.4.1"><h3 data-number="7.4.1" class="anchored" data-anchor-id="the-readme-file">
+<span class="header-section-number">7.4.1</span> The readme-file</h3>
 <p>The README-file can be, or should be an important file for you. When a project is larger than very tiny, it becoms complex and you should include a README-file to tell others and yourself what the project is about and how it is organized. Creating a file called <code>README.md</code> in a GitHub folder automatically renders it on the main page of your repository (more about that later). Here you have the opportunity to outline the project and explain the organization of your projects folder/repository.</p>
 <p>I find it very helpful to work with the README-file continuously as the project evolves. It helps me remember where the project is going.</p>
 <p>A very basic ouline of the README-file can be</p>
@@ -499,50 +520,87 @@ F=ma
 <span id="cb8-14"><a href="#cb8-14"></a><span class="do">## Changes and logs</span></span>
 <span id="cb8-15"><a href="#cb8-15"></a><span class="dv">2023-08-15</span><span class="sc">:</span> Added a description of the project...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="resources" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="resources"><span class="header-section-number">7.4.2</span> <code>/resources</code></h3>
+</section><section id="resources" class="level3" data-number="7.4.2"><h3 data-number="7.4.2" class="anchored" data-anchor-id="resources">
+<span class="header-section-number">7.4.2</span> <code>/resources</code>
+</h3>
 <p>I usually include a sub-folder called <code>resources</code>. Here I keep CSL-files, the bibliography, any styling or templates used to render the report. Keeping this in a separate folder keeps the top-folder clean.</p>
-</section>
-<section id="data" class="level3" data-number="7.4.3">
-<h3 data-number="7.4.3" class="anchored" data-anchor-id="data"><span class="header-section-number">7.4.3</span> <code>/data</code></h3>
+</section><section id="data" class="level3 page-columns page-full" data-number="7.4.3"><h3 data-number="7.4.3" class="anchored" data-anchor-id="data">
+<span class="header-section-number">7.4.3</span> <code>/data</code>
+</h3>
 <p>The <code>data</code> folder is an important one. Here I keep all data that exists as e.g., <code>.csv</code> or <code>.xlsx</code> files. If I create data in the project, such as combined data sets that are stored for more convienient use, I keep these in a sub-folder (e.g., <code>data/derived-data/</code>)<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. If there is a lot of raw unprocessed data, these might be stored in <code>data/raw-data/</code> with specific sub-folders.</p>
-</section>
-<section id="figures" class="level3" data-number="7.4.4">
-<h3 data-number="7.4.4" class="anchored" data-anchor-id="figures"><span class="header-section-number">7.4.4</span> <code>/figures</code></h3>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Again, an important note from <a href="https://kbroman.org/steps2rr/pages/organize.html">Karl Broman, “Organize your data and code”</a></p></div></div></section><section id="figures" class="level3" data-number="7.4.4"><h3 data-number="7.4.4" class="anchored" data-anchor-id="figures">
+<span class="header-section-number">7.4.4</span> <code>/figures</code>
+</h3>
 <p>If you want to make figures for presentations or submission to a journal, you might want to save output as <code>.tiff</code> or <code>.pdf</code> files. When doing this it might be a good idea to structure a figure-folder with e.g.&nbsp;<code>figure1.R</code> that renders to e.g.&nbsp;<code>figure1.pdf</code>. If you only include figure output in the quarto, the figure folder might contain R-scripts that produces the figures. The end results are included in the quarto document by sourcing the R-script. This detour might make it easier to find code for a specific figure once your project is large enough.</p>
-</section>
-<section id="r" class="level3" data-number="7.4.5">
-<h3 data-number="7.4.5" class="anchored" data-anchor-id="r"><span class="header-section-number">7.4.5</span> <code>/R</code></h3>
+</section><section id="r" class="level3" data-number="7.4.5"><h3 data-number="7.4.5" class="anchored" data-anchor-id="r">
+<span class="header-section-number">7.4.5</span> <code>/R</code>
+</h3>
 <p>R-scripts that are not figures but contains analyses or data cleaning or the like can be stored in R scripts in a specific folder. The reason to keep R scripts separate from a quarto file might be that they are large and produces some output, like a data set, that is later used in the report file. It makes it easier to find and work on specific code without breaking other parts of your project. Actually, it is a good idea to “build” the parts of your analysis as smaller parts.</p>
-</section>
-</section>
-<section id="quarto-formats" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="quarto-formats"><span class="header-section-number">7.5</span> Quarto formats</h2>
+</section></section><section id="quarto-formats" class="level2 page-columns page-full" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="quarto-formats">
+<span class="header-section-number">7.5</span> Quarto formats</h2>
 <p>Quarto brings many possibilities for authoring data-driven formats, including but not restricted to websites, books, blogs and presentations. In this course</p>
-</section>
-<section id="references-and-footnotes" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="references-and-footnotes"><span class="header-section-number">7.6</span> References and footnotes</h2>
+<section id="microsoft-word-intergration-in-r-markdown-and-quarto" class="level3 page-columns page-full" data-number="7.5.1"><h3 data-number="7.5.1" class="anchored" data-anchor-id="microsoft-word-intergration-in-r-markdown-and-quarto">
+<span class="header-section-number">7.5.1</span> Microsoft Word intergration in R Markdown and Quarto</h3>
+<p>Sometimes it is useful to “knit” to a word file. For example when you want to share a report with fellow students who are not familiar with R. R Markdown/Quarto can be used as a source for word documents (.docx).</p>
+<p>To create a word document from your Rmd-file/qmd-file you need a working installation of Microsoft Word. Settings for the output is specified in the YAML metadata field in the Rmd-file. This is the first section of a Rmd file, and when you want it to create a word file you specify it like this:</p>
+<pre><code>---
+title: "A title"
+author: Daniel Hammarström
+date: 2020-09-05
+output: word_document
+---</code></pre>
+<p>The <code>output: word_document</code> (or <code>format: docx</code> when using quarto) tells R to create a word file. If you are not happy with the style of the word document (e.g.&nbsp;size and font of text) you can tell R to use a template file. Save a word file that you have knitted as <code>reference.docx</code> and use specify in the YAML field that you will use this as reference. <a href="https://quarto.org/docs/reference/formats/docx.html">See here for the equivalent formatting of quarto documents</a></p>
+<pre><code>---
+title: "A title"
+author: Daniel Hammarström
+date: 2020-09-05
+output: 
+        word_document:
+                reference_docx: reference.docx
+---</code></pre>
+<p>Edit styles (Stiler in Norwegian) used in the reference file (right click on the style and edit). For example, editing the “Title” style (Tittel in Norwegian) will change the main titel of the document. After you have edited the document, save it.</p>
+<p>When you knit the document again, your updated styles will be used your word document.</p>
+<p><a href="https://rmarkdown.rstudio.com/articles_docx.html">Here</a> you can read more about using R Markdown together with word. If you do not have word installed, you can also use Open Office. Read more about it <a href="https://bookdown.org/yihui/rmarkdown/opendocument-text-document.html">here</a>.</p>
+<section id="adding-references-to-r-markdown-and-quarto-files" class="level4 page-columns page-full" data-number="7.5.1.1"><h4 data-number="7.5.1.1" class="anchored" data-anchor-id="adding-references-to-r-markdown-and-quarto-files">
+<span class="header-section-number">7.5.1.1</span> Adding references to R Markdown and Quarto files</h4>
+<p>References/citations can be added to the report using the <code>bibliography</code> option in the YAML field. Citations needs to be listed in a file, multiple formats are availiable. A convenient format is bibtex. When using this format, create a text file with the ending <code>.bib</code>, for example, <code>bibliography.bib</code>.</p>
+<p>The <code>bibliography.bib</code>-file needs to be activated in the YAML-field. Do it by adding this information:</p>
+<pre><code>---
+title: "A title"
+author: Daniel Hammarström
+date: 2020-09-05
+output: 
+        word_document:
+                reference_docx: reference.docx
+bibliography: bibliography.bib
+---</code></pre>
+<p>Add citations to the file in bibtex-format. Here is an example:</p>
+<pre><code>@Article{refID1,
+   Author="Ellefsen, S.  and Hammarstrom, D.  and Strand, T. A.  and Zacharoff, E.  and Whist, J. E.  and Rauk, I.  and Nygaard, H.  and Vegge, G.  and Hanestadhaugen, M.  and Wernbom, M.  and Cumming, K. T.  and Rønning, R.  and Raastad, T.  and Rønnestad, B. R. ",
+   Title="{Blood flow-restricted strength training displays high functional and biological efficacy in women: a within-subject comparison with high-load strength training}",
+   Journal="Am. J. Physiol. Regul. Integr. Comp. Physiol.",
+   Year="2015",
+   Volume="309",
+   Number="7",
+   Pages="R767--779",
+   Month="Oct"}</code></pre>
+<p>The part that says <code>refID1</code> can be edited to something appropriate. This is a reference identification, you use it to get the citation into the text. When citing you do it in the form</p>
+<pre><code>Blood flow-restricted training leads to similar adaptations as traditional training [@refID1].</code></pre>
+<p>This will appear in text as:</p>
+<div class="page-columns page-full"><blockquote class="blockquote">
+<p>Blood flow-restricted training leads to similar adaptations as traditional training <span class="citation" data-cites="refID1">(<a href="99-refs.html#ref-refID1" role="doc-biblioref">Ellefsen et al. 2015</a>)</span>.</p>
+</blockquote><div class="no-row-height column-margin column-container"><div id="ref-refID1" class="csl-entry" role="listitem">
+Ellefsen, S., D. Hammarstrom, T. A. Strand, E. Zacharoff, J. E. Whist, I. Rauk, H. Nygaard, et al. 2015. <span>“<span class="nocase">Blood flow-restricted strength training displays high functional and biological efficacy in women: a within-subject comparison with high-load strength training</span>.”</span> <em>Am. J. Physiol. Regul. Integr. Comp. Physiol.</em> 309 (7): R767–779.
+</div></div></div>
+<p>The reference will end up in the end of the document (as on this webpage).</p>
+<p>You can gather references in bibtex format from Oria (use the BIBTEX icon) and from PubMed using <a href="https://www.bioinformatics.org/texmed/">TeXMed</a>. You can also export reference in bibtex format from citation software like Endnote or Zotero. Make sure you check all references when entering them, especially MedTex gives some problems with “scandinavian” letters (å æ ä ø ö).</p>
+<p>Recently RStudio added support for adding citations inside the visual markdown editor.</p>
+</section></section></section><section id="references-and-footnotes" class="level2" data-number="7.6"><h2 data-number="7.6" class="anchored" data-anchor-id="references-and-footnotes">
+<span class="header-section-number">7.6</span> References and footnotes</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-r4ds" class="csl-entry" role="listitem">
-Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. 1st ed. Paperback; O’Reilly Media. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
-</div>
-</div>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Markdown was introduced in 2004 as a syntax to convert plain text to formatted HTML. Markdown is primarily attributed to <a href="https://daringfireball.net/projects/markdown/">John Gruber</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>This is a footnote.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>This organization was initially inspired by <a href="https://kbroman.org/steps2rr/pages/organize.html">Karl Broman’s</a> steps towards reproducible science.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Again, an important note from <a href="https://kbroman.org/steps2rr/pages/organize.html">Karl Broman, “Organize your data and code”</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -583,6 +641,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -651,13 +736,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -736,10 +823,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -749,20 +853,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -806,6 +1026,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -831,6 +1052,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -889,16 +1136,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./05-first-tables.html" class="pagination-link">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./05-first-tables.html" class="pagination-link" aria-label="Wrangling data to create your first table">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07-version-control-git.html" class="pagination-link">
+      <a href="./07-version-control-git.html" class="pagination-link" aria-label="Version control and collaboration">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -907,4 +1151,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/06-writing-reports.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/06-writing-reports.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

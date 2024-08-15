@@ -8,7 +8,7 @@ filters:
 
 # Getting to know R and RStudio
 
-In [Chapter 2](01-intro-to-data.qmd), we went through all the trouble of installing and setting up the tools needed to become data scientists. It is now assumed that everything was indeed installed and working. In this chapter we will introduce the usage of R and Rstudio. First we will set up and customize RStudio and then learn how to communicate with R.
+In @sec-intro-to-data-sci, we went through all the trouble of installing and setting up the tools needed to become data scientists. It is now assumed that everything was indeed installed and working. In this chapter we will introduce the usage of R and Rstudio. First we will set up and customize RStudio and then learn how to communicate with R.
 
 ## The Anatomy of RStudio
 
@@ -324,7 +324,7 @@ colors <- c("green", "red", "violet", "brown", "green", "green", "blue", "green"
 my_values > 5 & colors == "green"
 ```
 
-We can put store the results in a vector or use it to select values in a vector. Using brackets on a vector (or data frame) we can select observations based on a logical vector (produced by logical tests).
+We can store the results in a vector or use it to select values in a vector. Using brackets on a vector (or data frame) we can select observations based on a logical vector (produced by logical tests).
 
 ```{webr-r}
 
@@ -334,7 +334,7 @@ my_values[my_values > 5 & colors == "green"]
 
 Using the "NOT" operator (`!`) we can perform negation on any of the logical operators. Let's say we want have all observations that do not satisfy our filter above. Run the code below and inspect the results. Notice the parentheses which indicates that we put the negation on the whole expression.
 
-```{r}
+```{webr-r}
 
 my_values[!(my_values > 5 & colors == "green")]
 
@@ -362,16 +362,94 @@ all(colors == "green") # Not all values are TRUE
 
 ### Functions
 
+We mentioned above that everything in R is an object. This is true even when we talk about functions. Functions are special kind of objects, they contain code that upon execution perform certain tasks. A function may need to have certain arguments specified. Arguments are user input into the function to specify how the functions should behave. A common usage of a function is to do something with data that you, the user, supply to the function. 
 
 
+Let's specify a function to see what it does. We have a vector of numbers, let's say `my_values`. We want to construct a function that calculates the mean of that vector. The function may later be used to calculate averages of other vectors so we should try to make it as general as possible. Let's start with the design of the actual calculation[^afraid]. 
+
+[^afraid]: Don't be afraid of mathematics! Take it slow and translate it to your language. Some books on statistics are a lot easier to read if you are prepared to read simple mathematical expressions. Sometimes it is also good to be able to write an expression. Mathematics, like computer code, is also a language. To learn a new language we need to try not to be afraid!  
+
+The mean ($\bar{x}$) of a vector ($x_i$) is calculated as 
+
+\begin{align}
+\bar{x}&=\frac {1}{n} \sum_{i=1}^{n}x_{i} \\ 
+&= \frac {x_{1}+x_{2}+\cdots +x_{n}}{n}
+\end{align}
+
+Which we can read as "one or the number of observations times the sum of all observations". Or, as in the second row, the sum of all observations divided by the number of observations.
+
+We can translate this to code. A simple way to do this is to use other functions, in this case `length()` that returns the number of observations (or length) in a vector, and `sum()` that gives us the sum of all observations in a numeric vector. In the code block below I have simply combined data with the expression needed to calculate the average.  
+
+```{r}
+#| eval: false
+
+some_values <- c(3, 4, 5, 6, 7, 8)
+
+1/length(some_values) * sum(some_values)
 
 
+```
+
+The next step is to put the code into a function. A function is defined using a special function, called `function`! Confusing? Yes. Let's see how it is done.
+
+```{r}
+#| eval: false
+
+my_mean_function <- function(DATA) {
+  1/length(DATA) * sum(DATA)
+}
+
+```
+
+Using `function` we define the function called `my_mean_function`. Using the assignment operator it is stored in our environment (R's working memory). The function "body" contains the code. It says that it will use an object called `DATA` that should be given as an argument in the function call, notice that we have defined the function with an argument called `DATA`.
+
+Since we are not storing the output from the calculation `1/length(DATA) * sum(DATA)` in any new object inside the function running the function in our R session will return the mean of what ever we define as `DATA`.
+
+In the script block below we have everything defined. Try out the function by modifying the code so that it prints `my_mean`.
+
+```{webr-r}
+
+my_mean_function <- function(DATA) {
+  1/length(DATA) * sum(DATA)
+}
+
+my_mean <- my_mean_function(my_values)
+
+```
+
+Of course, there is already a function that will give you the mean of a numeric vector and it is called `mean()`. In the simple case, the `mean()` function takes one argument `x` that should be a numeric vector. It could look like this:
+
+```{web-r}
+mean(my_values) # Calculate the mean of your vector.
+```
+
+Defining functions for yourself can be a very efficient way of performing data analysis, but most functions that you need are already specified in R. Other people have already gone trough the trouble of defining functions that are easy to use for specific tasks.
+
+### Functions and packages
+
+The R ecosystem consists of packages. These are collections of functions organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g. analyses of a specific kind of data, or more general task such as making figures or handle data.
+
+In this course we will use many different packages, for example [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.
+
+To install a package, you use the `install.packages()` function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.
+
+```{r, eval = FALSE}
+install.packages("dplyr")
+```
+
+Alternatively, click "Packages" and "Install" and search for the package you want to install. To use a package, you have to load it into your environment. Use the `library()` function to load a package.
+
+```{r, eval = FALSE}
+library("dplyr")
+```
 
 
+We will become familiar with packages as we move along in the course.
 
-## Basics R programming, Installing and using `swirl`
 
-Swirl is a great way to get to know how to talk with R. Swirl consists of lessons created for different topics. Install swirl by typing the following into your console:
+## Basics R programming: Installing and using `swirl`
+
+Swirl is a great way to get to know how to talk with R. Swirl consists of lessons that run in your R console where you interactively will be able to learn basic concepts. Start RStudio and install swirl by typing the following into your console:
 
 ```{r, eval = FALSE}
 install.packages("swirl")
@@ -383,14 +461,16 @@ When `swirl`is installed you will need to load the package This means that all f
 library("swirl")
 ```
 
-When you run the above command in your console you will get a message saying to call `swirl()` when you are ready to learn. I would like you to run the course "R Programming: The basics of programming in R". Swirl will ask if you want to install it. After installation, just follow the instructions in the console. To get out of swirl, just press ESC.
+When you run the above command in your console you will get a message saying to call `swirl()` when you are ready to learn. At this stage, run the course *"R Programming: The basics of programming in R"*. Swirl will ask if you want to install it. After installation, just follow the instructions in the console. To get out of swirl, just press ESC.
 
 
 ## File formats for editing and executiong R code
 
+A confusing part of using R is that we are really just able to communicate with R through the console. There are however a lot of methods to do this, and save your input, and output for later. This is central to how we will work with R: We create some input (code), R returns results, like numbers, text or figures and these can be formatted to be saved in different formats.
+
 ### R scripts
 
-RStudio has capabilities to highlight code for multiple languages. We will focus on R. The most basic file format for R code is an R script, as we have already touched upon. An R script contains code and comments. Code is executed by R and comments are ignored. Ideally, R scripts are commented to improve readability of what the do. Commenting code is also a good way of creating a roadmap of what you want to do. In the image below (@fig-rscript), R code is written based on a plan written with comments. Note that when a line starts with at least one `#` it is interpreted by R as a comment.     
+The most basic file format for R code is an R script, as we have already touched upon. An R script contains code and comments. Code is executed by R and comments are ignored. Ideally, R scripts are commented to improve readability of what the do. Commenting code is also a good way of creating a roadmap of what you want to do. In the image below (@fig-rscript), R code is written based on a plan written with comments. Note that when a line starts with at least one `#` it is interpreted by R as a comment.     
 
 ![Commenting and coding in an R script](images/ch3/03-rscript.gif){#fig-rscript}
 
@@ -408,7 +488,7 @@ plot(x, y)
 
 ```
 
-
+In RStudio code will be highlighted with different colours to indicate e.g. functions and and arguments in functions. RStudio has the capabilities to do this for multiple languages.
 
 ### R markdown and quarto files
 
@@ -426,95 +506,8 @@ A full guide to RMarkdown can be found on the official [R markdown web pages](ht
 
 [^1]: Cheat sheets are available in R Studio: *Help \> Cheatsheets*
 
-#### Microsoft Word intergration in R Markdown and Quarto
-
-Sometimes it is useful to "knit" to a word file. For example when you want to share a report with fellow students who are not familiar with R. R Markdown/Quarto can be used as a source for word documents (.docx).
-
-To create a word document from your Rmd-file/qmd-file you need a working installation of Microsoft Word. Settings for the output is specified in the YAML metadata field in the Rmd-file. This is the first section of a Rmd file, and when you want it to create a word file you specify it like this:
-
-    ---
-    title: "A title"
-    author: Daniel Hammarström
-    date: 2020-09-05
-    output: word_document
-    ---
-
-The `output: word_document` (or `format: docx` when using quarto) tells R to create a word file. If you are not happy with the style of the word document (e.g. size and font of text) you can tell R to use a template file. Save a word file that you have knitted as `reference.docx` and use specify in the YAML field that you will use this as reference. [See here for the equivalent formatting of quarto documents](https://quarto.org/docs/reference/formats/docx.html)
-
-    ---
-    title: "A title"
-    author: Daniel Hammarström
-    date: 2020-09-05
-    output: 
-            word_document:
-                    reference_docx: reference.docx
-    ---
-
-Edit styles (Stiler in Norwegian) used in the reference file (right click on the style and edit). For example, editing the "Title" style (Tittel in Norwegian) will change the main titel of the document. After you have edited the document, save it.
-
-When you knit the document again, your updated styles will be used your word document.
-
-[Here](https://rmarkdown.rstudio.com/articles_docx.html) you can read more about using R Markdown together with word. If you do not have word installed, you can also use Open Office. Read more about it [here](https://bookdown.org/yihui/rmarkdown/opendocument-text-document.html).
-
-#### Adding references to R Markdown and Quarto files
-
-References/citations can be added to the report using the `bibliography` option in the YAML field. Citations needs to be listed in a file, multiple formats are availiable. A convenient format is bibtex. When using this format, create a text file with the ending `.bib`, for example, `bibliography.bib`.
-
-The `bibliography.bib`-file needs to be activated in the YAML-field. Do it by adding this information:
-
-    ---
-    title: "A title"
-    author: Daniel Hammarström
-    date: 2020-09-05
-    output: 
-            word_document:
-                    reference_docx: reference.docx
-    bibliography: bibliography.bib
-    ---
-
-Add citations to the file in bibtex-format. Here is an example:
-
-    @Article{refID1,
-       Author="Ellefsen, S.  and Hammarstrom, D.  and Strand, T. A.  and Zacharoff, E.  and Whist, J. E.  and Rauk, I.  and Nygaard, H.  and Vegge, G.  and Hanestadhaugen, M.  and Wernbom, M.  and Cumming, K. T.  and Rønning, R.  and Raastad, T.  and Rønnestad, B. R. ",
-       Title="{Blood flow-restricted strength training displays high functional and biological efficacy in women: a within-subject comparison with high-load strength training}",
-       Journal="Am. J. Physiol. Regul. Integr. Comp. Physiol.",
-       Year="2015",
-       Volume="309",
-       Number="7",
-       Pages="R767--779",
-       Month="Oct"}
-
-The part that says `refID1` can be edited to something appropriate. This is a reference identification, you use it to get the citation into the text. When citing you do it in the form
-
-    Blood flow-restricted training leads to similar adaptations as traditional training [@refID1].
-
-This will appear in text as:
-
-> Blood flow-restricted training leads to similar adaptations as traditional training [@refID1].
-
-The reference will end up in the end of the document (as on this webpage).
-
-You can gather references in bibtex format from Oria (use the BIBTEX icon) and from PubMed using [TeXMed](https://www.bioinformatics.org/texmed/). You can also export reference in bibtex format from citation software like Endnote or Zotero. Make sure you check all references when entering them, especially MedTex gives some problems with "scandinavian" letters (å æ ä ø ö).
-
-Recently RStudio added support for adding citations inside the visual markdown editor.
+We will cover the quarto publication system in more details in later chapters.
 
 
-## Packages
-
-The R ecosystem consists of packages. These are *functions* organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g. analyses of a specific kind of data, or more general task such as making figures or handle data.
-
-In this course we will use many different packages, for example [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.
-
-To install a package, you use the `install.packages()` function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.
-
-```{r, eval = FALSE}
-install.packages("dplyr")
-```
-
-Alternatively, click "Packages" and "Install" and search for the package you want to install. To use a package, you have to load it into your environment. Use the `library()` function to load a package.
-
-```{r, eval = FALSE}
-library("dplyr")
-```
 
 
