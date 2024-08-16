@@ -2,17 +2,17 @@
 output: html_document
 editor_options: 
   chunk_output_type: console
+filters:
+ - webr
 ---
 
 # Getting to know R and RStudio
 
-In [Chapter 2](01-intro-to-data.qmd), we went through all the trouble of installing and setting up the tools needed to become data scientists. It is now assumed that everything was indeed installed and working. In this chapter we will introduce the usage of R and Rstudio. First we will set up and customize RStudio and then learn how to communicate with R.
+In @sec-intro-to-data-sci, we went through all the trouble of installing and setting up the tools needed to become data scientists. It is now assumed that everything was indeed installed and working. In this chapter we will introduce the usage of R and Rstudio. First we will set up and customize RStudio and then learn how to communicate with R.
 
 ## The Anatomy of RStudio
 
-The appearance of RStudio can be changed for a more pleasant user experience. I like a dark theme as it is easier on the eye. We can also move the different components of RStudio. I like to have The console on the top right and the source on the top left. I think this makes it easier to see output when coding interactively. 
-
-All this will be clearer as thing evolve, but for now, start R Studio, go to Tools > Global options and make it personal (see @fig-customize)!
+The appearance of RStudio can be changed for a more pleasant user experience. I like a dark theme as it is easier on the eye. We can also move the different components of RStudio. I like to have the console on the top right and the source on the top left. I think this makes it easier to see output when coding interactively. All this will be clearer as thing evolve, but for now, start R Studio, go to Tools > Global options and make it personal (see @fig-customize)!
 
 ![Customize the appearance of RStudio](images/ch3/03-customizerstudio.gif){#fig-customize}
 
@@ -67,16 +67,388 @@ In RStudio files are accessible from the Files tab. The files tab shows the file
 
 ## Reproducible data science using RStudio
 
-When starting to work more systematically in RStudio we will set some rules that will allow for reproducible programming. Remember from [Chapter 2](01-intro-to-data.html#replication-and-reproducibility) that part of a fully reproducible study is software/code that produces the results. It turns out that when working interactively with R you can fool yourself to belive that you have included all steps needed to produce some results in your script. However, variables may be stored in your environment but not by assigning values to them in your script. This will become a problem if you want to share your code, a certain value/variable needed to make the program work may be missing from your script.
+When starting to work more systematically in RStudio we will set some rules that will allow for reproducible programming. Remember from [Chapter 2](01-intro-to-data.html#replication-and-reproducibility) that part of a fully reproducible study is software/code that produces the results. It turns out that when working interactively with R you can fool yourself to believe that you have included all steps needed to produce some results in your script. However, variables may be stored in your environment but not by assigning values to them in your script. This will become a problem if you want to share your code, a certain value/variable needed to make the program work may be missing from your script.
 
 To avoid making such a mistake it is good practice not to save variables in your environment between sessions, everything should be scripted and documented and assumed not defined elsewhere. In RStudio we can make an explicit setting Not to save the workspace (See @fig-saveworkspace).
 
 
-![Never save the workspace.](images/ch3/03-ask-workspace.gif){#fig-saveworkspace}
+## Basic R programming, first steps
 
-## Basics R programming, Installing and using `swirl`
+You have already been asked to run commands in your version of RStudio, below we will run some very basic commands here on this website to get first hand experience with the R language. Below you will find several script boxes that you may edit before pressing *Run Code*. When you run code, the results you would see in your terminal will appear below the script.
 
-Swirl is a great way to get to know how to talk with R. Swirl consists of lessons created for different topics. Install swirl by typing the following into your console:
+### Objects and assignment
+
+Everything in R are objects [@chambers2009]. What does this mean? Let's say that we want to store some information in R, this information is a value, let's say the number *12*. To store this information we will *assign* the value to an *object* and call this object `twelve`. An *object* is a container of data "of all kinds" [@chambers2009, p. 111] that we create in our working memory to hold our data (the value). We assign the value to our object by using an *assignment operator*. The most common assignment operator is `<-`. Think of the assignment operator as an arrow pointing from the value towards the object, like this:
+
+```{r}
+#| eval: false
+
+twevle <- 12
+
+```
+
+We can also reverse the direction of the assignment operator and make the object and value change places. 
+
+```{r}
+#| eval: false
+
+12 -> twelve
+
+```
+
+To call an object, or tell R that we want to look at our object, we would simply type the object name in our R console. We may try this in the R script box below. I have already entered some information in the script, these are comments starting with the hash symbol (`#`). The comments tells us what to do. You can enter R code on the line below the comments, R will ignore everything following a comment sign and start to interpret code again on the subsequent line. When you have entered your code, press "Run Code" to inspect the results.
+
+
+
+```{webr-r}
+# Store the value 12 in an object called twelve
+
+# Call the object 'twelve'
+
+```
+
+It is also possible to use the equal sign (`=`) to assign data to objects. The equal sign used as an assignment operator, as in `twelve = 12`, is equivalent to `twelve <- 12`.
+
+### R as a giant calculator
+
+R can make use of all basic arithmetic operators like plus (`+`), minus (`-`), divided by (`*`) and multiplied by (`/`). These operators can be used on objects, and directly on values. In the script box below, try to calculate (and store) the following:
+
+$$y = 5 * 2 + 1 * 0.5$$
+Then use the object and add 10, store the new result in a new object called `z`.
+
+```{webr-r}
+# Use 'y <-' to assign the expression to the object y 
+```
+
+A possible solution to the above challenge would be
+
+```{r}
+#| echo: true
+
+y <- 5 * 2 + 1 * 0.5
+
+z <- y + 10
+
+```
+
+The result of your computations should be `r z`. In the above example we have discovered that mathematical expression can be written using values and objects already stored in the environment.
+
+We can also use *functions* to perform mathematical operations on objects. Examples of such functions are `log()`, `exp()`, `abs()` and `sqrt()`. A function is a special object that itself can be use other objects (or variables/values) as input. A function often takes arguments, these arguments are supplied to the function inside its brackets. 
+
+The `log()` function returns the natural logarithm of a numeric object. Mathematically, the log function returns the exponent ($x$) with the base $e$ that give us our input number $y$ ($e^x = y$). To get the natural logarithm of 100 we would use R and write `log(100)` which results in `r log(100)`. This corresponds to $100 = 2.718282 ^ {4.60517}$. The base $e$ must be raised to the power of 4.60517 to yield 100.
+
+What is the natural logarithm of 50? Try to calculate it in the script box below.
+
+```{webr-r}
+# What is the natural logarithm of 50?
+
+
+
+```
+
+We can of course make similar computations on stored objects.
+
+```{webr-r}
+# What is the natural logarithm of 25?
+my_object <- 25
+
+log(my_object)
+```
+
+Above we have learned that numbers and objects that store numbers can be used in computations using basic arithmetic operators and functions that perform mathematical operations.
+
+### Different types of data
+
+Above we have worked on numeric data. These are values represented either as integers (whole numbers; e.g. 1, 2, 3) or what is sometimes called "double" or "numerical", i.e. decimal numbers (e.g. 1.2 or 2.781).
+
+In the code example below we will store an integer and a double and inspect its "class", the class decides what R can do with an object.
+
+```{r}
+#| eval: false
+
+num <- as.numeric(2.456)
+
+int <- as.integer(2)
+
+class(num)
+class(int)
+
+
+```
+
+Use the script box below to test out the code example. What is the purpose of the `class` function?
+
+```{webr-r}
+
+```
+
+There are other types of data that we can use in R, these are character, logical and complex (we will not discuss complex numbers further here).
+
+A character or string value can be though of as text, e.g. `"this is a character"` could be the data contained in a character object. A logical value is either `TRUE` or `FALSE`. This type of data is also known as [Boolean](https://en.wikipedia.org/wiki/Boolean_data_type)
+
+As mentioned above, the type of data restricts what operations that can be performed using the data. For example, we cannot do mathematical operations on characters or logicals. Try out the code below and inspect the results. What does the error message tells you?
+
+```{webr-r}
+
+char <- "a"
+
+logic <- TRUE
+
+num <- 3.456
+
+int <- as.integer(2)
+
+
+num + int
+
+num + int + char + logic
+
+
+```
+
+We can define data types by using functions such as `as.numeric()` or `as.character()` these will tell R to try to convert data to a specific type. If this is not possible you will get an error message. Try the code below and inspect the error message. 
+
+```{webr-r}
+
+char <- "this is a string"
+
+as.numeric(char)
+
+```
+
+
+The result of the conversion of a character to a numeric is `NA`, that can be read as **N**ot **A**vailable. `NA` is an example of a protected symbol in R. We cannot use this as a name of an object. It is used to indicate missingness, or missing values.
+
+In the above section we have identified different type of data that are used in R
+
+
+
+### Combining data
+
+So far we have work on single valued objects. This is not very efficient. Conveniently, R has an efficient way of working with data using vectors. A vector is a structure for combining data of the same type. For example, we can construct a numeric vector of heights using the combine function `c()`. Let's say `height <- c(1.74, 1.81, 1.51, 1.92)`. An additional vector of weights can also be constructed as `weight <- c(85.1, 81.1, 48.9, 88.4)`. We can use these vector to do calculations, these calculations will be "vectorized".
+
+The body mass index is calculated as 
+
+$$BMI = \frac{\text{Weight (kg)}}{\text{Height (m)}^2}$$
+Using vectorized operations we can calculate BMI for *each row* of the two vectors defined above simply using `BMI <- weight/height^2`. Modify the code below to inspect each vector and the resulting `BMI` vector.
+
+```{webr-r}
+weight <- c(85.1, 81.1, 48.9, 88.4)
+height <- c(1.74, 1.81, 1.51, 1.92)
+
+BMI <- weight/height^2
+
+```
+
+Vectors can be combined into data frames. These are convenient tabular two-dimensional representations of multiple, equal length vectors. To combine the vectors defined above into a data frame we could directly put them in a data frame. In the example below we use `df` to name the data frame. To add a new variable (or vector) to the data frame we can use the `$` operator which creates a new variable (or overwrites it!). Notice also that we access weight and height in the existing data.frame using the `$` operator.
+
+```{webr-r}
+
+df <- data.frame(weight = c(85.1, 81.1, 48.9, 88.4), 
+                 height = c(1.74, 1.81, 1.51, 1.92))
+
+df$BMI <- df$weight / df$height^2
+
+```
+
+Alternatively we may access specific rows and columns of data frames using brackets. The syntax is `df[`**row**`,`**column**`]`. To access all row of a specific column, for example "weight" we would write `df[,1]`since weight is the first column of the data frame called "df".
+
+Try to calculate BMI using the row index method explained above.
+
+A data frame can combine different data types in the same data structure. The data are, as indicate above related by row as one row contains e.g. weight and height from one individual. We might add information on the individuals by adding variables of different types. Modify and run the code below to inspect the data frame.
+
+
+```{webr-r}
+
+df <- data.frame(name = c("David", "Even", "Julie", "Hubert"), 
+                 male = c(TRUE, TRUE, FALSE, TRUE), 
+                 weight = c(85.1, 81.1, 48.9, 88.4), 
+                 height = c(1.74, 1.81, 1.51, 1.92))
+
+
+```
+
+We can further combine data into a list. A list can contain different data structures or values/objects. A list can even contain other lists. To combine objects into a list we simply put them into the `list()` function. To access objects in lists we can use double brackets. E.g., using the code below we could access the second item in the list using `my_list[[2]]`. Objects in lists can also be named, in such cases we can use the `$` operator to access them. Modify the code below to explore this concept.
+
+```{webr-r}
+
+df <- data.frame(name = c("David", "Even", "Julie", "Hubert"), 
+                 male = c(TRUE, TRUE, FALSE, TRUE), 
+                 weight = c(85.1, 81.1, 48.9, 88.4), 
+                 height = c(1.74, 1.81, 1.51, 1.92))
+
+a_value <- 56
+
+multiple_characters <- c("this", "is", "a", "string")
+
+my_list <- list(df, a_value, characters = multiple_characters)
+
+
+```
+
+
+### Logical operations and conditions 
+
+In the future you will select observations based on some specific conditions. This could for example mean that you would want to keep all observations where the variable X is greater than 5. To communicate this to R we would create a vector of `TRUE` and `FALSE`. R will keep all observations that satisfy our condition and therefore are `TRUE`.
+
+In the script box below, we first construct a vector of numbers followed by a logical test. The test will result in `TRUE` when the condition is satisfied. Notice that the "test" gives you a vector of `TRUE`/`FALSE`.   
+
+```{webr-r}
+# Construct a vector of numbers
+my_values <- c(3,4,6,7,5,7,8,9,2,1,3)
+# Create a logical test
+my_values > 5
+```
+
+In the example above we used the 'greater than' operator (`>`). There are a few more usefull operators:
+
+
+|Operator|Meaning|
+|---|---|
+|`==`|equal to |
+|`!=`|not equal to|
+|`<`|less than|
+|`>`|greater than|
+|`<=`|less than or equal to|
+|`>=`|greater than or equal to|
+
+Try to modify the script box above to test out the different operators.
+
+Using the "AND" operator (`&`) we can add conditions that needs to be fulfilled to produce `TRUE`. This might be useful when two or more conditions needs to be satisfied. In addition to our values stored in `my_values` in the script box above, we might want to see the condition `colors == "green"` satisfied as well, where `colors` is a vector of colours. Run the codse below and inspect the results
+
+```{webr-r}
+colors <- c("green", "red", "violet", "brown", "green", "green", "blue", "green", "yellow", "yellow", "red")
+
+# Combined conditions, both needs to be true
+my_values > 5 & colors == "green"
+```
+
+We can store the results in a vector or use it to select values in a vector. Using brackets on a vector (or data frame) we can select observations based on a logical vector (produced by logical tests).
+
+```{webr-r}
+
+my_values[my_values > 5 & colors == "green"]
+
+```
+
+Using the "NOT" operator (`!`) we can perform negation on any of the logical operators. Let's say we want have all observations that do not satisfy our filter above. Run the code below and inspect the results. Notice the parentheses which indicates that we put the negation on the whole expression.
+
+```{webr-r}
+
+my_values[!(my_values > 5 & colors == "green")]
+
+```
+
+The "OR" operator (`|`) gives us the possibility to select values that satisfies one or both of tqo conditions. 
+
+```{web-r}
+
+my_values > 5 | colors == "green"
+
+```
+
+Try to put the above in square brackets and filter one of the vectors to see that you get what you anticipate.
+
+Finally, we could test if a logical vector contains `TRUE` or if all values are `TRUE`. To do this we would use the functions `any()` and `all()`. 
+
+```{webr-r}
+
+any(colors == "green") # There are at least one TRUE
+all(colors == "green") # Not all values are TRUE
+
+```
+
+
+### Functions
+
+We mentioned above that everything in R is an object. This is true even when we talk about functions. Functions are special kind of objects, they contain code that upon execution perform certain tasks. A function may need to have certain arguments specified. Arguments are user input into the function to specify how the functions should behave. A common usage of a function is to do something with data that you, the user, supply to the function. 
+
+
+Let's specify a function to see what it does. We have a vector of numbers, let's say `my_values`. We want to construct a function that calculates the mean of that vector. The function may later be used to calculate averages of other vectors so we should try to make it as general as possible. Let's start with the design of the actual calculation[^afraid]. 
+
+[^afraid]: Don't be afraid of mathematics! Take it slow and translate it to your language. Some books on statistics are a lot easier to read if you are prepared to read simple mathematical expressions. Sometimes it is also good to be able to write an expression. Mathematics, like computer code, is also a language. To learn a new language we need to try not to be afraid!  
+
+The mean ($\bar{x}$) of a vector ($x_i$) is calculated as 
+
+\begin{align}
+\bar{x}&=\frac {1}{n} \sum_{i=1}^{n}x_{i} \\ 
+&= \frac {x_{1}+x_{2}+\cdots +x_{n}}{n}
+\end{align}
+
+Which we can read as "one or the number of observations times the sum of all observations". Or, as in the second row, the sum of all observations divided by the number of observations.
+
+We can translate this to code. A simple way to do this is to use other functions, in this case `length()` that returns the number of observations (or length) in a vector, and `sum()` that gives us the sum of all observations in a numeric vector. In the code block below I have simply combined data with the expression needed to calculate the average.  
+
+```{r}
+#| eval: false
+
+some_values <- c(3, 4, 5, 6, 7, 8)
+
+1/length(some_values) * sum(some_values)
+
+
+```
+
+The next step is to put the code into a function. A function is defined using a special function, called `function`! Confusing? Yes. Let's see how it is done.
+
+```{r}
+#| eval: false
+
+my_mean_function <- function(DATA) {
+  1/length(DATA) * sum(DATA)
+}
+
+```
+
+Using `function` we define the function called `my_mean_function`. Using the assignment operator it is stored in our environment (R's working memory). The function "body" contains the code. It says that it will use an object called `DATA` that should be given as an argument in the function call, notice that we have defined the function with an argument called `DATA`.
+
+Since we are not storing the output from the calculation `1/length(DATA) * sum(DATA)` in any new object inside the function running the function in our R session will return the mean of what ever we define as `DATA`.
+
+In the script block below we have everything defined. Try out the function by modifying the code so that it prints `my_mean`.
+
+```{webr-r}
+
+my_mean_function <- function(DATA) {
+  1/length(DATA) * sum(DATA)
+}
+
+my_mean <- my_mean_function(my_values)
+
+```
+
+Of course, there is already a function that will give you the mean of a numeric vector and it is called `mean()`. In the simple case, the `mean()` function takes one argument `x` that should be a numeric vector. It could look like this:
+
+```{web-r}
+mean(my_values) # Calculate the mean of your vector.
+```
+
+Defining functions for yourself can be a very efficient way of performing data analysis, but most functions that you need are already specified in R. Other people have already gone trough the trouble of defining functions that are easy to use for specific tasks.
+
+### Functions and packages
+
+The R ecosystem consists of packages. These are collections of functions organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g. analyses of a specific kind of data, or more general task such as making figures or handle data.
+
+In this course we will use many different packages, for example [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.
+
+To install a package, you use the `install.packages()` function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.
+
+```{r, eval = FALSE}
+install.packages("dplyr")
+```
+
+Alternatively, click "Packages" and "Install" and search for the package you want to install. To use a package, you have to load it into your environment. Use the `library()` function to load a package.
+
+```{r, eval = FALSE}
+library("dplyr")
+```
+
+
+We will become familiar with packages as we move along in the course.
+
+
+## Basics R programming: Installing and using `swirl`
+
+Swirl is a great way to get to know how to talk with R. Swirl consists of lessons that run in your R console where you interactively will be able to learn basic concepts. Start RStudio and install swirl by typing the following into your console:
 
 ```{r, eval = FALSE}
 install.packages("swirl")
@@ -88,16 +460,16 @@ When `swirl`is installed you will need to load the package This means that all f
 library("swirl")
 ```
 
-When you run the above command in your console you will get a message saying to call `swirl()` when you are ready to learn. I would like you to run the course "R Programming: The basics of programming in R". Swirl will ask if you want to install it. After installation, just follow the instructions in the console. To get out of swirl, just press ESC.
+When you run the above command in your console you will get a message saying to call `swirl()` when you are ready to learn. At this stage, run the course *"R Programming: The basics of programming in R"*. Swirl will ask if you want to install it. After installation, just follow the instructions in the console. To get out of swirl, just press ESC.
 
 
 ## File formats for editing and executiong R code
 
+A confusing part of using R is that we are really just able to communicate with R through the console. There are however a lot of methods to do this, and save your input, and output for later. This is central to how we will work with R: We create some input (code), R returns results, like numbers, text or figures and these can be formatted to be saved in different formats.
+
 ### R scripts
 
-RStudio has capabilities to highlight code for multiple languages. We will focus on R. The most basic file format for R code is an R script, as we have already touched upon. An R script contains code and comments. Code is executed by R and comments are ignored. Ideally, R scripts are commented to improve readability of what the do. Commenting code is also a good way of creating a roadmap of what you want to do.
-
-In the image below (@fig-rscript), R code is written based on a plan written with comments. Note that when a line starts with at least one `#` it is interpreted by R as a comment.     
+The most basic file format for R code is an R script, as we have already touched upon. An R script contains code and comments. Code is executed by R and comments are ignored. Ideally, R scripts are commented to improve readability of what the do. Commenting code is also a good way of creating a roadmap of what you want to do. In the image below (@fig-rscript), R code is written based on a plan written with comments. Note that when a line starts with at least one `#` it is interpreted by R as a comment.     
 
 ![Commenting and coding in an R script](images/ch3/03-rscript.gif){#fig-rscript}
 
@@ -115,7 +487,7 @@ plot(x, y)
 
 ```
 
-
+In RStudio code will be highlighted with different colours to indicate e.g. functions and and arguments in functions. RStudio has the capabilities to do this for multiple languages.
 
 ### R markdown and quarto files
 
@@ -133,97 +505,8 @@ A full guide to RMarkdown can be found on the official [R markdown web pages](ht
 
 [^1]: Cheat sheets are available in R Studio: *Help \> Cheatsheets*
 
-#### Microsoft Word intergration in R Markdown and Quarto
-
-Sometimes it is useful to "knit" to a word file. For example when you want to share a report with fellow students who are not familiar with R. R Markdown/Quarto can be used as a source for word documents (.docx).
-
-To create a word document from your Rmd-file/qmd-file you need a working installation of Microsoft Word. Settings for the output is specified in the YAML metadata field in the Rmd-file. This is the first section of a Rmd file, and when you want it to create a word file you specify it like this:
-
-    ---
-    title: "A title"
-    author: Daniel Hammarström
-    date: 2020-09-05
-    output: word_document
-    ---
-
-The `output: word_document` (or `format: docx` when using quarto) tells R to create a word file. If you are not happy with the style of the word document (e.g. size and font of text) you can tell R to use a template file. Save a word file that you have knitted as `reference.docx` and use specify in the YAML field that you will use this as reference. [See here for the equivalent formatting of quarto documents](https://quarto.org/docs/reference/formats/docx.html)
-
-    ---
-    title: "A title"
-    author: Daniel Hammarström
-    date: 2020-09-05
-    output: 
-            word_document:
-                    reference_docx: reference.docx
-    ---
-
-Edit styles (Stiler in Norwegian) used in the reference file (right click on the style and edit). For example, editing the "Title" style (Tittel in Norwegian) will change the main titel of the document. After you have edited the document, save it.
-
-When you knit the document again, your updated styles will be used your word document.
-
-[Here](https://rmarkdown.rstudio.com/articles_docx.html) you can read more about using R Markdown together with word. If you do not have word installed, you can also use Open Office. Read more about it [here](https://bookdown.org/yihui/rmarkdown/opendocument-text-document.html).
-
-#### Adding references to R Markdown and Quarto files
-
-References/citations can be added to the report using the `bibliography` option in the YAML field. Citations needs to be listed in a file, multiple formats are availiable. A convenient format is bibtex. When using this format, create a text file with the ending `.bib`, for example, `bibliography.bib`.
-
-The `bibliography.bib`-file needs to be activated in the YAML-field. Do it by adding this information:
-
-    ---
-    title: "A title"
-    author: Daniel Hammarström
-    date: 2020-09-05
-    output: 
-            word_document:
-                    reference_docx: reference.docx
-    bibliography: bibliography.bib
-    ---
-
-Add citations to the file in bibtex-format. Here is an example:
-
-    @Article{refID1,
-       Author="Ellefsen, S.  and Hammarstrom, D.  and Strand, T. A.  and Zacharoff, E.  and Whist, J. E.  and Rauk, I.  and Nygaard, H.  and Vegge, G.  and Hanestadhaugen, M.  and Wernbom, M.  and Cumming, K. T.  and Rønning, R.  and Raastad, T.  and Rønnestad, B. R. ",
-       Title="{Blood flow-restricted strength training displays high functional and biological efficacy in women: a within-subject comparison with high-load strength training}",
-       Journal="Am. J. Physiol. Regul. Integr. Comp. Physiol.",
-       Year="2015",
-       Volume="309",
-       Number="7",
-       Pages="R767--779",
-       Month="Oct"}
-
-The part that says `refID1` can be edited to something appropriate. This is a reference identification, you use it to get the citation into the text. When citing you do it in the form
-
-    Blood flow-restricted training leads to similar adaptations as traditional training [@refID1].
-
-This will appear in text as:
-
-> Blood flow-restricted training leads to similar adaptations as traditional training [@refID1].
-
-The reference will end up in the end of the document (as on this webpage).
-
-You can gather references in bibtex format from Oria (use the BIBTEX icon) and from PubMed using [TeXMed](https://www.bioinformatics.org/texmed/). You can also export reference in bibtex format from citation software like Endnote or Zotero. Make sure you check all references when entering them, especially MedTex gives some problems with "scandinavian" letters (å æ ä ø ö).
-
-Recently RStudio added support for adding citations inside the visual markdown editor.
-
-
-## Packages
-
-The R ecosystem consists of packages. These are *functions* organized in a systematic manner. Functions are created to perform a specialized task. And packages often have many function used to do e.g. analyses of a specific kind of data, or more general task such as making figures or handle data.
-
-In this course we will use many different packages, for example [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/) and [ggplot2](https://ggplot2.tidyverse.org/). dplyr and tidyr are packages used to transform and clean data. ggplot2 is used for making figures.
-
-To install a package, you use the `install.packages()` function. You only need to do this once on your computer (unless you re-install R). You can write the following code in your console to install dplyr.
-
-```{r, eval = FALSE}
-install.packages("dplyr")
-```
-
-Alternatively, click "Packages" and "Install" and search for the package you want to install. To use a package, you have to load it into your environment. Use the `library()` function to load a package.
-
-```{r, eval = FALSE}
-library("dplyr")
-```
+We will cover the quarto publication system in more details in later chapters.
 
 
 
-## References and footnotes
+

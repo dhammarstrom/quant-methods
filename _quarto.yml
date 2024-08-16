@@ -20,24 +20,14 @@ book:
     - 05-first-tables.qmd
     - 06-writing-reports.qmd
     - 07-version-control-git.qmd
-    - 08-phys-lab-reliability.qmd
-    - 10-mol-lab-intro.qmd
-    - 11-the-linear-model.qmd
-    - 12-linear-and-curvlinear-relationships.qmd
-    - 13-categorical-predictors-and-multiple-regression.qmd
-    - 14-correlations.qmd
-    - 16-special-topic-functions-and-iterations.qmd
-    - 17-sample-and-population.qmd
-    - 18-p-values.qmd
-    - 19-statistical-power.qmd
-    - 22-analyzing-trials.qmd
-    - 23-visualizing-mixed-models.qmd
-    - 24-mixed-models.qmd
-    
+    - 99-refs.qmd
 
 bibliography: resources/bib-final.bib
 format:
   html:
+    reference-location: margin
+    citation-location: margin
+    footnotes-hover: false
     theme:
       light: flatly
       dark: darkly

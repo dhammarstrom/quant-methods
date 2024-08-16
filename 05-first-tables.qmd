@@ -869,11 +869,11 @@ hypertrophy %>%
 
 ```
 
-  <a id="displayText" href="javascript:toggle(1);">Click for a possible solution</a>
-  <div id="toggleText1" style="display: none">
 
-```{r, eval = FALSE}
-
+```{r}
+#| eval: false
+#| code-fold: true
+#| code-summary: "A possble solution"
 # load the data
 data(hypertrophy)
 
@@ -931,9 +931,6 @@ hypertrophy %>%
 
 
 ```
-
-
-  </div>
 
 
 
