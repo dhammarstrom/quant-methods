@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Quantitative methods and statistics (In Sport and Exercise Science) - 2&nbsp; Introduction to data science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./02-spreadsheets.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-intro-to-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data science</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Quantitative methods and statistics (In Sport and Exercise Science)</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/dhammarstrom/quant-methods" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Quantitative-methods-and-statistics--In-Sport-and-Exercise-Science-.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro-to-data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data science</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-spreadsheets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-intro-to-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-first-graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Creating your first graph</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-first-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-writing-reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-version-control-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-refs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#making-sense-of-data-transferable-skills-and-teamwork" id="toc-making-sense-of-data-transferable-skills-and-teamwork" class="nav-link active" data-scroll-target="#making-sense-of-data-transferable-skills-and-teamwork"><span class="header-section-number">2.1</span> Making sense of data, transferable skills and teamwork</a></li>
+  <li><a href="#replication-and-reproducibility" id="toc-replication-and-reproducibility" class="nav-link" data-scroll-target="#replication-and-reproducibility"><span class="header-section-number">2.2</span> Replication and Reproducibility</a></li>
+  <li><a href="#tools-in-data-science" id="toc-tools-in-data-science" class="nav-link" data-scroll-target="#tools-in-data-science"><span class="header-section-number">2.3</span> Tools in data science</a></li>
+  <li><a href="#installing-and-getting-to-know-the-required-software" id="toc-installing-and-getting-to-know-the-required-software" class="nav-link" data-scroll-target="#installing-and-getting-to-know-the-required-software"><span class="header-section-number">2.4</span> Installing and getting to know the required software</a>
+  <ul class="collapse">
+  <li><a href="#r-and-rstudio" id="toc-r-and-rstudio" class="nav-link" data-scroll-target="#r-and-rstudio"><span class="header-section-number">2.4.1</span> R and RStudio</a></li>
+  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github"><span class="header-section-number">2.4.2</span> Git and Github</a></li>
+  <li><a href="#connecting-to-github" id="toc-connecting-to-github" class="nav-link" data-scroll-target="#connecting-to-github"><span class="header-section-number">2.4.3</span> Connecting to GitHub</a></li>
+  <li><a href="#a-note-on-git-and-clients" id="toc-a-note-on-git-and-clients" class="nav-link" data-scroll-target="#a-note-on-git-and-clients"><span class="header-section-number">2.4.4</span> A note on Git and clients</a></li>
+  <li><a href="#quarto-and-friends" id="toc-quarto-and-friends" class="nav-link" data-scroll-target="#quarto-and-friends"><span class="header-section-number">2.4.5</span> Quarto and friends</a></li>
+  </ul></li>
+  <li><a href="#summing-up-and-where-to-find-help" id="toc-summing-up-and-where-to-find-help" class="nav-link" data-scroll-target="#summing-up-and-where-to-find-help"><span class="header-section-number">2.5</span> Summing up and where to find help</a>
+  <ul class="collapse">
+  <li><a href="#a-small-list-of-reference-material-and-resources" id="toc-a-small-list-of-reference-material-and-resources" class="nav-link" data-scroll-target="#a-small-list-of-reference-material-and-resources"><span class="header-section-number">2.5.1</span> A (small) list of reference material and resources</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/01-intro-to-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/01-intro-to-data.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-intro-to-data-sci" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data science</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="making-sense-of-data-transferable-skills-and-teamwork" class="level2 page-columns page-full" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="making-sense-of-data-transferable-skills-and-teamwork"><span class="header-section-number">2.1</span> Making sense of data, transferable skills and teamwork</h2>
+<p>Data are everywhere! Most of us always walk around with a data collection device in our pockets. This device (your mobile phone) records and store data about you throughout the day. Much of this data is readily available to us because data privacy policies regard it as personal <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. With some effort, you can get your data out of your mobile phone to explore, for example, your daily step count. I discovered that my phone(s) has been collecting data for me since 2016, and I tend to walk fewer steps on Sundays than Saturdays (see Figure <a href="#fig-iphone" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>).</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;See e.g.&nbsp;<a href="https://www.apple.com/legal/privacy/en-ww/">Apples Privacy Policy</a>.</p></div></div><div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-iphone" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-iphone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-intro-to-data_files/figure-html/fig-iphone-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-iphone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Step count data from my iPhone displayed as all avalable data points (A, after data cleaning) and average step per weekday, per year and season (B).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Data are also collected and stored in publicly available databases. Such databases are created for the purpose of storing specific types of data, such as soccer<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> or biathlon results<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, or biological information, such as gene sequences<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Even data from scientific studies are often publicly available<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, meaning we can perform scientific studies on unique data sets without collecting the data ourselves.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;<a href="https://understat.com/">understat.com</a> stores match specific data from major leagues. Data are available through software packages such as <a href="https://jaseziv.github.io/worldfootballR/index.html"><code>worldfootballR</code></a></p></div><div id="fn3"><p><sup>3</sup>&nbsp;<a href="https://biathlonresults.com/">biathlonresults.com/</a> hosts results from the international biathlon federation. An example of analyzed data can be <a href="https://sciathlon.github.io/post/biathlon_data_analysis/">seen here</a>.</p></div><div id="fn4"><p><sup>4</sup>&nbsp;<a href="https://www.ensembl.org/">Ensembl</a> and the <a href="https://www.ncbi.nlm.nih.gov/">National center for biotechnology information</a> are commonly used databases in the biomedical sciences.</p></div><div id="fn5"><p><sup>5</sup>&nbsp;We published our raw data together with a recent paper (Mølmen et al 2021 <a href="https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-021-02969-1">doi: 10.1186/s12967-021-02969-1.</a>) together with code to analyze it in a <a href="https://github.com/dhammarstrom/rnaseq-copd">public repository</a>.</p></div></div><p>The above are examples of data that are available to us. However, to make sense of the data we have we need special techniques and methods, and this is where data science comes in. In the world of sport and exercise, regardless if you are interested in doing scientific investigations, coaching a soccer team or individual athletes, or helping patients recover from surgery using exercise therapy, you are faced with the problem of making sense of data. It turns out that this is a very general problem and the skills you need to work on that problem are transferable between fields. This means that when you develop your data analysis skills within the sport and exercise sciences, you will likely also get better at solving problems outside this particular field.</p>
+<p>In your future career, within, or outside the field of sport and exercise you will most likely be tasked with making sense of data, but making sense of data is often a team effort. Developing a better understanding of data science in general will make you a better team player in data intensive tasks. For example, knowing about possibilities and limitations for gaining knowledge from a particular data set can make you able to advice on decision-making in your organization.</p>
+</section>
+<section id="replication-and-reproducibility" class="level2 page-columns page-full" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="replication-and-reproducibility"><span class="header-section-number">2.2</span> Replication and Reproducibility</h2>
+<p>In scientific research, replication is a way to confirm scientific claims. A scientific claim is replicated when independent new data and new analyses brings us to similar conclusions as previous studies. When an independent group of researchers can confirm a result, the claim is more likely to be true. However, many results will be impossible to replicate due to the size of trials, costs, and urgency of the research question. A recent example is the many vaccine trials performed to develop a vaccine against COVID-19. Other examples are large-scale epidemiological studies <span class="citation" data-cites="RN1492">(<a href="99-refs.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, or studies with unique study populations such as elite athletes.</p>
+<div class="no-row-height column-margin column-container"></div><p>When studies are not likely to be <em>replicated</em>, <em>reproducibility</em> of the analyses and results has been suggested to be a minimum standard for scientific studies <span class="citation" data-cites="RN1492">(<a href="99-refs.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>. Reproducibility means that independent researchers can draw similar conclusions from the same data <span class="citation" data-cites="RN1492">(<a href="99-refs.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>.</p>
+<p>Peng et al. <span class="citation" data-cites="RN1492">(<a href="99-refs.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span> suggests that a <em>fully reproducible</em> study has</p>
+<div class="no-row-height column-margin column-container"></div><ul>
+<li>Available data.</li>
+<li>Computer code (software) that produces the results of the study.</li>
+<li>Documentation that describes the software and data used in the study, and</li>
+<li>ways to share the data and code.</li>
+</ul>
+<p>The above principally relates to the trust we can place in scientific results. However, the minimum reproducibility standard also has advantages for the individual researcher (or master’s student)! When working with reproducible methods, we will develop ways of documenting and automating our analyses. This way of working with analyses will make it easier to collaborate with others. And, as it turns out, your most frequent collaborator is you in the future!</p>
+<p>Reproducible data analysis means that you will make your analysis explicit and transparent. In traditional data analysis, most activities are in the “black box.” To avoid bias <span class="citation" data-cites="RN1953">(<a href="99-refs.html#ref-RN1953" role="doc-biblioref">Ioannidis 2005</a>)</span>, the “black box” needs to be opened, and you need to actively make transparent decisions all along the analytic pipeline <span class="citation" data-cites="RN1955">(<a href="99-refs.html#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. This pipeline preferably involves the whole problem-solving cycle <span class="citation" data-cites="RN2902">(<a href="99-refs.html#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. However, the tools we will learn in this course focus primarily on the steps from the experimental design to the presentation of statistical results <span class="citation" data-cites="RN1955">(<a href="99-refs.html#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>. These steps include data collection (and storage), data cleaning, exploratory data analysis, statistical modelling, and statistical inference (and communication) <span class="citation" data-cites="RN1955">(<a href="99-refs.html#ref-RN1955" role="doc-biblioref">Leek and Peng 2015</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-RN1953" class="csl-entry" role="listitem">
+Ioannidis, John P. A. 2005. <span>“Why Most Published Research Findings Are False.”</span> Journal Article. <em>PLOS Medicine</em> 2 (8): e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
+</div><div id="ref-RN1955" class="csl-entry" role="listitem">
+Leek, J. T., and R. D. Peng. 2015. <span>“Statistics: P Values Are Just the Tip of the Iceberg.”</span> Journal Article. <em>Nature</em> 520 (7549): 612. <a href="https://doi.org/10.1038/520612a">https://doi.org/10.1038/520612a</a>.
+</div><div id="ref-RN2902" class="csl-entry" role="listitem">
+Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</em>. Book. First US edition. New York: Basic Books.
+</div></div></section>
+<section id="tools-in-data-science" class="level2 page-columns page-full" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="tools-in-data-science"><span class="header-section-number">2.3</span> Tools in data science</h2>
+<p>The ways to interpret and make sense of data involve different methods. These methods are often implemented in computer software, which means that when you want to understand data as a practitioner (scientist, coach, analyst), you must master some computer software. Microsoft’s Excel is one of the most common software used to understand data, even among professional data scientists<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. You can do fantastic stuff with Excel! In the world of sport and exercise, Excel has been used in diverse activities such as scientific investigations, planning and recording training for world champions<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, and scheduling appointments.</p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;(See for example this ranking)[https://www.kdnuggets.com/2019/05/poll-top-data-science-machine-learning-platforms.html].</p></div><div id="fn7"><p><sup>7</sup>&nbsp;The amount of time used by different coaches to create their own specific coaching software really makes many of them amateur software engineers. See for example this training journal from <a href="http://obasen.orientering.se/traningsdagbok/installationshandledning.htm">swedish orienteering</a>. See also Microsofts own advertisement for Excel, it can be used to <a href="https://tinyurl.com/yzppdn6f">create fitness and diet plans</a>!</p></div></div><p>For scientific research, most people use additional software to do statistical analyses. If you have spent time in higher education, you have probably heard about SPSS, Stata, or Jamovi. These are all specialized software used for statistical analyses and can be part of a fully reproducible workflow. However, some software solutions suit this requirement better than others. Going back to the description of reproducible science as made by Peng et al. <span class="citation" data-cites="RN1492">(<a href="99-refs.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>, we want software where analyses can be</p>
+<ul>
+<li>Human- and computer-readable, meaning that we want to be able to write scripts or computer programs that execute the analyses.</li>
+<li>Documented, meaning that combined with the code, we want to be able to describe what the code does.</li>
+<li>Available and able to share with others, meaning that our analyses can be run on open and free software to maximize the ability to share them.</li>
+</ul>
+<p>Together this means that the software we would prefer should be run using scripts (as opposed to point and click) and be free of charge (and open source, as opposed to expensive and proprietary). These criteria can be fulfilled when we use software written around the R language (although alternatives exist <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>).</p>
+<div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;In addition to R, Python offers a free open source environment for reproducible analyses. The choice between the two are <a href="https://www.datacamp.com/community/tutorials/r-or-python-for-data-analysis">matter of taste</a>.</p></div></div><p>R is a computer language especially well suited for reproducible data analysis. As users can contribute software extensions, also called packages, many specialized software implementations exist for tasks such as creating figures or analysing specific data. Around R, people have been developing auxiliary software for reproducible data analysis. The negative part of all these opportunities is that using R requires effort. The learning curve is steep!</p>
+<p>Even though you might not use R ever again after this course, trying to learn it will let you know something about programming, modern data science capabilities, statistical analysis, and software/computers in general. These areas are all aspects of our modern society and are transferable regardless of what computer language we are talking about.</p>
+<p>A big challenge when working with complex analyses or other large projects over time is keeping track of changes. Another challenge might be effective collaboration with others and with yourself in the future. To overcome these challenges, we can use a version control system connected to a social platform for distributing computer code and data. Github is a web-based platform that provides this functionality. It is a potent combination if you want to collaborate and share what you are working on.</p>
+</section>
+<section id="installing-and-getting-to-know-the-required-software" class="level2 page-columns page-full" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="installing-and-getting-to-know-the-required-software"><span class="header-section-number">2.4</span> Installing and getting to know the required software</h2>
+<p>As noted above, there are multiple computer languages and software solutions that could satisfy our needs. However, in this course, we will focus on a combination of continuously improved tools to make it easy for the user to collaborate and communicate data analyses. Below is a check-list of what you must install on your system to take full advantage of the proposed tools.</p>
+<section id="r-and-rstudio" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="r-and-rstudio"><span class="header-section-number">2.4.1</span> R and RStudio</h3>
+<p><strong>R</strong> is a free, <a href="https://en.wikipedia.org/wiki/Open_source">open-source</a> software designed for statistical computing. We will use R as a part of an environment (using R Studio, introduced below). To download and install R:</p>
+<ol type="1">
+<li><p>Go to <a href="https://cran.uib.no/" class="uri">https://cran.uib.no/</a>,</p></li>
+<li><p>Select your operating system (Download R for Windows, MacOS or Linux).</p>
+<ul>
+<li>If you have Windows, choose <code>base</code>, click on “Download R (…) for windows”, save and run the file. The installation process should be self explanatory.</li>
+<li>If you have MacOS, download and install the latest release.</li>
+</ul></li>
+<li><p>Run the installer to install R.</p></li>
+</ol>
+<p><strong><a href="https://www.posit.co/">RStudio</a></strong> is a software designed to make it easier to use R. It is free to download and use. It is designed as an <strong>integrated development environment</strong> that lets you organize your work together with R and other tools. Install it by going to <a href="https://www.posit.co/" class="uri">https://www.posit.co/</a>.</p>
+<ol type="1">
+<li>Select “Products” and <strong>RStudio IDE</strong></li>
+<li>Scroll down and find the <a href="https://posit.co/downloads/">FREE open source edition</a></li>
+<li>Download the installer made for your operating system.</li>
+</ol>
+</section>
+<section id="git-and-github" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="git-and-github"><span class="header-section-number">2.4.2</span> Git and Github</h3>
+<p>Git is a software that you need to install on your system in order to use version control. Github is the web platform that allows collaboration and web-based storage of your work. First, we will install git.</p>
+<p>For windows:</p>
+<ol type="1">
+<li><p>If you have Windows, Go to <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> and download the latest version for your operating system.</p></li>
+<li><p>Run the installer. Make a note of where you installed it!</p></li>
+</ol>
+<p>For Mac:</p>
+<ol type="1">
+<li><p>If you are on Mac, the easiest thing is to first install <a href="https://brew.sh/"><em>Homebrew</em></a>, this will make it easy to get the latest version of what we will need. Go to <a href="https://brew.sh/">https://brew.sh/</a> and follow the instructions. Note that you will need to open the terminal and enter the install command.</p></li>
+<li><p>Install git by entering the follwing command in a freshly opened terminal:</p></li>
+</ol>
+<p><code>brew install git</code></p>
+<p>Check if git was installed by restarting the terminal and write</p>
+<p><code>git --version</code></p>
+<p>Additional warnings might appear indicating that you’ll need some extra software. More specifically, you might need Xcode command line tools. To install these, go to your terminal and enter</p>
+<p><code>xcode-select --install</code></p>
+<p>If you had problems with the homebrew installation itself or the brew installation of git before, try again after installing xcode command line tools.</p>
+</section>
+<section id="connecting-to-github" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="connecting-to-github"><span class="header-section-number">2.4.3</span> Connecting to GitHub</h3>
+<p>First we will let RStudio know where git is located</p>
+<ol type="1">
+<li>Open RStudio, go to <em>Global Options</em> under the <em>Tools</em> menu. Go to the <em>Git/SVN</em> sub-menu and find the <strong>folder where git.exe</strong> is located by browsing in the <em>“Git executable”</em> field.</li>
+</ol>
+<p><strong>On windows:</strong></p>
+<p>If you have installed git using default settings your <code>git.exe</code> should be located in <code>C:/Program Files/Git/bin/git.exe</code>.</p>
+<p><strong>On Mac</strong>:</p>
+<p>If you have installed git using homebrew, your git version <em>may</em> be found in <code>/usr/local/bin/git</code>.</p>
+<p>To register for a Github account</p>
+<ol type="1">
+<li>Go to <a href="www.github.com">Github.com</a>.</li>
+<li>Find “Sign up” and follow the instructions.</li>
+</ol>
+<p>Next we need to connect our git software to github. This is done by <em>authentication</em>. <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github">There are several options</a>, however below are two options that should work right away!</p>
+<section id="installing-github-desktop" class="level4" data-number="2.4.3.1">
+<h4 data-number="2.4.3.1" class="anchored" data-anchor-id="installing-github-desktop"><span class="header-section-number">2.4.3.1</span> Installing GitHub desktop</h4>
+<ol type="1">
+<li>Go to <a href="https://desktop.github.com/">desktop.github.com</a></li>
+<li>Download the installer and follow the instructions.</li>
+<li>Open GitHub Desktop and go to File &gt; Options &gt; Accounts and select <strong>Sign In</strong> to Github.com, follow the instructions</li>
+</ol>
+</section>
+<section id="installing-github-cli" class="level4" data-number="2.4.3.2">
+<h4 data-number="2.4.3.2" class="anchored" data-anchor-id="installing-github-cli"><span class="header-section-number">2.4.3.2</span> Installing Github CLI</h4>
+<p>If you were successful in authenticating with Github desktop as described above, you should be all set. However, as an alternative you could install and use Github CLI. This is a collection of command line commands that makes it easy to use github from the command line. I recommend installing them:</p>
+<ol type="1">
+<li>Go to <a href="https://cli.github.com/">https://cli.github.com/</a> and follow the instructions.</li>
+</ol>
+<ul>
+<li>For windows, install GitHub CLI with the installer.</li>
+<li>For Mac, use homebrew: <code>brew install gh</code></li>
+</ul>
+<p>Next we will perform the authentication process:</p>
+<ol type="1">
+<li>Open a terminal and type <code>gh auth login</code>, follow the instructions.</li>
+</ol>
+<p>Done!</p>
+</section>
+</section>
+<section id="a-note-on-git-and-clients" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="a-note-on-git-and-clients"><span class="header-section-number">2.4.4</span> A note on Git and clients</h3>
+<p>As noted above, git is a software containing a number of functions for version control of files collected in a folder (or repository). A client in this context refers to a <em>user interface</em> that makes it easy to communicate with git. RStudio has some features that makes it possible to execute git commands by clicking, however this <em>client</em> is not very powerful, you might want another, or several other alternatives.</p>
+<p>First, git is available from the command line. It might look like this:</p>
+<p><code>git add -A</code></p>
+<p>We will touch upon more git commands for the command line later. The above adds all changes you have made to a list of changes that will be included in your next snapshot of your project. More on that later!</p>
+<p>Several Git clients can be run at the same time. This means that you might do some git on the command line in a terminal window in RStudio, and you might follow the changes in a graphical user interface, such as <a href="https://desktop.github.com/">GitHub Desktop</a>. The graphical user interface lets you navigate more easily and might help you understand what git is doing. We will be using GitHub desktop, so you make sure you have installed it (see above).</p>
+</section>
+<section id="quarto-and-friends" class="level3 page-columns page-full" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="quarto-and-friends"><span class="header-section-number">2.4.5</span> Quarto and friends</h3>
+<p>The R community has pioneered literate programming for data analysis by early adoption of file formats that lets the user combine computer code and output with text <span class="citation" data-cites="RN1492">(<a href="99-refs.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>. A well adopted file format in recent years have been <a href="https://rmarkdown.rstudio.com/">R markdown</a> which combines R code with text and lets the user compile reports in multiple output formats from a source document. R markdown is an “R-centric” approach to literate programming. Even though it lets you combine multiple computer languages, all code execution goes through R. Recently, a new format was introduced, <a href="https://quarto.org/">Quarto</a>, which is not executed through R but its own dedicated software, Quarto.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-RN1492" class="csl-entry" role="listitem">
+Peng, R. D., F. Dominici, and S. L. Zeger. 2006. <span>“Reproducible Epidemiologic Research.”</span> Journal Article. <em>Am J Epidemiol</em> 163 (9): 783–89. <a href="https://doi.org/10.1093/aje/kwj093">https://doi.org/10.1093/aje/kwj093</a>.
+</div></div><p>Rmarkdown and Quarto have many similarities in that you can use markdown, a well established <a href="https://en.wikipedia.org/wiki/Markdown">markup language</a> to format text with a plain text editor (like notepad). This means that for the R user, most differences between RMarkdown and quarto in formatting your documents are irrelevant for getting started.</p>
+<p>As quarto authoring requires its own software, we need to do some installation.</p>
+<ol type="1">
+<li>Go to <a href="https://quarto.org/">quarto.org</a></li>
+<li>Click “<em>Get Started</em>” and follow the instructions.</li>
+</ol>
+<p>A nice output from a quarto source documents is a PDF. In order to create PDFs using R/RStudio/quarto we need to install a version of the typesetting system <a href="https://en.wikipedia.org/wiki/TeX">TeX</a>. Quarto recommends<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> using <a href="https://yihui.org/tinytex/">tinytex</a> which is easily installed after you have installed quarto.</p>
+<div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;See the quarto documentation for details on creating pdfs and installing TeX distributions https://quarto.org/docs/output-formats/pdf-basics.html</p></div></div><ol type="1">
+<li>Open up RStudio and a fresh terminal</li>
+<li>type <code>quarto install tinytex</code> and follow the instructions.</li>
+</ol>
+<p>You should be ready to go now!</p>
+</section>
+</section>
+<section id="summing-up-and-where-to-find-help" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="summing-up-and-where-to-find-help"><span class="header-section-number">2.5</span> Summing up and where to find help</h2>
+<p>We have installed R, RStudio, git, GitHub desktop/CLI, quarto and tinytex. You have also created a github account. These are the tools that you will need to go further in this course. But what if you run into problems? Do not worry, the internet is at your service! A lot of people work very hard to make it easy for beginners to adopt their tools. Documentation of the tools we have installed so far is available through google or any other search engine. People are also very helpful in answering questions, answers to large and small problems can be found in forums such as <a href="https://stackoverflow.com/">stack overflow</a>(see below).</p>
+<p>Learning new skills, like doing data analysis by programming, can be hard but rewarding. If you want to make your learning experience less hard, consider these points:</p>
+<ul>
+<li><strong>Practice by imitation</strong>. When you learn a new language, or when learning your first language as a baby you most likely start by imitating what you hear. Imitation is a pretty effective first step for learning a computer language too. Copy code, change small pieces and find out what it does. Whenever possible, <em>write code</em>, this will make you better at catching mistakes in your own code.<br>
+</li>
+<li><strong>There are (almost always) multiple solutions to a problem</strong>. When faced with difficulties, do not give up trying to search for a perfect single solution. Instead know that there are multiple ways of defining the problem and therefore multiple ways of making stuff work.</li>
+<li><strong>Someone else has already had the same problem</strong>. The internet is full of questions and answers, also related to what ever problem you might have. Learning how to write “googleable” questions is a great skill. By adding “in R” to your problem in a google search term often helps finding R related solutions.</li>
+<li><strong>Find your motivation</strong>. The skills that you will learn in this course are transferable to countless potential work related roles for the future you! The ability to showcase these skills may lead you to your dream job! Find your motivation for learning how to analyze data and communicating insights!</li>
+<li><strong>“Microdosing” statistical learning</strong>. Replace your social media influencers with R users and data scientists! I find R people on <a href="twitter.com">Twitter</a> and <a href="https://joinmastodon.org/">mastodon</a>. Tweets and posts in this format keeps your R brain going!</li>
+</ul>
+<section id="a-small-list-of-reference-material-and-resources" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="a-small-list-of-reference-material-and-resources"><span class="header-section-number">2.5.1</span> A (small) list of reference material and resources</h3>
+<ul>
+<li><p><a href="https://r4ds.hadley.nz/">R for Data Science</a> is a very comprehensive guide to working with R. It can be used chapter by chapter or by looking for tips on specific subjects.</p></li>
+<li><p>The official <a href="https://cran.r-project.org/doc/manuals/R-intro.pdf">An Introduction to R</a> released by the R Core Team gives a thorough overview of R. This document can be used to find explanations to basic R code.</p></li>
+<li><p><a href="https://learningstatisticswithr.com/">Learning statistics with R</a> Is a free textbook where statistical concepts are integrated with learning R. Use this book as a reference.</p></li>
+<li><p><a href="https://happygitwithr.com/index.html">Happy Git and GitHub for the useR</a> is used as background material for our workshop in version control and collaborative data analysis.</p></li>
+<li><p><a href="https://www.tidyverse.org/">Tidyverse</a> Is a collection of R packages that makes it easier to be productive in R. Here you will find documentation for ggplot, dplyr and tidyr which are all packages that we will use extensively in the course.</p></li>
+<li><p><a href="https://stackoverflow.com/">Stack overflow</a> is a web platform where users provide answers to questions raised by other users. Here you will find answers to many of your R-related questions. Stack overflow will likely come up if you google a R problem by you can also search the website.</p></li>
+<li><p><a href="https://www.r-bloggers.com/">R bloggers</a> collects blog posts from R users, here you can find interesting use cases of R and tips.</p></li>
+</ul>
+
+
+
+</section>
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Quantitative methods and statistics (In Sport and Exercise Science)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./02-spreadsheets.html" class="pagination-link" aria-label="Storing data in spreadsheets and understanding tabular data">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/01-intro-to-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/01-intro-to-data.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
