@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantitative methods and statistics (In Sport and Exercise Science) - 4&nbsp; Getting to know R and RStudio</title>
+<title>4&nbsp; Getting to know R and RStudio – Quantitative methods and statistics (In Sport and Exercise Science)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -414,7 +414,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-1","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"# Store the value 12 in an object called twelve\n\n# Call the object 'twelve'"},{"id":2,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-2","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"# Use 'y <-' to assign the expression to the object y "},{"id":3,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-3","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"# What is the natural logarithm of 50?\n\n"},{"id":4,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-4","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"# What is the natural logarithm of 25?\nmy_object <- 25\n\nlog(my_object)"},{"id":5,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-5","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":""},{"id":6,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-6","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"char <- \"a\"\n\nlogic <- TRUE\n\nnum <- 3.456\n\nint <- as.integer(2)\n\n\nnum + int\n\nnum + int + char + logic\n"},{"id":7,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-7","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"char <- \"this is a string\"\n\nas.numeric(char)"},{"id":8,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-8","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"weight <- c(85.1, 81.1, 48.9, 88.4)\nheight <- c(1.74, 1.81, 1.51, 1.92)\n\nBMI <- weight/height^2"},{"id":9,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-9","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"df <- data.frame(weight = c(85.1, 81.1, 48.9, 88.4), \n                 height = c(1.74, 1.81, 1.51, 1.92))\n\ndf$BMI <- df$weight / df$height^2"},{"id":10,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-10","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"df <- data.frame(name = c(\"David\", \"Even\", \"Julie\", \"Hubert\"), \n                 male = c(TRUE, TRUE, FALSE, TRUE), \n                 weight = c(85.1, 81.1, 48.9, 88.4), \n                 height = c(1.74, 1.81, 1.51, 1.92))\n"},{"id":11,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-11","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"df <- data.frame(name = c(\"David\", \"Even\", \"Julie\", \"Hubert\"), \n                 male = c(TRUE, TRUE, FALSE, TRUE), \n                 weight = c(85.1, 81.1, 48.9, 88.4), \n                 height = c(1.74, 1.81, 1.51, 1.92))\n\na_value <- 56\n\nmultiple_characters <- c(\"this\", \"is\", \"a\", \"string\")\n\nmy_list <- list(df, a_value, characters = multiple_characters)\n"},{"id":12,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-12","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"# Construct a vector of numbers\nmy_values <- c(3,4,6,7,5,7,8,9,2,1,3)\n# Create a logical test\nmy_values > 5"},{"id":13,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-13","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"colors <- c(\"green\", \"red\", \"violet\", \"brown\", \"green\", \"green\", \"blue\", \"green\", \"yellow\", \"yellow\", \"red\")\n\n# Combined conditions, both needs to be true\nmy_values > 5 & colors == \"green\""},{"id":14,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-14","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"my_values[my_values > 5 & colors == \"green\"]"},{"id":15,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-15","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"my_values[!(my_values > 5 & colors == \"green\")]"},{"id":16,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-16","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"any(colors == \"green\") # There are at least one TRUE\nall(colors == \"green\") # Not all values are TRUE"},{"id":17,"options":{"out-width":"700px","autorun":"false","out-height":"","label":"unnamed-chunk-17","output":"true","comment":"","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","message":"true","read-only":"false","fig-cap":"","fig-height":5,"warning":"true","fig-width":7,"editor-max-height":"","editor-quick-suggestions":"false","classes":"","context":"interactive","dpi":72},"code":"my_mean_function <- function(DATA) {\n  1/length(DATA) * sum(DATA)\n}\n\nmy_mean <- my_mean_function(my_values)"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"# Store the value 12 in an object called twelve\n\n# Call the object 'twelve'","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-1","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":2,"code":"# Use 'y <-' to assign the expression to the object y ","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-2","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":3,"code":"# What is the natural logarithm of 50?\n\n","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-3","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":4,"code":"# What is the natural logarithm of 25?\nmy_object <- 25\n\nlog(my_object)","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-4","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":5,"code":"","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-5","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":6,"code":"char <- \"a\"\n\nlogic <- TRUE\n\nnum <- 3.456\n\nint <- as.integer(2)\n\n\nnum + int\n\nnum + int + char + logic\n","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-6","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":7,"code":"char <- \"this is a string\"\n\nas.numeric(char)","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-7","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":8,"code":"weight <- c(85.1, 81.1, 48.9, 88.4)\nheight <- c(1.74, 1.81, 1.51, 1.92)\n\nBMI <- weight/height^2","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-8","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":9,"code":"df <- data.frame(weight = c(85.1, 81.1, 48.9, 88.4), \n                 height = c(1.74, 1.81, 1.51, 1.92))\n\ndf$BMI <- df$weight / df$height^2","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-9","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":10,"code":"df <- data.frame(name = c(\"David\", \"Even\", \"Julie\", \"Hubert\"), \n                 male = c(TRUE, TRUE, FALSE, TRUE), \n                 weight = c(85.1, 81.1, 48.9, 88.4), \n                 height = c(1.74, 1.81, 1.51, 1.92))\n","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-10","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":11,"code":"df <- data.frame(name = c(\"David\", \"Even\", \"Julie\", \"Hubert\"), \n                 male = c(TRUE, TRUE, FALSE, TRUE), \n                 weight = c(85.1, 81.1, 48.9, 88.4), \n                 height = c(1.74, 1.81, 1.51, 1.92))\n\na_value <- 56\n\nmultiple_characters <- c(\"this\", \"is\", \"a\", \"string\")\n\nmy_list <- list(df, a_value, characters = multiple_characters)\n","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-11","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":12,"code":"# Construct a vector of numbers\nmy_values <- c(3,4,6,7,5,7,8,9,2,1,3)\n# Create a logical test\nmy_values > 5","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-12","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":13,"code":"colors <- c(\"green\", \"red\", \"violet\", \"brown\", \"green\", \"green\", \"blue\", \"green\", \"yellow\", \"yellow\", \"red\")\n\n# Combined conditions, both needs to be true\nmy_values > 5 & colors == \"green\"","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-13","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":14,"code":"my_values[my_values > 5 & colors == \"green\"]","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-14","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":15,"code":"my_values[!(my_values > 5 & colors == \"green\")]","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-15","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":16,"code":"any(colors == \"green\") # There are at least one TRUE\nall(colors == \"green\") # Not all values are TRUE","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-16","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}},{"id":17,"code":"my_mean_function <- function(DATA) {\n  1/length(DATA) * sum(DATA)\n}\n\nmy_mean <- my_mean_function(my_values)","options":{"fig-cap":"","context":"interactive","editor-quick-suggestions":"false","out-height":"","label":"unnamed-chunk-17","editor-font-scale":"1","dpi":72,"comment":"","classes":"","warning":"true","editor-max-height":"","fig-height":5,"out-width":"700px","message":"true","results":"markup","autorun":"false","read-only":"false","editor-word-wrap":"true","output":"true","fig-width":7}}];
 
 </script>
 <script type="module">
@@ -1612,7 +1612,7 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -1650,13 +1650,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-intro-to-r.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -1729,6 +1729,18 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./07-version-control-git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-phys-lab-reliability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-mol-lab-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to the molecular exercise physiology lab</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -2084,7 +2096,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="the-anatomy-of-rstudio" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="the-anatomy-of-rstudio"><span class="header-section-number">4.1</span> The Anatomy of RStudio</h2>
 <p>The appearance of RStudio can be changed for a more pleasant user experience. I like a dark theme as it is easier on the eye. We can also move the different components of RStudio. I like to have the console on the top right and the source on the top left. I think this makes it easier to see output when coding interactively. All this will be clearer as thing evolve, but for now, start R Studio, go to Tools &gt; Global options and make it personal (see <a href="#fig-customize" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>)!</p>
-<div id="fig-customize" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-customize" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-customize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/ch3/03-customizerstudio.gif" class="img-fluid figure-img">
@@ -2133,7 +2145,7 @@ Defining concepts
 <section id="files-plots-packages-and-help-files" class="level3" data-number="4.1.4">
 <h3 data-number="4.1.4" class="anchored" data-anchor-id="files-plots-packages-and-help-files"><span class="header-section-number">4.1.4</span> Files, plots, packages and help files</h3>
 <p>In RStudio files are accessible from the Files tab. The files tab shows the files in you root folder. The root folder is where R will search for files if you tell it to. We will talk more about the root folder later in connection with projects. Plots are displayed in the Plot tab. Packages are listed in the packages tab. If you access the help files, these will be displayed in the help tab. In the image below all these tabs are in the bottom right corner. More on help files and packages later.</p>
-<div id="fig-interactionrstudio" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-interactionrstudio" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-interactionrstudio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/ch3/03-interactingrstudio.gif" class="img-fluid figure-img">
@@ -2245,7 +2257,7 @@ Chambers, John M. 2009. <em>Software for Data Analysis: Programming with <span>R
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>In the example above we used the ‘greater than’ operator (<code>&gt;</code>). There are a few more usefull operators:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Operator</th>
@@ -2362,7 +2374,7 @@ my_values &gt; 5 | colors == "green"
 <section id="r-scripts" class="level3" data-number="4.5.1">
 <h3 data-number="4.5.1" class="anchored" data-anchor-id="r-scripts"><span class="header-section-number">4.5.1</span> R scripts</h3>
 <p>The most basic file format for R code is an R script, as we have already touched upon. An R script contains code and comments. Code is executed by R and comments are ignored. Ideally, R scripts are commented to improve readability of what the do. Commenting code is also a good way of creating a roadmap of what you want to do. In the image below (<a href="#fig-rscript" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>), R code is written based on a plan written with comments. Note that when a line starts with at least one <code>#</code> it is interpreted by R as a comment.</p>
-<div id="fig-rscript" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-rscript" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rscript-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/ch3/03-rscript.gif" class="img-fluid figure-img">
@@ -2584,18 +2596,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2627,7 +2628,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -2635,7 +2658,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

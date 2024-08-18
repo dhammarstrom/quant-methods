@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantitative methods and statistics (In Sport and Exercise Science) - 7&nbsp; Writing your first reproducible report</title>
+<title>7&nbsp; Writing your first reproducible report – Quantitative methods and statistics (In Sport and Exercise Science)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -125,7 +125,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -163,13 +163,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-writing-reports.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -246,6 +246,18 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./08-phys-lab-reliability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-mol-lab-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to the molecular exercise physiology lab</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-refs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -267,7 +279,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#authoring-reports-in-quarto" id="toc-authoring-reports-in-quarto" class="nav-link" data-scroll-target="#authoring-reports-in-quarto"><span class="header-section-number">7.3</span> Authoring reports in quarto</a>
   <ul class="collapse">
-  <li><a href="#the-markdown-syntax-and-friends" id="toc-the-markdown-syntax-and-friends" class="nav-link" data-scroll-target="#the-markdown-syntax-and-friends"><span class="header-section-number">7.3.1</span> The Markdown syntax, and friends</a></li>
+  <li><a href="#sec-markdown" id="toc-sec-markdown" class="nav-link" data-scroll-target="#sec-markdown"><span class="header-section-number">7.3.1</span> The Markdown syntax, and friends</a></li>
   <li><a href="#additional-formatting" id="toc-additional-formatting" class="nav-link" data-scroll-target="#additional-formatting"><span class="header-section-number">7.3.2</span> Additional formatting</a></li>
   <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">7.3.3</span> Code chunks</a></li>
   <li><a href="#sec-cross-reference" id="toc-sec-cross-reference" class="nav-link" data-scroll-target="#sec-cross-reference"><span class="header-section-number">7.3.4</span> Cross-referencing, references and footnotes</a></li>
@@ -293,7 +305,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></h1>
+<h1 class="title"><span id="sec-first-report" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Writing your first reproducible report</span></span></h1>
 </div>
 
 
@@ -351,8 +363,8 @@ window.Quarto = {
 <h2 data-number="7.3" class="anchored" data-anchor-id="authoring-reports-in-quarto"><span class="header-section-number">7.3</span> Authoring reports in quarto</h2>
 <p>So much fuzz just for writing a report? Yes, it is a bit more work to get started. The upside is that this system is easier to navigate with increasing complexity compared to a system where text, figures, tables and software are located on different locations in your computer and the final report requires copy-paste operations.</p>
 <p>As mentioned before, we will focus on the more modern format for authoring reports in R, quarto. In this section we will introduce the basic building blocks of a report and how to put them together. We have already covered figures and tables, now its time to put that into context.</p>
-<section id="the-markdown-syntax-and-friends" class="level3 page-columns page-full" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="the-markdown-syntax-and-friends"><span class="header-section-number">7.3.1</span> The Markdown syntax, and friends</h3>
+<section id="sec-markdown" class="level3 page-columns page-full" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="sec-markdown"><span class="header-section-number">7.3.1</span> The Markdown syntax, and friends</h3>
 <p>We have already mentioned the markup language <strong>markdown</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This enables an author like yourself to format your text in a plain text editor. This has the advantage of keeping formatting explicit and available from the keyboard. In a word editor like MS Word, formatting is sometimes not obvious and you need to point and click make changes. The R-markdown style of markdown includes the ability to combine code in code chunks and embedded in text. This makes it possible to include code output in the final report. Another technical achievement that makes RMarkdown and quarto possible is Pandoc, a general document conversion software. Pandoc can convert files from one format to another, this includes the operations that we use, from markdown to HTML, PDF or Word. Both markdown and pandoc are free and open source software that makes life easy for us!</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Markdown was introduced in 2004 as a syntax to convert plain text to formatted HTML. Markdown is primarily attributed to <a href="https://daringfireball.net/projects/markdown/">John Gruber</a>.</p></div></div><section id="markdown-basics" class="level4" data-number="7.3.1.1">
 <h4 data-number="7.3.1.1" class="anchored" data-anchor-id="markdown-basics"><span class="header-section-number">7.3.1.1</span> Markdown basics</h4>
@@ -371,7 +383,7 @@ window.Quarto = {
 </ul>
 <p>Links can be added <a href="https://rmarkdown.rstudio.com/authoring_basics.html">like this</a>.</p>
 <p>A table can be added also, like this:</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Column 1</th>
@@ -489,7 +501,7 @@ F=ma
 <p>We have mentioned cross-referencing above, this basically means referencing specific parts of your document in the text. A figure might be mentioned in the text, such as <a href="#fig-figure-example" class="quarto-xref">Figure&nbsp;<span>7.1</span></a>. To insert the cross-reference in text, use the <code>@fig-label</code> syntax where <code>fig-</code> is the required prefix for figures and <code>label</code> is a user defined unique identifier. The label should be included in the code chunk under such as <code>#| label: fig-label</code>. The equivalent prefix for tables is <code>tbl-</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figure-example" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-figure-example" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-figure-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="06-writing-reports_files/figure-html/fig-figure-example-1.png" class="img-fluid figure-img" width="672">
@@ -824,18 +836,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -867,7 +868,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -875,7 +898,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

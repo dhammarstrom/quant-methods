@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantitative methods and statistics (In Sport and Exercise Science) - 6&nbsp; Wrangling data to create your first table</title>
+<title>6&nbsp; Wrangling data to create your first table – Quantitative methods and statistics (In Sport and Exercise Science)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -125,7 +125,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -163,13 +163,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-first-tables.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling data to create your first table</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -246,6 +246,18 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./08-phys-lab-reliability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-mol-lab-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to the molecular exercise physiology lab</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-refs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -260,7 +272,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a>
+  <li><a href="#sec-first-table" id="toc-sec-first-table" class="nav-link active" data-scroll-target="#sec-first-table"><span class="header-section-number">6.1</span> Introduction</a>
   <ul class="collapse">
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">6.1.1</span> Resources</a></li>
   </ul></li>
@@ -300,8 +312,8 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
+<section id="sec-first-table" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="sec-first-table"><span class="header-section-number">6.1</span> Introduction</h2>
 <p>We can use tables to communicate a lot of information in a compact form while maintaining precision. This advantage is why creating tables is essential for effectively communicating data. We can easily create tables programmatically as part of an R markdown or quarto document. R has many “table generator” packages that translate your draft table to an output format of your choice. A great format to start authoring an analysis in is HTML; however, most “table generators” need to know your output format to be properly formatted and work in the output format. Below we will introduce a new package for the purpose of creating tables. This package, <code>gt</code> has the advantage that it does not require the user to change code when we switch to another output format. The <code>gt</code> package can create tables in HTML, PDF and word format.</p>
 <p>Since we are concerned with reproducibility, we would like to avoid copy-and-paste operations. The strength of writing reports in R markdown or quarto is the ability to combine data, code, and text to produce a formatted output programmatically. Therefore, We will choose a table generator that allows for consistently selecting multiple formats. One such table generator is part of the <code>gt</code> package.</p>
 <p>As mentioned previously, authoring in R markdown and quarto makes little difference. However, we will now focus on the more modern file format, quarto, knowing that examples and tutorials written in R markdown will translate to quarto with few problems.</p>
@@ -322,31 +334,30 @@ window.Quarto = {
 </div>
 <p>The end result of this exercise can be found below in <a href="#tbl-table1-example" class="quarto-xref">Table&nbsp;<span>6.1</span></a>. This summary table contains the average and standard deviation per group for the variables age, body mass and stature (height) and body fat as a percentage of the body mass. This table is a reproduction of the first part of Table 1 from <span class="citation" data-cites="RN2358">(<a href="99-refs.html#ref-RN2358" role="doc-biblioref">Hammarström et al. 2020</a>)</span>.</p>
 <div class="no-row-height column-margin column-container"></div><div class="cell">
-<div id="tbl-table1-example" class="cell quarto-float anchored">
+<div id="tbl-table1-example" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-table1-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.1: Participant characteristics
 </figcaption>
 <div aria-describedby="tbl-table1-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div>
-<div id="jzpybmhbvb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jzpybmhbvb table {
+<div id="gwipzzaalu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gwipzzaalu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jzpybmhbvb thead, #jzpybmhbvb tbody, #jzpybmhbvb tfoot, #jzpybmhbvb tr, #jzpybmhbvb td, #jzpybmhbvb th {
+#gwipzzaalu thead, #gwipzzaalu tbody, #gwipzzaalu tfoot, #gwipzzaalu tr, #gwipzzaalu td, #gwipzzaalu th {
   border-style: none;
 }
 
-#jzpybmhbvb p {
+#gwipzzaalu p {
   margin: 0;
   padding: 0;
 }
 
-#jzpybmhbvb .gt_table {
+#gwipzzaalu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -372,12 +383,12 @@ Table&nbsp;6.1: Participant characteristics
   border-left-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_caption {
+#gwipzzaalu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jzpybmhbvb .gt_title {
+#gwipzzaalu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -389,7 +400,7 @@ Table&nbsp;6.1: Participant characteristics
   border-bottom-width: 0;
 }
 
-#jzpybmhbvb .gt_subtitle {
+#gwipzzaalu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -401,7 +412,7 @@ Table&nbsp;6.1: Participant characteristics
   border-top-width: 0;
 }
 
-#jzpybmhbvb .gt_heading {
+#gwipzzaalu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -413,13 +424,13 @@ Table&nbsp;6.1: Participant characteristics
   border-right-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_bottom_border {
+#gwipzzaalu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_col_headings {
+#gwipzzaalu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -434,7 +445,7 @@ Table&nbsp;6.1: Participant characteristics
   border-right-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_col_heading {
+#gwipzzaalu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -454,7 +465,7 @@ Table&nbsp;6.1: Participant characteristics
   overflow-x: hidden;
 }
 
-#jzpybmhbvb .gt_column_spanner_outer {
+#gwipzzaalu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -466,15 +477,15 @@ Table&nbsp;6.1: Participant characteristics
   padding-right: 4px;
 }
 
-#jzpybmhbvb .gt_column_spanner_outer:first-child {
+#gwipzzaalu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jzpybmhbvb .gt_column_spanner_outer:last-child {
+#gwipzzaalu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jzpybmhbvb .gt_column_spanner {
+#gwipzzaalu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -486,11 +497,11 @@ Table&nbsp;6.1: Participant characteristics
   width: 100%;
 }
 
-#jzpybmhbvb .gt_spanner_row {
+#gwipzzaalu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jzpybmhbvb .gt_group_heading {
+#gwipzzaalu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -516,7 +527,7 @@ Table&nbsp;6.1: Participant characteristics
   text-align: left;
 }
 
-#jzpybmhbvb .gt_empty_group_heading {
+#gwipzzaalu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -531,15 +542,15 @@ Table&nbsp;6.1: Participant characteristics
   vertical-align: middle;
 }
 
-#jzpybmhbvb .gt_from_md > :first-child {
+#gwipzzaalu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jzpybmhbvb .gt_from_md > :last-child {
+#gwipzzaalu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jzpybmhbvb .gt_row {
+#gwipzzaalu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -558,7 +569,7 @@ Table&nbsp;6.1: Participant characteristics
   overflow-x: hidden;
 }
 
-#jzpybmhbvb .gt_stub {
+#gwipzzaalu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -571,7 +582,7 @@ Table&nbsp;6.1: Participant characteristics
   padding-right: 5px;
 }
 
-#jzpybmhbvb .gt_stub_row_group {
+#gwipzzaalu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -585,15 +596,15 @@ Table&nbsp;6.1: Participant characteristics
   vertical-align: top;
 }
 
-#jzpybmhbvb .gt_row_group_first td {
+#gwipzzaalu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jzpybmhbvb .gt_row_group_first th {
+#gwipzzaalu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jzpybmhbvb .gt_summary_row {
+#gwipzzaalu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -603,16 +614,16 @@ Table&nbsp;6.1: Participant characteristics
   padding-right: 5px;
 }
 
-#jzpybmhbvb .gt_first_summary_row {
+#gwipzzaalu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_first_summary_row.thick {
+#gwipzzaalu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jzpybmhbvb .gt_last_summary_row {
+#gwipzzaalu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -622,7 +633,7 @@ Table&nbsp;6.1: Participant characteristics
   border-bottom-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_grand_summary_row {
+#gwipzzaalu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -632,7 +643,7 @@ Table&nbsp;6.1: Participant characteristics
   padding-right: 5px;
 }
 
-#jzpybmhbvb .gt_first_grand_summary_row {
+#gwipzzaalu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -642,7 +653,7 @@ Table&nbsp;6.1: Participant characteristics
   border-top-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_last_grand_summary_row_top {
+#gwipzzaalu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -652,11 +663,11 @@ Table&nbsp;6.1: Participant characteristics
   border-bottom-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_striped {
+#gwipzzaalu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jzpybmhbvb .gt_table_body {
+#gwipzzaalu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -665,7 +676,7 @@ Table&nbsp;6.1: Participant characteristics
   border-bottom-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_footnotes {
+#gwipzzaalu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -679,7 +690,7 @@ Table&nbsp;6.1: Participant characteristics
   border-right-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_footnote {
+#gwipzzaalu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -688,7 +699,7 @@ Table&nbsp;6.1: Participant characteristics
   padding-right: 5px;
 }
 
-#jzpybmhbvb .gt_sourcenotes {
+#gwipzzaalu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -702,7 +713,7 @@ Table&nbsp;6.1: Participant characteristics
   border-right-color: #D3D3D3;
 }
 
-#jzpybmhbvb .gt_sourcenote {
+#gwipzzaalu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -710,77 +721,77 @@ Table&nbsp;6.1: Participant characteristics
   padding-right: 5px;
 }
 
-#jzpybmhbvb .gt_left {
+#gwipzzaalu .gt_left {
   text-align: left;
 }
 
-#jzpybmhbvb .gt_center {
+#gwipzzaalu .gt_center {
   text-align: center;
 }
 
-#jzpybmhbvb .gt_right {
+#gwipzzaalu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jzpybmhbvb .gt_font_normal {
+#gwipzzaalu .gt_font_normal {
   font-weight: normal;
 }
 
-#jzpybmhbvb .gt_font_bold {
+#gwipzzaalu .gt_font_bold {
   font-weight: bold;
 }
 
-#jzpybmhbvb .gt_font_italic {
+#gwipzzaalu .gt_font_italic {
   font-style: italic;
 }
 
-#jzpybmhbvb .gt_super {
+#gwipzzaalu .gt_super {
   font-size: 65%;
 }
 
-#jzpybmhbvb .gt_footnote_marks {
+#gwipzzaalu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jzpybmhbvb .gt_asterisk {
+#gwipzzaalu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jzpybmhbvb .gt_indent_1 {
+#gwipzzaalu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jzpybmhbvb .gt_indent_2 {
+#gwipzzaalu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jzpybmhbvb .gt_indent_3 {
+#gwipzzaalu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jzpybmhbvb .gt_indent_4 {
+#gwipzzaalu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jzpybmhbvb .gt_indent_5 {
+#gwipzzaalu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jzpybmhbvb .katex-display {
+#gwipzzaalu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jzpybmhbvb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gwipzzaalu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_col_headings gt_spanner_row">
 <th rowspan="2" id=" " class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"></th>
@@ -838,7 +849,6 @@ Table&nbsp;6.1: Participant characteristics
 
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1534,31 +1544,30 @@ the `.groups` argument.</code></pre>
 <pre><code>`summarise()` has grouped output by 'sex', 'include'. You can override using
 the `.groups` argument.</code></pre>
 </div>
-<div id="tbl-table2" class="cell quarto-float anchored">
+<div id="tbl-table2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-table2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;6.2: Participant characteristics
 </figcaption>
 <div aria-describedby="tbl-table2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div>
-<div id="mlwoofmanz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mlwoofmanz table {
+<div id="nskxxwqjum" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nskxxwqjum table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mlwoofmanz thead, #mlwoofmanz tbody, #mlwoofmanz tfoot, #mlwoofmanz tr, #mlwoofmanz td, #mlwoofmanz th {
+#nskxxwqjum thead, #nskxxwqjum tbody, #nskxxwqjum tfoot, #nskxxwqjum tr, #nskxxwqjum td, #nskxxwqjum th {
   border-style: none;
 }
 
-#mlwoofmanz p {
+#nskxxwqjum p {
   margin: 0;
   padding: 0;
 }
 
-#mlwoofmanz .gt_table {
+#nskxxwqjum .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1584,12 +1593,12 @@ Table&nbsp;6.2: Participant characteristics
   border-left-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_caption {
+#nskxxwqjum .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mlwoofmanz .gt_title {
+#nskxxwqjum .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1601,7 +1610,7 @@ Table&nbsp;6.2: Participant characteristics
   border-bottom-width: 0;
 }
 
-#mlwoofmanz .gt_subtitle {
+#nskxxwqjum .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1613,7 +1622,7 @@ Table&nbsp;6.2: Participant characteristics
   border-top-width: 0;
 }
 
-#mlwoofmanz .gt_heading {
+#nskxxwqjum .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1625,13 +1634,13 @@ Table&nbsp;6.2: Participant characteristics
   border-right-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_bottom_border {
+#nskxxwqjum .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_col_headings {
+#nskxxwqjum .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1646,7 +1655,7 @@ Table&nbsp;6.2: Participant characteristics
   border-right-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_col_heading {
+#nskxxwqjum .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1666,7 +1675,7 @@ Table&nbsp;6.2: Participant characteristics
   overflow-x: hidden;
 }
 
-#mlwoofmanz .gt_column_spanner_outer {
+#nskxxwqjum .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1678,15 +1687,15 @@ Table&nbsp;6.2: Participant characteristics
   padding-right: 4px;
 }
 
-#mlwoofmanz .gt_column_spanner_outer:first-child {
+#nskxxwqjum .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mlwoofmanz .gt_column_spanner_outer:last-child {
+#nskxxwqjum .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mlwoofmanz .gt_column_spanner {
+#nskxxwqjum .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1698,11 +1707,11 @@ Table&nbsp;6.2: Participant characteristics
   width: 100%;
 }
 
-#mlwoofmanz .gt_spanner_row {
+#nskxxwqjum .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mlwoofmanz .gt_group_heading {
+#nskxxwqjum .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1728,7 +1737,7 @@ Table&nbsp;6.2: Participant characteristics
   text-align: left;
 }
 
-#mlwoofmanz .gt_empty_group_heading {
+#nskxxwqjum .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1743,15 +1752,15 @@ Table&nbsp;6.2: Participant characteristics
   vertical-align: middle;
 }
 
-#mlwoofmanz .gt_from_md > :first-child {
+#nskxxwqjum .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mlwoofmanz .gt_from_md > :last-child {
+#nskxxwqjum .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mlwoofmanz .gt_row {
+#nskxxwqjum .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1770,7 +1779,7 @@ Table&nbsp;6.2: Participant characteristics
   overflow-x: hidden;
 }
 
-#mlwoofmanz .gt_stub {
+#nskxxwqjum .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1783,7 +1792,7 @@ Table&nbsp;6.2: Participant characteristics
   padding-right: 5px;
 }
 
-#mlwoofmanz .gt_stub_row_group {
+#nskxxwqjum .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1797,15 +1806,15 @@ Table&nbsp;6.2: Participant characteristics
   vertical-align: top;
 }
 
-#mlwoofmanz .gt_row_group_first td {
+#nskxxwqjum .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mlwoofmanz .gt_row_group_first th {
+#nskxxwqjum .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mlwoofmanz .gt_summary_row {
+#nskxxwqjum .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1815,16 +1824,16 @@ Table&nbsp;6.2: Participant characteristics
   padding-right: 5px;
 }
 
-#mlwoofmanz .gt_first_summary_row {
+#nskxxwqjum .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_first_summary_row.thick {
+#nskxxwqjum .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mlwoofmanz .gt_last_summary_row {
+#nskxxwqjum .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1834,7 +1843,7 @@ Table&nbsp;6.2: Participant characteristics
   border-bottom-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_grand_summary_row {
+#nskxxwqjum .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1844,7 +1853,7 @@ Table&nbsp;6.2: Participant characteristics
   padding-right: 5px;
 }
 
-#mlwoofmanz .gt_first_grand_summary_row {
+#nskxxwqjum .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1854,7 +1863,7 @@ Table&nbsp;6.2: Participant characteristics
   border-top-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_last_grand_summary_row_top {
+#nskxxwqjum .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1864,11 +1873,11 @@ Table&nbsp;6.2: Participant characteristics
   border-bottom-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_striped {
+#nskxxwqjum .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mlwoofmanz .gt_table_body {
+#nskxxwqjum .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1877,7 +1886,7 @@ Table&nbsp;6.2: Participant characteristics
   border-bottom-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_footnotes {
+#nskxxwqjum .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1891,7 +1900,7 @@ Table&nbsp;6.2: Participant characteristics
   border-right-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_footnote {
+#nskxxwqjum .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1900,7 +1909,7 @@ Table&nbsp;6.2: Participant characteristics
   padding-right: 5px;
 }
 
-#mlwoofmanz .gt_sourcenotes {
+#nskxxwqjum .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1914,7 +1923,7 @@ Table&nbsp;6.2: Participant characteristics
   border-right-color: #D3D3D3;
 }
 
-#mlwoofmanz .gt_sourcenote {
+#nskxxwqjum .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1922,77 +1931,77 @@ Table&nbsp;6.2: Participant characteristics
   padding-right: 5px;
 }
 
-#mlwoofmanz .gt_left {
+#nskxxwqjum .gt_left {
   text-align: left;
 }
 
-#mlwoofmanz .gt_center {
+#nskxxwqjum .gt_center {
   text-align: center;
 }
 
-#mlwoofmanz .gt_right {
+#nskxxwqjum .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mlwoofmanz .gt_font_normal {
+#nskxxwqjum .gt_font_normal {
   font-weight: normal;
 }
 
-#mlwoofmanz .gt_font_bold {
+#nskxxwqjum .gt_font_bold {
   font-weight: bold;
 }
 
-#mlwoofmanz .gt_font_italic {
+#nskxxwqjum .gt_font_italic {
   font-style: italic;
 }
 
-#mlwoofmanz .gt_super {
+#nskxxwqjum .gt_super {
   font-size: 65%;
 }
 
-#mlwoofmanz .gt_footnote_marks {
+#nskxxwqjum .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mlwoofmanz .gt_asterisk {
+#nskxxwqjum .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mlwoofmanz .gt_indent_1 {
+#nskxxwqjum .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mlwoofmanz .gt_indent_2 {
+#nskxxwqjum .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mlwoofmanz .gt_indent_3 {
+#nskxxwqjum .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mlwoofmanz .gt_indent_4 {
+#nskxxwqjum .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mlwoofmanz .gt_indent_5 {
+#nskxxwqjum .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mlwoofmanz .katex-display {
+#nskxxwqjum .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mlwoofmanz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nskxxwqjum div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_col_headings gt_spanner_row">
 <th rowspan="2" id=" " class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"></th>
@@ -2053,7 +2062,6 @@ Table&nbsp;6.2: Participant characteristics
 </div>
 </div>
 </div>
-</div>
 </figure>
 </div>
 </div>
@@ -2069,24 +2077,23 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
 </div></div><p>In this exercise we want to reproduce a big part of Table 1 in <span class="citation" data-cites="RN2225">(<a href="99-refs.html#ref-RN2225" role="doc-biblioref">Haun et al. 2019</a>)</span>. The Table as re-produced here can be seen below. See the original article for explanation of clusters. To select variables, see the data description in the <code>exscidata</code> package, the data set is called <code>hypertrophy</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<div id="rjltansfcm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rjltansfcm table {
+<div id="ommochrkrs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ommochrkrs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rjltansfcm thead, #rjltansfcm tbody, #rjltansfcm tfoot, #rjltansfcm tr, #rjltansfcm td, #rjltansfcm th {
+#ommochrkrs thead, #ommochrkrs tbody, #ommochrkrs tfoot, #ommochrkrs tr, #ommochrkrs td, #ommochrkrs th {
   border-style: none;
 }
 
-#rjltansfcm p {
+#ommochrkrs p {
   margin: 0;
   padding: 0;
 }
 
-#rjltansfcm .gt_table {
+#ommochrkrs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2112,12 +2119,12 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-left-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_caption {
+#ommochrkrs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rjltansfcm .gt_title {
+#ommochrkrs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2129,7 +2136,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-bottom-width: 0;
 }
 
-#rjltansfcm .gt_subtitle {
+#ommochrkrs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2141,7 +2148,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-top-width: 0;
 }
 
-#rjltansfcm .gt_heading {
+#ommochrkrs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2153,13 +2160,13 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-right-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_bottom_border {
+#ommochrkrs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_col_headings {
+#ommochrkrs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2174,7 +2181,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-right-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_col_heading {
+#ommochrkrs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2194,7 +2201,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   overflow-x: hidden;
 }
 
-#rjltansfcm .gt_column_spanner_outer {
+#ommochrkrs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2206,15 +2213,15 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   padding-right: 4px;
 }
 
-#rjltansfcm .gt_column_spanner_outer:first-child {
+#ommochrkrs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rjltansfcm .gt_column_spanner_outer:last-child {
+#ommochrkrs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rjltansfcm .gt_column_spanner {
+#ommochrkrs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2226,11 +2233,11 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   width: 100%;
 }
 
-#rjltansfcm .gt_spanner_row {
+#ommochrkrs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rjltansfcm .gt_group_heading {
+#ommochrkrs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2256,7 +2263,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   text-align: left;
 }
 
-#rjltansfcm .gt_empty_group_heading {
+#ommochrkrs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2271,15 +2278,15 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   vertical-align: middle;
 }
 
-#rjltansfcm .gt_from_md > :first-child {
+#ommochrkrs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rjltansfcm .gt_from_md > :last-child {
+#ommochrkrs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rjltansfcm .gt_row {
+#ommochrkrs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2298,7 +2305,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   overflow-x: hidden;
 }
 
-#rjltansfcm .gt_stub {
+#ommochrkrs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2311,7 +2318,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   padding-right: 5px;
 }
 
-#rjltansfcm .gt_stub_row_group {
+#ommochrkrs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2325,15 +2332,15 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   vertical-align: top;
 }
 
-#rjltansfcm .gt_row_group_first td {
+#ommochrkrs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rjltansfcm .gt_row_group_first th {
+#ommochrkrs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rjltansfcm .gt_summary_row {
+#ommochrkrs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2343,16 +2350,16 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   padding-right: 5px;
 }
 
-#rjltansfcm .gt_first_summary_row {
+#ommochrkrs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_first_summary_row.thick {
+#ommochrkrs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rjltansfcm .gt_last_summary_row {
+#ommochrkrs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2362,7 +2369,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-bottom-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_grand_summary_row {
+#ommochrkrs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2372,7 +2379,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   padding-right: 5px;
 }
 
-#rjltansfcm .gt_first_grand_summary_row {
+#ommochrkrs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2382,7 +2389,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-top-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_last_grand_summary_row_top {
+#ommochrkrs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2392,11 +2399,11 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-bottom-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_striped {
+#ommochrkrs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rjltansfcm .gt_table_body {
+#ommochrkrs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2405,7 +2412,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-bottom-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_footnotes {
+#ommochrkrs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2419,7 +2426,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-right-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_footnote {
+#ommochrkrs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2428,7 +2435,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   padding-right: 5px;
 }
 
-#rjltansfcm .gt_sourcenotes {
+#ommochrkrs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2442,7 +2449,7 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   border-right-color: #D3D3D3;
 }
 
-#rjltansfcm .gt_sourcenote {
+#ommochrkrs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2450,77 +2457,77 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
   padding-right: 5px;
 }
 
-#rjltansfcm .gt_left {
+#ommochrkrs .gt_left {
   text-align: left;
 }
 
-#rjltansfcm .gt_center {
+#ommochrkrs .gt_center {
   text-align: center;
 }
 
-#rjltansfcm .gt_right {
+#ommochrkrs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rjltansfcm .gt_font_normal {
+#ommochrkrs .gt_font_normal {
   font-weight: normal;
 }
 
-#rjltansfcm .gt_font_bold {
+#ommochrkrs .gt_font_bold {
   font-weight: bold;
 }
 
-#rjltansfcm .gt_font_italic {
+#ommochrkrs .gt_font_italic {
   font-style: italic;
 }
 
-#rjltansfcm .gt_super {
+#ommochrkrs .gt_super {
   font-size: 65%;
 }
 
-#rjltansfcm .gt_footnote_marks {
+#ommochrkrs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rjltansfcm .gt_asterisk {
+#ommochrkrs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rjltansfcm .gt_indent_1 {
+#ommochrkrs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rjltansfcm .gt_indent_2 {
+#ommochrkrs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rjltansfcm .gt_indent_3 {
+#ommochrkrs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rjltansfcm .gt_indent_4 {
+#ommochrkrs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rjltansfcm .gt_indent_5 {
+#ommochrkrs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rjltansfcm .katex-display {
+#ommochrkrs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rjltansfcm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ommochrkrs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <caption>Baseline characteristics at PRE and back squat training volume between clusters</caption>
 <thead>
 <tr class="header gt_col_headings">
@@ -2578,7 +2585,6 @@ Haun, C. T., C G. Vann, C. Brooks Mobley, Shelby C. Osburn, Petey W. Mumford, Pa
 
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -2830,18 +2836,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2873,7 +2868,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -2881,7 +2898,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Daniel Hammarström">
-<meta name="description" content="These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences.">
 
-<title>Quantitative methods and statistics (In Sport and Exercise Science)</title>
+<title>9&nbsp; Reliability in the physiology lab – Quantitative methods and statistics (In Sport and Exercise Science)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -32,7 +84,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-intro-to-data.html" rel="next">
+<link href="./10-mol-lab-intro.html" rel="next">
+<link href="./07-version-control-git.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,10 +125,39 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -84,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-phys-lab-reliability.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -116,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Quantitative methods and statistics (In Sport and Exercise Science)</span></span></a>
   </div>
 </li>
@@ -164,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-phys-lab-reliability.html" class="sidebar-item-text sidebar-link">
+  <a href="./08-phys-lab-reliability.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></span></a>
   </div>
 </li>
@@ -190,43 +272,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
-  <ul class="collapse">
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">1.1</span> Prerequisites</a></li>
-  </ul></li>
+  <li><a href="#smallest-worthwhile-change-or-effect" id="toc-smallest-worthwhile-change-or-effect" class="nav-link active" data-scroll-target="#smallest-worthwhile-change-or-effect"><span class="header-section-number">9.1</span> Smallest worthwhile change or effect</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/08-phys-lab-reliability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/08-phys-lab-reliability.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quantitative methods and statistics (In Sport and Exercise Science)</h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></h1>
 </div>
 
-<div>
-  <div class="description">
-    These course notes let’s you follow along in the course Quantitative methods and Statistics (IDR4000) as given at the Section for Health and Exercise Physiology, Inland University of Applied Sciences.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Daniel Hammarström </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">Updated: 2024-08-18</p>
-    </div>
-  </div>
   
     
   </div>
@@ -236,18 +298,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>We will follow Hopkins definition of reliability in this section <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>, and specifically concern ourselves with reliability in test/measurements that produces continuous numbers as results. For this purpose you have collected data in several tests (or measurements), at least two times, from several individuals. You can now estimate the reliability of each test (or measurement). The reliability, expressed as typical error is an estimate of what we may expect as the random variation around a measurement if repeated under similar circumstances in the same individual <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"></div><p>Hopkins <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span> details two measures of reliability for estimates of within-individual reliability that are closely related, the typical error and limits of agreement. Using the example data in <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span> we can calculate first the typical error.</p>
+<p>We will take advantage of the change scores between two duplicate measures and derive the estimate of the typical error from them. (To run the code, copy and paste into your own source file).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>example_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">trial1 =</span> <span class="fu">c</span>(<span class="dv">62</span>, <span class="dv">78</span>, <span class="dv">81</span>, <span class="dv">55</span>, <span class="dv">66</span>), </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">trial2 =</span> <span class="fu">c</span>(<span class="dv">67</span>, <span class="dv">76</span>, <span class="dv">87</span>, <span class="dv">55</span>, <span class="dv">63</span>)) </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the typical error </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> trial2 <span class="sc">-</span> trial1) <span class="sc">%&gt;%</span> <span class="co"># Change/difference score</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">s =</span> <span class="fu">round</span>(<span class="fu">sd</span>(diff), <span class="dv">1</span>),  <span class="co"># Summarize to calculate sd, and... </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">te =</span> <span class="fu">round</span>(s <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="co"># the typical error. </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Round is used to get less decimal places...</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The interpretation of the typical error is that this is the average variation of the test. If you repeat the test, this is the random variation that can be expected. If expressed as a percentage of the mean, it can be compared to other tests. For example, is test A more reliable than test B? In the code below, we will add the mean to allow calculation of the coefficient of variation (CV, or as referred to in <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>, typical percentage error).</p>
+<div class="no-row-height column-margin column-container"></div><div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the typical error </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> trial2 <span class="sc">-</span> trial1) <span class="sc">%&gt;%</span> <span class="co"># Change/difference score</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">s =</span> <span class="fu">round</span>(<span class="fu">sd</span>(diff), <span class="dv">1</span>),  <span class="co"># Summarize to calculate sd, and... </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(trial1, trial2)), <span class="co"># mean</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">te =</span> <span class="fu">round</span>(s <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>), <span class="co"># the typical error.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">cv =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> (te <span class="sc">/</span> m), <span class="dv">1</span>)) <span class="sc">%&gt;%</span>  <span class="co"># Calculate as a percentage of the mean</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Round is used to get less decimal places...</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The limits of agreement has a nice interpretation. If the limits of agreement are created as the 95% limits of agreement, there is a 1 in 20 chance of finding a test score outside these limits. The limits of agreement are calculated using a <em>t</em>-distribution. We will add to the code chunk to calculate the limits of agreement.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the typical error </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> trial2 <span class="sc">-</span> trial1) <span class="sc">%&gt;%</span> <span class="co"># Change/difference score</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">s =</span> <span class="fu">sd</span>(diff),  <span class="co"># Summarize to calculate sd, and... </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(trial1, trial2)), <span class="co"># mean</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">te =</span> <span class="fu">round</span>(s <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>), <span class="co"># the typical error.</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">cv =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> (te <span class="sc">/</span> m), <span class="dv">1</span>), <span class="co"># Calculate as a percentage of the mean</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">upr.L =</span> <span class="fu">mean</span>(diff) <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">4</span>) <span class="sc">*</span> s, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">lwr.L =</span> <span class="fu">mean</span>(diff) <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">4</span>) <span class="sc">*</span> s) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The part with <code>qt(0.975, 4)</code> is the R-code equivalent to <span class="math inline">\(t_{0.975, 4}\)</span> (See equation 1 in <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>) which is the <em>t</em>-distribution with 4 degrees of freedom. The degrees of freedom comes from the number of participants in the data set minus 1 (<span class="math inline">\(n - 1\)</span>). As noted by Hopkins, we may use the CV in the calculation of limits of agreement.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-RN130" class="csl-entry" role="listitem">
+Hopkins, W. G. 2000. <span>“Measures of Reliability in Sports Medicine and Science.”</span> Journal Article. <em>Sports Med</em> 30 (1): 1–15. <a href="http://www.ncbi.nlm.nih.gov/pubmed/10907753">http://www.ncbi.nlm.nih.gov/pubmed/10907753</a>.
+</div></div><section id="smallest-worthwhile-change-or-effect" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="smallest-worthwhile-change-or-effect"><span class="header-section-number">9.1</span> Smallest worthwhile change or effect</h2>
+<p>When we do not have any measures of reliability, nor clinically relevant thresholds for a test, the smallest worthwhile effect may provide an indication of important changes in a test. An arbitrary number of the smallest effect of interest in an average change score has been defined as 20% of the between participant standard deviation (<span class="math inline">\(0.2\times SD\)</span>). This tells you nothing about the reliability of your test, it simply gives a proportion of the expected population variation.</p>
 
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1><p><img src="resources/cover.png" title="Quantitative methods and statistics (In Sport and Exercise Science)" class="quarto-cover-image img-fluid"></p>
-<p>Welcome to the course <em>Quantitative methods and Statistics (IDR4000)</em>. The course aims to give students an overview of methodological challenges within the sport and exercise-sciences, and strategies of addressing them. Specifically, planning, conducting and analysing research projects with human participants will be discussed in the course. During the course we will build habits for reproducible data analysis. Such habits includes developing knowledge about open-source tools for data science and statistics.</p>
-<p>This book contains lecture notes for the course. Assignments, tutorials and other course material can be found at the <a href="https://dhammarstrom.github.io/quant-methods-workshops/">course workshop site</a></p>
-<section id="prerequisites" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">1.1</span> Prerequisites</h2>
-<p>To fully benefit from the course I recommend that students bring a basic understanding of statistical concepts to the course, such as knowledge about descriptive data summarises, usage of inferential statistics and regression models. We aim to cover these concepts in the course but also hope to get further. If you are not sure your basic understanding is up to date you may want to review introductory material, such as <a href="https://dhammarstrom.github.io/statistisk-dataanalyse/">Statistisk dataanalyse med jamovi</a>.</p>
-<p>In the course we will use R to do analyses, create figures and tables, and write reports. If you are unfamiliar with R, that is OK, the course hopefully provides a gentle introduction. Using R, together with additional data science tools, means that you will encounter many infuriating problems. Such problems might arise from a missing comma or a misspelled word making your computer program produce <a href="https://en.wikipedia.org/wiki/Gibberish">gibberish</a>. Solving such problems requires patience, systematic thinking and a positive attitude! The skill set I hope you will develop during the course includes knowledge about how to identify problems, where to find help to address problems and how to learn from problems.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -801,10 +903,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./07-version-control-git.html" class="pagination-link" aria-label="Version control and collaboration">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-intro-to-data.html" class="pagination-link" aria-label="Introduction to data science">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data science</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./10-mol-lab-intro.html" class="pagination-link" aria-label="Introduction to the molecular exercise physiology lab">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to the molecular exercise physiology lab</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -813,4 +918,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/08-phys-lab-reliability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/08-phys-lab-reliability.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
