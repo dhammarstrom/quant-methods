@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Reliability in the physiology lab – Quantitative methods and statistics (In Sport and Exercise Science)</title>
+<title>14&nbsp; Correlations – Quantitative methods and statistics (In Sport and Exercise Science)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,8 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10-mol-lab-intro.html" rel="next">
-<link href="./07-version-control-git.html" rel="prev">
+<link href="./99-refs.html" rel="next">
+<link href="./13-categorical-predictors-and-multiple-regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -166,7 +166,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-phys-lab-reliability.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./14-correlations.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlations</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -246,7 +246,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-phys-lab-reliability.html" class="sidebar-item-text sidebar-link active">
+  <a href="./08-phys-lab-reliability.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></span></a>
   </div>
 </li>
@@ -276,7 +276,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-correlations.html" class="sidebar-item-text sidebar-link">
+  <a href="./14-correlations.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlations</span></span></a>
   </div>
 </li>
@@ -296,16 +296,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#smallest-worthwhile-change-or-effect" id="toc-smallest-worthwhile-change-or-effect" class="nav-link active" data-scroll-target="#smallest-worthwhile-change-or-effect"><span class="header-section-number">9.1</span> Smallest worthwhile change or effect</a></li>
+  <li><a href="#always-plot-the-data" id="toc-always-plot-the-data" class="nav-link active" data-scroll-target="#always-plot-the-data"><span class="header-section-number">14.1</span> Always plot the data!</a></li>
+  <li><a href="#extending-the-correlation-to-the-regression" id="toc-extending-the-correlation-to-the-regression" class="nav-link" data-scroll-target="#extending-the-correlation-to-the-regression"><span class="header-section-number">14.2</span> Extending the correlation to the regression</a></li>
+  <li><a href="#correlation-comes-in-many-forms" id="toc-correlation-comes-in-many-forms" class="nav-link" data-scroll-target="#correlation-comes-in-many-forms"><span class="header-section-number">14.3</span> Correlation comes in many forms</a></li>
+  <li><a href="#statistical-and-subject-matter-interpretations" id="toc-statistical-and-subject-matter-interpretations" class="nav-link" data-scroll-target="#statistical-and-subject-matter-interpretations"><span class="header-section-number">14.4</span> Statistical and subject-matter interpretations</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">14.5</span> Summary</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/08-phys-lab-reliability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/08-phys-lab-reliability.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/14-correlations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/14-correlations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Reliability in the physiology lab</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlations</span></h1>
 </div>
 
 
@@ -322,55 +326,182 @@ window.Quarto = {
 </header>
 
 
-<p>We will follow Hopkins definition of reliability in this section <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>, and specifically concern ourselves with reliability in test/measurements that produces continuous numbers as results. For this purpose you have collected data in several tests (or measurements), at least two times, from several individuals. You can now estimate the reliability of each test (or measurement). The reliability, expressed as typical error is an estimate of what we may expect as the random variation around a measurement if repeated under similar circumstances in the same individual <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>.</p>
-<div class="no-row-height column-margin column-container"></div><p>Hopkins <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span> details two measures of reliability for estimates of within-individual reliability that are closely related, the typical error and limits of agreement. Using the example data in <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span> we can calculate first the typical error.</p>
-<p>We will take advantage of the change scores between two duplicate measures and derive the estimate of the typical error from them. (To run the code, copy and paste into your own source file).</p>
+<p>We are already familiar with the regression model. We will now take a step back, to the correlation. A correlation is a unit-less measure of the relationship between two variables. The strength of the relationship is expressed between -1 and 1 where values closer to 0 indicate weaker relationship.</p>
+<p>Using the data set provided by Haun et al.&nbsp;2019 we will see how the correlation works. First we will load the data and select the variables <code>SQUAT_VOLUME</code> and <code>DXA_LBM_T1</code>. A reasonable interpretation of these variables are that <code>SQUAT_VOLUME</code> is the pre-intervention training volume and <code>DXA_LBM_T1</code> is the percentage lean body mass before the intervention. To make the data more readable we will scale the squat volume from kg to tons:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>example_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">trial1 =</span> <span class="fu">c</span>(<span class="dv">62</span>, <span class="dv">78</span>, <span class="dv">81</span>, <span class="dv">55</span>, <span class="dv">66</span>), </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">trial2 =</span> <span class="fu">c</span>(<span class="dv">67</span>, <span class="dv">76</span>, <span class="dv">87</span>, <span class="dv">55</span>, <span class="dv">63</span>)) </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the typical error </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> trial2 <span class="sc">-</span> trial1) <span class="sc">%&gt;%</span> <span class="co"># Change/difference score</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">s =</span> <span class="fu">round</span>(<span class="fu">sd</span>(diff), <span class="dv">1</span>),  <span class="co"># Summarize to calculate sd, and... </span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">te =</span> <span class="fu">round</span>(s <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="co"># the typical error. </span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Round is used to get less decimal places...</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(exscidata)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> hypertrophy <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PARTICIPANT, SQUAT_VOLUME, BODYMASS_T1, DXA_LBM_T1) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SQUAT_VOLUME =</span> (SQUAT_VOLUME<span class="sc">/</span><span class="dv">1000</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<p>The interpretation of the typical error is that this is the average variation of the test. If you repeat the test, this is the random variation that can be expected. If expressed as a percentage of the mean, it can be compared to other tests. For example, is test A more reliable than test B? In the code below, we will add the mean to allow calculation of the coefficient of variation (CV, or as referred to in <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>, typical percentage error).</p>
-<div class="no-row-height column-margin column-container"></div><div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the typical error </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> trial2 <span class="sc">-</span> trial1) <span class="sc">%&gt;%</span> <span class="co"># Change/difference score</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">s =</span> <span class="fu">round</span>(<span class="fu">sd</span>(diff), <span class="dv">1</span>),  <span class="co"># Summarize to calculate sd, and... </span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(trial1, trial2)), <span class="co"># mean</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">te =</span> <span class="fu">round</span>(s <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>), <span class="co"># the typical error.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">cv =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> (te <span class="sc">/</span> m), <span class="dv">1</span>)) <span class="sc">%&gt;%</span>  <span class="co"># Calculate as a percentage of the mean</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Round is used to get less decimal places...</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The limits of agreement has a nice interpretation. If the limits of agreement are created as the 95% limits of agreement, there is a 1 in 20 chance of finding a test score outside these limits. The limits of agreement are calculated using a <em>t</em>-distribution. We will add to the code chunk to calculate the limits of agreement.</p>
+<p>A basic question given these kind of data is, do participants with more previous training volume have more muscle mass (lean mass)? We can assess this by the performing a correlation analysis. The <code>cor</code> function gives the correlation coefficient from two variables. Notice that we need to specify <code>use = "complete.obs"</code> to remove observations without both variables recorded.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the typical error </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> trial2 <span class="sc">-</span> trial1) <span class="sc">%&gt;%</span> <span class="co"># Change/difference score</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">s =</span> <span class="fu">sd</span>(diff),  <span class="co"># Summarize to calculate sd, and... </span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">m =</span> <span class="fu">mean</span>(<span class="fu">c</span>(trial1, trial2)), <span class="co"># mean</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">te =</span> <span class="fu">round</span>(s <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span>), <span class="dv">1</span>), <span class="co"># the typical error.</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">cv =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> (te <span class="sc">/</span> m), <span class="dv">1</span>), <span class="co"># Calculate as a percentage of the mean</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">upr.L =</span> <span class="fu">mean</span>(diff) <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">4</span>) <span class="sc">*</span> s, </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">lwr.L =</span> <span class="fu">mean</span>(diff) <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">4</span>) <span class="sc">*</span> s) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dat<span class="sc">$</span>SQUAT_VOLUME, dat<span class="sc">$</span>DXA_LBM_T1, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5210417</code></pre>
 </div>
-<p>The part with <code>qt(0.975, 4)</code> is the R-code equivalent to <span class="math inline">\(t_{0.975, 4}\)</span> (See equation 1 in <span class="citation" data-cites="RN130">(<a href="99-refs.html#ref-RN130" role="doc-biblioref">Hopkins 2000</a>)</span>) which is the <em>t</em>-distribution with 4 degrees of freedom. The degrees of freedom comes from the number of participants in the data set minus 1 (<span class="math inline">\(n - 1\)</span>). As noted by Hopkins, we may use the CV in the calculation of limits of agreement.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-RN130" class="csl-entry" role="listitem">
-Hopkins, W. G. 2000. <span>“Measures of Reliability in Sports Medicine and Science.”</span> Journal Article. <em>Sports Med</em> 30 (1): 1–15. <a href="http://www.ncbi.nlm.nih.gov/pubmed/10907753">http://www.ncbi.nlm.nih.gov/pubmed/10907753</a>.
-</div></div><section id="smallest-worthwhile-change-or-effect" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="smallest-worthwhile-change-or-effect"><span class="header-section-number">9.1</span> Smallest worthwhile change or effect</h2>
-<p>When we do not have any measures of reliability, nor clinically relevant thresholds for a test, the smallest worthwhile effect may provide an indication of important changes in a test. An arbitrary number of the smallest effect of interest in an average change score has been defined as 20% of the between participant standard deviation (<span class="math inline">\(0.2\times SD\)</span>). This tells you nothing about the reliability of your test, it simply gives a proportion of the expected population variation.</p>
+</div>
+<p>The value is quite high, around 0.5. Remember that a perfect correlation is either 1 or -1 and 0 indicates no correlation between variables. The correlation coefficient is not sensitive to the order of variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dat<span class="sc">$</span>DXA_LBM_T1, dat<span class="sc">$</span>SQUAT_VOLUME, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5210417</code></pre>
+</div>
+</div>
+<p>We can use the correlation coefficients to draw inference. A test against the null hypothesis of no correlation, <span class="math inline">\(H_0: r=0\)</span>, can be done in R using the <code>cor.test</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(dat<span class="sc">$</span>DXA_LBM_T1, dat<span class="sc">$</span>SQUAT_VOLUME, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  dat$DXA_LBM_T1 and dat$SQUAT_VOLUME
+t = 3.2302, df = 28, p-value = 0.003154
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.1979263 0.7420220
+sample estimates:
+      cor 
+0.5210417 </code></pre>
+</div>
+</div>
+<p>From this function we get a t-value, the degrees of freedom, a p-value and a confidence interval. The p-value is quite small and the 95% confidence interval does not contain the null-hypothesis. Based on our sample, it is reasonably to believe that lean body mass and training volume are correlated also in the population from which we hav drawn our sample.</p>
+<section id="always-plot-the-data" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="always-plot-the-data"><span class="header-section-number">14.1</span> Always plot the data!</h2>
+<p>When doing a correlation analysis you are at risk of drawing conclusions based on wonky data. A single data point can for example inflate a correlation in a small data set. Lets look at the data we are using now (<a href="#fig-lean-squat" class="quarto-xref">Figure&nbsp;<span>14.1</span></a>).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(SQUAT_VOLUME, DXA_LBM_T1)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-lean-squat" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lean-squat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="14-correlations_files/figure-html/fig-lean-squat-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lean-squat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.1: A figure showing the relationship between training volume and lean mass
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The figure displays no apparent curve-linear relationship, there are no obvious outliers, both variables are evenly distributed (normally distributed). These are assumptions concerning the correlation analysis. Since they are reasonably met, our test above still holds.</p>
+</section>
+<section id="extending-the-correlation-to-the-regression" class="level2 page-columns page-full" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="extending-the-correlation-to-the-regression"><span class="header-section-number">14.2</span> Extending the correlation to the regression</h2>
+<p>All good! We have a test that tells us a measure of the strength of relationship between two variables. If we want more detailed information we need to move to a regression analysis.</p>
+<p>First some similarities. Notice that the p-value for the regression coefficient for squat volume is (almost) precisely the same as the p-value for the correlation analysis!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the correlation analysis in an object </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(dat<span class="sc">$</span>DXA_LBM_T1, dat<span class="sc">$</span>SQUAT_VOLUME)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># store the regression model</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(DXA_LBM_T1  <span class="sc">~</span> SQUAT_VOLUME, <span class="at">data =</span> dat)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the p-value for the regression coefficient</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(m))[<span class="dv">2</span>, <span class="dv">4</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.003154061</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the p-value for the correlation coefficient</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>c<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.003154061</code></pre>
+</div>
+</div>
+<p>Also notice that the <span class="math inline">\(R^2\)</span> value in the regression model is the same as the squared correlation coefficient. Remember that the <span class="math inline">\(R^2\)</span> in the regression model is the degree to which the model account for the data <span class="citation" data-cites="lsr">(<a href="99-refs.html#ref-lsr" role="doc-biblioref">Navarro 2020</a>)</span>, <a href="https://en.wikipedia.org/wiki/Coefficient_of_determination">also see here</a>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-lsr" class="csl-entry" role="listitem">
+Navarro, D. 2020. <em>Learning Statistics with r</em>.
+</div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2714845</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>c<span class="sc">$</span>estimate<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      cor 
+0.2714845 </code></pre>
+</div>
+</div>
+<p>These similarities arise from the fact that they are the same analysis, the degree to which the two variables co-varies.</p>
+<p>The additional benefit of using a regression analysis comes from the interpretation of the regression coefficient estimates. In our example we can see that increasing the weekly volume with one ton increases percentage lean mass by 0.283%-points. The confidence interval is given on the same scale and can be retrieved by using the code below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This shows that the true value could be as low as 0.1 and as high as 0.46. Something that again indicates that the two variables vary together.</p>
+</section>
+<section id="correlation-comes-in-many-forms" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="correlation-comes-in-many-forms"><span class="header-section-number">14.3</span> Correlation comes in many forms</h2>
+<p>If you look at the help pages for <code>cor</code> (<code>?cor</code>) you will see that you may specify the type of correlation used for analysis. Commonly used are Pearson’s (default) and Spearman’s correlation coefficient. The difference between these two is that the Spearman’s correlation coefficient does not assume normally distributed data. This is basically a correlation of ranks. The highest number in a series of numbers will have the highest rank and the smallest will be given the lowest ( = 1).</p>
+<p>We can prove this! The <code>rank</code> function gives a ranking to each number. We first panel of our figure (<a href="#fig-lean-squat-rank" class="quarto-xref">Figure&nbsp;<span>14.2</span></a>) the data as raw continuous values and the second transfomed to ranks.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(SQUAT_VOLUME, DXA_LBM_T1)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>rank <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">rank</span>(SQUAT_VOLUME),</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rank</span>(DXA_LBM_T1))) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(raw, rank, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-lean-squat-rank" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lean-squat-rank-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="14-correlations_files/figure-html/fig-lean-squat-rank-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lean-squat-rank-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.2: Two figure showing the relationship between training volume and lean mass either in raw units (A) or transformed to ranks (B)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see in the figure that the relationship persist after rank transformation.</p>
+<p>To use the Spearman’s correlation coefficient we specify <code>"spearman"</code> in the <code>cor.test</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(dat<span class="sc">$</span>SQUAT_VOLUME, dat<span class="sc">$</span>DXA_LBM_T1, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Spearman's rank correlation rho
+
+data:  dat$SQUAT_VOLUME and dat$DXA_LBM_T1
+S = 2167.4, p-value = 0.00338
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.5178259 </code></pre>
+</div>
+</div>
+<p>To see that this is similar to using Pearson’s correlation coefficient with ranked data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="fu">rank</span>(dat<span class="sc">$</span>SQUAT_VOLUME, <span class="at">na.last =</span> <span class="cn">NA</span>), <span class="fu">rank</span>(dat<span class="sc">$</span>DXA_LBM_T1, <span class="at">na.last =</span> <span class="cn">NA</span>), </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The p-values are identical. Success! Another statistical mystery unlocked!</p>
+<p>In this case the interpretation of tests using ranked data and un-transformed data are very similar. When do we use the rank based correlation? In cases when assumptions for the Pearson correlation are not met, a rank based correlation will protect us from making bad decisions. When, for example, a single data point “drives” a correlation, the the rank-based correlation (Spearman’s) will be less likely to suggest a strong relationship in the population from where we drew our sample.</p>
+</section>
+<section id="statistical-and-subject-matter-interpretations" class="level2 page-columns page-full" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="statistical-and-subject-matter-interpretations"><span class="header-section-number">14.4</span> Statistical and subject-matter interpretations</h2>
+<p>It is now very important to stop and think about the estimates that we arrived to above. We have concluded that lean body mass correlate quite well with squat volume calculated as the amount of weight lifted per week. Does this mean that individuals that exercise with higher volumes have more muscle? Perhaps, but could it also mean that individuals that are taller and heavier work out with greater resistance? Perhaps. In any case, the correlation (and regression) analysis of snap-shot observational data can trick us into believing that the mathematical relationship also indicate a causal relationship. We have to thread carefully when interpreting associations <span class="citation" data-cites="RN2902">(<a href="99-refs.html#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019, chaps. 2, 4</a> and 5)</span>, this is were your subject-matter knowledge is handy.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-RN2902" class="csl-entry" role="listitem">
+Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</em>. Book. First US edition. New York: Basic Books.
+</div></div></section>
+<section id="summary" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">14.5</span> Summary</h2>
+<p>The correlation coefficient has many similarities with a univariate regression model. Correlations measures strength of association, but the regression model comes with benefits in terms of interpretation. The correlation only takes two variables but we can extend the regression model. When we think that data do not match our assumptions we can do correlation analysis using Spearman’s rank correlation to avoid biased estimates of estimation.</p>
 
 
 
@@ -927,13 +1058,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./07-version-control-git.html" class="pagination-link" aria-label="Version control and collaboration">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Version control and collaboration</span></span>
+      <a href="./13-categorical-predictors-and-multiple-regression.html" class="pagination-link" aria-label="Categorical predictors and multiple regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Categorical predictors and multiple regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./10-mol-lab-intro.html" class="pagination-link" aria-label="Introduction to the molecular exercise physiology lab">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introduction to the molecular exercise physiology lab</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./99-refs.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -942,4 +1073,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/08-phys-lab-reliability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/08-phys-lab-reliability.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/14-correlations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/14-correlations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
