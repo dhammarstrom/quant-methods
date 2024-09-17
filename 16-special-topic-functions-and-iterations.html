@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Storing data in spreadsheets and understanding tabular data – Quantitative methods and statistics (In Sport and Exercise Science)</title>
+<title>15&nbsp; Special topics: Iterations and functions – Quantitative methods and statistics (In Sport and Exercise Science)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -50,8 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03-intro-to-r.html" rel="next">
-<link href="./01-intro-to-data.html" rel="prev">
+<link href="./99-refs.html" rel="next">
+<link href="./14-correlations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -91,35 +125,6 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -132,7 +137,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-spreadsheets.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16-special-topic-functions-and-iterations.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Special topics: Iterations and functions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -176,7 +181,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-spreadsheets.html" class="sidebar-item-text sidebar-link active">
+  <a href="./02-spreadsheets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></span></a>
   </div>
 </li>
@@ -248,7 +253,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-special-topic-functions-and-iterations.html" class="sidebar-item-text sidebar-link">
+  <a href="./16-special-topic-functions-and-iterations.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Special topics: Iterations and functions</span></span></a>
   </div>
 </li>
@@ -268,19 +273,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#cells-and-simple-functions" id="toc-cells-and-simple-functions" class="nav-link active" data-scroll-target="#cells-and-simple-functions"><span class="header-section-number">3.1</span> Cells and simple functions</a></li>
-  <li><a href="#tidy-data-and-data-storage" id="toc-tidy-data-and-data-storage" class="nav-link" data-scroll-target="#tidy-data-and-data-storage"><span class="header-section-number">3.2</span> Tidy data and data storage</a></li>
-  <li><a href="#recording-data" id="toc-recording-data" class="nav-link" data-scroll-target="#recording-data"><span class="header-section-number">3.3</span> Recording data</a></li>
-  <li><a href="#saving-data" id="toc-saving-data" class="nav-link" data-scroll-target="#saving-data"><span class="header-section-number">3.4</span> Saving data</a></li>
+  <li><a href="#building-a-simple-function" id="toc-building-a-simple-function" class="nav-link active" data-scroll-target="#building-a-simple-function"><span class="header-section-number">15.1</span> Building a simple function</a></li>
+  <li><a href="#an-applied-problem-where-a-function-might-help" id="toc-an-applied-problem-where-a-function-might-help" class="nav-link" data-scroll-target="#an-applied-problem-where-a-function-might-help"><span class="header-section-number">15.2</span> An applied problem where a function might help</a>
+  <ul class="collapse">
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">15.2.1</span> Exercises</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">15.3</span> References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/02-spreadsheets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/02-spreadsheets.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/16-special-topic-functions-and-iterations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/16-special-topic-functions-and-iterations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Storing data in spreadsheets and understanding tabular data</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Special topics: Iterations and functions</span></h1>
 </div>
 
 
@@ -297,257 +304,198 @@ window.Quarto = {
 </header>
 
 
-<p>We have previously mentioned spreadsheets like those created in Excel. These are great but not great for reproducible science or data analysis. This drawback is because they are not easily documented and scripted. The data is part of the analysis! Another danger with spreadsheets (like MS Excel) is that it re-formats your data. Re-formatting is such a big problem for scientists that they have started renaming genes to avoid confusion<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;See <a href="https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates">this</a>.</p></div><div id="ref-RN2927" class="csl-entry" role="listitem">
-Ziemann, Mark, Yotam Eren, and Assam El-Osta. 2016. <span>“Gene Name Errors Are Widespread in the Scientific Literature.”</span> Journal Article. <em>Genome Biology</em> 17 (1): 177. <a href="https://doi.org/10.1186/s13059-016-1044-7">https://doi.org/10.1186/s13059-016-1044-7</a>.
-</div><div id="ref-RN2928" class="csl-entry" role="listitem">
-Stephen, G. Powell, R. Baker Kenneth, and Lawson Barry. 2009. <span>“Errors in Operational Spreadsheets.”</span> Journal Article. <em>Journal of Organizational and End User Computing (JOEUC)</em> 21 (3): 24–36. <a href="https://doi.org/10.4018/joeuc.2009070102">https://doi.org/10.4018/joeuc.2009070102</a>.
-</div></div><p>Errors are frequent in spreadsheets, not only because of renaming <span class="citation" data-cites="RN2927">(<a href="99-refs.html#ref-RN2927" role="doc-biblioref">Ziemann, Eren, and El-Osta 2016</a>)</span>, but also because of wrong formatting of formulas <span class="citation" data-cites="RN2928">(<a href="99-refs.html#ref-RN2928" role="doc-biblioref">Stephen, Kenneth, and Barry 2009</a>)</span>. These are both reasons for using spreadsheets only for what they do best: data input and storage <span class="citation" data-cites="RN2391">(<a href="99-refs.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>. Before going in to details about how to use your spreadsheet software and to avoid catastrophe, it’s good to know a little about the capabilities of your spreadsheet software.</p>
-<section id="cells-and-simple-functions" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="cells-and-simple-functions"><span class="header-section-number">3.1</span> Cells and simple functions</h2>
-<p>A spreadsheet consists of cells, these can contain values, such as text, numbers, formulas and functions. Cells may also be formatted with attributes such as color or text styles. Below is an example of some data entered in a spreadsheet (<a href="#fig-excel-spreadsheet" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>).</p>
-<div id="fig-excel-spreadsheet" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-excel-spreadsheet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="./images/excel-spreadsheet.png" class="img-fluid figure-img">
+<p>To reduce the number of repetitive tasks performed manually or through copy-and-paste coding, R provides functions and frameworks for iterative operations. The programmer (you), could benefit greatly from building your own functions as these will reduce the risk of making mistakes, make the code more readable and easier to change <span class="citation" data-cites="r4ds">(<a href="99-refs.html#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017, chap. 19</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"></div><section id="building-a-simple-function" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="building-a-simple-function"><span class="header-section-number">15.1</span> Building a simple function</h2>
+<p>A function in R is a defined set of operations, put together and often stored as an object to perform a specific task. In R, the user may define his/her own functions. Defining a function usually involves storing the function as an object in your environment. When you have gathered multiple functions relating to common tasks these can be organized as a package.</p>
+<p>Let’s say we want to create a function that returns the sum of two values. The function <code>sum_two_values</code> that is defined below, contains the basics of a typical function. In the <code>function()</code> call we define what <strong>arguments</strong> the function will accept. In our case, <code>a</code> and <code>b</code> represents the two numbers we want to add together. The <strong>body</strong> of the function is where we define the operations that we want the function to perform. We add <code>a</code> and <code>b</code> together and assign their sum to an object called <code>result</code>. Finally, we pass the result of the function to <code>return(result)</code>. Using return makes it explicit what part of the results you want to “get from the function”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sum_two_values <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_two_values</span>(<span class="dv">3</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-excel-spreadsheet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Example entries from an Excel spreadsheet
-</figcaption>
-</figure>
 </div>
-<p>Cell B6 contains a simple formula: <code>= C6 + D6</code>. This formula adds cells <code>C6</code> and <code>D6</code> resulting in the sum, 8. In formulas, mathematical operators can be used (<span class="math inline">\(+, -, \times , \div\)</span> ). Formulas can be also extended with inbuilt function such as showed in <a href="#tbl-excelfunctions" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
-<div id="tbl-excelfunctions" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-excelfunctions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.1: Often used functions in excel
-</figcaption>
-<div aria-describedby="tbl-excelfunctions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Function</th>
-<th>English</th>
-<th>Norwegian</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Sum</td>
-<td><code>SUM()</code></td>
-<td><code>SUMMER()</code></td>
-</tr>
-<tr class="even">
-<td>Average</td>
-<td><code>AVERAGE()</code></td>
-<td><code>GJENNOMSNITT()</code></td>
-</tr>
-<tr class="odd">
-<td>Standard deviation</td>
-<td><code>STDEV.S()</code></td>
-<td><code>STDEV.S()</code></td>
-</tr>
-<tr class="even">
-<td>Count</td>
-<td><code>COUNT()</code></td>
-<td><code>ANTALL()</code></td>
-</tr>
-<tr class="odd">
-<td>Intercept</td>
-<td><code>INTERCEPT()</code></td>
-<td><code>SKJÆRINGSPUNKT()</code></td>
-</tr>
-<tr class="even">
-<td>Slope</td>
-<td><code>SLOPE()</code></td>
-<td><code>STIGNINGSTALL()</code></td>
-</tr>
-<tr class="odd">
-<td>If</td>
-<td><code>IF()</code></td>
-<td><code>HVIS()</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p>The sum, average, standard deviation, and count are simple functions for summarizing data. Intercept and slope are functions used to get simple associations from two sets of numbers (based on a regression model). The IF function is an example of a function that can be used to enter data in a cell conditionally. For example, IF cell A1 contains a certain number, then cell B1 should display another specified text.</p>
-<p>When looking for tips and tricks online, you may come across functions for excel in other languages than what is installed on your computer. To translate functions and for a complete overview of functions included in Microsoft Excel, see this website <a href="https://en.excel-translator.de/">en.excel-translator.de/</a>.</p>
+<p>The <strong>name</strong> of a function is defined by saving the function in an object. When the function is defined in a script or RMarkdown file it is available in the R <strong>environment</strong>. The difference from packages is that functions defined as part of packages are available when you load the package using <code>library()</code>.</p>
 </section>
-<section id="tidy-data-and-data-storage" class="level2 page-columns page-full" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="tidy-data-and-data-storage"><span class="header-section-number">3.2</span> Tidy data and data storage</h2>
-<p>Hadley Wickham (the author of many commonly used R packages) quotes Tolstoy when describing the principle of tidy data <span class="citation" data-cites="RN1956">(<a href="99-refs.html#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. This Tolstoy quote is so famous that it has given name to a principle. The principle in turn comes in many variants but basically states that there are endless possibilities for something to break but only a limited number of ways that same thing can work<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. This principle can be applied to data sets. There are endless ways that formatting of data sets can be problematic, but a limited set of ways that formatting will allow for analysis.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-RN1956" class="csl-entry" role="listitem">
-Wickham, Hadley. 2014. <span>“Tidy Data.”</span> Journal Article. <em>Journal of Statistical Software; Vol 1, Issue 10 (2014)</em>. <a href="https://www.jstatsoft.org/v059/i10">https://www.jstatsoft.org/v059/i10</a>.
-</div><div id="fn2"><p><sup>2</sup>&nbsp;See https://en.wikipedia.org/wiki/Anna_Karenina_principle</p></div><div class="">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Leon_tolstoi.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Leo Tolstoy, the author of the book Anna Karenina. (Source: https://en.wikipedia.org/wiki/Leo_Tolstoy)</figcaption>
-</figure>
+<section id="an-applied-problem-where-a-function-might-help" class="level2 page-columns page-full" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="an-applied-problem-where-a-function-might-help"><span class="header-section-number">15.2</span> An applied problem where a function might help</h2>
+<p>Lactate threshold values can be calculated from the exercise-intensity and blood lactate value relationship gathered from a graded exercise test. In the simple case, the exercise intensity at a fixed blood lactate concentration can be used to evaluate training progressions in e.g.&nbsp;athletes. To find the exercise intensity at a fixed blood lactate concentration, a polynomial regression model can be used to predict lactate values at different intensities and the find the exercise intensity value closest to our desiered lactate value.</p>
+<p>The above description can be broken down into these steps:</p>
+<ol type="1">
+<li>Fit a third degree polynomial model to exercise-intensity and lactate data from a single individual.</li>
+<li>Predict lactate values over the range of the observed exercise intensity values.</li>
+<li>Find the exercise intensity value closest to the lactate value of interest (e.g.&nbsp;4 mmol L<sup>-1</sup>).</li>
+</ol>
+<p>Using the <code>cyclingstudy</code> data we can perform these steps. We will do so using the <code>pre</code> time-point in participant 10.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata); <span class="fu">data</span>(<span class="st">"cyclingstudy"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Save a data set of lactate values from participant 10, time-point pre</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"watt"</span>, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"lactate"</span>, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">"lac."</span>, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric), </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">cols =</span> lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subject <span class="sc">==</span> <span class="dv">10</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>         timepoint <span class="sc">==</span> <span class="st">"pre"</span>, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(lactate)) <span class="sc">%&gt;%</span> <span class="co"># Remove NA values</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model </span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> watt <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">3</span>), <span class="at">data =</span> dat)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict lactate values over all observed watt values</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the smallest distance from the fixed lactate value </span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(dat<span class="sc">$</span>watt), <span class="at">to =</span> <span class="fu">max</span>(dat<span class="sc">$</span>watt), <span class="at">by =</span> <span class="fl">0.1</span>))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>new_data<span class="sc">$</span>dist <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">predict</span>(model, <span class="at">newdata =</span> new_data) <span class="sc">-</span> <span class="dv">4</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the smallest value of predicted - fixed lacate value</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>new_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dist <span class="sc">==</span> <span class="fu">min</span>(dist)) <span class="co"># Where the dist value equals the minimum dist value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div></div>
-<p>A tidy data set consists of <em>values</em> originating from <em>observations</em> and belonging to <em>variables</em>. A variable is a definition of the values based on attributes. An observation may consist of several variables <span class="citation" data-cites="RN1956">(<a href="99-refs.html#ref-RN1956" role="doc-biblioref">Wickham 2014</a>)</span>. A tidy data set typically has one observation per row and one variable per column.</p>
-<p>Let’s say that we want to collect data from a strength test. A participant (<strong>participant</strong> identification is a variable) in our study conducts tests before and after the intervention (<strong>time</strong> is a variable) in two exercises (<strong>exercise</strong> is a variable), and we record the maximal strength in kg (<strong>load</strong> is a variable). The data set will look like the table below (<a href="#tbl-tidydata" class="quarto-xref">Table&nbsp;<span>3.2</span></a>).</p>
-<div id="tbl-tidydata" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tidydata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.2: Example of tidy data
-</figcaption>
-<div aria-describedby="tbl-tidydata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Participant</th>
-<th>Time</th>
-<th>Exercise</th>
-<th>Load</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Bruce Wayne</td>
-<td>pre</td>
-<td>Bench press</td>
-<td>95</td>
-</tr>
-<tr class="even">
-<td>Bruce Wayne</td>
-<td>post</td>
-<td>Bench press</td>
-<td>128</td>
-</tr>
-<tr class="odd">
-<td>Bruce Wayne</td>
-<td>pre</td>
-<td>Leg press</td>
-<td>180</td>
-</tr>
-<tr class="even">
-<td>Bruce Wayne</td>
-<td>post</td>
-<td>Leg press</td>
-<td>280</td>
-</tr>
-</tbody>
-</table>
+<p>If we were to do this operation for more participants and across more time-points, we should formalize the operation into a function. In the simplest form, the prospective function would only need an argument defining the input data. We can then settle for a single fixed lactate value. We will define the function and call it <code>lt</code> for lactate threshold. (This might not be the best name! <span class="citation" data-cites="r4ds">(<a href="99-refs.html#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span>).</p>
+<div class="no-row-height column-margin column-container"><div id="ref-r4ds" class="csl-entry" role="listitem">
+Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. 1st ed. Paperback; O’Reilly Media. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
+</div></div><p>If the function returns a data frame, we can use it more efficiently later som we will make sure the result of the function is a data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lt <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit a 3 degree polynomial model</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> watt <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">3</span>), <span class="at">data =</span> data)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store a data frame with exercise intensities</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(data<span class="sc">$</span>watt), <span class="at">to =</span> <span class="fu">max</span>(data<span class="sc">$</span>watt), <span class="at">by =</span> <span class="fl">0.01</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Predict using the new data, predicting lactate values at each </span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  new_data<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(m, <span class="at">newdata =</span> new_data)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate deviation from the lactate value of interest</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  new_data<span class="sc">$</span>watt<span class="fl">.4</span>mmol <span class="ot">&lt;-</span> <span class="fu">abs</span>(new_data<span class="sc">$</span>pred <span class="sc">-</span> <span class="dv">4</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a results data frame</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt.4mmol =</span> new_data[<span class="fu">which.min</span>(new_data<span class="sc">$</span>watt<span class="fl">.4</span>mmol),<span class="dv">1</span>])</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return the data frame</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</figure>
+<p>The body of the function contains all operations needed to get the results we are after. It finally returns a data frame containing a single column named <code>watt.4mmol</code>. We can now test the function on some data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata); <span class="fu">data</span>(<span class="st">"cyclingstudy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.4.1</code></pre>
 </div>
-<p>Another example contains variables that actually carries two pieces of information in one variable. We again did a strength test, this time as maximal isometric contractions and in each test consisted of two attempts. We record this in two different variables, attempt 1 and 2. The resulting data set could look something like in Table <a href="#tbl-tidydata2" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
-<div id="tbl-tidydata2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tidydata2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.3: Another example of (almost) tidy data.
-</figcaption>
-<div aria-describedby="tbl-tidydata2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Participant</th>
-<th>Time</th>
-<th>Exercise</th>
-<th>Attempt1</th>
-<th>Attempt2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Selina Kyle</td>
-<td>pre</td>
-<td>Isometric</td>
-<td>81.3</td>
-<td>92.5</td>
-</tr>
-<tr class="even">
-<td>Selina Kyle</td>
-<td>post</td>
-<td>Isometric</td>
-<td>97.1</td>
-<td>114.1</td>
-</tr>
-</tbody>
-</table>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-</figure>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"watt"</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"lactate"</span>, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">"lac."</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric), </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">cols =</span> lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lactate), </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>         subject <span class="sc">==</span> <span class="dv">10</span>, </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>         timepoint <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 5
+  subject group timepoint  watt lactate
+    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1      10 INCR  pre         125    0.93
+2      10 INCR  pre         175    0.87
+3      10 INCR  pre         225    0.86
+4      10 INCR  pre         250    0.92
+5      10 INCR  pre         275    1.2 
+6      10 INCR  pre         300    1.69
+7      10 INCR  pre         325    2.6 
+8      10 INCR  pre         350    4.69</code></pre>
 </div>
-<p>To make this data set tidy we need to extract the attempt information and record it in another variable as seen in <a href="#tbl-tidydata3" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</p>
-<div id="tbl-tidydata3" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tidydata3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.4: A third example of tidy data.
-</figcaption>
-<div aria-describedby="tbl-tidydata3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Participant</th>
-<th>Time</th>
-<th>Exercise</th>
-<th>Attempt</th>
-<th>load</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Selina Kyle</td>
-<td>pre</td>
-<td>Isometric</td>
-<td>1</td>
-<td>81.3</td>
-</tr>
-<tr class="even">
-<td>Selina Kyle</td>
-<td>pre</td>
-<td>Isometric</td>
-<td>2</td>
-<td>92.5</td>
-</tr>
-<tr class="odd">
-<td>Selina Kyle</td>
-<td>post</td>
-<td>Isometric</td>
-<td>1</td>
-<td>97.1</td>
-</tr>
-<tr class="even">
-<td>Selina Kyle</td>
-<td>post</td>
-<td>Isometric</td>
-<td>2</td>
-<td>114.1</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lt</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  watt.4mmol
+1     342.96</code></pre>
 </div>
-</figure>
 </div>
-<p>This transformation naturally gives additional rows to the data set. It is sometimes referred to as “long format” data instead of the structure where each attempt is given separate variables, called “wide format.” You will notice during the course that the long format is convenient for most purposes. This is true when we create graphs and do statistical modelling. But sometimes, a variable must be structured in a wide format to allow certain operations.</p>
-<p>If we follow what is recommended by Broman and Woo <span class="citation" data-cites="RN2391">(<a href="99-refs.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>, it is clear that each cell in a spreadsheet should only contain one value. If we, for example, decide to format a cell to a certain colour, we add data to that cell on top of the actual data. You might add colour to a cell to remember to add or change data. However, this information is lost when you use the data set in other software. Instead, you should add another variable to allow such data to be properly recorded. Using a variable called <code>comments</code>, you can add text describing information about that particular observation, information that is not lost when you use the data set in another software.</p>
-<div class="no-row-height column-margin column-container"></div></section>
-<section id="recording-data" class="level2 page-columns page-full" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="recording-data"><span class="header-section-number">3.3</span> Recording data</h2>
-<p>A trade secret<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> from people who work all day with data and programming is that they are lazy. Lazy in the sense that you want to type as little as possible and avoid moving your arm to the computer mouse whenever possible. When recording data, we can be lazy too. We can do this by shortening variable names and not using CAPITAL letters when entering text in data storage. After a hard day at the keyboard, you will be happy to write <code>strtest</code> instead of <code>Strength Test</code>. The extra effort of using two capital letters might be the thing to tip you over the edge. However, we should not be too lazy either; variable names and values should be “short but meaningful” <span class="citation" data-cites="RN2391">(<a href="99-refs.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;A trade secret as in “not generally known to the public”. See <a href="https://en.wikipedia.org/wiki/Trade_secret">en.wikipedia.org/wiki/Trade_secret</a>.</p></div></div><p>Data and variables should also be consistent. Do not mix data type; use a consistent way of entering e.g., dates and time, and do not use spaces or special characters. To enforce this, you might want to start your data collection by writing up a data dictionary describing all variables you collect. The dictionary can set the rules for your variables. This dictionary can also guide your data validation.</p>
-<p>In Excel, you can use data validation to set rules for data entry. For example, if you have a numeric variable, you can set Excel only to accept numbers in a specified set of cells. Such rules make it harder to enter erroneous data.</p>
+<p>Nice, since we defined the function with higher resolution, we get a exercise intensity value with two decimal points. This value represent the watt value where the predicted lactate value is the closest to 4 mmol L<sup>-1</sup>.</p>
+<p>We still need to incorporate the function into code that dose the calculation for each individual, and time-point without the need of manually filtering values for each new data set. This can be accomplished by using the function in a pipe together with <code>group_by</code> and <code>group_modify</code>.</p>
+<p>Since we are using a third degree polynomial we need to make sure we have enough data to fit such a model to each participant/time-point. We will add a variable counting the number of observations and then filter tests with less then 4 observations.</p>
+<p>The complete pipe could look something like this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract lactate values</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cyclingstudy <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"watt"</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"lactate"</span>, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">"lac."</span>, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric), </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">cols =</span> lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter missing lactate values</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lactate)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data set, keeping group to have this information in the final results</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(timepoint, subject, group) <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new variable counting the number of observations and filter away tests with less than 4 obs.</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use grouup modify to apply the function to all participants per time-point (and group)</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_modify</span>(<span class="sc">~</span> <span class="fu">lt</span>(.)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 74 × 4
+# Groups:   timepoint, subject, group [74]
+   timepoint subject group watt.4mmol
+   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;
+ 1 meso1           1 INCR        293.
+ 2 meso1           2 DECR        286.
+ 3 meso1           3 INCR        335.
+ 4 meso1           4 DECR        244.
+ 5 meso1           5 DECR        332.
+ 6 meso1           6 INCR        252.
+ 7 meso1           7 MIX         268.
+ 8 meso1           8 MIX         294.
+ 9 meso1           9 MIX         300.
+10 meso1          10 INCR        340.
+# ℹ 64 more rows</code></pre>
+</div>
+</div>
+<p>Great sucess! We have now calculated lactate threshold values for each participant, belonging to specific time-points and groups. The <code>group_modify</code> function does the iterative work of applying the function for all cases, you have save yourself a lot of code, and time!</p>
+<section id="exercises" class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">15.2.1</span> Exercises</h3>
+<ol type="1">
+<li>Modify the <code>lt</code> function to return two fixed lactate values.</li>
+<li>Modify the <code>lt</code> function to include an extra argument specifying the level of the lactate value you are interested in.</li>
+</ol>
 </section>
-<section id="saving-data" class="level2 page-columns page-full" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="saving-data"><span class="header-section-number">3.4</span> Saving data</h2>
-<p>Data from spreadsheets can be saved as special spreadsheet files, such as <code>.xlsx</code>. This format allows for functions, multiple spreadsheets in the same file (tabs), and cell formatting. You do not need this fancy format if you follow the tips described above and in <span class="citation" data-cites="RN2391">(<a href="99-refs.html#ref-RN2391" role="doc-biblioref">Broman and Woo 2018</a>)</span>. Instead, you can store your data as a <code>.csv</code> file. This format may be read and edited with Excel (or another spreadsheet software) and in plain text. Data entered in this format (comma-separated values; csv) can look like this in a text editor:</p>
-<div class="no-row-height column-margin column-container"><div id="ref-RN2391" class="csl-entry" role="listitem">
-Broman, Karl W., and Kara H. Woo. 2018. <span>“Data Organization in Spreadsheets.”</span> Journal Article. <em>The American Statistician</em> 72 (1): 2–10. <a href="https://doi.org/10.1080/00031305.2017.1375989">https://doi.org/10.1080/00031305.2017.1375989</a>.
-</div></div><pre><code> Participant;Time;Exercise;Attempt;load
- Selina Kyle;pre;Isometric;1;81.3  
- Selina Kyle;pre;Isometric;2;92.5
- Selina Kyle;post;Isometric;1;97.1
- Selina Kyle;post;Isometric;2;114.1</code></pre>
-<p>This format is quite lovely. The data takes little space; the simple format requires that data is well documented using e.g., a data dictionary; and it is available for many other software as the format is simple. You can document the data using a <code>README</code> file that could describe the purpose and methods of data collection, how the data is structured, and what kind of data the variables contains. A simple <code>README</code> file can be written in a text editor such as Notepad and saved as a <code>.txt</code> file. Later in this course, we will introduce a “markup” language often used to create <code>README</code> files containing a syntax that formats the text to a more pleasant style when converted to other formats.</p>
+</section>
+<section id="references" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="references"><span class="header-section-number">15.3</span> References</h2>
 
 
 
 </section>
-
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1100,13 +1048,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01-intro-to-data.html" class="pagination-link" aria-label="Introduction to data science">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to data science</span></span>
+      <a href="./14-correlations.html" class="pagination-link" aria-label="Correlations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-intro-to-r.html" class="pagination-link" aria-label="Getting to know R and RStudio">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting to know R and RStudio</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./99-refs.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1115,4 +1063,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/02-spreadsheets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/02-spreadsheets.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/16-special-topic-functions-and-iterations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/16-special-topic-functions-and-iterations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
