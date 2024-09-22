@@ -49,7 +49,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./16-special-topic-functions-and-iterations.html" rel="prev">
+<link href="./19-statistical-power.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -223,6 +223,24 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./17-sample-and-population.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Samples, populations estimates and their uncertainty</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-p-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">What is the <em>p</em>-value?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-statistical-power.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Hypothesis tests and statistical power</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./99-refs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">References</span></a>
   </div>
@@ -262,6 +280,14 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-RN2961" class="csl-entry" role="listitem">
+Astorino, T. A., M. M. Schubert, E. Palumbo, D. Stirling, D. W.
+McMillan, C. Cooper, J. Godinez, D. Martinez, and R. Gallant. 2013.
+<span>“Magnitude and Time Course of Changes in Maximal Oxygen Uptake in
+Response to Distinct Regimens of Chronic Interval Training in Sedentary
+Women.”</span> Journal Article. <em>Eur J Appl Physiol</em> 113 (9):
+2361–69. <a href="https://doi.org/10.1007/s00421-013-2672-1">https://doi.org/10.1007/s00421-013-2672-1</a>.
+</div>
 <div id="ref-RN2391" class="csl-entry" role="listitem">
 Broman, Karl W., and Kara H. Woo. 2018. <span>“Data Organization in
 Spreadsheets.”</span> Journal Article. <em>The American
@@ -301,10 +327,21 @@ M. Holmes, P. M. Mumford, et al. 2018. <span>“Effects of Graded Whey
 Supplementation During Extreme-Volume Resistance Training.”</span>
 Journal Article. <em>Front Nutr</em> 5: 84. <a href="https://doi.org/10.3389/fnut.2018.00084">https://doi.org/10.3389/fnut.2018.00084</a>.
 </div>
+<div id="ref-RN2962" class="csl-entry" role="listitem">
+Higgins, Julian PT, Tianjing Li, and Jonathan J Deeks. 2019.
+<span>“Choosing Effect Measures and Computing Estimates of
+Effect.”</span> Book Section. In <em>Cochrane Handbook for Systematic
+Reviews of Interventions</em>, 143–76. https://doi.org/<a href="https://doi.org/10.1002/9781119536604.ch6">https://doi.org/10.1002/9781119536604.ch6</a>.
+</div>
 <div id="ref-RN130" class="csl-entry" role="listitem">
 Hopkins, W. G. 2000. <span>“Measures of Reliability in Sports Medicine
 and Science.”</span> Journal Article. <em>Sports Med</em> 30 (1): 1–15.
 <a href="http://www.ncbi.nlm.nih.gov/pubmed/10907753">http://www.ncbi.nlm.nih.gov/pubmed/10907753</a>.
+</div>
+<div id="ref-RN2959" class="csl-entry" role="listitem">
+Hopkins, W. G., J. A. Hawley, and L. M. Burke. 1999. <span>“Design and
+Analysis of Research on Sport Performance Enhancement.”</span> Journal
+Article. <em>Med Sci Sports Exerc</em> 31 (3): 472–85. <a href="https://doi.org/10.1097/00005768-199903000-00018">https://doi.org/10.1097/00005768-199903000-00018</a>.
 </div>
 <div id="ref-RN1953" class="csl-entry" role="listitem">
 Ioannidis, John P. A. 2005. <span>“Why Most Published Research Findings
@@ -315,6 +352,11 @@ Are False.”</span> Journal Article. <em>PLOS Medicine</em> 2 (8): e124.
 Leek, J. T., and R. D. Peng. 2015. <span>“Statistics: P Values Are Just
 the Tip of the Iceberg.”</span> Journal Article. <em>Nature</em> 520
 (7549): 612. <a href="https://doi.org/10.1038/520612a">https://doi.org/10.1038/520612a</a>.
+</div>
+<div id="ref-RN2956" class="csl-entry" role="listitem">
+Loe, H., Ø Rognmo, B. Saltin, and U. Wisløff. 2013. <span>“Aerobic
+Capacity Reference Data in 3816 Healthy Men and Women 20-90
+Years.”</span> Journal Article. <em>PLoS One</em> 8 (5): e64319. <a href="https://doi.org/10.1371/journal.pone.0064319">https://doi.org/10.1371/journal.pone.0064319</a>.
 </div>
 <div id="ref-lsr" class="csl-entry" role="listitem">
 Navarro, D. 2020. <em>Learning Statistics with r</em>.
@@ -905,8 +947,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./16-special-topic-functions-and-iterations.html" class="pagination-link" aria-label="Special topics: Iterations and functions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Special topics: Iterations and functions</span></span>
+      <a href="./19-statistical-power.html" class="pagination-link" aria-label="Hypothesis tests and statistical power">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Hypothesis tests and statistical power</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; Special topics: Iterations and functions – Quantitative methods and statistics (In Sport and Exercise Science)</title>
+<title>18&nbsp; Hypothesis tests and statistical power – Quantitative methods and statistics (In Sport and Exercise Science)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,8 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./17-sample-and-population.html" rel="next">
-<link href="./14-correlations.html" rel="prev">
+<link href="./99-refs.html" rel="next">
+<link href="./18-p-values.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -125,6 +125,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -137,7 +166,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16-special-topic-functions-and-iterations.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Special topics: Iterations and functions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./19-statistical-power.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Hypothesis tests and statistical power</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -253,7 +282,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16-special-topic-functions-and-iterations.html" class="sidebar-item-text sidebar-link active">
+  <a href="./16-special-topic-functions-and-iterations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Special topics: Iterations and functions</span></span></a>
   </div>
 </li>
@@ -271,7 +300,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./19-statistical-power.html" class="sidebar-item-text sidebar-link">
+  <a href="./19-statistical-power.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Hypothesis tests and statistical power</span></span></a>
   </div>
 </li>
@@ -291,21 +320,18 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#building-a-simple-function" id="toc-building-a-simple-function" class="nav-link active" data-scroll-target="#building-a-simple-function"><span class="header-section-number">15.1</span> Building a simple function</a></li>
-  <li><a href="#an-applied-problem-where-a-function-might-help" id="toc-an-applied-problem-where-a-function-might-help" class="nav-link" data-scroll-target="#an-applied-problem-where-a-function-might-help"><span class="header-section-number">15.2</span> An applied problem where a function might help</a>
-  <ul class="collapse">
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">15.2.1</span> Exercises</a></li>
-  </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">15.3</span> References</a></li>
+  <li><a href="#defining-the-alternative-hypothesis" id="toc-defining-the-alternative-hypothesis" class="nav-link active" data-scroll-target="#defining-the-alternative-hypothesis"><span class="header-section-number">18.1</span> Defining the alternative hypothesis</a></li>
+  <li><a href="#the-size-of-the-effect" id="toc-the-size-of-the-effect" class="nav-link" data-scroll-target="#the-size-of-the-effect"><span class="header-section-number">18.2</span> The size of the effect</a></li>
+  <li><a href="#power-and-study-designs" id="toc-power-and-study-designs" class="nav-link" data-scroll-target="#power-and-study-designs"><span class="header-section-number">18.3</span> Power and study designs</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/16-special-topic-functions-and-iterations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/16-special-topic-functions-and-iterations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/19-statistical-power.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/19-statistical-power.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Special topics: Iterations and functions</span></h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Hypothesis tests and statistical power</span></h1>
 </div>
 
 
@@ -322,194 +348,87 @@ div.csl-indent {
 </header>
 
 
-<p>To reduce the number of repetitive tasks performed manually or through copy-and-paste coding, R provides functions and frameworks for iterative operations. The programmer (you), could benefit greatly from building your own functions as these will reduce the risk of making mistakes, make the code more readable and easier to change <span class="citation" data-cites="r4ds">(<a href="99-refs.html#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017, chap. 19</a>)</span>.</p>
-<div class="no-row-height column-margin column-container"></div><section id="building-a-simple-function" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="building-a-simple-function"><span class="header-section-number">15.1</span> Building a simple function</h2>
-<p>A function in R is a defined set of operations, put together and often stored as an object to perform a specific task. In R, the user may define his/her own functions. Defining a function usually involves storing the function as an object in your environment. When you have gathered multiple functions relating to common tasks these can be organized as a package.</p>
-<p>Let’s say we want to create a function that returns the sum of two values. The function <code>sum_two_values</code> that is defined below, contains the basics of a typical function. In the <code>function()</code> call we define what <strong>arguments</strong> the function will accept. In our case, <code>a</code> and <code>b</code> represents the two numbers we want to add together. The <strong>body</strong> of the function is where we define the operations that we want the function to perform. We add <code>a</code> and <code>b</code> together and assign their sum to an object called <code>result</code>. Finally, we pass the result of the function to <code>return(result)</code>. Using return makes it explicit what part of the results you want to “get from the function”.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sum_two_values <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_two_values</span>(<span class="dv">3</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 9</code></pre>
+<p>In frequentist statistics as developed by Neyman and Pearson <span class="citation" data-cites="RN2902">(<a href="99-refs.html#ref-RN2902" role="doc-biblioref">Spiegelhalter 2019, 282–82</a>)</span>, we use two hypotheses to plan our studies. The null-hypothesis is the one that we use for our hypothesis test. The alternative hypothesis is used to make an estimation of the required sample size in the study. As we are designing a test about the null-hypothesis we can ultimately make two mistakes. First, we could end up rejecting the null-hypothesis despite it being true. If we compare two groups and end up with a result from our study sample rejecting the null-hypothesis even though there is no differences between groups on the population level, we make a <em>Type I</em> error. Instead, if there is a true difference between groups on the population level, but our test fail to reject the null-hypothesis we make <em>Type II</em> error.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-RN2902" class="csl-entry" role="listitem">
+Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</em>. Book. First US edition. New York: Basic Books.
+</div></div><p>In previous chapters we have used the <em>t</em>-test to perform statistical hypothesis tests, we will use this test to further explore the concept of power analysis.</p>
+<section id="defining-the-alternative-hypothesis" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="defining-the-alternative-hypothesis"><span class="header-section-number">18.1</span> Defining the alternative hypothesis</h2>
+<p>According to the Neyman-Pearson approach to statistical testing we should plan our studies with two known (long-run) error-rates. First we should specify what percentage of studies would reject the null-hypothesis if it is actually true. This error-rate is referred to as <span class="math inline">\(\alpha\)</span>. Second, we should specify a rate at which we are willing to miss rejecting the null-hypothesis (or finding evidence for an effect/difference of a certain size) if the alternative hypothesis actually exists in the population. This error rate is called <span class="math inline">\(\beta\)</span> but often expressed as <span class="math inline">\(1-\beta\)</span> (statistical power). If we want to have a power (<span class="math inline">\(1-\beta\)</span>) of 90% we simply state that if the effect exists in the population we will find it with our test in 90% of studies given repeated sampling.</p>
+<p>When designing a study we want to balance the two types of errors. As previously noted, we might be in a situation where a <em>Type II</em> error is relatively more serious than a <em>Type I</em> error. If we are trying to determine if a training method without any negative side effects is beneficial on performance, a <em>Type I</em> error might not be so serious as we would recommend using a method without any beneficial effect but also without harmfull effects. If there is a cost of implementing a treatment or training method on the other hand, we want to be more carefull with recommending it as if it has no positive effect the cost of implementation would mean negative consequences for e.g.&nbsp;an athlete.</p>
+<p>When designing a study we are often interested in the number of participants needed to obtain certain error-rates. The power of a test, defined as the long-run chance of “detecting” a true alternative hypothesis depends on the size of the effect in the alternative hypothesis, the number of participants in the study, and the <span class="math inline">\(\alpha\)</span> level. In the figure below we have plotted power values as a function of the sample size, given a fixed size of the effect of 0.4 (see below) and different values of the <span class="math inline">\(\alpha\)</span> error-rate of 0.001-20%.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="19-statistical-power_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Power as a function of sample size</figcaption>
+</figure>
 </div>
 </div>
-<p>The <strong>name</strong> of a function is defined by saving the function in an object. When the function is defined in a script or RMarkdown file it is available in the R <strong>environment</strong>. The difference from packages is that functions defined as part of packages are available when you load the package using <code>library()</code>.</p>
+</div>
+<p>This means that: If there is a true effect in the population, we will be more likely to reject the null-hypothesis if we</p>
+<ul>
+<li>Increase the sample size, or</li>
+<li>Increase the rate at which we would reject the null-hypothesis if it was actually true (the <span class="math inline">\(\alpha\)</span>-level)</li>
+</ul>
 </section>
-<section id="an-applied-problem-where-a-function-might-help" class="level2 page-columns page-full" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="an-applied-problem-where-a-function-might-help"><span class="header-section-number">15.2</span> An applied problem where a function might help</h2>
-<p>Lactate threshold values can be calculated from the exercise-intensity and blood lactate value relationship gathered from a graded exercise test. In the simple case, the exercise intensity at a fixed blood lactate concentration can be used to evaluate training progressions in e.g.&nbsp;athletes. To find the exercise intensity at a fixed blood lactate concentration, a polynomial regression model can be used to predict lactate values at different intensities and the find the exercise intensity value closest to our desiered lactate value.</p>
-<p>The above description can be broken down into these steps:</p>
-<ol type="1">
-<li>Fit a third degree polynomial model to exercise-intensity and lactate data from a single individual.</li>
-<li>Predict lactate values over the range of the observed exercise intensity values.</li>
-<li>Find the exercise intensity value closest to the lactate value of interest (e.g.&nbsp;4 mmol L<sup>-1</sup>).</li>
-</ol>
-<p>Using the <code>cyclingstudy</code> data we can perform these steps. We will do so using the <code>pre</code> time-point in participant 10.</p>
+<section id="the-size-of-the-effect" class="level2 page-columns page-full" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="the-size-of-the-effect"><span class="header-section-number">18.2</span> The size of the effect</h2>
+<p>Above we used a fixed standardized effect size of 0.4 to obtain power values. In the case of comparing two groups, an appropriate standardized effect-size (ES) is the ratio of a meaningful difference (MD) to the estimated population standard deviation (SD)</p>
+<p><span class="math display">\[ES = \frac{MD}{SD}\]</span> Finding a meaningful difference is the tricky part in power calculations. In a clinical setting for patient populations, this could mean a difference induced by the treatment that leads to a perceived beneficial effect for an individual. As the outcome of a study could be a reduced pain-score or blood pressure, the design of the study needs to address what difference is of importance.</p>
+<p>In elite sports, an improvement in an athletes performance of 0.3-0.4 times the within-athlete performance variability was considered important as it would increase the chance of winning a competition from 38 to 48% for a top athlete <span class="citation" data-cites="RN2959">(<a href="99-refs.html#ref-RN2959" role="doc-biblioref">Hopkins, Hawley, and Burke 1999</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-RN2959" class="csl-entry" role="listitem">
+Hopkins, W. G., J. A. Hawley, and L. M. Burke. 1999. <span>“Design and Analysis of Research on Sport Performance Enhancement.”</span> Journal Article. <em>Med Sci Sports Exerc</em> 31 (3): 472–85. <a href="https://doi.org/10.1097/00005768-199903000-00018">https://doi.org/10.1097/00005768-199903000-00018</a>.
+</div></div></section>
+<section id="power-and-study-designs" class="level2 page-columns page-full" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="power-and-study-designs"><span class="header-section-number">18.3</span> Power and study designs</h2>
+<p>In healthy Norwegian women between between 30 and 39 years of age, the average VO<sub>2max</sub> has been estimated to 40 with a standard deviation of 6.8 <span class="citation" data-cites="RN2956">(<a href="99-refs.html#ref-RN2956" role="doc-biblioref">Loe et al. 2013</a>)</span>. From the age of 30, VO<sub>2max</sub> decreases by about 3 ml kg<sup>-1</sup> min<sup>-1</sup> per every ten years. Let’s say that we want to design a study to investigate the effect of a new training method. We might then think that an improvement of VO<sub>2max</sub> corresponding to a five year decline (half of the average ten year decline) would be important to detect. We compare two training methods in two parallel groups, one group gets to train with traditional method, the other group trains with the our new method. We plan to measure VO<sub>2max</sub> in both groups, after the intervention. The null hypothesis says that the groups are not different after the intervention. The alternative hypothesis states that the new method leads to a difference between training methods of at least 1.5 ml kg<sup>-1</sup> min<sup>-1</sup> between groups. We will accept an <span class="math inline">\(\alpha\)</span> error rate of 5% and <span class="math inline">\(\beta\)</span> error rate of 20% as we aim for a 80% chance of detecting a true effect (of at least 1.5 ml kg<sup>-1</sup> min<sup>-1</sup>), if it is actually true.</p>
+<div class="no-row-height column-margin column-container"></div><p>We now have all the numbers we need for a sample size estimation. In R the <code>pwr</code> package provide functions for calculation of sample size, power or effect-sizes in commonly used statistical tests. The effect-size (<span class="math inline">\(d\)</span>) can be calculated as the smallest effect of interest divided by the population standard deviation <span class="math inline">\(d = \frac{1.5}{6.8} = 0.22\)</span>. We can input our numbers in the function <code>pwr.t.test</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata); <span class="fu">data</span>(<span class="st">"cyclingstudy"</span>)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">1.5</span><span class="sc">/</span><span class="fl">6.8</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">power =</span> <span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 323.5688
+              d = 0.2205882
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+</div>
+<p>From the output we can see that we need more than 324 participants in each group to get a power of 80% given an significance-level (<span class="math inline">\(\alpha\)</span>) of 5%. This is a BIG study!</p>
+<p>However, the power of a study is also influence by the study design. In the example above we used a single test after the intervention to determine the number of participants. This is an inefficient design as we need more participants to account for the uncertainty in the sampling process. If we instead rephrase the question to concern the change of VO<sub>2max</sub> between groups and measure each participant before and after the intervention we are designing a more efficient study, fewer participants are needed to reach the same power. We can calculate an approximate standard deviation of the change score (difference between pre- and post-treatment measurements) by combining an expected SD of pre- and post-treatment scores and the correlation between them <span class="citation" data-cites="RN2962">(<a href="99-refs.html#ref-RN2962" role="doc-biblioref">Higgins, Li, and Deeks 2019</a>)</span>. We get these numbers from previous studies <span class="citation" data-cites="RN2956 RN2961">(<a href="99-refs.html#ref-RN2956" role="doc-biblioref">Loe et al. 2013</a>; <a href="99-refs.html#ref-RN2961" role="doc-biblioref">Astorino et al. 2013</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-RN2962" class="csl-entry" role="listitem">
+Higgins, Julian PT, Tianjing Li, and Jonathan J Deeks. 2019. <span>“Choosing Effect Measures and Computing Estimates of Effect.”</span> Book Section. In <em>Cochrane Handbook for Systematic Reviews of Interventions</em>, 143–76. https://doi.org/<a href="https://doi.org/10.1002/9781119536604.ch6">https://doi.org/10.1002/9781119536604.ch6</a>.
+</div><div id="ref-RN2956" class="csl-entry" role="listitem">
+Loe, H., Ø Rognmo, B. Saltin, and U. Wisløff. 2013. <span>“Aerobic Capacity Reference Data in 3816 Healthy Men and Women 20-90 Years.”</span> Journal Article. <em>PLoS One</em> 8 (5): e64319. <a href="https://doi.org/10.1371/journal.pone.0064319">https://doi.org/10.1371/journal.pone.0064319</a>.
+</div><div id="ref-RN2961" class="csl-entry" role="listitem">
+Astorino, T. A., M. M. Schubert, E. Palumbo, D. Stirling, D. W. McMillan, C. Cooper, J. Godinez, D. Martinez, and R. Gallant. 2013. <span>“Magnitude and Time Course of Changes in Maximal Oxygen Uptake in Response to Distinct Regimens of Chronic Interval Training in Sedentary Women.”</span> Journal Article. <em>Eur J Appl Physiol</em> 113 (9): 2361–69. <a href="https://doi.org/10.1007/s00421-013-2672-1">https://doi.org/10.1007/s00421-013-2672-1</a>.
+</div></div><p>We are still interested in a difference between groups of 1.5 ml kg<sup>-1</sup> min<sup>-1</sup>, i.e.&nbsp;the alternative hypothesis is that the two training methods we are examining will differ 1.5 ml kg<sup>-1</sup> min<sup>-1</sup> in their average responses. The SD of the change score is determined to be 4.7, the resulting standardized effect size is therefore about 0.32. Given the same power and significance level we get the resulting sample size estimate:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Save a data set of lactate values from participant 10, time-point pre</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"watt"</span>, </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"lactate"</span>, </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">"lac."</span>, </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric), </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">cols =</span> lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subject <span class="sc">==</span> <span class="dv">10</span>, </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>         timepoint <span class="sc">==</span> <span class="st">"pre"</span>, </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(lactate)) <span class="sc">%&gt;%</span> <span class="co"># Remove NA values</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model </span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> watt <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">3</span>), <span class="at">data =</span> dat)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict lactate values over all observed watt values</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the smallest distance from the fixed lactate value </span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(dat<span class="sc">$</span>watt), <span class="at">to =</span> <span class="fu">max</span>(dat<span class="sc">$</span>watt), <span class="at">by =</span> <span class="fl">0.1</span>))</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>new_data<span class="sc">$</span>dist <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="fu">predict</span>(model, <span class="at">newdata =</span> new_data) <span class="sc">-</span> <span class="dv">4</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the smallest value of predicted - fixed lacate value</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>new_data <span class="sc">%&gt;%</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dist <span class="sc">==</span> <span class="fu">min</span>(dist)) <span class="co"># Where the dist value equals the minimum dist value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>If we were to do this operation for more participants and across more time-points, we should formalize the operation into a function. In the simplest form, the prospective function would only need an argument defining the input data. We can then settle for a single fixed lactate value. We will define the function and call it <code>lt</code> for lactate threshold. (This might not be the best name! <span class="citation" data-cites="r4ds">(<a href="99-refs.html#ref-r4ds" role="doc-biblioref">Wickham and Grolemund 2017</a>)</span>).</p>
-<div class="no-row-height column-margin column-container"><div id="ref-r4ds" class="csl-entry" role="listitem">
-Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. 1st ed. Paperback; O’Reilly Media. <a href="http://r4ds.had.co.nz/">http://r4ds.had.co.nz/</a>.
-</div></div><p>If the function returns a data frame, we can use it more efficiently later som we will make sure the result of the function is a data frame.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lt <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit a 3 degree polynomial model</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(lactate <span class="sc">~</span> watt <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(watt<span class="sc">^</span><span class="dv">3</span>), <span class="at">data =</span> data)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store a data frame with exercise intensities</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">min</span>(data<span class="sc">$</span>watt), <span class="at">to =</span> <span class="fu">max</span>(data<span class="sc">$</span>watt), <span class="at">by =</span> <span class="fl">0.01</span>))</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Predict using the new data, predicting lactate values at each </span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  new_data<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(m, <span class="at">newdata =</span> new_data)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate deviation from the lactate value of interest</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  new_data<span class="sc">$</span>watt<span class="fl">.4</span>mmol <span class="ot">&lt;-</span> <span class="fu">abs</span>(new_data<span class="sc">$</span>pred <span class="sc">-</span> <span class="dv">4</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a results data frame</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">watt.4mmol =</span> new_data[<span class="fu">which.min</span>(new_data<span class="sc">$</span>watt<span class="fl">.4</span>mmol),<span class="dv">1</span>])</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return the data frame</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The body of the function contains all operations needed to get the results we are after. It finally returns a data frame containing a single column named <code>watt.4mmol</code>. We can now test the function on some data.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(exscidata); <span class="fu">data</span>(<span class="st">"cyclingstudy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyverse' was built under R version 4.4.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"watt"</span>, </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"lactate"</span>, </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">"lac."</span>, </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric), </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">cols =</span> lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lactate), </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>         subject <span class="sc">==</span> <span class="dv">10</span>, </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>         timepoint <span class="sc">==</span> <span class="st">"pre"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">1.5</span><span class="sc">/</span><span class="fl">4.7</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">power =</span> <span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 5
-  subject group timepoint  watt lactate
-    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1      10 INCR  pre         125    0.93
-2      10 INCR  pre         175    0.87
-3      10 INCR  pre         225    0.86
-4      10 INCR  pre         250    0.92
-5      10 INCR  pre         275    1.2 
-6      10 INCR  pre         300    1.69
-7      10 INCR  pre         325    2.6 
-8      10 INCR  pre         350    4.69</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lt</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  watt.4mmol
-1     342.96</code></pre>
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 155.083
+              d = 0.3191489
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
-<p>Nice, since we defined the function with higher resolution, we get a exercise intensity value with two decimal points. This value represent the watt value where the predicted lactate value is the closest to 4 mmol L<sup>-1</sup>.</p>
-<p>We still need to incorporate the function into code that dose the calculation for each individual, and time-point without the need of manually filtering values for each new data set. This can be accomplished by using the function in a pipe together with <code>group_by</code> and <code>group_modify</code>.</p>
-<p>Since we are using a third degree polynomial we need to make sure we have enough data to fit such a model to each participant/time-point. We will add a variable counting the number of observations and then filter tests with less then 4 observations.</p>
-<p>The complete pipe could look something like this.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract lactate values</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cyclingstudy <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, group, timepoint, lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">"watt"</span>, </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"lactate"</span>, </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_prefix =</span> <span class="st">"lac."</span>, </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">watt =</span> as.numeric), </span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">cols =</span> lac<span class="fl">.125</span><span class="sc">:</span>lac<span class="fl">.375</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter missing lactate values</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(lactate)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data set, keeping group to have this information in the final results</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(timepoint, subject, group) <span class="sc">%&gt;%</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a new variable counting the number of observations and filter away tests with less than 4 obs.</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use grouup modify to apply the function to all participants per time-point (and group)</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_modify</span>(<span class="sc">~</span> <span class="fu">lt</span>(.)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 74 × 4
-# Groups:   timepoint, subject, group [74]
-   timepoint subject group watt.4mmol
-   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;
- 1 meso1           1 INCR        293.
- 2 meso1           2 DECR        286.
- 3 meso1           3 INCR        335.
- 4 meso1           4 DECR        244.
- 5 meso1           5 DECR        332.
- 6 meso1           6 INCR        252.
- 7 meso1           7 MIX         268.
- 8 meso1           8 MIX         294.
- 9 meso1           9 MIX         300.
-10 meso1          10 INCR        340.
-# ℹ 64 more rows</code></pre>
-</div>
-</div>
-<p>Great sucess! We have now calculated lactate threshold values for each participant, belonging to specific time-points and groups. The <code>group_modify</code> function does the iterative work of applying the function for all cases, you have save yourself a lot of code, and time!</p>
-<section id="exercises" class="level3" data-number="15.2.1">
-<h3 data-number="15.2.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">15.2.1</span> Exercises</h3>
-<ol type="1">
-<li>Modify the <code>lt</code> function to return two fixed lactate values.</li>
-<li>Modify the <code>lt</code> function to include an extra argument specifying the level of the lactate value you are interested in.</li>
-</ol>
-</section>
-</section>
-<section id="references" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="references"><span class="header-section-number">15.3</span> References</h2>
+<p>A change in the design of the study resulted in a sample size less than half of the more inefficient study.</p>
 
 
 
@@ -1066,13 +985,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./14-correlations.html" class="pagination-link" aria-label="Correlations">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlations</span></span>
+      <a href="./18-p-values.html" class="pagination-link" aria-label="What is the *p*-value?">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">What is the <em>p</em>-value?</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./17-sample-and-population.html" class="pagination-link" aria-label="Samples, populations estimates and their uncertainty">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Samples, populations estimates and their uncertainty</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./99-refs.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1081,4 +1000,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/16-special-topic-functions-and-iterations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/16-special-topic-functions-and-iterations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/19-statistical-power.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/19-statistical-power.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
