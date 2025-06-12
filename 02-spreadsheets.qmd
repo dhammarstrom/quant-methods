@@ -45,6 +45,10 @@ Hadley Wickham (the author of many commonly used R packages) quotes Tolstoy when
 
 ```{r tolstoy, echo=FALSE, message=FALSE, fig.cap = "Leo Tolstoy, the author of the book Anna Karenina. (Source: https://en.wikipedia.org/wiki/Leo_Tolstoy)", fig.scap = "Leo Tolstoy", out.width="50%", fig.align='center'}
 
+```
+
+
+![Leo Tolstoy, the author of the book Anna Karenina. (Source: https://en.wikipedia.org/wiki/Leo_Tolstoy)](https://upload.wikimedia.org/wikipedia/commons/a/a5/Leon_tolstoi.jpg){width=50%}
 
 
 :::

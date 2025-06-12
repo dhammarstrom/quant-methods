@@ -4,7 +4,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Creating your first graph
+# Creating your first graph {#sec-first-graph}
 
 Data visualization is an efficient way to understand data. Using graphs, we can communicate characteristics of a data set in a way that would have been impossible with a limited number of summary statistics, such as the mean and standard deviation. In Chapter 2 of his book [@RN2902], Spiegelhalter touches upon this fact when he describes different types of graphs and their use to understand various data sets. An important argument for mastering data visualization is understanding what variables might explain variation in a given data set [@RN2902]. In this sense, data visualization can be thought of as an initial step in understanding data; data visualization is an exploratory tool.  
 

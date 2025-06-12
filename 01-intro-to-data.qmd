@@ -107,7 +107,7 @@ The above are examples of data that are available to us. However, to make sense 
 
 In your future career, within, or outside the field of sport and exercise you will most likely be tasked with making sense of data, but making sense of data is often a team effort. Developing a better understanding of data science in general will make you a better team player in data intensive tasks. For example, knowing about possibilities and limitations for gaining knowledge from a particular data set can make you able to advice on decision-making in your organization.
 
-## Replication and Reproducibility
+## Replication and Reproducibility {#sec-reproducibility}
 
 In scientific research, replication is a way to confirm scientific claims. A scientific claim is replicated when independent new data and new analyses brings us to similar conclusions as previous studies. When an independent group of researchers can confirm a result, the claim is more likely to be true. However, many results will be impossible to replicate due to the size of trials, costs, and urgency of the research question. A recent example is the many vaccine trials performed to develop a vaccine against COVID-19. Other examples are large-scale epidemiological studies [@RN1492], or studies with unique study populations such as elite athletes.  
 

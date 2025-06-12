@@ -1,0 +1,180 @@
+---
+title: "Distributions and tests"
+---
+
+Many of the statistical tests we use to test (null-) hypotheses rely on an assumed model for a *sampling distribution*. That is, a distribution that describes how a sample statistic would look like under the assumptions that the null-hypothesis is true and that we perform repeated sampling of a specific size from a specific population. We have previously created such a distribution by permutations, that is, random re-sampling and relabelling of observed values in a two group scenario. Remarkably, this technique gives us similar answers as using an approximation of the sampling distribution using sample statistics and a specific probability distribution.
+
+In previous examples we have used the *t*-distribution to model a sampling distribution for a test comparing means. The use of *t*-distribution can be 
+
+Different null-hypothesis tests needs different distribution to accurately represent the sampling distribution under the null-hypothesis. This fact gives rise to a myriad of tests in frequentistic, parametric statistics.
+
+## One-way ANOVA
+
+### What is the null?
+
+In a scenario where we want to know if any of three or more independent groups differ from each other we might consider doing a *one-way analysis of variance* (one-way ANOVA). This test has the benefit of allowing for one test of what otherwise could be three or more comparisons. The null hypothesis in a one-way ANOVA with three groups is 
+
+$$\mu_1 = \mu_2 = \mu_3$$
+The alternative hypothesis is that at least one group differs from the other two, or that the variation between groups is substantially greater than the variation within groups. As the later suggests, we get the test statistic from comparing variances (variation), hence the analysis of variance.
+
+The test statistic is called the F statistic as we are using the F-distribution as a model of our null-hypothesis. The variation between groups is computed as the sum, over all groups $K$, of the group size time the squared differences between group means and the grand mean ($n_i(\bar{y}_i - \bar{y})^2$) divided by the number of groups - 1.   
+
+$$\text{Between-group variation} = \sum^K_{i=1}\frac{n_i(\bar{y}_i - \bar{y})^2}{K-1}$$
+The within-group variation is calculated as the sum of, over all groups ($i$), and all observations within groups ($ij$) the squared difference between each observation and the group mean, divided by the total sample size ($N$) minus the number of groups ($K$).
+
+$$\text{Within-group variation} = \sum_{i=1}^K{\sum_{j=1}^{n_i}\frac{(y_{ij}-\bar{y}_i)^2}{N-K}}$$
+
+Using R we can set up these calculations as in the code chunk below.
+
+```{r}
+#| code-fold: true
+
+
+## Define constants for calculations
+n <- 25    # group sizes
+K <- 3     # number of groups
+N <- n * K # Total sample size
+
+# Simulate some data, with an effect!
+set.seed(1)
+dat <- data.frame(a = rnorm(25, 0, 1), 
+           b = rnorm(25, 0, 1), 
+           c = rnorm(25, 0.75, 1)) %>%
+        pivot_longer(everything(), 
+                     names_to = "group", 
+                     values_to = "outcome")
+
+wvar <- dat %>%
+        mutate(grp_means = mean(outcome), 
+               .by = group) %>%
+        # Calculate within-group variances
+        mutate(squared_error = (outcome - grp_means)^2) %>%
+        summarise(squared_error_sum = sum(squared_error), 
+                  .by = group) %>%
+        summarise(wvar = sum(squared_error_sum)/(N-K)) %>%
+        pull(wvar)
+        
+bvar <- dat %>%
+        mutate(grand_mean = mean(outcome)) %>%
+        summarise(grp_mean = mean(outcome), 
+                  grand_mean = mean(grand_mean), 
+                  .by = group) %>%
+        mutate(squared_error = (n * (grp_mean - grand_mean)^2)/(K-1)) %>%
+        summarise(bvar = sum(squared_error)) %>%
+        pull(bvar)
+
+
+# Calculate the F-statistic
+f <- bvar / wvar
+
+
+
+```
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Code for the figure comparing groups"
+#| label: fig-group-comp-anova
+#| fig-cap: "Comparison of group averages in our simulated data. Averages are represented by + and observations by points."
+
+
+grp_averages <- dat %>%
+        summarise(.by = group, 
+                  m = mean(outcome))
+
+dat %>%
+        ggplot(aes(group, outcome)) + 
+        geom_point(position = position_jitter(width = 0.1)) + 
+        
+        geom_point(data = grp_averages, 
+                   aes(group, m), 
+                   position = position_nudge(x = - 0.3),
+                   size = 3, 
+                   shape = 3) +
+        
+        labs(x = "Groups", 
+             y = "Outcome meassure") + 
+        theme_classic()
+
+
+
+```
+
+It turns out that the variation between groups (`r round(bvar, 3)`) is `r round(f, 3)` times the within group variation (`r round(wvar, 3)`), this is the result of calculating the ratio of the two sources of variation. We can check this computation by asking R to perform a one-way ANOVA.
+
+```{r}
+
+library(broom)
+library(gt)
+# See if we can replicate this test statistic with the built in aov function
+m <- aov(outcome ~ group, data = dat)
+
+tidy(m) %>%
+        gt() %>%
+        fmt_auto()
+
+
+```
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+
+library(tidyverse)
+library(ggtext)
+
+
+n <- 25
+
+statistic <- data.frame(fstat = rep(NA, 1000))
+
+for(i in 1:1000) {
+        
+        
+ dat <- data.frame(a = rnorm(n), 
+                   b = rnorm(n), 
+                   c = rnorm(n)) %>%
+         pivot_longer(everything())
+        
+        m <- oneway.test(value ~ name, data = dat)
+
+       statistic[i,1] <- m$statistic
+                
+}
+
+
+
+
+statistic %>%
+        ggplot(aes(fstat)) + 
+        
+        geom_histogram(aes(y = after_stat(density)), boundary = 0) + 
+        
+        geom_function(fun = ~ df(.x, df1 = 2, df2 = 72), color = "red", linewidth = 1) +
+        
+        labs(x = "F-value", 
+             title = "Simulating the null-hypothesis in a one-way ANOVA", 
+             subtitle = "F-distribution df~1~=2, df~2~=72") + 
+        theme_classic() +
+
+        theme(axis.text.y = element_blank(), 
+              axis.ticks.y = element_blank(), 
+              axis.line.y = element_blank(), 
+              axis.title.y = element_blank(), 
+              plot.subtitle = element_markdown()) 
+
+
+
+```
+
+
+

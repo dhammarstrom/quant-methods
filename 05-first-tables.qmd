@@ -5,7 +5,7 @@ editor_options:
 ---
 # Wrangling data to create your first table
 
-## Introduction
+## Introduction {#sec-first-table}
 
 We can use tables to communicate a lot of information in a compact form while maintaining precision. This advantage is why creating tables is essential for effectively communicating data. We can easily create tables programmatically as part of an R markdown or quarto document. R has many "table generator" packages that translate your draft table to an output format of your choice. A great format to start authoring an analysis in is HTML; however, most "table generators" need to know your output format to be properly formatted and work in the output format. Below we will introduce a new package for the purpose of creating tables. This package, `gt` has the advantage that it does not require the user to change code when we switch to another output format. The `gt` package can create tables in HTML, PDF and word format. 
 

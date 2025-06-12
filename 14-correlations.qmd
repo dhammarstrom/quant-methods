@@ -118,7 +118,7 @@ c$estimate^2
 
 ```
 
-These similarities arise from the fact that they are the same analysis. The degree to which the two variables co-varies. 
+These similarities arise from the fact that they are the same analysis, the degree to which the two variables co-varies. 
 
 The additional benefit of using a regression analysis comes from the interpretation of the regression coefficient estimates. In our example we can see that increasing the weekly volume with one ton increases percentage lean mass by `r round(coef(m)[2], 3)`%-points. The confidence interval is given on the same scale and can be retrieved by using the code below:
 
@@ -190,4 +190,3 @@ It is now very important to stop and think about the estimates that we arrived t
 
 The correlation coefficient has many similarities with a univariate regression model. Correlations measures strength of association, but the regression model comes with benefits in terms of interpretation. The correlation only takes two variables but we can extend the regression model. When we think that data do not match our assumptions we can do correlation analysis using Spearman's rank correlation to avoid biased estimates of estimation. 
 
-## References

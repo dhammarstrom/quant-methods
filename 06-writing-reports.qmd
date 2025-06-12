@@ -3,7 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# Writing your first reproducible report
+# Writing your first reproducible report {#sec-first-report}
 
 As we have already discussed, the degree to which research is reproducible is determined by the availability of:
 
@@ -60,7 +60,7 @@ So much fuzz just for writing a report? Yes, it is a bit more work to get starte
 
 As mentioned before, we will focus on the more modern format for authoring reports in R, quarto. In this section we will introduce the basic building blocks of a report and how to put them together. We have already covered figures and tables, now its time to put that into context.
 
-### The Markdown syntax, and friends
+### The Markdown syntax, and friends {#sec-markdown}
 We have already mentioned the markup language **markdown**[^markdown]. This enables an author like yourself to format your text in a plain text editor. This has the advantage of keeping formatting explicit and available from the keyboard. In a word editor like MS Word, formatting is sometimes not obvious and you need to point and click make changes. The R-markdown style of markdown includes the ability to combine code in code chunks and embedded in text. This makes it possible to include code output in the final report. Another technical achievement that makes RMarkdown and quarto possible is Pandoc, a general document conversion software. Pandoc can convert files from one format to another, this includes the operations that we use, from markdown to HTML, PDF or Word. Both markdown and pandoc are free and open source software that makes life easy for us!       
 
 [^markdown]: Markdown was introduced in 2004 as a syntax to convert plain text to formatted HTML. Markdown is primarily attributed to [John Gruber](https://daringfireball.net/projects/markdown/).

@@ -5,12 +5,13 @@ editor_options:
 ---
 # Categorical predictors and multiple regression
 
-We have up to now used a single continuous predictor to predict a dependent variables. We will now show that the ordinary regression models can be extended and modified to perform statistical tests such as the *t*-test. This will show that the ordinary regression model is very flexible.
+We have up to now used a single continuous predictor to predict a dependent variables. We will now show that the ordinary regression models can be extended and modified to perform statistical tests such as the *t*-test. The ordinary regression model is very flexible!
 
 ## Linear models can be used instead of t-tests
+
 *t*-test are designed to compare means. A question you might want to answer using a *t*-test is how unlikely the results from your test is if there were no true differences between values from two groups (independent *t*-test), or two samples from the same individuals (paired sample *t*-test) or comparing a group to a specific value (one sample *t*-test). Another way of describing these tests are; tests of differences from zero in a one-sample case or differences between groups with paired or unpaired observations.
 
-Using the `cyclingstudy` data set we can perform *t*-tests. In the code below we will select the variable squat jump and filter it from two time-points. `pivot_wider` is used to put squat jump performance from the two time-points in separate columns. A change score is then calculated.  
+We can perform *t*-tests on data from the `cyclingstudy` data set. In the code below we will select the variable squat jump and filter it from two time-points. `pivot_wider` is used to put squat jump performance from the two time-points in separate columns. A change score is then calculated.  
 
 ```{r}
 #| eval: true
@@ -53,7 +54,7 @@ one_sample <- t.test(cyc_select$change, mu = 0)
 
 These tests are equal as we can see from the comparison below. They are also equivalent to a linear model where we simply model the mean of the change score. When fitting the `change` variable without any predictors we estimate a single parameter in our model, the intercept. The intercept coefficient can be used to test against the same null-hypothesis (change not different from zero), the same results will appear. We can add all result to the same table (@tbl-model-comp).
 
-```{r, eval = TRUE}
+```{r}
 #| eval: true
 #| warning: false
 #| message: false
@@ -125,7 +126,7 @@ summary(lin_mod)
 
 If you compare the two tests, do they tell you the same?
 
-Using `var.equal = TRUE` in the unpaired *t*-test we assumed that the variation was similar in both groups. This might not be the case, and R uses the Welch two-sample *t*-test by default which does not assum equal variance between groups. Even the Welch two sample t-test can be replicated using a linear model. However, we have to specify it in a slightly different framework using the `gls()` function from the `nlme` package.  
+Using `var.equal = TRUE` in the unpaired *t*-test we assumed that the variation was similar in both groups. This might not be the case, and R uses the Welch two-sample *t*-test by default which does not assumes equal variance between groups. Even the Welch two sample t-test can be replicated using a linear model. However, we have to specify it in a slightly different framework using the `gls()` function from the `nlme` package.  
 
 ```{r, eval = FALSE}
 library(nlme)
@@ -148,18 +149,24 @@ The group variable that we used in the code above introduces something new to th
 
 In the simplest case (as above) we will get a linear model looking like this:
 
-$$Y = \beta_0 + \beta_1X$$
+$$y_i = \beta_0 + \beta_1x_i$$
 
-Where the $X$ is the grouping variable, remember, 0 if first (reference) group and 1 if the second level group. The coefficient $\beta_1$ only kicks in if the group is 1. Meaning that when group = 0 we have only the intercept. If group = 1 we have the intercept + the slope. The slope represents the difference between the intercept (group = 0) and group = 1.
+Where the $x$ is the grouping variable and set to 0 when we have the reference group and 1 when we have the second level group. The coefficient $\beta_1$ only kicks in if the group is 1. This also means that when group = 0, $y$ corresponds to the intercept of the model. If group = 1 we have the intercept + the slope. The slope represents the difference between the intercept (group = 0) and group = 1.
 
-If the grouping variable would have more groups more dummy-variables would have been added. 
+If the grouping variable would have more groups more dummy-variables would have been added by R to create several comparisons between the reference group and compared levels of the variable. 
+
+
+### An exercise
 
 Using all groups in the data set, fit a model and interpret the results.
 
- <a id="displayText" href="javascript:toggle(2);">Here is a possible solution</a>
-  <div id="toggleText2" style="display: none">
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
+#| code-fold: true
+#| code-summary: "A possible solution"
+
+
 cyc_subset <- cyclingstudy %>%
         select(subject,group, timepoint, VO2.max) %>%
         filter(timepoint %in% c("pre", "meso3")) %>%
@@ -172,16 +179,12 @@ mod <- lm(change ~ group, data = cyc_subset)
 
 summary(mod)
 
+# The `DECR` group is the reference group, the intercept shows the mean of this group. Each parameter shows the difference from the reference.
+
+# The same assumptions are made with these kinds of models and they can be checked with the same methods as described above. 
+
 ```
 
-The `DECR` group is the reference group, the intercept shows the mean of this group. Each parameter shows the difference from the reference.
-
-
-
-  </div>
-  </br>  
-
-The same assumptions are made with these kinds of models and they can be checked with the same methods as described above. 
 
 ## Multiple regression
 

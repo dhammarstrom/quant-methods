@@ -1,0 +1,37 @@
+# The quarto publishing system
+
+Let's take a step back. We have in previous chapters created figures (@sec-first-graph), tables (@sec-first-table) and layed the groundwork for reproducible reports (@sec-first-report). It turns out that we can do more!
+
+The quarto publishing system allows you to create reports, books, presentations, websites and blogs by converting computer code (like R) and markdown syntax to different output formats. In this chapter we will touch upon some features of this system that makes it easier to work with.
+
+## The basics - What Quarto does
+Quarto is basically a software that converts source documents (`.qmd` files) to different output formats, like word, pdf or html @fig-quarto. The conversion is made possible by [pandoc](https://pandoc.org/index.html) which is a software that converts between different markup languages. A markup language is a system used to include structure and format in your plain text editor. We have already covered the basic for markdown (@sec-markdown).
+
+![](https://quarto.org/docs/get-started/hello/images/rstudio-qmd-how-it-works.png){#fig-quarto}
+
+Quarto is the latest generation of software that has been created to make it easy to write technical reports combing data, code and text. Remember the discussion we had concerning reproducibility, (@sec-reproducibility), quarto, and previous system, are designed for reproducible reporting.
+
+When we work in a quarto file we basically write a computer program that gives us an output file. The output file is a report we can show to others, but we can also show how the output was created by showing the *source files*. 
+
+## Single-file reports
+
+
+
+
+A single quarto document can be processed with quarto from a `qmd` source file to PDF, HTML or word formats as various types of documents. When authoring these documents you may want to keep track of the output as you write. Let's say that we have a file called `my_source.qmd` in our working directory. We can use Quarto in the terminal to ask for a preview. In the code example below `quarto` tells your computer that we want to use the quarto software, next argument (`preview`) is an argument to the quarto software to build a preliminary version of your output file, and finally, `my_source.qmd` indicate which source file you want to build from.
+
+```{r}
+#| eval: false
+#| echo: true
+quarto preview my_source.qmd
+```
+
+
+
+
+
+
+
+
+
+

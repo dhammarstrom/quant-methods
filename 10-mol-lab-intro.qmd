@@ -1,10 +1,34 @@
+---
+author: Vilde Handegard, Daniel Hammarström
+---
+
 # Introduction to the molecular exercise physiology lab
 
 ## Health and safety in the lab
 
+To ensure lab work is performed according to current rules and regulations regarding health and safety, the document «Retningslinjer Idrettslab» about this has been formed. The document describes standard operating procedures (SOP) pertinent to the molecular exercise physiology lab, as well as the “testlab”. All students and employees working in either of the labs are responsible to acquire knowledge about these SOPs. This document can be found here: Retningslinjer Idrettslab
 
+In the molecular lab, the greatest health and safety hazards are the chemicals we handle. To assist us in safe chemical handling, we use the digital chemical database EcoOnline. **Username: idrett**, **password: idrett**. In this database, you can find information about all the chemicals we have in our lab. Each chemical has its own safety data sheet (SDS). For all chemicals you work with, you should read the SDS and work according to recommendations for protective equipment and handling of the chemical.
+
+We have the following protective equipment in the molecular lab: lab coat, gloves, facial mask, eye protection. In addition we have two fume hoods where we can work with extra hazardous chemicals to avoid toxic fumes, vapours and dust. The fume hood also provides a physical barrier to chemical spills. 
+
+If you spill or spray any chemicals on yourself, somebody else or on the floor, benchtop etc., it’s important that you know how to handle this. Information about this can be found in the chemical’s SDS.
+
+Another important aspect of health and safety in the lab is correct storage of chemicals. Chemicals that are either toxic, explosive, flammable, oxidizing, compressed gas, corrosive, irritant, environmental damaging and/or health hazards should be stored appropriately. Information about where a chemical should be stored can be found in the SDS. The lab manager is responsible for correct storage of chemicals, but all lab users are responsible for placing the chemical they've used back where it belongs. 
+
+All chemicals need to be handled appropriately. This means that its not allowed to throw all chemicals in the sink or regular trash bin. Some chemicals need to be declared by official waste handlers (GLØR). The waste of these chemicals should be stored in appropriate containers. The lab manager is responsible for making sure that such containers are available in the lab and that they are marked properly. Information about which chemicals that need to be declared can be found in the SDS, or by asking the lab manager. Generally, all biological waste (saliva, blood, muscle, urine) should be thrown in yellow waste bins, and nothing but biological waste should be thrown in yellow waste bins.
 
 ## Good laboratory practice
+- 	Standard work equipment in the lab is lab coat and gloves. No sandals with open toe.
+- 	Never drink or eat, or keep food and drinks in the lab.
+- 	Benchtops should be clean and tidy. 
+- 	Never work alone in the lab.
+- 	Always come prepared: plan, acquire knowledge about the chemicals you will work with, make sure you have all the equipment and consumables you need.
+- 	Work according to protocol and write down everything you do (elab). If you have to do something outside protocol, make sure to always write down what you did and why.
+- 	ALWAYS mark the tubes/box you are working with (content, name/initials, date/year, project ID)
+- 	Ask the lab manager if in doubt 
+- 	Try to keep the lab slightly tidy while working – others are also working there
+- 	Precision/accuracy and focus are very important while working in the lab!
 
 
 
@@ -18,7 +42,7 @@ After a couple of years running our lab in Lillehammer, we have arrived at the c
 
 Traditionally, laboratory journals are stored in a fire safe cabinets in the lab, in notebooks. In some labs, each page must be "read and understood" and subsequently signed by a lab administrator or principle investigator. People working in laboratories typically have strong feeling about their laboratory journal system, regardless of digital or analog alternatives. The above observations indicate that, as a new lab member you should take care to learn the laboratory journal system and culture of the lab. This will make your work more important to the lab, as it will contribute to the collective knowledge based on the groups work.
 
-Our electronic laboratory journal system can be found at [elab.inn.no](elab.inn.no). As a student at inn you may log in using your student username and password. The system has link to the documentation of the software which can also be found through this web address: [doc.elabftw.net/](https://doc.elabftw.net/). As a student you will be added to the group related to this course.
+Our electronic laboratory journal system can be found at [elab.inn.no](http://elab.inn.no). As a student at inn you may log in using your student username and password. The system has link to the documentation of the software which can also be found through this web address: [doc.elabftw.net/](https://doc.elabftw.net/). As a student you will be added to the group related to this course.
 
 ### What to write in the journal
 A laboratory journal should consist of all necessary information needed to *replicate* your experiments. The tricky thing is that you do not always know what information is needed to do a replication. This means that you will need to include all relevant information about your experiment, and a bit more, within reasonable limits. 

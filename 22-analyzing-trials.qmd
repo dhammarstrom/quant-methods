@@ -77,9 +77,14 @@ In sport science (and e.g. medical-, nutritional-, psychological-sciences), inte
 
 The choice of study design relates to the research-question and dictates what statistical methods can be applied. The study design affects the ability of the study to detect an effect (the power). A common case of a RCT is the parallel-groups design. In a parallel-group design participants are **allocated** to two or more "treatment groups", **at random**, one group gets a treatment, the other group acts as the control. Usually, a measurement is made prior to the intervention (Baseline) and after the intervention. This is a common design **when wash-out period** is not possible and thus, the two treatment can not be compared within the same individual. 
 
-In a design where we have a Treatment group and a control group for comparison hypothesized outcomes can look something like in Figure \@ref(fig:trial-design-fig).
+In a design where we have a Treatment group and a control group for comparison hypothesized outcomes can look something like in @fig-trial-design-fig.
 
-```{r trial-design-fig, fig.align='center', fig.dim = c(4,2.5), fig.cap = "Hypothesized values from a simple pre-post parallel-groups design"}
+```{r}
+#| label: fig-trial-design-fig
+#| fig-align: "center"
+#| fig-width: 4
+#| fig-height: 2.5
+#| fig-cap: "Hypothesized values from a simple pre-post parallel-groups design" 
 
 data.frame(Time = c("Pre", "Post", "Pre", "Post"), outcome = c(0,1, 0,1)) %>%
         mutate(Time = factor(Time, levels = c("Pre", "Post"))) %>%
@@ -96,10 +101,15 @@ data.frame(Time = c("Pre", "Post", "Pre", "Post"), outcome = c(0,1, 0,1)) %>%
 
 ```
 
-Another common scenario is that we expect progress in two different treatments groups as in Figure \@ref(fig:trial-design-fig2).
+Another common scenario is that we expect progress in two different treatments groups as in @fig-trial-design-fig2.
 
 
-```{r trial-design-fig2, fig.align='center', fig.dim = c(4,2.5), fig.cap = "Hypothesized values from a simple pre-post parallel-groups design including to different treatments"}
+```{r}
+#| label: fig-trial-design-fig2
+#| fig-width: 4
+#| fig-height: 2.5
+#| fig-cap: "Hypothesized values from a simple pre-post parallel-groups design including to different treatments"
+#| fig-align: "center"
 
 data.frame(Time = c("Pre", "Post", "Pre", "Post"), outcome = c(0,1, 0,1)) %>%
         mutate(Time = factor(Time, levels = c("Pre", "Post"))) %>%
@@ -123,7 +133,7 @@ $$ \Delta Y_A-\Delta Y_B \neq 0 $$
 
 meaning that the **null hypothesis** is that the **change** ($\Delta$) in group A is not different to the **change** in group B. To evaluate these studies we could do a *t-test* on the change score between groups. This is equivalent to a regression model where we estimate the difference between groups:
 
-$$outcome = \beta_0 + \beta_1 Group_B$$
+$$\text{outcome} = \beta_0 + \beta_1 x_\text{GroupB}$$
 In R, these to alternatives can be easily fitted using the code presented in code chunk (CC) 1:
 
 ```{r, eval = FALSE, echo = TRUE}
@@ -316,11 +326,11 @@ c
 
 The `exp` function back-transforms data from the log scale. Back-transforming a difference between two groups (as estimated in our model) will yield the fold-difference, this can be calculated as a percentage difference. In the code chunk below the log-difference between groups is transformed to percentage differences using:
 
-$$Percentage~difference = (1-exp(estimate)) \times 100$$
+$$\text{Percentage difference} = (1-\operatorname{exp}(\text{estimate})) \times 100$$
 
 If we want to express the 30RM group as a percentage of the 10RM group we could remove 1 from the equation:
 
-$$Percentage~of~10RM = exp(estimate) \times 100$$
+$$\text{Percentage of 10RM} = \operatorname{exp}(\text{estimate}) \times 100$$
 
 The function `tidy` from the `broom` package is used to access the model output. 
 
@@ -612,11 +622,11 @@ Similarly, we can add a baseline score to the model where we only assessed basel
 
 The two extended models discussed above may be called ANCOVA models (ANalysis of CO-VAriance). The ordinary linear models we used above can be written e.g. as:
 
-$$Change = \beta_0 + \beta_1 \times Group$$
+$$\text{Change} = \beta_0 + \beta_1 \times x_{\text{group}}$$
 
 The extended, ANCOVA model can be written as
 
-$$Change =  \beta_0 + \beta_1 \times Baseline + \beta_2 \times Group$$
+$$\text{Change} =  \beta_0 + \beta_1 \times x_\text{Baseline} + \beta_2 \times x_\text{Group}$$
 
 Using the DXA data `dxadata_reduced`, create models with the baseline values as a covariate, use the change score in one model and the post-treatment scores in the other model. Assess the difference between groups, how do you interpret it?
 
@@ -727,7 +737,6 @@ The un-adjusted model suggests that the difference between volume conditions are
   </div>
   </br>  
 
-## References
 
 
 
