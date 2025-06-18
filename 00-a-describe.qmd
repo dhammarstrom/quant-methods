@@ -1,0 +1,7 @@
+---
+title: "Describing data"
+format: html
+---
+
+Much effort goes into describing data. This is true for data we have observed and data we might observe in the future. The reason is that it is often hard to convey information about data without relying on techniques that help us understand the characteristics of the data. This part of the course will focus on methods for describing and presenting data. We will start by examining different variables and then explore numerical summaries of these variables. We will then look at theoretical data distributions and finally see what figures and tables can help us when presenting data to ourselves and others.
+

@@ -1,0 +1,11 @@
+---
+title: "Data variables"
+format: html
+---
+
+
+### Categorical variables
+
+### Continuous variables
+
+### Scales of measurement 
