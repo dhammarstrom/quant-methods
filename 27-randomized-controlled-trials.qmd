@@ -1,0 +1,9 @@
+# Analyzing (randomized controlled) trials
+
+
+## Alternatives to the null-hypothesis
+
+### Equivalence testing
+
+https://doi.org/10.1113/EP090171
+
