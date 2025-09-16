@@ -1,0 +1,43 @@
+---
+title: "assessing-athletes"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+
+```{r}
+
+library(tidyverse)
+library(brms)
+
+
+set.seed(1)
+d <- data.frame(athlete = paste0("a", 1:10), 
+                pre = rnorm(10, 60, 5), 
+                post = rnorm(10, 61, 5)) |> 
+  print()
+
+d2 <- d |> 
+  pivot_longer(cols = c(pre, post), 
+               names_to = "time") |> 
+  mutate(time = factor(time, levels = c("pre", "post"))) |> 
+  print()
+
+default_prior(value ~ time + (time|athlete), 
+         data = d2)
+
+
+
+m <- brm(value ~ time + (time|athlete), 
+         data = d2, 
+         prior = c(prior(normal(60, 10), class = "Intercept"), 
+                   prior(normal(0, 6), class = "b", coef = "timepost"), 
+                   prior(normal(0, 6), class ="sd")))
+
+summary(m)
+
+```
+

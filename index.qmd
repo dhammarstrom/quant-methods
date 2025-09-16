@@ -16,23 +16,59 @@
 
 
 
-
-
-
-
-
-
-
-
-
 ## Prerequisites
 
 To fully benefit from the course I recommend that students bring a basic understanding of statistical concepts to the course, such as knowledge about descriptive data summarises, usage of inferential statistics and regression models. We aim to cover these concepts in the course but also hope to get further. If you are not sure your basic understanding is up to date you may want to review introductory material, such as [Statistisk dataanalyse med jamovi](https://dhammarstrom.github.io/statistisk-dataanalyse/).
 
-In the course we will use R to do analyses, create figures and tables, and write reports. If you are unfamiliar with R, that is OK, the course hopefully provides a gentle introduction. Using R, together with additional data science tools, means that you will encounter many infuriating problems. Such problems might arise from a missing comma or a misspelled word making your computer program produce [gibberish](https://en.wikipedia.org/wiki/Gibberish). Solving such problems requires patience, systematic thinking and a positive attitude! The skill set I hope you will develop during the course includes knowledge about how to identify problems, where to find help to address problems and how to learn from problems.
+In the course we will use R to do analyses, create figures and tables, and write reports. If you are unfamiliar with R, that is OK, the course hopefully provides a gentle introduction. Using R, together with additional data science tools, means that you will encounter many infuriating problems. Such problems might arise from a missing comma or a misspelled word making your computer program produce [gibberish](https://en.wikipedia.org/wiki/Gibberish). Solving such problems requires patience, systematic thinking and a positive attitude! The skill set I hope you will develop during the course includes knowledge about how to identify problems, where to find help to address problems and how to learn from problems. An introduction to using R can be found [here (A R Crash Course)](https://dhammarstrom.github.io/r-crash-course/)
 
 If you feel that R is not for you, that's ok, the course will also provide examples of how to do analyses in two other open source software packages, [jamovi](https://www.jamovi.org/) and [JASP](https://jasp-stats.org/). These software packages are user friendly and have a graphical user interface. They are also based on R, so you can use them to learn R if you want to. 
 
 
+## Data sets
+
+This course uses a collection of data sets, some of them are stored in the `exscidata` package. If you are using R you can install it from its GitHub repository. Start up your version of RStudio and paste the following code into a script. You can execute the whole script at once, or line by line.
+
+```{r}
+#| eval: false
+
+# Check if remotes is not installed, if TRUE, install remotes
+if (!"remotes" %in% installed.packages()) install.packages(remotes)
+
+# Check if exscidata is not installed, if TRUE, install exscidata from github
+if (!"exscidata" %in% installed.packages()) remotes::install_github("dhammarstrom/exscidata")
+
+# Load exscidata
+library(exscidata)
+
+```
+
+When you have installed `exscidata` you will have access to several data sets. For example, the data sets `strengthvolume` contain data from a resistance training intervention. We can have a look at the help files for the data set by writing `?strengthvolume`.
+
+If you aim to use the data sets in a Jamovi session you may access the in the table below.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
 
 
+boston <- exscidata::boston
+strengthvolume <- exscidata::strengthvolume
+
+dir.create("data-out")
+
+saveRDS(boston, "data-out/boston.RDS")
+write.csv(strengthvolume, file = "data-out/strengthvolume.csv")
+
+
+
+
+
+```
+
+
+|Data set |Filename| File type|
+|---|---|
+|[Boston marathon results 1897-2019]("data-out/boston.RDS")|boston|`.RDS`|
+|[Strength tests from a resistance training intervention]("data-out/strengthvolume.csv")|strengthvolume|`.csv`|

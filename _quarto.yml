@@ -5,7 +5,7 @@ project:
 book:
   title: "Quantitative methods and statistics with examples in R, Jamovi and JASP"
   author: "Daniel Hammarström"
-  date: "2025-06-12"
+  date: "2025-09-02"
   search: true
   repo-url: https://github.com/dhammarstrom/quant-methods
   repo-branch: master
@@ -16,39 +16,39 @@ book:
     - part: 00-a-describe.qmd
       chapters:
         - 01-data-variables.qmd
-        - 02-describe-data.qmd
-        - 03-data-distributions.qmd
-        - 04-data-visualizations.qmd
-        - 05-tables.qmd
-        - 06-reproducible-reports.qmd
-    - part: 00-b-regress.qmd
-        - 07-linear-models.qmd
-        - 08-correlations.qmd
-        - 09-curve-linear-relationships.qmd
-        - 10-categorical-multiple.qmd
-        - 11-predictions.qmd
-        - 12-glm.qmd
-        - 13-mixed-effects.qmd
-    - part: 00-c-causal.qmd
-        - 14-effects-and-dags.qmd
-        - 15-counfounded-effects.qmd
-        - 16-interventions.qmd
-        - 17-selection-bias.qmd
-    - part: 00-d-infer.qmd
-        - 18-samples-populations.qmd
-        - 19-frequentist-bayesian.qmd
-        - 20-p-values.qmd
-        - 21-confidence-interval.qmd
-        - 22-statistical-power.qmd
-        - 23-posterior-probabilities.qmd
-        - 24-prior-probabilities.qmd
-        - 25-bayesian-inference-workflow.qmd
-    - part: 00-e-report.qmd
-        - 26-reproducible-reporting.qmd
-        - 27-randomized-controlled-trials.qmd
-        - 28-performance-prediction.qmd
-        - 29-injury-risk.qmd
-        - 30-meta-analysis.qmd
+      #  - 02-describe-data.qmd
+      #  - 03-data-distributions.qmd
+      #  - 04-data-visualizations.qmd
+     #   - 05-tables.qmd
+      #  - 06-reproducible-reports.qmd
+  #  - part: 00-b-regress.qmd
+  #      - 07-linear-models.qmd
+  #      - 08-correlations.qmd
+  #      - 09-curve-linear-relationships.qmd
+  #      - 10-categorical-multiple.qmd
+  #      - 11-predictions.qmd
+  #      - 12-glm.qmd
+  #      - 13-mixed-effects.qmd
+  #  - part: 00-c-causal.qmd
+  #      - 14-effects-and-dags.qmd
+  #      - 15-counfounded-effects.qmd
+  #      - 16-interventions.qmd
+  #      - 17-selection-bias.qmd
+  #  - part: 00-d-infer.qmd
+  #      - 18-samples-populations.qmd
+  #      - 19-frequentist-bayesian.qmd
+  #      - 20-p-values.qmd
+  #      - 21-confidence-interval.qmd
+  #      - 22-statistical-power.qmd
+  #      - 23-posterior-probabilities.qmd
+  #      - 24-prior-probabilities.qmd
+  #      - 25-bayesian-inference-workflow.qmd
+  #  - part: 00-e-report.qmd
+  #      - 26-reproducible-reporting.qmd
+  #      - 27-randomized-controlled-trials.qmd
+  #      - 28-performance-prediction.qmd
+  #      - 29-injury-risk.qmd
+  #      - 30-meta-analysis.qmd
     - 99-refs.qmd
 
 bibliography: resources/bib-final.bib

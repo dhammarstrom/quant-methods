@@ -1,7 +1,6 @@
 ---
-title: "Describing the data that we have observed"
+title: "Describing data"
 format: html
 ---
-
 
 
