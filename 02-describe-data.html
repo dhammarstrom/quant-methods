@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Describing the data that we have observed – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
+<title>2&nbsp; Describing data – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,10 +71,39 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./02-describe-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing the data that we have observed</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./02-describe-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -101,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
       <a href="./">Quantitative methods and statistics with examples in R, Jamovi and JASP</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dhammarstrom/quant-methods" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Quantitative-methods-and-statistics-with-examples-in-R,-Jamovi-and-JASP.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+    <a href="./Quantitative-methods-and-statistics-with-examples-in-R,-Jamovi-and-JASP.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -137,31 +166,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-describe-data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing the data that we have observed</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-data-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data that we have not observed</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./04-data-visualizations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05-tables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tables</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-reproducible-reports.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></span></a>
   </div>
 </li>
       </ul>
@@ -177,15 +188,25 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#central-tendency" id="toc-central-tendency" class="nav-link active" data-scroll-target="#central-tendency"><span class="header-section-number">2.1</span> Central tendency</a></li>
+  <li><a href="#measures-of-dispersion" id="toc-measures-of-dispersion" class="nav-link" data-scroll-target="#measures-of-dispersion"><span class="header-section-number">2.2</span> Measures of dispersion</a>
+  <ul class="collapse">
+  <li><a href="#describing-categories" id="toc-describing-categories" class="nav-link" data-scroll-target="#describing-categories"><span class="header-section-number">2.2.1</span> Describing categories</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/02-describe-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/02-describe-data.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./02-describe-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing the data that we have observed</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./02-describe-data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing the data that we have observed</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing data</span></h1>
 </div>
 
 
@@ -202,7 +223,39 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>When working with data, a summary will often help us understand the data better than just looking at all the data points. To this end, we want to be able to describe the central tendency of a variable and its variation (or dispersion). The central tendency will give us a measure of the center of the variable, while the dispersion will provide us with a measure of the spread.</p>
+<p>In this discussion, we will introduce some light mathematical notation. We will work with a variable that we will call <span class="math inline">\(x\)</span>. Sometimes we talk about an observation of <span class="math inline">\(x\)</span>, usually the <span class="math inline">\(i\)</span>th observation, denoted as <span class="math inline">\(x_i\)</span>. <span class="math inline">\(i\)</span> stands for the indices of the observation that goes from the first observation <span class="math inline">\(x_1\)</span> to the last observation, <span class="math inline">\(x_n\)</span>, where <span class="math inline">\(n\)</span> is the size of the sample. The mean of a variable is often described as <span class="math inline">\(\bar{x}\)</span> with the bar on top of x indicating the average. Alternatively, the mean “function” notation could be used as <span class="math inline">\(\text{Mean}(x)\)</span> to indicate the average. The same logic goes for the standard deviation that is sometimes written as <span class="math inline">\(s\)</span>, and sometimes as <span class="math inline">\(\text{SD}(x)\)</span>. Later, we will, for example, talk about a sample mean and a population mean. In statistical notation, the distinction between the sample and the population is made by using different symbols. For the mean, the sample mean could be written as <span class="math inline">\(\bar{x}\)</span> while the population mean could be written with the Greek letter “mu”, <span class="math inline">\(\mu\)</span>. The standard deviation in a sample may be written as <span class="math inline">\(s\)</span> while the population standard deviation is written with the Greek letter “sigma”, <span class="math inline">\(\sigma\)</span>. Be aware, there are many dialects of statistical notation!</p>
+<section id="central-tendency" class="level2 page-columns page-full" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="central-tendency"><span class="header-section-number">2.1</span> Central tendency</h2>
+<p>The most common, and maybe most intuitive, measure of the center of a set of numbers is the arithmetic mean (or the average). This measure is the point on the scale that perfectly balances the weight of the measurements. To get the mean, we need to sum up all observations and divide the sum by the number of observations. Let’s say we have <span class="math inline">\(n\)</span> observations of the variable <span class="math inline">\(x\)</span>. Summing the values of these observations is often described using the following notation <span class="math inline">\(\sum_{i=1}^n x_i\)</span>. The <span class="math inline">\(\sum\)</span> symbol tells us that we are doing summation, <span class="math inline">\(i=1\)</span> indicates the first index in the sequence of values, and <span class="math inline">\(n\)</span> says that the summation will go on until we reach the last observation. <span class="math inline">\(x_i\)</span> indicates that we are doing a summation over the variable <span class="math inline">\(x\)</span>. When we have summed all observations, we will divide them by the number of values. Sometimes this whole expression is written as <span class="math inline">\(\text{Mean}(x) = \bar{x} = \frac{1}{n}\sum_{n=1}^n x_i\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This the same as writing</p></div><div class="">
+<p><span class="math display">\[\bar{x} = \frac{\sum_{i=1}^n x_i}{n}\]</span> only a little bit more compact.</p>
+</div></div>
+<p>Another measure of central tendency is the median. Instead of relying on the weight of each observation, the median gives us the value that is placed in the middle of an ordered sequence of numbers. First, let’s order our observations <span class="math inline">\(x_1 &lt; x_2 &lt; ... &lt; x_n\)</span>. Next we pick the middle observation <span class="math inline">\(x_m\)</span> as the median (<span class="math inline">\(\text{Median}(x_n)\)</span>). If <span class="math inline">\(n\)</span> is even, we take the mean of the two center values.</p>
+<p>Finally, we can discuss the most common number in a sequence of values. To arrive at this number, we would count the frequency of each distinct value and name the value with the highest frequency the mode.</p>
+<p>The first measure of tendency, the mean, accounts for the actual value of each observation. The median, on the other hand, only takes into account the order of the sequence of sorted values. And last, the mode only takes into account the frequency distribution of values.</p>
+</section>
+<section id="measures-of-dispersion" class="level2 page-columns page-full" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="measures-of-dispersion"><span class="header-section-number">2.2</span> Measures of dispersion</h2>
+<p>The standard deviation gives us the average deviation from the mean. To get this measure, your computer will start by calculating the variance. The variance is the average squared deviation from the mean. We can write this as a formula, and you will recognize most of it from the formula of the mean <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The exception is that we are doing a summation over all squared differences from the mean <span class="math inline">\((x_i - \bar{x})^2\)</span>. The variance is thus not on the same scale as the mean, and therefore, in many instances, is hard to interpret. To get a more interpretable number, we take the square root of the variance to get the standard deviation. This gives us the formula used by your computer to calculate the standard deviation.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;The formula for the variance</p></div><div class="">
+<p><span class="math display">\[s^2 = \frac{1}{n}\sum_{i=1}^n(x_i - \bar{x})^2\]</span></p>
+</div></div>
+<p>However, this is not the whole story, when we only have a small sample from a larger population of possible observations and we wish to estimate the variance or standard deviation of the population, it turns out that the average deviation from the mean is biased. To correct this bias, the variance and standard deviation are usually calculated using <span class="math inline">\(n-1\)</span> giving us the most common formula (for the standard deviation):</p>
+<p><span class="math display">\[s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x}_n)^2}\]</span></p>
+<p>This correction is called Bessel’s correction<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. It is the preferred way of calculating the sample variance and standard deviation in software packages like R.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Read more about the correction <a href="https://en.wikipedia.org/wiki/Bessel%27s_correction">here</a></p></div></div><p>Similar to the description of central tendency, we can focus on the sorted sequence of observations to find measures of dispersion. If we order all observations from the smallest to the largest, it would be easy to find the maximum and the minimum. The distance between the minimum and the maximum is called the range. Furthermore, we could use the order to find the value corresponding to the 25th and 75th percentiles and calculate the distance between them. The nth percentile is the value of the maximum number among the n % of all observations. For example, the 25th percentile divides the data into two pieces: 25% of the data is equal to or below the 25th percentile, and 75% of the data is above it. The range between the 25th and the 75th percentile is called the interquartile range.</p>
+<p>The median absolute deviation (MAD) combines the idea from the standard deviation with measuring the central tendency in deviations from the center. However, MAD uses the median deviation from the median. In the formula<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, a correction is used to give appriximately a standard deviation when the variables is normally distributed. The choice of using MAD is usually motivated by data that is not normally distributed.</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;See <a href="https://en.wikipedia.org/wiki/Median_absolute_deviation">here</a> for details on MAD. See also the JASP guide for MAD and MAD robust <a href="https://jasp-stats.org/wp-content/uploads/2025/07/Statistical-Analysis-in-JASP-A-guide-for-students-2025.pdf">here</a>.</p></div><div class="">
 
+</div></div>
+<section id="describing-categories" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="describing-categories"><span class="header-section-number">2.2.1</span> Describing categories</h3>
+<p>The above discussion is valid for numerical data on the interval or ratio scale. When we are trying to summarise categories we often need to resort to freqency summarises. A variable that contains three categories can, for example, be summarized by counting the number of observations in each category. This will allow for the calculation of the relative number of observations, and the cumulative percentage.</p>
+
+
+</section>
+</section>
 
 
 </main> <!-- /main -->
@@ -758,8 +811,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-data-distributions.html" class="pagination-link" aria-label="Describing data that we have not observed">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data that we have not observed</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03-data-distributions.html" class="pagination-link" aria-label="Data distributions">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -768,4 +821,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/02-describe-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/02-describe-data.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/02-describe-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/02-describe-data.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

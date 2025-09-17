@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Describing data that we have not observed – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
+<title>3&nbsp; Data distributions – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,7 +50,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./04-data-visualizations.html" rel="next">
+<link href="./99-refs.html" rel="next">
 <link href="./02-describe-data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -74,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./03-data-distributions.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data that we have not observed</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./03-data-distributions.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -101,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
       <a href="./">Quantitative methods and statistics with examples in R, Jamovi and JASP</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dhammarstrom/quant-methods" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Quantitative-methods-and-statistics-with-examples-in-R,-Jamovi-and-JASP.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+    <a href="./Quantitative-methods-and-statistics-with-examples-in-R,-Jamovi-and-JASP.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -137,31 +157,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-describe-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing the data that we have observed</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-data-distributions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data that we have not observed</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./04-data-visualizations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05-tables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tables</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-reproducible-reports.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></span></a>
   </div>
 </li>
       </ul>
@@ -181,11 +183,11 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./03-data-distributions.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data that we have not observed</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./03-data-distributions.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data that we have not observed</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></h1>
 </div>
 
 
@@ -200,6 +202,57 @@ ul.task-list li input[type="checkbox"] {
 
 
 </header>
+
+
+<p>When we observe data, we can describe it by its central tendency and dispersion. However, it is also often useful to describe the distribution of the data graphically to get a sense of the shape of the data. A histogram can help us with this representation. A histogram divides a numeric variable into bins and counts the number of observations in each bin. The number of observations in each bin is then displayed as a bar plot, with each bar representing a bin (<a href="#fig-histo" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. In <a href="#fig-histo" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>, a separate histogram has been created for each gender in the data set.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;In JASP, the Descriptive Statistics module lets us create a basic histogram; however, here it is called Distribution plots with the possibility to add density estimates.</p></div></div><div class="cell">
+<div class="cell-output-display">
+<div id="fig-histo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-histo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-data-distributions_files/figure-html/fig-histo-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Results from the Boston marathon 2019 displayed as histograms per gender.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>An alternative to the histogram is a density plot. The density plot shows us the relative density of observations along the scale of the variable of interest. Often, the curve shows a smoothed estimate of the distribution (<a href="#fig-density" class="quarto-xref">Figure&nbsp;<span>3.2</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-density" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-data-distributions_files/figure-html/fig-density-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Results from the Boston marathon 2019 displayed as density plots per gender.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The shape of the data is of interest to us <span class="citation" data-cites="sokal2012">(<a href="99-refs.html#ref-sokal2012" role="doc-biblioref">Sokal and Rohlf 2012, 19</a>)</span>. For example, in the above figures we can notice that only a very small proportion of the competitors approaches the 2 hour mark.[^world record] The distribution is skewed to the right and we might discover some unusual peaks in the histigram at three and four hours. This shape could lead us to further investigate the limits of human performance (why no sub 2 hour times?), the psychology of specific run times (why do many men finnish at sub 3 hours?) or the general demographics of the participants (the tail of the distribution).</p>
+<div class="no-row-height column-margin column-container"><div id="ref-sokal2012" class="csl-entry" role="listitem">
+Sokal, Robert R., and F. James Rohlf. 2012. <em>Biometry : The Principles and Practice of Statistics in Biological Research</em>. [Extensively rev.] 4th. New York: W.H. Freeman.
+</div></div><p>[^world record]: The marathon world records are 2:00:35 and 2:09:56, for men and women, respectively <a href="https://en.wikipedia.org/wiki/Marathon_world_record_progression">(source)</a>.</p>
+<p>An alternative approach to summarize a disribution could be a boxplot (<a href="#fig-boxplot" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>). A boxplot summarises the data by displaying the median, the first and third quartile (the box). The whiskers covers observations within 1.5 × the inter-quartile range from the box. Observations above the whiskers are displayed using points.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-data-distributions_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Results from the Boston marathon 2019 displayed as boxplots per gender.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
 
@@ -753,13 +806,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-describe-data.html" class="pagination-link" aria-label="Describing the data that we have observed">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing the data that we have observed</span></span>
+      <a href="./02-describe-data.html" class="pagination-link" aria-label="Describing data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-data-visualizations.html" class="pagination-link" aria-label="Visualizing data">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./99-refs.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
