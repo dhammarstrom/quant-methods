@@ -50,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./99-refs.html" rel="next">
+<link href="./04-data-visualizations.html" rel="next">
 <link href="./02-describe-data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -166,6 +166,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-data-visualizations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -234,10 +240,6 @@ Figure&nbsp;3.2: Results from the Boston marathon 2019 displayed as density plot
 </div>
 </div>
 </div>
-<p>The shape of the data is of interest to us <span class="citation" data-cites="sokal2012">(<a href="99-refs.html#ref-sokal2012" role="doc-biblioref">Sokal and Rohlf 2012, 19</a>)</span>. For example, in the above figures we can notice that only a very small proportion of the competitors approaches the 2 hour mark.[^world record] The distribution is skewed to the right and we might discover some unusual peaks in the histigram at three and four hours. This shape could lead us to further investigate the limits of human performance (why no sub 2 hour times?), the psychology of specific run times (why do many men finnish at sub 3 hours?) or the general demographics of the participants (the tail of the distribution).</p>
-<div class="no-row-height column-margin column-container"><div id="ref-sokal2012" class="csl-entry" role="listitem">
-Sokal, Robert R., and F. James Rohlf. 2012. <em>Biometry : The Principles and Practice of Statistics in Biological Research</em>. [Extensively rev.] 4th. New York: W.H. Freeman.
-</div></div><p>[^world record]: The marathon world records are 2:00:35 and 2:09:56, for men and women, respectively <a href="https://en.wikipedia.org/wiki/Marathon_world_record_progression">(source)</a>.</p>
 <p>An alternative approach to summarize a disribution could be a boxplot (<a href="#fig-boxplot" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>). A boxplot summarises the data by displaying the median, the first and third quartile (the box). The whiskers covers observations within 1.5 × the inter-quartile range from the box. Observations above the whiskers are displayed using points.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -253,9 +255,27 @@ Figure&nbsp;3.3: Results from the Boston marathon 2019 displayed as boxplots per
 </div>
 </div>
 </div>
+<p>Categories can also be summarised as using frequencis. In the figure below we have categorized age in bins creating and ordered categorical variable (ordinal), a second categorical variable, gender (nominal), let’s us compare the number of observations between Males and Females within each age group.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-freqcat" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-freqcat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-data-distributions_files/figure-html/fig-freqcat-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-freqcat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: Gender distributions per age group from the Boston marathon 2019.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The shape of the data is of interest to us <span class="citation" data-cites="sokal2012">(<a href="99-refs.html#ref-sokal2012" role="doc-biblioref">Sokal and Rohlf 2012, 19</a>)</span>. For example, in the above figures we can notice that only a very small proportion of the competitors approaches the 2 hour mark.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The distribution is skewed to the right and we might discover some unusual peaks in the histogram at three and four hours. Additionally, we see a slight overrepresentation of women in the age category 18-29. Patterns like these in the data could lead us to further investigate, for example, the limits of human performance (why no sub 2 hour times?), the psychology of specific run times (why do many men finnish at sub 3 hours?) or the general demographics of the participants (the tail of the distribution and gender differences in participation).</p>
 
 
-
+<div class="no-row-height column-margin column-container"><div id="ref-sokal2012" class="csl-entry" role="listitem">
+Sokal, Robert R., and F. James Rohlf. 2012. <em>Biometry : The Principles and Practice of Statistics in Biological Research</em>. [Extensively rev.] 4th. New York: W.H. Freeman.
+</div><div id="fn2"><p><sup>2</sup>&nbsp;The marathon world records are 2:00:35 and 2:09:56, for men and women, respectively <a href="https://en.wikipedia.org/wiki/Marathon_world_record_progression">(source)</a>.</p></div></div>
 
 
 </main> <!-- /main -->
@@ -811,8 +831,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./99-refs.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04-data-visualizations.html" class="pagination-link" aria-label="Visualizing data">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

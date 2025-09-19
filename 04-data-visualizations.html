@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; 04-data-visualizations – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
+<title>4&nbsp; Visualizing data – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05-tables.html" rel="next">
+<link href="./99-refs.html" rel="next">
 <link href="./03-data-distributions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
       <a href="./">Quantitative methods and statistics with examples in R, Jamovi and JASP</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dhammarstrom/quant-methods" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Quantitative-methods-and-statistics-with-examples-in-R,-Jamovi-and-JASP.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+    <a href="./Quantitative-methods-and-statistics-with-examples-in-R,-Jamovi-and-JASP.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -131,19 +131,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-data-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-describe-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing the data that we have observed</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-data-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data that we have not observed</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -152,35 +152,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05-tables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">05-tables</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-reproducible-reports.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
-  </div>
-</li>
       </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Regression analysis</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Causal inference</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Statistical inference</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Reporting statistical analyses</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -193,15 +165,27 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#plotting-data-in-two-dimensions" id="toc-plotting-data-in-two-dimensions" class="nav-link active" data-scroll-target="#plotting-data-in-two-dimensions"><span class="header-section-number">4.1</span> Plotting data in two dimensions</a></li>
+  <li><a href="#adding-variables-using-figure-elements" id="toc-adding-variables-using-figure-elements" class="nav-link" data-scroll-target="#adding-variables-using-figure-elements"><span class="header-section-number">4.2</span> Adding variables using figure elements</a></li>
+  <li><a href="#showing-trends-over-time" id="toc-showing-trends-over-time" class="nav-link" data-scroll-target="#showing-trends-over-time"><span class="header-section-number">4.3</span> Showing trends over time</a></li>
+  <li><a href="#trends-from-models" id="toc-trends-from-models" class="nav-link" data-scroll-target="#trends-from-models"><span class="header-section-number">4.4</span> Trends from models</a></li>
+  <li><a href="#creating-figures-in-jasp" id="toc-creating-figures-in-jasp" class="nav-link" data-scroll-target="#creating-figures-in-jasp"><span class="header-section-number">4.5</span> Creating figures in JASP</a></li>
+  <li><a href="#creating-figures-in-jasp-1" id="toc-creating-figures-in-jasp-1" class="nav-link" data-scroll-target="#creating-figures-in-jasp-1"><span class="header-section-number">4.6</span> Creating figures in JASP</a></li>
+  <li><a href="#creating-data-visualizations-in-r" id="toc-creating-data-visualizations-in-r" class="nav-link" data-scroll-target="#creating-data-visualizations-in-r"><span class="header-section-number">4.7</span> Creating data visualizations in R</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/04-data-visualizations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/04-data-visualizations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./04-data-visualizations.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">04-data-visualizations</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></h1>
 </div>
 
 
@@ -218,8 +202,155 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>In the previous chapter, we saw that simple visualizations can give us a general sense of the shape (distribution) of a single variable using histograms and density plots. We expanded the figures by adding colors to differentiate by gender and incorporating a second axis to display run times by gender, which gave us a sense of the variation in two variables. We could extend this further by incorporating more variables mapped to colors or shapes, or by subdividing the plot by additional variables. Such flexibility makes data visualizations essential for developing an understanding of data and communicating results from data analysis. Visualizations can convey aspects of data that are not possible to communicate with summary statistics or tables.</p>
+<p>In this chapter, we will identify basic types of figures used in scientific papers and data communication.</p>
+<section id="plotting-data-in-two-dimensions" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="plotting-data-in-two-dimensions"><span class="header-section-number">4.1</span> Plotting data in two dimensions</h2>
+<p>A basic data visualization uses a coordinate system to display data along measurement scales. The x- and y-axis form a basic template for a two-dimensional display (two variables) of data. The scales for the x- and y-axis could be numerical and continuous or categorical. In the figure below, two continuous measurements are mapped to the x- and y-axis. Each observation has a value for each axis, making it possible to plot them in the two-dimensional coordinate system (<a href="#fig-scatter-basic" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scatter-basic" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-basic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-data-visualizations_files/figure-html/fig-scatter-basic-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-basic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: A basic scatter plot. Values of two variables are plotted along the coordinate axes. To highlight each combination of x- and y-scale values these have been added to each point.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The above figure is called a <em>scatter plot</em>. The scatter plot is a powerful tool to visualize an association between two variables. The association becomes evident when a pattern emerges from plotting two variables together. When plotting the variables Age and finishing time in the Boston Marathon, we can clearly see a pattern, as maximal running velocity decreases with age. We have added a third dimension to the figure by giving different colors to males and females (<a href="#fig-scatter-boston" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scatter-boston" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-boston-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-data-visualizations_files/figure-html/fig-scatter-boston-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-boston-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: A scatter plot can highlight associations between two continuous variables. The age of participants seems to predict maximal running velocity, in both genders.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>By replacing a continuous variable on one axis with a categorical variable, we get a visualization suitable for comparisons. When the purpose of a graph is to highlight differences between categories (or associations between a categorical variable and a continuous variable), we could use a variation of a basic scatter plot, as shown in <a href="#fig-catcomp-boston" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>. However, some designs are better than others. The first panel (A) uses simple points to represent each observation (winner time per year). A slight <em>jitter</em> (panel B) makes it easier to see the individual points. Aggregated data removes the information gained from seeing variation between individual data points, as in panel C, where box-plots represent time per gender, or as in D, where the data has been reduced to a mean (the bars) and a standard deviation (the whiskers). The bar plot (D) is particularly bad, as most of the bar does not contain any actual data; there are no observations from zero to about 2 hours. To highlight the paired nature of the data, we could connect observations done in particular years (as in panel E). From this, we can learn that the winning times are consistently lower in males compared to females. Even though there is some overlap between genders, no year contains data where females ran faster than males.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-catcomp-boston" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-catcomp-boston-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-data-visualizations_files/figure-html/fig-catcomp-boston-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-catcomp-boston-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.3: To highlight comparisons between groups we can use a categorical variable on one of the coordinate axes. Some displays are better than others. The figure shows winner times per gender from the Boston Marathon 2000-2019
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-variables-using-figure-elements" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="adding-variables-using-figure-elements"><span class="header-section-number">4.2</span> Adding variables using figure elements</h2>
+<p>In the above figures, we have already added a variable by assigning colors to highlight two groups. Using colors and shapes is a way to add multiple dimensions to a plot. In <a href="#fig-scatter-groups" class="quarto-xref">Figure&nbsp;<span>4.4</span></a>, two different colors and shapes are assigned to two categories in the data. This allows us to plot additional variables. The additional variable is explained by a legend shown in the plot.</p>
+<p>We can also use multiple panels to show relationships between variables in different categories. In <a href="#fig-facets" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>, combining two categorical variables yields small multiples of the same basic graph; each panel represents data in a specific combination of age and gender.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scatter-groups" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-data-visualizations_files/figure-html/fig-scatter-groups-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.4: Colors and shapes are used to differentiate two categories. The figure shows the association between RNA content and protein synthesis in skeletal muscle of two groups of mice.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="showing-trends-over-time" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="showing-trends-over-time"><span class="header-section-number">4.3</span> Showing trends over time</h2>
+<p>In <a href="#fig-facets" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>, we used a time series of winning times in the Boston Marathon. The trend over time was not highlighted; to do this, we could add a line to produce line graphs. In <a href="#fig-facets-line" class="quarto-xref">Figure&nbsp;<span>4.6</span></a>, the graph implies that we are comparing females to males in each age category, as we use the same y-axis for both genders in each age group. An alternative comparison would be the age-group comparison. To highlight this comparison, we could plot each age group using the same y-axis (<a href="#fig-facets-line-color" class="quarto-xref">Figure&nbsp;<span>4.7</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-facets" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-facets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-data-visualizations_files/figure-html/fig-facets-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.5: Using categorical variables to create multiple smaller plots. Each panel corresponds to a combination of age category and gender. Data from the Boston Marathon 2000-2019.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-facets-line" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-facets-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-data-visualizations_files/figure-html/fig-facets-line-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.6: Using lines to highlight trends over time and categorical variables to create multiple smaller plots. Each panel corresponds to a combination of age category and gender. Data from the Boston Marathon 2000-2019.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-facets-line-color" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-facets-line-color-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-data-visualizations_files/figure-html/fig-facets-line-color-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets-line-color-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.7: Using lines to highlight trends over time, colors to differentiate between age groups and panels to show gender categories. Data from the Boston Marathon 2000-2019.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="trends-from-models" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="trends-from-models"><span class="header-section-number">4.4</span> Trends from models</h2>
+<p>Many statistical software programs produce graphs that show the result of a statistical model. In <a href="#fig-smooth" class="quarto-xref">Figure&nbsp;<span>4.8</span></a>, the lines connecting individual years have been replaced by model-based smooths. In this case, the underlying model is a locally estimated scatterplot smoothing. It shows us an approximate moving average. The gray fields represent the model “uncertainty”, in this case, the 95% confidence interval.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-smooth" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-smooth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-data-visualizations_files/figure-html/fig-smooth-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-smooth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.8: Adding model based estimates as smooth lines can highlight trends without.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-figures-in-jasp" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="creating-figures-in-jasp"><span class="header-section-number">4.5</span> Creating figures in JASP</h2>
+</section>
+<section id="creating-figures-in-jasp-1" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="creating-figures-in-jasp-1"><span class="header-section-number">4.6</span> Creating figures in JASP</h2>
+<p>JASP has powerful visualization capabilities. Under the Descriptives module and <em>Descriptive statistics</em>, basic descriptive plots can be designed. A distribution plot can be created to show a histogram of a continuous variable or a frequency plot of a categorical variable.</p>
+<p>Also in the Descriptives module, <em>Plot builder</em> and <em>Flexplot</em> allow for data visualizations. <em>Plot builder</em> is the more advanced of the two. In <em>Plot builder</em> we are able to add variables to x- and y-coordinates of the figure. A grouping variable can be used to separate categories present in the data. Axis and plot annotations can be added to the figure, and aggregation can be done by plotting the mean, median, and error bars. Furthermore, simple curve fitting can add results from a statistical model to the plot.</p>
+<p>In the screen shot below you can see an example analysis made in JASP using the <em>Plot builder</em> module. You can download the JASP-file <a href="data/millward.jasp">here</a>.</p>
+<p><img src=".\images/ch4/jasp-plot-builder.png" class="img-fluid"></p>
+</section>
+<section id="creating-data-visualizations-in-r" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="creating-data-visualizations-in-r"><span class="header-section-number">4.7</span> Creating data visualizations in R</h2>
+<p>One reason for using R is the potent visualization capabilities. R is probably the most versatile ecosystem for creating scientific graphics. There are several well-documented packages for data visualisation; <code>ggplot2</code> is perhaps the most accessible package of them. See Chapter 5 <a href="https://dhammarstrom.github.io/r-crash-course/">here</a> for an introduction to <code>ggplot2</code>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -769,13 +900,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03-data-distributions.html" class="pagination-link" aria-label="Describing data that we have not observed">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data that we have not observed</span></span>
+      <a href="./03-data-distributions.html" class="pagination-link" aria-label="Data distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05-tables.html" class="pagination-link" aria-label="05-tables">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">05-tables</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./99-refs.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -784,4 +915,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/04-data-visualizations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/04-data-visualizations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/04-data-visualizations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/04-data-visualizations.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

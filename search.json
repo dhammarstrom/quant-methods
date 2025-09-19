@@ -24,7 +24,7 @@
     "href": "index.html#data-sets",
     "title": "Quantitative methods and statistics with examples in R, Jamovi and JASP",
     "section": "Data sets",
-    "text": "Data sets\nThis course uses a collection of data sets, some of them are stored in the exscidata package. If you are using R you can install it from its GitHub repository. Start up your version of RStudio and paste the following code into a script. You can execute the whole script at once, or line by line.\n\n# Check if remotes is not installed, if TRUE, install remotes\nif (!\"remotes\" %in% installed.packages()) install.packages(remotes)\n\n# Check if exscidata is not installed, if TRUE, install exscidata from github\nif (!\"exscidata\" %in% installed.packages()) remotes::install_github(\"dhammarstrom/exscidata\")\n\n# Load exscidata\nlibrary(exscidata)\n\nWhen you have installed exscidata you will have access to several data sets. For example, the data sets strengthvolume contain data from a resistance training intervention. We can have a look at the help files for the data set by writing ?strengthvolume.\nIf you aim to use the data sets in a Jamovi or JASP session you may access the in the table below.\n\n\n\nData set\nFilename\nFile type\n\n\n\n\nBoston marathon results 1897-2019\nboston\n.RDS\n\n\nAggregated data from the Boston marathon results 2000-2019\nboston_aggegated\n.RDS\n\n\nStrength tests from a resistance training intervention\nstrengthvolume\n.csv",
+    "text": "Data sets\nThis course uses a collection of data sets, some of them are stored in the exscidata package. If you are using R you can install it from its GitHub repository. Start up your version of RStudio and paste the following code into a script. You can execute the whole script at once, or line by line.\n\n# Check if remotes is not installed, if TRUE, install remotes\nif (!\"remotes\" %in% installed.packages()) install.packages(remotes)\n\n# Check if exscidata is not installed, if TRUE, install exscidata from github\nif (!\"exscidata\" %in% installed.packages()) remotes::install_github(\"dhammarstrom/exscidata\")\n\n# Load exscidata\nlibrary(exscidata)\n\nWhen you have installed exscidata you will have access to several data sets. For example, the data sets strengthvolume contain data from a resistance training intervention. We can have a look at the help files for the data set by writing ?strengthvolume.\nIf you aim to use the data sets in a Jamovi or JASP session you may access the in the table below.\n\n\n\nData set\nFilename\nFile type\n\n\n\n\nBoston marathon results 1897-2019\nboston\n.RDS\n\n\nAggregated data from the Boston marathon results 2000-2019\nboston_aggegated\n.RDS\n\n\nStrength tests from a resistance training intervention\nstrengthvolume\n.csv\n\n\nRNA and protein syntheis in two groups of rats\nmillward\n.txt",
     "crumbs": [
       "Introduction"
     ]
@@ -121,10 +121,87 @@
     "href": "03-data-distributions.html",
     "title": "3  Data distributions",
     "section": "",
-    "text": "When we observe data, we can describe it by its central tendency and dispersion. However, it is also often useful to describe the distribution of the data graphically to get a sense of the shape of the data. A histogram can help us with this representation. A histogram divides a numeric variable into bins and counts the number of observations in each bin. The number of observations in each bin is then displayed as a bar plot, with each bar representing a bin (Figure 3.1)1. In Figure 3.1, a separate histogram has been created for each gender in the data set.\n1 In JASP, the Descriptive Statistics module lets us create a basic histogram; however, here it is called Distribution plots with the possibility to add density estimates.\n\n\n\n\n\n\n\nFigure 3.1: Results from the Boston marathon 2019 displayed as histograms per gender.\n\n\n\n\n\nAn alternative to the histogram is a density plot. The density plot shows us the relative density of observations along the scale of the variable of interest. Often, the curve shows a smoothed estimate of the distribution (Figure 3.2). In a density plot, the y-axis may be omitted as the values are arbitrary.\n\n\n\n\n\n\n\n\nFigure 3.2: Results from the Boston marathon 2019 displayed as density plots per gender.\n\n\n\n\n\nThe shape of the data is of interest to us (Sokal and Rohlf 2012, 19). For example, in the above figures we can notice that only a very small proportion of the competitors approaches the 2 hour mark.[^world record] The distribution is skewed to the right and we might discover some unusual peaks in the histigram at three and four hours. This shape could lead us to further investigate the limits of human performance (why no sub 2 hour times?), the psychology of specific run times (why do many men finnish at sub 3 hours?) or the general demographics of the participants (the tail of the distribution).\n\nSokal, Robert R., and F. James Rohlf. 2012. Biometry : The Principles and Practice of Statistics in Biological Research. [Extensively rev.] 4th. New York: W.H. Freeman.\n[^world record]: The marathon world records are 2:00:35 and 2:09:56, for men and women, respectively (source).\nAn alternative approach to summarize a disribution could be a boxplot (Figure 3.3). A boxplot summarises the data by displaying the median, the first and third quartile (the box). The whiskers covers observations within 1.5 × the inter-quartile range from the box. Observations above the whiskers are displayed using points.\n\n\n\n\n\n\n\n\nFigure 3.3: Results from the Boston marathon 2019 displayed as boxplots per gender.",
+    "text": "When we observe data, we can describe it by its central tendency and dispersion. However, it is also often useful to describe the distribution of the data graphically to get a sense of the shape of the data. A histogram can help us with this representation. A histogram divides a numeric variable into bins and counts the number of observations in each bin. The number of observations in each bin is then displayed as a bar plot, with each bar representing a bin (Figure 3.1)1. In Figure 3.1, a separate histogram has been created for each gender in the data set.\n1 In JASP, the Descriptive Statistics module lets us create a basic histogram; however, here it is called Distribution plots with the possibility to add density estimates.\n\n\n\n\n\n\n\nFigure 3.1: Results from the Boston marathon 2019 displayed as histograms per gender.\n\n\n\n\n\nAn alternative to the histogram is a density plot. The density plot shows us the relative density of observations along the scale of the variable of interest. Often, the curve shows a smoothed estimate of the distribution (Figure 3.2). In a density plot, the y-axis may be omitted as the values are arbitrary.\n\n\n\n\n\n\n\n\nFigure 3.2: Results from the Boston marathon 2019 displayed as density plots per gender.\n\n\n\n\n\nAn alternative approach to summarize a disribution could be a boxplot (Figure 3.3). A boxplot summarises the data by displaying the median, the first and third quartile (the box). The whiskers covers observations within 1.5 × the inter-quartile range from the box. Observations above the whiskers are displayed using points.\n\n\n\n\n\n\n\n\nFigure 3.3: Results from the Boston marathon 2019 displayed as boxplots per gender.\n\n\n\n\n\nCategories can also be summarised as using frequencis. In the figure below we have categorized age in bins creating and ordered categorical variable (ordinal), a second categorical variable, gender (nominal), let’s us compare the number of observations between Males and Females within each age group.\n\n\n\n\n\n\n\n\nFigure 3.4: Gender distributions per age group from the Boston marathon 2019.\n\n\n\n\n\nThe shape of the data is of interest to us (Sokal and Rohlf 2012, 19). For example, in the above figures we can notice that only a very small proportion of the competitors approaches the 2 hour mark.2 The distribution is skewed to the right and we might discover some unusual peaks in the histogram at three and four hours. Additionally, we see a slight overrepresentation of women in the age category 18-29. Patterns like these in the data could lead us to further investigate, for example, the limits of human performance (why no sub 2 hour times?), the psychology of specific run times (why do many men finnish at sub 3 hours?) or the general demographics of the participants (the tail of the distribution and gender differences in participation).\n\n\n\nSokal, Robert R., and F. James Rohlf. 2012. Biometry : The Principles and Practice of Statistics in Biological Research. [Extensively rev.] 4th. New York: W.H. Freeman.\n2 The marathon world records are 2:00:35 and 2:09:56, for men and women, respectively (source).",
     "crumbs": [
       "Describing data",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Data distributions</span>"
+    ]
+  },
+  {
+    "objectID": "04-data-visualizations.html",
+    "href": "04-data-visualizations.html",
+    "title": "4  Visualizing data",
+    "section": "",
+    "text": "4.1 Plotting data in two dimensions\nIn the previous chapter, we saw that simple visualizations can give us a general sense of the shape (distribution) of a single variable using histograms and density plots. We expanded the figures by adding colors to differentiate by gender and incorporating a second axis to display run times by gender, which gave us a sense of the variation in two variables. We could extend this further by incorporating more variables mapped to colors or shapes, or by subdividing the plot by additional variables. Such flexibility makes data visualizations essential for developing an understanding of data and communicating results from data analysis. Visualizations can convey aspects of data that are not possible to communicate with summary statistics or tables.\nIn this chapter, we will identify basic types of figures used in scientific papers and data communication.\nA basic data visualization uses a coordinate system to display data along measurement scales. The x- and y-axis form a basic template for a two-dimensional display (two variables) of data. The scales for the x- and y-axis could be numerical and continuous or categorical. In the figure below, two continuous measurements are mapped to the x- and y-axis. Each observation has a value for each axis, making it possible to plot them in the two-dimensional coordinate system (Figure 4.1).\nFigure 4.1: A basic scatter plot. Values of two variables are plotted along the coordinate axes. To highlight each combination of x- and y-scale values these have been added to each point.\nThe above figure is called a scatter plot. The scatter plot is a powerful tool to visualize an association between two variables. The association becomes evident when a pattern emerges from plotting two variables together. When plotting the variables Age and finishing time in the Boston Marathon, we can clearly see a pattern, as maximal running velocity decreases with age. We have added a third dimension to the figure by giving different colors to males and females (Figure 4.2).\nFigure 4.2: A scatter plot can highlight associations between two continuous variables. The age of participants seems to predict maximal running velocity, in both genders.\nBy replacing a continuous variable on one axis with a categorical variable, we get a visualization suitable for comparisons. When the purpose of a graph is to highlight differences between categories (or associations between a categorical variable and a continuous variable), we could use a variation of a basic scatter plot, as shown in Figure 4.3. However, some designs are better than others. The first panel (A) uses simple points to represent each observation (winner time per year). A slight jitter (panel B) makes it easier to see the individual points. Aggregated data removes the information gained from seeing variation between individual data points, as in panel C, where box-plots represent time per gender, or as in D, where the data has been reduced to a mean (the bars) and a standard deviation (the whiskers). The bar plot (D) is particularly bad, as most of the bar does not contain any actual data; there are no observations from zero to about 2 hours. To highlight the paired nature of the data, we could connect observations done in particular years (as in panel E). From this, we can learn that the winning times are consistently lower in males compared to females. Even though there is some overlap between genders, no year contains data where females ran faster than males.\nFigure 4.3: To highlight comparisons between groups we can use a categorical variable on one of the coordinate axes. Some displays are better than others. The figure shows winner times per gender from the Boston Marathon 2000-2019",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing data</span>"
+    ]
+  },
+  {
+    "objectID": "04-data-visualizations.html#adding-variables-using-figure-elements",
+    "href": "04-data-visualizations.html#adding-variables-using-figure-elements",
+    "title": "4  Visualizing data",
+    "section": "4.2 Adding variables using figure elements",
+    "text": "4.2 Adding variables using figure elements\nIn the above figures, we have already added a variable by assigning colors to highlight two groups. Using colors and shapes is a way to add multiple dimensions to a plot. In Figure 4.4, two different colors and shapes are assigned to two categories in the data. This allows us to plot additional variables. The additional variable is explained by a legend shown in the plot.\nWe can also use multiple panels to show relationships between variables in different categories. In Figure 4.5, combining two categorical variables yields small multiples of the same basic graph; each panel represents data in a specific combination of age and gender.\n\n\n\n\n\n\n\n\nFigure 4.4: Colors and shapes are used to differentiate two categories. The figure shows the association between RNA content and protein synthesis in skeletal muscle of two groups of mice.",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing data</span>"
+    ]
+  },
+  {
+    "objectID": "04-data-visualizations.html#showing-trends-over-time",
+    "href": "04-data-visualizations.html#showing-trends-over-time",
+    "title": "4  Visualizing data",
+    "section": "4.3 Showing trends over time",
+    "text": "4.3 Showing trends over time\nIn Figure 4.5, we used a time series of winning times in the Boston Marathon. The trend over time was not highlighted; to do this, we could add a line to produce line graphs. In Figure 4.6, the graph implies that we are comparing females to males in each age category, as we use the same y-axis for both genders in each age group. An alternative comparison would be the age-group comparison. To highlight this comparison, we could plot each age group using the same y-axis (Figure 4.7).\n\n\n\n\n\n\n\n\nFigure 4.5: Using categorical variables to create multiple smaller plots. Each panel corresponds to a combination of age category and gender. Data from the Boston Marathon 2000-2019.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4.6: Using lines to highlight trends over time and categorical variables to create multiple smaller plots. Each panel corresponds to a combination of age category and gender. Data from the Boston Marathon 2000-2019.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4.7: Using lines to highlight trends over time, colors to differentiate between age groups and panels to show gender categories. Data from the Boston Marathon 2000-2019.",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing data</span>"
+    ]
+  },
+  {
+    "objectID": "04-data-visualizations.html#trends-from-models",
+    "href": "04-data-visualizations.html#trends-from-models",
+    "title": "4  Visualizing data",
+    "section": "4.4 Trends from models",
+    "text": "4.4 Trends from models\nMany statistical software programs produce graphs that show the result of a statistical model. In Figure 4.8, the lines connecting individual years have been replaced by model-based smooths. In this case, the underlying model is a locally estimated scatterplot smoothing. It shows us an approximate moving average. The gray fields represent the model “uncertainty”, in this case, the 95% confidence interval.\n\n\n\n\n\n\n\n\nFigure 4.8: Adding model based estimates as smooth lines can highlight trends without.",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing data</span>"
+    ]
+  },
+  {
+    "objectID": "04-data-visualizations.html#creating-figures-in-jasp",
+    "href": "04-data-visualizations.html#creating-figures-in-jasp",
+    "title": "4  Visualizing data",
+    "section": "4.5 Creating figures in JASP",
+    "text": "4.5 Creating figures in JASP",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing data</span>"
+    ]
+  },
+  {
+    "objectID": "04-data-visualizations.html#creating-figures-in-jasp-1",
+    "href": "04-data-visualizations.html#creating-figures-in-jasp-1",
+    "title": "4  Visualizing data",
+    "section": "4.6 Creating figures in JASP",
+    "text": "4.6 Creating figures in JASP\nJASP has powerful visualization capabilities. Under the Descriptives module and Descriptive statistics, basic descriptive plots can be designed. A distribution plot can be created to show a histogram of a continuous variable or a frequency plot of a categorical variable.\nAlso in the Descriptives module, Plot builder and Flexplot allow for data visualizations. Plot builder is the more advanced of the two. In Plot builder we are able to add variables to x- and y-coordinates of the figure. A grouping variable can be used to separate categories present in the data. Axis and plot annotations can be added to the figure, and aggregation can be done by plotting the mean, median, and error bars. Furthermore, simple curve fitting can add results from a statistical model to the plot.\nIn the screen shot below you can see an example analysis made in JASP using the Plot builder module. You can download the JASP-file here.",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing data</span>"
+    ]
+  },
+  {
+    "objectID": "04-data-visualizations.html#creating-data-visualizations-in-r",
+    "href": "04-data-visualizations.html#creating-data-visualizations-in-r",
+    "title": "4  Visualizing data",
+    "section": "4.7 Creating data visualizations in R",
+    "text": "4.7 Creating data visualizations in R\nOne reason for using R is the potent visualization capabilities. R is probably the most versatile ecosystem for creating scientific graphics. There are several well-documented packages for data visualisation; ggplot2 is perhaps the most accessible package of them. See Chapter 5 here for an introduction to ggplot2.",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing data</span>"
     ]
   },
   {
