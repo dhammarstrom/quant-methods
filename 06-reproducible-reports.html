@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; 06-reproducible-reports – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
+<title>5&nbsp; Reproducible reports – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00-b-regress.html" rel="next">
-<link href="./05-tables.html" rel="prev">
+<link href="./99-refs.html" rel="next">
+<link href="./04-data-visualizations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,10 +91,39 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./06-reproducible-reports.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reproducible reports</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./06-reproducible-reports.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reproducible reports</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -101,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
       <a href="./">Quantitative methods and statistics with examples in R, Jamovi and JASP</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/dhammarstrom/quant-methods" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Quantitative-methods-and-statistics-with-examples-in-R,-Jamovi-and-JASP.epub" title="Download ePub" class="quarto-navigation-tool px-1" aria-label="Download ePub"><i class="bi bi-journal"></i></a>
+    <a href="./Quantitative-methods-and-statistics-with-examples-in-R,-Jamovi-and-JASP.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -131,56 +180,34 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-data-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data and variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-describe-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing the data that we have observed</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-data-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data that we have not observed</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-data-visualizations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">04-data-visualizations</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05-tables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">05-tables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-reproducible-reports.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reproducible reports</span></span></a>
   </div>
 </li>
       </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Regression analysis</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Causal inference</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Statistical inference</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Reporting statistical analyses</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -193,15 +220,32 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-research-process-and-reproducible-science" id="toc-the-research-process-and-reproducible-science" class="nav-link active" data-scroll-target="#the-research-process-and-reproducible-science"><span class="header-section-number">5.1</span> The research process and reproducible science</a></li>
+  <li><a href="#reproducible-data-analysis-the-main-ingredients" id="toc-reproducible-data-analysis-the-main-ingredients" class="nav-link" data-scroll-target="#reproducible-data-analysis-the-main-ingredients"><span class="header-section-number">5.2</span> Reproducible data analysis, the main ingredients</a>
+  <ul class="collapse">
+  <li><a href="#documenting-the-data" id="toc-documenting-the-data" class="nav-link" data-scroll-target="#documenting-the-data"><span class="header-section-number">5.2.1</span> Documenting the data</a></li>
+  <li><a href="#documenting-an-analysis" id="toc-documenting-an-analysis" class="nav-link" data-scroll-target="#documenting-an-analysis"><span class="header-section-number">5.2.2</span> Documenting an analysis</a></li>
+  <li><a href="#self-containment-and-sharing" id="toc-self-containment-and-sharing" class="nav-link" data-scroll-target="#self-containment-and-sharing"><span class="header-section-number">5.2.3</span> Self-containment and sharing</a></li>
+  </ul></li>
+  <li><a href="#tools-for-reproducible-research" id="toc-tools-for-reproducible-research" class="nav-link" data-scroll-target="#tools-for-reproducible-research"><span class="header-section-number">5.3</span> Tools for reproducible research</a>
+  <ul class="collapse">
+  <li><a href="#jasp" id="toc-jasp" class="nav-link" data-scroll-target="#jasp"><span class="header-section-number">5.3.1</span> JASP</a></li>
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r"><span class="header-section-number">5.3.2</span> R</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/06-reproducible-reports.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/06-reproducible-reports.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./06-reproducible-reports.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reproducible reports</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./06-reproducible-reports.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reproducible reports</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">06-reproducible-reports</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reproducible reports</span></h1>
 </div>
 
 
@@ -218,8 +262,95 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="the-research-process-and-reproducible-science" class="level2 page-columns page-full" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="the-research-process-and-reproducible-science"><span class="header-section-number">5.1</span> The research process and reproducible science</h2>
+<p>The research process can be viewed as cyclic <span class="citation" data-cites="spiegelhalter">(<a href="99-refs.html#ref-spiegelhalter" role="doc-biblioref">Spiegelhalter 2019</a>)</span> <a href="#fig-researchcycle" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. A problem is defined based on previous observations. The problem lets us specify specific questions and determine the way forward. Planning a study involves determining the necessary data to collect (measurements), the context in which data collection will occur (study design), and the method for achieving this (organization). Once data has been collected, we need to manage it. This step includes making sure that the data is ready for analysis (stored in suitable formats) and that it is of good quality (variables are documented).</p>
+<div class="no-row-height column-margin column-container"></div><p>The following step, analysis, is probably what most students think about when we talk about statistics. In this step, we prepare to draw conclusions from the data. Oftentimes, this step contains a basic set of activities, including exploratory analysis, statistical modelling, and hypothesis tests. When an analysis is complete, we often have statistical results that let us draw conclusions. Here, we aim to frame the results in a larger context and define what we have learned from our research. This new knowledge can form the basis for new questions <a href="#fig-researchcycle" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>.</p>
+<div class="cell page-columns page-full" data-warnings="false">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-researchcycle" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-researchcycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-reproducible-reports_files/figure-html/fig-researchcycle-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-researchcycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: The research cycle, adopted from <span class="citation" data-cites="spiegelhalter">Spiegelhalter (<a href="99-refs.html#ref-spiegelhalter" role="doc-biblioref">2019</a>)</span>.
+</figcaption>
+<div class="no-row-height column-margin column-container"><div id="ref-spiegelhalter" class="csl-entry" role="listitem">
+Spiegelhalter, D. J. 2019. <em>The Art of Statistics : How to Learn from Data</em>. Book. First US edition. New York: Basic Books.
+</div></div></figure>
+</div>
+</div>
+</div>
+<p>Debates about statistics in scientific research regularly concern the data analysis step, with the rest of the research cycle often being taken for granted <span class="citation" data-cites="leek2015">(<a href="99-refs.html#ref-leek2015" role="doc-biblioref">Leek and Peng 2015</a>)</span>. It turns out that scientific results are not readily reproducible, meaning that the conclusions from a scientific study cannot be confirmed in follow-up studies. The reasons for this are, in part, a false belief in the robustness of statistical methods to separate actual effects from bias <span class="citation" data-cites="ioannidisd2005">(<a href="99-refs.html#ref-ioannidisd2005" role="doc-biblioref">Ioannidis 2005</a>)</span>. Maybe the most debated part of statistics is the use of p-values to draw inference <span class="citation" data-cites="wasserstein2019 mcshane2019">(see e.g., <a href="99-refs.html#ref-wasserstein2019" role="doc-biblioref">Wasserstein, Schirm, and Lazar 2019</a>; <a href="99-refs.html#ref-mcshane2019" role="doc-biblioref">McShane et al. 2019</a>)</span>. A key concern for opponents of the p-value is that uncritical implementation leads to unreliable conclusions. The proponents of the use of p-values, however, argue that if the p-values are used as designed, research results would be more reliable <span class="citation" data-cites="lakens2021">(see e.g., <a href="99-refs.html#ref-lakens2021" role="doc-biblioref">Lakens 2021</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-leek2015" class="csl-entry" role="listitem">
+Leek, J. T., and R. D. Peng. 2015. <span>“Statistics: P Values Are Just the Tip of the Iceberg.”</span> Journal Article. <em>Nature</em> 520 (7549): 612. <a href="https://doi.org/10.1038/520612a">https://doi.org/10.1038/520612a</a>.
+</div><div id="ref-ioannidisd2005" class="csl-entry" role="listitem">
+Ioannidis, John P. A. 2005. <span>“Why <span>Most Published Research Findings Are False</span>.”</span> <em>PLOS Medicine</em> 2 (8): e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
+</div><div id="ref-wasserstein2019" class="csl-entry" role="listitem">
+Wasserstein, Ronald L., Allen L. Schirm, and Nicole A. Lazar. 2019. <span>“Moving to a <span>World Beyond</span> <span>‘ <span><em>p</em></span> <span><span class="math inline">\(&lt;\)</span></span> 0.05’</span>.”</span> <em>The American Statistician</em> 73 (sup1): 1–19. <a href="https://doi.org/10.1080/00031305.2019.1583913">https://doi.org/10.1080/00031305.2019.1583913</a>.
+</div><div id="ref-mcshane2019" class="csl-entry" role="listitem">
+McShane, Blakeley B., David Gal, Andrew Gelman, Christian Robert, and Jennifer L. Tackett. 2019. <span>“Abandon <span>Statistical Significance</span>.”</span> <em>The American Statistician</em> 73 (sup1): 235–45. <a href="https://doi.org/10.1080/00031305.2018.1527253">https://doi.org/10.1080/00031305.2018.1527253</a>.
+</div><div id="ref-lakens2021" class="csl-entry" role="listitem">
+Lakens, Daniël. 2021. <span>“The <span>Practical Alternative</span> to the <span><em>p</em></span> <span>Value Is</span> the <span>Correctly Used</span> <span><em>p</em></span> <span>Value</span>.”</span> <em>Perspectives on Psychological Science</em> 16 (3): 639–48. <a href="https://doi.org/10.1177/1745691620958012">https://doi.org/10.1177/1745691620958012</a>.
+</div><div id="ref-RN1492" class="csl-entry" role="listitem">
+Peng, R. D., F. Dominici, and S. L. Zeger. 2006. <span>“Reproducible Epidemiologic Research.”</span> Journal Article. <em>Am J Epidemiol</em> 163 (9): 783–89. <a href="https://doi.org/10.1093/aje/kwj093">https://doi.org/10.1093/aje/kwj093</a>.
+</div></div><p>Parallel to discussions about statistical methods for hypothesis testing and modelling, the scientific community has developed tools for reproducible data analysis. This is a topic that is much less debated than, for example, the p-value, despite its importance for transparent and reproducible science <span class="citation" data-cites="leek2015">(<a href="99-refs.html#ref-leek2015" role="doc-biblioref">Leek and Peng 2015</a>)</span>. Reproducible data analysis means that results from an analysis can be recalculated to the same results using the same data and code by independent analysts. This requires that both data and code are documented and shared from the original analysis <span class="citation" data-cites="RN1600 RN1492">(<a href="99-refs.html#ref-RN1600" role="doc-biblioref">Peng 2011</a>; <a href="99-refs.html#ref-RN1492" role="doc-biblioref">Peng, Dominici, and Zeger 2006</a>)</span>. When we aim for reproducible data analysis, it is therefore necessary to work with tools that enable us to document analyses and data together with the conclusions drawn in a report. Ideally, all aspects of the research process is part of a reproducible workflow.</p>
+<div class="cell page-columns page-full">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-reprod" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-reprod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-reproducible-reports_files/figure-html/fig-reprod-1.png" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-reprod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Reproducible data analysis as a continuum, scientific publications without code or data are not reproducible. Documented code and data, together with the publication, are considered a minimum standard when full replication is not possible. From <span class="citation" data-cites="RN1600">(<a href="99-refs.html#ref-RN1600" role="doc-biblioref">Peng 2011</a>)</span>.
+</figcaption>
+<div class="no-row-height column-margin column-container"><div id="ref-RN1600" class="csl-entry" role="listitem">
+Peng, R. D. 2011. <span>“Reproducible Research in Computational Science.”</span> Journal Article. <em>Science</em> 334 (6060): 1226–27. <a href="https://doi.org/10.1126/science.1213847">https://doi.org/10.1126/science.1213847</a>.
+</div></div></figure>
+</div>
+</div>
+</div>
+</section>
+<section id="reproducible-data-analysis-the-main-ingredients" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="reproducible-data-analysis-the-main-ingredients"><span class="header-section-number">5.2</span> Reproducible data analysis, the main ingredients</h2>
+<p>The degree to which research is reproducible is determined by the availability of the data, computer code and software used to analyse the data, and descriptions of how to understand the purpose of the code.</p>
+<p>To make these ingredients even tastier, we could store them together in a format that is easy to share with others. Using the tools we discuss in this course, we can think of data analysis projects as self-contained projects with all necessary ingredients. In more advanced settings, we might also adopt version control software and collaboration platforms that make it easy to trace changes made to the data analysis.</p>
+<section id="documenting-the-data" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="documenting-the-data"><span class="header-section-number">5.2.1</span> Documenting the data</h3>
+<p>As a minimum standard, data should be documented. This can be achieved using a data dictionary. A data dictionary contains a description of all variables used for data analysis. Descriptions should include information on the unit of measurement, how the measurement was done, and the reasons for missing observations. If data were aggregated before analysis, the aggregation method should also be described with reference to the raw data. The documentation of the data should be stored close to the data and updated as new data or variables are added to the analysis. The data dictionary could, for example, be part of a README file stored in a project folder.</p>
+</section>
+<section id="documenting-an-analysis" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="documenting-an-analysis"><span class="header-section-number">5.2.2</span> Documenting an analysis</h3>
+<p>Ideally, a data analysis is written as a computer program. We instruct the computer on what to do, and it uses the necessary software to execute the analysis. Together with the computer code, we can add descriptions of the background and the purpose of the code. Together, this allows for scrutiny of the analysis by enabling reproducibility.</p>
+</section>
+<section id="self-containment-and-sharing" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="self-containment-and-sharing"><span class="header-section-number">5.2.3</span> Self-containment and sharing</h3>
+<p>A reproducible data analysis is self-contained. This means that all ingredients for the analysis are packaged together. Often, this means that an analysis is stored in a single folder containing the data, code, or software used to analyze the data, and reports that describe the background, purpose, and results of the data analysis. With instructions, the folder can be used to reproduce analyses on an independent computer, making the analysis reproducible.</p>
+</section>
+</section>
+<section id="tools-for-reproducible-research" class="level2 page-columns page-full" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="tools-for-reproducible-research"><span class="header-section-number">5.3</span> Tools for reproducible research</h2>
+<section id="jasp" class="level3 page-columns page-full" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="jasp"><span class="header-section-number">5.3.1</span> JASP</h3>
+<p>JASP is a free software designed for convenient access to modern statistical routines. JASP uses R, an open-source, community-driven statistical programming language for most analyses <span class="citation" data-cites="wagenmakers2023">(<a href="99-refs.html#ref-wagenmakers2023" role="doc-biblioref">Wagenmakers et al. 2023</a>)</span>, making it a powerful and flexible graphical user interface for statistical analysis. All analyses in JASP are fully reproducible as JASP stores data, selected analysis options, and annotation in a single file (<code>.jasp</code> file format) <span class="citation" data-cites="wagenmakers2023">(<a href="99-refs.html#ref-wagenmakers2023" role="doc-biblioref">Wagenmakers et al. 2023</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-wagenmakers2023" class="csl-entry" role="listitem">
+Wagenmakers, Eric-Jan, Šimon Kucharský, Johnny Van Doorn, and Don Van Den Bergh. 2023. <span>“Accessible and <span>Sustainable Statistics</span> with <span>JASP</span>.”</span> PsyArXiv. <a href="https://doi.org/10.31234/osf.io/ud2vj">https://doi.org/10.31234/osf.io/ud2vj</a>.
+</div></div><p>Using JASP as part of a self-contained data analysis may include keeping track of multiple JASP files in your folder, as the data format restricts the combination of unrelated data sets. When data are subdivided between different data sets, a README file can describe how they are related to the overall project.</p>
+<p>The JASP user interface contains a combined output and annotation panel. This means that all analyses are annotatable, making it easy to include notes on the purpose of analyses and the interpretation of the results. However, output from a JASP file may not be directly suitable for including in a report. This means that post-processing is needed to compile reports. Numerical results may need to be copied to reports (written in other software), and figures may require some editing before being added to the report. These steps make the resulting reports less reproducible. To avoid copy-paste mistakes, such activities should be documented in the project README file.</p>
+</section>
+<section id="r" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="r"><span class="header-section-number">5.3.2</span> R</h3>
+<p>The R ecosystem is at the forefront of reproducible statistical programming. Several tools have been developed, making it easy to create fully reproducible reports using R as the primary language for analysis. <a href="https://quarto.org/">Quarto</a> is the most recent development for reproducible reports, providing a file format for scripted data analysis that can combine analytic code with text to produce output reports that include data, figures, and tables.</p>
+<p>In complex analyses, version control software helps maintain the project’s integrity by tracking changes to all files in a project repository. <a href="https://git-scm.com/downloads">git</a>, together with the online collaborative platform <a href="https://github.com/">GitHub</a>, makes it possible to collaborate in the creation of reproducible data analyses. Working on a version-controlled repository naturally makes the project self-contained.</p>
+<p>Using R in data analysis requires the additional effort of learning how to program. The benefits of programming an analysis are however, substantial in terms of reproducibility and flexibility.</p>
+<p>Read more about the tools needed for a reproducible workflow here (<a href="https://dhammarstrom.github.io/r-crash-course/">An R Crash Course</a>).</p>
 
 
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -769,13 +900,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05-tables.html" class="pagination-link" aria-label="05-tables">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">05-tables</span></span>
+      <a href="./04-data-visualizations.html" class="pagination-link" aria-label="Visualizing data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00-b-regress.html" class="pagination-link" aria-label="Regression analysis">
-        <span class="nav-page-text">Regression analysis</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./99-refs.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -784,4 +915,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/06-reproducible-reports.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/06-reproducible-reports.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/06-reproducible-reports.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/06-reproducible-reports.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
