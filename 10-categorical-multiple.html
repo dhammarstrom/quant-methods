@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./99-refs.html" rel="next">
+<link href="./11-predictions.html" rel="next">
 <link href="./09-curve-linear-relationships.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -445,6 +445,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Categorical predictors and multiple regression</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-predictions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Predictions and interactions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-glm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -723,23 +735,23 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
 </figcaption>
 <div aria-describedby="tbl-boston-model-speed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="xdbtbcrzrh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xdbtbcrzrh table {
+<div id="efnslglkvg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#efnslglkvg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xdbtbcrzrh thead, #xdbtbcrzrh tbody, #xdbtbcrzrh tfoot, #xdbtbcrzrh tr, #xdbtbcrzrh td, #xdbtbcrzrh th {
+#efnslglkvg thead, #efnslglkvg tbody, #efnslglkvg tfoot, #efnslglkvg tr, #efnslglkvg td, #efnslglkvg th {
   border-style: none;
 }
 
-#xdbtbcrzrh p {
+#efnslglkvg p {
   margin: 0;
   padding: 0;
 }
 
-#xdbtbcrzrh .gt_table {
+#efnslglkvg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -765,12 +777,12 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-left-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_caption {
+#efnslglkvg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xdbtbcrzrh .gt_title {
+#efnslglkvg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -782,7 +794,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-width: 0;
 }
 
-#xdbtbcrzrh .gt_subtitle {
+#efnslglkvg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -794,7 +806,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-top-width: 0;
 }
 
-#xdbtbcrzrh .gt_heading {
+#efnslglkvg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -806,13 +818,13 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_bottom_border {
+#efnslglkvg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_col_headings {
+#efnslglkvg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -827,7 +839,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_col_heading {
+#efnslglkvg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -847,7 +859,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   overflow-x: hidden;
 }
 
-#xdbtbcrzrh .gt_column_spanner_outer {
+#efnslglkvg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -859,15 +871,15 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 4px;
 }
 
-#xdbtbcrzrh .gt_column_spanner_outer:first-child {
+#efnslglkvg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xdbtbcrzrh .gt_column_spanner_outer:last-child {
+#efnslglkvg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xdbtbcrzrh .gt_column_spanner {
+#efnslglkvg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -879,11 +891,11 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   width: 100%;
 }
 
-#xdbtbcrzrh .gt_spanner_row {
+#efnslglkvg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xdbtbcrzrh .gt_group_heading {
+#efnslglkvg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -909,7 +921,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   text-align: left;
 }
 
-#xdbtbcrzrh .gt_empty_group_heading {
+#efnslglkvg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -924,15 +936,15 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   vertical-align: middle;
 }
 
-#xdbtbcrzrh .gt_from_md > :first-child {
+#efnslglkvg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xdbtbcrzrh .gt_from_md > :last-child {
+#efnslglkvg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xdbtbcrzrh .gt_row {
+#efnslglkvg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -951,7 +963,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   overflow-x: hidden;
 }
 
-#xdbtbcrzrh .gt_stub {
+#efnslglkvg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -964,7 +976,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#xdbtbcrzrh .gt_stub_row_group {
+#efnslglkvg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -978,15 +990,15 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   vertical-align: top;
 }
 
-#xdbtbcrzrh .gt_row_group_first td {
+#efnslglkvg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xdbtbcrzrh .gt_row_group_first th {
+#efnslglkvg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xdbtbcrzrh .gt_summary_row {
+#efnslglkvg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -996,16 +1008,16 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#xdbtbcrzrh .gt_first_summary_row {
+#efnslglkvg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_first_summary_row.thick {
+#efnslglkvg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xdbtbcrzrh .gt_last_summary_row {
+#efnslglkvg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1015,7 +1027,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_grand_summary_row {
+#efnslglkvg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1025,7 +1037,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#xdbtbcrzrh .gt_first_grand_summary_row {
+#efnslglkvg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1035,7 +1047,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-top-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_last_grand_summary_row_top {
+#efnslglkvg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1045,11 +1057,11 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_striped {
+#efnslglkvg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xdbtbcrzrh .gt_table_body {
+#efnslglkvg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1058,7 +1070,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_footnotes {
+#efnslglkvg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1072,7 +1084,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_footnote {
+#efnslglkvg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1081,7 +1093,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#xdbtbcrzrh .gt_sourcenotes {
+#efnslglkvg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1095,7 +1107,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#xdbtbcrzrh .gt_sourcenote {
+#efnslglkvg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1103,72 +1115,72 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#xdbtbcrzrh .gt_left {
+#efnslglkvg .gt_left {
   text-align: left;
 }
 
-#xdbtbcrzrh .gt_center {
+#efnslglkvg .gt_center {
   text-align: center;
 }
 
-#xdbtbcrzrh .gt_right {
+#efnslglkvg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xdbtbcrzrh .gt_font_normal {
+#efnslglkvg .gt_font_normal {
   font-weight: normal;
 }
 
-#xdbtbcrzrh .gt_font_bold {
+#efnslglkvg .gt_font_bold {
   font-weight: bold;
 }
 
-#xdbtbcrzrh .gt_font_italic {
+#efnslglkvg .gt_font_italic {
   font-style: italic;
 }
 
-#xdbtbcrzrh .gt_super {
+#efnslglkvg .gt_super {
   font-size: 65%;
 }
 
-#xdbtbcrzrh .gt_footnote_marks {
+#efnslglkvg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xdbtbcrzrh .gt_asterisk {
+#efnslglkvg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xdbtbcrzrh .gt_indent_1 {
+#efnslglkvg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xdbtbcrzrh .gt_indent_2 {
+#efnslglkvg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xdbtbcrzrh .gt_indent_3 {
+#efnslglkvg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xdbtbcrzrh .gt_indent_4 {
+#efnslglkvg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xdbtbcrzrh .gt_indent_5 {
+#efnslglkvg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xdbtbcrzrh .katex-display {
+#efnslglkvg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xdbtbcrzrh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#efnslglkvg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1309,23 +1321,23 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
 </figcaption>
 <div aria-describedby="tbl-model-comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="bthnwyyeco" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bthnwyyeco table {
+<div id="zcfbtyguap" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zcfbtyguap table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bthnwyyeco thead, #bthnwyyeco tbody, #bthnwyyeco tfoot, #bthnwyyeco tr, #bthnwyyeco td, #bthnwyyeco th {
+#zcfbtyguap thead, #zcfbtyguap tbody, #zcfbtyguap tfoot, #zcfbtyguap tr, #zcfbtyguap td, #zcfbtyguap th {
   border-style: none;
 }
 
-#bthnwyyeco p {
+#zcfbtyguap p {
   margin: 0;
   padding: 0;
 }
 
-#bthnwyyeco .gt_table {
+#zcfbtyguap .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1351,12 +1363,12 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-left-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_caption {
+#zcfbtyguap .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bthnwyyeco .gt_title {
+#zcfbtyguap .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1368,7 +1380,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-width: 0;
 }
 
-#bthnwyyeco .gt_subtitle {
+#zcfbtyguap .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1380,7 +1392,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-top-width: 0;
 }
 
-#bthnwyyeco .gt_heading {
+#zcfbtyguap .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1392,13 +1404,13 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_bottom_border {
+#zcfbtyguap .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_col_headings {
+#zcfbtyguap .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1413,7 +1425,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_col_heading {
+#zcfbtyguap .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1433,7 +1445,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   overflow-x: hidden;
 }
 
-#bthnwyyeco .gt_column_spanner_outer {
+#zcfbtyguap .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1445,15 +1457,15 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 4px;
 }
 
-#bthnwyyeco .gt_column_spanner_outer:first-child {
+#zcfbtyguap .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bthnwyyeco .gt_column_spanner_outer:last-child {
+#zcfbtyguap .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bthnwyyeco .gt_column_spanner {
+#zcfbtyguap .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1465,11 +1477,11 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   width: 100%;
 }
 
-#bthnwyyeco .gt_spanner_row {
+#zcfbtyguap .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bthnwyyeco .gt_group_heading {
+#zcfbtyguap .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1495,7 +1507,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   text-align: left;
 }
 
-#bthnwyyeco .gt_empty_group_heading {
+#zcfbtyguap .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1510,15 +1522,15 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   vertical-align: middle;
 }
 
-#bthnwyyeco .gt_from_md > :first-child {
+#zcfbtyguap .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bthnwyyeco .gt_from_md > :last-child {
+#zcfbtyguap .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bthnwyyeco .gt_row {
+#zcfbtyguap .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1537,7 +1549,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   overflow-x: hidden;
 }
 
-#bthnwyyeco .gt_stub {
+#zcfbtyguap .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1550,7 +1562,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#bthnwyyeco .gt_stub_row_group {
+#zcfbtyguap .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1564,15 +1576,15 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   vertical-align: top;
 }
 
-#bthnwyyeco .gt_row_group_first td {
+#zcfbtyguap .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bthnwyyeco .gt_row_group_first th {
+#zcfbtyguap .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bthnwyyeco .gt_summary_row {
+#zcfbtyguap .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1582,16 +1594,16 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#bthnwyyeco .gt_first_summary_row {
+#zcfbtyguap .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_first_summary_row.thick {
+#zcfbtyguap .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bthnwyyeco .gt_last_summary_row {
+#zcfbtyguap .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1601,7 +1613,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_grand_summary_row {
+#zcfbtyguap .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1611,7 +1623,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#bthnwyyeco .gt_first_grand_summary_row {
+#zcfbtyguap .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1621,7 +1633,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-top-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_last_grand_summary_row_top {
+#zcfbtyguap .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1631,11 +1643,11 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_striped {
+#zcfbtyguap .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bthnwyyeco .gt_table_body {
+#zcfbtyguap .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1644,7 +1656,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_footnotes {
+#zcfbtyguap .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1658,7 +1670,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_footnote {
+#zcfbtyguap .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1667,7 +1679,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#bthnwyyeco .gt_sourcenotes {
+#zcfbtyguap .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1681,7 +1693,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#bthnwyyeco .gt_sourcenote {
+#zcfbtyguap .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1689,72 +1701,72 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#bthnwyyeco .gt_left {
+#zcfbtyguap .gt_left {
   text-align: left;
 }
 
-#bthnwyyeco .gt_center {
+#zcfbtyguap .gt_center {
   text-align: center;
 }
 
-#bthnwyyeco .gt_right {
+#zcfbtyguap .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bthnwyyeco .gt_font_normal {
+#zcfbtyguap .gt_font_normal {
   font-weight: normal;
 }
 
-#bthnwyyeco .gt_font_bold {
+#zcfbtyguap .gt_font_bold {
   font-weight: bold;
 }
 
-#bthnwyyeco .gt_font_italic {
+#zcfbtyguap .gt_font_italic {
   font-style: italic;
 }
 
-#bthnwyyeco .gt_super {
+#zcfbtyguap .gt_super {
   font-size: 65%;
 }
 
-#bthnwyyeco .gt_footnote_marks {
+#zcfbtyguap .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bthnwyyeco .gt_asterisk {
+#zcfbtyguap .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bthnwyyeco .gt_indent_1 {
+#zcfbtyguap .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bthnwyyeco .gt_indent_2 {
+#zcfbtyguap .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bthnwyyeco .gt_indent_3 {
+#zcfbtyguap .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bthnwyyeco .gt_indent_4 {
+#zcfbtyguap .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bthnwyyeco .gt_indent_5 {
+#zcfbtyguap .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bthnwyyeco .katex-display {
+#zcfbtyguap .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bthnwyyeco div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zcfbtyguap div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2642,8 +2654,8 @@ Pinheiro, José C., and Douglas M. Bates. 2000. <em>Mixed-Effects Models in <spa
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./99-refs.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./11-predictions.html" class="pagination-link" aria-label="Predictions and interactions">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Predictions and interactions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
