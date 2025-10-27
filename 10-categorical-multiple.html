@@ -457,6 +457,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-mixed-effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mixed models</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -735,23 +741,23 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
 </figcaption>
 <div aria-describedby="tbl-boston-model-speed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="efnslglkvg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#efnslglkvg table {
+<div id="iqtnxupnlb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iqtnxupnlb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#efnslglkvg thead, #efnslglkvg tbody, #efnslglkvg tfoot, #efnslglkvg tr, #efnslglkvg td, #efnslglkvg th {
+#iqtnxupnlb thead, #iqtnxupnlb tbody, #iqtnxupnlb tfoot, #iqtnxupnlb tr, #iqtnxupnlb td, #iqtnxupnlb th {
   border-style: none;
 }
 
-#efnslglkvg p {
+#iqtnxupnlb p {
   margin: 0;
   padding: 0;
 }
 
-#efnslglkvg .gt_table {
+#iqtnxupnlb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -777,12 +783,12 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-left-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_caption {
+#iqtnxupnlb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#efnslglkvg .gt_title {
+#iqtnxupnlb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -794,7 +800,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-width: 0;
 }
 
-#efnslglkvg .gt_subtitle {
+#iqtnxupnlb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -806,7 +812,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-top-width: 0;
 }
 
-#efnslglkvg .gt_heading {
+#iqtnxupnlb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -818,13 +824,13 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_bottom_border {
+#iqtnxupnlb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_col_headings {
+#iqtnxupnlb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -839,7 +845,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_col_heading {
+#iqtnxupnlb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -859,7 +865,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   overflow-x: hidden;
 }
 
-#efnslglkvg .gt_column_spanner_outer {
+#iqtnxupnlb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -871,15 +877,15 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 4px;
 }
 
-#efnslglkvg .gt_column_spanner_outer:first-child {
+#iqtnxupnlb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#efnslglkvg .gt_column_spanner_outer:last-child {
+#iqtnxupnlb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#efnslglkvg .gt_column_spanner {
+#iqtnxupnlb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -891,11 +897,11 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   width: 100%;
 }
 
-#efnslglkvg .gt_spanner_row {
+#iqtnxupnlb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#efnslglkvg .gt_group_heading {
+#iqtnxupnlb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -921,7 +927,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   text-align: left;
 }
 
-#efnslglkvg .gt_empty_group_heading {
+#iqtnxupnlb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -936,15 +942,15 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   vertical-align: middle;
 }
 
-#efnslglkvg .gt_from_md > :first-child {
+#iqtnxupnlb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#efnslglkvg .gt_from_md > :last-child {
+#iqtnxupnlb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#efnslglkvg .gt_row {
+#iqtnxupnlb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -963,7 +969,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   overflow-x: hidden;
 }
 
-#efnslglkvg .gt_stub {
+#iqtnxupnlb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -976,7 +982,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#efnslglkvg .gt_stub_row_group {
+#iqtnxupnlb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -990,15 +996,15 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   vertical-align: top;
 }
 
-#efnslglkvg .gt_row_group_first td {
+#iqtnxupnlb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#efnslglkvg .gt_row_group_first th {
+#iqtnxupnlb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#efnslglkvg .gt_summary_row {
+#iqtnxupnlb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1008,16 +1014,16 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#efnslglkvg .gt_first_summary_row {
+#iqtnxupnlb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_first_summary_row.thick {
+#iqtnxupnlb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#efnslglkvg .gt_last_summary_row {
+#iqtnxupnlb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1027,7 +1033,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_grand_summary_row {
+#iqtnxupnlb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1037,7 +1043,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#efnslglkvg .gt_first_grand_summary_row {
+#iqtnxupnlb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1047,7 +1053,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-top-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_last_grand_summary_row_top {
+#iqtnxupnlb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1057,11 +1063,11 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_striped {
+#iqtnxupnlb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#efnslglkvg .gt_table_body {
+#iqtnxupnlb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1070,7 +1076,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_footnotes {
+#iqtnxupnlb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1084,7 +1090,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_footnote {
+#iqtnxupnlb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1093,7 +1099,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#efnslglkvg .gt_sourcenotes {
+#iqtnxupnlb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1107,7 +1113,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#efnslglkvg .gt_sourcenote {
+#iqtnxupnlb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1115,72 +1121,72 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#efnslglkvg .gt_left {
+#iqtnxupnlb .gt_left {
   text-align: left;
 }
 
-#efnslglkvg .gt_center {
+#iqtnxupnlb .gt_center {
   text-align: center;
 }
 
-#efnslglkvg .gt_right {
+#iqtnxupnlb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#efnslglkvg .gt_font_normal {
+#iqtnxupnlb .gt_font_normal {
   font-weight: normal;
 }
 
-#efnslglkvg .gt_font_bold {
+#iqtnxupnlb .gt_font_bold {
   font-weight: bold;
 }
 
-#efnslglkvg .gt_font_italic {
+#iqtnxupnlb .gt_font_italic {
   font-style: italic;
 }
 
-#efnslglkvg .gt_super {
+#iqtnxupnlb .gt_super {
   font-size: 65%;
 }
 
-#efnslglkvg .gt_footnote_marks {
+#iqtnxupnlb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#efnslglkvg .gt_asterisk {
+#iqtnxupnlb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#efnslglkvg .gt_indent_1 {
+#iqtnxupnlb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#efnslglkvg .gt_indent_2 {
+#iqtnxupnlb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#efnslglkvg .gt_indent_3 {
+#iqtnxupnlb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#efnslglkvg .gt_indent_4 {
+#iqtnxupnlb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#efnslglkvg .gt_indent_5 {
+#iqtnxupnlb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#efnslglkvg .katex-display {
+#iqtnxupnlb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#efnslglkvg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#iqtnxupnlb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1321,23 +1327,23 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
 </figcaption>
 <div aria-describedby="tbl-model-comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="zcfbtyguap" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zcfbtyguap table {
+<div id="fekihpvzil" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fekihpvzil table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zcfbtyguap thead, #zcfbtyguap tbody, #zcfbtyguap tfoot, #zcfbtyguap tr, #zcfbtyguap td, #zcfbtyguap th {
+#fekihpvzil thead, #fekihpvzil tbody, #fekihpvzil tfoot, #fekihpvzil tr, #fekihpvzil td, #fekihpvzil th {
   border-style: none;
 }
 
-#zcfbtyguap p {
+#fekihpvzil p {
   margin: 0;
   padding: 0;
 }
 
-#zcfbtyguap .gt_table {
+#fekihpvzil .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1363,12 +1369,12 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-left-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_caption {
+#fekihpvzil .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zcfbtyguap .gt_title {
+#fekihpvzil .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1380,7 +1386,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-width: 0;
 }
 
-#zcfbtyguap .gt_subtitle {
+#fekihpvzil .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1392,7 +1398,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-top-width: 0;
 }
 
-#zcfbtyguap .gt_heading {
+#fekihpvzil .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1404,13 +1410,13 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_bottom_border {
+#fekihpvzil .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_col_headings {
+#fekihpvzil .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1425,7 +1431,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_col_heading {
+#fekihpvzil .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1445,7 +1451,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   overflow-x: hidden;
 }
 
-#zcfbtyguap .gt_column_spanner_outer {
+#fekihpvzil .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1457,15 +1463,15 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 4px;
 }
 
-#zcfbtyguap .gt_column_spanner_outer:first-child {
+#fekihpvzil .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zcfbtyguap .gt_column_spanner_outer:last-child {
+#fekihpvzil .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zcfbtyguap .gt_column_spanner {
+#fekihpvzil .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1477,11 +1483,11 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   width: 100%;
 }
 
-#zcfbtyguap .gt_spanner_row {
+#fekihpvzil .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zcfbtyguap .gt_group_heading {
+#fekihpvzil .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1507,7 +1513,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   text-align: left;
 }
 
-#zcfbtyguap .gt_empty_group_heading {
+#fekihpvzil .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1522,15 +1528,15 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   vertical-align: middle;
 }
 
-#zcfbtyguap .gt_from_md > :first-child {
+#fekihpvzil .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zcfbtyguap .gt_from_md > :last-child {
+#fekihpvzil .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zcfbtyguap .gt_row {
+#fekihpvzil .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1549,7 +1555,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   overflow-x: hidden;
 }
 
-#zcfbtyguap .gt_stub {
+#fekihpvzil .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1562,7 +1568,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#zcfbtyguap .gt_stub_row_group {
+#fekihpvzil .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1576,15 +1582,15 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   vertical-align: top;
 }
 
-#zcfbtyguap .gt_row_group_first td {
+#fekihpvzil .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zcfbtyguap .gt_row_group_first th {
+#fekihpvzil .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zcfbtyguap .gt_summary_row {
+#fekihpvzil .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1594,16 +1600,16 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#zcfbtyguap .gt_first_summary_row {
+#fekihpvzil .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_first_summary_row.thick {
+#fekihpvzil .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zcfbtyguap .gt_last_summary_row {
+#fekihpvzil .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1613,7 +1619,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_grand_summary_row {
+#fekihpvzil .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1623,7 +1629,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#zcfbtyguap .gt_first_grand_summary_row {
+#fekihpvzil .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1633,7 +1639,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-top-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_last_grand_summary_row_top {
+#fekihpvzil .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1643,11 +1649,11 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_striped {
+#fekihpvzil .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zcfbtyguap .gt_table_body {
+#fekihpvzil .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1656,7 +1662,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_footnotes {
+#fekihpvzil .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1670,7 +1676,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_footnote {
+#fekihpvzil .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1679,7 +1685,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#zcfbtyguap .gt_sourcenotes {
+#fekihpvzil .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1693,7 +1699,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#zcfbtyguap .gt_sourcenote {
+#fekihpvzil .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1701,72 +1707,72 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#zcfbtyguap .gt_left {
+#fekihpvzil .gt_left {
   text-align: left;
 }
 
-#zcfbtyguap .gt_center {
+#fekihpvzil .gt_center {
   text-align: center;
 }
 
-#zcfbtyguap .gt_right {
+#fekihpvzil .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zcfbtyguap .gt_font_normal {
+#fekihpvzil .gt_font_normal {
   font-weight: normal;
 }
 
-#zcfbtyguap .gt_font_bold {
+#fekihpvzil .gt_font_bold {
   font-weight: bold;
 }
 
-#zcfbtyguap .gt_font_italic {
+#fekihpvzil .gt_font_italic {
   font-style: italic;
 }
 
-#zcfbtyguap .gt_super {
+#fekihpvzil .gt_super {
   font-size: 65%;
 }
 
-#zcfbtyguap .gt_footnote_marks {
+#fekihpvzil .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zcfbtyguap .gt_asterisk {
+#fekihpvzil .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zcfbtyguap .gt_indent_1 {
+#fekihpvzil .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zcfbtyguap .gt_indent_2 {
+#fekihpvzil .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zcfbtyguap .gt_indent_3 {
+#fekihpvzil .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zcfbtyguap .gt_indent_4 {
+#fekihpvzil .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zcfbtyguap .gt_indent_5 {
+#fekihpvzil .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zcfbtyguap .katex-display {
+#fekihpvzil .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zcfbtyguap div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fekihpvzil div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2077,12 +2083,19 @@ Figure&nbsp;9.5: An univariate comparison of running speed in two gender groups 
 <span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()  <span class="sc">+</span> </span>
 <span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estimate (&amp;pm; 2 &amp;times; SE)"</span>) <span class="sc">+</span> </span>
 <span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_markdown</span>())</span>
-<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_markdown</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `geom_errobarh()` was deprecated in ggplot2 4.0.0.
+ℹ Please use the `orientation` argument of `geom_errorbar()` instead.</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`height` was translated to `width`.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-multiple-boston-curve" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2110,20 +2123,20 @@ y_i &amp;\sim \operatorname{Normal}(\mu_i, \sigma) \\
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>resid_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">resid =</span> <span class="fu">resid</span>(m3), </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fitted =</span> <span class="fu">fitted</span>(m3))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>resid_dat <span class="sc">|&gt;</span> </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, resid)) <span class="sc">+</span> </span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, </span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">alpha =</span> <span class="fl">0.2</span>, </span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted values"</span>, </span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>resid_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">resid =</span> <span class="fu">resid</span>(m3), </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fitted =</span> <span class="fu">fitted</span>(m3))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>resid_dat <span class="sc">|&gt;</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, resid)) <span class="sc">+</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">alpha =</span> <span class="fl">0.2</span>, </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted values"</span>, </span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Residuals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-multiple-boston-resid" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2150,7 +2163,7 @@ y_i &amp;\sim \operatorname{Normal}(\mu_i, \sigma_i) \\
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -2163,69 +2176,72 @@ Attaching package: 'nlme'</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">gls</span>(speed <span class="sc">~</span> gender <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">weights =</span> <span class="fu">varExp</span>(<span class="at">form =</span> <span class="sc">~</span> <span class="fu">fitted</span>(.)), </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> dat)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>resid_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">resid =</span> <span class="fu">resid</span>(m4, <span class="at">type =</span> <span class="st">"normalized"</span>), </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fitted =</span> <span class="fu">fitted</span>(m4))</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> resid_dat <span class="sc">|&gt;</span> </span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, resid)) <span class="sc">+</span> </span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, </span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">alpha =</span> <span class="fl">0.2</span>, </span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted values"</span>, </span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Residuals"</span>)</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">tidy</span>(m1) <span class="sc">|&gt;</span> </span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">"Model 1"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(m2) <span class="sc">|&gt;</span> </span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">"Model 2"</span>)</span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bind_rows</span>(</span>
-<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(m3) <span class="sc">|&gt;</span> </span>
-<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">"Model 3"</span>)</span>
-<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"genderM"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
-<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">term =</span> <span class="st">"genderM"</span>, </span>
-<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>               <span class="at">estimate =</span> <span class="fu">coef</span>(m4)[<span class="dv">2</span>], </span>
-<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>               <span class="at">std.error =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m4))[<span class="dv">2</span>, <span class="dv">2</span>], </span>
-<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>               <span class="at">statistic =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m4))[<span class="dv">2</span>, <span class="dv">3</span>], </span>
-<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>               <span class="at">p.value =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m4))[<span class="dv">2</span>, <span class="dv">4</span>], </span>
-<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>               <span class="at">model =</span> <span class="st">"Model 4"</span>)</span>
-<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(estimate, model)) <span class="sc">+</span> </span>
-<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> estimate <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>std.error, </span>
-<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xmax =</span> estimate <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>std.error), </span>
-<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>                 <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, </span>
-<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>, </span>
-<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> <span class="st">"#92CD28"</span>) <span class="sc">+</span> </span>
-<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()  <span class="sc">+</span> </span>
-<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estimate (&amp;pm; 2 &amp;times; SE)"</span>) <span class="sc">+</span> </span>
-<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_markdown</span>())</span>
-<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1, p2, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">gls</span>(speed <span class="sc">~</span> gender <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">weights =</span> <span class="fu">varExp</span>(<span class="at">form =</span> <span class="sc">~</span> <span class="fu">fitted</span>(.)), </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> dat)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>resid_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">resid =</span> <span class="fu">resid</span>(m4, <span class="at">type =</span> <span class="st">"normalized"</span>), </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fitted =</span> <span class="fu">fitted</span>(m4))</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> resid_dat <span class="sc">|&gt;</span> </span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(fitted, resid)) <span class="sc">+</span> </span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, </span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">alpha =</span> <span class="fl">0.2</span>, </span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predicted values"</span>, </span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Residuals"</span>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">tidy</span>(m1) <span class="sc">|&gt;</span> </span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">"Model 1"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(m2) <span class="sc">|&gt;</span> </span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">"Model 2"</span>)</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bind_rows</span>(</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>(m3) <span class="sc">|&gt;</span> </span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="st">"Model 3"</span>)</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"genderM"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">term =</span> <span class="st">"genderM"</span>, </span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>               <span class="at">estimate =</span> <span class="fu">coef</span>(m4)[<span class="dv">2</span>], </span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>               <span class="at">std.error =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m4))[<span class="dv">2</span>, <span class="dv">2</span>], </span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>               <span class="at">statistic =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m4))[<span class="dv">2</span>, <span class="dv">3</span>], </span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>               <span class="at">p.value =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m4))[<span class="dv">2</span>, <span class="dv">4</span>], </span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>               <span class="at">model =</span> <span class="st">"Model 4"</span>)</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(estimate, model)) <span class="sc">+</span> </span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> estimate <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>std.error, </span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>                     <span class="at">xmax =</span> estimate <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>std.error), </span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a>                 <span class="at">height =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">21</span>, </span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>, </span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> <span class="st">"#92CD28"</span>) <span class="sc">+</span> </span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()  <span class="sc">+</span> </span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estimate (&amp;pm; 2 &amp;times; SE)"</span>) <span class="sc">+</span> </span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_markdown</span>())</span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(p1, p2, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`height` was translated to `width`.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-multiple-boston-varexp" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

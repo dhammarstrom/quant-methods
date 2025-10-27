@@ -409,6 +409,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-mixed-effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mixed models</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -430,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#data-sets" id="toc-data-sets" class="nav-link" data-scroll-target="#data-sets">Data sets</a></li>
+  <li><a href="#sec-datasets" id="toc-sec-datasets" class="nav-link" data-scroll-target="#sec-datasets">Data sets</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
@@ -479,8 +485,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the course we will use R to do analyses, create figures and tables, and write reports. If you are unfamiliar with R, that is OK, the course hopefully provides a gentle introduction. Using R, together with additional data science tools, means that you will encounter many infuriating problems. Such problems might arise from a missing comma or a misspelled word making your computer program produce <a href="https://en.wikipedia.org/wiki/Gibberish">gibberish</a>. Solving such problems requires patience, systematic thinking and a positive attitude! The skill set I hope you will develop during the course includes knowledge about how to identify problems, where to find help to address problems and how to learn from problems. An introduction to using R can be found <a href="https://dhammarstrom.github.io/r-crash-course/">here (A R Crash Course)</a></p>
 <p>If you feel that R is not for you, that’s ok, the course will also provide examples of how to do analyses in two other open source software packages, <a href="https://www.jamovi.org/">jamovi</a> and <a href="https://jasp-stats.org/">JASP</a>. These software packages are user friendly and have a graphical user interface. They are also based on R, so you can use them to learn R if you want to.</p>
 </section>
-<section id="data-sets" class="level2">
-<h2 class="anchored" data-anchor-id="data-sets">Data sets</h2>
+<section id="sec-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="sec-datasets">Data sets</h2>
 <p>This course uses a collection of data sets, some of them are stored in the <code>exscidata</code> package. If you are using R you can install it from its GitHub repository. Start up your version of RStudio and paste the following code into a script. You can execute the whole script at once, or line by line.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if remotes is not installed, if TRUE, install remotes</span></span>
@@ -547,6 +553,11 @@ Table&nbsp;1: Datasets used in this book
 <tr class="even">
 <td><a href="data-out/injury.csv">Fotball injuries</a></td>
 <td>injury</td>
+<td><code>.csv</code></td>
+</tr>
+<tr class="odd">
+<td><a href="data-out/strengthvolume.csv">Effects of training volume on strength</a></td>
+<td>strengthvolume</td>
 <td><code>.csv</code></td>
 </tr>
 </tbody>
