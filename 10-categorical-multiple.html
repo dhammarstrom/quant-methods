@@ -465,6 +465,35 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./00-d-infer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-samples-populations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Samples, populations, estimates and their uncertainty</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-p-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">What is the <em>p</em>-value?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-statistical-power.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hypothesis tests and statistical power</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./99-refs.html" class="sidebar-item-text sidebar-link">
@@ -741,23 +770,23 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
 </figcaption>
 <div aria-describedby="tbl-boston-model-speed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="iqtnxupnlb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iqtnxupnlb table {
+<div id="luscqaoent" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#luscqaoent table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iqtnxupnlb thead, #iqtnxupnlb tbody, #iqtnxupnlb tfoot, #iqtnxupnlb tr, #iqtnxupnlb td, #iqtnxupnlb th {
+#luscqaoent thead, #luscqaoent tbody, #luscqaoent tfoot, #luscqaoent tr, #luscqaoent td, #luscqaoent th {
   border-style: none;
 }
 
-#iqtnxupnlb p {
+#luscqaoent p {
   margin: 0;
   padding: 0;
 }
 
-#iqtnxupnlb .gt_table {
+#luscqaoent .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -783,12 +812,12 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-left-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_caption {
+#luscqaoent .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iqtnxupnlb .gt_title {
+#luscqaoent .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -800,7 +829,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-width: 0;
 }
 
-#iqtnxupnlb .gt_subtitle {
+#luscqaoent .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -812,7 +841,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-top-width: 0;
 }
 
-#iqtnxupnlb .gt_heading {
+#luscqaoent .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -824,13 +853,13 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_bottom_border {
+#luscqaoent .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_col_headings {
+#luscqaoent .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -845,7 +874,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_col_heading {
+#luscqaoent .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -865,7 +894,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   overflow-x: hidden;
 }
 
-#iqtnxupnlb .gt_column_spanner_outer {
+#luscqaoent .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -877,15 +906,15 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 4px;
 }
 
-#iqtnxupnlb .gt_column_spanner_outer:first-child {
+#luscqaoent .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iqtnxupnlb .gt_column_spanner_outer:last-child {
+#luscqaoent .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iqtnxupnlb .gt_column_spanner {
+#luscqaoent .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -897,11 +926,11 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   width: 100%;
 }
 
-#iqtnxupnlb .gt_spanner_row {
+#luscqaoent .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iqtnxupnlb .gt_group_heading {
+#luscqaoent .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -927,7 +956,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   text-align: left;
 }
 
-#iqtnxupnlb .gt_empty_group_heading {
+#luscqaoent .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -942,15 +971,15 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   vertical-align: middle;
 }
 
-#iqtnxupnlb .gt_from_md > :first-child {
+#luscqaoent .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iqtnxupnlb .gt_from_md > :last-child {
+#luscqaoent .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iqtnxupnlb .gt_row {
+#luscqaoent .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -969,7 +998,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   overflow-x: hidden;
 }
 
-#iqtnxupnlb .gt_stub {
+#luscqaoent .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -982,7 +1011,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#iqtnxupnlb .gt_stub_row_group {
+#luscqaoent .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -996,15 +1025,15 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   vertical-align: top;
 }
 
-#iqtnxupnlb .gt_row_group_first td {
+#luscqaoent .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iqtnxupnlb .gt_row_group_first th {
+#luscqaoent .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iqtnxupnlb .gt_summary_row {
+#luscqaoent .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1014,16 +1043,16 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#iqtnxupnlb .gt_first_summary_row {
+#luscqaoent .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_first_summary_row.thick {
+#luscqaoent .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iqtnxupnlb .gt_last_summary_row {
+#luscqaoent .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1033,7 +1062,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_grand_summary_row {
+#luscqaoent .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1043,7 +1072,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#iqtnxupnlb .gt_first_grand_summary_row {
+#luscqaoent .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1053,7 +1082,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-top-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_last_grand_summary_row_top {
+#luscqaoent .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1063,11 +1092,11 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_striped {
+#luscqaoent .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iqtnxupnlb .gt_table_body {
+#luscqaoent .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1076,7 +1105,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-bottom-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_footnotes {
+#luscqaoent .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1090,7 +1119,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_footnote {
+#luscqaoent .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1099,7 +1128,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#iqtnxupnlb .gt_sourcenotes {
+#luscqaoent .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1113,7 +1142,7 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   border-right-color: #D3D3D3;
 }
 
-#iqtnxupnlb .gt_sourcenote {
+#luscqaoent .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1121,72 +1150,72 @@ Table&nbsp;9.1: Estimates from a model that models running speed as a predicted 
   padding-right: 5px;
 }
 
-#iqtnxupnlb .gt_left {
+#luscqaoent .gt_left {
   text-align: left;
 }
 
-#iqtnxupnlb .gt_center {
+#luscqaoent .gt_center {
   text-align: center;
 }
 
-#iqtnxupnlb .gt_right {
+#luscqaoent .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iqtnxupnlb .gt_font_normal {
+#luscqaoent .gt_font_normal {
   font-weight: normal;
 }
 
-#iqtnxupnlb .gt_font_bold {
+#luscqaoent .gt_font_bold {
   font-weight: bold;
 }
 
-#iqtnxupnlb .gt_font_italic {
+#luscqaoent .gt_font_italic {
   font-style: italic;
 }
 
-#iqtnxupnlb .gt_super {
+#luscqaoent .gt_super {
   font-size: 65%;
 }
 
-#iqtnxupnlb .gt_footnote_marks {
+#luscqaoent .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iqtnxupnlb .gt_asterisk {
+#luscqaoent .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iqtnxupnlb .gt_indent_1 {
+#luscqaoent .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iqtnxupnlb .gt_indent_2 {
+#luscqaoent .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iqtnxupnlb .gt_indent_3 {
+#luscqaoent .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iqtnxupnlb .gt_indent_4 {
+#luscqaoent .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iqtnxupnlb .gt_indent_5 {
+#luscqaoent .gt_indent_5 {
   text-indent: 25px;
 }
 
-#iqtnxupnlb .katex-display {
+#luscqaoent .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#iqtnxupnlb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#luscqaoent div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1327,23 +1356,23 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
 </figcaption>
 <div aria-describedby="tbl-model-comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fekihpvzil" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fekihpvzil table {
+<div id="fylumhbgxp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fylumhbgxp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fekihpvzil thead, #fekihpvzil tbody, #fekihpvzil tfoot, #fekihpvzil tr, #fekihpvzil td, #fekihpvzil th {
+#fylumhbgxp thead, #fylumhbgxp tbody, #fylumhbgxp tfoot, #fylumhbgxp tr, #fylumhbgxp td, #fylumhbgxp th {
   border-style: none;
 }
 
-#fekihpvzil p {
+#fylumhbgxp p {
   margin: 0;
   padding: 0;
 }
 
-#fekihpvzil .gt_table {
+#fylumhbgxp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1369,12 +1398,12 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-left-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_caption {
+#fylumhbgxp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fekihpvzil .gt_title {
+#fylumhbgxp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1386,7 +1415,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-width: 0;
 }
 
-#fekihpvzil .gt_subtitle {
+#fylumhbgxp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1398,7 +1427,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-top-width: 0;
 }
 
-#fekihpvzil .gt_heading {
+#fylumhbgxp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1410,13 +1439,13 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_bottom_border {
+#fylumhbgxp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_col_headings {
+#fylumhbgxp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1431,7 +1460,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_col_heading {
+#fylumhbgxp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1451,7 +1480,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   overflow-x: hidden;
 }
 
-#fekihpvzil .gt_column_spanner_outer {
+#fylumhbgxp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1463,15 +1492,15 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 4px;
 }
 
-#fekihpvzil .gt_column_spanner_outer:first-child {
+#fylumhbgxp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fekihpvzil .gt_column_spanner_outer:last-child {
+#fylumhbgxp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fekihpvzil .gt_column_spanner {
+#fylumhbgxp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1483,11 +1512,11 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   width: 100%;
 }
 
-#fekihpvzil .gt_spanner_row {
+#fylumhbgxp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fekihpvzil .gt_group_heading {
+#fylumhbgxp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1513,7 +1542,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   text-align: left;
 }
 
-#fekihpvzil .gt_empty_group_heading {
+#fylumhbgxp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1528,15 +1557,15 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   vertical-align: middle;
 }
 
-#fekihpvzil .gt_from_md > :first-child {
+#fylumhbgxp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fekihpvzil .gt_from_md > :last-child {
+#fylumhbgxp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fekihpvzil .gt_row {
+#fylumhbgxp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1555,7 +1584,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   overflow-x: hidden;
 }
 
-#fekihpvzil .gt_stub {
+#fylumhbgxp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1568,7 +1597,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#fekihpvzil .gt_stub_row_group {
+#fylumhbgxp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1582,15 +1611,15 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   vertical-align: top;
 }
 
-#fekihpvzil .gt_row_group_first td {
+#fylumhbgxp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fekihpvzil .gt_row_group_first th {
+#fylumhbgxp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fekihpvzil .gt_summary_row {
+#fylumhbgxp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1600,16 +1629,16 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#fekihpvzil .gt_first_summary_row {
+#fylumhbgxp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_first_summary_row.thick {
+#fylumhbgxp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fekihpvzil .gt_last_summary_row {
+#fylumhbgxp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1619,7 +1648,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_grand_summary_row {
+#fylumhbgxp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1629,7 +1658,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#fekihpvzil .gt_first_grand_summary_row {
+#fylumhbgxp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1639,7 +1668,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-top-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_last_grand_summary_row_top {
+#fylumhbgxp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1649,11 +1678,11 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_striped {
+#fylumhbgxp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fekihpvzil .gt_table_body {
+#fylumhbgxp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1662,7 +1691,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-bottom-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_footnotes {
+#fylumhbgxp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1676,7 +1705,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_footnote {
+#fylumhbgxp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1685,7 +1714,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#fekihpvzil .gt_sourcenotes {
+#fylumhbgxp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1699,7 +1728,7 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   border-right-color: #D3D3D3;
 }
 
-#fekihpvzil .gt_sourcenote {
+#fylumhbgxp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1707,72 +1736,72 @@ Table&nbsp;9.2: Comparing a paired sample t-test, one sample t-testa and a linea
   padding-right: 5px;
 }
 
-#fekihpvzil .gt_left {
+#fylumhbgxp .gt_left {
   text-align: left;
 }
 
-#fekihpvzil .gt_center {
+#fylumhbgxp .gt_center {
   text-align: center;
 }
 
-#fekihpvzil .gt_right {
+#fylumhbgxp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fekihpvzil .gt_font_normal {
+#fylumhbgxp .gt_font_normal {
   font-weight: normal;
 }
 
-#fekihpvzil .gt_font_bold {
+#fylumhbgxp .gt_font_bold {
   font-weight: bold;
 }
 
-#fekihpvzil .gt_font_italic {
+#fylumhbgxp .gt_font_italic {
   font-style: italic;
 }
 
-#fekihpvzil .gt_super {
+#fylumhbgxp .gt_super {
   font-size: 65%;
 }
 
-#fekihpvzil .gt_footnote_marks {
+#fylumhbgxp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fekihpvzil .gt_asterisk {
+#fylumhbgxp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fekihpvzil .gt_indent_1 {
+#fylumhbgxp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fekihpvzil .gt_indent_2 {
+#fylumhbgxp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fekihpvzil .gt_indent_3 {
+#fylumhbgxp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fekihpvzil .gt_indent_4 {
+#fylumhbgxp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fekihpvzil .gt_indent_5 {
+#fylumhbgxp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fekihpvzil .katex-display {
+#fylumhbgxp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fekihpvzil div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fylumhbgxp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2086,7 +2115,7 @@ Figure&nbsp;9.5: An univariate comparison of running speed in two gender groups 
 <span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_markdown</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: `geom_errobarh()` was deprecated in ggplot2 4.0.0.
+<pre><code>Warning: `geom_errorbarh()` was deprecated in ggplot2 4.0.0.
 ℹ Please use the `orientation` argument of `geom_errorbar()` instead.</code></pre>
 </div>
 <details class="code-fold">

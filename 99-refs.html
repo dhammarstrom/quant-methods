@@ -49,7 +49,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./13-mixed-effects.html" rel="prev">
+<link href="./22-statistical-power.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -399,6 +399,35 @@ div.csl-indent {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./00-d-infer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-samples-populations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Samples, populations, estimates and their uncertainty</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-p-values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">What is the <em>p</em>-value?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-statistical-power.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hypothesis tests and statistical power</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./99-refs.html" class="sidebar-item-text sidebar-link active">
@@ -446,6 +475,14 @@ Altman, D. G., and J. M. Bland. 1999. <span>“Statistics Notes: Variables
 and Parameters.”</span> <em>BMJ (Clinical Research Ed.)</em> 318 (7199):
 1667. <a href="https://doi.org/10.1136/bmj.318.7199.1667">https://doi.org/10.1136/bmj.318.7199.1667</a>.
 </div>
+<div id="ref-RN2961" class="csl-entry" role="listitem">
+Astorino, T. A., M. M. Schubert, E. Palumbo, D. Stirling, D. W.
+McMillan, C. Cooper, J. Godinez, D. Martinez, and R. Gallant. 2013.
+<span>“Magnitude and Time Course of Changes in Maximal Oxygen Uptake in
+Response to Distinct Regimens of Chronic Interval Training in Sedentary
+Women.”</span> Journal Article. <em>Eur J Appl Physiol</em> 113 (9):
+2361–69. <a href="https://doi.org/10.1007/s00421-013-2672-1">https://doi.org/10.1007/s00421-013-2672-1</a>.
+</div>
 <div id="ref-bates2015" class="csl-entry" role="listitem">
 Bates, Douglas, Martin Mächler, Ben Bolker, and Steve Walker. 2015.
 <span>“Fitting <span>Linear Mixed-Effects Models Using</span>
@@ -483,6 +520,17 @@ M. Holmes, P. M. Mumford, et al. 2018. <span>“Effects of Graded Whey
 Supplementation During Extreme-Volume Resistance Training.”</span>
 Journal Article. <em>Front Nutr</em> 5: 84. <a href="https://doi.org/10.3389/fnut.2018.00084">https://doi.org/10.3389/fnut.2018.00084</a>.
 </div>
+<div id="ref-RN2962" class="csl-entry" role="listitem">
+Higgins, Julian PT, Tianjing Li, and Jonathan J Deeks. 2019.
+<span>“Choosing Effect Measures and Computing Estimates of
+Effect.”</span> Book Section. In <em>Cochrane Handbook for Systematic
+Reviews of Interventions</em>, 143–76. https://doi.org/<a href="https://doi.org/10.1002/9781119536604.ch6">https://doi.org/10.1002/9781119536604.ch6</a>.
+</div>
+<div id="ref-RN2959" class="csl-entry" role="listitem">
+Hopkins, W. G., J. A. Hawley, and L. M. Burke. 1999. <span>“Design and
+Analysis of Research on Sport Performance Enhancement.”</span> Journal
+Article. <em>Med Sci Sports Exerc</em> 31 (3): 472–85. <a href="https://doi.org/10.1097/00005768-199903000-00018">https://doi.org/10.1097/00005768-199903000-00018</a>.
+</div>
 <div id="ref-ioannidisd2005" class="csl-entry" role="listitem">
 Ioannidis, John P. A. 2005. <span>“Why <span>Most Published Research
 Findings Are False</span>.”</span> <em>PLOS Medicine</em> 2 (8): e124.
@@ -498,6 +546,11 @@ Used</span> <span><em>p</em></span> <span>Value</span>.”</span>
 Leek, J. T., and R. D. Peng. 2015. <span>“Statistics: P Values Are Just
 the Tip of the Iceberg.”</span> Journal Article. <em>Nature</em> 520
 (7549): 612. <a href="https://doi.org/10.1038/520612a">https://doi.org/10.1038/520612a</a>.
+</div>
+<div id="ref-RN2956" class="csl-entry" role="listitem">
+Loe, H., Ø Rognmo, B. Saltin, and U. Wisløff. 2013. <span>“Aerobic
+Capacity Reference Data in 3816 Healthy Men and Women 20-90
+Years.”</span> Journal Article. <em>PLoS One</em> 8 (5): e64319. <a href="https://doi.org/10.1371/journal.pone.0064319">https://doi.org/10.1371/journal.pone.0064319</a>.
 </div>
 <div id="ref-mcshane2019" class="csl-entry" role="listitem">
 McShane, Blakeley B., David Gal, Andrew Gelman, Christian Robert, and
@@ -528,6 +581,12 @@ Epidemiologic Research.”</span> Journal Article. <em>Am J Epidemiol</em>
 Pinheiro, José C., and Douglas M. Bates. 2000. <em>Mixed-Effects Models
 in <span>S</span> and <span>S-PLUS</span></em>. Statistics and
 Computing. New York: Springer.
+</div>
+<div id="ref-rafi2020" class="csl-entry" role="listitem">
+Rafi, Zad, and Sander Greenland. 2020. <span>“Semantic and Cognitive
+Tools to Aid Statistical Science: Replace Confidence and Significance by
+Compatibility and Surprise.”</span> <em>BMC Medical Research
+Methodology</em> 20 (1): 244. <a href="https://doi.org/10.1186/s12874-020-01105-9">https://doi.org/10.1186/s12874-020-01105-9</a>.
 </div>
 <div id="ref-sokal2012" class="csl-entry" role="listitem">
 Sokal, Robert R., and F. James Rohlf. 2012. <em>Biometry : The
@@ -978,8 +1037,8 @@ Article. <em>Genome Biology</em> 17 (1): 177. <a href="https://doi.org/10.1186/s
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./13-mixed-effects.html" class="pagination-link" aria-label="Mixed models">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mixed models</span></span>
+      <a href="./22-statistical-power.html" class="pagination-link" aria-label="Hypothesis tests and statistical power">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Hypothesis tests and statistical power</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
