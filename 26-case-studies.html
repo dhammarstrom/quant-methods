@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Data distributions – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
+<title>16&nbsp; Case studies – Quantitative methods and statistics with examples in R, Jamovi and JASP</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -52,8 +87,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./04-data-visualizations.html" rel="next">
-<link href="./02-describe-data.html" rel="prev">
+<link href="./99-refs.html" rel="next">
+<link href="./00-e-report.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -96,35 +131,6 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -299,7 +305,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./03-data-distributions.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-e-report.html">Reporting statistical analyses</a></li><li class="breadcrumb-item"><a href="./26-case-studies.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Case studies</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -358,7 +364,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-data-distributions.html" class="sidebar-item-text sidebar-link active">
+  <a href="./03-data-distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></span></a>
   </div>
 </li>
@@ -469,7 +475,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./26-case-studies.html" class="sidebar-item-text sidebar-link">
+  <a href="./26-case-studies.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Case studies</span></span></a>
   </div>
 </li>
@@ -491,19 +497,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#describing-observed-data" id="toc-describing-observed-data" class="nav-link active" data-scroll-target="#describing-observed-data"><span class="header-section-number">3.1</span> Describing observed data</a></li>
-  <li><a href="#theoretical-data-distributions" id="toc-theoretical-data-distributions" class="nav-link" data-scroll-target="#theoretical-data-distributions"><span class="header-section-number">3.2</span> Theoretical data distributions</a></li>
-  <li><a href="#the-normal-model-of-the-world" id="toc-the-normal-model-of-the-world" class="nav-link" data-scroll-target="#the-normal-model-of-the-world"><span class="header-section-number">3.3</span> The normal model of the world</a></li>
+  <li><a href="#heat-suit-training-in-cross-country-skiers" id="toc-heat-suit-training-in-cross-country-skiers" class="nav-link active" data-scroll-target="#heat-suit-training-in-cross-country-skiers"><span class="header-section-number">16.1</span> Heat suit training in cross-country skiers</a>
+  <ul class="collapse">
+  <li><a href="#before-analysis" id="toc-before-analysis" class="nav-link" data-scroll-target="#before-analysis"><span class="header-section-number">16.1.1</span> Before analysis</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/03-data-distributions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/03-data-distributions.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/26-case-studies.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/26-case-studies.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-a-describe.html">Describing data</a></li><li class="breadcrumb-item"><a href="./03-data-distributions.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-e-report.html">Reporting statistical analyses</a></li><li class="breadcrumb-item"><a href="./26-case-studies.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Case studies</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data distributions</span></h1>
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Case studies</span></h1>
 </div>
 
 
@@ -520,140 +527,37 @@ window.Quarto = {
 </header>
 
 
-<section id="describing-observed-data" class="level2 page-columns page-full" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="describing-observed-data"><span class="header-section-number">3.1</span> Describing observed data</h2>
-<p>When we observe data, we can describe it by its central tendency and dispersion. However, it is also often useful to describe the distribution of the data graphically to get a sense of its shape. A histogram can help us with this representation. A histogram divides a numeric variable into bins and counts the number of observations in each bin. The number of observations in each bin is then displayed as a bar plot, with each bar representing a bin (<a href="#fig-histo" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. In <a href="#fig-histo" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>, a separate histogram has been created for each gender in the data set.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;In JASP, the Descriptive Statistics module lets us create a basic histogram; however, in JASP it is called Distribution plots with the possibility to add density estimates.</p></div></div><div class="cell">
-<div class="cell-output-display">
-<div id="fig-histo" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-histo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-data-distributions_files/figure-html/fig-histo-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Results from the Boston marathon 2019 displayed as histograms per gender.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>An alternative to the histogram is a density plot. The density plot shows us the relative density of observations along the scale of the variable of interest. Often, the curve shows a smoothed estimate of the distribution (<a href="#fig-density" class="quarto-xref">Figure&nbsp;<span>3.2</span></a>). In a density plot, the y-axis is sometimes omitted as they are not interpretable as counts. Instead the are under a density curve sums 1.</p>
+<section id="heat-suit-training-in-cross-country-skiers" class="level2 page-columns page-full" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="heat-suit-training-in-cross-country-skiers"><span class="header-section-number">16.1</span> Heat suit training in cross-country skiers</h2>
+<p>Our bodies adapt to warmer environments, in part, by increasing blood volume, including the oxygen-carrying molecule hemoglobin <span class="citation" data-cites="doupe1957">(<a href="99-refs.html#ref-doupe1957" role="doc-biblioref">Doupe et al. 1957</a>)</span>. By combining regular endurance training with heat stress, total hemoglobin mass can be increased by nearly 5% in well-trained athletes <span class="citation" data-cites="ronnestad2021">(<a href="99-refs.html#ref-ronnestad2021" role="doc-biblioref">Rønnestad et al. 2021</a>)</span>. Rønnestad et al. <span class="citation" data-cites="ronnestadHeatSuit2022">(<a href="99-refs.html#ref-ronnestadHeatSuit2022" role="doc-biblioref">Rønnestad et al. 2022</a>)</span> tested whether training with a heat suit could also increase total hemoglobin mass, as observed with training in a warm environment. The researchers randomized 25 cross-country skiers to either heat suit training (HEAT) or control training (CON). The HEAT group trained for 50 minutes with a heat suit, at low intensity, five times per week for five weeks. In this case study, we will reanalyze the data set from <span class="citation" data-cites="ronnestadHeatSuit2022">(<a href="99-refs.html#ref-ronnestadHeatSuit2022" role="doc-biblioref">Rønnestad et al. 2022</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-doupe1957" class="csl-entry" role="listitem">
+Doupe, J., M. H. Ferguson, and J. A. Hildes. 1957. <span>“<a href="https://www.ncbi.nlm.nih.gov/pubmed/13404539">Seasonal Fluctuations in Blood Volume</a>.”</span> <em>Canadian Journal of Biochemistry and Physiology</em> 35 (3): 203–13.
+</div><div id="ref-ronnestadHeatSuit2022" class="csl-entry" role="listitem">
+Rønnestad, Bent R., Ole Martin Lid, Joar Hansen, et al. 2022. <span>“Heat Suit Training Increases Hemoglobin Mass in Elite Cross-Country Skiers.”</span> <em>Scandinavian Journal of Medicine &amp; Science in Sports</em>, March, sms.14156. <a href="https://doi.org/10.1111/sms.14156">https://doi.org/10.1111/sms.14156</a>.
+</div></div><section id="before-analysis" class="level3 page-columns page-full" data-number="16.1.1">
+<h3 data-number="16.1.1" class="anchored" data-anchor-id="before-analysis"><span class="header-section-number">16.1.1</span> Before analysis</h3>
+<p>Before we begin our analysis of the data we have, it is worth considering what we could find. Depending on your philosophical stance, available software, and research question, you likely want to assess the strength of your research design. In this case (we are reanalyzing data), we cannot redesign the study, but we can determine the power of the available study design for a given expected effect size. This approach builds on the frequentist idea that, if we were to conduct a large number of repeated studies, the design we use would lead to rejection of the null hypothesis in favour of the alternative hypothesis, given that an effect size of interest actually exists in the population. Since we already have a sample size, the question in our power analysis becomes, what is the power of our design, given a specified sample size and an effect size of interest? There are several ways to think about this problem. Lakens <span class="citation" data-cites="lakens2022">(<a href="99-refs.html#ref-lakens2022" role="doc-biblioref">2022</a>)</span> lists several approaches to determine desirable frequentist error rates and effect sizes of interest.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-lakens2022" class="csl-entry" role="listitem">
+Lakens, Daniël. 2022. <span>“Sample <span>Size Justification</span>.”</span> <em>Collabra: Psychology</em> 8 (1): 33267. <a href="https://doi.org/10.1525/collabra.33267">https://doi.org/10.1525/collabra.33267</a>.
+</div><div id="ref-ronnestad2021" class="csl-entry" role="listitem">
+Rønnestad, Bent R., Håvard Hamarsland, Joar Hansen, et al. 2021. <span>“Five Weeks of Heat Training Increases Haemoglobin Mass in Elite Cyclists.”</span> <em>Experimental Physiology</em> 106 (1): 316–27. <a href="https://doi.org/10.1113/EP088544">https://doi.org/10.1113/EP088544</a>.
+</div></div><p>What is the minimum effect size of interest in this case? Since the study aims to determine whether heat suit training can increase Hb<sub>mass</sub>, we might consider the minimum effect of interest to be the effect achieved with heat (chamber) training <span class="citation" data-cites="ronnestad2021">(<a href="99-refs.html#ref-ronnestad2021" role="doc-biblioref">Rønnestad et al. 2021</a>)</span>. Were do we get this information? In previous research! Sometimes, the data is not available in spreadsheets, but as data presented in a paper. In <span class="citation" data-cites="ronnestad2021">(<a href="99-refs.html#ref-ronnestad2021" role="doc-biblioref">Rønnestad et al. 2021</a>)</span>, we find that the Hb<sub>mass</sub> values of individual participants are visualized. If in R, we could use a package called <code>digitize</code> to manually import the data from the graph <span class="quarto-unresolved-ref">?fig-digitize</span>. For this case study, I’ve made the data available in the <code>exscidata</code> package under <code>hbmass</code>.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div id="fig-density" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-data-distributions_files/figure-html/fig-density-1.png" class="img-fluid figure-img" width="672">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(digitize)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">digitize</span>(<span class="st">"images/case-studies/ronnestad2021-hbmass.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: Results from the Boston marathon 2019 displayed as density plots per gender.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>An alternative approach to summarise a distribution could be a boxplot (<a href="#fig-boxplot" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>). A boxplot summarises the data by displaying the median, the first and third quartile (the box). Whiskers covers observations within 1.5 × the inter-quartile range from the box. Observations outsides the whiskers are displayed using points.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-data-distributions_files/figure-html/fig-boxplot-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.3: Results from the Boston marathon 2019 displayed as boxplots per gender.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Categories can also be summarised as using frequencies. In <a href="#fig-freqcat" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> we have categorized age in bins creating an ordered categorical variable (ordinal), a second categorical variable, gender (nominal), let’s us compare the number of observations between Males and Females within each age group.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-freqcat" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-freqcat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-data-distributions_files/figure-html/fig-freqcat-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-freqcat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.4: Gender distributions per age group from the Boston marathon 2019.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>The shape of the data is of interest to us <span class="citation" data-cites="sokal2012">(<a href="99-refs.html#ref-sokal2012" role="doc-biblioref">Sokal and Rohlf 2012, 19</a>)</span>. For example, in the above figures we can notice that only a very small proportion of the competitors approach the 2 hour mark.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The distribution is skewed to the right and we might discover some unusual peaks in the histogram at three and four hours. Additionally, we see a slight over-representation of women in the age category 18-29. Patterns like these in the data could lead us to further investigate, for example, the limits of human performance (why no sub 2 hour times?), the psychology of specific run times (why do more runners finish at sub 3 hours?) or the general demographics of the participants (the tail of the distribution and gender differences in participation).</p>
-<div class="no-row-height column-margin column-container"><div id="ref-sokal2012" class="csl-entry" role="listitem">
-Sokal, Robert R., and F. James Rohlf. 2012. <em>Biometry : The Principles and Practice of Statistics in Biological Research</em>. [Extensively rev.] 4th. W.H. Freeman.
-</div><div id="fn2"><p><sup>2</sup>&nbsp;The marathon world records are 2:00:35 and 2:09:56, for men and women, respectively <a href="https://en.wikipedia.org/wiki/Marathon_world_record_progression">(source)</a>.</p></div></div></section>
-<section id="theoretical-data-distributions" class="level2 page-columns page-full" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="theoretical-data-distributions"><span class="header-section-number">3.2</span> Theoretical data distributions</h2>
-<p>Above, we have considered the distribution of data that we might observe, such as marathon finishing times. We can call this the empirical data distribution of some quantity of interest <span class="citation" data-cites="altman1995">(<a href="99-refs.html#ref-altman1995" role="doc-biblioref">Altman and Bland 1995</a>)</span>. In many cases, such observed, empirical distributions follow distinct patterns that seem to repeat in many natural situations. Why?</p>
-<div class="no-row-height column-margin column-container"><div id="ref-altman1995" class="csl-entry" role="listitem">
-Altman, Douglas G., and J. Martin Bland. 1995. <span>“The <span>Normal Distribution</span>.”</span> <em>BMJ: British Medical Journal</em> 310 (6975): 298–98. <a href="https://www.jstor.org/stable/29726236">https://www.jstor.org/stable/29726236</a>.
-</div><div class="">
-<div id="fig-pachinko" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pachinko-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Early_Pinball.jpg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pachinko-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.5: An early version of a Japanese Pachinko machine <a href="https://en.wikipedia.org/wiki/Pachinko">source</a>
-</figcaption>
-</figure>
-</div>
-</div><div id="ref-shinohara1999" class="csl-entry" role="listitem">
-Shinohara, Kikunori, Akitaka Yanagisawa, Yutaka Kagota, et al. 1999. <span>“Physiological <span>Changes</span> in <span>Pachinko Players</span>; <span class="nocase">Beta-endorphin</span>, <span>Catecholamines</span>, <span>Immune System Substances</span> and <span>Heart Rate</span>.”</span> <em>APPLIED HUMAN SCIENCE Journal of Physiological Anthropology</em> 18 (2): 37–42. <a href="https://doi.org/10.2114/jpa.18.37">https://doi.org/10.2114/jpa.18.37</a>.
-</div></div>
-<p>Consider <a href="https://en.wikipedia.org/wiki/Pachinko">Pachinko</a>, the Japanese mechanical gambling machine that is both addictive and stress-inducing <span class="citation" data-cites="shinohara1999">(<a href="99-refs.html#ref-shinohara1999" role="doc-biblioref">Shinohara et al. 1999</a>)</span>. In a basic form, the machine allows its user to set a ball in motion towards a tilted or vertical grid of pegs (<a href="#fig-pachinko" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>). The ball bounces through the grid so that at each peg it either goes to the right or to the left. At the bottom of each machine, slots with a specific payout are organized so that the smallest payout comes from the slots where balls are most likely to end up. In contrast, the highest payout comes from slots located where balls are least likely to end up. A gambler could, by chance, for example, win the top prize if a ball takes a very unlikely route through the grid.</p>
-<p>Any individual ball’s journey through the grid is impossible to predict (bad for the gambler). Still, the overall pattern is very predictable (good news for the owner of the machine). In <a href="#fig-pachinko-simulation" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>, we simulate 1000 balls dropped through a Pachinko machine<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> where each orange line represents a potential route through the grid. As there are many more ways for a ball to end up in the center slots, the bell-shaped distribution of balls emerges as a result.</p>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;This version of a Pachinko machine looks like a <a href="https://en.wikipedia.org/wiki/Galton_board">Galton board</a> used to illustrate how the familiar bell-shape can emerge from summing up many random events.</p></div></div><div class="cell">
-<div class="cell-output-display">
-<div id="fig-pachinko-simulation" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pachinko-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-data-distributions_files/figure-html/fig-pachinko-simulation-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pachinko-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.6: Routes through a Pachinko board for 1000 balls (A). Pegs are represented by blue dots. At each peg, balls have a 0.5 probability of either going to the left or to the right. Adding up many random events, such as left and right turns, results in a bell-shaped distribution (B). There are more ways for a ball to end up in the center payout slot than in the extreme right or left slots.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>It turns out that the resulting bell-shaped distribution is easily predicted by a theoretical distribution called the normal distribution. The fact that the resulting distribution is predictable is relevant for the owners of the Pachinko parlors. When designing the Pachinko machine, the payout can be balanced with respect to the overall theoretical distribution in a way that guarantees that the house always wins, in the long run.</p>
-<p>Above, we made a simplification: at each peg, there is a limited number of possibilities for the ball’s route. It can either go right or left. If we redo the simulation and instead imagine that there is an unlimited number of possibilities between -1 and 1 at each “row” in the Pachinko board, the resulting distribution of the balls’ location will be even smoother (<a href="#fig-pachinko-simulation2" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>).</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-pachinko-simulation2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pachinko-simulation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-data-distributions_files/figure-html/fig-pachinko-simulation2-1.png" class="img-fluid figure-img" width="384">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pachinko-simulation2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.7: Routes through a modified Pachinko board for 1000 balls (A). At each level (blue lines in A), a ball gets an effect randomly selected in the interval -1 to 1. Adding up many random events, results in a bell-shaped distribution (B). There are more ways for a ball to end up in a central position than in the extreme right or left tails. C shows a theoretical <em>Normal</em> distribution with the expected mean 0 and a standard deviation of 1.827.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Why is the pattern predictable? This is not easily explained <span class="citation" data-cites="lyon2014">(<a href="99-refs.html#ref-lyon2014" role="doc-biblioref">Lyon 2014</a>)</span>. But the Pachinko machine can help us develop the intuition. Each peg in the machine gives the ball a 50% chance of going to the right or to the left, respectively. When the ball moves through rows of pegs, we effectively add up small perturbations to the ball’s trajectory. An extreme route through the pegs could be that the ball ends up going to the left at all pegs. In a grid with 10 rows, this would result in a probability equivalent to <span class="math inline">\(0.5^{10} \approx 0.00098\)</span>, highly unlikely. However, a ball could end up in the center slot in so many more ways. Multiple combinations of left and right turns end up in the center slot. Still, only one combination of turns results in the farthest left slot (<a href="#fig-pachinko-simulation" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>). This means that out of a set of balls, most will end up in slots that have more possible combinations of left and right turns. Similarly, when drawing a random number between -1 and 1 (<a href="#fig-pachinko-simulation2" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>), extreme totals requires that all draws come from near the boundary of the interval.</p>
-<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;In our example simulation (<a href="#fig-pachinko-simulation2" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>), we have at each step randomly drawn a number from a uniform distribution going from -1 to 1. It turns out that the variance of a uniform distribution is <span class="math inline">\(=\frac{(b-a)^2}{12}\)</span> which in our case is <span class="math inline">\(=\frac{(1-(-1))^2}{12} = 0.3333\)</span>. We can add variances to get the variance of the distribution of sums, so for 10 steps we get <span class="math inline">\(0.333 \times 10 = 3.333\)</span>. Going from variances to standard deviations follows <span class="math inline">\(\operatorname{SD} = \sqrt{\operatorname{Var}}\)</span>. This gives us the theoretical standard deviation of the resulting distribution <span class="math inline">\(\sqrt{3.333} = 1.826\)</span>.</p></div></div><p>The bell-shaped curve, which can be described using the theoretical “<em>normal</em>” distribution, emerges because if a distribution has a fixed mean and standard deviation, the bell-shape represents the distribution with the least amount of extra information other than the mean and standard deviation <span class="citation" data-cites="lyon2014">(<a href="99-refs.html#ref-lyon2014" role="doc-biblioref">Lyon 2014</a>)</span>. Given the way we have simulated ball positions in <a href="#fig-pachinko-simulation2" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>, we know that the mean of the resulting distribution will be 0 and that the variances<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> will add up from each step in the simulation. We can therefore create the theoretical probability distribution using the normal distribution, which contains these characteristics: the least structured distribution given a fixed mean and standard deviation (<a href="#fig-pachinko-simulation2" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>).</p>
-<p>So, in conclusion, when we observe natural phenomena that are the result of many random processes, we often observe a bell-shaped data distribution. The theoretical distribution that most closely models such a data-generating process is the normal distribution because it is the distribution that contains no other information than a given mean and standard deviation <span class="citation" data-cites="lyon2014">(<a href="99-refs.html#ref-lyon2014" role="doc-biblioref">Lyon 2014</a>)</span>.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-lyon2014" class="csl-entry" role="listitem">
-Lyon, Aidan. 2014. <span>“Why Are <span>Normal Distributions Normal</span>?”</span> <em>The British Journal for the Philosophy of Science</em> 65 (3): 621–49. <a href="https://www.jstor.org/stable/26398398">https://www.jstor.org/stable/26398398</a>.
-</div></div></section>
-<section id="the-normal-model-of-the-world" class="level2 page-columns page-full" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="the-normal-model-of-the-world"><span class="header-section-number">3.3</span> The normal model of the world</h2>
-<p>The normal distribution, that is the theoretical distribution that describes the result of a process where many small, unobserved effects are summed up in each observation, is a very useful distribution. In fact, we use it all the time, even we are not trying to describe this process (see <span class="citation" data-cites="mcelreath2020">(<a href="99-refs.html#ref-mcelreath2020" role="doc-biblioref">McElreath 2020, 71</a>)</span> for a discussion).</p>
-<div class="no-row-height column-margin column-container"><div id="ref-mcelreath2020" class="csl-entry" role="listitem">
-McElreath, Richard. 2020. <em>Statistical Rethinking: A <span>Bayesian</span> Course with Examples in <span>R</span> and <span>Stan</span></em>. Second edition. Chapman &amp; <span>Hall</span>/<span>CRC</span> Texts in Statistical Science Series. CRC Press.
-</div></div><p>UNDER CONSTRUCTION</p>
+<p><img src="images/case-studies/ronnestad2021-hbmass-digitize.png" class="img-fluid"> {#fig-digitize}</p>
+<div class="page-columns page-full"><blockquote class="blockquote">
+<p>Here, the study design is fixed, but if we were to redesign it, the question could be rephrased as a test of equivalence between heat chamber training and heat suit training. We could determine if the two approaches affected Hb<sub>mass</sub> to a similar extent. This analysis would require an equivalence test <span class="citation" data-cites="mazzolari2022">(<a href="99-refs.html#ref-mazzolari2022" role="doc-biblioref">Mazzolari et al. 2022</a>)</span>.</p>
+</blockquote><div class="no-row-height column-margin column-container"><div id="ref-mazzolari2022" class="csl-entry" role="listitem">
+Mazzolari, Raffaele, Simone Porcelli, David J. Bishop, and Daniël Lakens. 2022. <span>“Myths and Methodologies: <span>The</span> Use of Equivalence and Non-Inferiority Tests for Interventional Studies in Exercise Physiology and Sport Science.”</span> <em>Experimental Physiology</em> 107 (3): 201–12. <a href="https://doi.org/10.1113/EP090171">https://doi.org/10.1113/EP090171</a>.
+</div></div></div>
 
 
 
 </section>
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1055,13 +959,13 @@ McElreath, Richard. 2020. <em>Statistical Rethinking: A <span>Bayesian</span> Co
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-describe-data.html" class="pagination-link" aria-label="Describing data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing data</span></span>
+      <a href="./00-e-report.html" class="pagination-link" aria-label="Reporting statistical analyses">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Reporting statistical analyses</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-data-visualizations.html" class="pagination-link" aria-label="Visualizing data">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Visualizing data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./99-refs.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1070,4 +974,4 @@ McElreath, Richard. 2020. <em>Statistical Rethinking: A <span>Bayesian</span> Co
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/03-data-distributions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/03-data-distributions.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dhammarstrom/quant-methods/edit/master/26-case-studies.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/dhammarstrom/quant-methods/blob/master/26-case-studies.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
